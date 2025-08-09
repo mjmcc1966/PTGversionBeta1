@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { CheckCircle, XCircle, Trophy, Lightbulb } from 'lucide-react';
+import { Progress } from '@/components/ui/progress';
 
 export function QuizClient({ category }: { category: string }) {
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
@@ -128,13 +129,18 @@ export function QuizClient({ category }: { category: string }) {
     return "bg-card/50 border-primary/10 text-muted-foreground";
   };
   
+  const progress = allQuestions.length > 0 ? (askedQuestionIds.size / allQuestions.length) * 100 : 0;
+
   return (
     <Card className="w-full max-w-2xl shadow-xl animate-in fade-in-50 duration-500">
       <CardHeader>
+        <div className="mb-4">
+          <Progress value={progress} className="h-2" />
+          <p className="text-sm text-muted-foreground mt-2 text-center">Question {askedQuestionIds.size + (selectedAnswer ? 0 : 1)} of {allQuestions.length}</p>
+        </div>
         <CardTitle className="text-2xl md:text-3xl leading-snug">
           {currentQuestion.question}
         </CardTitle>
-        <CardDescription>Question {askedQuestionIds.size + (selectedAnswer ? 0 : 1)} of {allQuestions.length}</CardDescription>
       </CardHeader>
       <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {shuffledOptions.map((option) => (
