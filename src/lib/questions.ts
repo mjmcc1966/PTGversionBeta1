@@ -11,7 +11,8 @@ export interface TriviaData {
   [key: string]: Question[];
 }
 
-export const triviaData: TriviaData = {
+// This represents the original, shipped-with-the-app data.
+const originalTriviaData: Readonly<TriviaData> = {
   'general-trivia': [
     {
       id: 101,
@@ -126,16 +127,28 @@ export const triviaData: TriviaData = {
   'custom-trivia': [],
 };
 
+// Create a mutable copy for in-memory operations.
+export const triviaData: TriviaData = JSON.parse(JSON.stringify(originalTriviaData));
+
 // Function to load all questions and combine with localStorage
 const loadQuestions = (category: string): Question[] => {
-  const baseQuestions = triviaData[category] || [];
+  // Always start with the pristine, original questions for the category.
+  const baseQuestions = [...(originalTriviaData[category] || [])];
+  
   if (typeof window !== 'undefined') {
     const storedQuestions = localStorage.getItem(category);
     if (storedQuestions) {
-      const parsedStoredQuestions: Question[] = JSON.parse(storedQuestions);
-      // Filter out base questions that might have been stored
-      const uniqueStoredQuestions = parsedStoredQuestions.filter(sq => !baseQuestions.some(bq => bq.id === sq.id));
-      return [...baseQuestions, ...uniqueStoredQuestions];
+      try {
+        const parsedStoredQuestions: Question[] = JSON.parse(storedQuestions);
+        // Combine base questions with stored questions, ensuring no duplicates by ID
+        const allQuestionsMap = new Map<number, Question>();
+        baseQuestions.forEach(q => allQuestionsMap.set(q.id, q));
+        parsedStoredQuestions.forEach(q => allQuestionsMap.set(q.id, q));
+        return Array.from(allQuestionsMap.values());
+      } catch (e) {
+        console.error("Failed to parse questions from localStorage", e);
+        return baseQuestions;
+      }
     }
   }
   return baseQuestions;

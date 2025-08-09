@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { triviaData, Question } from '@/lib/questions';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 
 export function UploadQuestionsDialog({ children }: { children: React.ReactNode }) {
   const [file, setFile] = useState<File | null>(null);
@@ -76,7 +77,12 @@ export function UploadQuestionsDialog({ children }: { children: React.ReactNode 
         if (!triviaData[selectedCategory]) {
           triviaData[selectedCategory] = [];
         }
-        triviaData[selectedCategory].push(...newQuestions);
+        // This is not ideal, but for now we'll just push to the in-memory representation.
+        // A better solution would involve a state management library.
+        const baseQuestions = triviaData[selectedCategory] || [];
+        const currentInMemoryIds = new Set(baseQuestions.map(q => q.id));
+        const questionsToAdd = newQuestions.filter(q => !currentInMemoryIds.has(q.id));
+        triviaData[selectedCategory].push(...questionsToAdd);
         
         toast({ title: 'Success!', description: `${newQuestions.length} questions uploaded to ${selectedCategory.replace(/-/g, ' ')}.` });
         setIsOpen(false);
@@ -86,6 +92,25 @@ export function UploadQuestionsDialog({ children }: { children: React.ReactNode 
     };
     reader.readAsText(file);
   }, [file, toast, selectedCategory]);
+  
+  const handleClearCategory = useCallback(() => {
+    if (!selectedCategory) {
+      toast({ title: 'No category selected', description: 'Please select a category to clear.', variant: 'destructive' });
+      return;
+    }
+    
+    localStorage.removeItem(selectedCategory);
+    
+    // Reset in-memory data to original state if it's a default category
+    // For custom trivia, it will be reset to an empty array by the loading logic.
+    // This part is tricky as we don't have the original pristine triviaData here.
+    // The getQuestionsByCategory logic handles this by reloading from the base data.
+    // We can rely on a page refresh or navigating away and back to see the change.
+    
+    toast({ title: 'Category Cleared!', description: `All uploaded questions have been removed from ${selectedCategory.replace(/-/g, ' ')}. The page will update upon the next quiz visit.` });
+    setIsOpen(false);
+  }, [selectedCategory, toast]);
+
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -111,7 +136,24 @@ export function UploadQuestionsDialog({ children }: { children: React.ReactNode 
             </Select>
           <Input id="file" type="file" accept=".csv" onChange={handleFileChange} />
         </div>
-        <DialogFooter>
+        <DialogFooter className="justify-between">
+           <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button variant="destructive">Clear Category</Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    This action will permanently delete all uploaded questions from the selected category. The original questions that came with the app will not be affected. This cannot be undone.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction onClick={handleClearCategory}>Continue</AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
           <Button onClick={handleUpload}>Upload</Button>
         </DialogFooter>
       </DialogContent>
