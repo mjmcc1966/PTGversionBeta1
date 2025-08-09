@@ -1,3 +1,4 @@
+
 export interface Question {
   id: number;
   question: string;
@@ -125,15 +126,22 @@ export const triviaData: TriviaData = {
   'custom-trivia': [],
 };
 
-export const getQuestionsByCategory = (category: string): Question[] => {
+// Function to load all questions and combine with localStorage
+const loadQuestions = (category: string): Question[] => {
+  const baseQuestions = triviaData[category] || [];
   if (typeof window !== 'undefined') {
-    if (category === 'custom-trivia') {
-      const storedQuestions = localStorage.getItem('custom-trivia');
-      if (storedQuestions) {
-        return JSON.parse(storedQuestions);
-      }
-      return [];
+    const storedQuestions = localStorage.getItem(category);
+    if (storedQuestions) {
+      const parsedStoredQuestions: Question[] = JSON.parse(storedQuestions);
+      // Filter out base questions that might have been stored
+      const uniqueStoredQuestions = parsedStoredQuestions.filter(sq => !baseQuestions.some(bq => bq.id === sq.id));
+      return [...baseQuestions, ...uniqueStoredQuestions];
     }
   }
-  return triviaData[category] || [];
+  return baseQuestions;
+};
+
+
+export const getQuestionsByCategory = (category: string): Question[] => {
+  return loadQuestions(category);
 };
