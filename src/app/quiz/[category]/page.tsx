@@ -8,6 +8,7 @@ export function generateStaticParams() {
     { category: 'general-trivia' },
     { category: 'state-trivia' },
     { category: 'government-trivia' },
+    { category: 'custom-trivia' },
   ];
 }
 

@@ -5,6 +5,7 @@ import { getQuestionsByCategory } from '@/lib/questions';
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { CheckCircle, XCircle, Trophy, Lightbulb } from 'lucide-react';
@@ -18,18 +19,25 @@ export function QuizClient({ category }: { category: string }) {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [score, setScore] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
+  const [outOfQuestions, setOutOfQuestions] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const questions = getQuestionsByCategory(category);
     setAllQuestions(questions);
     setIsLoading(false);
+
+    // Load asked questions from local storage
+    const storedAskedIds = localStorage.getItem(`askedQuestionIds_${category}`);
+    if (storedAskedIds) {
+      setAskedQuestionIds(new Set(JSON.parse(storedAskedIds)));
+    }
   }, [category]);
 
   const selectNewQuestion = useCallback(() => {
     const availableQuestions = allQuestions.filter(q => !askedQuestionIds.has(q.id));
     if (availableQuestions.length === 0 && allQuestions.length > 0) {
-      setQuizFinished(true);
+ setOutOfQuestions(true);
       return;
     }
     const randomIndex = Math.floor(Math.random() * availableQuestions.length);
@@ -43,7 +51,7 @@ export function QuizClient({ category }: { category: string }) {
     if (allQuestions.length > 0) {
       selectNewQuestion();
     }
-  }, [allQuestions, selectNewQuestion]);
+  }, [allQuestions]);
   
   const shuffledOptions = useMemo(() => {
     if (!currentQuestion) return [];
@@ -59,12 +67,19 @@ export function QuizClient({ category }: { category: string }) {
     if (correct) {
       setScore(prev => prev + 1);
     }
-    setAskedQuestionIds(prev => new Set(prev).add(currentQuestion!.id));
+
+    const newAskedQuestionIds = new Set([...Array.from(askedQuestionIds), currentQuestion!.id]);
+    setAskedQuestionIds(newAskedQuestionIds);
+
+    // Save asked questions to local storage
+    localStorage.setItem(`askedQuestionIds_${category}`, JSON.stringify(Array.from(newAskedQuestionIds)));
   };
 
-  const handleRestart = () => {
+  const handleResetQuiz = () => {
     setAskedQuestionIds(new Set());
+    localStorage.removeItem(`askedQuestionIds_${category}`);
     setScore(0);
+    setOutOfQuestions(false); // Reset outOfQuestions state
     setQuizFinished(false);
     selectNewQuestion();
   };
@@ -85,6 +100,29 @@ export function QuizClient({ category }: { category: string }) {
     )
   }
 
+  if (outOfQuestions) {
+    return (
+      <Card className="w-full max-w-2xl text-center p-8 shadow-2xl animate-in fade-in zoom-in-95">
+        <CardHeader>
+          <CardTitle className="text-2xl mt-4 text-primary">Out of Questions</CardTitle>
+          <CardDescription className="text-xl mt-2">
+            You have run out of questions in this category. You can either buy an expansion pack of all new questions, or you can reset your question count and re-use the questions you have already seen. Which would you like to do?
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-4">
+          <Button size="lg" onClick={handleResetQuiz}>
+ Re-Use Questions
+          </Button>
+          <Button size="lg" onClick={() => alert("Expansion packs are not available yet!")}>
+ Buy Expansion Pack
+          </Button>
+           <Link href="/" passHref>
+            <Button variant="outline">Home</Button>
+          </Link>
+        </CardContent>
+      </Card>
+    );
+  }
   if (quizFinished) {
     return (
       <Card className="w-full max-w-2xl text-center p-8 shadow-2xl animate-in fade-in zoom-in-95">
@@ -96,8 +134,11 @@ export function QuizClient({ category }: { category: string }) {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <Button size="lg" onClick={handleRestart}>
+          <Button size="lg" onClick={handleResetQuiz} className="mb-4">
             Play Again
+          </Button>
+          <Button size="lg" asChild>
+             <Link href="/">Home</Link>
           </Button>
         </CardContent>
       </Card>
@@ -164,9 +205,9 @@ export function QuizClient({ category }: { category: string }) {
             <h3 className="font-bold text-lg flex items-center gap-2 text-primary"><Lightbulb/> Explanation</h3>
             <p className="mt-2 text-foreground/80">{currentQuestion.explanation}</p>
           </div>
-          <Button className="w-full md:w-auto self-end" onClick={selectNewQuestion}>
-            Next Question
-          </Button>
+          <Link href="/" passHref>
+            <Button className="w-full md:w-auto self-end">Home</Button>
+          </Link>
         </CardFooter>
       )}
     </Card>

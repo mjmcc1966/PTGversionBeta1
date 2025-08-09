@@ -2,13 +2,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { BrainCircuit, Landmark, Scale } from 'lucide-react';
+import { BrainCircuit, Landmark, Scale, Upload } from 'lucide-react';
+import { UploadQuestionsDialog } from '@/components/upload-questions-dialog';
 
 export default function Home() {
   const categories = [
-    { name: 'General Trivia', href: '/quiz/general-trivia', icon: <BrainCircuit className="w-6 h-6" /> },
-    { name: 'State Trivia', href: '/quiz/state-trivia', icon: <Landmark className="w-6 h-6" /> },
-    { name: 'Government Trivia', href: '/quiz/government-trivia', icon: <Scale className="w-6 h-6" /> },
+    { name: (<div>General Trivia<br/>$10,000,000</div>), href: '/quiz/general-trivia', icon: <BrainCircuit className="w-6 h-6" /> },
+    { name: (<div>State Trivia<br/>10 Million Popular Votes</div>), href: '/quiz/state-trivia', icon: <Landmark className="w-6 h-6" /> },
+    { name: (<div>Government Trivia<br/>Electoral Votes</div>), href: '/quiz/government-trivia', icon: <Scale className="w-6 h-6" /> },
   ];
 
   return (
@@ -35,7 +36,7 @@ export default function Home() {
           <CardContent>
             <div className="flex flex-col space-y-4">
               {categories.map((category) => (
-                <Link key={category.name} href={category.href} passHref>
+                <Link key={category.name as string} href={category.href} passHref>
                   <Button
                     variant="default"
                     size="lg"
@@ -46,6 +47,26 @@ export default function Home() {
                   </Button>
                 </Link>
               ))}
+               <UploadQuestionsDialog>
+                 <Button
+                    variant="outline"
+                    size="lg"
+                    className="w-full justify-start text-lg py-8 font-headline shadow-lg transition-transform hover:scale-105"
+                  >
+                    <div className="mr-4"><Upload className="w-6 h-6" /></div>
+                    Upload Questions
+                  </Button>
+               </UploadQuestionsDialog>
+                 <Link href="/quiz/custom-trivia" passHref>
+                  <Button
+                    variant="secondary"
+                    size="lg"
+                    className="w-full justify-start text-lg py-8 font-headline shadow-lg transition-transform hover:scale-105"
+                  >
+                    <div className="mr-4"><BrainCircuit className="w-6 h-6" /></div>
+                    Custom Trivia
+                  </Button>
+                </Link>
             </div>
           </CardContent>
         </Card>

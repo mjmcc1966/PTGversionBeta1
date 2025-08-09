@@ -15,7 +15,7 @@ export const triviaData: TriviaData = {
     {
       id: 101,
       question: "What is the capital of Japan?",
-      options: ["Kyoto", "Osaka", "Tokyo", "Hiroshima"],
+      options: ["Paris", "Moscow", "Tokyo", "Hiroshima"],
       correctAnswer: "Tokyo",
       explanation: "Tokyo has been the capital of Japan since 1868, when Emperor Meiji moved the Imperial Court from Kyoto to Edo, which was then renamed Tokyo."
     },
@@ -121,9 +121,19 @@ export const triviaData: TriviaData = {
       correctAnswer: "The U.S. Constitution",
       explanation: "The U.S. Constitution is the supreme law of the United States. It is the framework for the federal government and delineates the rights of citizens."
     }
-  ]
+  ],
+  'custom-trivia': [],
 };
 
 export const getQuestionsByCategory = (category: string): Question[] => {
+  if (typeof window !== 'undefined') {
+    if (category === 'custom-trivia') {
+      const storedQuestions = localStorage.getItem('custom-trivia');
+      if (storedQuestions) {
+        return JSON.parse(storedQuestions);
+      }
+      return [];
+    }
+  }
   return triviaData[category] || [];
 };

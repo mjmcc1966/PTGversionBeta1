@@ -3,7 +3,7 @@
 ## Core Features:
 
 - Category Selection: Display a home page with three buttons: 'General Trivia', 'State Trivia', and 'Government Trivia'. There should be a background image of the logo of the game.
-- Question Presentation: Present a randomly selected question from the chosen category with four randomly ordered multiple-choice options.
+- Question Presentation: Present one randomly selected question from the chosen category with four randomly ordered multiple-choice options.
 - Question Tracking: Ensure that no question is repeated once it has been presented to the user. Storing which question has been asked and removing this from the set of selectable questions
 - Answer Explanation: The database for each question provides the correct answer as well as a brief, informative explanation for the correct answer when an answer is selected.
 - Feedback Display: Display the correct answer and the generated explanation on a separate page.
