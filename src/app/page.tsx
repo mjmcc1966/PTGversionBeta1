@@ -36,7 +36,7 @@ export default function Home() {
           <CardContent>
             <div className="flex flex-col space-y-4">
               {categories.map((category) => (
-                <Link key={category.name as string} href={category.href} passHref>
+                <Link key={category.href} href={category.href} passHref>
                   <Button
                     variant="default"
                     size="lg"
