@@ -22,9 +22,36 @@ export function UploadQuestionsDialog({ children }: { children: React.ReactNode 
     }
   };
 
+  const parseCSVLine = (line: string): string[] => {
+    const result: string[] = [];
+    let currentField = '';
+    let inQuotes = false;
+    for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        if (char === '"') {
+            if (inQuotes && i + 1 < line.length && line[i+1] === '"') {
+                currentField += '"';
+                i++; // Skip next quote
+            } else {
+                inQuotes = !inQuotes;
+            }
+        } else if (char === ',' && !inQuotes) {
+            result.push(currentField.trim());
+            currentField = '';
+        } else {
+            currentField += char;
+        }
+    }
+    result.push(currentField.trim());
+    return result;
+  }
+
   const parseCSV = (csvText: string): Question[] => {
-    const lines = csvText.trim().split('\n');
-    const headers = lines[0].split(',').map(h => h.trim());
+    const lines = csvText.trim().split(/\r?\n/);
+    if (lines.length < 2) {
+      throw new Error('CSV file must have a header row and at least one data row.');
+    }
+    const headers = parseCSVLine(lines[0]).map(h => h.replace(/"/g, ''));
     const questions: Question[] = [];
   
     const requiredHeaders = ['question', 'option1', 'option2', 'option3', 'option4', 'correctAnswer', 'explanation'];
@@ -36,10 +63,17 @@ export function UploadQuestionsDialog({ children }: { children: React.ReactNode 
     let maxId = Math.max(0, ...existingIds);
 
     for (let i = 1; i < lines.length; i++) {
-      const data = lines[i].split(',');
+      if (lines[i].trim() === '') continue;
+
+      const data = parseCSVLine(lines[i]);
+      if (data.length !== headers.length) {
+        console.warn(`Skipping malformed CSV line ${i + 1}:`, lines[i]);
+        continue;
+      }
+
       const questionData: any = {};
       headers.forEach((header, index) => {
-        questionData[header] = data[index].trim();
+        questionData[header] = data[index];
       });
 
       questions.push({
@@ -77,8 +111,6 @@ export function UploadQuestionsDialog({ children }: { children: React.ReactNode 
         if (!triviaData[selectedCategory]) {
           triviaData[selectedCategory] = [];
         }
-        // This is not ideal, but for now we'll just push to the in-memory representation.
-        // A better solution would involve a state management library.
         const baseQuestions = triviaData[selectedCategory] || [];
         const currentInMemoryIds = new Set(baseQuestions.map(q => q.id));
         const questionsToAdd = newQuestions.filter(q => !currentInMemoryIds.has(q.id));
@@ -101,12 +133,6 @@ export function UploadQuestionsDialog({ children }: { children: React.ReactNode 
     
     localStorage.removeItem(selectedCategory);
     
-    // Reset in-memory data to original state if it's a default category
-    // For custom trivia, it will be reset to an empty array by the loading logic.
-    // This part is tricky as we don't have the original pristine triviaData here.
-    // The getQuestionsByCategory logic handles this by reloading from the base data.
-    // We can rely on a page refresh or navigating away and back to see the change.
-    
     toast({ title: 'Category Cleared!', description: `All uploaded questions have been removed from ${selectedCategory.replace(/-/g, ' ')}. The page will update upon the next quiz visit.` });
     setIsOpen(false);
   }, [selectedCategory, toast]);
@@ -119,7 +145,7 @@ export function UploadQuestionsDialog({ children }: { children: React.ReactNode 
         <DialogHeader>
           <DialogTitle>Upload Custom Questions</DialogTitle>
           <DialogDescription>
-            Upload a CSV file with your trivia questions. The file should have the following columns: `question`, `option1`, `option2`, `option3`, `option4`, `correctAnswer`, `explanation`. The `correctAnswer` must exactly match one of the options.
+            Upload a CSV file with your trivia questions. The file should have the following columns: `question`, `option1`, `option2`, `option3`, `option4`, `correctAnswer`, `explanation`. The `correctAnswer` must exactly match one of the options. To include commas in your text, wrap the text in double quotes (e.g., "This is a question, with a comma").
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
