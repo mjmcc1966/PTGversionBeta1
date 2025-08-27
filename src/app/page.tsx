@@ -16,11 +16,11 @@ export default function Home() {
     <>
       <div className="fixed inset-0 z-[-1]">
         <Image
-          src="https://placehold.co/1920x1080.png"
-          alt="Abstract background of colorful geometric shapes"
+          src="https://picsum.photos/1920/1080"
+          alt="A library with many books, representing knowledge"
           fill
           className="object-cover"
-          data-ai-hint="trivia quiz"
+          data-ai-hint="library books"
           priority
         />
         <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
