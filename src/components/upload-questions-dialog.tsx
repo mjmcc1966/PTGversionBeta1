@@ -79,6 +79,7 @@ export function UploadQuestionsDialog({ children }: { children: React.ReactNode 
       questions.push({
         id: ++maxId, 
         question: questionData.question,
+        imageUrl: questionData.imageUrl,
         options: [questionData.option1, questionData.option2, questionData.option3, questionData.option4],
         correctAnswer: questionData.correctAnswer,
         explanation: questionData.explanation,
@@ -145,7 +146,7 @@ export function UploadQuestionsDialog({ children }: { children: React.ReactNode 
         <DialogHeader>
           <DialogTitle>Upload Custom Questions</DialogTitle>
           <DialogDescription>
-            Upload a CSV file with your trivia questions. The file should have the following columns: `question`, `option1`, `option2`, `option3`, `option4`, `correctAnswer`, `explanation`. The `correctAnswer` must exactly match one of the options. To include commas in your text, wrap the text in double quotes (e.g., "This is a question, with a comma").
+            Upload a CSV file with your trivia questions. The file should have the following columns: `question`, `option1`, `option2`, `option3`, `option4`, `correctAnswer`, `explanation`. You can also optionally include an `imageUrl` column with a public URL to an image. To include commas in your text, wrap the text in double quotes (e.g., "This is a question, with a comma").
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">

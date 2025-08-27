@@ -2,6 +2,7 @@
 export interface Question {
   id: number;
   question: string;
+  imageUrl?: string;
   options: string[];
   correctAnswer: string;
   explanation: string;
@@ -48,6 +49,14 @@ const originalTriviaData: Readonly<TriviaData> = {
       options: ["Gold", "Oxygen", "Osmium", "Oganesson"],
       correctAnswer: "Oxygen",
       explanation: "The symbol 'O' represents Oxygen, a chemical element with atomic number 8. It is a highly reactive nonmetal and an oxidizing agent that readily forms oxides with most elements."
+    },
+    {
+      id: 106,
+      question: "What is the name of this famous landmark?",
+      imageUrl: "https://picsum.photos/600/400",
+      options: ["Eiffel Tower", "Statue of Liberty", "Colosseum", "Great Wall of China"],
+      correctAnswer: "Eiffel Tower",
+      explanation: "This is the Eiffel Tower. It is a wrought-iron lattice tower on the Champ de Mars in Paris, France."
     }
   ],
   'state-trivia': [

@@ -1,3 +1,4 @@
+
 "use client";
 
 import type { Question } from '@/lib/questions';
@@ -6,6 +7,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { CheckCircle, XCircle, Trophy, Lightbulb } from 'lucide-react';
@@ -179,6 +181,18 @@ export function QuizClient({ category }: { category: string }) {
           <Progress value={progress} className="h-2" />
           <p className="text-sm text-muted-foreground mt-2 text-center">Question {askedQuestionIds.size + (selectedAnswer ? 0 : 1)} of {allQuestions.length}</p>
         </div>
+        {currentQuestion.imageUrl && (
+          <div className="relative w-full h-64 mb-4 rounded-lg overflow-hidden">
+            <Image
+              src={currentQuestion.imageUrl}
+              alt="Question image"
+              width={600}
+              height={400}
+              className="object-cover w-full h-full"
+              data-ai-hint="landmark"
+            />
+          </div>
+        )}
         <CardTitle className="text-2xl md:text-3xl leading-snug">
           {currentQuestion.question}
         </CardTitle>
