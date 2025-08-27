@@ -18,8 +18,8 @@ export default function Home() {
         <Image
           src="https://placehold.co/1920x1080.png"
           alt="Abstract background of colorful geometric shapes"
-          layout="fill"
-          objectFit="cover"
+          fill
+          className="object-cover"
           data-ai-hint="trivia quiz"
           priority
         />
