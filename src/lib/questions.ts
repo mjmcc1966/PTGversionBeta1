@@ -94,6 +94,174 @@ const originalTriviaData: Readonly<TriviaData> = {
       options: ["Wyoming", "Montana", "North Dakota", "South Dakota"],
       correctAnswer: "South Dakota",
       explanation: "The famous Mount Rushmore National Memorial, featuring the carved faces of four U.S. Presidents, is located in the Black Hills region of South Dakota."
+    },
+    {
+      id: 401,
+      question: "Which state is known as the yellowhammer state (after the state bird), also called the Cotton State?",
+      options: ["Alabama", "Louisiana", "Ohio", "West Virginia"],
+      correctAnswer: "Alabama",
+      explanation: "The northern flicker is also known as the yellowhammer. There was also a company of soldiers in the Civil War known as the yellowhammers."
+    },
+    {
+      id: 402,
+      question: "In which state will you find 'Rocket City USA'?",
+      options: ["Alabama", "California", "Texas", "Florida"],
+      correctAnswer: "Alabama",
+      explanation: "NASA's Marshall Space Flight Center is in Huntsville, the most populous city in AL, and is where the Saturn rockets were built."
+    },
+    {
+      id: 403,
+      question: "The Tennessee River starts and ends in Tennessee, but a long stretch in the middle passes into this state",
+      options: ["Alabama", "Mississippi", "Georgia", "Oklahoma"],
+      correctAnswer: "Alabama",
+      explanation: "It was once known as the Cherokee River, and it starts in Knoxville before ending in the Ohio River."
+    },
+    {
+      id: 404,
+      question: "Which state's capital is known as the Cradle of the Confederacy?",
+      options: ["Alabama", "Arkansas", "Mississippi", "Georgia"],
+      correctAnswer: "Alabama",
+      explanation: "Montgomery hosted the Southern Convention in 1861, in which 7 seceding southern states established the Confederacy."
+    },
+    {
+      id: 405,
+      question: "The first 911 call in the US was made in this state.",
+      options: ["Alabama", "Tennessee", "Pennsylvania", "New York"],
+      correctAnswer: "Alabama",
+      explanation: "It was in 1968 in Haleyville, AL, and ushered in the era of people considering anything annoying, inconvenient or stressful to be an emergency."
+    },
+    {
+      id: 406,
+      question: "This state has the most fast food restaurants per capita.",
+      options: ["West Virginia", "Arkansas", "New Jersey", "Alabama"],
+      correctAnswer: "West Virginia",
+      explanation: "According to Pricelisto, the state has 49.04 fast food places per 100,000 residents. By complete and utter coincidence, the state is the most obese, with 41.2% of the population meeting criteria for obesity."
+    },
+    {
+      id: 407,
+      question: "This state outlaws dressing up as a nun, priest or rabbi on Halloween.",
+      options: ["Alabama", "Utah", "Texas", "Mississippi"],
+      correctAnswer: "Alabama",
+      explanation: "It is a misdemeanor to dress as clergy any time, with a fine of up to $500 and up to 1 year in jail. The law was enacted during civil rights protests in 1965."
+    },
+    {
+      id: 408,
+      question: "This state is known as The Last Frontier.",
+      options: ["Alaska", "Montana", "Nevada", "Wyoming"],
+      correctAnswer: "Alaska",
+      explanation: "About 90% of the state is not accessible by any road and much of it is still relatively unexplored."
+    },
+    {
+      id: 409,
+      question: "This state has 6 times the number of pilots per capita, and 16 times the number of aircraft per capita, than any other state.",
+      options: ["Alaska", "New York", "California", "Wyoming"],
+      correctAnswer: "Alaska",
+      explanation: "Since there are so few roads in the state, airplanes are the chief way to get around."
+    },
+    {
+      id: 410,
+      question: "This state has the most coastline, in terms of total miles",
+      options: ["Alaska", "California", "Michigan", "Florida"],
+      correctAnswer: "Alaska",
+      explanation: "It has 33,904 miles (54,563 km) of coastline, about 4 times more than runner-up Florida."
+    },
+    {
+      id: 411,
+      question: "The largest urban park in the world is 495,000 acres and located in this state",
+      options: ["Alaska", "New York", "Pennsylvania", "Florida"],
+      correctAnswer: "Alaska",
+      explanation: "Chugach State Park, established in 1970, is located entirely within the Anchorage metropolitan area."
+    },
+    {
+      id: 412,
+      question: "This state's capital is the largest by land area, at 3,255 sq miles.",
+      options: ["Alaska", "Oklahoma", "Florida", "Arizona"],
+      correctAnswer: "Alaska",
+      explanation: "Juneau is also the only mainland North America capital that is not connected by road to the rest of the state or to North America."
+    },
+    {
+      id: 413,
+      question: "This state has the longest border with another country, at 1,538 miles",
+      options: ["Alaska", "Michigan", "Texas", "Maine"],
+      correctAnswer: "Alaska",
+      explanation: "Texas has a 1,241 mile border with Mexico."
+    },
+    {
+      id: 414,
+      question: "The king, or Chinook, salmon is the official fish of Oregon and of this state.",
+      options: ["Alaska", "Washington", "Maine", "Colorado"],
+      correctAnswer: "Alaska",
+      explanation: "The largest of the Pacific salmon, it is anadromous, meaning it migrates from the sea to freshwater rivers to spawn."
+    },
+    {
+      id: 415,
+      question: "This state has the most volcanoes, with 141.",
+      options: ["Alaska", "Hawaii", "California", "Oregon"],
+      correctAnswer: "Alaska",
+      explanation: "California is a distant second, with 18, and Oregon has 17, but the largest volcano in the world is Mauna Loa in Hawaii."
+    },
+    {
+      id: 416,
+      question: "This state is the easternmost, westernmost and northernmost.",
+      options: ["Alaska", "Florida", "Hawaii", "Maine"],
+      correctAnswer: "Alaska",
+      explanation: "The Aleutian Islands cross the 180 degree longitude mark, which makes the state both easternmost and westernmost."
+    },
+    {
+      id: 417,
+      question: "This state has the highest percentage of men, at over 52%.",
+      options: ["Alaska", "California", "New York", "Maine"],
+      correctAnswer: "Alaska",
+      explanation: "The US overall is 50.8% female, and only 10 states have more men than women."
+    },
+    {
+      id: 418,
+      question: "In this state, you can find the San Francisco mountain range, with its high point of Humphrey's Peak.",
+      options: ["Arizona", "California", "Nevada", "New Mexico"],
+      correctAnswer: "Arizona",
+      explanation: "North of Flagstaff, Humphrey's Peak sits at 12,633 ft (3,851m)."
+    },
+    {
+      id: 419,
+      question: "Hawaii was the 50th state, Alaska was the 49th. Which state was the 48th (in 1912)?",
+      options: ["Arizona", "Utah", "Idaho", "Oregon"],
+      correctAnswer: "Arizona",
+      explanation: "It was the last of the contiguous states to be admitted, on Feb 14 of that year."
+    },
+    {
+      id: 420,
+      question: "Lemonade is the official beverage of this desert state",
+      options: ["Arizona", "Utah", "Nevada", "New Mexico"],
+      correctAnswer: "Arizona",
+      explanation: "It became such in 2019, due to the efforts of a local teenager."
+    },
+    {
+      id: 421,
+      question: "The town of Tombstone in this state is known as 'The Town Too Tough To Die', and is famous for a gunfight in 1881.",
+      options: ["Arizona", "New Mexico", "Texas", "Nevada"],
+      correctAnswer: "Arizona",
+      explanation: "While the shootout is widely believed to have had Wyatt Earp as the central figure, it was actually his brother Virgil who was the marshal of Tombstone at the time."
+    },
+    {
+      id: 422,
+      question: "You will find the London Bridge, that once spanned the River Thames, in Lake Havasu City in this state.",
+      options: ["Arizona", "New Mexico", "Colorado", "Nevada"],
+      correctAnswer: "Arizona",
+      explanation: "It was shipped via the Panama Canal to California, then transported by truck to Arizona in 1968."
+    },
+    {
+      id: 423,
+      question: "The world's first professional rodeo took place in Prescott, in this state in 1888, before it was even a state.",
+      options: ["Arizona", "Wyoming", "Montana", "Texas"],
+      correctAnswer: "Arizona",
+      explanation: "While the first rodeo was held in Cheyenne, WY, Arizona was the first to charge admission and award prizes."
+    },
+    {
+      id: 424,
+      question: "The only US interstate highway with distances listed in meters and kilometers is found in this state.",
+      options: ["Arizona", "California", "Maine", "Michigan"],
+      correctAnswer: "Arizona",
+      explanation: "When I-19 was re-signed in 1980, the US was on a (failed) push to adopt the metric system, so this road connecting Nogales to Tucson has distances in metric, but the speed limit signs use MPH."
     }
   ],
   'government-trivia': [
