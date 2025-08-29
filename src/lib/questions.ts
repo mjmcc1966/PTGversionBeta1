@@ -2316,155 +2316,155 @@ const originalTriviaData: Readonly<TriviaData> = {
       id: 823,
       question: "What year was the first iPod released?",
       options: ["2001","1998","1999","2000"],
-      correctAnswer": "2001",
-      explanation": "After selling an estimated 450 million iPods, Apple stopped making them in 2022"
+      correctAnswer: "2001",
+      explanation: "After selling an estimated 450 million iPods, Apple stopped making them in 2022"
     },
     {
       id: 824,
       question: "The best-selling movie soundtrack of all time (at 50 million units sold) is from the movie ___.",
       options: ["The Bodyguard","Pulp Fiction","Saturday Night Fever","Titanic"],
-      correctAnswer": "The Bodyguard",
-      explanation": "It was the first album to sell over 1,000,000 copies in a week, and is still the highest selling album by a female artist."
+      correctAnswer: "The Bodyguard",
+      explanation: "It was the first album to sell over 1,000,000 copies in a week, and is still the highest selling album by a female artist."
     },
     {
       id: 825,
       question: "The famous movie line, \"Show me the money!\" is from this Tom Cruise film.",
       options: ["Jerry Maguire","Top Gun","Risky Business","Mission Impossible VI: The Money Train"],
-      correctAnswer": "Jerry Maguire",
-      explanation": "It also had the catchphrases, \"you had me at 'hello'\", and \"help me, help you\"."
+      correctAnswer: "Jerry Maguire",
+      explanation: "It also had the catchphrases, \"you had me at 'hello'\", and \"help me, help you\"."
     },
     {
       id: 826,
       question: "Which of these metals is the softest, and indeed considered the softest metal in the world.",
       options: ["Cesium","Gold","Tin","Aluminum"],
-      correctAnswer": "Cesium",
-      explanation": "Cesium is what's known as a Group 1A alkali metal, which are very soft, as alkali comes from an Arabic word meaning \"ashes\"."
+      correctAnswer: "Cesium",
+      explanation: "Cesium is what's known as a Group 1A alkali metal, which are very soft, as alkali comes from an Arabic word meaning \"ashes\"."
     },
     {
       id: 827,
       question: "This 2005 film had the tag line, \"The longer you wait, the harder it gets\".",
       options: ["The 40 Year Old Virgin","Are We There Yet?","The Wedding Date","Hitch"],
-      correctAnswer": "The 40 Year Old Virgin",
-      explanation": "Steve Carrell plays the virgin in question, and he even subjected himself to a real chest waxing for that well-known scene."
+      correctAnswer: "The 40 Year Old Virgin",
+      explanation: "Steve Carrell plays the virgin in question, and he even subjected himself to a real chest waxing for that well-known scene."
     },
     {
       id: 828,
       question: "As of 2025, this movie had the greatest gross sales relative to its initial budget.",
       options: ["Paranormal Activity","Rocky","Halloween","Napolean Dynamite"],
-      correctAnswer": "Paranormal Activity",
-      explanation": "Made for $15,000, the movie had gross revenue of $193,000,000 for a return on investment of 1,289,000%."
+      correctAnswer: "Paranormal Activity",
+      explanation: "Made for $15,000, the movie had gross revenue of $193,000,000 for a return on investment of 1,289,000%."
     },
     {
       id: 829,
       question: "Which of these is NOT one of the new emotions that Riley has as a teenager in \"Inside Out 2\"?",
       options: ["Empathy","Ennui","Embarrassment","Envy"],
-      correctAnswer": "Empathy",
-      explanation": "The fourth new emotion is anxiety, and they arrive the night before she is to attend hockey camp."
+      correctAnswer: "Empathy",
+      explanation: "The fourth new emotion is anxiety, and they arrive the night before she is to attend hockey camp."
     },
     {
       id: 830,
       question: "In the 2024 biographical film \"A Complete Unknown\", who plays Bob Dylan?",
       options: ["Timothee Chalamet","Joaquin Phoenix","Michael B. Jordan","Andy Samberg"],
-      correctAnswer": "Timothee Chalamet",
-      explanation": "Born Robert Allen Zimmerman, Dylan has made 40 studio albums and 21 live albums and is still touring as of 2025."
+      correctAnswer: "Timothee Chalamet",
+      explanation: "Born Robert Allen Zimmerman, Dylan has made 40 studio albums and 21 live albums and is still touring as of 2025."
     },
     {
       id: 831,
       question: "Which of the following names is NOT the name of one of the Brady kids (from The Brady Bunch)?",
       options: ["Mike","Greg","Peter","Bobby"],
-      correctAnswer": "Mike",
-      explanation": "Mike Brady was the patriarch of the family. The introduction of Cousin Oliver in season 5 was considered the moment the series \"jumped the shark\", and it was cancelled at the end of that season."
+      correctAnswer: "Mike",
+      explanation: "Mike Brady was the patriarch of the family. The introduction of Cousin Oliver in season 5 was considered the moment the series \"jumped the shark\", and it was cancelled at the end of that season."
     },
     {
       id: 832,
       question: "The idiom \"jumped the shark\" (referring to a moment when a creative work has exhausted its core ideas) was coined in 1985 in reference to a specific plot point on a 1977 episode of this show.",
       options: ["Happy Days","The Brady Bunch","Magnum P.I.","Charlie's Angels"],
-      correctAnswer": "Happy Days",
-      explanation": "In the episode, the Fonz jumps a shark while waterskiing and wearing his trademark leather motorcycle jacket."
+      correctAnswer: "Happy Days",
+      explanation: "In the episode, the Fonz jumps a shark while waterskiing and wearing his trademark leather motorcycle jacket."
     },
     {
       id: 833,
       question: "What was the name of the coffee shop in the show Friends?",
       options: ["Central Perk","Perk Me Up","The Bean Hole","Deja Brew"],
-      correctAnswer": "Central Perk",
-      explanation": "Some of the originally considered titles for the show were Insomnia Cafe, Six of One and Across the Hall."
+      correctAnswer: "Central Perk",
+      explanation: "Some of the originally considered titles for the show were Insomnia Cafe, Six of One and Across the Hall."
     },
     {
       id: 834,
       question: "What was the player number of Seong Gi-Hun, the main character of the Netflix series Squid Game.",
-      options": ["456","1","222","999"],
-      correctAnswer": "456",
-      explanation": "The dystopian South Korean show has players competing in sadistic and deadly versions of children's games for a chance to win about $40 million."
+      options: ["456","1","222","999"],
+      correctAnswer: "456",
+      explanation: "The dystopian South Korean show has players competing in sadistic and deadly versions of children's games for a chance to win about $40 million."
     },
     {
       id: 835,
       question: "Which Nirvana album cover featured a baby swimming in a pool toward a dollar bill on a fishhook?",
       options: ["Nevermind","Bleach","In Utero","Rockabye Baby"],
-      correctAnswer": "Nevermind",
-      explanation": "Spencer Elden, the baby in the photo, sued the band (and the photographer) in 2021 claiming he did not give consent and that it resulted in \"lifelong damages\". The case was dismissed. And appealed. And dismissed again."
+      correctAnswer: "Nevermind",
+      explanation: "Spencer Elden, the baby in the photo, sued the band (and the photographer) in 2021 claiming he did not give consent and that it resulted in \"lifelong damages\". The case was dismissed. And appealed. And dismissed again."
     },
     {
       id: 836,
       question: "Which was the first K-pop / Asian band to headline at Coachella?",
       options: ["Blackpink","BTS","EXO","ATEEZ"],
-      correctAnswer": "Blackpink",
-      explanation": "The 4-girl group is also the first Korean girl group to win an MTV Video Music Award, and are considered the most subscribed music act on YouTube, with over 98 million subscribers (in 2025)."
+      correctAnswer: "Blackpink",
+      explanation: "The 4-girl group is also the first Korean girl group to win an MTV Video Music Award, and are considered the most subscribed music act on YouTube, with over 98 million subscribers (in 2025)."
     },
     {
       id: 837,
       question: "In what year did Vince Vance & the Valiants release \"All I Want For Christmas Is You\"?",
       options: ["1989","1990","1992","1991"],
-      correctAnswer": "1989",
-      explanation": "Vance sued Mariah Carey, claiming she stole his song, even though the only similarity is the title. He lost the suit, as well as a follow up suit a year later."
+      correctAnswer: "1989",
+      explanation: "Vance sued Mariah Carey, claiming she stole his song, even though the only similarity is the title. He lost the suit, as well as a follow up suit a year later."
     },
     {
       id: 838,
       question: "Fans of Lady Gaga are known as ______.",
-      options": ["Little Monsters","Maggots","Head Cases","Trainwrecks"],
-      correctAnswer": "Little Monsters",
-      explanation": "All of these are fanbase nicknames, but as Gaga's fans call her Mother Monster, she refers to her fans as Little Monsters."
+      options: ["Little Monsters","Maggots","Head Cases","Trainwrecks"],
+      correctAnswer: "Little Monsters",
+      explanation: "All of these are fanbase nicknames, but as Gaga's fans call her Mother Monster, she refers to her fans as Little Monsters."
     },
     {
       id: 839,
       question: "Snapchat, the app that allows message and picture to be seen for a short time before they disappear, was orginally called ____ when first launched.",
       options: ["Picaboo","Poof!","Ghost","ByeByeBye"],
-      correctAnswer": "Picaboo",
+      correctAnswer: "Picaboo",
       explanation: "In 2011, Picaboo was launched on the iOS system but within 2 months was renamed Snapchat. And within just a few short years it became another excellent social media app for stalkers, body shaming, and inducing anxiety."
     },
     {
       id: 840,
       question: "As of February 2025, which of these people has the most followers on Twitter?",
       options: ["Barack Obama","Taylor Swift","Rihanna","Cristiano"],
-      correctAnswer": "Barack Obama",
+      correctAnswer: "Barack Obama",
       explanation: "He has 130 million followers, while Cristiano has 115 M, Rihanna has 107 M and Taylor Swift has 94 M."
     },
     {
       id: 841,
       question: "The name of the AI chatbot on Twitter/X that has praised Hitler and spewed out false conspiracy theories and racist views is called ____.",
       options: ["Grok","Gemini","Claude","Elon"],
-      correctAnswer": "Grok",
-      explanation": "The original name for the chatbot was TruthGPT, as ironically inaccurate a name as Truth Social."
+      correctAnswer: "Grok",
+      explanation: "The original name for the chatbot was TruthGPT, as ironically inaccurate a name as Truth Social."
     },
     {
       id: 842,
       question: "This politician has the most followers on Twitter/X (as of February 2025).",
-      options": ["Barack Obama","Narendra Modi","Donald Trump","Boris Johnson"],
-      correctAnswer": "Barack Obama",
-      explanation": "Obama has over 130 million followers, followed by Modi with 108.9 M, Trump with 108.3 M and Johnson with 4.5 M."
+      options: ["Barack Obama","Narendra Modi","Donald Trump","Boris Johnson"],
+      correctAnswer: "Barack Obama",
+      explanation: "Obama has over 130 million followers, followed by Modi with 108.9 M, Trump with 108.3 M and Johnson with 4.5 M."
     },
     {
       id: 843,
       question: "Henry John Deutschendorf Jr, a singer of folk and country until his death in a plane crash, was much better known as _____.",
       options: ["John Denver","Johnny Cash","Merle Haggard","Bob Dylan"],
-      correctAnswer": "John Denver",
-      explanation": "Denver sold over 33 million albums. He died while piloting a newly puchased plane where he could not access the fuel tank selector valve, in 1997 at age 53."
+      correctAnswer: "John Denver",
+      explanation: "Denver sold over 33 million albums. He died while piloting a newly puchased plane where he could not access the fuel tank selector valve, in 1997 at age 53."
     },
     {
       id: 844,
       question: "The tallest volcano on earth (based on elevation above sea level) is _____, at 22,615 ft (6,893m).",
       options: ["Nevado Ojos del Salado","Denali","Mt Everest","Mauna Kea"],
-      correctAnswer": "Nevado Ojos del Salado",
-      explanation": "Denali and Everest are not actually volcanoes. Mauna Kea is 33,500 ft (10,211 m) from base to summit, but only 13,796 ft (4,205 m) above sea level."
+      correctAnswer: "Nevado Ojos del Salado",
+      explanation: "Denali and Everest are not actually volcanoes. Mauna Kea is 33,500 ft (10,211 m) from base to summit, but only 13,796 ft (4,205 m) above sea level."
     }
 ],
   'state-trivia': [
@@ -2472,310 +2472,305 @@ const originalTriviaData: Readonly<TriviaData> = {
       id: 201,
       question: "Which state is known as the 'Sunshine State'?",
       options: ["California", "Florida", "Arizona", "Hawaii"],
-      correctAnswer": "Florida",
+      correctAnswer: "Florida",
       explanation: "Florida's official nickname is the 'Sunshine State' due to its warm climate and many sunny days."
     },
     {
       id: 202,
       question: "What is the capital of Texas?",
       options: ["Houston", "Dallas", "Austin", "San Antonio"],
-      correctAnswer": "Austin",
+      correctAnswer: "Austin",
       explanation: "Austin is the capital city of Texas, known for its vibrant music scene and as a center for technology."
     },
     {
       id: 203,
       question: "Which state is the largest by land area?",
       options: ["Texas", "California", "Alaska", "Montana"],
-      correctAnswer": "Alaska",
+      correctAnswer: "Alaska",
       explanation: "Alaska is by far the largest state in the United States by land area, over twice the size of Texas."
     },
     {
-      "id": 845,
-      "question": "Which state is known as the yellowhammer state (after the state bird), also called the Cotton State?",
-      "options": [
-        "Alabama",
-        "Louisiana",
-        "Ohio",
-        "West Virginia"
-      ],
-      "correctAnswer": "Alabama",
-      "explanation": "The northern flicker is also known as the yellowhammer. There was also a company of soldiers in the Civil War known as the yellowhammers."
+      id: 845,
+      question: "Which state is known as the yellowhammer state (after the state bird), also called the Cotton State?",
+      options: ["Alabama", "Louisiana", "Ohio", "West Virginia"],
+      correctAnswer: "Alabama",
+      explanation: "The northern flicker is also known as the yellowhammer. There was also a company of soldiers in the Civil War known as the yellowhammers."
     },
     {
-      "id": 846,
-      "question": "In which state will you find \"Rocket City USA\", ",
-      "options": [
+      id: 846,
+      question: "In which state will you find \"Rocket City USA\", ",
+      options: [
         "Alabama",
         "California",
         "Texas",
         "Florida"
       ],
-      "correctAnswer": "Alabama",
-      "explanation": "NASA's Marshall Space Flight Center is in Huntsville, the most populous city in AL, and is where the Saturn rockets were built."
+      correctAnswer: "Alabama",
+      explanation: "NASA's Marshall Space Flight Center is in Huntsville, the most populous city in AL, and is where the Saturn rockets were built."
     },
     {
-      "id": 847,
-      "question": "The Tennessee River starts and ends in Tennessee, but a long stretch in the middle passes into this state",
-      "options": [
+      id: 847,
+      question: "The Tennessee River starts and ends in Tennessee, but a long stretch in the middle passes into this state",
+      options: [
         "Alabama",
         "Mississippi",
         "Georgia",
         "Oklahoma"
       ],
-      "correctAnswer": "Alabama",
-      "explanation": "It was once known as the Cherokee River, and it starts in Knoxville before ending in the Ohio River."
+      correctAnswer: "Alabama",
+      explanation: "It was once known as the Cherokee River, and it starts in Knoxville before ending in the Ohio River."
     },
     {
-      "id": 848,
-      "question": "Which state's capital is known as the Cradle of the Confederacy?",
-      "options": [
+      id: 848,
+      question: "Which state's capital is known as the Cradle of the Confederacy?",
+      options: [
         "Alabama",
         "Arkansas",
         "Mississippi",
         "Georgia"
       ],
-      "correctAnswer": "Alabama",
-      "explanation": "Montgomery hosted the Southern Convention in 1861, in which 7 seceding southern states established the Confederacy."
+      correctAnswer: "Alabama",
+      explanation: "Montgomery hosted the Southern Convention in 1861, in which 7 seceding southern states established the Confederacy."
     },
     {
-      "id": 849,
-      "question": "The first 911 call in the US was made in this state.",
-      "options": [
+      id: 849,
+      question: "The first 911 call in the US was made in this state.",
+      options: [
         "Alabama",
         "Tennessee",
         "Pennsylvania",
         "New York"
       ],
-      "correctAnswer": "Alabama",
-      "explanation": "It was in 1968 in Haleyville, AL, and ushered in the era of people considering anything annoying, inconvenient or stressful to be an emergency."
+      correctAnswer: "Alabama",
+      explanation: "It was in 1968 in Haleyville, AL, and ushered in the era of people considering anything annoying, inconvenient or stressful to be an emergency."
     },
     {
-      "id": 850,
-      "question": "This state has the most fast food restaurants per capita.",
-      "options": [
+      id: 850,
+      question: "This state has the most fast food restaurants per capita.",
+      options: [
         "West Virginia",
         "Arkansas",
         "New Jersey",
         "Alabama"
       ],
-      "correctAnswer": "West Virginia",
-      "explanation": "According to Pricelisto, the state has 49.04 fast food places per 100,000 residents. By complete and utter coincidence, the state is the most obese, with 41.2% of the population meeting criteria for obesity."
+      correctAnswer: "West Virginia",
+      explanation: "According to Pricelisto, the state has 49.04 fast food places per 100,000 residents. By complete and utter coincidence, the state is the most obese, with 41.2% of the population meeting criteria for obesity."
     },
     {
-      "id": 851,
-      "question": "This state outlaws dressing up as a nun, priest or rabbi on Halloween.",
-      "options": [
+      id: 851,
+      question: "This state outlaws dressing up as a nun, priest or rabbi on Halloween.",
+      options: [
         "Alabama",
         "Utah",
         "Texas",
         "Mississippi"
       ],
-      "correctAnswer": "Alabama",
-      "explanation": "It is a misdemeanor to dress as clergy any time, with a fine of up to $500 and up to 1 year in jail. The law was enacted during civil rights protests in 1965."
+      correctAnswer: "Alabama",
+      explanation: "It is a misdemeanor to dress as clergy any time, with a fine of up to $500 and up to 1 year in jail. The law was enacted during civil rights protests in 1965."
     },
     {
-      "id": 852,
-      "question": "This state is known as The Last Frontier.",
-      "options": [
+      id: 852,
+      question: "This state is known as The Last Frontier.",
+      options: [
         "Alaska",
         "Montana",
         "Nevada",
         "Wyoming"
       ],
-      "correctAnswer": "Alaska",
-      "explanation": "About 90% of the state is not accessible by any road and much of it is still relatively unexplored."
+      correctAnswer: "Alaska",
+      explanation: "About 90% of the state is not accessible by any road and much of it is still relatively unexplored."
     },
     {
-      "id": 853,
-      "question": "This state has 6 times the number of pilots per capita, and 16 times the number of aircraft per capita, than any other state.",
-      "options": [
+      id: 853,
+      question: "This state has 6 times the number of pilots per capita, and 16 times the number of aircraft per capita, than any other state.",
+      options: [
         "Alaska",
         "New York",
         "California",
         "Wyoming"
       ],
-      "correctAnswer": "Alaska",
-      "explanation": "Since there are so few roads in the state, airplanes are the chief way to get around."
+      correctAnswer: "Alaska",
+      explanation: "Since there are so few roads in the state, airplanes are the chief way to get around."
     },
     {
-      "id": 854,
-      "question": "This state has the most coastline, in terms of total miles",
-      "options": [
+      id: 854,
+      question: "This state has the most coastline, in terms of total miles",
+      options: [
         "Alaska",
         "California",
         "Michigan",
         "Florida"
       ],
-      "correctAnswer": "Alaska",
-      "explanation": "It has 33,904 miles (54,563 km) of coastline, about 4 times more than runner-up Florida."
+      correctAnswer: "Alaska",
+      explanation: "It has 33,904 miles (54,563 km) of coastline, about 4 times more than runner-up Florida."
     },
     {
-      "id": 855,
-      "question": "The largest urban park in the world is 495,000 acres and located in this state",
-      "options": [
+      id: 855,
+      question: "The largest urban park in the world is 495,000 acres and located in this state",
+      options: [
         "Alaska",
         "New York",
         "Pennsylvania",
         "Florida"
       ],
-      "correctAnswer": "Alaska",
-      "explanation": "Chugach State Park, established in 1970, is located entirely within the Anchorage metropolitan area."
+      correctAnswer: "Alaska",
+      explanation: "Chugach State Park, established in 1970, is located entirely within the Anchorage metropolitan area."
     },
     {
-      "id": 856,
-      "question": "This state's capital is the largest by land area, at 3,255 sq miles.",
-      "options": [
+      id: 856,
+      question: "This state's capital is the largest by land area, at 3,255 sq miles.",
+      options: [
         "Alaska",
         "Oklahoma",
         "Florida",
         "Arizona"
       ],
-      "correctAnswer": "Alaska",
-      "explanation": "Juneau is also the only mainland North America capital that is not connected by road to the rest of the state or to North America."
+      correctAnswer: "Alaska",
+      explanation: "Juneau is also the only mainland North America capital that is not connected by road to the rest of the state or to North America."
     },
     {
-      "id": 857,
-      "question": "This state has the longest border with another country, at 1,538 miles",
-      "options": [
+      id: 857,
+      question: "This state has the longest border with another country, at 1,538 miles",
+      options: [
         "Alaska",
         "Michigan",
         "Texas",
         "Maine"
       ],
-      "correctAnswer": "Alaska",
-      "explanation": "Texas has a 1,241 mile border with Mexico."
+      correctAnswer: "Alaska",
+      explanation: "Texas has a 1,241 mile border with Mexico."
     },
     {
-      "id": 858,
-      "question": "The king, or Chinook, salmon is the official fish of Oregon and of this state.",
-      "options": [
+      id: 858,
+      question: "The king, or Chinook, salmon is the official fish of Oregon and of this state.",
+      options: [
         "Alaska",
         "Washington",
         "Maine",
         "Colorado"
       ],
-      "correctAnswer": "Alaska",
-      "explanation": "The largest of the Pacific salmon, it is anadromous, meaning it migrates from the sea to freshwater rivers to spawn."
+      correctAnswer: "Alaska",
+      explanation: "The largest of the Pacific salmon, it is anadromous, meaning it migrates from the sea to freshwater rivers to spawn."
     },
     {
-      "id": 859,
-      "question": "This state has the most volcanoes, with 141.",
-      "options": [
+      id: 859,
+      question: "This state has the most volcanoes, with 141.",
+      options: [
         "Alaska",
         "Hawaii",
         "California",
         "Oregon"
       ],
-      "correctAnswer": "Alaska",
-      "explanation": "California is a distant second, with 18, and Oregon has 17, but the largest volcano in the world is Mauna Loa in Hawaii."
+      correctAnswer: "Alaska",
+      explanation: "California is a distant second, with 18, and Oregon has 17, but the largest volcano in the world is Mauna Loa in Hawaii."
     },
     {
-      "id": 860,
-      "question": "This state is the easternmost, westernmost and northernmost.",
-      "options": [
+      id: 860,
+      question: "This state is the easternmost, westernmost and northernmost.",
+      options: [
         "Alaska",
         "Florida",
         "Hawaii",
         "Maine"
       ],
-      "correctAnswer": "Alaska",
-      "explanation": "The Aleutian Islands cross the 180 degree longitude mark, which makes the state both easternmost and westernmost."
+      correctAnswer: "Alaska",
+      explanation: "The Aleutian Islands cross the 180 degree longitude mark, which makes the state both easternmost and westernmost."
     },
     {
-      "id": 861,
-      "question": "This state has the highest percentage of men, at over 52%.",
-      "options": [
+      id: 861,
+      question: "This state has the highest percentage of men, at over 52%.",
+      options: [
         "Alaska",
         "California",
         "New York",
         "Maine"
       ],
-      "correctAnswer": "Alaska",
-      "explanation": "The US overall is 50.8% female, and only 10 states have more men than women."
+      correctAnswer: "Alaska",
+      explanation: "The US overall is 50.8% female, and only 10 states have more men than women."
     },
     {
-      "id": 862,
-      "question": "In this state, you can find the San Francisco mountain range, with its high point of Humphrey's Peak.",
-      "options": [
+      id: 862,
+      question: "In this state, you can find the San Francisco mountain range, with its high point of Humphrey's Peak.",
+      options: [
         "Arizona",
         "California",
         "Nevada",
         "New Mexico"
       ],
-      "correctAnswer": "Arizona",
-      "explanation": "North of Flagstaff, Humphrey's Peak sits at 12,633 ft (3,851m)."
+      correctAnswer: "Arizona",
+      explanation: "North of Flagstaff, Humphrey's Peak sits at 12,633 ft (3,851m)."
     },
     {
-      "id": 863,
-      "question": "Hawaii was the 50th state, Alaska was the 49th. Which state was the 48th (in 1912)?",
-      "options": [
+      id: 863,
+      question: "Hawaii was the 50th state, Alaska was the 49th. Which state was the 48th (in 1912)?",
+      options: [
         "Arizona",
         "Utah",
         "Idaho",
         "Oregon"
       ],
-      "correctAnswer": "Arizona",
-      "explanation": "It was the last of the contiguous states to be admitted, on Feb 14 of that year."
+      correctAnswer: "Arizona",
+      explanation: "It was the last of the contiguous states to be admitted, on Feb 14 of that year."
     },
     {
-      "id": 864,
-      "question": "Lemonade is the official beverage of this desert state",
-      "options": [
+      id: 864,
+      question: "Lemonade is the official beverage of this desert state",
+      options: [
         "Arizona",
         "Utah",
         "Nevada",
         "New Mexico"
       ],
-      "correctAnswer": "Arizona",
-      "explanation": "It became such in 2019, due to the efforts of a local teenager."
+      correctAnswer: "Arizona",
+      explanation: "It became such in 2019, due to the efforts of a local teenager."
     },
     {
-      "id": 865,
-      "question": "The town of Tombstone in this state is known as \"The Town Too Tough To Die\", and is famous for a gunfight in 1881.",
-      "options": [
+      id: 865,
+      question: "The town of Tombstone in this state is known as \"The Town Too Tough To Die\", and is famous for a gunfight in 1881.",
+      options: [
         "Arizona",
         "New Mexico",
         "Texas",
         "Nevada"
       ],
-      "correctAnswer": "Arizona",
-      "explanation": "While the shootout is widely believed to have had Wyatt Earp as the central figure, it was actually his brother Virgil who was the marshal of Tombstone at the time."
+      correctAnswer: "Arizona",
+      explanation: "While the shootout is widely believed to have had Wyatt Earp as the central figure, it was actually his brother Virgil who was the marshal of Tombstone at the time."
     },
     {
-      "id": 866,
-      "question": "You will find the London Bridge, that once spanned the River Thames, in Lake Havasu City in this state.",
-      "options": [
+      id: 866,
+      question: "You will find the London Bridge, that once spanned the River Thames, in Lake Havasu City in this state.",
+      options: [
         "Arizona",
         "New Mexico",
         "Colorado",
         "Nevada"
       ],
-      "correctAnswer": "Arizona",
-      "explanation": "It was shipped via the Panama Canal to California, then transported by truck to Arizona in 1968."
+      correctAnswer: "Arizona",
+      explanation: "It was shipped via the Panama Canal to California, then transported by truck to Arizona in 1968."
     },
     {
-      "id": 867,
-      "question": "The world's first professional rodeo took place in Prescott, in this state in 1888, before it was even a state.",
-      "options": [
+      id: 867,
+      question: "The world's first professional rodeo took place in Prescott, in this state in 1888, before it was even a state.",
+      options: [
         "Arizona",
         "Wyoming",
         "Montana",
         "Texas"
       ],
-      "correctAnswer": "Arizona",
-      "explanation": "While the first rodeo was held in Cheyenne, WY, Arizona was the first to charge admission and award prizes."
+      correctAnswer: "Arizona",
+      explanation: "While the first rodeo was held in Cheyenne, WY, Arizona was the first to charge admission and award prizes."
     },
     {
-      "id": 868,
-      "question": "The only US interstate highway with distances listed in meters and kilometers is found in this state.",
-      "options": [
+      id: 868,
+      question: "The only US interstate highway with distances listed in meters and kilometers is found in this state.",
+      options: [
         "Arizona",
         "California",
         "Maine",
         "Michigan"
       ],
-      "correctAnswer": "Arizona",
-      "explanation": "When I-19 was re-signed in 1980, the US was on a (failed) push to adopt the metric system, so this road connecting Nogales to Tucson has distances in metric, but the speed limit signs use MPH."
+      correctAnswer: "Arizona",
+      explanation: "When I-19 was re-signed in 1980, the US was on a (failed) push to adopt the metric system, so this road connecting Nogales to Tucson has distances in metric, but the speed limit signs use MPH."
     }
   ],
   'government-trivia': [
@@ -2797,11 +2792,11 @@ const originalTriviaData: Readonly<TriviaData> = {
       id: 303,
       question: "What is the supreme law of the land in the United States?",
       options: ["The Declaration of Independence", "The Articles of Confederation", "The U.S. Constitution", "The Bill of Rights"],
-      correctAnswer": "The U.S. Constitution",
+      correctAnswer: "The U.S. Constitution",
       explanation: "The U.S. Constitution is the supreme law of the United States. It is the framework for the U.S. government and outlines the rights and responsibilities of its citizens."
     }
   ],
-  'custom-trivia': [],
+  'custom-trivia': []
 };
 
 // Create a deep copy for mutable operations in the app
@@ -2847,5 +2842,7 @@ export const addQuestion = (category: string, question: Omit<Question, 'id'>) =>
     storedQuestions.push(newQuestion);
     localStorage.setItem(category, JSON.stringify(storedQuestions));
 };
+
+    
 
     
