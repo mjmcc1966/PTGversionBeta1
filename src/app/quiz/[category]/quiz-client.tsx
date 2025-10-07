@@ -13,9 +13,6 @@ import { cn } from '@/lib/utils';
 import { CheckCircle, XCircle, Trophy, Lightbulb } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 
-// Base64 encoded WAV file for a simple "ding" sound.
-const correctSound = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA';
-
 export function QuizClient({ category }: { category: string }) {
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   const [askedQuestionIds, setAskedQuestionIds] = useState<Set<number>>(new Set());
@@ -40,24 +37,32 @@ export function QuizClient({ category }: { category: string }) {
   }, [category]);
 
   const selectNewQuestion = useCallback(() => {
+    // Filter out questions that have already been asked
     const availableQuestions = allQuestions.filter(q => !askedQuestionIds.has(q.id));
+    
+    // If we have questions, but they've all been asked, we're out of new questions.
     if (availableQuestions.length === 0 && allQuestions.length > 0) {
- setOutOfQuestions(true);
+      if(askedQuestionIds.size >= allQuestions.length) {
+         setOutOfQuestions(true);
+      }
       return;
     }
+    
     const randomIndex = Math.floor(Math.random() * availableQuestions.length);
     const newQuestion = availableQuestions[randomIndex];
+    
     setCurrentQuestion(newQuestion);
     setSelectedAnswer(null);
     setIsCorrect(null);
   }, [allQuestions, askedQuestionIds]);
 
+
   useEffect(() => {
-    if (allQuestions.length > 0) {
+    if (allQuestions.length > 0 && !currentQuestion) {
       selectNewQuestion();
     }
-  }, [allQuestions]);
-  
+  }, [allQuestions, currentQuestion, selectNewQuestion]);
+
   const shuffledOptions = useMemo(() => {
     if (!currentQuestion) return [];
     return [...currentQuestion.options].sort(() => Math.random() - 0.5);
@@ -71,7 +76,8 @@ export function QuizClient({ category }: { category: string }) {
     setIsCorrect(correct);
     if (correct) {
       setScore(prev => prev + 1);
-      const audio = new Audio(correctSound);
+      // Play sound from the public folder
+      const audio = new Audio('/sounds/correct-answer.wav');
       audio.play();
     }
 
@@ -80,15 +86,39 @@ export function QuizClient({ category }: { category: string }) {
 
     // Save asked questions to local storage
     localStorage.setItem(`askedQuestionIds_${category}`, JSON.stringify(Array.from(newAskedQuestionIds)));
+
+    if (newAskedQuestionIds.size === allQuestions.length && allQuestions.length > 0) {
+        setTimeout(() => setQuizFinished(true), 2000);
+    }
+  };
+
+  const handleNextQuestion = () => {
+    if (askedQuestionIds.size === allQuestions.length) {
+      setQuizFinished(true);
+    } else {
+      selectNewQuestion();
+    }
   };
 
   const handleResetQuiz = () => {
     setAskedQuestionIds(new Set());
     localStorage.removeItem(`askedQuestionIds_${category}`);
     setScore(0);
-    setOutOfQuestions(false); // Reset outOfQuestions state
+    setOutOfQuestions(false);
     setQuizFinished(false);
-    selectNewQuestion();
+    // After resetting, immediately select a new question
+    // We need a slight delay to ensure state updates before selecting a new question
+    setTimeout(() => {
+       const availableQuestions = allQuestions;
+       if (availableQuestions.length > 0) {
+          const randomIndex = Math.floor(Math.random() * availableQuestions.length);
+          setCurrentQuestion(availableQuestions[randomIndex]);
+          setSelectedAnswer(null);
+          setIsCorrect(null);
+       } else {
+         setCurrentQuestion(null);
+       }
+    }, 0);
   };
   
   if (isLoading) {
@@ -118,10 +148,10 @@ export function QuizClient({ category }: { category: string }) {
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
           <Button size="lg" onClick={handleResetQuiz}>
- Re-Use Questions
+            Re-Use Questions
           </Button>
           <Button size="lg" onClick={() => alert("Expansion packs are not available yet!")}>
- Buy Expansion Pack
+            Buy Expansion Pack
           </Button>
            <Link href="/" passHref>
             <Button variant="outline">Home</Button>
@@ -130,6 +160,7 @@ export function QuizClient({ category }: { category: string }) {
       </Card>
     );
   }
+
   if (quizFinished) {
     return (
       <Card className="w-full max-w-2xl text-center p-8 shadow-2xl animate-in fade-in zoom-in-95">
@@ -140,13 +171,13 @@ export function QuizClient({ category }: { category: string }) {
             You scored {score} out of {allQuestions.length}.
           </CardDescription>
         </CardHeader>
-        <CardContent>
-          <Button size="lg" onClick={handleResetQuiz} className="mb-4">
+        <CardContent className="flex flex-col gap-4">
+          <Button size="lg" onClick={handleResetQuiz}>
             Play Again
           </Button>
-          <Button size="lg" asChild>
-             <Link href="/">Home</Link>
-          </Button>
+          <Link href="/" passHref>
+             <Button variant="outline" size="lg">Home</Button>
+          </Link>
         </CardContent>
       </Card>
     );
@@ -156,7 +187,12 @@ export function QuizClient({ category }: { category: string }) {
     return (
         <Card className="w-full max-w-2xl p-8 text-center shadow-lg">
             <CardTitle>No questions available</CardTitle>
-            <CardDescription>Could not load questions for this category.</CardDescription>
+            <CardDescription>Could not load questions for this category. Try uploading some!</CardDescription>
+            <CardFooter>
+                 <Link href="/" passHref>
+                    <Button variant="outline" className="mt-4">Home</Button>
+                 </Link>
+            </CardFooter>
         </Card>
     )
   }
@@ -178,13 +214,15 @@ export function QuizClient({ category }: { category: string }) {
   };
   
   const progress = allQuestions.length > 0 ? (askedQuestionIds.size / allQuestions.length) * 100 : 0;
+  const questionNumber = Array.from(askedQuestionIds).findIndex(id => id === currentQuestion.id) + 1 || askedQuestionIds.size + 1;
+
 
   return (
     <Card className="w-full max-w-2xl shadow-xl animate-in fade-in-50 duration-500">
       <CardHeader>
         <div className="mb-4">
           <Progress value={progress} className="h-2" />
-          <p className="text-sm text-muted-foreground mt-2 text-center">Question {askedQuestionIds.size + (selectedAnswer ? 0 : 1)} of {allQuestions.length}</p>
+          <p className="text-sm text-muted-foreground mt-2 text-center">Question {questionNumber} of {allQuestions.length}</p>
         </div>
         {currentQuestion.imageUrl && (
           <div className="relative w-full h-64 mb-4 rounded-lg overflow-hidden">
@@ -224,11 +262,10 @@ export function QuizClient({ category }: { category: string }) {
             <h3 className="font-bold text-lg flex items-center gap-2 text-primary"><Lightbulb/> Explanation</h3>
             <p className="mt-2 text-foreground/80">{currentQuestion.explanation}</p>
           </div>
-          <Link href="/" passHref>
-            <Button className="w-full md:w-auto self-end">Home</Button>
-          </Link>
+          <Button onClick={handleNextQuestion} className="w-full md:w-auto self-end">Next Question</Button>
         </CardFooter>
       )}
     </Card>
   );
 }
+    
