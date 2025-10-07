@@ -18,7 +18,7 @@ const originalTriviaData: Readonly<TriviaData> = {
     {
       id: 101,
       question: "What is the capital of Japan?",
-      options: ["Paris", "Moscow", "Tokyo", "Hiroshima"],
+      options: ["Nagasaki", "Moscow", "Tokyo", "Hiroshima"],
       correctAnswer: "Tokyo",
       explanation: "Tokyo has been the capital of Japan since 1868, when Emperor Meiji moved the Imperial Court from Kyoto to Edo, which was then renamed Tokyo."
     },
@@ -41,7 +41,7 @@ const originalTriviaData: Readonly<TriviaData> = {
       question: "In what year did the Titanic sink?",
       options: ["1905", "1912", "1918", "1923"],
       correctAnswer: "1912",
-      explanation: "The RMS Titanic sank in the early hours of April 15, 1912, in the North Atlantic Ocean after striking an iceberg during its maiden voyage from Southampton to New York City."
+      explanation: "The RMS Titanic sank in the early hours of April 15, 1912, in the North Atlantic Ocean after striking an iceberg during its maiden voyage from Southampton to New York City. The ship had been declared 'unsinkable'."
     },
     {
       id: 105,
@@ -2111,7 +2111,7 @@ const originalTriviaData: Readonly<TriviaData> = {
     },
     {
       id: 794,
-      question: "Mariah Carey's \"All I Want for Christmas Is You\" went to #1 in 2019. In what year was it released?",
+      question: "Mariah Carey's \"All I Want For Christmas Is You\" went to #1 in 2019. In what year was it released?",
       options: ["1994","2019","2018","2003"],
       correctAnswer: "1994",
       explanation: "It holds the record for longest time between release and becoming #1, at 25 years in the US and 26 years in the UK."
@@ -2125,379 +2125,384 @@ const originalTriviaData: Readonly<TriviaData> = {
     },
     {
       id: 796,
+      question: "This famous rock guitarist played the iconic solo on Michael Jackson's \"Beat It\"",
+      options: ["Eddie Van Halen","Jimi Hendrix","Eric Clapton","Alex Lifeson"],
+      correctAnswer: "Eddie Van Halen",
+      explanation: "He formed Van Halen with his brother Alex in 1973, and their only #1 Billboard hit was Jump from 1984."
+    },
+    {
+      id: 797,
       question: "This world-famous singer narrated the audiobook for E.T. - The Extra Terrestrial in 1982, at the same time he was about to release his biggest-selling album.",
       options: ["Michael Jackson","Prince","Willie Nelson","Elton John"],
       correctAnswer: "Michael Jackson",
       explanation: "He was finishing Thriller while finishing this album, both of which were produced by Quincy Jones."
     },
     {
-      id: 797,
+      id: 798,
       question: "Which of these albums has sold the most certified copies worldwide to date, at over 70 million?",
       options: ["Thriller (Michael Jackson)","Back in Black (AC/DC)","Dark Side of the Moon (Pink Floyd)","Led Zeppelin IV"],
       correctAnswer: "Thriller (Michael Jackson)",
       explanation: "It also gave rise to what is likely the most famous music video in the world, giving prison dance groups around the world something to do."
     },
     {
-      id: 798,
+      id: 799,
       question: "In 2018, the European Union enacted the GDPR, considered one of the most stringent online privacy protection laws. It stands for General Data ____ Regulation.",
       options: ["Protection","Privacy","Permission","Proactive"],
       correctAnswer: "Protection",
       explanation: "Contrary to what you may think, the law does not require consent to obtain data on someone, nor does it guarantee an individual that their data must be deleted if requested."
     },
     {
-      id: 799,
+      id: 800,
       question: "The Great Leap Forward was an economic and social campaign in China started in 1958 that attempted to move China from an agrarian economy to an industrial one. It was proposed by this Chinese founder of the People's Republic of China.",
       options: ["Mao Zedong","Deng Xiaoping","Xi Jinping","Kim Jong Il"],
       correctAnswer: "Mao Zedong",
       explanation: "The Great Leap Forward failed on many fronts, and directly led to the Great Chinese Famine, considered the deadliest famine in human history, killing between 15 and 55 million people."
     },
     {
-      id: 800,
+      id: 801,
       question: "The Mission: Impossible franchise follows the exploits of the fictitious spy agency IMF, which stands for ____.",
       options: ["Impossible Missions Force","International Mystery Force","International Missions Force","Interagency Multinational Force"],
       correctAnswer: "Impossible Missions Force",
       explanation: "The IMF is tasked with, among other things, stopping the terrorist group known as the Syndicate. Mwahahahaha..."
     },
     {
-      id: 801,
+      id: 802,
       question: "Elvis Presley died the same year Jimmy Carter was inaugurated as President and Star Wars: Episode IV was released. What year was it?",
       options: ["1977","1976","1972","1973"],
       correctAnswer: "1977",
       explanation: "Presley was so groundbreaking that a Catholic church in Wisconsin wrote to the FBI saying that Presley was, \"...a definite danger to the security of the United States. ... [His] actions and motions were such as to rouse the sexual passions of teenaged youth.\""
     },
     {
-      id: 802,
+      id: 803,
       question: "Who played the patriach George Bluth in the comedy series Arrested Development?",
       options: ["Jeffrey Tambor","John Lithgow","Bill Murray","Michael Landon"],
       correctAnswer: "Jeffrey Tambor",
       explanation: "He also played Maura Pfefferman on Transparent until he was cancelled by that show in 2017."
     },
     {
-      id: 803,
+      id: 804,
       question: "Bob Odenkirk and David Cross had a sketch comedy show that aired on HBO for 4 seasons called ___.",
       options: ["Mr Show","The Tambourine Men","Key & Peele","The McLaughlin Group"],
       correctAnswer: "Mr Show",
       explanation: "Odenkirk went on to have iconic roles in Breaking Bad and Better Call Saul, and Cross was the hilariously oblivious Tobias Funke on Arrested Development."
     },
     {
-      id: 804,
+      id: 805,
       question: "Which Grimm fairy tale tells the story of a miller's daughter spinning straw into gold?",
       options: ["Rumpelstiltskin","Rapunzel","Little Red Riding Hood","The Goose Girl"],
       correctAnswer: "Rumpelstiltskin",
       explanation: "The daughter in question was to give her first born to the imp that actually performed the magic spinning, but she was able to guess his name and keep her child. Your typical child's story."
     },
     {
-      id: 805,
+      id: 806,
       question: "This prog-rock drum legend for the band Rush died in 2020 of glioblastoma.",
       options: ["Neil Peart","John Bonham","John Entwhistle","Keith Moon"],
       correctAnswer: "Neil Peart",
       explanation: "Known as The Professor for his technical skill, he was also the lyricist for most of the band's songs over a 45 year career."
     },
     {
-      id: 806,
+      id: 807,
       question: "The Roses Tournament takes place each year between the Univeristy of York and Lancaster University, both in England. It involves competition in dozens of sports. Which of these classic American sports is NOT part of the Roses Tournament?",
       options: ["Baseball","American football","Basketball","E-sports"],
       correctAnswer: "Baseball",
       explanation: "The competition began in 1965 and takes its name from the Wars of the Roses, which occurred in the mid-15th century between the Houses of York and Lancaster."
     },
     {
-      id: 807,
+      id: 808,
       question: "In the mother/daughter series \"Gilmore Girls\", what was the name of the fictional town they lived in?",
       options: ["Stars Hollow","Eagle Point","Mystic Falls","Tree Hill"],
       correctAnswer: "Stars Hollow",
       explanation: "The fake town in Connecticut was reported to be 30 minutes from the state capitol of Hartford, and was the home to Lorelei and Rory Gimore."
     },
     {
-      id: 808,
+      id: 809,
       question: "This Gen Alpha slang word has no fixed meaning, and likely had its origins in a 2018 song of the same name by Russian rave band Little Big.",
       options: ["Skibidi","Farxiga","Ronkonkin","Jabberwocky"],
       correctAnswer: "Skibidi",
       explanation: "Depending on context, it could mean 'cool', 'bad' or 'dumb', and can even be combined with other pseudowords like rizz."
     },
     {
-      id: 809,
+      id: 810,
       question: "This massively multiplayer online role-playing game set in Azeroth was released in 2004, has had 10 expansion packs released, and has grossed almost $10 billion.",
       options: ["World of Warcraft","Final Fantasy","The Lord of the Rings Online","Dungeons and Dragons Online"],
       correctAnswer: "World of Warcraft",
       explanation: "WoW is just one of hundreds of ways that 20-somethings take their minds off a dying planet and a failing democracy."
     },
     {
-      id: 810,
+      id: 811,
       question: "This online game platform allows users to program and play their own games, or the games of other players, and has been around since 2004.",
       options: ["Roblox","Arduino","Twitch","Steam"],
       correctAnswer: "Roblox",
       explanation: "Earning over $2.29 billion in 2020, it also had about half of all kids under age 16 on the platform."
     },
     {
-      id: 811,
+      id: 812,
       question: "The show Yellowstone and its numerous spinoffs were all written and created (or co-created) by this writer/actor/director.",
       options: ["Taylor Sheridan","Kurt Sutter","Shawn Ryan","David Simon"],
       correctAnswer: "Taylor Sheridan",
       explanation: "Born Sheridan Taylor Gibler Jr, he also wrote the script for Sicario and its sequel; Wind River; Hell or High Water and acted in 21 episodes of Sons of Anarchy."
     },
     {
-      id: 812,
+      id: 813,
       question: "The name for this item that can be consumed (meaning, drank or eaten) comes from the German word for peppermint, pfefferminz.",
       options: ["PEZ","Dr Pepper","Peppadew","York Peppermint Pattie"],
       correctAnswer: "PEZ",
       explanation: "PEZ was invented in Austria in 1927. Some rare PEZ dispensers can be worth over $20,000. But only if they are in 'mint' condition."
     },
     {
-      id: 813,
+      id: 814,
       question: "The first video ever played on MTV, in 1981, was Video Killed the Radio Star by this band.",
       options: ["The Buggles","Cap'n Bob and the Shanty Singers","The Beatles","The Eagles"],
       correctAnswer: "The Buggles",
       explanation: "The band formed in 1977 and released their best known single in 1979. The duo broke up soon after to join the band Yes."
     },
     {
-      id: 814,
+      id: 815,
       question: "Which artist inspired the \"brat summer\" trend in 2024?",
       options: ["Charli XCX","Beyonce","Adele","Dua Lipa"],
       correctAnswer: "Charli XCX",
       explanation: "In the insightful words of Charli XCX, brat is about \"a pack of cigs and, like, a Bic lighter and, like, a strappy white top. With no bra\". Hence the obvious tie-in to the Kamala Harris campaign."
     },
     {
-      id: 815,
+      id: 816,
       question: "This cartoon character was frequently stating that he should have taken a left turn at Albuquerque.",
       options: ["Bugs Bunny","Fred Flintstone","SpongeBob SquarePants","Homer Simpson"],
       correctAnswer: "Bugs Bunny",
       explanation: "The running joke had its origins in the fact that Route 66 intersects itself in Albuquerque, causing confusion for drivers."
     },
     {
-      id: 816,
+      id: 817,
       question: "Neil Armstrong was the first man to walk on the moon. Who was the second?",
       options: ["Buzz Aldrin","Alan Shepard","Michael Collins","Yakov Smirnoff"],
       correctAnswer: "Buzz Aldrin",
       explanation: "Aldrin and Armstrong spent about 2 hours exploring Tranquility Base, while Michael Collins flew the command module in lunar orbit."
     },
     {
-      id: 817,
+      id: 818,
       question: "Carl Magee, of Oklahoma City, patented this coin-operated timer in 1935 to help businesses in downtown commercial areas.",
       options: ["Parking meter","Coin-op washing machine","Coin-op toll booth","Pay phone"],
       correctAnswer: "Parking meter",
       explanation: "Modern meters are fully electric and can monitor if a space is used or not, can remove remaining time when a car leaves, and in some cases can remotely ticket you even though you have time left on the meter."
     },
     {
-      id: 818,
+      id: 819,
       question: "What is Plankton's (Spongebob Square Pants' nemesis), first name?",
       options: ["Sheldon","Alfred","Krusty","Satchel"],
       correctAnswer: "Sheldon",
       explanation: "Sheldon J. Plankton runs the Chum Bucket restaurant, a competitor of the Krusty Krab where Bob works."
     },
     {
-      id: 819,
+      id: 820,
       question: "The abdominal thrust maneuver to help someone who is choking is known as the ___ maneuver.",
       options: ["Heimlich","Oppenheimer","Stuttgart","Johnson"],
       correctAnswer: "Heimlich",
       explanation: "Dr Henry Heimlich invented the technique in 1974. He also espoused 'malariotherapy', deliberately infecting someone with malaria to treat HIV, cancer and Lyme disease."
     },
     {
-      id: 820,
+      id: 821,
       question: "Who was the author of To Kill A Mockingbird?",
       options: ["Harper Lee","George","George Orwell","JD Salinger"],
       correctAnswer: "Harper Lee",
       explanation: "Upon its publication in 1961, Lee thought it would not sell well and hoped the book would have \"a quick and merciful death.\""
     },
     {
-      id: 821,
+      id: 822,
       question: "1984 is a book about a dystopian future written in 1949 by this writer, who also wrote Animal Farm.",
       options: ["George Orwell","Suzanne Collins","Jack Kerouac","Orson Welles"],
       correctAnswer: "George Orwell",
       explanation: "Orwell was born Eric Arthur Blair, but he used the pen name Orwell as a tribute to his favorite place, the River Orwell in England."
     },
     {
-      id: 822,
+      id: 823,
       question: "Edward Cullen is Bella's love interest in this book/movie series.",
       options: ["Twilight","Interview with the Vampire","Travels with Charley","Woman, Eating"],
       correctAnswer: "Twilight",
       explanation: "Edward is a telepathic vampire who ultimately fathers a daughter, Renesmee, with Bella, who is turned into a vampire right after giving birth."
     },
     {
-      id: 823,
+      id: 824,
       question: "What year was the first iPod released?",
       options: ["2001","1998","1999","2000"],
       correctAnswer: "2001",
       explanation: "After selling an estimated 450 million iPods, Apple stopped making them in 2022"
     },
     {
-      id: 824,
+      id: 825,
       question: "The best-selling movie soundtrack of all time (at 50 million units sold) is from the movie ___.",
       options: ["The Bodyguard","Pulp Fiction","Saturday Night Fever","Titanic"],
       correctAnswer: "The Bodyguard",
       explanation: "It was the first album to sell over 1,000,000 copies in a week, and is still the highest selling album by a female artist."
     },
     {
-      id: 825,
+      id: 826,
       question: "The famous movie line, \"Show me the money!\" is from this Tom Cruise film.",
       options: ["Jerry Maguire","Top Gun","Risky Business","Mission Impossible VI: The Money Train"],
       correctAnswer: "Jerry Maguire",
       explanation: "It also had the catchphrases, \"you had me at 'hello'\", and \"help me, help you\"."
     },
     {
-      id: 826,
+      id: 827,
       question: "Which of these metals is the softest, and indeed considered the softest metal in the world.",
       options: ["Cesium","Gold","Tin","Aluminum"],
       correctAnswer: "Cesium",
       explanation: "Cesium is what's known as a Group 1A alkali metal, which are very soft, as alkali comes from an Arabic word meaning \"ashes\"."
     },
     {
-      id: 827,
+      id: 828,
       question: "This 2005 film had the tag line, \"The longer you wait, the harder it gets\".",
       options: ["The 40 Year Old Virgin","Are We There Yet?","The Wedding Date","Hitch"],
       correctAnswer: "The 40 Year Old Virgin",
       explanation: "Steve Carrell plays the virgin in question, and he even subjected himself to a real chest waxing for that well-known scene."
     },
     {
-      id: 828,
+      id: 829,
       question: "As of 2025, this movie had the greatest gross sales relative to its initial budget.",
       options: ["Paranormal Activity","Rocky","Halloween","Napolean Dynamite"],
       correctAnswer: "Paranormal Activity",
       explanation: "Made for $15,000, the movie had gross revenue of $193,000,000 for a return on investment of 1,289,000%."
     },
     {
-      id: 829,
+      id: 830,
       question: "Which of these is NOT one of the new emotions that Riley has as a teenager in \"Inside Out 2\"?",
       options: ["Empathy","Ennui","Embarrassment","Envy"],
       correctAnswer: "Empathy",
       explanation: "The fourth new emotion is anxiety, and they arrive the night before she is to attend hockey camp."
     },
     {
-      id: 830,
+      id: 831,
       question: "In the 2024 biographical film \"A Complete Unknown\", who plays Bob Dylan?",
       options: ["Timothee Chalamet","Joaquin Phoenix","Michael B. Jordan","Andy Samberg"],
       correctAnswer: "Timothee Chalamet",
       explanation: "Born Robert Allen Zimmerman, Dylan has made 40 studio albums and 21 live albums and is still touring as of 2025."
     },
     {
-      id: 831,
+      id: 832,
       question: "Which of the following names is NOT the name of one of the Brady kids (from The Brady Bunch)?",
       options: ["Mike","Greg","Peter","Bobby"],
       correctAnswer: "Mike",
       explanation: "Mike Brady was the patriarch of the family. The introduction of Cousin Oliver in season 5 was considered the moment the series \"jumped the shark\", and it was cancelled at the end of that season."
     },
     {
-      id: 832,
+      id: 833,
       question: "The idiom \"jumped the shark\" (referring to a moment when a creative work has exhausted its core ideas) was coined in 1985 in reference to a specific plot point on a 1977 episode of this show.",
       options: ["Happy Days","The Brady Bunch","Magnum P.I.","Charlie's Angels"],
       correctAnswer: "Happy Days",
       explanation: "In the episode, the Fonz jumps a shark while waterskiing and wearing his trademark leather motorcycle jacket."
     },
     {
-      id: 833,
+      id: 834,
       question: "What was the name of the coffee shop in the show Friends?",
       options: ["Central Perk","Perk Me Up","The Bean Hole","Deja Brew"],
       correctAnswer: "Central Perk",
       explanation: "Some of the originally considered titles for the show were Insomnia Cafe, Six of One and Across the Hall."
     },
     {
-      id: 834,
+      id: 835,
       question: "What was the player number of Seong Gi-Hun, the main character of the Netflix series Squid Game.",
       options: ["456","1","222","999"],
       correctAnswer: "456",
       explanation: "The dystopian South Korean show has players competing in sadistic and deadly versions of children's games for a chance to win about $40 million."
     },
     {
-      id: 835,
+      id: 836,
       question: "Which Nirvana album cover featured a baby swimming in a pool toward a dollar bill on a fishhook?",
       options: ["Nevermind","Bleach","In Utero","Rockabye Baby"],
       correctAnswer: "Nevermind",
       explanation: "Spencer Elden, the baby in the photo, sued the band (and the photographer) in 2021 claiming he did not give consent and that it resulted in \"lifelong damages\". The case was dismissed. And appealed. And dismissed again."
     },
     {
-      id: 836,
+      id: 837,
       question: "Which was the first K-pop / Asian band to headline at Coachella?",
       options: ["Blackpink","BTS","EXO","ATEEZ"],
       correctAnswer: "Blackpink",
       explanation: "The 4-girl group is also the first Korean girl group to win an MTV Video Music Award, and are considered the most subscribed music act on YouTube, with over 98 million subscribers (in 2025)."
     },
     {
-      id: 837,
+      id: 838,
       question: "In what year did Vince Vance & the Valiants release \"All I Want For Christmas Is You\"?",
       options: ["1989","1990","1992","1991"],
       correctAnswer: "1989",
       explanation: "Vance sued Mariah Carey, claiming she stole his song, even though the only similarity is the title. He lost the suit, as well as a follow up suit a year later."
     },
     {
-      id: 838,
+      id: 839,
       question: "Fans of Lady Gaga are known as ______.",
       options: ["Little Monsters","Maggots","Head Cases","Trainwrecks"],
       correctAnswer: "Little Monsters",
       explanation: "All of these are fanbase nicknames, but as Gaga's fans call her Mother Monster, she refers to her fans as Little Monsters."
     },
     {
-      id: 839,
+      id: 840,
       question: "Snapchat, the app that allows message and picture to be seen for a short time before they disappear, was orginally called ____ when first launched.",
       options: ["Picaboo","Poof!","Ghost","ByeByeBye"],
       correctAnswer: "Picaboo",
       explanation: "In 2011, Picaboo was launched on the iOS system but within 2 months was renamed Snapchat. And within just a few short years it became another excellent social media app for stalkers, body shaming, and inducing anxiety."
     },
     {
-      id: 840,
+      id: 841,
       question: "As of February 2025, which of these people has the most followers on Twitter?",
       options: ["Barack Obama","Taylor Swift","Rihanna","Cristiano"],
       correctAnswer: "Barack Obama",
       explanation: "He has 130 million followers, while Cristiano has 115 M, Rihanna has 107 M and Taylor Swift has 94 M."
     },
     {
-      id: 841,
+      id: 842,
       question: "The name of the AI chatbot on Twitter/X that has praised Hitler and spewed out false conspiracy theories and racist views is called ____.",
       options: ["Grok","Gemini","Claude","Elon"],
       correctAnswer: "Grok",
       explanation: "The original name for the chatbot was TruthGPT, as ironically inaccurate a name as Truth Social."
     },
     {
-      id: 842,
+      id: 843,
       question: "This politician has the most followers on Twitter/X (as of February 2025).",
       options: ["Barack Obama","Narendra Modi","Donald Trump","Boris Johnson"],
       correctAnswer: "Barack Obama",
       explanation: "Obama has over 130 million followers, followed by Modi with 108.9 M, Trump with 108.3 M and Johnson with 4.5 M."
     },
     {
-      id: 843,
+      id: 844,
       question: "Henry John Deutschendorf Jr, a singer of folk and country until his death in a plane crash, was much better known as _____.",
       options: ["John Denver","Johnny Cash","Merle Haggard","Bob Dylan"],
       correctAnswer: "John Denver",
       explanation: "Denver sold over 33 million albums. He died while piloting a newly puchased plane where he could not access the fuel tank selector valve, in 1997 at age 53."
     },
     {
-      id: 844,
+      id: 845,
       question: "The tallest volcano on earth (based on elevation above sea level) is _____, at 22,615 ft (6,893m).",
       options: ["Nevado Ojos del Salado","Denali","Mt Everest","Mauna Kea"],
       correctAnswer: "Nevado Ojos del Salado",
       explanation: "Denali and Everest are not actually volcanoes. Mauna Kea is 33,500 ft (10,211 m) from base to summit, but only 13,796 ft (4,205 m) above sea level."
     }
-],
+  ],
   'state-trivia': [
     {
       id: 201,
       question: "Which state is known as the 'Sunshine State'?",
       options: ["California", "Florida", "Arizona", "Hawaii"],
       correctAnswer: "Florida",
-      explanation: "Florida's official nickname is the 'Sunshine State' due to its warm climate and many sunny days."
+      explanation: "Florida's nickname, the 'Sunshine State', was officially adopted by the Florida Legislature in 1970."
     },
     {
       id: 202,
       question: "What is the capital of Texas?",
       options: ["Houston", "Dallas", "Austin", "San Antonio"],
       correctAnswer: "Austin",
-      explanation: "Austin is the capital city of Texas, known for its vibrant music scene and as a center for technology."
+      explanation: "Austin is the capital of Texas, and is known for its live-music scene centered around country, blues and rock."
     },
     {
-      id: 203,
-      question: "Which state is the largest by land area?",
-      options: ["Texas", "California", "Alaska", "Montana"],
-      correctAnswer: "Alaska",
-      explanation: "Alaska is by far the largest state in the United States by land area, over twice the size of Texas."
-    },
-    {
-      id: 845,
+      id: 846,
       question: "Which state is known as the yellowhammer state (after the state bird), also called the Cotton State?",
-      options: ["Alabama", "Louisiana", "Ohio", "West Virginia"],
+      options: [
+        "Alabama",
+        "Louisiana",
+        "Ohio",
+        "West Virginia"
+      ],
       correctAnswer: "Alabama",
       explanation: "The northern flicker is also known as the yellowhammer. There was also a company of soldiers in the Civil War known as the yellowhammers."
     },
     {
-      id: 846,
+      id: 847,
       question: "In which state will you find \"Rocket City USA\", ",
       options: [
         "Alabama",
@@ -2509,7 +2514,7 @@ const originalTriviaData: Readonly<TriviaData> = {
       explanation: "NASA's Marshall Space Flight Center is in Huntsville, the most populous city in AL, and is where the Saturn rockets were built."
     },
     {
-      id: 847,
+      id: 848,
       question: "The Tennessee River starts and ends in Tennessee, but a long stretch in the middle passes into this state",
       options: [
         "Alabama",
@@ -2521,7 +2526,7 @@ const originalTriviaData: Readonly<TriviaData> = {
       explanation: "It was once known as the Cherokee River, and it starts in Knoxville before ending in the Ohio River."
     },
     {
-      id: 848,
+      id: 849,
       question: "Which state's capital is known as the Cradle of the Confederacy?",
       options: [
         "Alabama",
@@ -2533,7 +2538,7 @@ const originalTriviaData: Readonly<TriviaData> = {
       explanation: "Montgomery hosted the Southern Convention in 1861, in which 7 seceding southern states established the Confederacy."
     },
     {
-      id: 849,
+      id: 850,
       question: "The first 911 call in the US was made in this state.",
       options: [
         "Alabama",
@@ -2545,7 +2550,7 @@ const originalTriviaData: Readonly<TriviaData> = {
       explanation: "It was in 1968 in Haleyville, AL, and ushered in the era of people considering anything annoying, inconvenient or stressful to be an emergency."
     },
     {
-      id: 850,
+      id: 851,
       question: "This state has the most fast food restaurants per capita.",
       options: [
         "West Virginia",
@@ -2557,7 +2562,7 @@ const originalTriviaData: Readonly<TriviaData> = {
       explanation: "According to Pricelisto, the state has 49.04 fast food places per 100,000 residents. By complete and utter coincidence, the state is the most obese, with 41.2% of the population meeting criteria for obesity."
     },
     {
-      id: 851,
+      id: 852,
       question: "This state outlaws dressing up as a nun, priest or rabbi on Halloween.",
       options: [
         "Alabama",
@@ -2569,7 +2574,7 @@ const originalTriviaData: Readonly<TriviaData> = {
       explanation: "It is a misdemeanor to dress as clergy any time, with a fine of up to $500 and up to 1 year in jail. The law was enacted during civil rights protests in 1965."
     },
     {
-      id: 852,
+      id: 853,
       question: "This state is known as The Last Frontier.",
       options: [
         "Alaska",
@@ -2581,7 +2586,7 @@ const originalTriviaData: Readonly<TriviaData> = {
       explanation: "About 90% of the state is not accessible by any road and much of it is still relatively unexplored."
     },
     {
-      id: 853,
+      id: 854,
       question: "This state has 6 times the number of pilots per capita, and 16 times the number of aircraft per capita, than any other state.",
       options: [
         "Alaska",
@@ -2593,7 +2598,7 @@ const originalTriviaData: Readonly<TriviaData> = {
       explanation: "Since there are so few roads in the state, airplanes are the chief way to get around."
     },
     {
-      id: 854,
+      id: 855,
       question: "This state has the most coastline, in terms of total miles",
       options: [
         "Alaska",
@@ -2605,7 +2610,7 @@ const originalTriviaData: Readonly<TriviaData> = {
       explanation: "It has 33,904 miles (54,563 km) of coastline, about 4 times more than runner-up Florida."
     },
     {
-      id: 855,
+      id: 856,
       question: "The largest urban park in the world is 495,000 acres and located in this state",
       options: [
         "Alaska",
@@ -2617,7 +2622,7 @@ const originalTriviaData: Readonly<TriviaData> = {
       explanation: "Chugach State Park, established in 1970, is located entirely within the Anchorage metropolitan area."
     },
     {
-      id: 856,
+      id: 857,
       question: "This state's capital is the largest by land area, at 3,255 sq miles.",
       options: [
         "Alaska",
@@ -2629,7 +2634,7 @@ const originalTriviaData: Readonly<TriviaData> = {
       explanation: "Juneau is also the only mainland North America capital that is not connected by road to the rest of the state or to North America."
     },
     {
-      id: 857,
+      id: 858,
       question: "This state has the longest border with another country, at 1,538 miles",
       options: [
         "Alaska",
@@ -2641,7 +2646,7 @@ const originalTriviaData: Readonly<TriviaData> = {
       explanation: "Texas has a 1,241 mile border with Mexico."
     },
     {
-      id: 858,
+      id: 859,
       question: "The king, or Chinook, salmon is the official fish of Oregon and of this state.",
       options: [
         "Alaska",
@@ -2653,7 +2658,7 @@ const originalTriviaData: Readonly<TriviaData> = {
       explanation: "The largest of the Pacific salmon, it is anadromous, meaning it migrates from the sea to freshwater rivers to spawn."
     },
     {
-      id: 859,
+      id: 860,
       question: "This state has the most volcanoes, with 141.",
       options: [
         "Alaska",
@@ -2665,7 +2670,7 @@ const originalTriviaData: Readonly<TriviaData> = {
       explanation: "California is a distant second, with 18, and Oregon has 17, but the largest volcano in the world is Mauna Loa in Hawaii."
     },
     {
-      id: 860,
+      id: 861,
       question: "This state is the easternmost, westernmost and northernmost.",
       options: [
         "Alaska",
@@ -2677,7 +2682,7 @@ const originalTriviaData: Readonly<TriviaData> = {
       explanation: "The Aleutian Islands cross the 180 degree longitude mark, which makes the state both easternmost and westernmost."
     },
     {
-      id: 861,
+      id: 862,
       question: "This state has the highest percentage of men, at over 52%.",
       options: [
         "Alaska",
@@ -2689,7 +2694,7 @@ const originalTriviaData: Readonly<TriviaData> = {
       explanation: "The US overall is 50.8% female, and only 10 states have more men than women."
     },
     {
-      id: 862,
+      id: 863,
       question: "In this state, you can find the San Francisco mountain range, with its high point of Humphrey's Peak.",
       options: [
         "Arizona",
@@ -2701,7 +2706,7 @@ const originalTriviaData: Readonly<TriviaData> = {
       explanation: "North of Flagstaff, Humphrey's Peak sits at 12,633 ft (3,851m)."
     },
     {
-      id: 863,
+      id: 864,
       question: "Hawaii was the 50th state, Alaska was the 49th. Which state was the 48th (in 1912)?",
       options: [
         "Arizona",
@@ -2713,7 +2718,7 @@ const originalTriviaData: Readonly<TriviaData> = {
       explanation: "It was the last of the contiguous states to be admitted, on Feb 14 of that year."
     },
     {
-      id: 864,
+      id: 865,
       question: "Lemonade is the official beverage of this desert state",
       options: [
         "Arizona",
@@ -2725,7 +2730,7 @@ const originalTriviaData: Readonly<TriviaData> = {
       explanation: "It became such in 2019, due to the efforts of a local teenager."
     },
     {
-      id: 865,
+      id: 866,
       question: "The town of Tombstone in this state is known as \"The Town Too Tough To Die\", and is famous for a gunfight in 1881.",
       options: [
         "Arizona",
@@ -2737,7 +2742,7 @@ const originalTriviaData: Readonly<TriviaData> = {
       explanation: "While the shootout is widely believed to have had Wyatt Earp as the central figure, it was actually his brother Virgil who was the marshal of Tombstone at the time."
     },
     {
-      id: 866,
+      id: 867,
       question: "You will find the London Bridge, that once spanned the River Thames, in Lake Havasu City in this state.",
       options: [
         "Arizona",
@@ -2749,100 +2754,86 @@ const originalTriviaData: Readonly<TriviaData> = {
       explanation: "It was shipped via the Panama Canal to California, then transported by truck to Arizona in 1968."
     },
     {
-      id: 867,
+      id: 868,
       question: "The world's first professional rodeo took place in Prescott, in this state in 1888, before it was even a state.",
-      options: [
+      "options": [
         "Arizona",
         "Wyoming",
         "Montana",
         "Texas"
       ],
-      correctAnswer: "Arizona",
+      "correctAnswer": "Arizona",
       explanation: "While the first rodeo was held in Cheyenne, WY, Arizona was the first to charge admission and award prizes."
     },
     {
-      id: 868,
-      question: "The only US interstate highway with distances listed in meters and kilometers is found in this state.",
-      options: [
+      "id": 869,
+      "question": "The only US interstate highway with distances listed in meters and kilometers is found in this state.",
+      "options": [
         "Arizona",
         "California",
         "Maine",
         "Michigan"
       ],
-      correctAnswer: "Arizona",
-      explanation: "When I-19 was re-signed in 1980, the US was on a (failed) push to adopt the metric system, so this road connecting Nogales to Tucson has distances in metric, but the speed limit signs use MPH."
+      "correctAnswer": "Arizona",
+      "explanation": "When I-19 was re-signed in 1980, the US was on a (failed) push to adopt the metric system, so this road connecting Nogales to Tucson has distances in metric, but the speed limit signs use MPH."
     }
   ],
   'government-trivia': [
     {
-      id: 301,
-      question: "Who is the current President of the United States?",
-      options: ["Joe Biden", "Donald Trump", "Barack Obama", "George W. Bush"],
-      correctAnswer: "Joe Biden",
-      explanation: "As of the last update, Joe Biden is the 46th and current President of the United States."
+      "id": 301,
+      "question": "How many branches are in the United States government?",
+      "options": ["1", "2", "3", "4"],
+      "correctAnswer": "3",
+      "explanation": "The three branches of the U.S. government are the legislative, executive, and judicial branches."
     },
     {
-      id: 302,
-      question: "How many branches are in the U.S. Federal Government?",
-      options: ["2", "3", "4", "5"],
-      correctAnswer: "3",
-      explanation: "The U.S. Federal Government is made up of three branches: the Legislative, Executive, and Judicial."
-    },
-    {
-      id: 303,
-      question: "What is the supreme law of the land in the United States?",
-      options: ["The Declaration of Independence", "The Articles of Confederation", "The U.S. Constitution", "The Bill of Rights"],
-      correctAnswer: "The U.S. Constitution",
-      explanation: "The U.S. Constitution is the supreme law of the United States. It is the framework for the U.S. government and outlines the rights and responsibilities of its citizens."
+      "id": 302,
+      "question": "What is the supreme law of the land in the United States?",
+      "options": ["The Declaration of Independence", "The Articles of Confederation", "The Constitution", "The Bill of Rights"],
+      "correctAnswer": "The Constitution",
+      "explanation": "The U.S. Constitution is the supreme law of the land, establishing the framework for the federal government and guaranteeing the rights of citizens."
     }
   ],
-  'custom-trivia': []
+  'custom-trivia': [
+     {
+      "id": 401,
+      "question": "This is a sample custom question. You can upload your own questions using the 'Upload Questions' button on the homepage.",
+      "options": ["Option A", "Option B", "Option C", "Option D"],
+      "correctAnswer": "Option A",
+      "explanation": "This is the explanation for the sample custom question. When you upload your own questions, you can provide your own explanations as well."
+    }
+  ]
 };
 
-// Create a deep copy for mutable operations in the app
+// Create a deep copy for mutable operations
 export let triviaData: TriviaData = JSON.parse(JSON.stringify(originalTriviaData));
 
-if (typeof window !== 'undefined') {
-  for (const category in originalTriviaData) {
-    const storedQuestions = localStorage.getItem(category);
-    if (storedQuestions) {
-      try {
-        const parsedQuestions: Question[] = JSON.parse(storedQuestions);
-        const existingIds = new Set(triviaData[category].map(q => q.id));
-        const newQuestions = parsedQuestions.filter(q => !existingIds.has(q.id));
-        triviaData[category].push(...newQuestions);
-      } catch (e) {
-        console.error(`Could not parse questions for category ${category} from localStorage`, e);
+// Function to get questions for a category, including from local storage
+export function getQuestionsByCategory(category: string): Question[] {
+  const baseQuestions = triviaData[category] || [];
+  
+  if (typeof window !== 'undefined' && localStorage) {
+    try {
+      const storedQuestionsRaw = localStorage.getItem(category);
+      if (storedQuestionsRaw) {
+        const storedQuestions: Question[] = JSON.parse(storedQuestionsRaw);
+        
+        // Combine and remove duplicates, giving preference to stored questions if IDs conflict
+        const combinedQuestions = [...storedQuestions];
+        const storedIds = new Set(storedQuestions.map(q => q.id));
+        baseQuestions.forEach(q => {
+          if (!storedIds.has(q.id)) {
+            combinedQuestions.push(q);
+          }
+        });
+        return combinedQuestions;
       }
+    } catch (error) {
+      console.error("Error reading or parsing questions from localStorage for category:", category, error);
     }
   }
+  
+  return [...baseQuestions];
 }
-
-export const getQuestionsByCategory = (category: string): Question[] => {
-  return triviaData[category] || [];
-};
-
-export const addQuestion = (category: string, question: Omit<Question, 'id'>) => {
-    if (!triviaData[category]) {
-        triviaData[category] = [];
-    }
-
-    const existingIds = Object.values(triviaData).flat().map(q => q.id);
-    let newId = Math.max(0, ...existingIds) + 1;
-    
-    const newQuestion: Question = {
-        ...question,
-        id: newId,
-    };
-
-    triviaData[category].push(newQuestion);
-
-    // Also save to localStorage for persistence
-    const storedQuestions = JSON.parse(localStorage.getItem(category) || '[]');
-    storedQuestions.push(newQuestion);
-    localStorage.setItem(category, JSON.stringify(storedQuestions));
-};
-
-    
 
     
