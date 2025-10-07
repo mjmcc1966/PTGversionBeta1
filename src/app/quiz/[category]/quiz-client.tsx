@@ -13,6 +13,9 @@ import { cn } from '@/lib/utils';
 import { CheckCircle, XCircle, Trophy, Lightbulb } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 
+// Base64 encoded WAV file for a simple "ding" sound.
+const correctSound = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA';
+
 export function QuizClient({ category }: { category: string }) {
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   const [askedQuestionIds, setAskedQuestionIds] = useState<Set<number>>(new Set());
@@ -68,6 +71,8 @@ export function QuizClient({ category }: { category: string }) {
     setIsCorrect(correct);
     if (correct) {
       setScore(prev => prev + 1);
+      const audio = new Audio(correctSound);
+      audio.play();
     }
 
     const newAskedQuestionIds = new Set([...Array.from(askedQuestionIds), currentQuestion!.id]);
