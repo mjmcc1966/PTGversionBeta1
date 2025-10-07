@@ -48,7 +48,7 @@ export const triviaData: { [key: string]: Question[] } = {
     {
       id: 106,
       question: "What is the name of this famous landmark?",
-      imageUrl: "https://picsum.photos/600/400",
+      imageUrl: "https://picsum.photos/seed/106/600/400",
       options: ["Eiffel Tower", "Statue of Liberty", "Colosseum", "Great Wall of China"],
       correctAnswer: "Eiffel Tower",
       explanation: "This is the Eiffel Tower. It is a wrought-iron lattice tower on the Champ de Mars in Paris, France."
