@@ -8,12 +8,7 @@ export interface Question {
   explanation: string;
 }
 
-export interface TriviaData {
-  [key: string]: Question[];
-}
-
-// This represents the original, shipped-with-the-app data.
-const originalTriviaData: Readonly<TriviaData> = {
+export const triviaData: { [key: string]: Question[] } = {
   'general-trivia': [
     {
       id: 101,
@@ -2763,63 +2758,35 @@ const originalTriviaData: Readonly<TriviaData> = {
       correctAnswer: "Arizona",
       explanation: "When I-19 was re-signed in 1980, the US was on a (failed) push to adopt the metric system, so this road connecting Nogales to Tucson has distances in metric, but the speed limit signs use MPH."
     }
-  ],
-  'government-trivia': [
-    {
-      id: 301,
-      question: "How many branches are in the United States government?",
-      options: ["1", "2", "3", "4"],
-      correctAnswer: "3",
-      explanation: "The three branches of the U.S. government are the legislative, executive, and judicial branches."
-    },
-    {
-      id: 302,
-      question: "What is the supreme law of the land in the United States?",
-      options: ["The Declaration of Independence", "The Articles of Confederation", "The Constitution", "The Bill of Rights"],
-      correctAnswer: "The Constitution",
-      explanation: "The U.S. Constitution is the supreme law of the land, establishing the framework for the federal government and guaranteeing the rights of citizens."
-    }
-  ],
-  'custom-trivia': [
-     {
-      id: 401,
-      question: "This is a sample custom question. You can upload your own questions using the 'Upload Questions' button on the homepage.",
-      options: ["Option A", "Option B", "Option C", "Option D"],
-      correctAnswer: "Option A",
-      explanation: "This is the explanation for the sample custom question. When you upload your own questions, you can provide your own explanations as well."
-    }
   ]
 };
 
-// Create a deep copy for mutable operations
-export let triviaData: TriviaData = JSON.parse(JSON.stringify(originalTriviaData));
-
-// Function to get questions for a category, including from local storage
+// This function now returns a deep copy of the original data, and then adds any questions from localStorage.
 export function getQuestionsByCategory(category: string): Question[] {
-  const baseQuestions = triviaData[category] || [];
+  let questions: Question[] = [];
+
+  // Start with a deep copy of the original, built-in questions for the category
+  const originalQuestions = triviaData[category] ? JSON.parse(JSON.stringify(triviaData[category])) : [];
+  questions.push(...originalQuestions);
   
-  if (typeof window !== 'undefined' && localStorage) {
+  const existingIds = new Set(questions.map(q => q.id));
+
+  // Check if running in a browser environment before accessing localStorage
+  if (typeof window !== 'undefined') {
     try {
-      const storedQuestionsRaw = localStorage.getItem(category);
-      if (storedQuestionsRaw) {
-        const storedQuestions: Question[] = JSON.parse(storedQuestionsRaw);
-        
-        // Combine and remove duplicates, giving preference to stored questions if IDs conflict
-        const combinedQuestions = [...storedQuestions];
-        const storedIds = new Set(storedQuestions.map(q => q.id));
-        baseQuestions.forEach(q => {
-          if (!storedIds.has(q.id)) {
-            combinedQuestions.push(q);
-          }
-        });
-        return combinedQuestions;
+      const storedQuestionsText = localStorage.getItem(category);
+      if (storedQuestionsText) {
+        const storedQuestions: Question[] = JSON.parse(storedQuestionsText);
+        // Filter out any stored questions that have the same ID as the original questions
+        const newQuestions = storedQuestions.filter(q => !existingIds.has(q.id));
+        questions.push(...newQuestions);
       }
     } catch (error) {
-      console.error("Error reading or parsing questions from localStorage for category:", category, error);
+      console.error("Could not parse questions from localStorage for category:", category, error);
     }
   }
-  
-  return [...baseQuestions];
+
+  return questions;
 }
 
     
