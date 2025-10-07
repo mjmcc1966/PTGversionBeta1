@@ -1483,7 +1483,7 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 705,
-      question: "The ____ is the only true freshwater seal on the planet, living in Lake Baikal.",
+      question: "The ___ is the only true freshwater seal on the planet, living in Lake Baikal.",
       options: ["Nerpa","Monk seal","Ross seal","Elephant seal"],
       correctAnswer: "Nerpa",
       explanation: "They can stay under water for up to 70 minutes, thanks in part to having 2 more liters of blood in their body than seals of comparable size."
@@ -2471,6 +2471,41 @@ export const triviaData: { [key: string]: Question[] } = {
   ],
   'state-trivia': [
     {
+      id: 201,
+      question: "What is the capital of California?",
+      options: ["Los Angeles", "Sacramento", "San Francisco", "San Diego"],
+      correctAnswer: "Sacramento",
+      explanation: "Sacramento has been the capital of California since 1854. It's known for its role in the Gold Rush and as a major agricultural hub."
+    },
+    {
+      id: 202,
+      question: "Which state is known as the 'Sunshine State'?",
+      options: ["Florida", "California", "Arizona", "Hawaii"],
+      correctAnswer: "Florida",
+      explanation: "Florida's official nickname is the 'Sunshine State' due to its warm climate and many sunny days, making it a popular tourist destination."
+    },
+    {
+      id: 203,
+      question: "What is the largest state by area?",
+      options: ["Texas", "California", "Alaska", "Montana"],
+      correctAnswer: "Alaska",
+      explanation: "Alaska is by far the largest state in the US, with a land area of over 663,000 square miles, more than twice the size of Texas."
+    },
+    {
+      id: 204,
+      question: "Mount Rushmore is located in which state?",
+      options: ["Wyoming", "Montana", "North Dakota", "South Dakota"],
+      correctAnswer: "South Dakota",
+      explanation: "Mount Rushmore National Memorial is located in the Black Hills region of South Dakota. It features the carved faces of four U.S. presidents."
+    },
+    {
+      id: 205,
+      question: "What state is the only one to have a non-rectangular flag?",
+      options: ["Ohio", "Maryland", "Texas", "New Mexico"],
+      correctAnswer: "Ohio",
+      explanation: "Ohio's flag is a swallow-tailed burgee, the only non-rectangular state flag in the United States. It was designed in 1901."
+    },
+    {
       id: 846,
       question: "Which state is known as the yellowhammer state (after the state bird), also called the Cotton State?",
       options: [
@@ -2758,6 +2793,48 @@ export const triviaData: { [key: string]: Question[] } = {
       correctAnswer: "Arizona",
       explanation: "When I-19 was re-signed in 1980, the US was on a (failed) push to adopt the metric system, so this road connecting Nogales to Tucson has distances in metric, but the speed limit signs use MPH."
     }
+  ],
+  'government-trivia': [
+    {
+      id: 301,
+      question: "Who is the first woman to serve as Vice President of the United States?",
+      options: ["Hillary Clinton", "Kamala Harris", "Nancy Pelosi", "Sarah Palin"],
+      correctAnswer: "Kamala Harris",
+      explanation: "Kamala Harris was sworn in as the 49th Vice President on January 20, 2021, making her the first female, first African American, and first Asian American Vice President."
+    },
+    {
+      id: 302,
+      question: "How many amendments does the US Constitution have?",
+      options: ["10", "21", "27", "33"],
+      correctAnswer: "27",
+      explanation: "There have been 27 amendments to the US Constitution since it was ratified in 1788. The first 10 are known as the Bill of Rights."
+    },
+    {
+      id: 303,
+      question: "What are the three branches of the US government?",
+      options: [
+        "Legislative, Executive, Judicial",
+        "Federal, State, Local",
+        "Administrative, Diplomatic, Military",
+        "Presidential, Congressional, Senatorial"
+      ],
+      correctAnswer: "Legislative, Executive, Judicial",
+      explanation: "The US government is divided into the Legislative (Congress), Executive (President), and Judicial (Supreme Court and lower courts) branches to ensure a separation of powers."
+    },
+    {
+      id: 304,
+      question: "The President of the United States is elected to a term of how many years?",
+      options: ["2 years", "4 years", "6 years", "8 years"],
+      correctAnswer: "4 years",
+      explanation: "A U.S. President is elected to a four-year term. Since the 22nd Amendment was ratified in 1951, a president can serve a maximum of two terms."
+    },
+    {
+      id: 305,
+      question: "How many senators are there in the U.S. Senate?",
+      options: ["50", "100", "435", "538"],
+      correctAnswer: "100",
+      explanation: "The U.S. Senate is composed of 100 senators, with two senators representing each of the 50 states, regardless of the state's population."
+    }
   ]
 };
 
@@ -2788,5 +2865,3 @@ export function getQuestionsByCategory(category: string): Question[] {
 
   return questions;
 }
-
-    
