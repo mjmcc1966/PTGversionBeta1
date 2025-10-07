@@ -2476,20 +2476,6 @@ const originalTriviaData: Readonly<TriviaData> = {
   ],
   'state-trivia': [
     {
-      id: 201,
-      question: "Which state is known as the 'Sunshine State'?",
-      options: ["California", "Florida", "Arizona", "Hawaii"],
-      correctAnswer: "Florida",
-      explanation: "Florida's nickname, the 'Sunshine State', was officially adopted by the Florida Legislature in 1970."
-    },
-    {
-      id: 202,
-      question: "What is the capital of Texas?",
-      options: ["Houston", "Dallas", "Austin", "San Antonio"],
-      correctAnswer: "Austin",
-      explanation: "Austin is the capital of Texas, and is known for its live-music scene centered around country, blues and rock."
-    },
-    {
       id: 846,
       question: "Which state is known as the yellowhammer state (after the state bird), also called the Cotton State?",
       options: [
@@ -2756,51 +2742,51 @@ const originalTriviaData: Readonly<TriviaData> = {
     {
       id: 868,
       question: "The world's first professional rodeo took place in Prescott, in this state in 1888, before it was even a state.",
-      "options": [
+      options: [
         "Arizona",
         "Wyoming",
         "Montana",
         "Texas"
       ],
-      "correctAnswer": "Arizona",
+      correctAnswer: "Arizona",
       explanation: "While the first rodeo was held in Cheyenne, WY, Arizona was the first to charge admission and award prizes."
     },
     {
-      "id": 869,
-      "question": "The only US interstate highway with distances listed in meters and kilometers is found in this state.",
-      "options": [
+      id: 869,
+      question: "The only US interstate highway with distances listed in meters and kilometers is found in this state.",
+      options: [
         "Arizona",
         "California",
         "Maine",
         "Michigan"
       ],
-      "correctAnswer": "Arizona",
-      "explanation": "When I-19 was re-signed in 1980, the US was on a (failed) push to adopt the metric system, so this road connecting Nogales to Tucson has distances in metric, but the speed limit signs use MPH."
+      correctAnswer: "Arizona",
+      explanation: "When I-19 was re-signed in 1980, the US was on a (failed) push to adopt the metric system, so this road connecting Nogales to Tucson has distances in metric, but the speed limit signs use MPH."
     }
   ],
   'government-trivia': [
     {
-      "id": 301,
-      "question": "How many branches are in the United States government?",
-      "options": ["1", "2", "3", "4"],
-      "correctAnswer": "3",
-      "explanation": "The three branches of the U.S. government are the legislative, executive, and judicial branches."
+      id: 301,
+      question: "How many branches are in the United States government?",
+      options: ["1", "2", "3", "4"],
+      correctAnswer: "3",
+      explanation: "The three branches of the U.S. government are the legislative, executive, and judicial branches."
     },
     {
-      "id": 302,
-      "question": "What is the supreme law of the land in the United States?",
-      "options": ["The Declaration of Independence", "The Articles of Confederation", "The Constitution", "The Bill of Rights"],
-      "correctAnswer": "The Constitution",
-      "explanation": "The U.S. Constitution is the supreme law of the land, establishing the framework for the federal government and guaranteeing the rights of citizens."
+      id: 302,
+      question: "What is the supreme law of the land in the United States?",
+      options: ["The Declaration of Independence", "The Articles of Confederation", "The Constitution", "The Bill of Rights"],
+      correctAnswer: "The Constitution",
+      explanation: "The U.S. Constitution is the supreme law of the land, establishing the framework for the federal government and guaranteeing the rights of citizens."
     }
   ],
   'custom-trivia': [
      {
-      "id": 401,
-      "question": "This is a sample custom question. You can upload your own questions using the 'Upload Questions' button on the homepage.",
-      "options": ["Option A", "Option B", "Option C", "Option D"],
-      "correctAnswer": "Option A",
-      "explanation": "This is the explanation for the sample custom question. When you upload your own questions, you can provide your own explanations as well."
+      id: 401,
+      question: "This is a sample custom question. You can upload your own questions using the 'Upload Questions' button on the homepage.",
+      options: ["Option A", "Option B", "Option C", "Option D"],
+      correctAnswer: "Option A",
+      explanation: "This is the explanation for the sample custom question. When you upload your own questions, you can provide your own explanations as well."
     }
   ]
 };
