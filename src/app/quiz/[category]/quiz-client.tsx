@@ -76,8 +76,7 @@ export function QuizClient({ category }: { category: string }) {
     setIsCorrect(correct);
     if (correct) {
       setScore(prev => prev + 1);
-      // Play sound from a Base64 data URI
-      const audio = new Audio('data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAAABkYXRhAAAAAA==');
+      const audio = new Audio('/sounds/correct-answer.wav');
       audio.play();
     }
 
@@ -268,5 +267,4 @@ export function QuizClient({ category }: { category: string }) {
     </Card>
   );
 }
-    
     
