@@ -13,6 +13,10 @@ import { cn } from '@/lib/utils';
 import { CheckCircle, XCircle, Trophy, Lightbulb } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 
+const correctSoundBase64 = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=";
+const incorrectSoundBase64 = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=";
+
+
 export function QuizClient({ category }: { category: string }) {
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   const [askedQuestionIds, setAskedQuestionIds] = useState<Set<number>>(new Set());
@@ -24,12 +28,20 @@ export function QuizClient({ category }: { category: string }) {
   const [outOfQuestions, setOutOfQuestions] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
+  const { correctAnswerSound, incorrectAnswerSound } = useMemo(() => {
+    if (typeof window !== 'undefined') {
+      const correct = new Audio(correctSoundBase64);
+      const incorrect = new Audio(incorrectSoundBase64);
+      return { correctAnswerSound: correct, incorrectAnswerSound: incorrect };
+    }
+    return { correctAnswerSound: null, incorrectAnswerSound: null };
+  }, []);
+
   useEffect(() => {
     const questions = getQuestionsByCategory(category);
     setAllQuestions(questions);
     setIsLoading(false);
 
-    // Load asked questions from local storage
     const storedAskedIds = localStorage.getItem(`askedQuestionIds_${category}`);
     if (storedAskedIds) {
       setAskedQuestionIds(new Set(JSON.parse(storedAskedIds)));
@@ -37,10 +49,8 @@ export function QuizClient({ category }: { category: string }) {
   }, [category]);
 
   const selectNewQuestion = useCallback(() => {
-    // Filter out questions that have already been asked
     const availableQuestions = allQuestions.filter(q => !askedQuestionIds.has(q.id));
     
-    // If we have questions, but they've all been asked, we're out of new questions.
     if (availableQuestions.length === 0 && allQuestions.length > 0) {
       if(askedQuestionIds.size >= allQuestions.length) {
          setOutOfQuestions(true);
@@ -74,16 +84,16 @@ export function QuizClient({ category }: { category: string }) {
     const correct = answer === currentQuestion?.correctAnswer;
     setSelectedAnswer(answer);
     setIsCorrect(correct);
+    
     if (correct) {
       setScore(prev => prev + 1);
-      const audio = new Audio('/sounds/correct-answer.wav');
-      audio.play();
+      correctAnswerSound?.play();
+    } else {
+      incorrectAnswerSound?.play();
     }
 
     const newAskedQuestionIds = new Set([...Array.from(askedQuestionIds), currentQuestion!.id]);
     setAskedQuestionIds(newAskedQuestionIds);
-
-    // Save asked questions to local storage
     localStorage.setItem(`askedQuestionIds_${category}`, JSON.stringify(Array.from(newAskedQuestionIds)));
 
     if (newAskedQuestionIds.size === allQuestions.length && allQuestions.length > 0) {
@@ -105,8 +115,6 @@ export function QuizClient({ category }: { category: string }) {
     setScore(0);
     setOutOfQuestions(false);
     setQuizFinished(false);
-    // After resetting, immediately select a new question
-    // We need a slight delay to ensure state updates before selecting a new question
     setTimeout(() => {
        const availableQuestions = allQuestions;
        if (availableQuestions.length > 0) {
@@ -267,4 +275,5 @@ export function QuizClient({ category }: { category: string }) {
     </Card>
   );
 }
+
     

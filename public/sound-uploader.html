@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound to Base64 Converter</title>
+    <style>
+        body { font-family: sans-serif; padding: 2em; }
+        #output { margin-top: 1em; padding: 1em; border: 1px solid #ccc; word-wrap: break-word; }
+    </style>
+</head>
+<body>
+    <h1>Sound File to Base64 Converter</h1>
+    <p>Select your sound file (.wav, .mp3, etc.) and copy the generated Base64 string.</p>
+    <input type="file" id="soundFile" accept="audio/*">
+    <div id="output"></div>
+    <script>
+        document.getElementById('soundFile').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('output').textContent = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
