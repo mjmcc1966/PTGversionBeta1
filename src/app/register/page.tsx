@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { auth, db } from '@/lib/firebase';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { doc, getDoc, updateDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -63,9 +63,16 @@ export default function Register() {
         uses: codeData.uses + 1,
       });
 
+      // Sign in the user to establish the session
+      await signInWithEmailAndPassword(auth, email, password);
+
       router.push('/'); // Redirect to home on successful registration
     } catch (error: any) {
-      setError(error.message);
+        if (error.code === 'auth/email-already-in-use') {
+            setError('This email is already registered. Please use a different email.');
+        } else {
+            setError(error.message);
+        }
     }
   };
 
