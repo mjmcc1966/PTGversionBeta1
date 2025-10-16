@@ -12,7 +12,7 @@ export function generateStaticParams() {
   ];
 }
 
-export default async function QuizPage({ params }: { params: { category: string } }) {
+function QuizPage({ params }: { params: { category: string } }) {
   const categoryName = decodeURIComponent(params.category).replace(/-/g, ' ');
 
   return (
@@ -33,3 +33,5 @@ export default async function QuizPage({ params }: { params: { category: string 
     </main>
   );
 }
+
+export default QuizPage;

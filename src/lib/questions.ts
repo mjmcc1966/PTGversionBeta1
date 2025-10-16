@@ -11,49 +11,6 @@ export interface Question {
 export const triviaData: { [key: string]: Question[] } = {
   'general-trivia': [
     {
-      id: 101,
-      question: "What is the capital of Japan?",
-      options: ["Nagasaki", "Moscow", "Tokyo", "Hiroshima"],
-      correctAnswer: "Tokyo",
-      explanation: "Tokyo has been the capital of Japan since 1868, when Emperor Meiji moved the Imperial Court from Kyoto to Edo, which was then renamed Tokyo."
-    },
-    {
-      id: 102,
-      question: "Who wrote 'Romeo and Juliet'?",
-      options: ["Charles Dickens", "William Shakespeare", "Jane Austen", "Mark Twain"],
-      correctAnswer: "William Shakespeare",
-      explanation: "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young star-crossed lovers whose deaths ultimately reconcile their feuding families."
-    },
-    {
-      id: 103,
-      question: "What is the largest mammal in the world?",
-      options: ["African Elephant", "Giraffe", "Humpback Whale", "Blue Whale"],
-      correctAnswer: "Blue Whale",
-      explanation: "The blue whale is the largest animal on the planet, weighing as much as 200 tons (approximately 33 elephants). Its heart is the size of a small car."
-    },
-    {
-      id: 104,
-      question: "In what year did the Titanic sink?",
-      options: ["1905", "1912", "1918", "1923"],
-      correctAnswer: "1912",
-      explanation: "The RMS Titanic sank in the early hours of April 15, 1912, in the North Atlantic Ocean after striking an iceberg during its maiden voyage from Southampton to New York City. The ship had been declared 'unsinkable'."
-    },
-    {
-      id: 105,
-      question: "What element does 'O' represent on the periodic table?",
-      options: ["Gold", "Oxygen", "Osmium", "Oganesson"],
-      correctAnswer: "Oxygen",
-      explanation: "The symbol 'O' represents Oxygen, a chemical element with atomic number 8. It is a highly reactive nonmetal and an oxidizing agent that readily forms oxides with most elements."
-    },
-    {
-      id: 106,
-      question: "What is the name of this famous landmark?",
-      imageUrl: "https://picsum.photos/seed/106/600/400",
-      options: ["Eiffel Tower", "Statue of Liberty", "Colosseum", "Great Wall of China"],
-      correctAnswer: "Eiffel Tower",
-      explanation: "This is the Eiffel Tower. It is a wrought-iron lattice tower on the Champ de Mars in Paris, France."
-    },
-    {
       id: 501,
       question: "Which land mammal has the most teeth?",
       options: ["Giant armadillo","Domestic dog","Lion","Sloth"],
@@ -2470,41 +2427,6 @@ export const triviaData: { [key: string]: Question[] } = {
     }
   ],
   'state-trivia': [
-    {
-      id: 201,
-      question: "What is the capital of California?",
-      options: ["Los Angeles", "Sacramento", "San Francisco", "San Diego"],
-      correctAnswer: "Sacramento",
-      explanation: "Sacramento has been the capital of California since 1854. It's known for its role in the Gold Rush and as a major agricultural hub."
-    },
-    {
-      id: 202,
-      question: "Which state is known as the 'Sunshine State'?",
-      options: ["Florida", "California", "Arizona", "Hawaii"],
-      correctAnswer: "Florida",
-      explanation: "Florida's official nickname is the 'Sunshine State' due to its warm climate and many sunny days, making it a popular tourist destination."
-    },
-    {
-      id: 203,
-      question: "What is the largest state by area?",
-      options: ["Texas", "California", "Alaska", "Montana"],
-      correctAnswer: "Alaska",
-      explanation: "Alaska is by far the largest state in the US, with a land area of over 663,000 square miles, more than twice the size of Texas."
-    },
-    {
-      id: 204,
-      question: "Mount Rushmore is located in which state?",
-      options: ["Wyoming", "Montana", "North Dakota", "South Dakota"],
-      correctAnswer: "South Dakota",
-      explanation: "Mount Rushmore National Memorial is located in the Black Hills region of South Dakota. It features the carved faces of four U.S. presidents."
-    },
-    {
-      id: 205,
-      question: "What state is the only one to have a non-rectangular flag?",
-      options: ["Ohio", "Maryland", "Texas", "New Mexico"],
-      correctAnswer: "Ohio",
-      explanation: "Ohio's flag is a swallow-tailed burgee, the only non-rectangular state flag in the United States. It was designed in 1901."
-    },
     {
       id: 846,
       question: "Which state is known as the yellowhammer state (after the state bird), also called the Cotton State?",
