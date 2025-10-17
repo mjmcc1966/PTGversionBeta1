@@ -991,621 +991,1588 @@ export const triviaData: { [key: string]: Question[] } = {
       explanation: "The Asian giant hornet is the largest social wasp, at 2 inches (5 cm) long, and they inject a potent neurotoxin called mandaratoxin."
     },
     {
-      "id": 641,
-      "question": "In \"Ferris Bueller's Day Off\", director John Hughes paid tribute to his childhood hero Gordie Howe by having the character of Cameron wear a hockey jersey from this team.",
-      "options": [
+      id: 641,
+      question: "In \"Ferris Bueller's Day Off\", director John Hughes paid tribute to his childhood hero Gordie Howe by having the character of Cameron wear a hockey jersey from this team.",
+      options: [
         "Detroit Red Wings",
         "Chicago Blackhawks",
         "Philadelphia Flyers",
         "St Louis Blues"
       ],
-      "correctAnswer": "Detroit Red Wings",
-      "explanation": "Howe played 25 of his 26 seasons with the Red Wings and was known as Mr Hockey."
+      correctAnswer: "Detroit Red Wings",
+      explanation: "Howe played 25 of his 26 seasons with the Red Wings and was known as Mr Hockey."
     },
     {
-      "id": 642,
-      "question": "What does Jareth the Goblin King, played by David Bowie, twirl in his hands in \"Labyrinth\"?",
-      "options": [
+      id: 642,
+      question: "What does Jareth the Goblin King, played by David Bowie, twirl in his hands in \"Labyrinth\"?",
+      options: [
         "A crystal ball",
         "A sceptre",
         "A spell book",
         "A baby"
       ],
-      "correctAnswer": "A crystal ball",
-      "explanation": "The director Jim Henson also considered Prince, Sting and Michael Jackson for the role played by Bowie."
+      correctAnswer: "A crystal ball",
+      explanation: "The director Jim Henson also considered Prince, Sting and Michael Jackson for the role played by Bowie."
     },
     {
-      "id": 643,
-      "question": "In what language was the New Testament originally written?",
-      "options": [
+      id: 643,
+      question: "In what language was the New Testament originally written?",
+      options: [
         "Greek",
         "Hebrew",
         "Heiroglyphics",
         "German"
       ],
-      "correctAnswer": "Greek",
-      "explanation": "The original text of the bible was a giant run-on sentence with no punctuation, known as scriptio continua."
+      correctAnswer: "Greek",
+      explanation: "The original text of the bible was a giant run-on sentence with no punctuation, known as scriptio continua."
     },
     {
-      "id": 644,
-      "question": "What snack is named after a city in Massachusetts?",
-      "options": [
+      id: 644,
+      question: "What snack is named after a city in Massachusetts?",
+      options: [
         "Fig newtons",
         "Worcester pies",
         "Malden malts",
         "Taunton puffs"
       ],
-      "correctAnswer": "Fig newtons",
-      "explanation": "The original fig roll was developed by a Philadelphia baker, but named \"Newton\" when sold to the Kennedy Biscuit company near Newton, MA."
+      correctAnswer: "Fig newtons",
+      explanation: "The original fig roll was developed by a Philadelphia baker, but named \"Newton\" when sold to the Kennedy Biscuit company near Newton, MA."
     },
     {
-      "id": 645,
-      "question": "Sternutation is the medical term for this common bodily function.",
-      "options": [
+      id: 645,
+      question: "Sternutation is the medical term for this common bodily function.",
+      options: [
         "Sneezing",
         "Burping",
         "Farting",
         "Coughing"
       ],
-      "correctAnswer": "Sneezing",
-      "explanation": "It is not possible to sneeze while asleep due to something called REM atonia."
+      correctAnswer: "Sneezing",
+      explanation: "It is not possible to sneeze while asleep due to something called REM atonia."
     },
     {
-      "id": 646,
-      "question": "Which of these animals has the most number of bones in its skeleton?",
-      "options": [
+      id: 646,
+      question: "Which of these animals has the most number of bones in its skeleton?",
+      options: [
         "Python",
         "Elephant",
         "Giraffe",
         "Armadillo"
       ],
-      "correctAnswer": "Python",
-      "explanation": "A python can have over 1,800 bones due to the hundreds of vertebrae and ribs."
+      correctAnswer: "Python",
+      explanation: "A python can have over 1,800 bones due to the hundreds of vertebrae and ribs."
     },
     {
-      "id": 647,
-      "question": "The smallest bone in the human body can be found in this body part/area.",
-      "options": [
+      id: 647,
+      question: "The smallest bone in the human body can be found in this body part/area.",
+      options: [
         "Ear",
         "Knee",
         "Shoulder",
         "Throat"
       ],
-      "correctAnswer": "Ear",
-      "explanation": "The middle ear has the 3 smallest bones, the hammer, anvil and stirrup, that aid in transmitting sound. The stirrup (stapes) is the smallest of them."
+      correctAnswer: "Ear",
+      explanation: "The middle ear has the 3 smallest bones, the hammer, anvil and stirrup, that aid in transmitting sound. The stirrup (stapes) is the smallest of them."
     },
     {
-      "id": 648,
-      "question": "This bone disorder causes a left-right curvature of the spine.",
-      "options": [
+      id: 648,
+      question: "This bone disorder causes a left-right curvature of the spine.",
+      options: [
         "Scoliosis",
         "Osteoporosis",
         "Lordosis",
         "Kyphosis"
       ],
-      "correctAnswer": "Scoliosis",
-      "explanation": "The condition is found in about 3% of people and the word comes from the Greek word meaning 'a bending'."
+      correctAnswer: "Scoliosis",
+      explanation: "The condition is found in about 3% of people and the word comes from the Greek word meaning 'a bending'."
     },
     {
-      "id": 649,
-      "question": "Which solo artist had the most #1 songs on the charts?",
-      "options": [
+      id: 649,
+      question: "Which solo artist had the most #1 songs on the charts?",
+      options: [
         "Mariah Carey",
         "Elvis Presley",
         "Michael Jackson",
         "Taylor Swift"
       ],
-      "correctAnswer": "Mariah Carey",
-      "explanation": "Carey has 19 #1 songs. Presley had 18 as a solo artist. Jackson had 13, Swift has 12."
+      correctAnswer: "Mariah Carey",
+      explanation: "Carey has 19 #1 songs. Presley had 18 as a solo artist. Jackson had 13, Swift has 12."
     },
     {
-      "id": 650,
-      "question": "Ian Fleming, author of the James Bond novels, has an airport named after him in this country.",
-      "options": [
+      id: 650,
+      question: "Ian Fleming, author of the James Bond novels, has an airport named after him in this country.",
+      options: [
         "Jamaica",
         "England",
         "Scotland",
         "Greece"
       ],
-      "correctAnswer": "Jamaica",
-      "explanation": "Fleming died in 1964, and while he was British, he had a home in Jamaica and wrote all 14 of his Bond books there."
+      correctAnswer: "Jamaica",
+      explanation: "Fleming died in 1964, and while he was British, he had a home in Jamaica and wrote all 14 of his Bond books there."
     },
     {
-      "id": 651,
-      "question": "The youngest solo artist to reach the Billboard Hot 100, in 1963, was Stevland Hardaway Judkins, who was born in 1950 and was better known as ___.",
-      "options": [
+      id: 651,
+      question: "The youngest solo artist to reach the Billboard Hot 100, in 1963, was Stevland Hardaway Judkins, who was born in 1950 and was better known as ___.",
+      options: [
         "Stevie Wonder",
         "George Thorogood",
         "Peter Gabriel",
         "Billie Ocean"
       ],
-      "correctAnswer": "Stevie Wonder",
-      "explanation": "He was 13 when he released 'Fingertips', and he has won 25 Grammys and sold over 100 million albums."
+      correctAnswer: "Stevie Wonder",
+      explanation: "He was 13 when he released 'Fingertips', and he has won 25 Grammys and sold over 100 million albums."
     },
     {
-      "id": 652,
-      "question": "This acronym is named in part for Alan Turing, and it proves that you are a human on a website and not a bot.",
-      "options": [
+      id: 652,
+      question: "This acronym is named in part for Alan Turing, and it proves that you are a human on a website and not a bot.",
+      options: [
         "Captcha test",
         "Black box test",
         "Moore's test",
         "Honeypot test"
       ],
-      "correctAnswer": "Captcha test",
-      "explanation": "It stands for \"Completely Automated Public Turing test to tell Computers and Humans Apart.\""
+      correctAnswer: "Captcha test",
+      explanation: "It stands for \"Completely Automated Public Turing test to tell Computers and Humans Apart.\""
     },
     {
-      "id": 653,
-      "question": "This was the first scripted TV show to shoot on 35mm film in front of a live audience, starting in 1951, and starred (among others) Desi Arnaz.",
-      "options": [
+      id: 653,
+      question: "This was the first scripted TV show to shoot on 35mm film in front of a live audience, starting in 1951, and starred (among others) Desi Arnaz.",
+      options: [
         "I Love Lucy",
         "The Ed Sullivan Show",
         "Gunsmoke",
         "The Twilight Zone"
       ],
-      "correctAnswer": "I Love Lucy",
-      "explanation": "The show was the highest rated show 4 of the 6 years it aired, and won 5 Emmys."
+      correctAnswer: "I Love Lucy",
+      explanation: "The show was the highest rated show 4 of the 6 years it aired, and won 5 Emmys."
     },
     {
-      "id": 654,
-      "question": "The highest point in this European country is Signal de Botrange at 700 meters (2,300 ft), with the last 6 meters a staircase to nowhere.",
-      "options": [
+      id: 654,
+      question: "The highest point in this European country is Signal de Botrange at 700 meters (2,300 ft), with the last 6 meters a staircase to nowhere.",
+      options: [
         "Belgium",
         "France",
         "Switzerland",
         "Spain"
       ],
-      "correctAnswer": "Belgium",
-      "explanation": "In 2013, an additional 160 ft tower was added that allowed for real-time transfer of data between the London and Frankfurt stock exchanges."
+      correctAnswer: "Belgium",
+      explanation: "In 2013, an additional 160 ft tower was added that allowed for real-time transfer of data between the London and Frankfurt stock exchanges."
     },
     {
-      "id": 655,
-      "question": "Which of these vehicles has sold the most units, as of 2024?",
-      "options": [
+      id: 655,
+      question: "Which of these vehicles has sold the most units, as of 2024?",
+      options: [
         "Toyota Corolla",
         "Ford Model T",
         "Volkswagen Beetle",
         "Chevrolet Impala"
       ],
-      "correctAnswer": "Toyota Corolla",
-      "explanation": "Selling over 50 million units since it's introduction in 1966, it is the Q-tip of vehicles."
+      correctAnswer: "Toyota Corolla",
+      explanation: "Selling over 50 million units since it's introduction in 1966, it is the Q-tip of vehicles."
     },
     {
-      "id": 656,
-      "question": "This colorful candy, popular around halloween, was originally known as \"chicken feed\" when introduced in 1888.",
-      "options": [
+      id: 656,
+      question: "This colorful candy, popular around halloween, was originally known as \"chicken feed\" when introduced in 1888.",
+      options: [
         "Candy corn",
         "Peeps",
         "Snickers",
         "Skittles"
       ],
-      "correctAnswer": "Candy corn",
-      "explanation": "It was called 'chicken feed' as most people at the time associated corn with animal feed."
+      correctAnswer: "Candy corn",
+      explanation: "It was called 'chicken feed' as most people at the time associated corn with animal feed."
     },
     {
-      "id": 657,
-      "question": "This popular Canadian dish's name translates as \"mess\".",
-      "options": [
+      id: 657,
+      question: "This popular Canadian dish's name translates as \"mess\".",
+      options: [
         "Poutine",
         "Justin Trudeau",
         "Timbits",
         "Tourtiere"
       ],
-      "correctAnswer": "Poutine",
-      "explanation": "Poutine is a dish of french fries with cheese curds and gravy. Just kidding about Trudeau...he's not that good looking."
+      correctAnswer: "Poutine",
+      explanation: "Poutine is a dish of french fries with cheese curds and gravy. Just kidding about Trudeau...he's not that good looking."
     },
     {
-      "id": 658,
-      "question": "The breakdown of this plant pigment is responsible for the colorful leaves we see in the fall.",
-      "options": [
+      id: 658,
+      question: "The breakdown of this plant pigment is responsible for the colorful leaves we see in the fall.",
+      options: [
         "Chlorophyll",
         "Actin",
         "Betalain",
         "Anthoxanthin"
       ],
-      "correctAnswer": "Chlorophyll",
-      "explanation": "As the chlorophyll breaks down each fall it allows the colorful carotenoids to be displayed."
+      correctAnswer: "Chlorophyll",
+      explanation: "As the chlorophyll breaks down each fall it allows the colorful carotenoids to be displayed."
     },
     {
-      "id": 659,
-      "question": "Russia is the largest country by land area. What is the second largest?",
-      "options": [
+      id: 659,
+      question: "Russia is the largest country by land area. What is the second largest?",
+      options: [
         "Canada",
         "Brazil",
         "India",
         "China"
       ],
-      "correctAnswer": "Canada",
-      "explanation": "Canada also has the world's longest coastline and the longest international land border (with the US). And they were the second country to legalize weed (in 2018)."
+      correctAnswer: "Canada",
+      explanation: "Canada also has the world's longest coastline and the longest international land border (with the US). And they were the second country to legalize weed (in 2018)."
     },
     {
-      "id": 660,
-      "question": "This common English word comes from an ancient Latin word describing where one road splits into two roads.",
-      "options": [
+      id: 660,
+      question: "This common English word comes from an ancient Latin word describing where one road splits into two roads.",
+      options: [
         "Trivia",
         "Fork",
         "Interchange",
         "Avenue"
       ],
-      "correctAnswer": "Trivia",
-      "explanation": "The Great Midwest Trivia Contest, held each year in January in Appleton, WI, since 1966, is the longest running trivia contest in the world."
+      correctAnswer: "Trivia",
+      explanation: "The Great Midwest Trivia Contest, held each year in January in Appleton, WI, since 1966, is the longest running trivia contest in the world."
     },
     {
-      "id": 661,
-      "question": "This monument is the tallest manmade monument in the US, and is a tribute to the westward expansion of the US.",
-      "options": [
+      id: 661,
+      question: "This monument is the tallest manmade monument in the US, and is a tribute to the westward expansion of the US.",
+      options: [
         "Gateway Arch",
         "Jefferson Memorial",
         "Washington Monument",
         "Statue of Liberty"
       ],
-      "correctAnswer": "Gateway Arch",
-      "explanation": "At 630 ft (192 m), the Arch is covered in stainless steel and is the world's tallest arch."
+      correctAnswer: "Gateway Arch",
+      explanation: "At 630 ft (192 m), the Arch is covered in stainless steel and is the world's tallest arch."
     },
     {
-      "id": 662,
-      "question": "A \"business\" or \"busyness\" refers to a group of these furry animals.",
-      "options": [
+      id: 662,
+      question: "A \"business\" or \"busyness\" refers to a group of these furry animals.",
+      options: [
         "Ferrets",
         "Skunks",
         "Lions",
         "Mice"
       ],
-      "correctAnswer": "Ferrets",
-      "explanation": "The name ferret comes from the Latin word for \"little thief\". A male ferret is called a hob and a female is a jill."
+      correctAnswer: "Ferrets",
+      explanation: "The name ferret comes from the Latin word for \"little thief\". A male ferret is called a hob and a female is a jill."
     },
     {
-      "id": 663,
-      "question": "What nickname has been on every NFL football from 1941 to 1969, and again since 2006, to honor Wellington Mara?",
-      "options": [
+      id: 663,
+      question: "What nickname has been on every NFL football from 1941 to 1969, and again since 2006, to honor Wellington Mara?",
+      options: [
         "The Duke",
         "The Prince",
         "The King",
         "The Champ"
       ],
-      "correctAnswer": "The Duke",
-      "explanation": "Mara was the son of the original founder and owner of the NY Giants, and he was named after the Duke of Wellington."
+      correctAnswer: "The Duke",
+      explanation: "Mara was the son of the original founder and owner of the NY Giants, and he was named after the Duke of Wellington."
     },
     {
-      "id": 664,
-      "question": "What is the best-selling ice cream flavor in the US?",
-      "options": [
+      id: 664,
+      question: "What is the best-selling ice cream flavor in the US?",
+      options: [
         "Vanilla",
         "Chocolate",
         "Strawberry",
         "Neopolitan"
       ],
-      "correctAnswer": "Vanilla",
-      "explanation": "During the 1780s, Thomas Jefferson wrote his own recipe for vanilla ice cream. The recipe is housed at the Library of Congress."
+      correctAnswer: "Vanilla",
+      explanation: "During the 1780s, Thomas Jefferson wrote his own recipe for vanilla ice cream. The recipe is housed at the Library of Congress."
     },
     {
-      "id": 665,
-      "question": "What US territory has the motto \"Where America's Day Begins\"?",
-      "options": [
+      id: 665,
+      question: "What US territory has the motto \"Where America's Day Begins\"?",
+      options: [
         "Guam",
         "Hawaii",
         "Puerto Rico",
         "American Samoa"
       ],
-      "correctAnswer": "Guam",
-      "explanation": "Guam is 20 hours ahead of Hawaii and is west of the International Date Line."
+      correctAnswer: "Guam",
+      explanation: "Guam is 20 hours ahead of Hawaii and is west of the International Date Line."
     },
     {
-      "id": 666,
-      "question": "This cartoon originally aired from 1959-1964, featured villains Boris Badenov and Natasha Fatale, and was an inspiration for The Simpsons, among others.",
-      "options": [
+      id: 666,
+      question: "This cartoon originally aired from 1959-1964, featured villains Boris Badenov and Natasha Fatale, and was an inspiration for The Simpsons, among others.",
+      options: [
         "The Adventures of Rocky and Bullwinkle and Friends",
         "Mr Magoo",
         "The Flinstones",
         "The Deputy Dawg Show"
       ],
-      "correctAnswer": "The Adventures of Rocky and Bullwinkle and Friends",
-      "explanation": "June Foray was the voice of Rocky the Flying Squirrel, Natasha Fatale, and every other female character on the show."
+      correctAnswer: "The Adventures of Rocky and Bullwinkle and Friends",
+      explanation: "June Foray was the voice of Rocky the Flying Squirrel, Natasha Fatale, and every other female character on the show."
     },
     {
-      "id": 846,
-      "question": "Which state is known as the yellowhammer state (after the state bird), also called the Cotton State?",
-      "options": [
-        "Alabama",
-        "Louisiana",
-        "Ohio",
-        "West Virginia"
-      ],
-      "correctAnswer": "Alabama",
-      "explanation": "The northern flicker is also known as the yellowhammer. There was also a company of soldiers in the Civil War known as the yellowhammers."
+      id:667,
+      question:"Baby Ruth candy bars are named after this president's daughter.",
+      options:["Grover Cleveland","Ronald Reagan","Alexander Hamilton","Bill Clinton"],
+      correctAnswer:"Grover Cleveland",
+      explanation:"President Cleveland's daughter Ruth was known to have a smooth nougat center."
     },
     {
-      "id": 847,
-      "question": "In which state will you find \"Rocket City USA\", ",
-      "options": [
-        "Alabama",
-        "California",
-        "Texas",
-        "Florida"
-      ],
-      "correctAnswer": "Alabama",
-      "explanation": "NASA's Marshall Space Flight Center is in Huntsville, the most populous city in AL, and is where the Saturn rockets were built."
+      id:668,
+      question:"On which continent would you find the largest desert?",
+      options:["Antarctica","Africa","South America","Australia"],
+      correctAnswer:"Antarctica",
+      explanation:"The Antarctic desert is over twice the size of the Sahara, and Antarctica has no permanent human residents."
     },
     {
-      "id": 848,
-      "question": "The Tennessee River starts and ends in Tennessee, but a long stretch in the middle passes into this state",
-      "options": [
-        "Alabama",
-        "Mississippi",
-        "Georgia",
-        "Oklahoma"
-      ],
-      "correctAnswer": "Alabama",
-      "explanation": "It was once known as the Cherokee River, and it starts in Knoxville before ending in the Ohio River."
+      id:669,
+      question:"Famed stage actor Alan Rickman made his film debut in this beloved movie.",
+      options:["Die Hard","The January Man","Love, Actually","Quigley Down Under"],
+      correctAnswer:"Die Hard",
+      explanation:"The Nakatomi Plaza was filmed in the Fox Plaza, under construction at the time. Yet Fox - the film's distributor - still charged the movie a location rental fee."
     },
     {
-      "id": 849,
-      "question": "Which state's capital is known as the Cradle of the Confederacy?",
-      "options": [
-        "Alabama",
-        "Arkansas",
-        "Mississippi",
-        "Georgia"
-      ],
-      "correctAnswer": "Alabama",
-      "explanation": "Montgomery hosted the Southern Convention in 1861, in which 7 seceding southern states established the Confederacy."
+      id:670,
+      question:"This popular soda was originally intended as a moonshine chaser.",
+      options:["Mountain Dew","Tab","Mr. Pibb","Mello Yello"],
+      correctAnswer:"Mountain Dew",
+      explanation:"Mountain Dew is banned in over 100 countries because it contains brominated vegetable oil, which contains the flame retardant bromine. This can build up in the body and cause memory loss. This can build up in the body and cause memory loss. This can build up in the body and....I forget..."
     },
     {
-      "id": 850,
-      "question": "The first 911 call in the US was made in this state.",
-      "options": [
-        "Alabama",
-        "Tennessee",
-        "Pennsylvania",
-        "New York"
-      ],
-      "correctAnswer": "Alabama",
-      "explanation": "It was in 1968 in Haleyville, AL, and ushered in the era of people considering anything annoying, inconvenient or stressful to be an emergency."
+      id:671,
+      question:"These monks have a monkey named after them.",
+      options:["Capuchins","Carmelites","Augustinians","Cistercians"],
+      correctAnswer:"Capuchins",
+      explanation:"When Portugeuse explorers first saw these monkeys, they reminded them of the monks in their robes. There is also a coffee drink named after the monks."
     },
     {
-      "id": 851,
-      "question": "This state has the most fast food restaurants per capita.",
-      "options": [
-        "West Virginia",
-        "Arkansas",
-        "New Jersey",
-        "Alabama"
-      ],
-      "correctAnswer": "West Virginia",
-      "explanation": "According to Pricelisto, the state has 49.04 fast food places per 100,000 residents. By complete and utter coincidence, the state is the most obese, with 41.2% of the population meeting criteria for obesity."
+      id:672,
+      question:"The \"Coffee Cantata\", written by this classical composer, tells the story of a father trying to prevent his daughter from drinking too much coffee.",
+      options:["Johann Sebastian Bach","Wolfgang Mozart","Claude Debussy","Antonio Vivaldi"],
+      correctAnswer:"Johann Sebastian Bach",
+      explanation:"Bach himself was addicted to coffee; it was said that he would drink up to 30 cups of coffee a day. The song's name in German translates as \"Be still, stop chattering\""
     },
     {
-      "id": 852,
-      "question": "This state outlaws dressing up as a nun, priest or rabbi on Halloween.",
-      "options": [
-        "Alabama",
-        "Utah",
-        "Texas",
-        "Mississippi"
-      ],
-      "correctAnswer": "Alabama",
-      "explanation": "It is a misdemeanor to dress as clergy any time, with a fine of up to $500 and up to 1 year in jail. The law was enacted during civil rights protests in 1965."
+      id:673,
+      question:"What does SCUBA stand for?",
+      options:["Self contained underwater breathing apparatus","Special container for underwater breathing of air","Sealed container with useful breatheable air","It does't stand for anything, it's the name of the lab where it was invented."],
+      correctAnswer:"Self contained underwater breathing apparatus",
+      explanation:"Nitrogen narcosis can develop at any diving depth due to the effects of nitrogen at high pressure causing an anesthetic effect in the brain."
     },
     {
-      "id": 853,
-      "question": "This state is known as The Last Frontier.",
-      "options": [
-        "Alaska",
-        "Montana",
-        "Nevada",
-        "Wyoming"
-      ],
-      "correctAnswer": "Alaska",
-      "explanation": "About 90% of the state is not accessible by any road and much of it is still relatively unexplored."
+      id:674,
+      question:"What date is inscribed on the tablet in the left hand of the Statue of Liberty?",
+      options:["July 4, 1776'","To U.S.A., a gift from France","La Liberte eclairant le monde (Liberty enlightening the world)","Frederic Auguste Bartholdi (the sculptor's name)"],
+      correctAnswer:"July 4, 1776'",
+      explanation:"The tablet is known as a tabula ansata and it symbolizes the rule of law in America. She wears a size 879 shoe on her 25 foot long foot."
     },
     {
-      "id": 854,
-      "question": "This state has 6 times the number of pilots per capita, and 16 times the number of aircraft per capita, than any other state.",
-      "options": [
-        "Alaska",
-        "New York",
-        "California",
-        "Wyoming"
-      ],
-      "correctAnswer": "Alaska",
-      "explanation": "Since there are so few roads in the state, airplanes are the chief way to get around."
+      id:675,
+      question:"What is the name of the poem at the base of the Statue of LIberty, with the famous line, \"Give me your tired, your poor, your huddled masses\"?",
+      options:["The New Colossus","And Still I Rise","Ozymandias","This Land is Your Land"],
+      correctAnswer:"The New Colossus",
+      explanation:"Emma Lazarus originally wrote the sonnet as part of a fundraising effort to build the Statue's pedestal."
     },
     {
-      "id": 855,
-      "question": "This state has the most coastline, in terms of total miles",
-      "options": [
-        "Alaska",
-        "California",
-        "Michigan",
-        "Florida"
-      ],
-      "correctAnswer": "Alaska",
-      "explanation": "It has 33,904 miles (54,563 km) of coastline, about 4 times more than runner-up Florida."
+      id:676,
+      question:"The longest-running scripted prime time TV show in the US is ____, with over 790 episodes as of 2025.",
+      options:["The Simpsons","Law & Order","South Park","Gunsmoke"],
+      correctAnswer:"The Simpsons",
+      explanation:"The show is signed through the 2029 season. Gunsmoke was the longest running primetime drama."
     },
     {
-      "id": 856,
-      "question": "The largest urban park in the world is 495,000 acres and located in this state",
-      "options": [
-        "Alaska",
-        "New York",
-        "Pennsylvania",
-        "Florida"
-      ],
-      "correctAnswer": "Alaska",
-      "explanation": "Chugach State Park, established in 1970, is located entirely within the Anchorage metropolitan area."
+      id:677,
+      question:"The longest running TV show of any kind (and it is still running) is ____.",
+      options:["Meet the Press","60 Minutes","CBS Evening News","Law & Order"],
+      correctAnswer:"Meet the Press",
+      explanation:"Broadcast continuously since 1947, Meet the Press is bested only by the Lord Mayor's Show in the UK, which airs once a year and celebrates the election of the lord mayor of the City of London."
     },
     {
-      "id": 857,
-      "question": "This state's capital is the largest by land area, at 3,255 sq miles.",
-      "options": [
-        "Alaska",
-        "Oklahoma",
-        "Florida",
-        "Arizona"
-      ],
-      "correctAnswer": "Alaska",
-      "explanation": "Juneau is also the only mainland North America capital that is not connected by road to the rest of the state or to North America."
+      id:678,
+      question:"In the 1970s, the US Coast Guard trained this animal to help spot something orange, yellow or red in the water.",
+      options:["Pigeons","Dolphins","Orcas","Dogs"],
+      correctAnswer:"Pigeons",
+      explanation:"Project Sea Hunt involved training the pigeons to peck at a key if they saw something in the water. They were 93% accurate, vs 38% accuracy for humans."
     },
     {
-      "id": 858,
-      "question": "This state has the longest border with another country, at 1,538 miles",
-      "options": [
-        "Alaska",
-        "Michigan",
-        "Texas",
-        "Maine"
-      ],
-      "correctAnswer": "Alaska",
-      "explanation": "Texas has a 1,241 mile border with Mexico."
+      id:679,
+      question:"What was the name of the first web browser and editor, released in late 1990?",
+      options:["WorldWideWeb (later called Nexus)","Netscape Navigator","Mosaic","Internet Explorer"],
+      correctAnswer:"WorldWideWeb (later called Nexus)",
+      explanation:"The first web page was made by Tim Berners-Lee and outlined how to make a web page. (The second web page was a porn version of the first.)"
     },
     {
-      "id": 859,
-      "question": "The king, or Chinook, salmon is the official fish of Oregon and of this state.",
-      "options": [
-        "Alaska",
-        "Washington",
-        "Maine",
-        "Colorado"
-      ],
-      "correctAnswer": "Alaska",
-      "explanation": "The largest of the Pacific salmon, it is anadromous, meaning it migrates from the sea to freshwater rivers to spawn."
+      id:680,
+      question:"Released in 1982, this is the greatest selling desktop computer model of all time.",
+      options:["Commodore 64","Apple II","Amiga 500","TRS-80"],
+      correctAnswer:"Commodore 64",
+      explanation:"Estimated to have sold between 17 million and 30 million units over its lifetime, the C64 gave nerds a solid reason to stay in their mom's basement."
     },
     {
-      "id": 860,
-      "question": "This state has the most volcanoes, with 141.",
-      "options": [
-        "Alaska",
-        "Hawaii",
-        "California",
-        "Oregon"
-      ],
-      "correctAnswer": "Alaska",
-      "explanation": "California is a distant second, with 18, and Oregon has 17, but the largest volcano in the world is Mauna Loa in Hawaii."
+      id:681,
+      question:"This British computer, first released in 2012, was originally designed to teach computing to kids.",
+      options:["Raspberry Pi","Commodore 64","Atari","Acorn BBC Master"],
+      correctAnswer:"Raspberry Pi",
+      explanation:"A typical raspberry pie uses 6 cups of raspberries and 1 1/4 cups of sugar."
     },
     {
-      "id": 861,
-      "question": "This state is the easternmost, westernmost and northernmost.",
-      "options": [
-        "Alaska",
-        "Florida",
-        "Hawaii",
-        "Maine"
-      ],
-      "correctAnswer": "Alaska",
-      "explanation": "The Aleutian Islands cross the 180 degree longitude mark, which makes the state both easternmost and westernmost."
+      id:682,
+      question:"This nation of about 170 islands was nicknamed \"the Friendly Islands\" by Captain Cook, when he landed there in 1773, even though the residents were actually plotting to attack him.",
+      options:["Tonga","Vanuatu","Guam","Philippines"],
+      correctAnswer:"Tonga",
+      explanation:"Cook was later killed on his second expedition to Hawaii, in 1779."
     },
     {
-      "id": 862,
-      "question": "This state has the highest percentage of men, at over 52%.",
-      "options": [
-        "Alaska",
-        "California",
-        "New York",
-        "Maine"
-      ],
-      "correctAnswer": "Alaska",
-      "explanation": "The US overall is 50.8% female, and only 10 states have more men than women."
+      id:683,
+      question:"These islands were first called the Sandwich Islands, a name given by James Cook, before getting their more common name in the 1840s.",
+      options:["Hawaii","Indonesia","Philippines","Carribbeans"],
+      correctAnswer:"Hawaii",
+      explanation:"The Spam musubi, a sandwich made of a slice of Spam, a block of rice and a piece of seaweed, is a classic Hawaiin sandwich."
     },
     {
-      "id": 863,
-      "question": "In this state, you can find the San Francisco mountain range, with its high point of Humphrey's Peak.",
-      "options": [
-        "Arizona",
-        "California",
-        "Nevada",
-        "New Mexico"
-      ],
-      "correctAnswer": "Arizona",
-      "explanation": "North of Flagstaff, Humphrey's Peak sits at 12,633 ft (3,851m)."
+      id:684,
+      question:"On which of the Hawaiian Islands would you find Honolulu?",
+      options:["Oahu","Hawaii","Maui","Kona"],
+      correctAnswer:"Oahu",
+      explanation:"Oahu is the third largest Hawaiin island but has 70% of the state's population."
     },
     {
-      "id": 864,
-      "question": "Hawaii was the 50th state, Alaska was the 49th. Which state was the 48th (in 1912)?",
-      "options": [
-        "Arizona",
-        "Utah",
-        "Idaho",
-        "Oregon"
-      ],
-      "correctAnswer": "Arizona",
-      "explanation": "It was the last of the contiguous states to be admitted, on Feb 14 of that year."
+      id:685,
+      question:"Who is credited with developing the oath that most physicians take upon graduating medical school?",
+      options:["Hippocrates","Galileo","Galen","Aristotle"],
+      correctAnswer:"Hippocrates",
+      explanation:"He is credited as being the first to state that disease was not caused by gods and superstitions, but rather by diet, living habits and environment. However, the Oath was almost certainly *not written by him."
     },
     {
-      "id": 865,
-      "question": "Lemonade is the official beverage of this desert state",
-      "options": [
-        "Arizona",
-        "Utah",
-        "Nevada",
-        "New Mexico"
-      ],
-      "correctAnswer": "Arizona",
-      "explanation": "It became such in 2019, due to the efforts of a local teenager."
+      id:686,
+      question:"This sugar in beans is hard for the body to break down, and contributes to beans making you gassy.",
+      options:["Raffinose","Lactose","Fructose","Gaseose"],
+      correctAnswer:"Raffinose",
+      explanation:"Humans rely on gut bacteria to make the enzyme alpha-galactosidase, which breaks down the sugar and causes the release of methane-containing gas. Raffinose itself is odorless."
     },
     {
-      "id": 866,
-      "question": "The town of Tombstone in this state is known as \"The Town Too Tough To Die\", and is famous for a gunfight in 1881.",
-      "options": [
-        "Arizona",
-        "New Mexico",
-        "Texas",
-        "Nevada"
-      ],
-      "correctAnswer": "Arizona",
-      "explanation": "While the shootout is widely believed to have had Wyatt Earp as the central figure, it was actually his brother Virgil who was the marshal of Tombstone at the time."
+      id:687,
+      question:"This country's flag is the only one that is not a rectangle, but rather two stacked triangular pennants.",
+      options:["Nepal","Tibet","Burkina Faso","Greece"],
+      correctAnswer:"Nepal",
+      explanation:"The red central area is the symbol of bravery, and it also represents the color of Nepal's national flower, the rhododendron. The blue border represents the color of peace. It is a combination of two single pennants, known as a double pennon."
     },
     {
-      "id": 867,
-      "question": "You will find the London Bridge, that once spanned the River Thames, in Lake Havasu City in this state.",
-      "options": [
-        "Arizona",
-        "New Mexico",
-        "Colorado",
-        "Nevada"
-      ],
-      "correctAnswer": "Arizona",
-      "explanation": "It was shipped via the Panama Canal to California, then transported by truck to Arizona in 1968."
+      id:688,
+      question:"Which of these national flags does NOT feature an eagle somewhere on the flag design?",
+      options:["Sri Lanka","Albania","Kazakhstan","Moldova"],
+      correctAnswer:"Sri Lanka",
+      explanation:"The Sri Lankan flag features a golden lion holding a sword in its right paw."
     },
     {
-      "id": 868,
-      "question": "The world's first professional rodeo took place in Prescott, in this state in 1888, before it was even a state.",
-      "options": [
-        "Arizona",
-        "Wyoming",
-        "Montana",
-        "Texas"
-      ],
-      "correctAnswer": "Arizona",
-      "explanation": "While the first rodeo was held in Cheyenne, WY, Arizona was the first to charge admission and award prizes."
+      id:689,
+      question:"This country's flag can be reversed to hang \"upside down\" to indicate the country is at war.",
+      options:["Philippines","United States","Switzerland","Nigeria"],
+      correctAnswer:"Philippines",
+      explanation:"The Philippines are made of over 7,600 islands covering 300,000 km2 (116,000 sq mi) with a population of 109 million. An upside down US flag indicates distress or peril."
     },
     {
-      "id": 869,
-      "question": "The only US interstate highway with distances listed in meters and kilometers is found in this state.",
-      "options": [
-        "Arizona",
-        "California",
-        "Maine",
-        "Michigan"
-      ],
-      "correctAnswer": "Arizona",
-      "explanation": "When I-19 was re-signed in 1980, the US was on a (failed) push to adopt the metric system, so this road connecting Nogales to Tucson has distances in metric, but the speed limit signs use MPH."
+      id:690,
+      question:"This airport has more runways in operation than any in the world.",
+      options:["O'Hare (Chicago)","Heathrow (London)","Hartsfield (Atlanta)","JFK (New York)"],
+      correctAnswer:"O'Hare (Chicago)",
+      explanation:"It has 8 runways, and was named after Edward \"Butch\" O'Hare, the first US Navy aviator Medal of Honor recipient during WWII."
+    },
+    {
+      id:691,
+      question:"This common produce used to be known as a \"love apple\".",
+      options:["Tomato","Pomegranate","Kumquat","Star fruit"],
+      correctAnswer:"Tomato",
+      explanation:"In 1981, the Reagan administration tried to cut the Federal School Lunch Program by 25% and proposed that things like ketchup could be considered a vegetable serving. Never mind the fact that the tomato is a fruit..."
+    },
+    {
+      id:692,
+      question:"Chipotles are just dried ____ peppers.",
+      options:["Jalapeno","Poblano","Habanero","Guajillo"],
+      correctAnswer:"Jalapeno",
+      explanation:"Jalapenos typically have a rating of 4,000-8,500 Scoville heat units. The hottest known pepper is the Pepper X, which has 2,693,000 Scoville heat units."
+    },
+    {
+      id:693,
+      question:"This company's first production car was the Model AA sedan, in 1936.",
+      options:["Toyota","Ford","Chevrolet","Honda"],
+      correctAnswer:"Toyota",
+      explanation:"The AA was essentially a copy of the DeSoto Airflow, and sold for about $530 in today's dollars."
+    },
+    {
+      id:694,
+      question:"For a spirit to be considered bourbon, it has to be made with at least 51% ____.",
+      options:["Corn","Wheat","Barley","Rye"],
+      correctAnswer:"Corn",
+      explanation:"It also must be made in the US, in new oak barrels, and cannot be distilled to more than 160 proof (80% alcohol)."
+    },
+    {
+      id:695,
+      question:"What is the name for the whiskey that evaporates from a barrel as it ages?",
+      options:["The angel's share","The Devil's take","The Lord's tithe","None should evaporate from a barrel."],
+      correctAnswer:"The angel's share",
+      explanation:"To be called Scotch, a whiskey must be aged in oak barrels in Scotland for a minimum of 3 years and a day."
+    },
+    {
+      id:696,
+      question:"The ___ is the longest river in the world.",
+      options:["Nile","Amazon","Mississippi","Yangtze"],
+      correctAnswer:"Nile",
+      explanation:"While the Nile is about 6,650 km (4,130 mi) long, the Amazon has about 75 times the discharge rate of the Nile, making it the largest river by discharge."
+    },
+    {
+      id:697,
+      question:"The first board game sold on Amazon was ____.",
+      options:["Cranium","Monopoly","Stratego","Clue"],
+      correctAnswer:"Cranium",
+      explanation:"It was also the first game sold at Barnes and Noble bookstores, and was bought by Hasbro in 2008 for $77 million. The maker of Politics: The Game would happily consider a similar offer from Hasbro. Just sayin'."
+    },
+    {
+      id:698,
+      question:"Dry ice is a solid form of this gas.",
+      options:["Carbon dioxide","Nitrous oxide","Dihydrogen monoxide","Butane dioxide"],
+      correctAnswer:"Carbon dioxide",
+      explanation:"If you had a cooler full of dry ice in a small room, you could suffer hypercapnia and die as the solid turns directly into the gas form of CO2."
+    },
+    {
+      id:699,
+      question:"Yoda's appearance was influenced heavily by this famous scientist.",
+      options:["Albert Einstein","Nikolai Tesla","Charles Darwin","Galileo Galilei"],
+      correctAnswer:"Albert Einstein",
+      explanation:"Yoda's speech pattern is classified as anastrophic, meaning it does not follow the standard subject-verb-object pattern. Learn something you did."
+    },
+    {
+      id:700,
+      question:"\"Rip Van Winkle\" is set in which famous mountains?",
+      options:["Catskills","Alps","Andes","Sierras"],
+      correctAnswer:"Catskills",
+      explanation:"Washington Irving wrote the story, as well as The Legend of Sleepy Hollow."
+    },
+    {
+      id:701,
+      question:"The deepest and largest volume lake in the world is _______.",
+      options:["Lake Baikal","Crater Lake","Lake Superior","Lake Tanganyika"],
+      correctAnswer:"Lake Baikal",
+      explanation:"It is more than a mile deep and contains 5,670 cubic miles (23,615 cubic kilometers) of water, about 22% of all fresh water on earth - more than all 5 Great Lakes combined."
+    },
+    {
+      id:702,
+      question:"What is the name of the central bank of the US?",
+      options:["Federal Reserve System","Bank of America","The Central Bank","US Bank"],
+      correctAnswer:"Federal Reserve System",
+      explanation:"The Fed, as it is often known, was created in 1913 to maximize employment, control inflation and control long-term interest rates. It now has many additional functions, such as helping bail out large banks that have nothing but the interest of the American public in mind."
+    },
+    {
+      id:703,
+      question:"What is the largest denomination of currency in circulation in the US in 2025?",
+      options:["$100","$500","1,000","10,000"],
+      correctAnswer:"$100",
+      explanation:"The larger notes were used at various times, but when they became a favorite of criminals and counterfeiters, President Nixon outlawed their use in 1969."
+    },
+    {
+      id:704,
+      question:"What juice concentrate is found in Mountain Dew soda?",
+      options:["Orange","Lemon","Lime","Strawberry"],
+      correctAnswer:"Orange",
+      explanation:"It was originally used as a mixer for whiskey, and its name was a joking reference to moonshine. Homer Simpson, when given the choice, preferred crab juice over Mountain Dew."
+    },
+    {
+      id:705,
+      question:"The ___ is the only true freshwater seal on the planet, living in Lake Baikal.",
+      options:["Nerpa","Monk seal","Ross seal","Elephant seal"],
+      correctAnswer:"Nerpa",
+      explanation:"They can stay under water for up to 70 minutes, thanks in part to having 2 more liters of blood in their body than seals of comparable size."
+    },
+    {
+      id:706,
+      question:"Swanson rolled out the first national TV dinner in 1953 with a 3-compartment aluminum tray, 2 for side dishes, and one for this meat.",
+      options:["Turkey","Meat loaf","Chicken","Pork chops"],
+      correctAnswer:"Turkey",
+      explanation:"The idea came about because of low Thanksgiving turkey sales that year, which left them with 260 tons of turkey to sell. The original TV dinners were $0.98 (about $12 in 2025)."
+    },
+    {
+      id:707,
+      question:"This comfort food is the official state food of Texas.",
+      options:["Chili","Pecan pie","Tacos","Meatloaf"],
+      correctAnswer:"Chili",
+      explanation:"From the mid to late 1800s, chili was served regularly to prison inmates in Texas. It is claimed that prisons were rated on the quality of their chili, and prisoners often requested the recipe after their release."
+    },
+    {
+      id:708,
+      question:"In Einstein's famous equation, E=mc2, what does the C represent?",
+      options:["Speed of light","Avogadro's constant","Carbon","Planck's constant"],
+      correctAnswer:"Speed of light",
+      explanation:"C is equal to 299,792,458 meters per second, or about 671 million miles per hour."
+    },
+    {
+      id:709,
+      question:"Einstein won the 1921 Nobel Prize in physics for explaining what?",
+      options:["Photoelectric effect","Relativity","Gravitational pull","Mechanics"],
+      correctAnswer:"Photoelectric effect",
+      explanation:"The photoelectric effect is when electrons are emitted when light hits a material. Obviously."
+    },
+    {
+      id:710,
+      question:"Einstein was offered the presidency of this country in 1952.",
+      options:["Israel","Switzerland","USA","Austria"],
+      correctAnswer:"Israel",
+      explanation:"Einstein gave his first wife all of his Novel Prize money as part of the divorce agreement."
+    },
+    {
+      id:711,
+      question:"Where in the human body would you find the scaphoid bone?",
+      options:["Wrist","Ear","Foot","Spine"],
+      correctAnswer:"Wrist",
+      explanation:"Scaphoid fractures are the most common wrist bone fracture, and they are slow to heal due to a poor blood supply."
+    },
+    {
+      id:712,
+      question:"The only bone in the body that does not articulate (join) with another bone is the ___.",
+      options:["Hyoid","Ulna","Triquetrum","Sacrum"],
+      correctAnswer:"Hyoid",
+      explanation:"It helps with breathing, swallowing and speaking, and even helps maintain position of the head."
+    },
+    {
+      id:713,
+      question:"The total number of vertebrae in a typical human is ___.",
+      options:["33","27","19","41"],
+      correctAnswer:"33",
+      explanation:"About 10% of people will have more than, or less than, 33 vertebrae. This is how we know they are vampires."
+    },
+    {
+      id:714,
+      question:"This cell fragment is responsible for blood clotting.",
+      options:["Platelets","Lymphocytes","Osteophytes","Hematocytes"],
+      correctAnswer:"Platelets",
+      explanation:"Aspirin permanently stops platelets from being able to form clots, an effect which lasts for about a week after each dose of aspirin."
+    },
+    {
+      id:715,
+      question:"The tallest waterfall in the world is ______ Falls.",
+      options:["Angel","Niagara","Yosemite","Langfossen"],
+      correctAnswer:"Angel",
+      explanation:"These Venezuelan falls have a total drop of 3,212 ft (979 m) and a plunge of 2,648 ft (807 m)."
+    },
+    {
+      id:716,
+      question:"Of the following mammals, which has the most cervical (neck) vertebrae?",
+      options:["Three-toed sloth","Giraffe","Human","Manatee"],
+      correctAnswer:"Three-toed sloth",
+      explanation:"They typically have 9 cervical vertebrae, which allows for greater head swiveling. Manatees have 6. All other mammals have 7."
+    },
+    {
+      id:717,
+      question:"The grayish-white ice crystals that form when water vapor deposits onto vegetation or other surfaces are called ____.",
+      options:["Hoar frost","Permafrost","Rime ice","Advection frost"],
+      correctAnswer:"Hoar frost",
+      explanation:"\"Hoar\" comes from an old English word meaning \"showing signs of age\", as this type of frost makes trees or plants look like they have white hair."
+    },
+    {
+      id:718,
+      question:"Sara Blakely was selling fax machines door-to-door when she came up with the idea for ___ in 2000.",
+      options:["Spanx","Super Soakers","Crocs","USB thumb drives"],
+      correctAnswer:"Spanx",
+      explanation:"She invested her $5,000 life savings to start the company, which grossed an estimated $400 million in 2024."
+    },
+    {
+      id:719,
+      question:"After Thanksgiving, this day has the highest food consumption per person.",
+      options:["Super Bowl Sunday","July 4th","Christmas Day","New Year's Eve"],
+      correctAnswer:"Super Bowl Sunday",
+      explanation:"The average American consumes 4.5 times the recommended daily caloric intake on Super Bowl Sunday (slightly ahead of the typical daily overconsumption rate of 1.4 times the recommended intake)."
+    },
+    {
+      id:720,
+      question:"Where is KFC known as PFK?",
+      options:["Quebec","Germany","Malaysia","Japan"],
+      correctAnswer:"Quebec",
+      explanation:"It stands for Poulet Frit Kentucky, the French translation of Kentucky Fried Chicken."
+    },
+    {
+      id:721,
+      question:"These shoes were banned by the NBA when first introduced in 1985.",
+      options:["Air Jordans","Starburys","Converse All Stars","Adidas KB8"],
+      correctAnswer:"Air Jordans",
+      explanation:"The color scheme violated the League's uniform rules, and Jordan was fined $5,000 every time he wore them in a game. Nike paid the fines."
+    },
+    {
+      id:722,
+      question:"The all-time leader in the NBA for blocks is ___.",
+      options:["Hakeem Olajuwon","Michael Jordan","Tim Duncan","Kareem Abdul Jabbar"],
+      correctAnswer:"Hakeem Olajuwon",
+      explanation:"The Nigerian played almost his entire career with Houston, and had 3,830 blocks."
+    },
+    {
+      id:723,
+      question:"The first balloon at a Macy's Thanksgiving parade was of this character, in 1927.",
+      options:["Felix the Cat","Mickey Mouse","Snoopy","Charlie Brown"],
+      correctAnswer:"Felix the Cat",
+      explanation:"His balloon was paraded on stilts, as only regular air was used, not helium. Felix last appeared in 2016."
+    },
+    {
+      id:724,
+      question:"The mask Michael Myers wore in Halloween was a cast of this actor's face.",
+      options:["William Shatner","Al Pacino","Marlon Brando","Jack Nicholson"],
+      correctAnswer:"William Shatner",
+      explanation:"The mask was originally used in the award-winning 1975 William Shatner movie The Devil's Rain."
+    },
+    {
+      id:725,
+      question:"Emmental cheese (what we commonly call Swiss cheese) without holes is known as ____ cheese.",
+      options:["Blind","Gouda","Camembert","American"],
+      correctAnswer:"Blind",
+      explanation:"The holes are actually known as eyes, and are formed by carbon dioxide bubbles being released during the cheesemaking process."
+    },
+    {
+      id:726,
+      question:"This was the person known as Spiderman.",
+      options:["Peter Parker","Bruce Wayne","Tony Stark","Bruce Banner"],
+      correctAnswer:"Peter Parker",
+      explanation:"He was an orphan raised by Aunt May and Uncle Ben after his parents died in a plane crash."
+    },
+    {
+      id:727,
+      question:"Thor's hammer is more correctly known as ____.",
+      options:["Mjolnir","Skaoa","Hreindyri","Rythja"],
+      correctAnswer:"Mjolnir",
+      explanation:"Forged by dwarf brothers, the hammer is both a weapon as well as an instrument to confer blessings."
+    },
+    {
+      id:728,
+      question:"The most dangerous thing to come out of Canada since Justin Bieber, this X-Men character has a skeleton and claws made of adamantium.",
+      options:["Wolverine","Rogue","Magneto","Cyclops"],
+      correctAnswer:"Wolverine",
+      explanation:"Born James Howlett in Alberta, he was the illegitimate son of Thomas Logan, who was the first person Wolverine killed."
+    },
+    {
+      id:729,
+      question:"Wakanda is the source of this metal, the most powerful on earth.",
+      options:["Vibranium","Molybdenum","Titanium","Tantalum"],
+      correctAnswer:"Vibranium",
+      explanation:"The metal has amazing abilities to capture, store and release energy, and was used in a suit worn by Black Panther, and the shield of Captain America."
+    },
+    {
+      id:730,
+      question:"Peter Quill/Star-Lord, from Guardians of the Galaxy, named his ship the ___ after his first crush, from Who's The Boss?",
+      options:["Milano","Light","Winger","Foster"],
+      correctAnswer:"Milano",
+      explanation:"A well-known activist, Alyssa Milano appeared in a 2007 commercial for PETA wearing a dress made entirely of vegetables."
+    },
+    {
+      id:731,
+      question:"The original five Avengers included Thor, Ant-Man, the Hulk, Iron Man and ___.",
+      options:["The Wasp","The Hornet","Captain America","Green Lantern"],
+      correctAnswer:"The Wasp",
+      explanation:"Premiering in September 1963, the Avengers added Captain America in issue #4 when he was thawed from a block of ice."
+    },
+    {
+      id:732,
+      question:"While James Earl Jones voiced him, ___ actually played Darth Vader in the original Star Wars trilogy.",
+      options:["David Prowse","Anthony Hopkins","Anthony Daniels","Andre the Giant"],
+      correctAnswer:"David Prowse",
+      explanation:"The Brit first gained fame as the Green Cross Man, a safety character in the UK to help pedestrians at intersections."
+    },
+    {
+      id:733,
+      question:"This is the youngest artist to win a Grammy for Album of the Year.",
+      options:["Billie Eilish","Taylor Swift","Alanis Morissette","Barbra Streisand"],
+      correctAnswer:"Billie Eilish",
+      explanation:"Eilish was 18 when she won. The youngest ever winner was Leah Peasall, age 8, for her work (along with her sisters) on the \"O, Brother, Where Art Thou?\" soundtrack and film."
+    },
+    {
+      id:734,
+      question:"These dogs were bred to hunt badgers, and their name translated into English means 'badger dog'.",
+      options:["Dachshund","Affenpinscher","Basenji","Schnauzer"],
+      correctAnswer:"Dachshund",
+      explanation:"Jack Ruby, the man who shot Lee Harvey Oswald, had 4 dachsunds at the time, and had one of them, Sheba, with him at the time of the shooting."
+    },
+    {
+      id:735,
+      question:"How many time zones cover the 50 US States?",
+      options:["6","5","7","4"],
+      correctAnswer:"6",
+      explanation:"If all US territories, possessions and minor outlying islands are included, 11 time zones would be covered."
+    },
+    {
+      id:736,
+      question:"The Eastern time zone covers the greatest number of states, at ___.",
+      options:["23","25","32","14"],
+      correctAnswer:"23",
+      explanation:"The eastern zone is also the most populated. The least populated time zone is UTC -12, covering 2 uninhabited islands in the Pacific ocean."
+    },
+    {
+      id:737,
+      question:"Gin traditionally gets it flavor from this plant.",
+      options:["Juniper","Aloe","Ginseng","Ginger"],
+      correctAnswer:"Juniper",
+      explanation:"The European Union differentiates gin into 4 different legal categories: gin, distilled gin, London (or dry) gin, and juniper-flavored spirit drink."
+    },
+    {
+      id:738,
+      question:"In 1975, while sailing from Wisconsin to Detroit, the SS Edmund Fitzgerald sunk in this lake.",
+      options:["Superior","Ontario","Huron","Michigan"],
+      correctAnswer:"Superior",
+      explanation:"Gordon Lightfoot wrote the classic song \"The Wreck of the Edmund Fitzgerald\" after seeing the name of the ship misspelled after the sinking. He thought it dishonored those killed."
+    },
+    {
+      id:739,
+      question:"From this major US city, you can travel south and enter Canada.",
+      options:["Detroit","Milwaukee","Cleveland","Toledo"],
+      correctAnswer:"Detroit",
+      explanation:"The city is north of Windsor, Ontario, and is the largest US city on the Canadian border."
+    },
+    {
+      id:740,
+      question:"Homo sapiens translates as ____ man.",
+      options:["Wise","Gentle","Tall","Special"],
+      correctAnswer:"Wise",
+      explanation:"They are the most abundant species of primate (great ape) and despite all current evidence to the contrary, are considered highly intelligent animals."
+    },
+    {
+      id:741,
+      question:"The first animal to be domesticated by humans was the ___.",
+      options:["Dog","Goat","Cat","Horse"],
+      correctAnswer:"Dog",
+      explanation:"Dog domestication occurred 20,000-40,000 years ago, based on current evidence. Many would argue that cats have yet to be domesticated."
+    },
+    {
+      id:742,
+      question:"Paddington Bear's favorite snack is ___.",
+      options:["Orange marmalade","Vegemite","Chips and beans","Scotch egg"],
+      correctAnswer:"Orange marmalade",
+      explanation:"He was a stowaway on a train from Peru, where he was orphaned in an earthquake."
+    },
+    {
+      id:743,
+      question:"Mrs. Who, Mrs. Whatsit and Mrs. Which are all characters from this young adult book.",
+      options:["A Wrinkle in Time","The Fault in Our Stars","Harry Potter and the Goblet of Fire","Hunger Games"],
+      correctAnswer:"A Wrinkle in Time",
+      explanation:"Written by Madeleine L'Engle, it describes the adventures of a group of kids as they travel through space and time trying to save their father."
+    },
+    {
+      id:744,
+      question:"What is the only landlocked nation in southeast Asia?",
+      options:["Laos","Cambodia","Thailand","Myanmar"],
+      correctAnswer:"Laos",
+      explanation:"Polygamy is officially a crime in the country, sticky rice is a food staple and it is one of five communist states as of 2025."
+    },
+    {
+      id:745,
+      question:"Matilda Wormwood, from the book Matilda by Roald Dahl, has this superpower.",
+      options:["Telekinesis","Invisibility","Flight","Super strength"],
+      correctAnswer:"Telekinesis",
+      explanation:"Matilda was 5 1/2 years old in the book, but mysteriously, she became 6 1/2 years old in the movie version..."
+    },
+    {
+      id:746,
+      question:"Who did the Cat in the Hat invite into the house?",
+      options:["Thing 1 and Thing 2","The Lorax","Daisy-head Mayzie","Horton"],
+      correctAnswer:"Thing 1 and Thing 2",
+      explanation:"Dr Seuss wrote the book in 1957 in an attempt to help address child literacy, and is credited with helping end the use of the Dick and Jane primers."
+    },
+    {
+      id:747,
+      question:"Which children's book heroine lives in \"an old house in Paris covered in vines\"?",
+      options:["Madeline","Hermione","Matilda","Pippi Longstocking"],
+      correctAnswer:"Madeline",
+      explanation:"She attends a Catholic grade school in Paris and has Miss Clavel as her teacher."
+    },
+    {
+      id:748,
+      question:"In \"Charlotte's Web\", what is the first message Charlotte writes to try and save Wilbur the pig?",
+      options:["\"Some pig\"","\"Radiant\"","\"Terrific\"","\"Humble\""],
+      correctAnswer:"\"Some pig\"",
+      explanation:"Wilbur is eventually saved from slaughter by Charlotte's work, even though she dies in the end of natural causes."
+    },
+    {
+      id:749,
+      question:"Eloise lives in the \"tippy top\" of this New York hotel.",
+      options:["The Plaza","The Waldorf Astoria","The Ritz Carlton","The St Regis"],
+      correctAnswer:"The Plaza",
+      explanation:"She lives there with her nanny, her pug Weenie and her turtle Skipperdee. The actual Plaza hotel has an Eloise suite that starts at $1,300 per night."
+    },
+    {
+      id:750,
+      question:"The first professional baseball team (where the whole team was made of salaried players) was the ___.",
+      options:["Cincinnati Red Stockings","Boston Red Stockings","Chicago Cubs","Philadelphia Phillies"],
+      correctAnswer:"Cincinnati Red Stockings",
+      explanation:"Founded in 1869, the Red Stockings ultimately gave rise to the modern Cincinnati Reds."
+    },
+    {
+      id:751,
+      question:"Which country produces the most olives, growing about 1/3 of the global supply?",
+      options:["Spain","Italy","USA","Greece"],
+      correctAnswer:"Spain",
+      explanation:"Raw or fresh olives are too bitter to eat and must be cured and fermented."
+    },
+    {
+      id:752,
+      question:"Holly Golightly is a famous character played by Audrey Hepburn in this movie.",
+      options:["Breakfast at Tiffany's","My Fair Lady","Charade","Roman Holiday"],
+      correctAnswer:"Breakfast at Tiffany's",
+      explanation:"Hepburn won numerous awards, and in 1992 was given the US Presidential Medal of Freedom in honor of her work as a UNICEF Goodwill Ambassador"
+    },
+    {
+      id:753,
+      question:"How long does it take a chicken to make an egg, on average?",
+      options:["24 hours","30 minutes","4 hours","10 hours"],
+      correctAnswer:"24 hours",
+      explanation:"About 20 hours is spent making the shell, and a new egg starts to form about 30 minutes after the last one is laid."
+    },
+    {
+      id:754,
+      question:"In which country would you find a beach known as the Jurassic Coast?",
+      options:["England","USA","Costa Rica","Namibia"],
+      correctAnswer:"England",
+      explanation:"The area spans an approximate 185 million year history due to erosion, with rock formations spanning the Triassic, Jurassic and Cretaceous periods."
+    },
+    {
+      id:755,
+      question:"Which chess master did Bobby Fischer defeat in 1972 to become the first US-born world champion?",
+      options:["Boris Spassky","Gary Kasparov","Magnus Carlsen","Alexander Alekhine"],
+      correctAnswer:"Boris Spassky",
+      explanation:"The match between them was held in Reykjavik, Iceland, and was known as the Match of the Century."
+    },
+    {
+      id:756,
+      question:"In what year did the \"Miracle on Ice\" happen in the Olympics, in tiny Lake Placid, NY?",
+      options:["1980","1984","1976","1972"],
+      correctAnswer:"1980",
+      explanation:"The US team was a bunch of young college kids playing against a heavily-favored professional team of Soviets."
+    },
+    {
+      id:757,
+      question:"Who did the US ice hockey team defeat to win the gold medal at the 1980 Olympics?",
+      options:["Finland","USSR (Russia)","Sweden","Canada"],
+      correctAnswer:"Finland",
+      explanation:"Coached by the brilliant but tough Herb Brooks, the Miracle on Ice was named by Sports Illustrated as the greatest sports moment of the 20th century."
+    },
+    {
+      id:758,
+      question:"Mosquitoes prefer this blood type over others.",
+      options:["O","A","B","AB"],
+      correctAnswer:"O",
+      explanation:"In studies, mosquitoes show a preference for the universal donor."
+    },
+    {
+      id:759,
+      question:"Which two cities are written about in Dickens' \"A Tale of Two Cities\"? London and ___",
+      options:["Paris","Dublin","Geneva","Rome"],
+      correctAnswer:"Paris",
+      explanation:"Set before and during the French Revolution, it tells the tale of Dr Manette, his 18 year imprisonment and subsequent release."
+    },
+    {
+      id:760,
+      question:"In which city would you find the Spanish Steps?",
+      options:["Rome","Madrid","Barcelona","Paris"],
+      correctAnswer:"Rome",
+      explanation:"The famous 135 steps connect Piazza di Spagna to Piazza Trinita dei Monti, and are a Rome icon."
+    },
+    {
+      id:761,
+      question:"What does the abbreviation DVD stand for?",
+      options:["Digital Versatile Disc","Digital Video Device","Digitized Video Delivery","Dynamic Video Delivery"],
+      correctAnswer:"Digital Versatile Disc",
+      explanation:"Released in 1996, they quickly caught on until streaming became the dominant mode for watching shows and films."
+    },
+    {
+      id:762,
+      question:"Aside from Greece, what other country has Greek as the official language?",
+      options:["Cyprus","Macedonia","Albania","Bulgaria"],
+      correctAnswer:"Cyprus",
+      explanation:"Geographically part of west Asia but culturally linked with southeastern Europe, its other official language is Turkish."
+    },
+    {
+      id:763,
+      question:"What is a young eel called?",
+      options:["Elver","Fry","Hatchling","Smolt"],
+      correctAnswer:"Elver",
+      explanation:"The giant moray is the largest eel, reaching 13 ft (4 m) in length. Electric eels are not true eels."
+    },
+    {
+      id:764,
+      question:"Alberta is one of the 2 landlocked Canadian provinces. What is the other?",
+      options:["Saskatchewan","Quebec","Manitoba","Ontario"],
+      correctAnswer:"Saskatchewan",
+      explanation:"More than 500 NHL players have been born in Saskatchewan, more than any other province, US state or European country."
+    },
+    {
+      id:765,
+      question:"Lake Assal is the lowest point on this continent, lying 509 ft (155 m) below sea level.",
+      options:["Africa","Asia","Europe","Australia"],
+      correctAnswer:"Africa",
+      explanation:"Found in a volcanic crater in Djibouti, it is highly saline and is the 3rd deepest spot on land (behind the Sea of Galilee and the Dead Sea)."
+    },
+    {
+      id:766,
+      question:"The Headless Horseman was featured in what story by Washington Irving?",
+      options:["The Legend of Sleepy Hollow","The Telltale Heart","The Monkey's Paw","The Pit and the Pendulum"],
+      correctAnswer:"The Legend of Sleepy Hollow",
+      explanation:"The Horseman was a Hessian soldier decapitated in battle, and each night he arises from the grave to look for his missing head."
+    },
+    {
+      id:767,
+      question:"What was the name of Paul Bunyan's pet blue ox?",
+      options:["Babe","Charlotte","Wilbur","Buck"],
+      correctAnswer:"Babe",
+      explanation:"It took 5 giant storks to deliver the baby Paul to his parents, and his bed was a lumber wagon."
+    },
+    {
+      id:768,
+      question:"In which country might you find the Loch Ness monster?",
+      options:["Scotland","Wales","Ireland","England"],
+      correctAnswer:"Scotland",
+      explanation:"Nessie was first written about in the 7th century, where it was claimed a local man was killed by a 'water beast' from the nearby lake."
+    },
+    {
+      id:769,
+      question:"Which saint is credited with driving snakes out of Ireland?",
+      options:["Patrick","Michael","Thomas","Nicholas"],
+      correctAnswer:"Patrick",
+      explanation:"Legend has it that he banished snakes to the sea because they interrupted his fast. The reality is that Ireland was already snake-free and there is no evidence snakes were ever in Ireland."
+    },
+    {
+      id:770,
+      question:"On Seinfeld, what was George's preferred pretend career?",
+      options:["Architect","Bra salesman","Real estate agent","Baseball player"],
+      correctAnswer:"Architect",
+      explanation:"George often lied about his career, but architect was his go-to pretend career."
+    },
+    {
+      id:771,
+      question:"Which Kardashian has failed the bar exam three times?",
+      options:["Kim","Khloe","Kendall","Kylie"],
+      correctAnswer:"Kim",
+      explanation:"California is one of 6 states that allow someone to become a lawyer by 'apprenticing' and ultimately taking the bar exam."
+    },
+    {
+      id:772,
+      question:"As of December 2024, which Taylor Swift album has sold the most copies?",
+      options:["1989","Fearless","21","Red"],
+      correctAnswer:"1989",
+      explanation:"The little-known girlfriend of Travis Kelce, she sold over 14 million copies of 1989."
+    },
+    {
+      id:773,
+      question:"This compound, found in the leaves of poison oak as well as the skin of mangoes, is what can cause the itchy allergic skin reaction in some people.",
+      options:["Urushiol","Chlorophyll","Calcium oxalate","Phorbol"],
+      correctAnswer:"Urushiol",
+      explanation:"The molecule passes through the outer skin layer and activates the immune system, although in about 1/4 of people, it causes no symptoms."
+    },
+    {
+      id:774,
+      question:"Which British monarch is famous for having had six wives?",
+      options:["Henry VIII","Richard III","Charles II","Henry VII"],
+      correctAnswer:"Henry VIII",
+      explanation:"He was so desperate to divorce his first wife that he made himself the head of the church to try and get the marriage annulled, and he beheaded 2 others."
+    },
+    {
+      id:775,
+      question:"The star from the musical Hamilton, Lin Manuel Miranda, had a brief cameo in the final season of this HBO hit.",
+      options:["The Sopranos","The West Wing","The Wire","Girls"],
+      correctAnswer:"The Sopranos",
+      explanation:"He portrayed a bellman at a hotel that Tony Soprano was entering."
+    },
+    {
+      id:776,
+      question:"Which of these Central American countries does not celebrate its independence from Spain on September 15th?",
+      options:["Belize","Costa Rica","El Salvador","Nicaragua"],
+      correctAnswer:"Belize",
+      explanation:"While the rest of Central America celebrates its independence from Spain (in 1821) on September 15 each year, Belize was part of the British Commonweatlh until September 12, 1981."
+    },
+    {
+      id:777,
+      question:"The world's most populous metropolitan area is ______, with over 37 million people.",
+      options:["Tokyo","Mexico City","Beijing","Los Angeles"],
+      correctAnswer:"Tokyo",
+      explanation:"As of 2024, it had approximately 37 million people, and at any given time, almost 36 million of them are taking a selfie."
+    },
+    {
+      id:778,
+      question:"This electronic musical instrument is played without any physical contact.",
+      options:["Theremin","Glass harmonica","Jaw harp","Hydraulophone"],
+      correctAnswer:"Theremin",
+      explanation:"The theremin is typically used to establish a feeling of eeriness or etherealness."
+    },
+    {
+      id:779,
+      question:"This bird can stay in flight for up to 300 days at a time.",
+      options:["Common swift","Albatross","Pigeon","Frigatebird"],
+      correctAnswer:"Common swift",
+      explanation:"While the albatross may not touch land for up to 6 years, it does not stay in flight as long as the swift."
+    },
+    {
+      id:780,
+      question:"What star cluster is represented in the Subaru logo?",
+      options:["Pleiades","Orion","Ursa Major","Ursa minor"],
+      correctAnswer:"Pleiades",
+      explanation:"Also known as the Seven Sisters, the cluster is about 444 light years away, meaning it is about 2.6e+15 miles away."
+    },
+    {
+      id:781,
+      question:"The SS Minnow from Gilligan's Island was named after Newton Minow, who was a chairman of the ____.",
+      options:["FCC (Federal Communications Commission)","DEA (Drug Enforcement Agency)","NASA (National Aeronautics and Space Agency)","CIA (Central Intelligence Agency)"],
+      correctAnswer:"FCC (Federal Communications Commission)",
+      explanation:"Minow famously described TV as a \"vast wasteland\" and advocated for programming that was more beneficial to the public. The producer of Gilligan's Island named the boat after him as a humorous tribute."
+    },
+    {
+      id:782,
+      question:"What did Mary Shelley subtitle her 1818 novel, Frankenstein?",
+      options:["The Modern Prometheus","The Monster in Each of Us","The Dangers of Electricity","A Monster is Born"],
+      correctAnswer:"The Modern Prometheus",
+      explanation:"Shelley felt that Dr Frankenstein was like Prometheus in that they both created life and suffered the consequences."
+    },
+    {
+      id:783,
+      question:"The world's first space station was called ____",
+      options:["Salyut","Skylab","Mir","The ISS"],
+      correctAnswer:"Salyut",
+      explanation:"Launched in April 1971 by Russia, the Salyut program served partly as a cover for a separate spy satellite program called Almaz."
+    },
+    {
+      id:784,
+      question:"Which of the following countries is not part of the International Space Station (ISS)?",
+      options:["India","Russia","United States","Japan"],
+      correctAnswer:"India",
+      explanation:"Visible to the naked eye, it orbits the earth about every 90 minutes and cost $150 billion to design and build."
+    },
+    {
+      id:785,
+      question:"Which country has the fewest residents?",
+      options:["Vatican City","Liechtenstein","Luxembourg","Antarctica"],
+      correctAnswer:"Vatican City",
+      explanation:"Vatican City has only 800 residents. Antarctica is not considered a country, but even if it were, it typically has a population of 1,100 to 5,000."
+    },
+    {
+      id:786,
+      question:"What is the term for a baby kangaroo?",
+      options:["Joey","Roo","Pup","Foal"],
+      correctAnswer:"Joey",
+      explanation:"When born, they are 1/100,000 of their adult size and are still considered embryos, spending 6 months maturing in the mother's pouch."
+    },
+    {
+      id:787,
+      question:"What is considered the hardest wood in the world, with a Janka score of over 5,000.",
+      options:["Australian buloke","Ebony","Ipe","Bolivian cherry"],
+      correctAnswer:"Australian buloke",
+      explanation:"Appropriately a member of the ironwood tree family, it's wood is so dense that it sinks in water."
+    },
+    {
+      id:788,
+      question:"What is the proper name of Mr Peanut, the British aristocrat who serves as the Planters peanut mascot.",
+      options:["Bartholomew Richard Fitzgerald-Smythe","Reginald Winston Throckmorton","Andrew Patrick Mugglestone","Peregrine Falcon Bysshart Rodendon"],
+      correctAnswer:"Bartholomew Richard Fitzgerald-Smythe",
+      explanation:"Designed by a Virginia schoolboy in 1916, Mr Peanut has even had a float in the Macy's Thanksgiving Day parade since 1997."
+    },
+    {
+      id:789,
+      question:"She was the first female inducted into the Rock and Roll Hall of Fame, in 1987.",
+      options:["Aretha Franklin","Madonna","Whitney Houston","Dolly Parton"],
+      correctAnswer:"Aretha Franklin",
+      explanation:"She was inducted by Keith Richards, who gave a speech that was...bizarre, even by his standards."
+    },
+    {
+      id:790,
+      question:"Martin Luther King Jr paid for the birth of this Oscar winning actress in 1967, because her parents were struggling financially and were friends of the Kings.",
+      options:["Julia Roberts","Meryl Streep","Halle Berry","Kate Winslet"],
+      correctAnswer:"Julia Roberts",
+      explanation:"Julia's parents ran an acting school that was attended by the Kings' children."
+    },
+    {
+      id:791,
+      question:"Which of these shows was NOT a spin-off of Happy Days?",
+      options:["Charles in Charge","Mork and Mindy","Joanie Loves Chachi","Laverne and Shirley"],
+      correctAnswer:"Charles in Charge",
+      explanation:"Scott Baio starred in both Joanie Loves Chachi and Charles in Charge, but only the former was based on a Happy Days role."
+    },
+    {
+      id:792,
+      question:"In a deck of cards, which King does not have a moustache?",
+      options:["Hearts","Spades","Clubs","Diamonds"],
+      correctAnswer:"Hearts",
+      explanation:"He is also known as the \"Suicide King\" because it looks like he is stabbing himself in the head with his sword."
+    },
+    {
+      id:793,
+      question:"Which of the following states has the fewest NFL teams?",
+      options:["New York","Florida","California","Texas"],
+      correctAnswer:"New York",
+      explanation:"California and Florida each have 3 teams. Texas has 2 teams. But New York only has the Buffalo Bills that are based in New York. The NY Giants and NY Jets are both headquartered in, and play in, New Jersey."
+    },
+    {
+      id:794,
+      question:"Mariah Carey's \"All I Want For Christmas Is You\" went to #1 in 2019. In what year was it released?",
+      options:["1994","2019","2018","2003"],
+      correctAnswer:"1994",
+      explanation:"It holds the record for longest time between release and becoming #1, at 25 years in the US and 26 years in the UK."
+    },
+    {
+      id:795,
+      question:"This singer's given name is Robyn Fenty.",
+      options:["Rihanna","Beyonce","Cher","Madonna"],
+      correctAnswer:"Rihanna",
+      explanation:"Her middle name is Rihanna and she was born in Barbados in 1988, and released her first album in 2005."
+    },
+    {
+      id:796,
+      question:"This famous rock guitarist played the iconic solo on Michael Jackson's \"Beat It\"",
+      options:["Eddie Van Halen","Jimi Hendrix","Eric Clapton","Alex Lifeson"],
+      correctAnswer:"Eddie Van Halen",
+      explanation:"He formed Van Halen with his brother Alex in 1973, and their only #1 Billboard hit was Jump from 1984."
+    },
+    {
+      id:797,
+      question:"This world-famous singer narrated the audiobook for E.T. - The Extra Terrestrial in 1982, at the same time he was about to release his biggest-selling album.",
+      options:["Michael Jackson","Prince","Willie Nelson","Elton John"],
+      correctAnswer:"Michael Jackson",
+      explanation:"He was finishing Thriller while finishing this album, both of which were produced by Quincy Jones."
+    },
+    {
+      id:798,
+      question:"Which of these albums has sold the most certified copies worldwide to date, at over 70 million?",
+      options:["Thriller (Michael Jackson)","Back in Black (AC/DC)","Dark Side of the Moon (Pink Floyd)","Led Zeppelin IV"],
+      correctAnswer:"Thriller (Michael Jackson)",
+      explanation:"It also gave rise to what is likely the most famous music video in the world, giving prison dance groups around the world something to do."
+    },
+    {
+      id:799,
+      question:"In 2018, the European Union enacted the GDPR, considered one of the most stringent online privacy protection laws. It stands for General Data ____ Regulation.",
+      options:["Protection","Privacy","Permission","Proactive"],
+      correctAnswer:"Protection",
+      explanation:"Contrary to what you may think, the law does not require consent to obtain data on someone, nor does it guarantee an individual that their data must be deleted if requested."
+    },
+    {
+      id:800,
+      question:"The Great Leap Forward was an economic and social campaign in China started in 1958 that attempted to move China from an agrarian economy to an industrial one. It was proposed by this Chinese founder of the People's Republic of China.",
+      options:["Mao Zedong","Deng Xiaoping","Xi Jinping","Kim Jong Il"],
+      correctAnswer:"Mao Zedong",
+      explanation:"The Great Leap Forward failed on many fronts, and directly led to the Great Chinese Famine, considered the deadliest famine in human history, killing between 15 and 55 million people."
+    },
+    {
+      id:801,
+      question:"The Mission: Impossible franchise follows the exploits of the fictitious spy agency IMF, which stands for ____.",
+      options:["Impossible Missions Force","International Mystery Force","International Missions Force","Interagency Multinational Force"],
+      correctAnswer:"Impossible Missions Force",
+      explanation:"The IMF is tasked with, among other things, stopping the terrorist group known as the Syndicate. Mwahahahaha..."
+    },
+    {
+      id:802,
+      question:"Elvis Presley died the same year Jimmy Carter was inaugurated as President and Star Wars: Episode IV was released. What year was it?",
+      options:["1977","1976","1972","1973"],
+      correctAnswer:"1977",
+      explanation:"Presley was so groundbreaking that a Catholic church in Wisconsin wrote to the FBI saying that Presley was, \"...a definite danger to the security of the United States. ... [His] actions and motions were such as to rouse the sexual passions of teenaged youth.\""
+    },
+    {
+      id:803,
+      question:"Who played the patriach George Bluth in the comedy series Arrested Development?",
+      options:["Jeffrey Tambor","John Lithgow","Bill Murray","Michael Landon"],
+      correctAnswer:"Jeffrey Tambor",
+      explanation:"He also played Maura Pfefferman on Transparent until he was cancelled by that show in 2017."
+    },
+    {
+      id:804,
+      question:"Bob Odenkirk and David Cross had a sketch comedy show that aired on HBO for 4 seasons called ___.",
+      options:["Mr Show","The Tambourine Men","Key & Peele","The McLaughlin Group"],
+      correctAnswer:"Mr Show",
+      explanation:"Odenkirk went on to have iconic roles in Breaking Bad and Better Call Saul, and Cross was the hilariously oblivious Tobias Funke on Arrested Development."
+    },
+    {
+      id:805,
+      question:"Which Grimm fairy tale tells the story of a miller's daughter spinning straw into gold?",
+      options:["Rumpelstiltskin","Rapunzel","Little Red Riding Hood","The Goose Girl"],
+      correctAnswer:"Rumpelstiltskin",
+      explanation:"The daughter in question was to give her first born to the imp that actually performed the magic spinning, but she was able to guess his name and keep her child. Your typical child's story."
+    },
+    {
+      id:806,
+      question:"This prog-rock drum legend for the band Rush died in 2020 of glioblastoma.",
+      options:["Neil Peart","John Bonham","John Entwhistle","Keith Moon"],
+      correctAnswer:"Neil Peart",
+      explanation:"Known as The Professor for his technical skill, he was also the lyricist for most of the band's songs over a 45 year career."
+    },
+    {
+      id:807,
+      question:"The Roses Tournament takes place each year between the Univeristy of York and Lancaster University, both in England. It involves competition in dozens of sports. Which of these classic American sports is NOT part of the Roses Tournament?",
+      options:["Baseball","American football","Basketball","E-sports"],
+      correctAnswer:"Baseball",
+      explanation:"The competition began in 1965 and takes its name from the Wars of the Roses, which occurred in the mid-15th century between the Houses of York and Lancaster."
+    },
+    {
+      id:808,
+      question:"In the mother/daughter series \"Gilmore Girls\", what was the name of the fictional town they lived in?",
+      options:["Stars Hollow","Eagle Point","Mystic Falls","Tree Hill"],
+      correctAnswer:"Stars Hollow",
+      explanation:"The fake town in Connecticut was reported to be 30 minutes from the state capitol of Hartford, and was the home to Lorelei and Rory Gimore."
+    },
+    {
+      id:809,
+      question:"This Gen Alpha slang word has no fixed meaning, and likely had its origins in a 2018 song of the same name by Russian rave band Little Big.",
+      options:["Skibidi","Farxiga","Ronkonkin","Jabberwocky"],
+      correctAnswer:"Skibidi",
+      explanation:"Depending on context, it could mean 'cool', 'bad' or 'dumb', and can even be combined with other pseudowords like rizz."
+    },
+    {
+      id:810,
+      question:"This massively multiplayer online role-playing game set in Azeroth was released in 2004, has had 10 expansion packs released, and has grossed almost $10 billion.",
+      options:["World of Warcraft","Final Fantasy","The Lord of the Rings Online","Dungeons and Dragons Online"],
+      correctAnswer:"World of Warcraft",
+      explanation:"WoW is just one of hundreds of ways that 20-somethings take their minds off a dying planet and a failing democracy."
+    },
+    {
+      id:811,
+      question:"This online game platform allows users to program and play their own games, or the games of other players, and has been around since 2004.",
+      options:["Roblox","Arduino","Twitch","Steam"],
+      correctAnswer:"Roblox",
+      explanation:"Earning over $2.29 billion in 2020, it also had about half of all kids under age 16 on the platform."
+    },
+    {
+      id:812,
+      question:"The show Yellowstone and its numerous spinoffs were all written and created (or co-created) by this writer/actor/director.",
+      options:["Taylor Sheridan","Kurt Sutter","Shawn Ryan","David Simon"],
+      correctAnswer:"Taylor Sheridan",
+      explanation:"Born Sheridan Taylor Gibler Jr, he also wrote the script for Sicario and its sequel; Wind River; Hell or High Water and acted in 21 episodes of Sons of Anarchy."
+    },
+    {
+      id:813,
+      question:"The name for this item that can be consumed (meaning, drank or eaten) comes from the German word for peppermint, pfefferminz.",
+      options:["PEZ","Dr Pepper","Peppadew","York Peppermint Pattie"],
+      correctAnswer:"PEZ",
+      explanation:"PEZ was invented in Austria in 1927. Some rare PEZ dispensers can be worth over $20,000. But only if they are in 'mint' condition."
+    },
+    {
+      id:814,
+      question:"The first video ever played on MTV, in 1981, was Video Killed the Radio Star by this band.",
+      options:["The Buggles","Cap'n Bob and the Shanty Singers","The Beatles","The Eagles"],
+      correctAnswer:"The Buggles",
+      explanation:"The band formed in 1977 and released their best known single in 1979. The duo broke up soon after to join the band Yes."
+    },
+    {
+      id:815,
+      question:"Which artist inspired the \"brat summer\" trend in 2024?",
+      options:["Charli XCX","Beyonce","Adele","Dua Lipa"],
+      correctAnswer:"Charli XCX",
+      explanation:"In the insightful words of Charli XCX, brat is about \"a pack of cigs and, like, a Bic lighter and, like, a strappy white top. With no bra\". Hence the obvious tie-in to the Kamala Harris campaign."
+    },
+    {
+      id:816,
+      question:"This cartoon character was frequently stating that he should have taken a left turn at Albuquerque.",
+      options:["Bugs Bunny","Fred Flintstone","SpongeBob SquarePants","Homer Simpson"],
+      correctAnswer:"Bugs Bunny",
+      explanation:"The running joke had its origins in the fact that Route 66 intersects itself in Albuquerque, causing confusion for drivers."
+    },
+    {
+      id:817,
+      question:"Neil Armstrong was the first man to walk on the moon. Who was the second?",
+      options:["Buzz Aldrin","Alan Shepard","Michael Collins","Yakov Smirnoff"],
+      correctAnswer:"Buzz Aldrin",
+      explanation:"Aldrin and Armstrong spent about 2 hours exploring Tranquility Base, while Michael Collins flew the command module in lunar orbit."
+    },
+    {
+      id:818,
+      question:"Carl Magee, of Oklahoma City, patented this coin-operated timer in 1935 to help businesses in downtown commercial areas.",
+      options:["Parking meter","Coin-op washing machine","Coin-op toll booth","Pay phone"],
+      correctAnswer:"Parking meter",
+      explanation:"Modern meters are fully electric and can monitor if a space is used or not, can remove remaining time when a car leaves, and in some cases can remotely ticket you even though you have time left on the meter."
+    },
+    {
+      id:819,
+      question:"What is Plankton's (Spongebob Square Pants' nemesis), first name?",
+      options:["Sheldon","Alfred","Krusty","Satchel"],
+      correctAnswer:"Sheldon",
+      explanation:"Sheldon J. Plankton runs the Chum Bucket restaurant, a competitor of the Krusty Krab where Bob works."
+    },
+    {
+      id:820,
+      question:"The abdominal thrust maneuver to help someone who is choking is known as the ___ maneuver.",
+      options:["Heimlich","Oppenheimer","Stuttgart","Johnson"],
+      correctAnswer:"Heimlich",
+      explanation:"Dr Henry Heimlich invented the technique in 1974. He also espoused 'malariotherapy', deliberately infecting someone with malaria to treat HIV, cancer and Lyme disease."
+    },
+    {
+      id:821,
+      question:"Who was the author of To Kill A Mockingbird?",
+      options:["Harper Lee","George","George Orwell","JD Salinger"],
+      correctAnswer:"Harper Lee",
+      explanation:"Upon its publication in 1961, Lee thought it would not sell well and hoped the book would have \"a quick and merciful death.\""
+    },
+    {
+      id:822,
+      question:"1984 is a book about a dystopian future written in 1949 by this writer, who also wrote Animal Farm.",
+      options:["George Orwell","Suzanne Collins","Jack Kerouac","Orson Welles"],
+      correctAnswer:"George Orwell",
+      explanation:"Orwell was born Eric Arthur Blair, but he used the pen name Orwell as a tribute to his favorite place, the River Orwell in England."
+    },
+    {
+      id:823,
+      question:"Edward Cullen is Bella's love interest in this book/movie series.",
+      options:["Twilight","Interview with the Vampire","Travels with Charley","Woman, Eating"],
+      correctAnswer:"Twilight",
+      explanation:"Edward is a telepathic vampire who ultimately fathers a daughter, Renesmee, with Bella, who is turned into a vampire right after giving birth."
+    },
+    {
+      id:824,
+      question:"What year was the first iPod released?",
+      options:["2001","1998","1999","2000"],
+      correctAnswer:"2001",
+      explanation:"After selling an estimated 450 million iPods, Apple stopped making them in 2022"
+    },
+    {
+      id:825,
+      question:"The best-selling movie soundtrack of all time (at 50 million units sold) is from the movie ___.",
+      options:["The Bodyguard","Pulp Fiction","Saturday Night Fever","Titanic"],
+      correctAnswer:"The Bodyguard",
+      explanation:"It was the first album to sell over 1,000,000 copies in a week, and is still the highest selling album by a female artist."
+    },
+    {
+      id:826,
+      question:"The famous movie line, \"Show me the money!\" is from this Tom Cruise film.",
+      options:["Jerry Maguire","Top Gun","Risky Business","Mission Impossible VI: The Money Train"],
+      correctAnswer:"Jerry Maguire",
+      explanation:"It also had the catchphrases, \"you had me at 'hello'\", and \"help me, help you\"."
+    },
+    {
+      id:827,
+      question:"Which of these metals is the softest, and indeed considered the softest metal in the world.",
+      options:["Cesium","Gold","Tin","Aluminum"],
+      correctAnswer:"Cesium",
+      explanation:"Cesium is what's known as a Group 1A alkali metal, which are very soft, as alkali comes from an Arabic word meaning \"ashes\"."
+    },
+    {
+      id:828,
+      question:"This 2005 film had the tag line, \"The longer you wait, the harder it gets\".",
+      options:["The 40 Year Old Virgin","Are We There Yet?","The Wedding Date","Hitch"],
+      correctAnswer:"The 40 Year Old Virgin",
+      explanation:"Steve Carrell plays the virgin in question, and he even subjected himself to a real chest waxing for that well-known scene."
+    },
+    {
+      id:829,
+      question:"As of 2025, this movie had the greatest gross sales relative to its initial budget.",
+      options:["Paranormal Activity","Rocky","Halloween","Napolean Dynamite"],
+      correctAnswer:"Paranormal Activity",
+      explanation:"Made for $15,000, the movie had gross revenue of $193,000,000 for a return on investment of 1,289,000%."
+    },
+    {
+      id:830,
+      question:"Which of these is NOT one of the new emotions that Riley has as a teenager in \"Inside Out 2\"?",
+      options:["Empathy","Ennui","Embarrassment","Envy"],
+      correctAnswer:"Empathy",
+      explanation:"The fourth new emotion is anxiety, and they arrive the night before she is to attend hockey camp."
+    },
+    {
+      id:831,
+      question:"In the 2024 biographical film \"A Complete Unknown\", who plays Bob Dylan?",
+      options:["Timothee Chalamet","Joaquin Phoenix","Michael B. Jordan","Andy Samberg"],
+      correctAnswer:"Timothee Chalamet",
+      explanation:"Born Robert Allen Zimmerman, Dylan has made 40 studio albums and 21 live albums and is still touring as of 2025."
+    },
+    {
+      id:832,
+      question:"Which of the following names is NOT the name of one of the Brady kids (from The Brady Bunch)?",
+      options:["Mike","Greg","Peter","Bobby"],
+      correctAnswer:"Mike",
+      explanation:"Mike Brady was the patriarch of the family. The introduction of Cousin Oliver in season 5 was considered the moment the series \"jumped the shark\", and it was cancelled at the end of that season."
+    },
+    {
+      id:833,
+      question:"The idiom \"jumped the shark\" (referring to a moment when a creative work has exhausted its core ideas) was coined in 1985 in reference to a specific plot point on a 1977 episode of this show.",
+      options:["Happy Days","The Brady Bunch","Magnum P.I.","Charlie's Angels"],
+      correctAnswer:"Happy Days",
+      explanation:"In the episode, the Fonz jumps a shark while waterskiing and wearing his trademark leather motorcycle jacket."
+    },
+    {
+      id:834,
+      question:"What was the name of the coffee shop in the show Friends?",
+      options:["Central Perk","Perk Me Up","The Bean Hole","Deja Brew"],
+      correctAnswer:"Central Perk",
+      explanation:"Some of the originally considered titles for the show were Insomnia Cafe, Six of One and Across the Hall."
+    },
+    {
+      id:835,
+      question:"What was the player number of Seong Gi-Hun, the main character of the Netflix series Squid Game.",
+      options:["456","1","222","999"],
+      correctAnswer:"456",
+      explanation:"The dystopian South Korean show has players competing in sadistic and deadly versions of children's games for a chance to win about $40 million."
+    },
+    {
+      id:836,
+      question:"Which Nirvana album cover featured a baby swimming in a pool toward a dollar bill on a fishhook?",
+      options:["Nevermind","Bleach","In Utero","Rockabye Baby"],
+      correctAnswer:"Nevermind",
+      explanation:"Spencer Elden, the baby in the photo, sued the band (and the photographer) in 2021 claiming he did not give consent and that it resulted in \"lifelong damages\". The case was dismissed. And appealed. And dismissed again."
+    },
+    {
+      id:837,
+      question:"Which was the first K-pop / Asian band to headline at Coachella?",
+      options:["Blackpink","BTS","EXO","ATEEZ"],
+      correctAnswer:"Blackpink",
+      explanation:"The 4-girl group is also the first Korean girl group to win an MTV Video Music Award, and are considered the most subscribed music act on YouTube, with over 98 million subscribers (in 2025)."
+    },
+    {
+      id:838,
+      question:"In what year did Vince Vance & the Valiants release \"All I Want For Christmas Is You\"?",
+      options:["1989","1990","1992","1991"],
+      correctAnswer:"1989",
+      explanation:"Vance sued Mariah Carey, claiming she stole his song, even though the only similarity is the title. He lost the suit, as well as a follow up suit a year later."
+    },
+    {
+      id:839,
+      question:"Fans of Lady Gaga are known as ______.",
+      options:["Little Monsters","Maggots","Head Cases","Trainwrecks"],
+      correctAnswer:"Little Monsters",
+      explanation:"All of these are fanbase nicknames, but as Gaga's fans call her Mother Monster, she refers to her fans as Little Monsters."
+    },
+    {
+      id:840,
+      question:"Snapchat, the app that allows message and picture to be seen for a short time before they disappear, was orginally called ____ when first launched.",
+      options:["Picaboo","Poof!","Ghost","ByeByeBye"],
+      correctAnswer:"Picaboo",
+      explanation:"In 2011, Picaboo was launched on the iOS system but within 2 months was renamed Snapchat. And within just a few short years it became another excellent social media app for stalkers, body shaming, and inducing anxiety."
+    },
+    {
+      id:841,
+      question:"As of February 2025, which of these people has the most followers on Twitter?",
+      options:["Barack Obama","Taylor Swift","Rihanna","Cristiano"],
+      correctAnswer:"Barack Obama",
+      explanation:"He has 130 million followers, while Cristiano has 115 M, Rihanna has 107 M and Taylor Swift has 94 M."
+    },
+    {
+      id:842,
+      question:"The name of the AI chatbot on Twitter/X that has praised Hitler and spewed out false conspiracy theories and racist views is called ____.",
+      options:["Grok","Gemini","Claude","Elon"],
+      correctAnswer:"Grok",
+      explanation:"The original name for the chatbot was TruthGPT, as ironically inaccurate a name as Truth Social."
+    },
+    {
+      id:843,
+      question:"This politician has the most followers on Twitter/X (as of February 2025).",
+      options:["Barack Obama","Narendra Modi","Donald Trump","Boris Johnson"],
+      correctAnswer:"Barack Obama",
+      explanation:"Obama has over 130 million followers, followed by Modi with 108.9 M, Trump with 108.3 M and Johnson with 4.5 M."
+    },
+    {
+      id:844,
+      question:"Henry John Deutschendorf Jr, a singer of folk and country until his death in a plane crash, was much better known as _____.",
+      options:["John Denver","Johnny Cash","Merle Haggard","Bob Dylan"],
+      correctAnswer:"John Denver",
+      explanation:"Denver sold over 33 million albums. He died while piloting a newly puchased plane where he could not access the fuel tank selector valve, in 1997 at age 53."
+    },
+    {
+      id:845,
+      question:"The tallest volcano on earth (based on elevation above sea level) is _____, at 22,615 ft (6,893m).",
+      options:["Nevado Ojos del Salado","Denali","Mt Everest","Mauna Kea"],
+      correctAnswer:"Nevado Ojos del Salado",
+      explanation:"Denali and Everest are not actually volcanoes. Mauna Kea is 33,500 ft (10,211 m) from base to summit, but only 13,796 ft (4,205 m) above sea level."
     }
-  ]
-}
+  ],
+  'state-trivia': [],
+  'government-trivia': [],
+};
 
-// Function to get questions for a specific category, including from localStorage
 export function getQuestionsByCategory(category: string): Question[] {
   const baseQuestions = triviaData[category] || [];
-  try {
-    if (typeof window !== 'undefined' && localStorage) {
-      const storedQuestions = JSON.parse(localStorage.getItem(category) || '[]');
-      const allQuestions = [...baseQuestions, ...storedQuestions];
-      const uniqueQuestions = Array.from(new Set(allQuestions.map(q => q.id)))
-        .map(id => allQuestions.find(q => q.id === id)!);
+  const storedQuestions = typeof window !== 'undefined' ? localStorage.getItem(category) : null;
+  if (storedQuestions) {
+    try {
+      const newQuestions = JSON.parse(storedQuestions);
+      const allQuestions = [...baseQuestions, ...newQuestions];
+      const uniqueQuestions = allQuestions.filter((q, index, self) => self.findIndex(t => t.id === q.id) === index);
       return uniqueQuestions;
+    } catch (e) {
+      console.error("Failed to parse questions from localStorage", e);
+      return baseQuestions;
     }
-  } catch (error) {
-    console.error("Could not parse localStorage questions for category:", category, error);
   }
   return baseQuestions;
 }
