@@ -14,6 +14,9 @@ export function generateStaticParams() {
 
 function QuizPage({ params }: { params: { category: string } }) {
   const categoryName = decodeURIComponent(params.category).replace(/-/g, ' ');
+  // By adding a key that changes on each build, we force React to re-mount the
+  // component, ensuring it fetches the latest question data from the file system.
+  const uniqueKey = `${params.category}-${Math.random()}`;
 
   return (
     <main className="flex min-h-screen w-full flex-col items-center justify-center p-4 relative font-headline text-foreground">
@@ -29,7 +32,7 @@ function QuizPage({ params }: { params: { category: string } }) {
         </h1>
         <p className="text-muted-foreground text-lg">Test Your Knowledge</p>
       </div>
-      <QuizClient category={params.category} />
+      <QuizClient key={uniqueKey} category={params.category} />
     </main>
   );
 }

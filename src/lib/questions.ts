@@ -2435,13 +2435,6 @@ export const triviaData: { [key: string]: Question[] } = {
       explanation: "The St Louis brewery opened in 1852 and produced over 483 million barrels of beer in 2018, and some of those barrels were even drinkable!"
     },
     {
-      id: 1322,
-      question: "Robert Wadlow, the tallest verified person in the history of the world, hailed from Alton in this state.",
-      options: ["Missouri", "Wyoming", "Maine", "Florida"],
-      correctAnswer: "Missouri",
-      explanation: "He was 8'11\" (2.72m) tall (and 439 lbs/199 kg) due to a pituitary disorder, and died at age 22 from complications of that."
-    },
-    {
       id: 1323,
       question: "The Pony Express used horse-mounted riders to deliver mail between California and this state, starting in 1860.",
       options: ["Missouri", "Virginia", "Maine", "Florida"],
@@ -4025,20 +4018,6 @@ export const triviaData: { [key: string]: Question[] } = {
     }
   ],
   'government-trivia': [
-    {
-        id: 901,
-        question: "How many branches are in the United States government?",
-        options: ["3", "2", "4", "5"],
-        correctAnswer: "3",
-        explanation: "The three branches are the legislative, executive, and judicial branches."
-    },
-    {
-        id: 902,
-        question: "What is the supreme law of the land in the United States?",
-        options: ["The Constitution", "The Declaration of Independence", "The Articles of Confederation", "The Bill of Rights"],
-        correctAnswer: "The Constitution",
-        explanation: "The U.S. Constitution is the supreme law of the land, establishing the framework for the federal government."
-    },
     {
       id: 903,
       question: "This series of papers, released in 1971 by Daniel Ellsberg, documented how multiple administrations lied to the public about US involvement in VietNam",
