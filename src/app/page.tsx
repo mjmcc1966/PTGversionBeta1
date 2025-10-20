@@ -29,8 +29,8 @@ export default function BasePage() {
           <Button onClick={handleExpansionClick} className="w-full h-20 text-xl justify-center" variant="outline">
             Buy an Expansion Pack
           </Button>
-          <Button asChild className="w-full h-20 text-xl justify-center">
-            <Link href="/home">Start the Game</Link>
+          <Button onClick={() => router.push('/home')} className="w-full h-20 text-xl justify-center">
+            Start the Game
           </Button>
         </CardContent>
       </Card>
