@@ -21,6 +21,9 @@ export default function Home() {
 
   useEffect(() => {
     if (!timerActive || timeLeft === 0) {
+      if (timeLeft === 0) {
+        setTimerActive(false); // Stop the timer when it reaches 0
+      }
       return;
     }
 
@@ -31,9 +34,14 @@ export default function Home() {
     return () => clearInterval(intervalId);
   }, [timerActive, timeLeft]);
 
-  const startTimer = () => {
-    setTimeLeft(120);
-    setTimerActive(true);
+  const toggleTimer = () => {
+    if (timerActive) {
+      setTimerActive(false);
+      setTimeLeft(120); // Reset time
+    } else {
+      setTimeLeft(120);
+      setTimerActive(true);
+    }
   };
   
   const formatTime = (seconds: number) => {
@@ -113,9 +121,8 @@ export default function Home() {
                 variant="ghost"
                 size="icon"
                 className="w-12 h-12 rounded-full bg-accent/80 text-accent-foreground shadow-lg hover:bg-accent hover:scale-110 transition-transform"
-                onClick={startTimer}
-                disabled={timerActive}
-                aria-label="Start Timer"
+                onClick={toggleTimer}
+                aria-label="Toggle Timer"
               >
                 <Hourglass className="w-6 h-6" />
               </Button>
