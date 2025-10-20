@@ -224,7 +224,7 @@ export function QuizClient({ category }: { category: string }) {
           <Button size="lg" onClick={() => alert("Expansion packs are not available yet!")}>
             Buy Expansion Pack
           </Button>
-           <Link href="/" passHref>
+           <Link href="/home" passHref>
             <Button variant="outline">Home</Button>
           </Link>
         </CardContent>
@@ -246,7 +246,7 @@ export function QuizClient({ category }: { category: string }) {
           <Button size="lg" onClick={handleResetQuiz}>
             Play Again
           </Button>
-          <Link href="/" passHref>
+          <Link href="/home" passHref>
              <Button variant="outline" size="lg">Home</Button>
           </Link>
         </CardContent>
@@ -260,7 +260,7 @@ export function QuizClient({ category }: { category: string }) {
             <CardTitle>No questions available</CardTitle>
             <CardDescription>Could not load questions for this category. Try uploading some!</CardDescription>
             <CardFooter>
-                 <Link href="/" passHref>
+                 <Link href="/home" passHref>
                     <Button variant="outline" className="mt-4">Home</Button>
                  </Link>
             </CardFooter>
@@ -352,7 +352,7 @@ export function QuizClient({ category }: { category: string }) {
               <p className="mt-2 text-foreground/80">{currentQuestion.explanation}</p>
             </div>
             <div className="flex w-full justify-between gap-2">
-              <Link href="/" passHref>
+              <Link href="/home" passHref>
                   <Button variant="outline" className="w-full md:w-auto self-end">Home</Button>
               </Link>
             </div>

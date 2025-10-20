@@ -19,7 +19,7 @@ async function QuizPage({ params }: { params: { category: string } }) {
 
   return (
     <main className="flex min-h-screen w-full flex-col items-center justify-center p-4 relative font-headline text-foreground">
-      <Link href="/" className="absolute top-4 left-4" aria-label="Return to home page">
+      <Link href="/home" className="absolute top-4 left-4" aria-label="Return to home page">
         <Button variant="ghost" className="hover:bg-primary/10">
           <Home className="mr-2 h-5 w-5" />
           Home
