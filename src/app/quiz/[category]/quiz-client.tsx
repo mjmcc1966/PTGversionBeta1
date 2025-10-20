@@ -9,7 +9,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
-import { CheckCircle, XCircle, Trophy, Lightbulb } from 'lucide-react';
+import { CheckCircle, XCircle, Trophy, Lightbulb, Hourglass } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { useAuth } from '@/app/context/auth-context';
 import { useRouter } from 'next/navigation';
@@ -23,6 +23,7 @@ export function QuizClient({ category }: { category: string }) {
   const [askedQuestionIds, setAskedQuestionIds] = useState<Set<number>>(new Set());
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  const [submitted, setSubmitted] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [score, setScore] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
@@ -30,6 +31,9 @@ export function QuizClient({ category }: { category: string }) {
   const [isLoading, setIsLoading] = useState(true);
   const { user, loading: authLoading } = useAuth();
   const router = useRouter();
+
+  const [timer, setTimer] = useState<number | null>(null);
+  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
 
   const { correctAnswerSound, incorrectAnswerSound } = useMemo(() => {
     if (typeof window !== 'undefined') {
@@ -39,6 +43,35 @@ export function QuizClient({ category }: { category: string }) {
     }
     return { correctAnswerSound: null, incorrectAnswerSound: null };
   }, []);
+
+  useEffect(() => {
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [intervalId]);
+
+  const startTimer = () => {
+    if (intervalId) {
+      clearInterval(intervalId);
+      setIntervalId(null);
+      setTimer(null);
+      return;
+    }
+    setTimer(120);
+    const newIntervalId = setInterval(() => {
+      setTimer(prevTimer => {
+        if (prevTimer === null || prevTimer <= 1) {
+          clearInterval(newIntervalId);
+          return null;
+        }
+        return prevTimer - 1;
+      });
+    }, 1000);
+    setIntervalId(newIntervalId);
+  };
+
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -72,6 +105,7 @@ export function QuizClient({ category }: { category: string }) {
     
     setCurrentQuestion(newQuestion);
     setSelectedAnswer(null);
+    setSubmitted(false);
     setIsCorrect(null);
   }, [allQuestions, askedQuestionIds]);
 
@@ -88,10 +122,15 @@ export function QuizClient({ category }: { category: string }) {
   }, [currentQuestion]);
 
   const handleAnswerSelect = (answer: string) => {
-    if (selectedAnswer) return;
-
+    if (submitted) return;
     setSelectedAnswer(answer);
-    const correct = answer === currentQuestion?.correctAnswer;
+  };
+
+  const handleSubmitAnswer = () => {
+    if (!selectedAnswer || !currentQuestion) return;
+
+    setSubmitted(true);
+    const correct = selectedAnswer === currentQuestion.correctAnswer;
     setIsCorrect(correct);
     
     if (correct) {
@@ -101,16 +140,17 @@ export function QuizClient({ category }: { category: string }) {
       incorrectAnswerSound?.play();
     }
 
-    if (currentQuestion) {
-      const newAskedQuestionIds = new Set([...Array.from(askedQuestionIds), currentQuestion.id]);
-      setAskedQuestionIds(newAskedQuestionIds);
-      localStorage.setItem(`askedQuestionIds_${category}`, JSON.stringify(Array.from(newAskedQuestionIds)));
+    const newAskedQuestionIds = new Set([...Array.from(askedQuestionIds), currentQuestion.id]);
+    setAskedQuestionIds(newAskedQuestionIds);
+    localStorage.setItem(`askedQuestionIds_${category}`, JSON.stringify(Array.from(newAskedQuestionIds)));
 
-      if (newAskedQuestionIds.size === allQuestions.length && allQuestions.length > 0) {
-          setTimeout(() => setQuizFinished(true), 2000);
-      }
+    if (newAskedQuestionIds.size >= allQuestions.length && allQuestions.length > 0) {
+        setTimeout(() => setQuizFinished(true), 3000);
+    } else {
+        setTimeout(() => selectNewQuestion(), 3000);
     }
   };
+
 
   const handleSkipQuestion = () => {
     if (!currentQuestion) return;
@@ -139,6 +179,7 @@ export function QuizClient({ category }: { category: string }) {
           const randomIndex = Math.floor(Math.random() * availableQuestions.length);
           setCurrentQuestion(availableQuestions[randomIndex]);
           setSelectedAnswer(null);
+          setSubmitted(false);
           setIsCorrect(null);
        } else {
          setCurrentQuestion(null);
@@ -159,6 +200,14 @@ export function QuizClient({ category }: { category: string }) {
                 <Skeleton className="h-12 w-full" />
             </CardContent>
         </Card>
+    )
+  }
+  
+  if (timer !== null) {
+    return (
+        <div className="absolute top-4 right-4 bg-background/80 p-2 rounded-lg shadow-lg">
+          <span className="text-xl font-bold">{Math.floor(timer / 60)}:{(timer % 60).toString().padStart(2, '0')}</span>
+        </div>
     )
   }
 
@@ -223,8 +272,10 @@ export function QuizClient({ category }: { category: string }) {
   }
 
   const getButtonClass = (option: string) => {
-    if (!selectedAnswer) {
-      return "bg-card hover:bg-primary/10 border-primary/20";
+    if (!submitted) {
+        return option === selectedAnswer
+            ? "bg-primary/20 border-primary"
+            : "bg-card hover:bg-primary/10 border-primary/20";
     }
     const isCorrectAnswer = option === currentQuestion.correctAnswer;
     const isSelectedAnswer = option === selectedAnswer;
@@ -239,7 +290,7 @@ export function QuizClient({ category }: { category: string }) {
   };
   
   const progress = allQuestions.length > 0 ? (askedQuestionIds.size / allQuestions.length) * 100 : 0;
-  const questionNumber = Array.from(askedQuestionIds).findIndex(id => id === currentQuestion.id) + 1 || askedQuestionIds.size + 1;
+  const questionNumber = Array.from(askedQuestionIds).findIndex(id => id === currentQuestion.id) + 1 || askedQuestionIds.size;
 
 
   return (
@@ -273,18 +324,23 @@ export function QuizClient({ category }: { category: string }) {
             size="lg"
             className={cn("h-auto py-4 whitespace-normal justify-start text-left text-base transition-all duration-300 transform hover:scale-105 border-2", getButtonClass(option))}
             onClick={() => handleAnswerSelect(option)}
-            disabled={!!selectedAnswer}
+            disabled={submitted}
           >
             <div className="flex-grow">{option}</div>
-            {selectedAnswer && option === currentQuestion.correctAnswer && <CheckCircle className="w-6 h-6 ml-2" />}
-            {selectedAnswer && option === selectedAnswer && option !== currentQuestion.correctAnswer && <XCircle className="w-6 h-6 ml-2" />}
+            {submitted && option === currentQuestion.correctAnswer && <CheckCircle className="w-6 h-6 ml-2" />}
+            {submitted && option === selectedAnswer && option !== currentQuestion.correctAnswer && <XCircle className="w-6 h-6 ml-2" />}
           </Button>
         ))}
       </CardContent>
-      {!selectedAnswer ? (
+      {!submitted ? (
         <CardFooter className="flex justify-between gap-2">
+           <div className="flex items-center gap-2">
             <Button variant="outline" onClick={handleSkipQuestion}>Skip Question</Button>
-            <Button onClick={selectNewQuestion}>Next Question</Button>
+            <Button onClick={handleSubmitAnswer} disabled={!selectedAnswer}>Submit Answer</Button>
+           </div>
+           <Button onClick={startTimer} variant="ghost" size="icon">
+              <Hourglass className="w-6 h-6" />
+           </Button>
         </CardFooter>
       ) : (
         <CardFooter className="flex-col items-start gap-4 animate-in fade-in duration-500">
@@ -296,12 +352,11 @@ export function QuizClient({ category }: { category: string }) {
             <Link href="/" passHref>
                 <Button variant="outline" className="w-full md:w-auto self-end">Home</Button>
             </Link>
-            <Button onClick={selectNewQuestion} className="w-full md:w-auto self-end">
-              Next Question
-            </Button>
           </div>
         </CardFooter>
       )}
     </Card>
   );
 }
+
+    
