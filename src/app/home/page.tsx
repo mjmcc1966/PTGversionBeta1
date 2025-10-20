@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Brain, Landmark, Scale, Upload, Hourglass } from 'lucide-react';
-import { UploadQuestionsDialog } from '@/components/upload-questions-dialog';
 import React, { useState, useEffect } from 'react';
 
 export default function Home() {
@@ -16,7 +15,6 @@ export default function Home() {
     { name: 'Custom User Questions', href: '/quiz/custom-trivia', icon: <Upload className="w-6 h-6" /> },
   ];
 
-  const [isUploadDialogOpen, setUploadDialogOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
   const [timer, setTimer] = useState<number | null>(null);
   const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
@@ -79,16 +77,6 @@ export default function Home() {
                 </Link>
               </Button>
             ))}
-            {isClient && (
-               <UploadQuestionsDialog>
-                 <Button className="w-full h-20 text-xl justify-start" variant="outline">
-                    <div className="flex items-center space-x-4">
-                      <Upload className="w-6 h-6" />
-                      <span>Upload Custom Questions</span>
-                    </div>
-                  </Button>
-               </UploadQuestionsDialog>
-            )}
           </CardContent>
           <CardFooter className="justify-center">
             <Button asChild variant="outline">
