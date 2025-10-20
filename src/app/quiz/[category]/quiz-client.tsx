@@ -23,6 +23,7 @@ export function QuizClient({ category }: { category: string }) {
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   const [askedQuestionIds, setAskedQuestionIds] = useState<Set<number>>(new Set());
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
+  const [chosenAnswer, setChosenAnswer] = useState<string | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [score, setScore] = useState(0);
@@ -106,6 +107,7 @@ export function QuizClient({ category }: { category: string }) {
     const newQuestion = availableQuestions[randomIndex];
     
     setCurrentQuestion(newQuestion);
+    setChosenAnswer(null);
     setSelectedAnswer(null);
     setIsCorrect(null);
   }, [allQuestions, askedQuestionIds]);
@@ -124,9 +126,14 @@ export function QuizClient({ category }: { category: string }) {
 
   const handleAnswerSelect = (answer: string) => {
     if (selectedAnswer) return;
+    setChosenAnswer(answer);
+  };
 
-    const correct = answer === currentQuestion?.correctAnswer;
-    setSelectedAnswer(answer);
+  const handleSubmitAnswer = () => {
+    if (!chosenAnswer || !currentQuestion) return;
+
+    const correct = chosenAnswer === currentQuestion.correctAnswer;
+    setSelectedAnswer(chosenAnswer);
     setIsCorrect(correct);
     
     if (correct) {
@@ -136,7 +143,7 @@ export function QuizClient({ category }: { category: string }) {
       incorrectAnswerSound?.play();
     }
 
-    const newAskedQuestionIds = new Set([...Array.from(askedQuestionIds), currentQuestion!.id]);
+    const newAskedQuestionIds = new Set([...Array.from(askedQuestionIds), currentQuestion.id]);
     setAskedQuestionIds(newAskedQuestionIds);
     localStorage.setItem(`askedQuestionIds_${category}`, JSON.stringify(Array.from(newAskedQuestionIds)));
 
@@ -171,6 +178,7 @@ export function QuizClient({ category }: { category: string }) {
        if (availableQuestions.length > 0) {
           const randomIndex = Math.floor(Math.random() * availableQuestions.length);
           setCurrentQuestion(availableQuestions[randomIndex]);
+          setChosenAnswer(null);
           setSelectedAnswer(null);
           setIsCorrect(null);
        } else {
@@ -257,6 +265,9 @@ export function QuizClient({ category }: { category: string }) {
 
   const getButtonClass = (option: string) => {
     if (!selectedAnswer) {
+        if (option === chosenAnswer) {
+            return "bg-accent/20 border-accent";
+        }
       return "bg-card hover:bg-primary/10 border-primary/20";
     }
     const isCorrectAnswer = option === currentQuestion.correctAnswer;
@@ -323,6 +334,9 @@ export function QuizClient({ category }: { category: string }) {
         {!selectedAnswer ? (
           <CardFooter className="flex justify-between items-center gap-2">
             <Button variant="outline" onClick={handleSkipQuestion}>Skip Question</Button>
+            {chosenAnswer && (
+                <Button onClick={handleSubmitAnswer}>Submit Answer</Button>
+            )}
             <Button
               variant="ghost"
               size="icon"
@@ -350,5 +364,3 @@ export function QuizClient({ category }: { category: string }) {
     </>
   );
 }
-
-    
