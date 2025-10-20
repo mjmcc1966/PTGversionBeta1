@@ -83,7 +83,7 @@ export default function Home() {
                  <Button className="w-full h-20 text-xl justify-start" variant="outline">
                     <div className="flex items-center space-x-4">
                       <Upload className="w-6 h-6" />
-                      <span><div>Upload Custom Questions<br/>The Popular Vote</div></span>
+                      <span>Upload Custom Questions</span>
                     </div>
                   </Button>
                </UploadQuestionsDialog>
