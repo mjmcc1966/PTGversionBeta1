@@ -1,3 +1,4 @@
+
 "use client";
 
 import type { Question } from '@/lib/questions';
@@ -203,14 +204,6 @@ export function QuizClient({ category }: { category: string }) {
     )
   }
   
-  if (timer !== null) {
-    return (
-        <div className="absolute top-4 right-4 bg-background/80 p-2 rounded-lg shadow-lg">
-          <span className="text-xl font-bold">{Math.floor(timer / 60)}:{(timer % 60).toString().padStart(2, '0')}</span>
-        </div>
-    )
-  }
-
   if (outOfQuestions) {
     return (
       <Card className="w-full max-w-2xl text-center p-8 shadow-2xl animate-in fade-in zoom-in-95">
@@ -294,68 +287,75 @@ export function QuizClient({ category }: { category: string }) {
 
 
   return (
-    <Card className="w-full max-w-2xl shadow-xl animate-in fade-in-50 duration-500">
-      <CardHeader>
-        <div className="mb-4">
-          <Progress value={progress} className="h-2" />
-          <p className="text-sm text-muted-foreground mt-2 text-center">Question {questionNumber} of {allQuestions.length}</p>
+    <>
+      {timer !== null && (
+        <div className="absolute top-4 right-4 bg-background/80 p-2 rounded-lg shadow-lg">
+          <span className="text-xl font-bold">{Math.floor(timer / 60)}:{(timer % 60).toString().padStart(2, '0')}</span>
         </div>
-        {currentQuestion.imageUrl && (
-          <div className="relative w-full h-64 mb-4 rounded-lg overflow-hidden">
-            <Image
-              src={currentQuestion.imageUrl}
-              alt="Question image"
-              width={600}
-              height={400}
-              className="object-cover w-full h-full"
-              data-ai-hint="landmark"
-            />
-          </div>
-        )}
-        <CardTitle className="text-2xl md:text-3xl leading-snug">
-          {currentQuestion.question}
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {shuffledOptions.map((option) => (
-          <Button
-            key={option}
-            variant="outline"
-            size="lg"
-            className={cn("h-auto py-4 whitespace-normal justify-start text-left text-base transition-all duration-300 transform hover:scale-105 border-2", getButtonClass(option))}
-            onClick={() => handleAnswerSelect(option)}
-            disabled={submitted}
-          >
-            <div className="flex-grow">{option}</div>
-            {submitted && option === currentQuestion.correctAnswer && <CheckCircle className="w-6 h-6 ml-2" />}
-            {submitted && option === selectedAnswer && option !== currentQuestion.correctAnswer && <XCircle className="w-6 h-6 ml-2" />}
-          </Button>
-        ))}
-      </CardContent>
-      {!submitted ? (
-        <CardFooter className="flex justify-between gap-2">
-           <div className="flex items-center gap-2">
-            <Button variant="outline" onClick={handleSkipQuestion}>Skip Question</Button>
-            <Button onClick={handleSubmitAnswer} disabled={!selectedAnswer}>Submit Answer</Button>
-           </div>
-           <Button onClick={startTimer} variant="ghost" size="icon">
-              <Hourglass className="w-6 h-6" />
-           </Button>
-        </CardFooter>
-      ) : (
-        <CardFooter className="flex-col items-start gap-4 animate-in fade-in duration-500">
-          <div className="w-full p-4 rounded-lg bg-primary/5 border border-primary/20">
-            <h3 className="font-bold text-lg flex items-center gap-2 text-primary"><Lightbulb/> Explanation</h3>
-            <p className="mt-2 text-foreground/80">{currentQuestion.explanation}</p>
-          </div>
-          <div className="flex w-full justify-between gap-2">
-            <Link href="/" passHref>
-                <Button variant="outline" className="w-full md:w-auto self-end">Home</Button>
-            </Link>
-          </div>
-        </CardFooter>
       )}
-    </Card>
+      <Card className="w-full max-w-2xl shadow-xl animate-in fade-in-50 duration-500">
+        <CardHeader>
+          <div className="mb-4">
+            <Progress value={progress} className="h-2" />
+            <p className="text-sm text-muted-foreground mt-2 text-center">Question {questionNumber} of {allQuestions.length}</p>
+          </div>
+          {currentQuestion.imageUrl && (
+            <div className="relative w-full h-64 mb-4 rounded-lg overflow-hidden">
+              <Image
+                src={currentQuestion.imageUrl}
+                alt="Question image"
+                width={600}
+                height={400}
+                className="object-cover w-full h-full"
+                data-ai-hint="landmark"
+              />
+            </div>
+          )}
+          <CardTitle className="text-2xl md:text-3xl leading-snug">
+            {currentQuestion.question}
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {shuffledOptions.map((option) => (
+            <Button
+              key={option}
+              variant="outline"
+              size="lg"
+              className={cn("h-auto py-4 whitespace-normal justify-start text-left text-base transition-all duration-300 transform hover:scale-105 border-2", getButtonClass(option))}
+              onClick={() => handleAnswerSelect(option)}
+              disabled={submitted}
+            >
+              <div className="flex-grow">{option}</div>
+              {submitted && option === currentQuestion.correctAnswer && <CheckCircle className="w-6 h-6 ml-2" />}
+              {submitted && option === selectedAnswer && option !== currentQuestion.correctAnswer && <XCircle className="w-6 h-6 ml-2" />}
+            </Button>
+          ))}
+        </CardContent>
+        {!submitted ? (
+          <CardFooter className="flex justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <Button variant="outline" onClick={handleSkipQuestion}>Skip Question</Button>
+              {selectedAnswer && <Button onClick={handleSubmitAnswer}>Submit Answer</Button>}
+            </div>
+            <Button onClick={startTimer} variant="ghost" size="icon">
+                <Hourglass className="w-6 h-6" />
+            </Button>
+          </CardFooter>
+        ) : (
+          <CardFooter className="flex-col items-start gap-4 animate-in fade-in duration-500">
+            <div className="w-full p-4 rounded-lg bg-primary/5 border border-primary/20">
+              <h3 className="font-bold text-lg flex items-center gap-2 text-primary"><Lightbulb/> Explanation</h3>
+              <p className="mt-2 text-foreground/80">{currentQuestion.explanation}</p>
+            </div>
+            <div className="flex w-full justify-between gap-2">
+              <Link href="/" passHref>
+                  <Button variant="outline" className="w-full md:w-auto self-end">Home</Button>
+              </Link>
+            </div>
+          </CardFooter>
+        )}
+      </Card>
+    </>
   );
 }
 
