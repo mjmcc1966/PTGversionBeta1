@@ -62,7 +62,7 @@ export default function Home() {
           <CardHeader className="text-center">
             <CardTitle className="text-3xl font-bold">Politics: The Game</CardTitle>
              {isClient && (
-              <Button onClick={startTimer} variant="ghost" size="icon" className="absolute top-2 right-2">
+              <Button onClick={startTimer} variant="ghost" size="icon" className="absolute top-2 right-2 bg-green-500 hover:bg-green-600 text-white rounded-full">
                 <Hourglass className="w-6 h-6" />
               </Button>
             )}

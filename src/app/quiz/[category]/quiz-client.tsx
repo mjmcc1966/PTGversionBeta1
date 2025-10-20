@@ -341,7 +341,7 @@ export function QuizClient({ category }: { category: string }) {
               <Button variant="outline" onClick={handleSkipQuestion}>Skip Question</Button>
               {selectedAnswer && <Button onClick={handleSubmitAnswer}>Submit Answer</Button>}
             </div>
-            <Button onClick={startTimer} variant="ghost" size="icon">
+            <Button onClick={startTimer} variant="ghost" size="icon" className="bg-green-500 hover:bg-green-600 text-white rounded-full">
                 <Hourglass className="w-6 h-6" />
             </Button>
           </CardFooter>
