@@ -13,6 +13,7 @@ export default function Home() {
     { name: (<div>General Trivia<br/>$10,000,000</div>), href: '/quiz/general-trivia', icon: <BrainCircuit className="w-6 h-6" /> },
     { name: (<div>State Trivia<br/>10 Million Popular Votes</div>), href: '/quiz/state-trivia', icon: <Landmark className="w-6 h-6" /> },
     { name: (<div>Government Trivia<br/>Electoral Votes</div>), href: '/quiz/government-trivia', icon: <Scale className="w-6 h-6" /> },
+    { name: (<div>custom trivia user uploaded</div>), href: '/quiz/custom-trivia', icon: <Upload className="w-6 h-6" /> },
   ];
 
   const [isUploadDialogOpen, setUploadDialogOpen] = useState(false);
@@ -83,7 +84,7 @@ export default function Home() {
                  <Button className="w-full h-20 text-xl justify-start" variant="outline">
                     <div className="flex items-center space-x-4">
                       <Upload className="w-6 h-6" />
-                      <span>custom trivia user uploaded</span>
+                      <span>Upload Custom Questions</span>
                     </div>
                   </Button>
                </UploadQuestionsDialog>
