@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BrainCircuit, Landmark, Scale, Upload, Hourglass } from 'lucide-react';
 import { UploadQuestionsDialog } from '@/components/upload-questions-dialog';
 import React, { useState, useEffect } from 'react';
+import imageData from '@/app/lib/placeholder-images.json';
 
 export default function Home() {
   const categories = [
@@ -50,15 +51,17 @@ export default function Home() {
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
   };
 
+  const { src, alt, "data-ai-hint": dataAiHint } = imageData.home_background;
+
   return (
     <>
       <div className="fixed inset-0 z-[-1]">
         <Image
-          src="https://picsum.photos/1920/1080"
-          alt="A library with many books, representing knowledge"
+          src={src}
+          alt={alt}
           fill
           className="object-cover"
-          data-ai-hint="library books"
+          data-ai-hint={dataAiHint}
           priority
         />
         <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
