@@ -1,9 +1,9 @@
 {
   "home_background": {
-    "src": "https://picsum.photos/seed/1/1920/1080",
-    "alt": "A library with many books, representing knowledge",
+    "src": "/custom-background.jpg",
+    "alt": "A custom background image for the trivia game",
     "width": 1920,
     "height": 1080,
-    "data-ai-hint": "library books"
+    "data-ai-hint": ""
   }
 }
