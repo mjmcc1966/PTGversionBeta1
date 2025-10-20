@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -59,7 +60,7 @@ export default function Home() {
       <div className="w-full max-w-md relative">
         <Card>
           <CardHeader className="text-center">
-            <CardTitle className="text-3xl font-bold">Welcome to Politics: The Game!</CardTitle>
+            <CardTitle className="text-3xl font-bold">Politics: The Game</CardTitle>
              {isClient && (
               <Button onClick={startTimer} variant="ghost" size="icon" className="absolute top-2 right-2">
                 <Hourglass className="w-6 h-6" />
