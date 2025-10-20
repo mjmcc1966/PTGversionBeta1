@@ -147,8 +147,6 @@ export function QuizClient({ category }: { category: string }) {
 
     if (newAskedQuestionIds.size >= allQuestions.length && allQuestions.length > 0) {
         setTimeout(() => setQuizFinished(true), 3000);
-    } else {
-        setTimeout(() => selectNewQuestion(), 3000);
     }
   };
 
@@ -358,5 +356,3 @@ export function QuizClient({ category }: { category: string }) {
     </>
   );
 }
-
-    
