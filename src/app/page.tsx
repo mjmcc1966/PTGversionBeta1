@@ -13,6 +13,7 @@ export default function Home() {
     { name: (<div>General Trivia<br/>$10,000,000</div>), href: '/quiz/general-trivia', icon: <BrainCircuit className="w-6 h-6" /> },
     { name: (<div>State Trivia<br/>10 Million Popular Votes</div>), href: '/quiz/state-trivia', icon: <Landmark className="w-6 h-6" /> },
     { name: (<div>Government Trivia<br/>Electoral Votes</div>), href: '/quiz/government-trivia', icon: <Scale className="w-6 h-6" /> },
+    { name: (<div>Custom Trivia<br/>The Popular Vote</div>), href: '/quiz/custom-trivia', icon: <Upload className="w-6 h-6" /> },
   ];
 
   const [isUploadDialogOpen, setUploadDialogOpen] = useState(false);
