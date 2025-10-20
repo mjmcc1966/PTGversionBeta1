@@ -1,4 +1,3 @@
-
 "use client";
 
 import type { Question } from '@/lib/questions';
@@ -10,7 +9,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
-import { CheckCircle, XCircle, Trophy, Lightbulb, Hourglass } from 'lucide-react';
+import { CheckCircle, XCircle, Trophy, Lightbulb } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { useAuth } from '@/app/context/auth-context';
 import { useRouter } from 'next/navigation';
@@ -23,7 +22,6 @@ export function QuizClient({ category }: { category: string }) {
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   const [askedQuestionIds, setAskedQuestionIds] = useState<Set<number>>(new Set());
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
-  const [chosenAnswer, setChosenAnswer] = useState<string | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [score, setScore] = useState(0);
@@ -32,8 +30,6 @@ export function QuizClient({ category }: { category: string }) {
   const [isLoading, setIsLoading] = useState(true);
   const { user, loading: authLoading } = useAuth();
   const router = useRouter();
-  const [timeLeft, setTimeLeft] = useState(120);
-  const [timerActive, setTimerActive] = useState(false);
 
   const { correctAnswerSound, incorrectAnswerSound } = useMemo(() => {
     if (typeof window !== 'undefined') {
@@ -43,38 +39,6 @@ export function QuizClient({ category }: { category: string }) {
     }
     return { correctAnswerSound: null, incorrectAnswerSound: null };
   }, []);
-
-  useEffect(() => {
-    if (!timerActive || timeLeft === 0) {
-      if (timeLeft === 0) {
-        setTimerActive(false); 
-      }
-      return;
-    }
-
-    const intervalId = setInterval(() => {
-      setTimeLeft(timeLeft - 1);
-    }, 1000);
-
-    return () => clearInterval(intervalId);
-  }, [timerActive, timeLeft]);
-
-  const toggleTimer = () => {
-    if (timerActive) {
-      setTimerActive(false);
-      setTimeLeft(120);
-    } else {
-      setTimeLeft(120);
-      setTimerActive(true);
-    }
-  };
-  
-  const formatTime = (seconds: number) => {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
-  };
-
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -107,7 +71,6 @@ export function QuizClient({ category }: { category: string }) {
     const newQuestion = availableQuestions[randomIndex];
     
     setCurrentQuestion(newQuestion);
-    setChosenAnswer(null);
     setSelectedAnswer(null);
     setIsCorrect(null);
   }, [allQuestions, askedQuestionIds]);
@@ -126,14 +89,9 @@ export function QuizClient({ category }: { category: string }) {
 
   const handleAnswerSelect = (answer: string) => {
     if (selectedAnswer) return;
-    setChosenAnswer(answer);
-  };
 
-  const handleSubmitAnswer = () => {
-    if (!chosenAnswer || !currentQuestion) return;
-
-    const correct = chosenAnswer === currentQuestion.correctAnswer;
-    setSelectedAnswer(chosenAnswer);
+    setSelectedAnswer(answer);
+    const correct = answer === currentQuestion?.correctAnswer;
     setIsCorrect(correct);
     
     if (correct) {
@@ -143,12 +101,14 @@ export function QuizClient({ category }: { category: string }) {
       incorrectAnswerSound?.play();
     }
 
-    const newAskedQuestionIds = new Set([...Array.from(askedQuestionIds), currentQuestion.id]);
-    setAskedQuestionIds(newAskedQuestionIds);
-    localStorage.setItem(`askedQuestionIds_${category}`, JSON.stringify(Array.from(newAskedQuestionIds)));
+    if (currentQuestion) {
+      const newAskedQuestionIds = new Set([...Array.from(askedQuestionIds), currentQuestion.id]);
+      setAskedQuestionIds(newAskedQuestionIds);
+      localStorage.setItem(`askedQuestionIds_${category}`, JSON.stringify(Array.from(newAskedQuestionIds)));
 
-    if (newAskedQuestionIds.size === allQuestions.length && allQuestions.length > 0) {
-        setTimeout(() => setQuizFinished(true), 2000);
+      if (newAskedQuestionIds.size === allQuestions.length && allQuestions.length > 0) {
+          setTimeout(() => setQuizFinished(true), 2000);
+      }
     }
   };
 
@@ -178,7 +138,6 @@ export function QuizClient({ category }: { category: string }) {
        if (availableQuestions.length > 0) {
           const randomIndex = Math.floor(Math.random() * availableQuestions.length);
           setCurrentQuestion(availableQuestions[randomIndex]);
-          setChosenAnswer(null);
           setSelectedAnswer(null);
           setIsCorrect(null);
        } else {
@@ -192,7 +151,7 @@ export function QuizClient({ category }: { category: string }) {
         <Card className="w-full max-w-2xl shadow-lg">
             <CardHeader>
                 <Skeleton className="h-8 w-3/4" />
-            </CardHeader>.
+            </CardHeader>
             <CardContent className="space-y-4">
                 <Skeleton className="h-12 w-full" />
                 <Skeleton className="h-12 w-full" />
@@ -265,9 +224,6 @@ export function QuizClient({ category }: { category: string }) {
 
   const getButtonClass = (option: string) => {
     if (!selectedAnswer) {
-        if (option === chosenAnswer) {
-            return "bg-accent/20 border-accent";
-        }
       return "bg-card hover:bg-primary/10 border-primary/20";
     }
     const isCorrectAnswer = option === currentQuestion.correctAnswer;
@@ -287,86 +243,65 @@ export function QuizClient({ category }: { category: string }) {
 
 
   return (
-    <>
-      {timerActive && (
-        <div className="absolute top-4 right-4 bg-primary text-primary-foreground p-3 rounded-lg shadow-lg text-4xl font-bold font-mono">
-          {formatTime(timeLeft)}
+    <Card className="w-full max-w-2xl shadow-xl animate-in fade-in-50 duration-500">
+      <CardHeader>
+        <div className="mb-4">
+          <Progress value={progress} className="h-2" />
+          <p className="text-sm text-muted-foreground mt-2 text-center">Question {questionNumber} of {allQuestions.length}</p>
         </div>
-      )}
-      <Card className="w-full max-w-2xl shadow-xl animate-in fade-in-50 duration-500">
-        <CardHeader>
-          <div className="mb-4">
-            <Progress value={progress} className="h-2" />
-            <p className="text-sm text-muted-foreground mt-2 text-center">Question {questionNumber} of {allQuestions.length}</p>
+        {currentQuestion.imageUrl && (
+          <div className="relative w-full h-64 mb-4 rounded-lg overflow-hidden">
+            <Image
+              src={currentQuestion.imageUrl}
+              alt="Question image"
+              width={600}
+              height={400}
+              className="object-cover w-full h-full"
+              data-ai-hint="landmark"
+            />
           </div>
-          {currentQuestion.imageUrl && (
-            <div className="relative w-full h-64 mb-4 rounded-lg overflow-hidden">
-              <Image
-                src={currentQuestion.imageUrl}
-                alt="Question image"
-                width={600}
-                height={400}
-                className="object-cover w-full h-full"
-                data-ai-hint="landmark"
-              />
-            </div>
-          )}
-          <CardTitle className="text-2xl md:text-3xl leading-snug">
-            {currentQuestion.question}
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {shuffledOptions.map((option) => (
-            <Button
-              key={option}
-              variant="outline"
-              size="lg"
-              className={cn("h-auto py-4 whitespace-normal justify-start text-left text-base transition-all duration-300 transform hover:scale-105 border-2", getButtonClass(option))}
-              onClick={() => handleAnswerSelect(option)}
-              disabled={!!selectedAnswer}
-            >
-              <div className="flex-grow">{option}</div>
-              {selectedAnswer && option === currentQuestion.correctAnswer && <CheckCircle className="w-6 h-6 ml-2" />}
-              {selectedAnswer && option === selectedAnswer && option !== currentQuestion.correctAnswer && <XCircle className="w-6 h-6 ml-2" />}
-            </Button>
-          ))}
-        </CardContent>
-        {!selectedAnswer ? (
-          <CardFooter className="flex justify-between items-center gap-2">
-             <div className="flex-grow">
-                <Button variant="outline" onClick={handleSkipQuestion}>Skip Question</Button>
-             </div>
-            {chosenAnswer && (
-                <Button onClick={handleSubmitAnswer}>Submit Answer</Button>
-            )}
-            <div className="flex-grow text-right">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="w-12 h-12 rounded-full bg-accent/80 text-accent-foreground shadow-lg hover:bg-accent hover:scale-110 transition-transform"
-                  onClick={toggleTimer}
-                  aria-label="Toggle Timer"
-                >
-                  <Hourglass className="w-6 h-6" />
-                </Button>
-            </div>
-          </CardFooter>
-        ) : (
-          <CardFooter className="flex-col items-start gap-4 animate-in fade-in duration-500">
-            <div className="w-full p-4 rounded-lg bg-primary/5 border border-primary/20">
-              <h3 className="font-bold text-lg flex items-center gap-2 text-primary"><Lightbulb/> Explanation</h3>
-              <p className="mt-2 text-foreground/80">{currentQuestion.explanation}</p>
-            </div>
-            <div className="flex w-full justify-center gap-2">
-              <Link href="/" passHref>
-                <Button variant="outline" className="w-full md:w-auto self-end">Home</Button>
-              </Link>
-            </div>
-          </CardFooter>
         )}
-      </Card>
-    </>
+        <CardTitle className="text-2xl md:text-3xl leading-snug">
+          {currentQuestion.question}
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {shuffledOptions.map((option) => (
+          <Button
+            key={option}
+            variant="outline"
+            size="lg"
+            className={cn("h-auto py-4 whitespace-normal justify-start text-left text-base transition-all duration-300 transform hover:scale-105 border-2", getButtonClass(option))}
+            onClick={() => handleAnswerSelect(option)}
+            disabled={!!selectedAnswer}
+          >
+            <div className="flex-grow">{option}</div>
+            {selectedAnswer && option === currentQuestion.correctAnswer && <CheckCircle className="w-6 h-6 ml-2" />}
+            {selectedAnswer && option === selectedAnswer && option !== currentQuestion.correctAnswer && <XCircle className="w-6 h-6 ml-2" />}
+          </Button>
+        ))}
+      </CardContent>
+      {!selectedAnswer ? (
+        <CardFooter className="flex justify-between gap-2">
+            <Button variant="outline" onClick={handleSkipQuestion}>Skip Question</Button>
+            <Button onClick={selectNewQuestion}>Next Question</Button>
+        </CardFooter>
+      ) : (
+        <CardFooter className="flex-col items-start gap-4 animate-in fade-in duration-500">
+          <div className="w-full p-4 rounded-lg bg-primary/5 border border-primary/20">
+            <h3 className="font-bold text-lg flex items-center gap-2 text-primary"><Lightbulb/> Explanation</h3>
+            <p className="mt-2 text-foreground/80">{currentQuestion.explanation}</p>
+          </div>
+          <div className="flex w-full justify-between gap-2">
+            <Link href="/" passHref>
+                <Button variant="outline" className="w-full md:w-auto self-end">Home</Button>
+            </Link>
+            <Button onClick={selectNewQuestion} className="w-full md:w-auto self-end">
+              Next Question
+            </Button>
+          </div>
+        </CardFooter>
+      )}
+    </Card>
   );
 }
-
-    

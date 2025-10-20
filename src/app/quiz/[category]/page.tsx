@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 import { Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -13,9 +12,8 @@ export function generateStaticParams() {
   ];
 }
 
-async function QuizPage({ params }: { params: { category: string } }) {
-  const resolvedParams = await params;
-  const categoryName = decodeURIComponent(resolvedParams.category).replace(/-/g, ' ');
+function QuizPage({ params }: { params: { category: string } }) {
+  const categoryName = decodeURIComponent(params.category).replace(/-/g, ' ');
 
   return (
     <main className="flex min-h-screen w-full flex-col items-center justify-center p-4 relative font-headline text-foreground">
@@ -31,7 +29,7 @@ async function QuizPage({ params }: { params: { category: string } }) {
         </h1>
         <p className="text-muted-foreground text-lg">Test Your Knowledge</p>
       </div>
-      <QuizClient category={resolvedParams.category} />
+      <QuizClient category={params.category} />
     </main>
   );
 }
