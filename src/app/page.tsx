@@ -64,7 +64,7 @@ export default function Home() {
           data-ai-hint={dataAiHint}
           priority
         />
-        <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-background/80" />
       </div>
 
       {timerActive && (
