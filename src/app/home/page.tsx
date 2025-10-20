@@ -4,13 +4,13 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Brain, Landmark, Scale, Upload, Hourglass } from 'lucide-react';
+import { Brain, Map, Scale, Upload, Hourglass } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 
 export default function Home() {
   const categories = [
     { name: (<div>General Trivia<br/>$10,000,000</div>), href: '/quiz/general-trivia', icon: <Brain className="w-6 h-6" /> },
-    { name: (<div>State Trivia<br/>10 Million Popular Votes</div>), href: '/quiz/state-trivia', icon: <Landmark className="w-6 h-6" /> },
+    { name: (<div>State Trivia<br/>10 Million Popular Votes</div>), href: '/quiz/state-trivia', icon: <Map className="w-6 h-6" /> },
     { name: (<div>Government Trivia<br/>Electoral Votes</div>), href: '/quiz/government-trivia', icon: <Scale className="w-6 h-6" /> },
     { name: 'Custom User Questions', href: '/quiz/custom-trivia', icon: <Upload className="w-6 h-6" /> },
   ];
