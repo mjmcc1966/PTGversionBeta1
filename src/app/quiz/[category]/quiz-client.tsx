@@ -130,6 +130,12 @@ export function QuizClient({ category }: { category: string }) {
   const handleSubmitAnswer = () => {
     if (!selectedAnswer || !currentQuestion) return;
 
+    if (intervalId) {
+      clearInterval(intervalId);
+      setIntervalId(null);
+      setTimer(null);
+    }
+
     setSubmitted(true);
     const correct = selectedAnswer === currentQuestion.correctAnswer;
     setIsCorrect(correct);
