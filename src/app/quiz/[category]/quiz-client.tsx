@@ -333,19 +333,23 @@ export function QuizClient({ category }: { category: string }) {
         </CardContent>
         {!selectedAnswer ? (
           <CardFooter className="flex justify-between items-center gap-2">
-            <Button variant="outline" onClick={handleSkipQuestion}>Skip Question</Button>
+             <div className="flex-grow">
+                <Button variant="outline" onClick={handleSkipQuestion}>Skip Question</Button>
+             </div>
             {chosenAnswer && (
                 <Button onClick={handleSubmitAnswer}>Submit Answer</Button>
             )}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="w-12 h-12 rounded-full bg-accent/80 text-accent-foreground shadow-lg hover:bg-accent hover:scale-110 transition-transform"
-              onClick={toggleTimer}
-              aria-label="Toggle Timer"
-            >
-              <Hourglass className="w-6 h-6" />
-            </Button>
+            <div className="flex-grow text-right">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="w-12 h-12 rounded-full bg-accent/80 text-accent-foreground shadow-lg hover:bg-accent hover:scale-110 transition-transform"
+                  onClick={toggleTimer}
+                  aria-label="Toggle Timer"
+                >
+                  <Hourglass className="w-6 h-6" />
+                </Button>
+            </div>
           </CardFooter>
         ) : (
           <CardFooter className="flex-col items-start gap-4 animate-in fade-in duration-500">
@@ -364,3 +368,5 @@ export function QuizClient({ category }: { category: string }) {
     </>
   );
 }
+
+    
