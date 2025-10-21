@@ -33,31 +33,16 @@ export default function RulesPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold mb-2 text-destructive">GAME SET UP</h2>
-            <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
-              <li>If you have not already done so, download the free app (from the AppStore or Google Play). To register, you will need to enter your first name, a valid email address, and your unique 16 digit code (found inside the box lid) to activate the app. The app will provide you with over 300 questions of each type of question (State, General and Political Trivia questions).</li>
-              <li>Please enter your email carefully, as this is how you will be notified of any updates to the game, and it will also be how you receive expansion packs (should you choose to buy any).</li>
-              <li>You will never see a given question twice while using your code, and the order of questions (and answers) will be randomized.</li>
-              <li>Your 16-digit code can be used 5 times. Once a given device (phone, iPad, tablet, etc) is activated, it will remain activated and will not need to have the code entered again.</li>
-              <li>You can share the code with whoever you like, but remember the limit of 5 activations!</li>
-              <li>Keep in mind that each time your code is used, regardless on which device, it will pick up where you left off. As an example, if you have used 50 of the General Trivia questions, then the next time the app is opened with your code, those 50 questions will already be used and will not be seen again. This means that if someone else is using your code, they could use up all of your questions. (But you have options when you reach that point - <a href="#adding-more-questions" className="text-blue-500 underline">see below</a>)</li>
-              <li>Place the 50 Electoral Vote chips, each labeled with the state abbreviation and number of Electoral Votes, in their appropriate state on the game board.</li>
-              <li>Each candidate chooses a game piece and gets $10 million (ten $1 million bills) to start their candidacy.</li>
-              <li>Choose one candidate to be the Speaker of the House, who will be in charge of general game flow, controlling the bank, and generally making sure the rules are followed.</li>
-            </ul>
-          </div>
-
-          <div>
             <h2 className="text-2xl font-semibold mb-2 text-destructive">GENERAL GAME PLAY</h2>
              <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
                 <li>Gerrymander cards should be shuffled, and each candidate/team should be dealt 3 cards. Each card lists a combination of achievements on the left side. If you attain them all, then you get the bonus listed on the right side. Choose 2 cards and return the 3rd one to the deck. The deck then gets placed face-down on the Gerrymander card space on the board. Read the details on Gerrymander cards below.</li>
                 <li>Next, each candidate/team rolls the 2 dice. The candidate with the highest roll gets to choose their starting state. Place your game piece in that state. The next highest roll then chooses their home state, and so on. There can only be one candidate per state to start the game. No candidate may choose D.C. as their home state. The candidate with the lowest roll from above goes first. Play then proceeds counterclockwise (to your right).</li>
                 <li>When it’s your turn to roll, you have two options:</li>
             </ul>
-            <ol className="list-decimal pl-10 space-y-2 text-muted-foreground">
+            <ul className="list-disc pl-10 space-y-2 text-muted-foreground">
                 <li><strong>Option 1:</strong> Before rolling the dice, you can fly to any other state, at a cost of $2 million (payable to the bank). If you use this option, your turn is over once you land in that new state.</li>
                 <li><strong>Option 2:</strong> Roll the dice and move the indicated number of places. If you roll doubles (two 1s, two 2s, etc), then BEFORE you move your piece, you must choose the top Wildcard from the stack and do whatever is indicated on that card. (<a href="#wildcards" className="text-blue-500 underline">See the section on Wildcards for more details</a>)</li>
-            </ol>
+            </ul>
             <ul className="list-disc pl-5 space-y-2 text-muted-foreground mt-4">
               <li>You may move in any direction, into any state adjoining the state you are in, but you may NOT end up in the same state in which you started your turn. (You may, however, pass through your starting state on the way to another state.)</li>
               <li>Once you finish moving, you may then choose either a General or State trivia question for free. For Government trivia, you must pay $2 million to the bank before being asked the question. Whichever question type you choose, one of the other candidates will ask you the question from the app and read you the multiple choice answers. You have the OPTION of clicking the hourglass icon to activate a 2:00 minute countdown timer.</li>
