@@ -24,9 +24,11 @@ export default function RulesPage() {
 
           <div>
             <h2 className="text-2xl font-semibold mb-2">BIG PICTURE</h2>
-            <p className="text-muted-foreground">
-              Spin the dice and move your game piece. Choose a question type and answer it correctly to win either cash, Popular Votes or Electoral Votes. The first candidate to get at least 270 Electoral Votes AND the most Popular Votes wins!
-            </p>
+            <ol className="list-decimal pl-5 space-y-2 text-muted-foreground">
+              <li>Spin the dice and move your game piece</li>
+              <li>Choose a question type and answer it correctly to win either cash, Popular Votes or Electoral Votes</li>
+              <li>The first candidate to get at least 270 Electoral Votes AND the most Popular Votes wins!</li>
+            </ol>
             <p className="text-muted-foreground mt-4"><strong>Now for the details...</strong></p>
           </div>
 
@@ -169,3 +171,5 @@ export default function RulesPage() {
     </div>
   );
 }
+
+    
