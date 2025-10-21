@@ -16,14 +16,14 @@ export default function RulesPage() {
           </p>
 
           <div>
-            <h2 className="text-2xl font-semibold mb-2 text-primary">PARTS OF THE GAME</h2>
+            <h2 className="text-2xl font-semibold mb-2 text-destructive">PARTS OF THE GAME</h2>
             <p className="text-muted-foreground">
               Game board (1) Dice (2) Game pieces (8) Gerrymander cards (35) Scoring sheets (100) Cash (420 total)
             </p>
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold mb-2 text-primary">BIG PICTURE</h2>
+            <h2 className="text-2xl font-semibold mb-2 text-destructive">BIG PICTURE</h2>
             <ol className="list-decimal pl-5 space-y-2 text-muted-foreground">
               <li>Spin the dice and move your game piece</li>
               <li>Choose a question type and answer it correctly to win either cash, Popular Votes or Electoral Votes</li>
@@ -33,7 +33,7 @@ export default function RulesPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold mb-2 text-primary">GAME SET UP</h2>
+            <h2 className="text-2xl font-semibold mb-2 text-destructive">GAME SET UP</h2>
             <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
               <li>If you have not already done so, download the free app (from the AppStore or Google Play). To register, you will need to enter your first name, a valid email address, and your unique 16 digit code (found inside the box lid) to activate the app. The app will provide you with over 300 questions of each type of question (State, General and Political Trivia questions).</li>
               <li>Please enter your email carefully, as this is how you will be notified of any updates to the game, and it will also be how you receive expansion packs (should you choose to buy any).</li>
@@ -48,7 +48,7 @@ export default function RulesPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold mb-2 text-primary">GENERAL GAME PLAY</h2>
+            <h2 className="text-2xl font-semibold mb-2 text-destructive">GENERAL GAME PLAY</h2>
             <p className="text-muted-foreground">Gerrymander cards should be shuffled, and each candidate/team should be dealt 3 cards. Each card lists a combination of achievements on the left side. If you attain them all, then you get the bonus listed on the right side. Choose 2 cards and return the 3rd one to the deck. The deck then gets placed face-down on the Gerrymander card space on the board. Read the details on Gerrymander cards below.</p>
             <p className="text-muted-foreground mt-2">At the end of regular play (meaning, before you enter into a Runoff or Speed Play round), you must deduct the listed bonus from each combo card in your possession, from your campaign. If you need to deduct more cash than you have, then you may get $1 million for each million Popular Votes you give up. Likewise, if you need to deduct more Votes than you have, you may buy 1 million Votes for $5 million cash. Shuffle the Gerrymander cards, then 3 should be dealt to each candidate/team. The Gerrymander cards list a combination of achievements that, if you attain them all, will get you the bonus listed on the right side of the card. Look over the 3 cards you were dealt, keep 2 of them and return the 3rd to the deck. All unused Gerrymander cards should be placed face down, on the “Gerrymander” square on the game board.</p>
             <p className="text-muted-foreground mt-4">Next, each candidate/team rolls the 2 dice. The candidate with the highest roll gets to choose their starting state. Place your game piece in that state. The next highest roll then chooses their home state, and so on. There can only be one candidate per state to start the game. No candidate may choose D.C. as their home state. The candidate with the lowest roll from above goes first. Play then proceeds counterclockwise (to your right).</p>
@@ -71,7 +71,7 @@ export default function RulesPage() {
           </div>
           
           <div>
-            <h2 className="text-2xl font-semibold mb-2 text-primary">GERRYMANDER CARDS</h2>
+            <h2 className="text-2xl font-semibold mb-2 text-destructive">GERRYMANDER CARDS</h2>
             <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
                 <li>Gerrymander cards are a way to obtain certain rewards in an ‘alternative’ manner.</li>
                 <li>You can play a Gerrymander card at any time during your turn. Once you play a card, then that card gets placed in front of you, face up, to indicate that it has been played. You must then choose the next Gerrymander card from the deck so that you always have 2 ‘active’ Gerrymander cards in your possession. <strong>NO GERRYMANDER CARDS MAY BE PLAYED DURING RUNOFFS OR DURING SPEED PLAY.</strong></li>
@@ -82,7 +82,7 @@ export default function RulesPage() {
           </div>
           
           <div>
-            <h2 className="text-2xl font-semibold mb-2 text-primary">WINNING</h2>
+            <h2 className="text-2xl font-semibold mb-2 text-destructive">WINNING</h2>
             <ul className="list-disc pl-5 space-y-2 text-muted-foreground mt-4">
                 <li>Game play continues until the first candidate collects at least 270 Electoral Votes. At that point, all candidates should turn in any unplayed Gerrymander cards, and take the appropriate penalties.</li>
                 <li>If the same candidate that has 270 or more Electoral Votes also has the most Popular Votes, then that candidate can declare themselves the next President of the United States. Game over. Back to Congress for the rest of you. Try again in 4 years!</li>
@@ -91,45 +91,45 @@ export default function RulesPage() {
           </div>
 
           <div>
-            <h2 id="wildcards" className="text-2xl font-semibold mb-2 text-primary">WILDCARDS</h2>
+            <h2 id="wildcards" className="text-2xl font-semibold mb-2 text-destructive">WILDCARDS</h2>
             <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
                 <li>Wildcards are chosen whenever a candidate throws doubles. (Two 1s, two 2s, etc)</li>
                 <li>Unless the Wildcard states otherwise, if you are told that you lose some amount of cash or votes, those items just go back to the bank (cash), or get erased from your tally (votes).</li>
                 <li>Once a Wildcard is played, place it face up next to the remaining Wildcards. Once there are 3-5 Wildcards remaining in the draw pile, the Speaker should shuffle them all and return the whole deck to service, face down.</li>
                 <li>See the Wildcard reference sheet for details on each type of Wildcard</li>
             </ul>
-            <h3 className="text-xl font-semibold mt-4 mb-2 text-primary">WILDCARD DETAILS</h3>
+            <h3 className="text-xl font-semibold mt-4 mb-2 text-destructive">WILDCARD DETAILS</h3>
             <p className="text-muted-foreground">Wildcards are chosen whenever a player throws doubles (1+1, 2+2, 3+3, etc). Unless the Wildcard states otherwise, if you are told that you lose some amount of cash or votes, those items just go back to the bank (cash), get erased from your tally (Popular Votes), or go back on the board (Electoral Votes).</p>
             <p className="text-muted-foreground mt-2">If a Wildcard has a 2 minute time limit associated with it, you may press the hourglass icon on your home screen to access a 2:00 countdown timer.</p>
             <p className="text-muted-foreground mt-2">There are 6 different categories of Wildcards. Once any Wildcard is played, place it face up on the bottom of the Wildcard deck. After all Wildcards have been played, the Speaker should shuffle the deck and place them face down again.</p>
 
-            <h4 className="text-lg font-semibold mt-4 text-primary/90">“Feel your pain” time</h4>
+            <h4 className="text-lg font-semibold mt-4 text-destructive/90">“Feel your pain” time</h4>
             <p className="text-muted-foreground mt-2">You have 2 minutes to act out the word or phrase indicated. The person acting out the word or phrase cannot talk / hum / sing / vocalize / write / draw, point at objects in the room, or move their lips. Tugging the ear means “sounds like”. Hold up the number of fingers to indicate the number of words. Place the number of fingers on your forearm to indicate the number of syllables in the word. Touch your nose if someone guesses a correct word. Any other rules you want to add or modify must be agreed upon before you start play.</p>
             <p className="text-muted-foreground mt-2">If any other candidate correctly guesses what you are acting out within 2 minutes, then that person AND the actor each get 10 million Popular Votes.</p>
             <p className="text-muted-foreground mt-2">If no one guesses what you are acting out, then you alone lose 5 million Popular Votes.</p>
 
-            <h4 className="text-lg font-semibold mt-4 text-primary/90">“Party platform” time</h4>
+            <h4 className="text-lg font-semibold mt-4 text-destructive/90">“Party platform” time</h4>
             <p className="text-muted-foreground mt-2">You have 2 minutes to draw the word or phrase indicated. You may not draw letters or numbers.</p>
             <p className="text-muted-foreground mt-2">If any other candidate correctly guesses what you are drawing, then that person AND the artist each get $5 million from the bank.</p>
             <p className="text-muted-foreground mt-2">If no one guesses what you are drawing within 1 minute, then the artist must pay each candidate or team $1 million from their own funds.</p>
 
-            <h4 className="text-lg font-semibold mt-4 text-primary/90">“Glad-handing” time</h4>
+            <h4 className="text-lg font-semibold mt-4 text-destructive/90">“Glad-handing” time</h4>
             <p className="text-muted-foreground mt-2">You have 2 minutes (unless the card says otherwise) to complete the physical challenge described. The other candidates are the judges in determining whether you were successful in the challenge (simple majority rules).</p>
             <p className="text-muted-foreground mt-2">If you successfully do the challenge, you get 10 million Popular Votes.</p>
             <p className="text-muted-foreground mt-2">If you are not able to complete the challenge, you lose 5 million Popular Votes.</p>
             <p className="text-muted-foreground mt-2">If someone has a physical limitation/disability that would prevent them from doing the challenge as described, then the group can decide on an appropriate modification of the challenge</p>
 
-            <h4 className="text-lg font-semibold mt-4 text-primary/90">“Chicken dinner” time</h4>
+            <h4 className="text-lg font-semibold mt-4 text-destructive/90">“Chicken dinner” time</h4>
             <p className="text-muted-foreground mt-2">You must sing or recite the indicated speech, poem, song, etc. The other candidates are the judges in determining whether you were successful in the challenge. Simple majority rules.</p>
             <p className="text-muted-foreground mt-2">If you successfully complete the challenge, you get $5 million from the bank.</p>
             <p className="text-muted-foreground mt-2">If you are not able to complete the challenge, you must give $1 million to each of the other candidates/teams from your own funds.</p>
 
-            <h4 className="text-lg font-semibold mt-4 text-primary/90">“Feel My Pain” time</h4>
+            <h4 className="text-lg font-semibold mt-4 text-destructive/90">“Feel My Pain” time</h4>
             <p className="text-muted-foreground mt-2">If you get one of these cards, your challenge is to have one other candidate act out the action or activity described WITHOUT telling them what they are trying to do or using any words that would give away the action. You also cannot use any gestures or movements to ‘guide’ the other player. For example, if the card says “Hitting a home run”, then you must describe in words only how you would like the other player to attempt to act that out. You could start them off by saying “make a fist with each hand and place one fist on top of the other”. You cannot say something like, “pretend you are gripping a bat”. Nor can you make a gesture as if you are swinging a bat. And so on. You have 2 minutes.</p>
             <p className="text-muted-foreground mt-2">If any of the other candidates can guess what is being acted out, then each of you (you, the person acting out the word or phrase, and the person who guessed correctly) will get $5 million from the bank.</p>
             <p className="text-muted-foreground mt-2">If you are unsuccessful, then you and the person acting out your instructions must each give $2 million to the bank.</p>
 
-            <h4 className="text-lg font-semibold mt-4 text-primary/90">Random Wildcards</h4>
+            <h4 className="text-lg font-semibold mt-4 text-destructive/90">Random Wildcards</h4>
             <p className="text-muted-foreground mt-2">These are random things that happen during any campaign. They may help or hurt you and/or other candidates. You may be directed to give back a certain number of Electoral Votes, Popular Votes or cash.</p>
             <p className="text-muted-foreground mt-2">If you do not have the required amount of votes or cash, then proceed as follows:</p>
             <p className="text-muted-foreground mt-2">If, as an example, you are to give back 12 Electoral Votes, and you cannot exactly match that number, then you must give back at least that number, even if it means you lose significantly more Electoral Votes than the card instructed. (The EV chip(s) get placed back on their respective state(s) and is/are up for grabs again.)</p>
@@ -140,7 +140,7 @@ export default function RulesPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold mb-2 text-primary">RUNOFF RULES</h2>
+            <h2 className="text-2xl font-semibold mb-2 text-destructive">RUNOFF RULES</h2>
             <p className="text-muted-foreground">If one candidate has at least 270 Electoral Votes, but another candidate has more Popular Votes, then those 2 candidates go “head to head” to determine the final winner. (If there are multiple candidates with more Popular Votes than the candidate with 270+ Electoral Votes, then only the candidate with the highest Popular Vote total gets to be in the Runoff.)</p>
             <ul className="list-disc pl-5 space-y-2 text-muted-foreground mt-2">
                 <li>Each Runoff candidate should be given a piece of paper and something to write with.</li>
@@ -153,7 +153,7 @@ export default function RulesPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold mb-2 text-primary">SPEED PLAY</h2>
+            <h2 className="text-2xl font-semibold mb-2 text-destructive">SPEED PLAY</h2>
             <p className="text-muted-foreground">If you want a faster version of the game by setting a time limit, or if your group is just ready to call it a night, then the following modifications apply.</p>
             <ul className="list-disc pl-5 space-y-2 text-muted-foreground mt-2">
                 <li>All rules of play outlined above are still in effect until you reach the designated time limit, or the point when you just want to wrap it up</li>
@@ -169,7 +169,7 @@ export default function RulesPage() {
           </div>
 
           <div>
-            <h2 id="adding-more-questions" className="text-2xl font-semibold mb-2 text-primary">ADDING MORE QUESTIONS</h2>
+            <h2 id="adding-more-questions" className="text-2xl font-semibold mb-2 text-destructive">ADDING MORE QUESTIONS</h2>
             <p className="text-muted-foreground">When you run out of questions in a given category, you have 2 options:</p>
             <ul className="list-disc pl-5 space-y-2 text-muted-foreground mt-2">
                 <li>The app will allow you to reuse the entire batch of original questions. Obviously, this means you have chosen to see all the same questions again.</li>
@@ -178,7 +178,7 @@ export default function RulesPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold mb-2 text-primary">CUSTOM QUESTIONS</h2>
+            <h2 className="text-2xl font-semibold mb-2 text-destructive">CUSTOM QUESTIONS</h2>
             <p className="text-muted-foreground">A very unique feature of our game is that you have the ability to add your own custom trivia questions!</p>
             <p className="text-muted-foreground mt-2">On the Main Menu page of the app, you will see a button labeled “Upload Custom Questions”. When you have prepared your questions, you can choose which category you would like the questions uploaded to. You can place questions in any of the 3 game categories (General, State or Government trivia), or you can keep them in a separate Custom User Questions category.</p>
             <p className="text-muted-foreground mt-2">Please note the following things if you want to use this feature:</p>
