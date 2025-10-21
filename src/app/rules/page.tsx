@@ -50,7 +50,6 @@ export default function RulesPage() {
           <div>
             <h2 className="text-2xl font-semibold mb-2 text-destructive">GENERAL GAME PLAY</h2>
             <p className="text-muted-foreground">Gerrymander cards should be shuffled, and each candidate/team should be dealt 3 cards. Each card lists a combination of achievements on the left side. If you attain them all, then you get the bonus listed on the right side. Choose 2 cards and return the 3rd one to the deck. The deck then gets placed face-down on the Gerrymander card space on the board. Read the details on Gerrymander cards below.</p>
-            <p className="text-muted-foreground mt-2">At the end of regular play (meaning, before you enter into a Runoff or Speed Play round), you must deduct the listed bonus from each combo card in your possession, from your campaign. If you need to deduct more cash than you have, then you may get $1 million for each million Popular Votes you give up. Likewise, if you need to deduct more Votes than you have, you may buy 1 million Votes for $5 million cash. Shuffle the Gerrymander cards, then 3 should be dealt to each candidate/team. The Gerrymander cards list a combination of achievements that, if you attain them all, will get you the bonus listed on the right side of the card. Look over the 3 cards you were dealt, keep 2 of them and return the 3rd to the deck. All unused Gerrymander cards should be placed face down, on the “Gerrymander” square on the game board.</p>
             <p className="text-muted-foreground mt-4">Next, each candidate/team rolls the 2 dice. The candidate with the highest roll gets to choose their starting state. Place your game piece in that state. The next highest roll then chooses their home state, and so on. There can only be one candidate per state to start the game. No candidate may choose D.C. as their home state. The candidate with the lowest roll from above goes first. Play then proceeds counterclockwise (to your right).</p>
             <p className="text-muted-foreground mt-4">When it’s your turn to roll, you have two options:</p>
             <ol className="list-decimal pl-10 space-y-2 text-muted-foreground">
@@ -172,7 +171,7 @@ export default function RulesPage() {
             <h2 id="adding-more-questions" className="text-2xl font-semibold mb-2 text-destructive">ADDING MORE QUESTIONS</h2>
             <p className="text-muted-foreground">When you run out of questions in a given category, you have 2 options:</p>
             <ul className="list-disc pl-5 space-y-2 text-muted-foreground mt-2">
-                <li>The app will allow you to reuse the entire batch of original questions. Obviously, this means you have chosen to see all the same questions again.</li>
+                <li>The app will allow you to reuse the entire batch of original questions.</li>
                 <li>You also can choose to buy an expansion pack of 200 new questions for that category. Click the “Buy expansion pack” button and follow the directions. Politics: The Game will not see, collect or store any of your payment information. The expansion pack will be delivered to the email address you provided when you first registered the app.</li>
             </ul>
           </div>
