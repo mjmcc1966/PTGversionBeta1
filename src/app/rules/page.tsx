@@ -49,7 +49,9 @@ export default function RulesPage() {
 
           <div>
             <h2 className="text-2xl font-semibold mb-2 text-destructive">GENERAL GAME PLAY</h2>
-            <p className="text-muted-foreground">Gerrymander cards should be shuffled, and each candidate/team should be dealt 3 cards. Each card lists a combination of achievements on the left side. If you attain them all, then you get the bonus listed on the right side. Choose 2 cards and return the 3rd one to the deck. The deck then gets placed face-down on the Gerrymander card space on the board. Read the details on Gerrymander cards below.</p>
+             <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
+                <li>Gerrymander cards should be shuffled, and each candidate/team should be dealt 3 cards. Each card lists a combination of achievements on the left side. If you attain them all, then you get the bonus listed on the right side. Choose 2 cards and return the 3rd one to the deck. The deck then gets placed face-down on the Gerrymander card space on the board. Read the details on Gerrymander cards below.</li>
+            </ul>
             <p className="text-muted-foreground mt-4">Next, each candidate/team rolls the 2 dice. The candidate with the highest roll gets to choose their starting state. Place your game piece in that state. The next highest roll then chooses their home state, and so on. There can only be one candidate per state to start the game. No candidate may choose D.C. as their home state. The candidate with the lowest roll from above goes first. Play then proceeds counterclockwise (to your right).</p>
             <p className="text-muted-foreground mt-4">When it’s your turn to roll, you have two options:</p>
             <ol className="list-decimal pl-10 space-y-2 text-muted-foreground">
