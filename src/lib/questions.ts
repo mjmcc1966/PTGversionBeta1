@@ -2814,7 +2814,7 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 1377,
-      question: "This state is home to the largest park in the lower 48, at over 6,000,000 acres (9,375 sq mi).",
+      question: "This state has the largest park in the lower 48, at over 6,000,000 acres (9,375 sq mi).",
       options: ["New York", "California", "Wyoming", "Montana"],
       correctAnswer: "New York",
       explanation: "Adirondack Park is protected under an 1885 state law that ensures it will stay \"forever wild\"."
@@ -4893,18 +4893,6 @@ export const triviaData: { [key: string]: Question[] } = {
       ],
       correctAnswer: "Richard Nixon",
       explanation: "The single lane in the actual White House that Nixon added in 1973 is not open to staffers. But Truman had 2 lanes 'donated' to the Old Executive Office Building in 1955, and staffers are allowed to reserve it and invite up to 20 friends and family (who will each need a background check)."
-    },
-    {
-      id: 976,
-      question: "He was the first president to be elected to have been divorced before entering office.",
-      options: [
-        "Ronald Reagan",
-        "Donald Trump",
-        "Richard Nixon",
-        "Lyndon Johnson"
-      ],
-      correctAnswer: "Ronald Reagan",
-      explanation: "Reagan divorced Jane Wyman before marrying Nancy. Trump has had at least 2 divorces (as well as being divorced from reality)."
     },
     {
       id: 977,
