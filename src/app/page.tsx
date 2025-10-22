@@ -14,6 +14,10 @@ export default function BasePage() {
   const handleExpansionClick = () => {
     alert('Expansion packs are not yet available.');
   };
+  
+  const handleWildcardClick = () => {
+    router.push('/rules#wildcards');
+  };
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-4">
@@ -27,6 +31,9 @@ export default function BasePage() {
           </Button>
           <Button onClick={handleExpansionClick} className="w-full h-20 text-xl justify-center" variant="outline">
             Buy an Expansion Pack
+          </Button>
+           <Button onClick={handleWildcardClick} className="w-full h-20 text-xl justify-center" variant="outline">
+            Wildcards
           </Button>
           <UploadQuestionsDialog>
             <Button className="w-full h-20 text-xl justify-center" variant="outline">
