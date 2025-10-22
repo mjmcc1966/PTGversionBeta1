@@ -1178,6 +1178,18 @@ export const triviaData: { [key: string]: Question[] } = {
       options: ["Nevado Ojos del Salado", "Denali", "Mt Everest", "Mauna Kea"],
       correctAnswer: "Nevado Ojos del Salado",
       explanation: "Denali and Everest are not actually volcanoes. Mauna Kea is 33,500 ft (10,211 m) from base to summit, but only 13,796 ft (4,205 m) above sea level."
+    },
+    {
+      id: 976,
+      question: "He was the first president elected to have been divorced before entering office.",
+      options: [
+        "Ronald Reagan",
+        "Donald Trump",
+        "Richard Nixon",
+        "Lyndon Johnson"
+      ],
+      correctAnswer: "Ronald Reagan",
+      explanation: "Reagan divorced Jane Wyman before marrying Nancy. Trump has had at least 2 divorces (as well as being divorced from reality)."
     }
   ],
   'state-trivia': [
@@ -5001,41 +5013,44 @@ export const triviaData: { [key: string]: Question[] } = {
       ],
       correctAnswer: "Franklin D Roosevelt",
       explanation: "He came down with a flaccid paralysis at age 39, which was assumed to be 'infantile paralysis', and he was paralyzed from the waist down. Current medical thinking is that he may have had a condition called Guillain-Barre Syndrome instead, which was not a well known condition at that time."
+    },
+    {
+      id: 1043,
+      question: "Which amendment gave black men the right to vote, at least theoretically, in 1870.",
+      options: ["15th", "13th", "19th", "1st"],
+      correctAnswer: "15th",
+      explanation: "The 13th abolished slavery, the 19th gave women the right to vote, and the 1st has to do with free speech. The 15th was not fully enforced for another century."
     }
   ],
   'custom-trivia': []
 };
 
 export function getQuestionsByCategory(category: string): Question[] {
-  const baseQuestions = triviaData[category] || [];
-  
+  // Always start with a fresh copy of the base questions for the category.
+  const baseQuestions = [...(triviaData[category] || [])];
+  const loadedQuestionIds = new Set(baseQuestions.map(q => q.id));
+
   if (typeof window !== 'undefined') {
     try {
       const storedQuestionsRaw = localStorage.getItem(category);
       if (storedQuestionsRaw) {
-        const storedQuestions = JSON.parse(storedQuestionsRaw);
-        // Basic validation
+        const storedQuestions: Question[] = JSON.parse(storedQuestionsRaw);
+        
         if (Array.isArray(storedQuestions)) {
-          const combinedQuestions = [...baseQuestions];
-          const baseIds = new Set(baseQuestions.map(q => q.id));
-          
           for (const storedQ of storedQuestions) {
-            if (storedQ && typeof storedQ.id !== 'undefined' && !baseIds.has(storedQ.id)) {
-              combinedQuestions.push(storedQ);
-              baseIds.add(storedQ.id); // Prevent adding duplicates from localStorage
+            // Ensure the question from local storage is valid and not already loaded.
+            if (storedQ && typeof storedQ.id !== 'undefined' && !loadedQuestionIds.has(storedQ.id)) {
+              baseQuestions.push(storedQ);
+              loadedQuestionIds.add(storedQ.id);
             }
           }
-          return combinedQuestions;
         }
       }
     } catch (error) {
       console.error("Error parsing questions from localStorage:", error);
-      // Fallback to base questions if localStorage is corrupt
-      return baseQuestions;
+      // Fallback to only base questions if localStorage is corrupt.
     }
   }
   
   return baseQuestions;
 }
-
-    
