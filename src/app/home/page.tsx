@@ -4,10 +4,12 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Brain, Map, Scale, Hourglass, HelpCircle } from 'lucide-react';
+import { Brain, Map, Scale, Hourglass, HelpCircle, Shuffle } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
+  const router = useRouter();
   const categories = [
     { name: (<div>General Trivia<br/>$10,000,000</div>), href: '/quiz/general-trivia', icon: <Brain className="w-6 h-6" /> },
     { name: (<div>State Trivia<br/>10 Million Popular Votes</div>), href: '/quiz/state-trivia', icon: <Map className="w-6 h-6" /> },
@@ -48,6 +50,9 @@ export default function Home() {
     setIntervalId(newIntervalId);
   };
 
+  const handleWildcardClick = () => {
+    router.push('/rules#wildcards');
+  };
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-4">
@@ -77,6 +82,12 @@ export default function Home() {
                 </Link>
               </Button>
             ))}
+             <Button onClick={handleWildcardClick} className="w-full h-20 text-xl justify-start" variant="outline">
+              <div className="flex items-center space-x-4">
+                <Shuffle className="w-6 h-6" />
+                <span>Wildcards</span>
+              </div>
+            </Button>
           </CardContent>
           <CardFooter className="justify-center">
             <Button asChild variant="outline">
