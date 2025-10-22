@@ -51,7 +51,7 @@ export default function Home() {
   };
 
   const handleWildcardClick = () => {
-    router.push('/rules#wildcards');
+    router.push('/wildcard');
   };
 
   return (
