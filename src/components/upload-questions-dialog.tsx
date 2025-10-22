@@ -59,8 +59,8 @@ export function UploadQuestionsDialog({ children }: { children: React.ReactNode 
         throw new Error('CSV must contain headers: question, option1, option2, option3, option4, correctAnswer, explanation');
     }
 
-    const existingIds = Object.values(triviaData).flat().map(q => q.id);
-    let maxId = Math.max(0, ...existingIds);
+    const allBaseIds = Object.values(triviaData).flat().map(q => q.id);
+    let maxId = Math.max(0, ...allBaseIds);
 
     for (let i = 1; i < lines.length; i++) {
       if (lines[i].trim() === '') continue;
@@ -104,20 +104,17 @@ export function UploadQuestionsDialog({ children }: { children: React.ReactNode 
         const text = e.target?.result as string;
         const newQuestions = parseCSV(text);
         
-        const existingQuestions = JSON.parse(localStorage.getItem(selectedCategory) || '[]');
-        const allQuestions = [...existingQuestions, ...newQuestions];
+        const existingQuestionsRaw = localStorage.getItem(selectedCategory) || '[]';
+        const existingQuestions: Question[] = JSON.parse(existingQuestionsRaw);
+        
+        const existingIds = new Set(existingQuestions.map(q => q.id));
+        const uniqueNewQuestions = newQuestions.filter(q => !existingIds.has(q.id));
+
+        const allQuestions = [...existingQuestions, ...uniqueNewQuestions];
 
         localStorage.setItem(selectedCategory, JSON.stringify(allQuestions));
         
-        if (!triviaData[selectedCategory]) {
-          triviaData[selectedCategory] = [];
-        }
-        const baseQuestions = triviaData[selectedCategory] || [];
-        const currentInMemoryIds = new Set(baseQuestions.map(q => q.id));
-        const questionsToAdd = newQuestions.filter(q => !currentInMemoryIds.has(q.id));
-        triviaData[selectedCategory].push(...questionsToAdd);
-        
-        toast({ title: 'Success!', description: `${newQuestions.length} questions uploaded to ${selectedCategory.replace(/-/g, ' ')}.` });
+        toast({ title: 'Success!', description: `${uniqueNewQuestions.length} new questions uploaded to ${selectedCategory.replace(/-/g, ' ')}. Reload the quiz page to see them.` });
         setIsOpen(false);
       } catch (error: any) {
         toast({ title: 'Upload failed', description: error.message, variant: 'destructive' });
