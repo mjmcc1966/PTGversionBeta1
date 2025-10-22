@@ -82,7 +82,7 @@ export default function Home() {
                 </Link>
               </Button>
             ))}
-             <Button onClick={handleWildcardClick} className="w-full h-20 text-xl justify-start" variant="outline">
+             <Button onClick={handleWildcardClick} className="w-full h-20 text-xl justify-start" variant="destructive">
               <div className="flex items-center space-x-4">
                 <Shuffle className="w-6 h-6" />
                 <span>Wildcards</span>
