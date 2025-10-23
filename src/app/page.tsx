@@ -5,24 +5,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useLoading } from '@/app/context/loading-context';
-import { useAuth, useUser } from '@/firebase';
-import { useEffect } from 'react';
-import { initiateAnonymousSignIn } from '@/firebase/non-blocking-login';
 
 export default function BasePage() {
   const router = useRouter();
   const { showLoader } = useLoading();
-  const auth = useAuth();
-  const { user, isUserLoading } = useUser();
-
-  // This effect will run once on mount.
-  // If there's no user and auth is ready, it initiates anonymous sign-in.
-  useEffect(() => {
-    if (auth && !user && !isUserLoading) {
-      initiateAnonymousSignIn(auth);
-    }
-  }, [auth, user, isUserLoading]);
-
 
   const handleExpansionClick = () => {
     alert('Expansion packs are not yet available.');

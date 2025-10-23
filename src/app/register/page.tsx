@@ -6,8 +6,7 @@ import { useAuth, useFirestore } from '@/firebase';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  linkWithCredential,
-  EmailAuthProvider,
+  signOut,
 } from 'firebase/auth';
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { Button } from '@/components/ui/button';
@@ -26,12 +25,26 @@ export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
+  const [message, setMessage] = useState<string | null>(null);
   const router = useRouter();
   const auth = useAuth();
   const db = useFirestore();
 
+  const handleLogout = async () => {
+    if (!auth) return;
+    try {
+      await signOut(auth);
+      setMessage("You have been successfully logged out.");
+      setError(null);
+    } catch (e: any) {
+      setError(e.message);
+      setMessage(null);
+    }
+  }
+
   const handleRegister = async () => {
     setError(null);
+    setMessage(null);
     if (!auth || !db) {
       setError('Firebase services are not available.');
       return;
@@ -42,21 +55,14 @@ export default function Register() {
     }
 
     try {
-      let user;
-      const currentUser = auth.currentUser;
+      // Force sign out any existing user first to be absolutely sure.
+      await signOut(auth);
 
-      if (currentUser && currentUser.isAnonymous) {
-        // If there's an anonymous user, link it to the new credentials
-        const credential = EmailAuthProvider.credential(email, password);
-        const userCredential = await linkWithCredential(currentUser, credential);
-        user = userCredential.user;
-      } else {
-        // Otherwise, create a new user from scratch
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        user = userCredential.user;
-      }
+      // Create the new user. This automatically signs them in.
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
 
-      // Store/update user info in Firestore using the final UID
+      // Store user info in Firestore.
       await setDoc(
         doc(db, 'users', user.uid),
         {
@@ -66,25 +72,15 @@ export default function Register() {
         { merge: true }
       );
 
-      router.push('/'); // Redirect to home on successful registration/linking
+      router.push('/'); // Redirect to home on successful registration.
     } catch (registerError: any) {
-      // This is a common error if the email is already in use.
-      // In this case, we can try to sign the user in.
-      if (registerError.code === 'auth/email-already-in-use') {
-         try {
-            await signInWithEmailAndPassword(auth, email, password);
-            router.push('/');
-         } catch (signInError: any) {
-            setError(signInError.message);
-         }
-      } else {
-        setError(registerError.message);
-      }
+       setError(registerError.message);
     }
   };
 
   const handleLogin = async () => {
     setError(null);
+    setMessage(null);
     if (!email || !password) {
       setError('Email and password are required.');
       return;
@@ -132,13 +128,17 @@ export default function Register() {
             />
           </div>
           {error && <p className="text-red-500 text-sm">{error}</p>}
+          {message && <p className="text-green-500 text-sm">{message}</p>}
         </CardContent>
         <CardFooter className="flex-col items-stretch space-y-2">
           <Button onClick={handleLogin} className="w-full">
             Login
           </Button>
-          <Button onClick={handleRegister} className="w-full" variant="outline">
+          <Button onClick={handleRegister} className="w-full">
             Register
+          </Button>
+           <Button onClick={handleLogout} className="w-full" variant="outline">
+            Logout
           </Button>
         </CardFooter>
       </Card>
