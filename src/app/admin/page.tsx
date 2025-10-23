@@ -143,20 +143,20 @@ export default function AdminPage() {
       router.push('/');
 
     } catch (error) {
-      console.error('Migration failed:', error);
-      
+      // Create the rich, contextual error.
       const permissionError = new FirestorePermissionError({
-        path: 'batch operation', // path for batch is not specific to a document
+        path: 'batch operation', // The path for a batch write is not tied to a single document.
         operation: 'write',
         requestResourceData: { note: 'Batch write contains questions, wildcards, and rules.' },
       });
       
+      // Emit the error through the global emitter to be caught by FirebaseErrorListener.
       errorEmitter.emit('permission-error', permissionError);
 
-      // This toast is a fallback, the detailed error will be shown by the listener
+      // This fallback toast will likely be preempted by the Next.js error overlay.
       toast({
         title: 'Migration Failed',
-        description: 'Missing or insufficient permissions.. Check browser console for more details.',
+        description: 'Missing or insufficient permissions. Check the browser console or error overlay for more details.',
         variant: 'destructive',
       });
 
