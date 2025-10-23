@@ -105,7 +105,7 @@ export function QuizClient({ category }: { category: string }) {
   }, [user, authLoading, router]);
 
   useEffect(() => {
-    const storedAskedIds = localStorage.getItem(`askedQuestionIds_${category}`);
+    const storedAskedIds = sessionStorage.getItem(`askedQuestionIds_${category}`);
     if (storedAskedIds) {
       setAskedQuestionIds(new Set(JSON.parse(storedAskedIds)));
     }
@@ -170,7 +170,7 @@ export function QuizClient({ category }: { category: string }) {
 
     const newAskedQuestionIds = new Set([...Array.from(askedQuestionIds), currentQuestion.id]);
     setAskedQuestionIds(newAskedQuestionIds);
-    localStorage.setItem(`askedQuestionIds_${category}`, JSON.stringify(Array.from(newAskedQuestionIds)));
+    sessionStorage.setItem(`askedQuestionIds_${category}`, JSON.stringify(Array.from(newAskedQuestionIds)));
 
     if (newAskedQuestionIds.size >= allQuestions.length && allQuestions.length > 0) {
         setTimeout(() => setQuizFinished(true), 3000);
@@ -183,7 +183,7 @@ export function QuizClient({ category }: { category: string }) {
 
     const newAskedQuestionIds = new Set([...Array.from(askedQuestionIds), currentQuestion.id]);
     setAskedQuestionIds(newAskedQuestionIds);
-    localStorage.setItem(`askedQuestionIds_${category}`, JSON.stringify(Array.from(newAskedQuestionIds)));
+    sessionStorage.setItem(`askedQuestionIds_${category}`, JSON.stringify(Array.from(newAskedQuestionIds)));
 
     if (newAskedQuestionIds.size >= allQuestions.length) {
       setQuizFinished(true);
@@ -195,7 +195,7 @@ export function QuizClient({ category }: { category: string }) {
 
   const handleResetQuiz = () => {
     setAskedQuestionIds(new Set());
-    localStorage.removeItem(`askedQuestionIds_${category}`);
+    sessionStorage.removeItem(`askedQuestionIds_${category}`);
     setScore(0);
     setOutOfQuestions(false);
     setQuizFinished(false);

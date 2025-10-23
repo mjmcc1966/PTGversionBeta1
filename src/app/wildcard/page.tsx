@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Home, Shuffle, Hourglass } from 'lucide-react';
@@ -99,11 +99,11 @@ export default function WildcardPage() {
     setUsedCardIds(newUsedIds);
     setCurrentCard(nextCard);
     
-    localStorage.setItem('usedWildcardIds', JSON.stringify(Array.from(newUsedIds)));
+    sessionStorage.setItem('usedWildcardIds', JSON.stringify(Array.from(newUsedIds)));
   }, [usedCardIds, intervalId, allWildcards]);
 
   useEffect(() => {
-    const storedUsedIds = localStorage.getItem('usedWildcardIds');
+    const storedUsedIds = sessionStorage.getItem('usedWildcardIds');
     if (storedUsedIds) {
       setUsedCardIds(new Set(JSON.parse(storedUsedIds)));
     }
@@ -118,7 +118,7 @@ export default function WildcardPage() {
   }, [currentCard, getNextCard, usedCardIds, allWildcards]);
 
   const handleReshuffle = () => {
-    localStorage.removeItem('usedWildcardIds');
+    sessionStorage.removeItem('usedWildcardIds');
     setUsedCardIds(new Set());
     setShowReshuffleDialog(false);
     
@@ -129,7 +129,7 @@ export default function WildcardPage() {
         const newUsedIds = new Set([firstCard.id]);
         setUsedCardIds(newUsedIds);
         setCurrentCard(firstCard);
-        localStorage.setItem('usedWildcardIds', JSON.stringify([firstCard.id]));
+        sessionStorage.setItem('usedWildcardIds', JSON.stringify([firstCard.id]));
       }
     }, 100);
   };

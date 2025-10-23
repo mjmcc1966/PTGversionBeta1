@@ -6,7 +6,7 @@ import { QuizClient } from './quiz-client';
 
 export function generateStaticParams() {
   return [
-    { category: 'general-trivia' },
+    { category: 'general_trivia' },
     { category: 'state-trivia' },
     { category: 'government-trivia' },
     { category: 'custom-trivia' },
