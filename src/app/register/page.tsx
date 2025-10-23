@@ -7,6 +7,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  AuthErrorCodes,
 } from 'firebase/auth';
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { Button } from '@/components/ui/button';
@@ -55,10 +56,10 @@ export default function Register() {
     }
 
     try {
-      // Force sign out any existing user first to be absolutely sure.
+      // First, forcefully sign out any lingering user.
       await signOut(auth);
-
-      // Create the new user. This automatically signs them in.
+      
+      // Then, try to create a new user.
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
@@ -74,7 +75,18 @@ export default function Register() {
 
       router.push('/'); // Redirect to home on successful registration.
     } catch (registerError: any) {
-       setError(registerError.message);
+       // If the error is that the email is already in use, try to sign them in.
+       if (registerError.code === AuthErrorCodes.EMAIL_EXISTS) {
+         try {
+           await signInWithEmailAndPassword(auth, email, password);
+           router.push('/'); // Redirect on successful login
+         } catch (loginError: any) {
+           setError(loginError.message);
+         }
+       } else {
+         // For any other registration error, display it.
+         setError(registerError.message);
+       }
     }
   };
 
