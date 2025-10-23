@@ -37,9 +37,12 @@ export default function FixWildcardsPage() {
   const router = useRouter();
   const firestore = useFirestore();
   const auth = useAuth();
-  const { hideLoader } = useLoading();
+  const { showLoader, hideLoader } = useLoading();
 
   const handleFixData = async () => {
+    showLoader();
+    setIsMigrating(true);
+
     if (!firestore || !auth.currentUser) {
       toast({
         variant: 'destructive',
@@ -47,49 +50,70 @@ export default function FixWildcardsPage() {
         description: 'You must be logged in to migrate data.',
       });
       hideLoader();
+      setIsMigrating(false);
       return;
     }
-
-    setIsMigrating(true);
+    
     toast({
         title: 'Replacing Wildcards...',
         description: 'Please do not close this page. This may take a moment.',
     });
 
+    let hasErrorOccurred = false;
+
     try {
-      const wildcardsCollection = collection(firestore, 'wildcards');
-      
-      // 1. Delete all existing wildcards one-by-one
-      const existingWildcards = await getDocs(wildcardsCollection);
-      for (const docSnapshot of existingWildcards.docs) {
-        await deleteDoc(doc(firestore, 'wildcards', docSnapshot.id));
-      }
+        const wildcardsCollection = collection(firestore, 'wildcards');
+        
+        // 1. Delete all existing wildcards one-by-one
+        const existingWildcards = await getDocs(wildcardsCollection);
 
-      // 2. Add the new, correct wildcards one-by-one
-      for (const wildcard of wildcards) {
-        const docRef = doc(firestore, 'wildcards', wildcard.id);
-        await setDoc(docRef, wildcard);
-      }
-      
-      toast({
-        title: 'Success!',
-        description: 'All wildcards have been replaced with the correct data.',
-      });
+        for (const docSnapshot of existingWildcards.docs) {
+            const docRef = doc(firestore, 'wildcards', docSnapshot.id);
+            await deleteDoc(docRef).catch((error) => {
+                hasErrorOccurred = true;
+                const permissionError = new FirestorePermissionError({
+                    path: docRef.path,
+                    operation: 'delete',
+                });
+                errorEmitter.emit('permission-error', permissionError);
+                // Stop further execution
+                throw error; 
+            });
+        }
 
-      // Redirect home after success
-      router.push('/');
+        // 2. Add the new, correct wildcards one-by-one
+        for (const wildcard of wildcards) {
+            const docRef = doc(firestore, 'wildcards', wildcard.id);
+            await setDoc(docRef, wildcard).catch((error) => {
+                hasErrorOccurred = true;
+                const permissionError = new FirestorePermissionError({
+                    path: docRef.path,
+                    operation: 'write',
+                    requestResourceData: wildcard,
+                });
+                errorEmitter.emit('permission-error', permissionError);
+                // Stop further execution
+                throw error; 
+            });
+        }
+        
+        toast({
+            title: 'Success!',
+            description: 'All wildcards have been replaced with the correct data.',
+        });
+
+        // Redirect home after success
+        router.push('/');
 
     } catch (e: any) {
-       console.error("Wildcard fix error:", e);
-       const permissionError = new FirestorePermissionError({
-          path: e.path || 'wildcards collection',
-          operation: 'write',
-          requestResourceData: { note: 'Operation to fix wildcards one by one.' },
-      });
-      errorEmitter.emit('permission-error', permissionError);
+       // This catch block will now only catch errors if we 'throw' them from the inner .catch handlers
+       // The main purpose is to stop the process if an error occurs. The error is already emitted.
+       console.log("Stopping migration due to a permission error.");
     } finally {
-        setIsMigrating(false);
-        hideLoader();
+        if (hasErrorOccurred || !hasErrorOccurred) { // Always hide loader
+            hideLoader();
+            setIsMigrating(false);
+        }
     }
   };
 
@@ -117,3 +141,5 @@ export default function FixWildcardsPage() {
     </div>
   );
 }
+
+    
