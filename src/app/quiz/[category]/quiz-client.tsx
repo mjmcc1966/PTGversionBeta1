@@ -13,7 +13,8 @@ import { cn } from '@/lib/utils';
 import { CheckCircle, XCircle, Trophy, Lightbulb, Hourglass } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { useAuth } from '@/app/context/auth-context';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { useLoading } from '@/app/context/loading-context';
 
 const correctSoundBase64 = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=";
 const incorrectSoundBase64 = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=";
@@ -32,6 +33,13 @@ export function QuizClient({ category }: { category: string }) {
   const [isLoading, setIsLoading] = useState(true);
   const { user, loading: authLoading } = useAuth();
   const router = useRouter();
+  const { hideLoader } = useLoading();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    hideLoader();
+  }, [pathname, searchParams, hideLoader]);
 
   const [timer, setTimer] = useState<number | null>(null);
   const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);

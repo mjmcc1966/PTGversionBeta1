@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { wildcards, Wildcard } from '@/lib/wildcards';
@@ -17,12 +17,20 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
+import { useLoading } from '@/app/context/loading-context';
 
 export default function WildcardPage() {
   const [currentCard, setCurrentCard] = useState<Wildcard | null>(null);
   const [usedCardIds, setUsedCardIds] = useState<Set<number>>(new Set());
   const [showReshuffleDialog, setShowReshuffleDialog] = useState(false);
   const router = useRouter();
+  const { hideLoader } = useLoading();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    hideLoader();
+  }, [pathname, searchParams, hideLoader]);
 
   const [timer, setTimer] = useState<number | null>(null);
   const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);

@@ -1,9 +1,22 @@
 
+'use client';
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
+import { useLoading } from '@/app/context/loading-context';
+import { useEffect } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 export default function RulesPage() {
+  const { showLoader, hideLoader } = useLoading();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    hideLoader();
+  }, [pathname, searchParams, hideLoader]);
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-4">
       <Card className="w-full max-w-4xl">
@@ -179,7 +192,7 @@ export default function RulesPage() {
           </div>
           
           <div className="text-center pt-4">
-            <Button asChild variant="outline">
+            <Button asChild variant="outline" onClick={showLoader}>
               <Link href="/">Back to Main Menu</Link>
             </Button>
           </div>

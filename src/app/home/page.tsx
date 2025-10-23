@@ -38,7 +38,7 @@ export default function Home() {
         clearInterval(intervalId);
       }
     };
-  }, []);
+  }, [intervalId]);
   
   const startTimer = () => {
     if (intervalId) {
