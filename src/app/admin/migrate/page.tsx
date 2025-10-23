@@ -1,9 +1,10 @@
+
 'use client';
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useFirebase } from '@/firebase';
-import { collection, writeBatch } from 'firebase/firestore';
+import { collection, writeBatch, doc } from 'firebase/firestore';
 import { triviaData } from '@/lib/questions';
 import { wildcards } from '@/lib/wildcards';
 import { useToast } from '@/hooks/use-toast';
@@ -168,10 +169,9 @@ export default function MigratePage() {
       const batch = writeBatch(firestore);
 
       // Migrate Questions
-      const questionsCollection = collection(firestore, 'questions');
       Object.entries(triviaData).forEach(([category, questions]) => {
         questions.forEach((q) => {
-          const docRef = collection(questionsCollection, category, 'items').doc(String(q.id));
+          const docRef = doc(firestore, 'questions', category, 'items', String(q.id));
           batch.set(docRef, q);
         });
       });
@@ -179,14 +179,14 @@ export default function MigratePage() {
       // Migrate Wildcards
       const wildcardsCollection = collection(firestore, 'wildcards');
       wildcards.forEach((w) => {
-        const docRef = wildcardsCollection.doc(String(w.id));
+        const docRef = doc(wildcardsCollection, String(w.id));
         batch.set(docRef, w);
       });
 
       // Migrate Rules
       const rulesCollection = collection(firestore, 'rules');
       rulesData.forEach((r) => {
-          const docRef = rulesCollection.doc(r.id);
+          const docRef = doc(rulesCollection, r.id);
           batch.set(docRef, r)
       });
 
@@ -234,3 +234,5 @@ export default function MigratePage() {
     </div>
   );
 }
+
+    
