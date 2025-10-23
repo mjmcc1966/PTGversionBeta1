@@ -52,7 +52,7 @@ export default function RulesPage() {
             ) : rulesData && rulesData.length > 0 ? (
                 rulesData.map((rule) => (
                     <div key={rule.id}>
-                        <h2 className="text-2xl font-semibold mb-2 text-destructive" dangerouslySetInnerHTML={{ __html: rule.title }}/>
+                        <h2 className="text-2xl font-semibold mb-2 text-primary" dangerouslySetInnerHTML={{ __html: rule.title }}/>
                         {rule.content.map((paragraph, index) => (
                             <p key={index} className="text-muted-foreground mt-2" dangerouslySetInnerHTML={{ __html: paragraph }} />
                         ))}

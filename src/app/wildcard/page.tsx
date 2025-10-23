@@ -149,7 +149,7 @@ export default function WildcardPage() {
       )}
       <Card className="w-full max-w-2xl text-center shadow-2xl">
         <CardHeader>
-          <CardTitle className="text-3xl font-bold text-destructive">Wildcard!</CardTitle>
+          <CardTitle className="text-3xl font-bold text-primary">Wildcard!</CardTitle>
         </CardHeader>
         <CardContent className="min-h-[200px] flex flex-col items-center justify-center p-6">
           {wildcardsLoading ? (
