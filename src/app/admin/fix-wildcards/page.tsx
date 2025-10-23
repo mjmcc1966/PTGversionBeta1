@@ -55,7 +55,7 @@ export default function FixWildcardsPage() {
       // Step 1: Delete all existing wildcards one-by-one
       for (const card of existingWildcards) {
         const docRef = doc(firestore, 'wildcards', card.id);
-        await deleteDoc(docRef).catch(serverError => {
+        deleteDoc(docRef).catch(serverError => {
             const permissionError = new FirestorePermissionError({
                 path: docRef.path,
                 operation: 'delete',
@@ -68,7 +68,7 @@ export default function FixWildcardsPage() {
       // Step 2: Add all the correct wildcards one-by-one
       for (const card of correctWildcards) {
         const docRef = doc(firestore, 'wildcards', card.id);
-        await setDoc(docRef, card).catch(serverError => {
+        setDoc(docRef, card).catch(serverError => {
              const permissionError = new FirestorePermissionError({
                 path: docRef.path,
                 operation: 'create',
@@ -86,8 +86,7 @@ export default function FixWildcardsPage() {
       router.push('/');
 
     } catch (error) {
-      console.error("An error occurred during the data fix operation:", error);
-      // Don't show toast here as the listener will throw
+      // Errors are now thrown by the listener, so no need to toast here.
     } finally {
       hideLoader();
     }

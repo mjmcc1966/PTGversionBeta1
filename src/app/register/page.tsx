@@ -46,12 +46,12 @@ export default function Register() {
       const currentUser = auth.currentUser;
 
       if (currentUser && currentUser.isAnonymous) {
+        // If there's an anonymous user, link it to the new credentials
         const credential = EmailAuthProvider.credential(email, password);
-        // Link the anonymous account with the new email/password
         const userCredential = await linkWithCredential(currentUser, credential);
         user = userCredential.user;
       } else {
-        // No anonymous user, or already signed in. Create a new user.
+        // Otherwise, create a new user from scratch
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         user = userCredential.user;
       }
@@ -69,9 +69,9 @@ export default function Register() {
       router.push('/'); // Redirect to home on successful registration/linking
     } catch (registerError: any) {
       // This is a common error if the email is already in use.
+      // In this case, we can try to sign the user in.
       if (registerError.code === 'auth/email-already-in-use') {
          try {
-            // If the user already exists, just sign them in.
             await signInWithEmailAndPassword(auth, email, password);
             router.push('/');
          } catch (signInError: any) {
