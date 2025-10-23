@@ -2,30 +2,30 @@
  * @fileoverview Firestore Security Rules for PTG Application
  *
  * Core Philosophy:
- * This ruleset prioritizes ease of iteration by focusing on strict authorization
- * while relaxing data validation.  It enforces read and write access controls
- * based on the type of data (public vs. private). Data structure is not strictly enforced,
- * but data relationships and authorization-relevant fields are validated.
+ * This ruleset prioritizes ease of iteration by focusing on strict access control and minimal data validation.
+ * It assumes that all data management is handled by trusted backend processes.
+ * All collections are publicly readable. Write access is forbidden.
  *
  * Data Structure:
- * - /questions/{questionId}: Public collection of trivia questions.
- * - /wildcards/{wildcardId}: Public collection of wildcard cards.
- * - /rules/{ruleId}: Public collection of game rules.
+ * - `/questions/{questionId}`: Stores trivia questions.
+ * - `/wildcards/{wildcardId}`: Stores wildcard cards.
+ * - `/rules/{ruleId}`: Stores game rules.
  *
  * Key Security Decisions:
- * - Questions, wildcards, and rules are considered public and accessible to all users.
- * - Schema validation is relaxed to allow for quick iteration.
+ * - Public Read Access: All data is considered publicly readable to facilitate easy data display in the application.
+ * - No User Data: There are no users or private data in this prototype.
  */
+
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
     /**
-     * @description Allows anyone to read questions, but restricts modifications.
+     * @description Allows anyone to read trivia questions, but prevents anyone from creating, updating, or deleting them.
      * @path /questions/{questionId}
      * @allow (get, list)
      * @deny (create, update, delete)
-     * @principle Allows public read access to questions.
+     * @principle Public read access with no write access.
      */
     match /questions/{questionId} {
       allow get, list: if true;
@@ -33,11 +33,11 @@ service cloud.firestore {
     }
 
     /**
-     * @description Allows anyone to read wildcards, but restricts modifications.
+     * @description Allows anyone to read wildcard cards, but prevents anyone from creating, updating, or deleting them.
      * @path /wildcards/{wildcardId}
      * @allow (get, list)
      * @deny (create, update, delete)
-     * @principle Allows public read access to wildcards.
+     * @principle Public read access with no write access.
      */
     match /wildcards/{wildcardId} {
       allow get, list: if true;
@@ -45,11 +45,11 @@ service cloud.firestore {
     }
 
     /**
-     * @description Allows anyone to read rules, but restricts modifications.
+     * @description Allows anyone to read game rules, but prevents anyone from creating, updating, or deleting them.
      * @path /rules/{ruleId}
      * @allow (get, list)
      * @deny (create, update, delete)
-     * @principle Allows public read access to game rules.
+     * @principle Public read access with no write access.
      */
     match /rules/{ruleId} {
       allow get, list: if true;
