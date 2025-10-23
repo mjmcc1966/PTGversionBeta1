@@ -1,11 +1,7 @@
-
 'use server';
 /**
  * @fileOverview A flow for seeding data into Firestore using the Admin SDK.
  * This bypasses security rules for administrative tasks.
- *
- * - seedData - A function that takes a collection name and data array to seed.
- * - SeedDataInput - The input type for the seedData function.
  */
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
@@ -20,16 +16,16 @@ if (getApps().length === 0) {
 
 const db = admin.firestore();
 
-export const SeedDataInputSchema = z.object({
+const SeedDataInputSchema = z.object({
   collection: z.string().describe('The name of the Firestore collection to seed.'),
   data: z.array(z.any()).describe('An array of document objects to write to the collection.'),
 });
 
-export type SeedDataInput = z.infer<typeof SeedDataInputSchema>;
+type SeedDataInput = z.infer<typeof SeedDataInputSchema>;
 
-export const seedData = ai.defineFlow(
+const seedDataFlow = ai.defineFlow(
   {
-    name: 'seedData',
+    name: 'seedDataFlow',
     inputSchema: SeedDataInputSchema,
     outputSchema: z.object({ success: z.boolean(), message: z.string() }),
   },
@@ -59,3 +55,7 @@ export const seedData = ai.defineFlow(
     }
   }
 );
+
+export async function seedData(input: SeedDataInput) {
+  return await seedDataFlow(input);
+}
