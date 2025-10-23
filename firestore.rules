@@ -1,67 +1,60 @@
 /**
- * @file Firestore Security Rules
- * @description This ruleset defines access control for the PTG (Party Trivia Game) application.
+ * @fileoverview Firestore Security Rules for PTG application.
  *
  * Core Philosophy:
- * The ruleset provides open read access to game content (questions, wildcards, rules)
- * to facilitate game play while restricting write access. No user-specific data is secured.
+ * This ruleset provides public read access to game content (questions, wildcards, and rules)
+ * while restricting write access to prevent unauthorized modifications. All authenticated users can read
+ * and list these collections, but write access is explicitly denied.  User data (if implemented) would
+ * follow an ownership model, but user documents are not part of the provided data model.
  *
  * Data Structure:
- * - /questions/{questionId}: Stores trivia questions. Read access is public; write access is restricted.
- * - /wildcards/{wildcardId}: Stores wildcard cards. Read access is public; write access is restricted.
- * - /rules/{ruleId}: Stores game rules. Read access is public; write access is restricted.
+ * - /questions/{questionId}: Stores trivia questions.
+ * - /wildcards/{wildcardId}: Stores wildcard cards.
+ * - /rules/{ruleId}: Stores game rules.
  *
  * Key Security Decisions:
- * - Public Read Access: The rules explicitly allow public read access (`get`, `list`) for the `questions`, `wildcards`, and `rules` collections. This is appropriate for game content intended for all users.
- * - No User Listing: No user data is stored, so there are no user listing concerns.
- * - Write Restrictions: All write operations (`create`, `update`, `delete`) are denied to prevent unauthorized modification of game content. This is a secure default.
+ * - Public read access to game content.
+ * - No write access granted through these rules. Write access requires separate privileged backend.
+ * - User-specific data is not part of this data model.
  */
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+
     /**
-     * @description Allows anyone to read questions, but restricts creation, updates, and deletion.
+     * @description Allows public read access to trivia questions, but restricts all write operations.
      * @path /questions/{questionId}
-     * @allow (get, list) Anyone can read questions.
-     * @deny (create, update, delete) No one can create, update, or delete questions.
-     * @principle Public read access for game content.
+     * @allow (get, list) Any authenticated user can read or list questions.
+     * @deny (create, update, delete) No user can create, update, or delete questions through the client.
+     * @principle Public read access with no client-side writes.
      */
     match /questions/{questionId} {
-      allow get: if true;
-      allow list: if true;
-      allow create: if false;
-      allow update: if false;
-      allow delete: if false;
+      allow get, list: if true;
+      allow create, update, delete: if false;
     }
 
     /**
-     * @description Allows anyone to read wildcards, but restricts creation, updates, and deletion.
+     * @description Allows public read access to wildcard cards, but restricts all write operations.
      * @path /wildcards/{wildcardId}
-     * @allow (get, list) Anyone can read wildcards.
-     * @deny (create, update, delete) No one can create, update, or delete wildcards.
-     * @principle Public read access for game content.
+     * @allow (get, list) Any authenticated user can read or list wildcards.
+     * @deny (create, update, delete) No user can create, update, or delete wildcards through the client.
+     * @principle Public read access with no client-side writes.
      */
     match /wildcards/{wildcardId} {
-      allow get: if true;
-      allow list: if true;
-      allow create: if false;
-      allow update: if false;
-      allow delete: if false;
+      allow get, list: if true;
+      allow create, update, delete: if false;
     }
 
     /**
-     * @description Allows anyone to read rules, but restricts creation, updates, and deletion.
+     * @description Allows public read access to game rules, but restricts all write operations.
      * @path /rules/{ruleId}
-     * @allow (get, list) Anyone can read rules.
-     * @deny (create, update, delete) No one can create, update, or delete rules.
-     * @principle Public read access for game content.
+     * @allow (get, list) Any authenticated user can read or list rules.
+     * @deny (create, update, delete) No user can create, update, or delete rules through the client.
+     * @principle Public read access with no client-side writes.
      */
     match /rules/{ruleId} {
-      allow get: if true;
-      allow list: if true;
-      allow create: if false;
-      allow update: if false;
-      allow delete: if false;
+      allow get, list: if true;
+      allow create, update, delete: if false;
     }
   }
 }
