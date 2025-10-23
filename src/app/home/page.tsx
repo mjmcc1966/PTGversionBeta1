@@ -6,12 +6,19 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Brain, Map, Scale, Hourglass, HelpCircle, Shuffle } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useLoading } from '@/app/context/loading-context';
 
 export default function Home() {
   const router = useRouter();
-  const { showLoader } = useLoading();
+  const { showLoader, hideLoader } = useLoading();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    hideLoader();
+  }, [pathname, searchParams, hideLoader]);
+
 
   const categories = [
     { name: (<div>General Trivia<br/>$10,000,000</div>), href: '/quiz/general-trivia', icon: <Brain className="w-6 h-6" /> },
@@ -64,6 +71,11 @@ export default function Home() {
     router.push(href);
   };
 
+  const handleBackClick = () => {
+    showLoader();
+    router.push('/');
+  }
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-4">
        {isClient && timer !== null && (
@@ -100,8 +112,8 @@ export default function Home() {
             </Button>
           </CardContent>
           <CardFooter className="justify-center">
-            <Button asChild variant="outline" onClick={() => showLoader()}>
-              <Link href="/">Back to Main Menu</Link>
+            <Button onClick={handleBackClick} variant="outline">
+              Back to Main Menu
             </Button>
           </CardFooter>
         </Card>
