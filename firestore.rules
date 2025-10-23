@@ -1,55 +1,72 @@
 /**
- * @file Overview
- * This ruleset defines access control for the PTG application, focusing on securing game content (questions, wildcards, rules).
- * The core principle is read access for everyone but no write access for any user.
+ * @fileoverview Firestore Security Rules for PTG application.
  *
- * @data_structure
+ * Core Philosophy:
+ * This ruleset provides public read access to questions, wildcards, and rules,
+ * while restricting write access to prevent unauthorized modifications.
+ *
+ * Data Structure:
+ * The database consists of three top-level collections:
  * - /questions/{questionId}: Stores trivia questions.
  * - /wildcards/{wildcardId}: Stores wildcard cards.
  * - /rules/{ruleId}: Stores game rules.
  *
- * @security_decisions
- * - Public Read: Questions, Wildcards, and Rules are publicly readable to facilitate gameplay.
- * - No User Writes: This version intentionally restricts all user-initiated write operations. The intention is that only admins can edit the core game data.
+ * Key Security Decisions:
+ * - Public Read Access: All users (authenticated or not) can read questions, wildcards, and rules.
+ * - Restricted Write Access: Only authenticated users can create, update, or delete questions, wildcards, and rules.
+ *   However, the rules do NOT include any role-based access control or ownership validation. This should be updated ASAP.
+ * - No User Listing: There are no rules defined for a /users collection, so listing users is implicitly denied.
  */
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
     /**
-     * @description: Allows anyone to read questions. No user can create, update, or delete questions.
-     * @path: /questions/{questionId}
-     * @allow: (get, list) Any user can read questions.
-     * @deny: (create, update, delete) No user can write questions.
-     * @principle: Public read access for game content, no write access for any user.
+     * @description Grants public read access to questions and restricts write access to authenticated users.
+     * @path /questions/{questionId}
+     * @allow (get, list): Any user can read questions.
+     * @allow (create, update, delete): Only authenticated users can create, update, or delete questions.
+     * @deny (create, update, delete): Unauthenticated users cannot create, update, or delete questions.
+     * @principle Allows public read access while restricting write operations.
      */
     match /questions/{questionId} {
       allow get, list: if true;
-      allow create, update, delete: if false;
+      allow create, update, delete: if isSignedIn();
     }
 
     /**
-     * @description: Allows anyone to read wildcards. No user can create, update, or delete wildcards.
-     * @path: /wildcards/{wildcardId}
-     * @allow: (get, list) Any user can read wildcards.
-     * @deny: (create, update, delete) No user can write wildcards.
-     * @principle: Public read access for game content, no write access for any user.
+     * @description Grants public read access to wildcards and restricts write access to authenticated users.
+     * @path /wildcards/{wildcardId}
+     * @allow (get, list): Any user can read wildcards.
+     * @allow (create, update, delete): Only authenticated users can create, update, or delete wildcards.
+     * @deny (create, update, delete): Unauthenticated users cannot create, update, or delete wildcards.
+     * @principle Allows public read access while restricting write operations.
      */
     match /wildcards/{wildcardId} {
       allow get, list: if true;
-      allow create, update, delete: if false;
+      allow create, update, delete: if isSignedIn();
     }
 
     /**
-     * @description: Allows anyone to read rules. No user can create, update, or delete rules.
-     * @path: /rules/{ruleId}
-     * @allow: (get, list) Any user can read rules.
-     * @deny: (create, update, delete) No user can write rules.
-     * @principle: Public read access for game content, no write access for any user.
+     * @description Grants public read access to rules and restricts write access to authenticated users.
+     * @path /rules/{ruleId}
+     * @allow (get, list): Any user can read rules.
+     * @allow (create, update, delete): Only authenticated users can create, update, or delete rules.
+     * @deny (create, update, delete): Unauthenticated users cannot create, update, or delete rules.
+     * @principle Allows public read access while restricting write operations.
      */
     match /rules/{ruleId} {
       allow get, list: if true;
-      allow create, update, delete: if false;
+      allow create, update, delete: if isSignedIn();
+    }
+
+    // No rules defined for `/batch operation`
+
+    /**
+     * @description Helper function to determine if a user is signed in.
+     */
+    function isSignedIn() {
+      return request.auth != null;
     }
   }
 }
