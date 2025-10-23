@@ -3,7 +3,7 @@
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { useUser, useFirestore } from '@/firebase';
+import { useUser, useFirestore, errorEmitter, FirestorePermissionError } from '@/firebase';
 import { writeBatch, doc } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
@@ -72,11 +72,9 @@ export default function MigratePage() {
     }
 
     try {
-      console.log('Starting migration...');
       const batch = writeBatch(firestore);
 
       // Migrate Questions
-      console.log('Migrating questions...');
       Object.entries(triviaData).forEach(([category, questions]) => {
         questions.forEach((q: any) => {
           const questionData = { ...q, category: category.replace(/-/g, '_')};
@@ -84,40 +82,41 @@ export default function MigratePage() {
           batch.set(docRef, questionData);
         });
       });
-      console.log('Questions queued for batch.');
       
       // Migrate Wildcards
-      console.log('Migrating wildcards...');
       wildcards.forEach((w) => {
         const docRef = doc(firestore, 'wildcards', String(w.id));
         batch.set(docRef, w);
       });
-      console.log('Wildcards queued for batch.');
 
       // Migrate Rules
-      console.log('Migrating rules...');
       rulesData.forEach((r) => {
           const docRef = doc(firestore, 'rules', r.id);
           batch.set(docRef, r)
       });
-      console.log('Rules queued for batch.');
-
 
       await batch.commit();
-      console.log('Batch commit successful!');
 
       toast({
         title: 'Migration Complete!',
         description: 'All questions, wildcards, and rules have been migrated to Firestore.',
       });
-    } catch (error: any) {
-      console.error('Migration failed:', error);
-      setError(`Migration Failed: ${error.message}. Check browser console for more details.`);
-      toast({
-        title: 'Migration Failed',
-        description: error.message || 'An unknown error occurred.',
-        variant: 'destructive',
-      });
+    } catch (err: any) {
+        // Emit a detailed contextual error for better debugging
+        const permissionError = new FirestorePermissionError({
+            path: 'batch operation', // Path is not specific for a batch, but we can note it
+            operation: 'write',
+            requestResourceData: {note: 'Batch write contains questions, wildcards, and rules.'}
+        });
+        errorEmitter.emit('permission-error', permissionError);
+
+        // Also show a user-friendly message
+        setError(`Migration Failed: ${err.message}. Check the Next.js error overlay for more details.`);
+        toast({
+            title: 'Migration Failed',
+            description: err.message || 'An unknown error occurred.',
+            variant: 'destructive',
+        });
     } finally {
       setIsMigrating(false);
     }
