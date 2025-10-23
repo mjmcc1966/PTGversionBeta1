@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { wildcards, Wildcard } from '@/lib/wildcards';
-import { Home, Shuffle } from 'lucide-react';
+import { Home, Shuffle, Hourglass } from 'lucide-react';
 import Link from 'next/link';
 import {
   AlertDialog,
@@ -24,7 +24,46 @@ export default function WildcardPage() {
   const [showReshuffleDialog, setShowReshuffleDialog] = useState(false);
   const router = useRouter();
 
+  const [timer, setTimer] = useState<number | null>(null);
+  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [intervalId]);
+  
+  const startTimer = () => {
+    if (intervalId) {
+      clearInterval(intervalId);
+      setIntervalId(null);
+      setTimer(null);
+      return;
+    }
+    setTimer(120);
+    const newIntervalId = setInterval(() => {
+      setTimer(prevTimer => {
+        if (prevTimer === null || prevTimer <= 1) {
+          clearInterval(newIntervalId);
+          return null;
+        }
+        return prevTimer - 1;
+      });
+    }, 1000);
+    setIntervalId(newIntervalId);
+  };
+
+
   const getNextCard = useCallback(() => {
+    // Stop and reset the timer when a new card is drawn
+    if (intervalId) {
+      clearInterval(intervalId);
+    }
+    setIntervalId(null);
+    setTimer(null);
+
     const availableCards = wildcards.filter((card) => !usedCardIds.has(card.id));
 
     if (availableCards.length === 0) {
@@ -42,7 +81,7 @@ export default function WildcardPage() {
     setCurrentCard(nextCard);
     
     localStorage.setItem('usedWildcardIds', JSON.stringify(Array.from(newUsedIds)));
-  }, [usedCardIds]);
+  }, [usedCardIds, intervalId]);
 
   useEffect(() => {
     const storedUsedIds = localStorage.getItem('usedWildcardIds');
@@ -83,6 +122,11 @@ export default function WildcardPage() {
           Home
         </Button>
       </Link>
+      {timer !== null && (
+        <div className="absolute top-4 right-4 bg-background/80 p-2 rounded-lg shadow-lg">
+          <span className="text-xl font-bold">{Math.floor(timer / 60)}:{(timer % 60).toString().padStart(2, '0')}</span>
+        </div>
+      )}
       <Card className="w-full max-w-2xl text-center shadow-2xl">
         <CardHeader>
           <CardTitle className="text-3xl font-bold text-destructive">Wildcard!</CardTitle>
@@ -97,16 +141,21 @@ export default function WildcardPage() {
             <p className="text-xl text-muted-foreground">Loading wildcard...</p>
           )}
         </CardContent>
-        <CardFooter className="flex justify-center gap-4">
-            <Button onClick={getNextCard} size="lg">
-                <Shuffle className="mr-2 h-5 w-5"/>
-                Draw Next Card
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <Link href="/home">
-                <Home className="mr-2 h-5 w-5"/>
-                Home
-              </Link>
+        <CardFooter className="flex justify-between items-center gap-4">
+            <div className="flex gap-4">
+                <Button onClick={getNextCard} size="lg">
+                    <Shuffle className="mr-2 h-5 w-5"/>
+                    Draw Next Card
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                  <Link href="/home">
+                    <Home className="mr-2 h-5 w-5"/>
+                    Home
+                  </Link>
+                </Button>
+            </div>
+            <Button onClick={startTimer} variant="ghost" size="icon" className="bg-green-500 hover:bg-green-600 text-white rounded-full">
+                <Hourglass className="w-6 h-6" />
             </Button>
         </CardFooter>
       </Card>
