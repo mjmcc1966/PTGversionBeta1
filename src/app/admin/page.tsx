@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -140,21 +141,18 @@ export default function MigratePage() {
     try {
       const batch = writeBatch(firestore);
 
-      // Add Questions
       const questionsCollection = collection(firestore, 'questions');
       questions.forEach((question) => {
         const questionRef = doc(questionsCollection, question.id);
         batch.set(questionRef, question);
       });
 
-      // Add Rules
       const rulesCollection = collection(firestore, 'rules');
       rules.forEach((rule) => {
         const ruleRef = doc(rulesCollection, rule.id);
         batch.set(ruleRef, rule);
       });
 
-      // Add Wildcards
       const wildcardsCollection = collection(firestore, 'wildcards');
       wildcards.forEach((wildcard) => {
         const wildcardRef = doc(wildcardsCollection, wildcard.id);
@@ -168,13 +166,17 @@ export default function MigratePage() {
         description: 'All game data has been migrated to Firestore.',
       });
     } catch (error) {
-       console.error("Migration failed:", error);
-       const permissionError = new FirestorePermissionError({
-          path: 'batch operation', // Batch writes don't have a single path
-          operation: 'write',
-          requestResourceData: { note: 'Batch write contains questions, wildcards, and rules.' }
-        });
-        errorEmitter.emit('permission-error', permissionError);
+      toast({
+        variant: "destructive",
+        title: "Migration Failed: Missing or insufficient permissions.",
+        description: "Check browser console for more details.",
+      });
+      const permissionError = new FirestorePermissionError({
+        path: 'batch operation',
+        operation: 'write',
+        requestResourceData: { note: 'Batch write contains questions, wildcards, and rules.' },
+      });
+      errorEmitter.emit('permission-error', permissionError);
     } finally {
       setIsMigrating(false);
     }
