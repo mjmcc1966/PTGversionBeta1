@@ -1,32 +1,29 @@
 /**
- * @fileoverview Firestore Security Rules for PTG application.
- *
- * Core Philosophy:
- * This ruleset provides public read access to game content (questions, wildcards, and rules)
- * while restricting write access to prevent unauthorized modifications. All authenticated users can read
- * and list these collections, but write access is explicitly denied.  User data (if implemented) would
- * follow an ownership model, but user documents are not part of the provided data model.
+ * @file Firestore Security Rules
+ * @description This ruleset enforces public read access to game content (questions, wildcards, rules)
+ *   while restricting write access to prevent unauthorized modifications.
  *
  * Data Structure:
- * - /questions/{questionId}: Stores trivia questions.
+ * - /questions/{questionId}: Stores individual trivia questions.
  * - /wildcards/{wildcardId}: Stores wildcard cards.
- * - /rules/{ruleId}: Stores game rules.
+ * - /rules/{ruleId}: Stores the game rules.
  *
  * Key Security Decisions:
- * - Public read access to game content.
- * - No write access granted through these rules. Write access requires separate privileged backend.
- * - User-specific data is not part of this data model.
+ * - Public Read Access: Questions, wildcards, and rules are publicly readable to facilitate game play.
+ * - No User-Generated Content: The application does not support user-generated content. Therefore,
+ *   creation, updating, and deletion of questions, wildcards, and rules are strictly prohibited
+ *   via the client.
  */
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
     /**
-     * @description Allows public read access to trivia questions, but restricts all write operations.
+     * @description Allows public read access to questions. No write access allowed from client.
      * @path /questions/{questionId}
-     * @allow (get, list) Any authenticated user can read or list questions.
-     * @deny (create, update, delete) No user can create, update, or delete questions through the client.
-     * @principle Public read access with no client-side writes.
+     * @allow (get, list) Any user can read questions.
+     * @deny (create, update, delete) No user can create, update, or delete questions.
+     * @principle Allows public access for reads, restricts all writes.
      */
     match /questions/{questionId} {
       allow get, list: if true;
@@ -34,11 +31,11 @@ service cloud.firestore {
     }
 
     /**
-     * @description Allows public read access to wildcard cards, but restricts all write operations.
+     * @description Allows public read access to wildcards. No write access allowed from client.
      * @path /wildcards/{wildcardId}
-     * @allow (get, list) Any authenticated user can read or list wildcards.
-     * @deny (create, update, delete) No user can create, update, or delete wildcards through the client.
-     * @principle Public read access with no client-side writes.
+     * @allow (get, list) Any user can read wildcards.
+     * @deny (create, update, delete) No user can create, update, or delete wildcards.
+     * @principle Allows public access for reads, restricts all writes.
      */
     match /wildcards/{wildcardId} {
       allow get, list: if true;
@@ -46,11 +43,11 @@ service cloud.firestore {
     }
 
     /**
-     * @description Allows public read access to game rules, but restricts all write operations.
+     * @description Allows public read access to game rules. No write access allowed from client.
      * @path /rules/{ruleId}
-     * @allow (get, list) Any authenticated user can read or list rules.
-     * @deny (create, update, delete) No user can create, update, or delete rules through the client.
-     * @principle Public read access with no client-side writes.
+     * @allow (get, list) Any user can read game rules.
+     * @deny (create, update, delete) No user can create, update, or delete game rules.
+     * @principle Allows public access for reads, restricts all writes.
      */
     match /rules/{ruleId} {
       allow get, list: if true;

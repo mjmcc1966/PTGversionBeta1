@@ -1,7 +1,7 @@
 
 "use client";
 
-import type { Question } from '@/lib/questions';
+import type { Question } from '@/lib/data/questions';
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -21,7 +21,7 @@ const incorrectSoundBase64 = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAAB
 
 
 export function QuizClient({ category }: { category: string }) {
-  const [askedQuestionIds, setAskedQuestionIds] = useState<Set<number>>(new Set());
+  const [askedQuestionIds, setAskedQuestionIds] = useState<Set<string>>(new Set());
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
@@ -372,6 +372,7 @@ export function QuizClient({ category }: { category: string }) {
               <p className="mt-2 text-foreground/80">{currentQuestion.explanation}</p>
             </div>
             <div className="flex w-full justify-between gap-2">
+               <Button onClick={() => submitted && selectNewQuestion()} className="w-full md:w-auto">Next Question</Button>
               <Link href="/home" passHref>
                   <Button variant="outline" className="w-full md:w-auto self-end">Home</Button>
               </Link>

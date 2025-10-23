@@ -5,7 +5,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import type { Wildcard } from '@/lib/wildcards';
+import type { Wildcard } from '@/lib/data/wildcards';
 import { Home, Shuffle, Hourglass } from 'lucide-react';
 import Link from 'next/link';
 import {
@@ -18,16 +18,16 @@ import {
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
 import { useLoading } from '@/app/context/loading-context';
-import { useFirestore, useCollection } from '@/firebase';
+import { useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection } from 'firebase/firestore';
 
 export default function WildcardPage() {
   const firestore = useFirestore();
-  const wildcardsCollection = useCollection<Wildcard>(firestore ? collection(firestore, 'wildcards') : null);
-  const allWildcards = wildcardsCollection.data || [];
+  const wildcardsQuery = useMemoFirebase(() => firestore ? collection(firestore, 'wildcards') : null, [firestore]);
+  const { data: allWildcards, isLoading: wildcardsLoading } = useCollection<Wildcard>(wildcardsQuery);
   
   const [currentCard, setCurrentCard] = useState<Wildcard | null>(null);
-  const [usedCardIds, setUsedCardIds] = useState<Set<number>>(new Set());
+  const [usedCardIds, setUsedCardIds] = useState<Set<string>>(new Set());
   const [showReshuffleDialog, setShowReshuffleDialog] = useState(false);
   const router = useRouter();
   const { hideLoader } = useLoading();
@@ -71,12 +71,13 @@ export default function WildcardPage() {
 
 
   const getNextCard = useCallback(() => {
-    // Stop and reset the timer when a new card is drawn
     if (intervalId) {
       clearInterval(intervalId);
     }
     setIntervalId(null);
     setTimer(null);
+
+    if (!allWildcards) return;
 
     const availableCards = allWildcards.filter((card) => !usedCardIds.has(card.id));
 
@@ -105,9 +106,9 @@ export default function WildcardPage() {
   }, []);
 
   useEffect(() => {
-    if (allWildcards.length > 0 && !currentCard) {
+    if (allWildcards && allWildcards.length > 0 && !currentCard) {
        getNextCard();
-    } else if (allWildcards.length > 0 && usedCardIds.size >= allWildcards.length && !currentCard) {
+    } else if (allWildcards && allWildcards.length > 0 && usedCardIds.size >= allWildcards.length && !currentCard) {
       setShowReshuffleDialog(true);
     }
   }, [currentCard, getNextCard, usedCardIds, allWildcards]);
@@ -118,7 +119,7 @@ export default function WildcardPage() {
     setShowReshuffleDialog(false);
     
     setTimeout(() => {
-      if (allWildcards.length > 0) {
+      if (allWildcards && allWildcards.length > 0) {
         const randomIndex = Math.floor(Math.random() * allWildcards.length);
         const firstCard = allWildcards[randomIndex];
         const newUsedIds = new Set([firstCard.id]);
@@ -147,13 +148,15 @@ export default function WildcardPage() {
           <CardTitle className="text-3xl font-bold text-destructive">Wildcard!</CardTitle>
         </CardHeader>
         <CardContent className="min-h-[200px] flex flex-col items-center justify-center p-6">
-          {currentCard ? (
+          {wildcardsLoading ? (
+            <p className="text-xl text-muted-foreground">Loading wildcard...</p>
+          ) : currentCard ? (
             <>
               <p className="text-lg font-semibold text-muted-foreground">{currentCard.category}</p>
               <p className="text-2xl mt-4">{currentCard.text}</p>
             </>
           ) : (
-            <p className="text-xl text-muted-foreground">Loading wildcard...</p>
+            <p className="text-xl text-muted-foreground">No wildcards available.</p>
           )}
         </CardContent>
         <CardFooter className="flex justify-between items-center gap-4">
