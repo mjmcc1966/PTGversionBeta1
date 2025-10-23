@@ -1,3 +1,4 @@
+
 'use server';
 /**
  * @fileOverview A flow for seeding data into Firestore using the Admin SDK.
@@ -9,12 +10,12 @@
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
 import * as admin from 'firebase-admin';
+import { getApps, initializeApp, getApp } from 'firebase-admin/app';
 
-// Initialize the Firebase Admin SDK if it hasn't been already.
-// This uses Application Default Credentials, which is the recommended way
-// for server-side environments like Firebase App Hosting.
-if (admin.apps.length === 0) {
-  admin.initializeApp();
+// This is the recommended way to initialize the Admin SDK in a serverless environment.
+// It ensures that the app is not initialized multiple times.
+if (getApps().length === 0) {
+  initializeApp();
 }
 
 const db = admin.firestore();
@@ -38,6 +39,7 @@ export const seedData = ai.defineFlow(
 
     try {
       data.forEach((item) => {
+        // Ensure each item has an 'id' property to use as the document ID
         if (!item.id) {
           throw new Error('All data items must have an "id" property.');
         }
