@@ -1,10 +1,11 @@
+
 'use client';
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useAuth, useFirestore } from '@/firebase';
-import { writeBatch, collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, doc, deleteDoc, setDoc } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
 import { errorEmitter } from '@/firebase/error-emitter';
@@ -52,28 +53,24 @@ export default function FixWildcardsPage() {
     setIsMigrating(true);
     toast({
         title: 'Replacing Wildcards...',
-        description: 'Please do not close this page.',
+        description: 'Please do not close this page. This may take a moment.',
     });
 
     try {
-      const batch = writeBatch(firestore);
       const wildcardsCollection = collection(firestore, 'wildcards');
       
-      // 1. Delete all existing wildcards
+      // 1. Delete all existing wildcards one-by-one
       const existingWildcards = await getDocs(wildcardsCollection);
-      existingWildcards.forEach(doc => {
-        batch.delete(doc.ref);
-      });
+      for (const docSnapshot of existingWildcards.docs) {
+        await deleteDoc(doc(firestore, 'wildcards', docSnapshot.id));
+      }
 
-      // 2. Add the new, correct wildcards
-      wildcards.forEach(wildcard => {
+      // 2. Add the new, correct wildcards one-by-one
+      for (const wildcard of wildcards) {
         const docRef = doc(firestore, 'wildcards', wildcard.id);
-        batch.set(docRef, wildcard);
-      });
-
-      // 3. Commit the batch
-      await batch.commit();
-
+        await setDoc(docRef, wildcard);
+      }
+      
       toast({
         title: 'Success!',
         description: 'All wildcards have been replaced with the correct data.',
@@ -83,10 +80,11 @@ export default function FixWildcardsPage() {
       router.push('/');
 
     } catch (e: any) {
-      const permissionError = new FirestorePermissionError({
-          path: 'batch operation',
+       console.error("Wildcard fix error:", e);
+       const permissionError = new FirestorePermissionError({
+          path: e.path || 'wildcards collection',
           operation: 'write',
-          requestResourceData: { note: 'Batch write to fix wildcards.' },
+          requestResourceData: { note: 'Operation to fix wildcards one by one.' },
       });
       errorEmitter.emit('permission-error', permissionError);
     } finally {
