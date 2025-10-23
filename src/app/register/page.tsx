@@ -56,14 +56,9 @@ export default function Register() {
     }
 
     try {
-      // First, forcefully sign out any lingering user.
-      await signOut(auth);
-      
-      // Then, try to create a new user.
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      // Store user info in Firestore.
       await setDoc(
         doc(db, 'users', user.uid),
         {
@@ -73,18 +68,16 @@ export default function Register() {
         { merge: true }
       );
 
-      router.push('/'); // Redirect to home on successful registration.
+      router.push('/'); 
     } catch (registerError: any) {
-       // If the error is that the email is already in use, try to sign them in.
        if (registerError.code === AuthErrorCodes.EMAIL_EXISTS) {
          try {
            await signInWithEmailAndPassword(auth, email, password);
-           router.push('/'); // Redirect on successful login
+           router.push('/');
          } catch (loginError: any) {
            setError(loginError.message);
          }
        } else {
-         // For any other registration error, display it.
          setError(registerError.message);
        }
     }

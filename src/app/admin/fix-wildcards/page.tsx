@@ -61,7 +61,7 @@ export default function FixWildcardsPage() {
                 operation: 'delete',
             });
             errorEmitter.emit('permission-error', permissionError);
-            throw permissionError; // Stop the process
+            throw permissionError; 
         });
       }
 
@@ -75,7 +75,7 @@ export default function FixWildcardsPage() {
                 requestResourceData: card,
             });
             errorEmitter.emit('permission-error', permissionError);
-            throw permissionError; // Stop the process
+            throw permissionError;
         });
       }
 
@@ -86,7 +86,7 @@ export default function FixWildcardsPage() {
       router.push('/');
 
     } catch (error) {
-      // Errors are now thrown by the listener, so no need to toast here.
+      // Errors are handled by the global listener
     } finally {
       hideLoader();
     }
