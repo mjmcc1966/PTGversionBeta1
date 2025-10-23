@@ -3,7 +3,7 @@
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { useUser, useFirebase } from '@/firebase';
+import { useUser, useFirestore } from '@/firebase';
 import { writeBatch, doc } from 'firebase/firestore';
 import { triviaData } from '@/lib/questions';
 import { wildcards } from '@/lib/wildcards';
@@ -151,7 +151,7 @@ const rulesData = [
 
 export default function MigratePage() {
   const { user } = useUser();
-  const { firestore } = useFirebase();
+  const firestore = useFirestore();
   const { toast } = useToast();
   const [isMigrating, setIsMigrating] = useState(false);
 

@@ -10,6 +10,10 @@
           "type": "string",
           "description": "Unique identifier for the question."
         },
+        "category": {
+            "type": "string",
+            "description": "The category of the question."
+        },
         "question": {
           "type": "string",
           "description": "The text of the question."
@@ -39,7 +43,8 @@
         "question",
         "options",
         "correctAnswer",
-        "explanation"
+        "explanation",
+        "category"
       ]
     },
     "Wildcard": {
@@ -125,37 +130,23 @@
     ]
   },
   "firestore": {
-    "structure": [
-      {
-        "path": "/questions/{questionId}",
-        "definition": {
-          "entityName": "Question",
-          "schema": {
-            "$ref": "#/entities/Question"
-          },
-          "description": "Stores all trivia questions for the game."
-        }
+    "/questions/{questionId}": {
+      "schema": {
+        "$ref": "#/entities/Question"
       },
-      {
-        "path": "/wildcards/{wildcardId}",
-        "definition": {
-          "entityName": "Wildcard",
-          "schema": {
-            "$ref": "#/entities/Wildcard"
-          },
-          "description": "Stores all wildcard cards for the game."
-        }
+      "description": "Stores all trivia questions for the game."
+    },
+    "/wildcards/{wildcardId}": {
+      "schema": {
+        "$ref": "#/entities/Wildcard"
       },
-      {
-        "path": "/rules/{ruleId}",
-        "definition": {
-          "entityName": "Rule",
-          "schema": {
-            "$ref": "#/entities/Rule"
-          },
-          "description": "Stores the game rules, organized by section."
-        }
-      }
-    ]
+      "description": "Stores all wildcard cards for the game."
+    },
+    "/rules/{ruleId}": {
+      "schema": {
+        "$ref": "#/entities/Rule"
+      },
+      "description": "Stores the game rules, organized by section."
+    }
   }
 }
