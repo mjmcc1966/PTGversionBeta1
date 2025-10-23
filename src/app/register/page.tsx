@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { auth, db } from '@/lib/firebase';
+import { useAuth, useFirestore } from '@/firebase';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { doc, getDoc, updateDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { Button } from '@/components/ui/button';
@@ -18,12 +18,18 @@ export default function Register() {
   const [activationCode, setActivationCode] = useState('');
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+  const auth = useAuth();
+  const db = useFirestore();
 
   const handleAuth = async () => {
     setError(null);
     if (!email) {
       setError('Email is required.');
       return;
+    }
+    if (!db) {
+        setError('Firestore is not available');
+        return;
     }
 
     try {

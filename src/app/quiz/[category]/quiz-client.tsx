@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils';
 import { CheckCircle, XCircle, Trophy, Lightbulb, Hourglass } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
-import { collection, query } from 'firebase/firestore';
+import { collection, query, where } from 'firebase/firestore';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useLoading } from '@/app/context/loading-context';
 
@@ -39,7 +39,8 @@ export function QuizClient({ category }: { category: string }) {
 
   const questionsQuery = useMemoFirebase(() => {
     if (!firestore) return null;
-    return query(collection(firestore, 'questions', category, 'items'));
+    const categoryToQuery = category.replace(/-/g, '_');
+    return query(collection(firestore, 'questions'), where('category', '==', categoryToQuery));
   }, [firestore, category]);
 
   const { data: allQuestions, isLoading: questionsLoading } = useCollection<Question>(questionsQuery);

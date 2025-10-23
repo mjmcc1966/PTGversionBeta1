@@ -18,12 +18,14 @@ import {
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
 import { useLoading } from '@/app/context/loading-context';
-import { useFirebase } from '@/firebase';
+import { useFirestore, useCollection } from '@/firebase';
 import { collection } from 'firebase/firestore';
 
 export default function WildcardPage() {
-  const { firestore } = useFirebase();
-  const [allWildcards, setAllWildcards] = useState<Wildcard[]>([]);
+  const firestore = useFirestore();
+  const wildcardsCollection = useCollection<Wildcard>(firestore ? collection(firestore, 'wildcards') : null);
+  const allWildcards = wildcardsCollection.data || [];
+  
   const [currentCard, setCurrentCard] = useState<Wildcard | null>(null);
   const [usedCardIds, setUsedCardIds] = useState<Set<number>>(new Set());
   const [showReshuffleDialog, setShowReshuffleDialog] = useState(false);
@@ -38,20 +40,6 @@ export default function WildcardPage() {
 
   const [timer, setTimer] = useState<number | null>(null);
   const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
-
-  useEffect(() => {
-    if (firestore) {
-      const wildcardsRef = collection(firestore, 'wildcards');
-      const getWildcards = async () => {
-        const { getDocs } = await import('firebase/firestore');
-        const snapshot = await getDocs(wildcardsRef);
-        const wildcardsData = snapshot.docs.map(doc => doc.data() as Wildcard);
-        setAllWildcards(wildcardsData);
-      };
-      getWildcards();
-    }
-  }, [firestore]);
-
 
   useEffect(() => {
     return () => {
