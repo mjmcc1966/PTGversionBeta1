@@ -1,57 +1,64 @@
 /**
- * @file Firestore Security Rules
- * @description This ruleset enforces read-only access to game content (questions, wildcards, rules) for all users and restricts write access.
+ * @file Firestore Security Rules for PTG Application
  *
- * Core Philosophy:
- *  - Public read access to game content.
- *  - No write access for regular users; writes are implicitly disallowed.
+ * @core Philosophy:
+ * This ruleset provides public read access to questions, wildcards, and rules,
+ * while restricting write access to prevent unauthorized modifications.
  *
- * Data Structure:
- *  - Top-level collections for questions, wildcards, and rules.
- *  - No user-specific data or subcollections.
+ * @data Structure:
+ * The database consists of three top-level collections:
+ * - /questions/{questionId}: Stores individual trivia questions.
+ * - /wildcards/{wildcardId}: Stores wildcard cards.
+ * - /rules/{ruleId}: Stores the game rules.
  *
- * Key Security Decisions:
- *  - No user listing allowed.
- *  - Write operations are denied for all collections, effectively making them read-only from the application perspective. This ensures data integrity and prevents unauthorized modification of game content.
+ * @key Security Decisions:
+ * - Read-only access for all users (including unauthenticated users) to game content.
+ * - No write access for standard users.
  */
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
     /**
-     * @description Allows public read access to trivia questions.
+     * @description Allows anyone to read questions, but restricts creation, updates, and deletions.
      * @path /questions/{questionId}
-     * @allow (get, list) Anyone can read questions.
-     * @deny (create, update, delete) No one can create, update, or delete questions.
-     * @principle Allows public access for reads, restricts all writes.
+     * @allow (get, list): Any user (or no user) can read a question.
+     * @deny (create, update, delete): No one can create, update, or delete a question.
+     * @principle Public read, no write access.
      */
     match /questions/{questionId} {
       allow get, list: if true;
-      allow create, update, delete: if false;
+      allow create: if false;
+      allow update: if false;
+      allow delete: if false;
     }
 
     /**
-     * @description Allows public read access to wildcard cards.
+     * @description Allows anyone to read wildcards, but restricts creation, updates, and deletions.
      * @path /wildcards/{wildcardId}
-     * @allow (get, list) Anyone can read wildcards.
-     * @deny (create, update, delete) No one can create, update, or delete wildcards.
-     * @principle Allows public access for reads, restricts all writes.
+     * @allow (get, list): Any user (or no user) can read a wildcard.
+     * @deny (create, update, delete): No one can create, update, or delete a wildcard.
+     * @principle Public read, no write access.
      */
     match /wildcards/{wildcardId} {
       allow get, list: if true;
-      allow create, update, delete: if false;
+      allow create: if false;
+      allow update: if false;
+      allow delete: if false;
     }
 
     /**
-     * @description Allows public read access to game rules.
+     * @description Allows anyone to read game rules, but restricts creation, updates, and deletions.
      * @path /rules/{ruleId}
-     * @allow (get, list) Anyone can read rules.
-     * @deny (create, update, delete) No one can create, update, or delete rules.
-     * @principle Allows public access for reads, restricts all writes.
+     * @allow (get, list): Any user (or no user) can read a game rule.
+     * @deny (create, update, delete): No one can create, update, or delete a game rule.
+     * @principle Public read, no write access.
      */
     match /rules/{ruleId} {
       allow get, list: if true;
-      allow create, update, delete: if false;
+      allow create: if false;
+      allow update: if false;
+      allow delete: if false;
     }
   }
 }

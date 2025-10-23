@@ -37,7 +37,6 @@ export function QuizClient({ category }: { category: string }) {
   const [score, setScore] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
   const [outOfQuestions, setOutOfQuestions] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const { user, isUserLoading: authLoading } = useUser();
   const router = useRouter();
   const { hideLoader } = useLoading();
@@ -106,15 +105,11 @@ export function QuizClient({ category }: { category: string }) {
   }, [user, authLoading, router]);
 
   useEffect(() => {
-    if(!questionsLoading){
-        setIsLoading(false);
-    }
-
     const storedAskedIds = localStorage.getItem(`askedQuestionIds_${category}`);
     if (storedAskedIds) {
       setAskedQuestionIds(new Set(JSON.parse(storedAskedIds)));
     }
-  }, [category, questionsLoading]);
+  }, [category]);
 
   const selectNewQuestion = useCallback(() => {
     if (!allQuestions) return;
@@ -220,7 +215,7 @@ export function QuizClient({ category }: { category: string }) {
     }, 0);
   };
   
-  if (isLoading || authLoading || questionsLoading) {
+  if (authLoading || questionsLoading) {
     return (
         <Card className="w-full max-w-2xl shadow-lg">
             <CardHeader>

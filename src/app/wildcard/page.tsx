@@ -34,7 +34,6 @@ export default function WildcardPage() {
   const [currentCard, setCurrentCard] = useState<Wildcard | null>(null);
   const [usedCardIds, setUsedCardIds] = useState<Set<string>>(new Set());
   const [showReshuffleDialog, setShowReshuffleDialog] = useState(false);
-  const router = useRouter();
   const { hideLoader } = useLoading();
   const pathname = usePathname();
   const searchParams = useSearchParams();
