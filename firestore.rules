@@ -2,71 +2,63 @@
  * @fileoverview Firestore Security Rules for PTG application.
  *
  * Core Philosophy:
- * This ruleset provides public read access to questions, wildcards, and rules,
- * while restricting write access to prevent unauthorized modifications.
+ * This ruleset provides public read access to game content (questions, wildcards, rules)
+ * but prevents unauthorized data modification. It does not enforce any authorization
+ * at all for writes for prototyping speed. This should not be used in production.
  *
  * Data Structure:
- * The database consists of three top-level collections:
  * - /questions/{questionId}: Stores trivia questions.
  * - /wildcards/{wildcardId}: Stores wildcard cards.
  * - /rules/{ruleId}: Stores game rules.
  *
  * Key Security Decisions:
- * - Public Read Access: All users (authenticated or not) can read questions, wildcards, and rules.
- * - Restricted Write Access: Only authenticated users can create, update, or delete questions, wildcards, and rules.
- *   However, the rules do NOT include any role-based access control or ownership validation. This should be updated ASAP.
- * - No User Listing: There are no rules defined for a /users collection, so listing users is implicitly denied.
+ * - Public read access to all game content collections.
+ * - No write authorization for questions, wildcards, or rules.
  */
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
     /**
-     * @description Grants public read access to questions and restricts write access to authenticated users.
-     * @path /questions/{questionId}
-     * @allow (get, list): Any user can read questions.
-     * @allow (create, update, delete): Only authenticated users can create, update, or delete questions.
-     * @deny (create, update, delete): Unauthenticated users cannot create, update, or delete questions.
-     * @principle Allows public read access while restricting write operations.
+     * @description Allows public read access to questions.
+     * @path /databases/{database}/documents/questions/{questionId}
+     * @allow (get, list)
+     * @deny (create)
+     * @deny (update)
+     * @deny (delete)
+     * @principle Allows anyone to read questions, but prevents unauthorized creation, updates, or deletions.
      */
     match /questions/{questionId} {
       allow get, list: if true;
-      allow create, update, delete: if isSignedIn();
+      allow create, update, delete: if false;
     }
 
     /**
-     * @description Grants public read access to wildcards and restricts write access to authenticated users.
-     * @path /wildcards/{wildcardId}
-     * @allow (get, list): Any user can read wildcards.
-     * @allow (create, update, delete): Only authenticated users can create, update, or delete wildcards.
-     * @deny (create, update, delete): Unauthenticated users cannot create, update, or delete wildcards.
-     * @principle Allows public read access while restricting write operations.
+     * @description Allows public read access to wildcards.
+     * @path /databases/{database}/documents/wildcards/{wildcardId}
+     * @allow (get, list)
+     * @deny (create)
+     * @deny (update)
+     * @deny (delete)
+     * @principle Allows anyone to read wildcards, but prevents unauthorized creation, updates, or deletions.
      */
     match /wildcards/{wildcardId} {
       allow get, list: if true;
-      allow create, update, delete: if isSignedIn();
+      allow create, update, delete: if false;
     }
 
     /**
-     * @description Grants public read access to rules and restricts write access to authenticated users.
-     * @path /rules/{ruleId}
-     * @allow (get, list): Any user can read rules.
-     * @allow (create, update, delete): Only authenticated users can create, update, or delete rules.
-     * @deny (create, update, delete): Unauthenticated users cannot create, update, or delete rules.
-     * @principle Allows public read access while restricting write operations.
+     * @description Allows public read access to game rules.
+     * @path /databases/{database}/documents/rules/{ruleId}
+     * @allow (get, list)
+     * @deny (create)
+     * @deny (update)
+     * @deny (delete)
+     * @principle Allows anyone to read the game rules, but prevents unauthorized creation, updates, or deletions.
      */
     match /rules/{ruleId} {
       allow get, list: if true;
-      allow create, update, delete: if isSignedIn();
-    }
-
-    // No rules defined for `/batch operation`
-
-    /**
-     * @description Helper function to determine if a user is signed in.
-     */
-    function isSignedIn() {
-      return request.auth != null;
+      allow create, update, delete: if false;
     }
   }
 }
