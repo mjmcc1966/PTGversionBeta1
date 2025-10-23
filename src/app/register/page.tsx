@@ -4,7 +4,12 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth, useFirestore } from '@/firebase';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { 
+  createUserWithEmailAndPassword, 
+  signInWithEmailAndPassword, 
+  linkWithCredential,
+  EmailAuthProvider 
+} from 'firebase/auth';
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -31,16 +36,27 @@ export default function Register() {
     }
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
+      let user;
+      const currentUser = auth.currentUser;
 
-      // Store user info in Firestore
+      // If the current user is anonymous, link the new credentials
+      if (currentUser && currentUser.isAnonymous) {
+        const credential = EmailAuthProvider.credential(email, password);
+        const userCredential = await linkWithCredential(currentUser, credential);
+        user = userCredential.user;
+      } else {
+        // Otherwise, create a new user
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        user = userCredential.user;
+      }
+
+      // Store/update user info in Firestore using the final UID
       await setDoc(doc(db, 'users', user.uid), {
         email,
         createdAt: serverTimestamp(),
-      });
+      }, { merge: true });
       
-      router.push('/'); // Redirect to home on successful registration
+      router.push('/'); // Redirect to home on successful registration/linking
     } catch (registerError: any) {
       setError(registerError.message);
     }
