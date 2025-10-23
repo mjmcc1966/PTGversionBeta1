@@ -7,9 +7,12 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { Brain, Map, Scale, Hourglass, HelpCircle, Shuffle } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useLoading } from '@/app/context/loading-context';
 
 export default function Home() {
   const router = useRouter();
+  const { showLoader } = useLoading();
+
   const categories = [
     { name: (<div>General Trivia<br/>$10,000,000</div>), href: '/quiz/general-trivia', icon: <Brain className="w-6 h-6" /> },
     { name: (<div>State Trivia<br/>10 Million Popular Votes</div>), href: '/quiz/state-trivia', icon: <Map className="w-6 h-6" /> },
@@ -51,7 +54,14 @@ export default function Home() {
   };
 
   const handleWildcardClick = () => {
+    showLoader();
     router.push('/wildcard');
+  };
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    showLoader();
+    router.push(href);
   };
 
   return (
@@ -74,7 +84,7 @@ export default function Home() {
           <CardContent className="grid gap-4">
             {categories.map((category) => (
               <Button asChild key={category.href} className="w-full h-20 text-xl justify-start" variant="outline">
-                <Link href={category.href}>
+                <Link href={category.href} onClick={(e) => handleLinkClick(e, category.href)}>
                   <div className="flex items-center space-x-4">
                     {category.icon}
                     <span>{category.name}</span>
@@ -90,7 +100,7 @@ export default function Home() {
             </Button>
           </CardContent>
           <CardFooter className="justify-center">
-            <Button asChild variant="outline">
+            <Button asChild variant="outline" onClick={() => showLoader()}>
               <Link href="/">Back to Main Menu</Link>
             </Button>
           </CardFooter>
