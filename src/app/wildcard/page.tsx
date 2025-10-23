@@ -5,7 +5,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { wildcards, Wildcard } from '@/lib/wildcards';
+import type { Wildcard } from '@/lib/wildcards';
 import { Home, Shuffle, Hourglass } from 'lucide-react';
 import Link from 'next/link';
 import {
@@ -18,8 +18,12 @@ import {
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
 import { useLoading } from '@/app/context/loading-context';
+import { useFirebase } from '@/firebase';
+import { collection } from 'firebase/firestore';
 
 export default function WildcardPage() {
+  const { firestore } = useFirebase();
+  const [allWildcards, setAllWildcards] = useState<Wildcard[]>([]);
   const [currentCard, setCurrentCard] = useState<Wildcard | null>(null);
   const [usedCardIds, setUsedCardIds] = useState<Set<number>>(new Set());
   const [showReshuffleDialog, setShowReshuffleDialog] = useState(false);
@@ -34,6 +38,20 @@ export default function WildcardPage() {
 
   const [timer, setTimer] = useState<number | null>(null);
   const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    if (firestore) {
+      const wildcardsRef = collection(firestore, 'wildcards');
+      const getWildcards = async () => {
+        const { getDocs } = await import('firebase/firestore');
+        const snapshot = await getDocs(wildcardsRef);
+        const wildcardsData = snapshot.docs.map(doc => doc.data() as Wildcard);
+        setAllWildcards(wildcardsData);
+      };
+      getWildcards();
+    }
+  }, [firestore]);
+
 
   useEffect(() => {
     return () => {
@@ -72,9 +90,9 @@ export default function WildcardPage() {
     setIntervalId(null);
     setTimer(null);
 
-    const availableCards = wildcards.filter((card) => !usedCardIds.has(card.id));
+    const availableCards = allWildcards.filter((card) => !usedCardIds.has(card.id));
 
-    if (availableCards.length === 0) {
+    if (availableCards.length === 0 && allWildcards.length > 0) {
       setShowReshuffleDialog(true);
       return;
     }
@@ -89,7 +107,7 @@ export default function WildcardPage() {
     setCurrentCard(nextCard);
     
     localStorage.setItem('usedWildcardIds', JSON.stringify(Array.from(newUsedIds)));
-  }, [usedCardIds, intervalId]);
+  }, [usedCardIds, intervalId, allWildcards]);
 
   useEffect(() => {
     const storedUsedIds = localStorage.getItem('usedWildcardIds');
@@ -99,26 +117,27 @@ export default function WildcardPage() {
   }, []);
 
   useEffect(() => {
-    // Draw the first card when the component mounts and we have loaded the used IDs
-    if (!currentCard && usedCardIds.size < wildcards.length) {
+    if (allWildcards.length > 0 && !currentCard) {
        getNextCard();
-    } else if (usedCardIds.size >= wildcards.length && !currentCard) {
+    } else if (allWildcards.length > 0 && usedCardIds.size >= allWildcards.length && !currentCard) {
       setShowReshuffleDialog(true);
     }
-  }, [currentCard, getNextCard, usedCardIds]);
+  }, [currentCard, getNextCard, usedCardIds, allWildcards]);
 
   const handleReshuffle = () => {
     localStorage.removeItem('usedWildcardIds');
     setUsedCardIds(new Set());
     setShowReshuffleDialog(false);
-    // Use a timeout to ensure state is updated before drawing the next card
+    
     setTimeout(() => {
-      const randomIndex = Math.floor(Math.random() * wildcards.length);
-      const firstCard = wildcards[randomIndex];
-      const newUsedIds = new Set([firstCard.id]);
-      setUsedCardIds(newUsedIds);
-      setCurrentCard(firstCard);
-      localStorage.setItem('usedWildcardIds', JSON.stringify([firstCard.id]));
+      if (allWildcards.length > 0) {
+        const randomIndex = Math.floor(Math.random() * allWildcards.length);
+        const firstCard = allWildcards[randomIndex];
+        const newUsedIds = new Set([firstCard.id]);
+        setUsedCardIds(newUsedIds);
+        setCurrentCard(firstCard);
+        localStorage.setItem('usedWildcardIds', JSON.stringify([firstCard.id]));
+      }
     }, 100);
   };
 

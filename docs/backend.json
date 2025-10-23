@@ -10,58 +10,86 @@
           "type": "string",
           "description": "Unique identifier for the question."
         },
-        "categoryId": {
-          "type": "string",
-          "description": "Reference to Category. (Relationship: Category 1:N Question)"
-        },
-        "text": {
+        "question": {
           "type": "string",
           "description": "The text of the question."
+        },
+        "options": {
+          "type": "array",
+          "description": "An array of possible answers.",
+          "items": {
+            "type": "string"
+          }
         },
         "correctAnswer": {
           "type": "string",
           "description": "The correct answer to the question."
         },
-        "incorrectAnswers": {
-          "type": "array",
-          "description": "An array of incorrect answers to the question.",
-          "items": {
-            "type": "string"
-          }
-        },
         "explanation": {
           "type": "string",
           "description": "Explanation for the correct answer."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "Optional URL for an image related to the question."
         }
       },
       "required": [
         "id",
-        "categoryId",
-        "text",
+        "question",
+        "options",
         "correctAnswer",
-        "incorrectAnswers",
         "explanation"
       ]
     },
-    "Category": {
+    "Wildcard": {
       "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "Category",
+      "title": "Wildcard",
       "type": "object",
-      "description": "Represents a category of questions within the PTG application.",
+      "description": "Represents a wildcard card in the game.",
       "properties": {
         "id": {
           "type": "string",
-          "description": "Unique identifier for the category."
+          "description": "Unique identifier for the wildcard."
         },
-        "name": {
+        "category": {
           "type": "string",
-          "description": "The name of the category (e.g., General Trivia, State Trivia, Government Trivia)."
+          "description": "The category of the wildcard."
+        },
+        "text": {
+          "type": "string",
+          "description": "The text of the wildcard."
         }
       },
       "required": [
         "id",
-        "name"
+        "category",
+        "text"
       ]
+    },
+    "Rule": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Rule",
+      "type": "object",
+      "description": "Represents a section of the game rules.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier for the rule section (e.g., 'general-game-play')."
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the rule section."
+        },
+        "content": {
+          "type": "array",
+          "description": "An array of paragraphs or list items for the rule section.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["id", "title", "content"]
     },
     "User": {
       "$schema": "http://json-schema.org/draft-07/schema#",
@@ -88,31 +116,6 @@
         "username",
         "email"
       ]
-    },
-    "UserQuestion": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "UserQuestion",
-      "type": "object",
-      "description": "Associates a user with questions they have seen. Prevents question repetition.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the UserQuestion entity."
-        },
-        "userId": {
-          "type": "string",
-          "description": "Reference to User. (Relationship: User 1:N UserQuestion)"
-        },
-        "questionId": {
-          "type": "string",
-          "description": "Reference to Question. (Relationship: Question 1:N UserQuestion)"
-        }
-      },
-      "required": [
-        "id",
-        "userId",
-        "questionId"
-      ]
     }
   },
   "auth": {
@@ -124,56 +127,35 @@
   "firestore": {
     "structure": [
       {
-        "path": "/categories",
-        "definition": {
-          "entityName": "Category",
-          "schema": {
-            "$ref": "#/backend/entities/Category"
-          },
-          "description": "Stores the categories of questions for the PTG application. Questions and categories are segregated from user data."
-        }
-      },
-      {
-        "path": "/categories/{categoryId}/questions/{questionId}",
+        "path": "/questions/{questionId}",
         "definition": {
           "entityName": "Question",
           "schema": {
-            "$ref": "#/backend/entities/Question"
+            "$ref": "#/entities/Question"
           },
-          "description": "Stores the questions associated with each category. Segregated from user data.",
-          "params": [
-            {
-              "name": "categoryId",
-              "description": "The unique identifier of the category."
-            },
-            {
-              "name": "questionId",
-              "description": "The unique identifier of the question."
-            }
-          ]
+          "description": "Stores all trivia questions for the game."
         }
       },
       {
-        "path": "/users/{userId}/user_questions/{userQuestionId}",
+        "path": "/wildcards/{wildcardId}",
         "definition": {
-          "entityName": "UserQuestion",
+          "entityName": "Wildcard",
           "schema": {
-            "$ref": "#/backend/entities/UserQuestion"
+            "$ref": "#/entities/Wildcard"
           },
-          "description": "Tracks which questions have been presented to a specific user.  This enables prevention of repeated questions. Uses path-based ownership.",
-          "params": [
-            {
-              "name": "userId",
-              "description": "The unique identifier of the user."
-            },
-            {
-              "name": "userQuestionId",
-              "description": "The unique identifier for the user-question association."
-            }
-          ]
+          "description": "Stores all wildcard cards for the game."
+        }
+      },
+      {
+        "path": "/rules/{ruleId}",
+        "definition": {
+          "entityName": "Rule",
+          "schema": {
+            "$ref": "#/entities/Rule"
+          },
+          "description": "Stores the game rules, organized by section."
         }
       }
-    ],
-    "reasoning": "The Firestore structure is designed to securely store and manage question data for the PTG application. The core principle is to prevent end-user modification of questions, categories, wildcards and rules by storing them in a secure database. The structure segregates user-specific data (UserQuestions) from global application data (Categories, Questions). This segregation ensures clear ownership and simplified security rules. Specifically:\n\n1.  **/categories**: Stores the question categories.  Questions are segregated from user data.\n2.  **/categories/{categoryId}/questions/{questionId}**: Stores the questions associated with each category. Segregation ensures the questions are not directly modifiable by end-users. This path also uses a subcollection to efficiently query questions by category.\n3.  **/users/{userId}/user_questions/{userQuestionId}**: Tracks which questions have been presented to each user, preventing repetition.  This leverages path-based ownership for user-specific data.\n\nThis design achieves Authorization Independence as the question and category data do not rely on any user-specific information for authorization. The security rules can simply check if the user is authenticated to read questions, and only allow server-side processes (or designated admin roles, if implemented) to modify categories and questions. This structure also supports the required QAPs, as `list` operations on questions can be securely performed based on category without exposing other categories or allowing unauthorized modifications."
+    ]
   }
 }

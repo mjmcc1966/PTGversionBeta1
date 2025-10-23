@@ -2,7 +2,6 @@
 "use client";
 
 import type { Question } from '@/lib/questions';
-import { getQuestionsByCategory } from '@/lib/questions';
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -12,7 +11,8 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { CheckCircle, XCircle, Trophy, Lightbulb, Hourglass } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
-import { useAuth } from '@/app/context/auth-context';
+import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
+import { collection, query } from 'firebase/firestore';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useLoading } from '@/app/context/loading-context';
 
@@ -21,7 +21,6 @@ const incorrectSoundBase64 = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAAB
 
 
 export function QuizClient({ category }: { category: string }) {
-  const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   const [askedQuestionIds, setAskedQuestionIds] = useState<Set<number>>(new Set());
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
@@ -31,11 +30,20 @@ export function QuizClient({ category }: { category: string }) {
   const [quizFinished, setQuizFinished] = useState(false);
   const [outOfQuestions, setOutOfQuestions] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const { user, loading: authLoading } = useAuth();
+  const { user, isUserLoading: authLoading } = useUser();
   const router = useRouter();
   const { hideLoader } = useLoading();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const firestore = useFirestore();
+
+  const questionsQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
+    return query(collection(firestore, 'questions', category, 'items'));
+  }, [firestore, category]);
+
+  const { data: allQuestions, isLoading: questionsLoading } = useCollection<Question>(questionsQuery);
+
 
   useEffect(() => {
     hideLoader();
@@ -89,17 +97,18 @@ export function QuizClient({ category }: { category: string }) {
   }, [user, authLoading, router]);
 
   useEffect(() => {
-    const questions = getQuestionsByCategory(category);
-    setAllQuestions(questions);
-    setIsLoading(false);
+    if(!questionsLoading){
+        setIsLoading(false);
+    }
 
     const storedAskedIds = localStorage.getItem(`askedQuestionIds_${category}`);
     if (storedAskedIds) {
       setAskedQuestionIds(new Set(JSON.parse(storedAskedIds)));
     }
-  }, [category]);
+  }, [category, questionsLoading]);
 
   const selectNewQuestion = useCallback(() => {
+    if (!allQuestions) return;
     const availableQuestions = allQuestions.filter(q => !askedQuestionIds.has(q.id));
     
     if (availableQuestions.length === 0 && allQuestions.length > 0) {
@@ -120,7 +129,7 @@ export function QuizClient({ category }: { category: string }) {
 
 
   useEffect(() => {
-    if (allQuestions.length > 0 && !currentQuestion) {
+    if (allQuestions && allQuestions.length > 0 && !currentQuestion) {
       selectNewQuestion();
     }
   }, [allQuestions, currentQuestion, selectNewQuestion]);
@@ -136,7 +145,7 @@ export function QuizClient({ category }: { category: string }) {
   };
 
   const handleSubmitAnswer = () => {
-    if (!selectedAnswer || !currentQuestion) return;
+    if (!selectedAnswer || !currentQuestion || !allQuestions) return;
 
     if (intervalId) {
       clearInterval(intervalId);
@@ -166,7 +175,7 @@ export function QuizClient({ category }: { category: string }) {
 
 
   const handleSkipQuestion = () => {
-    if (!currentQuestion) return;
+    if (!currentQuestion || !allQuestions) return;
 
     const newAskedQuestionIds = new Set([...Array.from(askedQuestionIds), currentQuestion.id]);
     setAskedQuestionIds(newAskedQuestionIds);
@@ -187,20 +196,22 @@ export function QuizClient({ category }: { category: string }) {
     setOutOfQuestions(false);
     setQuizFinished(false);
     setTimeout(() => {
-       const availableQuestions = allQuestions;
-       if (availableQuestions.length > 0) {
-          const randomIndex = Math.floor(Math.random() * availableQuestions.length);
-          setCurrentQuestion(availableQuestions[randomIndex]);
-          setSelectedAnswer(null);
-          setSubmitted(false);
-          setIsCorrect(null);
-       } else {
-         setCurrentQuestion(null);
+       if (allQuestions) {
+          const availableQuestions = allQuestions;
+          if (availableQuestions.length > 0) {
+              const randomIndex = Math.floor(Math.random() * availableQuestions.length);
+              setCurrentQuestion(availableQuestions[randomIndex]);
+              setSelectedAnswer(null);
+              setSubmitted(false);
+              setIsCorrect(null);
+          } else {
+            setCurrentQuestion(null);
+          }
        }
     }, 0);
   };
   
-  if (isLoading || authLoading) {
+  if (isLoading || authLoading || questionsLoading) {
     return (
         <Card className="w-full max-w-2xl shadow-lg">
             <CardHeader>
@@ -247,7 +258,7 @@ export function QuizClient({ category }: { category: string }) {
           <Trophy className="w-24 h-24 mx-auto text-accent" />
           <CardTitle className="text-4xl mt-4 text-primary">Quiz Complete!</CardTitle>
           <CardDescription className="text-xl mt-2">
-            You scored {score} out of {allQuestions.length}.
+            You scored {score} out of {allQuestions?.length}.
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
@@ -294,7 +305,7 @@ export function QuizClient({ category }: { category: string }) {
     return "bg-card/50 border-primary/10 text-muted-foreground";
   };
   
-  const progress = allQuestions.length > 0 ? (askedQuestionIds.size / allQuestions.length) * 100 : 0;
+  const progress = allQuestions && allQuestions.length > 0 ? (askedQuestionIds.size / allQuestions.length) * 100 : 0;
   const questionNumber = Array.from(askedQuestionIds).findIndex(id => id === currentQuestion.id) + 1 || askedQuestionIds.size;
 
 
@@ -309,7 +320,7 @@ export function QuizClient({ category }: { category: string }) {
         <CardHeader>
           <div className="mb-4">
             <Progress value={progress} className="h-2" />
-            <p className="text-sm text-muted-foreground mt-2 text-center">Question {questionNumber} of {allQuestions.length}</p>
+            <p className="text-sm text-muted-foreground mt-2 text-center">Question {questionNumber} of {allQuestions?.length}</p>
           </div>
           {currentQuestion.imageUrl && (
             <div className="relative w-full h-64 mb-4 rounded-lg overflow-hidden">
