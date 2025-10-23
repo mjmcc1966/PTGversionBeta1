@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useRouter } from 'next/navigation';
 import { UploadQuestionsDialog } from '@/components/upload-questions-dialog';
-import { Upload } from 'lucide-react';
+import { Upload, Database } from 'lucide-react';
 import Link from 'next/link';
 import { useLoading } from '@/app/context/loading-context';
 
@@ -31,6 +31,12 @@ export default function BasePage() {
         <CardContent className="grid gap-4">
           <Button asChild className="w-full h-20 text-xl justify-center" variant="outline" onClick={showLoader}>
             <Link href="/rules">Rules of Game Play</Link>
+          </Button>
+           <Button asChild className="w-full h-20 text-xl justify-center" variant="outline" onClick={showLoader}>
+            <Link href="/admin">
+              <Database className="w-6 h-6 mr-2" />
+              Migrate Game Data
+            </Link>
           </Button>
           <Button onClick={handleExpansionClick} className="w-full h-20 text-xl justify-center" variant="outline">
             Buy an Expansion Pack
