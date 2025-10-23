@@ -9,23 +9,43 @@ import wildcardsData from './data/wildcards.json';
 import rulesData from './data/rules.json';
 import { useLoading } from '@/app/context/loading-context';
 import Link from 'next/link';
-import { seedData } from '@/app/admin/actions';
+import { useFirestore } from '@/firebase';
+import { collection, doc, writeBatch } from 'firebase/firestore';
 
 export default function AdminPage() {
   const { toast } = useToast();
   const { showLoader, hideLoader } = useLoading();
   const [isSeeding, setIsSeeding] = useState(false);
+  const firestore = useFirestore();
 
   const handleSeed = async (
     collectionName: string,
     data: any[],
     collectionLabel: string
   ) => {
+    if (!firestore) {
+      toast({
+        variant: 'destructive',
+        title: 'Firestore not available',
+        description: 'Please ensure you are connected to Firebase.',
+      });
+      return;
+    }
     setIsSeeding(true);
     showLoader();
 
     try {
-      await seedData({ collection: collectionName, data });
+      const batch = writeBatch(firestore);
+      data.forEach((item) => {
+        if (!item.id) {
+          throw new Error('All data items must have an "id" property.');
+        }
+        const docRef = doc(firestore, collectionName, item.id.toString());
+        batch.set(docRef, item);
+      });
+      
+      await batch.commit();
+
       toast({
         title: 'Success!',
         description: `${collectionLabel} have been seeded successfully.`,
