@@ -1,33 +1,23 @@
 /**
- * @file Firestore Security Rules
- * @description This ruleset defines access control for the PTG application's Firestore database.
- *
- * Core Philosophy:
- * The ruleset provides public read access to game content (questions, wildcards, rules)
- * while restricting write access to prevent unauthorized modifications. This allows anyone to
- * read the game content without authentication, but only authorized users or processes
- * (not defined here) could potentially modify the content.
- *
- * Data Structure:
- * The database contains three top-level collections: `questions`, `wildcards`, and `rules`.
- * Each collection stores documents representing game content.
- *
- * Key Security Decisions:
- * - Public read access: `get` and `list` operations are allowed for all users, including
- *   unauthenticated users, on all three collections.
- * - Write restrictions: `create`, `update`, and `delete` operations are denied to all users.
- *   This enforces read-only access for the game content.
+ * @file Firestore Security Rules for PTG Application
+ * @corePhilosophy This ruleset prioritizes security by enforcing strict read-only access to game content (questions, wildcards, rules).
+ *   It is designed to prevent unauthorized modifications while allowing public access to game data. User data is not stored so user authentication only matters for future write access.
+ * @dataStructure The Firestore database consists of three top-level collections: 'questions', 'wildcards', and 'rules'.
+ *   Each collection contains documents representing individual game elements.
+ * @keySecurityDecisions All write operations are denied to prevent unauthorized modifications of game content.
+ *   Read access is open to all users, including unauthenticated users.
+ *   Listing of collections is allowed so the client can fetch all data.
  */
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
     /**
-     * @description Allows anyone to read questions, but nobody to create, update, or delete them.
+     * @description Allows public read access to questions, but prohibits any write operations.
      * @path /questions/{questionId}
-     * @allow (get, list) - Any user can read questions.
+     * @allow (get, list) - Any user, authenticated or not, can read the question.
      * @deny (create, update, delete) - No user can create, update, or delete questions.
-     * @principle Allows public access to read questions, and restricts all users from writing.
+     * @principle Allows public read access while preventing unauthorized modifications of game questions.
      */
     match /questions/{questionId} {
       allow get, list: if true;
@@ -37,11 +27,11 @@ service cloud.firestore {
     }
 
     /**
-     * @description Allows anyone to read wildcards, but nobody to create, update, or delete them.
+     * @description Allows public read access to wildcards, but prohibits any write operations.
      * @path /wildcards/{wildcardId}
-     * @allow (get, list) - Any user can read wildcards.
+     * @allow (get, list) - Any user, authenticated or not, can read the wildcard.
      * @deny (create, update, delete) - No user can create, update, or delete wildcards.
-     * @principle Allows public access to read wildcards, and restricts all users from writing.
+     * @principle Allows public read access while preventing unauthorized modifications of game wildcards.
      */
     match /wildcards/{wildcardId} {
       allow get, list: if true;
@@ -51,11 +41,11 @@ service cloud.firestore {
     }
 
     /**
-     * @description Allows anyone to read rules, but nobody to create, update, or delete them.
+     * @description Allows public read access to rules, but prohibits any write operations.
      * @path /rules/{ruleId}
-     * @allow (get, list) - Any user can read rules.
-     * @deny (create, update, delete) - No user can create, update, or delete rules.
-     * @principle Allows public access to read rules, and restricts all users from writing.
+     * @allow (get, list) - Any user, authenticated or not, can read the game rule.
+     * @deny (create, update, delete) - No user can create, update, or delete game rules.
+     * @principle Allows public read access while preventing unauthorized modifications of game rules.
      */
     match /rules/{ruleId} {
       allow get, list: if true;
