@@ -2,8 +2,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useFirestore } from '@/firebase';
-import { collection, writeBatch, doc } from 'firebase/firestore';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
@@ -12,44 +10,23 @@ import wildcardsData from './data/wildcards.json';
 import rulesData from './data/rules.json';
 import { useLoading } from '@/app/context/loading-context';
 import Link from 'next/link';
-
-type Question = typeof questionsData[0];
-type Wildcard = typeof wildcardsData[0];
-type Rule = typeof rulesData[0];
+import { seedData } from '@/ai/flows/seed-data';
 
 export default function AdminPage() {
-  const firestore = useFirestore();
   const { toast } = useToast();
   const { showLoader, hideLoader } = useLoading();
   const [isSeeding, setIsSeeding] = useState(false);
 
-  const seedCollection = async <T extends { id: string }>(
+  const handleSeed = async (
     collectionName: string,
-    data: T[],
+    data: any[],
     collectionLabel: string
   ) => {
-    if (!firestore) {
-      toast({
-        variant: 'destructive',
-        title: 'Error',
-        description: 'Firestore is not initialized.',
-      });
-      return;
-    }
-
     setIsSeeding(true);
     showLoader();
 
     try {
-      const collectionRef = collection(firestore, collectionName);
-      const batch = writeBatch(firestore);
-
-      data.forEach((item) => {
-        const docRef = doc(collectionRef, item.id);
-        batch.set(docRef, item);
-      });
-
-      await batch.commit();
+      await seedData({ collection: collectionName, data });
       toast({
         title: 'Success!',
         description: `${collectionLabel} have been seeded successfully.`,
@@ -68,15 +45,15 @@ export default function AdminPage() {
   };
 
   const handleSeedQuestions = () => {
-    seedCollection<Question>('questions', questionsData, 'Questions');
+    handleSeed('questions', questionsData, 'Questions');
   };
 
   const handleSeedWildcards = () => {
-    seedCollection<Wildcard>('wildcards', wildcardsData, 'Wildcards');
+    handleSeed('wildcards', wildcardsData, 'Wildcards');
   };
 
   const handleSeedRules = () => {
-    seedCollection<Rule>('rules', rulesData, 'Rules');
+    handleSeed('rules', rulesData, 'Rules');
   };
 
   return (
