@@ -3,13 +3,14 @@
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { useFirebase } from '@/firebase';
-import { collection, writeBatch, doc } from 'firebase/firestore';
+import { useUser, useFirebase } from '@/firebase';
+import { writeBatch, doc } from 'firebase/firestore';
 import { triviaData } from '@/lib/questions';
 import { wildcards } from '@/lib/wildcards';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import Link from 'next/link';
 
 const rulesData = [
     {
@@ -149,6 +150,7 @@ const rulesData = [
 ];
 
 export default function MigratePage() {
+  const { user } = useUser();
   const { firestore } = useFirebase();
   const { toast } = useToast();
   const [isMigrating, setIsMigrating] = useState(false);
@@ -164,6 +166,16 @@ export default function MigratePage() {
       setIsMigrating(false);
       return;
     }
+     if (!user) {
+      toast({
+        title: 'Authentication Error',
+        description: 'You must be logged in to perform this action.',
+        variant: 'destructive',
+      });
+      setIsMigrating(false);
+      return;
+    }
+
 
     try {
       const batch = writeBatch(firestore);
@@ -171,22 +183,21 @@ export default function MigratePage() {
       // Migrate Questions
       Object.entries(triviaData).forEach(([category, questions]) => {
         questions.forEach((q) => {
-          const docRef = doc(firestore, 'questions', category, 'items', String(q.id));
-          batch.set(docRef, q);
+          const questionData = { ...q, category: category.replace(/-/g, '_')};
+          const docRef = doc(firestore, 'questions', String(q.id));
+          batch.set(docRef, questionData);
         });
       });
       
       // Migrate Wildcards
-      const wildcardsCollection = collection(firestore, 'wildcards');
       wildcards.forEach((w) => {
-        const docRef = doc(wildcardsCollection, String(w.id));
+        const docRef = doc(firestore, 'wildcards', String(w.id));
         batch.set(docRef, w);
       });
 
       // Migrate Rules
-      const rulesCollection = collection(firestore, 'rules');
       rulesData.forEach((r) => {
-          const docRef = doc(rulesCollection, r.id);
+          const docRef = doc(firestore, 'rules', r.id);
           batch.set(docRef, r)
       });
 
@@ -215,24 +226,31 @@ export default function MigratePage() {
             <CardHeader>
                 <CardTitle>Database Migration</CardTitle>
                 <CardDescription>
-                    Click the button below to migrate all game data (questions, wildcards, and rules) from the local files into your secure Firestore database. This only needs to be done once.
+                    {user ? 
+                    'Click the button below to migrate all game data (questions, wildcards, and rules) from the local files into your secure Firestore database. This only needs to be done once.' :
+                    'You must be logged in to migrate data. Please register or log in.'
+                    }
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                 <Button onClick={handleMigrate} disabled={isMigrating} className="w-full">
-                    {isMigrating ? (
-                        <>
-                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                            Migrating...
-                        </>
-                    ) : (
-                        'Migrate Data to Firestore'
-                    )}
-                </Button>
+                 {user ? (
+                    <Button onClick={handleMigrate} disabled={isMigrating} className="w-full">
+                        {isMigrating ? (
+                            <>
+                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                Migrating...
+                            </>
+                        ) : (
+                            'Migrate Data to Firestore'
+                        )}
+                    </Button>
+                 ) : (
+                    <Button asChild className="w-full">
+                        <Link href="/register">Login to Migrate</Link>
+                    </Button>
+                 )}
             </CardContent>
         </Card>
     </div>
   );
 }
-
-    

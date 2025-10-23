@@ -1,58 +1,86 @@
 /**
- * @fileoverview Firestore Security Rules for PTG Application
+ * @fileoverview Firestore Security Rules for PTG application.
  *
  * Core Philosophy:
- * This ruleset prioritizes security by enforcing read-only access to game content
- * (questions, wildcards, rules). No user-generated content is currently supported,
- * so all write operations are disabled to prevent unauthorized data modification.
+ * This ruleset prioritizes security by enforcing a public-read, owner-write model
+ * for core game data (questions, wildcards, rules). This allows for open access to
+ * game content while restricting modifications to authorized users. User data is
+ * completely unrestricted in this prototyping phase.
  *
  * Data Structure:
- * The database consists of three top-level collections: 'questions', 'wildcards', and 'rules'.
- * Each collection contains documents representing game elements, identified by unique IDs.
+ * - /questions/{questionId}: Stores trivia questions. Publicly readable, owner-only writeable.
+ * - /wildcards/{wildcardId}: Stores wildcard cards. Publicly readable, owner-only writeable.
+ * - /rules/{ruleId}: Stores game rules. Publicly readable, owner-only writeable.
  *
  * Key Security Decisions:
- * - All data is considered read-only.
- * - Unauthenticated reads are allowed for all collections.
- * - No write access is granted to any client, authenticated or otherwise.
+ * - Public Read Access: All main game content (questions, wildcards, rules) is
+ *   publicly readable to facilitate game access.
+ * - Owner-Only Writes: Creation, modification, and deletion of game content are
+ *   restricted to an owner. However, the application currently lacks the required "ownerId"
+ *   field in the entities. Rules for this are created as a TODO and must be implemented.
+ *
+ * Denormalization for Authorization:
+ * The ruleset anticipates an `ownerId` field on the Question, Wildcard, and Rule entities.
+ * Once these fields are added to the data model, the rules can be updated to enforce
+ * ownership based on `request.auth.uid`.
+ *
+ * Structural Segregation:
+ * The application currently stores questions, wildcards, and rules in top-level collections
+ * intended for public consumption.
  */
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
     /**
-     * @description Allows public read access to questions, but denies all writes.
+     * @description Allows public read access to questions and restricts writes to owners.
      * @path /questions/{questionId}
-     * @allow (get, list) - Any user can read a question.
-     * @deny (create, update, delete) - No user can create, update, or delete a question.
-     * @principle Allows public read, but restricts all write access.
+     * @allow (get, list): Any user can read questions.
+     * @allow (create): Not Allowed yet, requires `ownerId` property in the data.
+     * @allow (update): Not Allowed yet, requires `ownerId` property in the data and must match existing document.
+     * @allow (delete): Not Allowed yet, requires `ownerId` property in the data and must match existing document.
+     * @deny (create): if true, until `ownerId` field is implemented in the data model.
+     * @deny (update): if true, until `ownerId` field is implemented in the data model.
+     * @deny (delete): if true, until `ownerId` field is implemented in the data model.
+     * @principle Allows public reads, requires data model update to enforce ownership on writes.
      */
     match /questions/{questionId} {
       allow get, list: if true;
-      allow create, update, delete: if false;
+      allow create, update, delete: if false; // TODO: Add owner validation once the schema is updated with an ownership field.
     }
 
     /**
-     * @description Allows public read access to wildcards, but denies all writes.
+     * @description Allows public read access to wildcards and restricts writes to owners.
      * @path /wildcards/{wildcardId}
-     * @allow (get, list) - Any user can read a wildcard.
-     * @deny (create, update, delete) - No user can create, update, or delete a wildcard.
-     * @principle Allows public read, but restricts all write access.
+     * @allow (get, list): Any user can read wildcards.
+     * @allow (create): Not Allowed yet, requires `ownerId` property in the data.
+     * @allow (update): Not Allowed yet, requires `ownerId` property in the data and must match existing document.
+     * @allow (delete): Not Allowed yet, requires `ownerId` property in the data and must match existing document.
+     * @deny (create): if true, until `ownerId` field is implemented in the data model.
+     * @deny (update): if true, until `ownerId` field is implemented in the data model.
+     * @deny (delete): if true, until `ownerId` field is implemented in the data model.
+     * @principle Allows public reads, requires data model update to enforce ownership on writes.
      */
     match /wildcards/{wildcardId} {
       allow get, list: if true;
-      allow create, update, delete: if false;
+      allow create, update, delete: if false; // TODO: Add owner validation once the schema is updated with an ownership field.
     }
 
     /**
-     * @description Allows public read access to rules, but denies all writes.
+     * @description Allows public read access to rules and restricts writes to owners.
      * @path /rules/{ruleId}
-     * @allow (get, list) - Any user can read a rule.
-     * @deny (create, update, delete) - No user can create, update, or delete a rule.
-     * @principle Allows public read, but restricts all write access.
+     * @allow (get, list): Any user can read rules.
+     * @allow (create): Not Allowed yet, requires `ownerId` property in the data.
+     * @allow (update): Not Allowed yet, requires `ownerId` property in the data and must match existing document.
+     * @allow (delete): Not Allowed yet, requires `ownerId` property in the data and must match existing document.
+     * @deny (create): if true, until `ownerId` field is implemented in the data model.
+     * @deny (update): if true, until `ownerId` field is implemented in the data model.
+     * @deny (delete): if true, until `ownerId` field is implemented in the data model.
+     * @principle Allows public reads, requires data model update to enforce ownership on writes.
      */
     match /rules/{ruleId} {
       allow get, list: if true;
-      allow create, update, delete: if false;
+      allow create, update, delete: if false; // TODO: Add owner validation once the schema is updated with an ownership field.
     }
   }
 }
