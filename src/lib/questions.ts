@@ -1026,391 +1026,6 @@ export const triviaData: { [key: string]: Question[] } = {
       explanation: 'It is not possible to sneeze while asleep due to something called REM atonia.'
     },
     {
-      id: 146,
-      question: 'Which of these animals has the most number of bones in its skeleton?',
-      options: [ 'Python', 'Elephant', 'Giraffe', 'Armadillo' ],
-      correctAnswer: 'Python',
-      explanation: 'A python can have over 1,800 bones due to the hundreds of vertebrae and ribs.'
-    },
-    {
-      id: 147,
-      question: 'The smallest bone in the human body can be found in this body part/area.',
-      options: [ 'Ear', 'Knee', 'Shoulder', 'Throat' ],
-      correctAnswer: 'Ear',
-      explanation: 'The middle ear has the 3 smallest bones, the hammer, anvil and stirrup, that aid in transmitting sound. The stirrup (stapes) is the smallest of them.'
-    },
-    {
-      id: 148,
-      question: 'This bone disorder causes a left-right curvature of the spine.',
-      options: [ 'Scoliosis', 'Osteoporosis', 'Lordosis', 'Kyphosis' ],
-      correctAnswer: 'Scoliosis',
-      explanation: "The condition is found in about 3% of people and the word comes from the Greek word meaning 'a bending'."
-    },
-    {
-      id: 149,
-      question: 'Which solo artist had the most #1 songs on the charts?',
-      options: [ 'Mariah Carey', 'Elvis Presley', 'Michael Jackson', 'Taylor Swift' ],
-      correctAnswer: 'Mariah Carey',
-      explanation: 'Carey has 19 #1 songs. Presley had 18 as a solo artist. Jackson had 13, Swift has 12.'
-    },
-    {
-      id: 150,
-      question: 'Ian Fleming, author of the James Bond novels, has an airport named after him in this country.',
-      options: [ 'Jamaica', 'England', 'Scotland', 'Greece' ],
-      correctAnswer: 'Jamaica',
-      explanation: 'Fleming died in 1964, and while he was British, he had a home in Jamaica and wrote all 14 of his Bond books there.'
-    },
-    {
-      id: 151,
-      question: 'The youngest solo artist to reach the Billboard Hot 100, in 1963, was Stevland Hardaway Judkins, who was born in 1950 and was better known as ___.',
-      options: [ 'Stevie Wonder', 'George Thorogood', 'Peter Gabriel', 'Billie Ocean' ],
-      correctAnswer: 'Stevie Wonder',
-      explanation: "He was 13 when he released 'Fingertips', and he has won 25 Grammys and sold over 100 million albums."
-    },
-    {
-      id: 152,
-      question: 'This acronym is named in part for Alan Turing, and it proves that you are a human on a website and not a bot.',
-      options: [ 'Captcha test', 'Black box test', "Moore's test", 'Honeypot test' ],
-      correctAnswer: 'Captcha test',
-      explanation: 'It stands for "Completely Automated Public Turing test to tell Computers and Humans Apart."'
-    },
-    {
-      id: 153,
-      question: 'This was the first scripted TV show to shoot on 35mm film in front of a live audience, starting in 1951, and starred (among others) Desi Arnaz.',
-      options: [ 'I Love Lucy', 'The Ed Sullivan Show', 'Gunsmoke', 'The Twilight Zone' ],
-      correctAnswer: 'I Love Lucy',
-      explanation: 'The show was the highest rated show 4 of the 6 years it aired, and won 5 Emmys.'
-    },
-    {
-      id: 154,
-      question: 'The highest point in this European country is Signal de Botrange at 700 meters (2,300 ft), with the last 6 meters a staircase to nowhere.',
-      options: [ 'Belgium', 'France', 'Switzerland', 'Spain' ],
-      correctAnswer: 'Belgium',
-      explanation: 'In 2013, an additional 160 ft tower was added that allowed for real-time transfer of data between the London and Frankfurt stock exchanges.'
-    },
-    {
-      id: 155,
-      question: 'Which of these vehicles has sold the most units, as of 2024?',
-      options: [ 'Toyota Corolla', 'Ford Model T', 'Volkswagen Beetle', 'Chevrolet Impala' ],
-      correctAnswer: 'Toyota Corolla',
-      explanation: 'Selling over 50 million units since it\'s introduction in 1966, it is the Q-tip of vehicles.'
-    },
-    {
-      id: 156,
-      question: 'This colorful candy, popular around halloween, was originally known as "chicken feed" when introduced in 1888.',
-      options: [ 'Candy corn', 'Peeps', 'Snickers', 'Skittles' ],
-      correctAnswer: 'Candy corn',
-      explanation: "It was called 'chicken feed' as most people at the time associated corn with animal feed."
-    },
-    {
-      id: 157,
-      question: 'This popular Canadian dish\'s name translates as "mess".',
-      options: [ 'Poutine', 'Justin Trudeau', 'Timbits', 'Tourtiere' ],
-      correctAnswer: 'Poutine',
-      explanation: "Poutine is a dish of french fries with cheese curds and gravy. Just kidding about Trudeau...he's not that good looking."
-    },
-    {
-      id: 158,
-      question: 'The breakdown of this plant pigment is responsible for the colorful leaves we see in the fall.',
-      options: [ 'Chlorophyll', 'Actin', 'Betalain', 'Anthoxanthin' ],
-      correctAnswer: 'Chlorophyll',
-      explanation: 'As the chlorophyll breaks down each fall it allows the colorful carotenoids to be displayed.'
-    },
-    {
-      id: 159,
-      question: 'Russia is the largest country by land area. What is the second largest?',
-      options: [ 'Canada', 'Brazil', 'India', 'China' ],
-      correctAnswer: 'Canada',
-      explanation: "Canada also has the world's longest coastline and the longest international land border (with the US). And they were the second country to legalize weed (in 2018)."
-    },
-    {
-      id: 160,
-      question: 'This common English word comes from an ancient Latin word describing where one road splits into two roads.',
-      options: [ 'Trivia', 'Fork', 'Interchange', 'Avenue' ],
-      correctAnswer: 'Trivia',
-      explanation: 'The Great Midwest Trivia Contest, held each year in January in Appleton, WI, since 1966, is the longest running trivia contest in the world.'
-    },
-    {
-      id: 161,
-      question: 'This monument is the tallest manmade monument in the US, and is a tribute to the westward expansion of the US.',
-      options: [ 'Gateway Arch', 'Jefferson Memorial', 'Washington Monument', 'Statue of Liberty' ],
-      correctAnswer: 'Gateway Arch',
-      explanation: "At 630 ft (192 m), the Arch is covered in stainless steel and is the world's tallest arch."
-    },
-    {
-      id: 162,
-      question: 'A "business" or "busyness" refers to a group of these furry animals.',
-      options: [ 'Ferrets', 'Skunks', 'Lions', 'Mice' ],
-      correctAnswer: 'Ferrets',
-      explanation: 'The name ferret comes from the Latin word for "little thief". A male ferret is called a hob and a female is a jill.'
-    },
-    {
-      id: 163,
-      question: 'What nickname has been on every NFL football from 1941 to 1969, and again since 2006, to honor Wellington Mara?',
-      options: [ 'The Duke', 'The Prince', 'The King', 'The Champ' ],
-      correctAnswer: 'The Duke',
-      explanation: 'Mara was the son of the original founder and owner of the NY Giants, and he was named after the Duke of Wellington.'
-    },
-    {
-      id: 164,
-      question: 'What is the best-selling ice cream flavor in the US?',
-      options: [ 'Vanilla', 'Chocolate', 'Strawberry', 'Neopolitan' ],
-      correctAnswer: 'Vanilla',
-      explanation: 'During the 1780s, Thomas Jefferson wrote his own recipe for vanilla ice cream. The recipe is housed at the Library of Congress.'
-    },
-    {
-      id: 165,
-      question: 'What US territory has the motto "Where America\'s Day Begins"?',
-      options: [ 'Guam', 'Hawaii', 'Puerto Rico', 'American Samoa' ],
-      correctAnswer: 'Guam',
-      explanation: 'Guam is 20 hours ahead of Hawaii and is west of the International Date Line.'
-    },
-    {
-      id: 166,
-      question: "This cartoon originally aired from 1959-1964, featured villains Boris Badenov and Natasha Fatale, and was an inspiration for The Simpsons, among others.",
-      options: [ 'The Adventures of Rocky and Bullwinkle and Friends', 'Mr Magoo', 'The Flinstones', 'The Deputy Dawg Show' ],
-      correctAnswer: 'The Adventures of Rocky and Bullwinkle and Friends',
-      explanation: 'June Foray was the voice of Rocky the Flying Squirrel, Natasha Fatale, and every other female character on the show.'
-    },
-    {
-      id: 167,
-      question: "Baby Ruth candy bars are named after this president's daughter.",
-      options: [ 'Grover Cleveland', 'Ronald Reagan', 'Alexander Hamilton', 'Bill Clinton' ],
-      correctAnswer: 'Grover Cleveland',
-      explanation: 'President Cleveland\'s daughter Ruth was known to have a smooth nougat center.'
-    },
-    {
-      id: 168,
-      question: 'On which continent would you find the largest desert?',
-      options: [ 'Antarctica', 'Africa', 'South America', 'Australia' ],
-      correctAnswer: 'Antarctica',
-      explanation: 'The Antarctic desert is over twice the size of the Sahara, and Antarctica has no permanent human residents.'
-    },
-    {
-      id: 169,
-      question: 'Famed stage actor Alan Rickman made his film debut in this beloved movie.',
-      options: [ 'Die Hard', 'The January Man', 'Love, Actually', 'Quigley Down Under' ],
-      correctAnswer: 'Die Hard',
-      explanation: "The Nakatomi Plaza was filmed in the Fox Plaza, under construction at the time. Yet Fox - the film's distributor - still charged the movie a location rental fee."
-    },
-    {
-      id: 170,
-      question: 'This popular soda was originally intended as a moonshine chaser.',
-      options: [ 'Mountain Dew', 'Tab', 'Mr. Pibb', 'Mello Yello' ],
-      correctAnswer: 'Mountain Dew',
-      explanation: 'Mountain Dew is banned in over 100 countries because it contains brominated vegetable oil, which contains the flame retardant bromine. This can build up in the body and cause memory loss. This can build up in the body and cause memory loss. This can build up in the body and....I forget...'
-    },
-    {
-      id: 171,
-      question: 'These monks have a monkey named after them.',
-      options: [ 'Capuchins', 'Carmelites', 'Augustinians', 'Cistercians' ],
-      correctAnswer: 'Capuchins',
-      explanation: 'When Portugeuse explorers first saw these monkeys, they reminded them of the monks in their robes. There is also a coffee drink named after the monks.'
-    },
-    {
-      id: 172,
-      question: 'The "Coffee Cantata", written by this classical composer, tells the story of a father trying to prevent his daughter from drinking too much coffee.',
-      options: [ 'Johann Sebastian Bach', 'Wolfgang Mozart', 'Claude Debussy', 'Antonio Vivaldi' ],
-      correctAnswer: 'Johann Sebastian Bach',
-      explanation: 'Bach himself was addicted to coffee; it was said that he would drink up to 30 cups of coffee a day. The song\'s name in German translates as "Be still, stop chattering"'
-    },
-    {
-      id: 173,
-      question: 'What does SCUBA stand for?',
-      options: [ 'Self contained underwater breathing apparatus', 'Special container for underwater breathing of air', 'Sealed container with useful breatheable air', "It does't stand for anything, it's the name of the lab where it was invented." ],
-      correctAnswer: 'Self contained underwater breathing apparatus',
-      explanation: 'Nitrogen narcosis can develop at any diving depth due to the effects of nitrogen at high pressure causing an anesthetic effect in the brain.'
-    },
-    {
-      id: 174,
-      question: 'What date is inscribed on the tablet in the left hand of the Statue of Liberty?',
-      options: [ 'July 4, 1776', 'To U.S.A., a gift from France', 'La Liberte eclairant le monde (Liberty enlightening the world)', "Frederic Auguste Bartholdi (the sculptor's name)" ],
-      correctAnswer: 'July 4, 1776',
-      explanation: 'The tablet is known as a tabula ansata and it symbolizes the rule of law in America. She wears a size 879 shoe on her 25 foot long foot.'
-    },
-    {
-      id: 175,
-      question: 'What is the name of the poem at the base of the Statue of LIberty, with the famous line, "Give me your tired, your poor, your huddled masses"?',
-      options: [ 'The New Colossus', 'And Still I Rise', 'Ozymandias', 'This Land is Your Land' ],
-      correctAnswer: 'The New Colossus',
-      explanation: 'Emma Lazarus originally wrote the sonnet as part of a fundraising effort to build the Statue\'s pedestal.'
-    },
-    {
-      id: 176,
-      question: 'The longest-running scripted prime time TV show in the US is ____, with over 790 episodes as of 2025.',
-      options: [ 'The Simpsons', 'Law & Order', 'South Park', 'Gunsmoke' ],
-      correctAnswer: 'The Simpsons',
-      explanation: 'The show is signed through the 2029 season. Gunsmoke was the longest running primetime drama.'
-    },
-    {
-      id: 177,
-      question: 'The longest running TV show of any kind (and it is still running) is ____.',
-      options: [ 'Meet the Press', '60 Minutes', 'CBS Evening News', 'Law & Order' ],
-      correctAnswer: 'Meet the Press',
-      explanation: "Broadcast continuously since 1947, Meet the Press is bested only by the Lord Mayor's Show in the UK, which airs once a year and celebrates the election of the lord mayor of the City of London."
-    },
-    {
-      id: 178,
-      question: 'In the 1970s, the US Coast Guard trained this animal to help spot something orange, yellow or red in the water.',
-      options: [ 'Pigeons', 'Dolphins', 'Orcas', 'Dogs' ],
-      correctAnswer: 'Pigeons',
-      explanation: 'Project Sea Hunt involved training the pigeons to peck at a key if they saw something in the water. They were 93% accurate, vs 38% accuracy for humans.'
-    },
-    {
-      id: 179,
-      question: 'What was the name of the first web browser and editor, released in late 1990?',
-      options: [ 'WorldWideWeb (later called Nexus)', 'Netscape Navigator', 'Mosaic', 'Internet Explorer' ],
-      correctAnswer: 'WorldWideWeb (later called Nexus)',
-      explanation: 'The first web page was made by Tim Berners-Lee and outlined how to make a web page. (The second web page was a porn version of the first.)'
-    },
-    {
-      id: 180,
-      question: 'Released in 1982, this is the greatest selling desktop computer model of all time.',
-      options: [ 'Commodore 64', 'Apple II', 'Amiga 500', 'TRS-80' ],
-      correctAnswer: 'Commodore 64',
-      explanation: 'Estimated to have sold between 17 million and 30 million units over its lifetime, the C64 gave nerds a solid reason to stay in their mom\'s basement.'
-    },
-    {
-      id: 181,
-      question: 'This British computer, first released in 2012, was originally designed to teach computing to kids.',
-      options: [ 'Raspberry Pi', 'Commodore 64', 'Atari', 'Acorn BBC Master' ],
-      correctAnswer: 'Raspberry Pi',
-      explanation: 'A typical raspberry pie uses 6 cups of raspberries and 1 1/4 cups of sugar.'
-    },
-    {
-      id: 182,
-      question: 'This nation of about 170 islands was nicknamed "the Friendly Islands" by Captain Cook, when he landed there in 1773, even though the residents were actually plotting to attack him.',
-      options: [ 'Tonga', 'Vanuatu', 'Guam', 'Philippines' ],
-      correctAnswer: 'Tonga',
-      explanation: 'Cook was later killed on his second expedition to Hawaii, in 1779.'
-    },
-    {
-      id: 183,
-      question: 'These islands were first called the Sandwich Islands, a name given by James Cook, before getting their more common name in the 1840s.',
-      options: [ 'Hawaii', 'Indonesia', 'Philippines', 'Carribbeans' ],
-      correctAnswer: 'Hawaii',
-      explanation: 'The Spam musubi, a sandwich made of a slice of Spam, a block of rice and a piece of seaweed, is a classic Hawaiin sandwich.'
-    },
-    {
-      id: 184,
-      question: 'On which of the Hawaiian Islands would you find Honolulu?',
-      options: [ 'Oahu', 'Hawaii', 'Maui', 'Kona' ],
-      correctAnswer: 'Oahu',
-      explanation: "Oahu is the third largest Hawaiin island but has 70% of the state's population."
-    },
-    {
-      id: 185,
-      question: 'Who is credited with developing the oath that most physicians take upon graduating medical school?',
-      options: [ 'Hippocrates', 'Galileo', 'Galen', 'Aristotle' ],
-      correctAnswer: 'Hippocrates',
-      explanation: 'He is credited as being the first to state that disease was not caused by gods and superstitions, but rather by diet, living habits and environment. However, the Oath was almost certainly *not written by him.'
-    },
-    {
-      id: 186,
-      question: 'This sugar in beans is hard for the body to break down, and contributes to beans making you gassy.',
-      options: [ 'Raffinose', 'Lactose', 'Fructose', 'Gaseose' ],
-      correctAnswer: 'Raffinose',
-      explanation: 'Humans rely on gut bacteria to make the enzyme alpha-galactosidase, which breaks down the sugar and causes the release of methane-containing gas. Raffinose itself is odorless.'
-    },
-    {
-      id: 187,
-      question: 'This country\'s flag is the only one that is not a rectangle, but rather two stacked triangular pennants.',
-      options: [ 'Nepal', 'Tibet', 'Burkina Faso', 'Greece' ],
-      correctAnswer: 'Nepal',
-      explanation: "The red central area is the symbol of bravery, and it also represents the color of Nepal's national flower, the rhododendron. The blue border represents the color of peace. It is a combination of two single pennants, known as a double pennon."
-    },
-    {
-      id: 188,
-      question: 'Which of these national flags does NOT feature an eagle somewhere on the flag design?',
-      options: [ 'Sri Lanka', 'Albania', 'Kazakhstan', 'Moldova' ],
-      correctAnswer: 'Sri Lanka',
-      explanation: 'The Sri Lankan flag features a golden lion holding a sword in its right paw.'
-    },
-    {
-      id: 189,
-      question: 'This country\'s flag can be reversed to hang "upside down" to indicate the country is at war.',
-      options: [ 'Philippines', 'United States', 'Switzerland', 'Nigeria' ],
-      correctAnswer: 'Philippines',
-      explanation: 'The Philippines are made of over 7,600 islands covering 300,000 km2 (116,000 sq mi) with a population of 109 million. An upside down US flag indicates distress or peril.'
-    },
-    {
-      id: 190,
-      question: 'This airport has more runways in operation than any in the world.',
-      options: [ "O'Hare (Chicago)", 'Heathrow (London)', 'Hartsfield (Atlanta)', 'JFK (New York)' ],
-      correctAnswer: "O'Hare (Chicago)",
-      explanation: 'It has 8 runways, and was named after Edward "Butch" O\'Hare, the first US Navy aviator Medal of Honor recipient during WWII.'
-    },
-    {
-      id: 191,
-      question: 'This common produce used to be known as a "love apple".',
-      options: [ 'Tomato', 'Pomegranate', 'Kumquat', 'Star fruit' ],
-      correctAnswer: 'Tomato',
-      explanation: "In 1981, the Reagan administration tried to cut the Federal School Lunch Program by 25% and proposed that things like ketchup could be considered a vegetable serving. Never mind the fact that the tomato is a fruit..."
-    },
-    {
-      id: 192,
-      question: 'Chipotles are just dried ____ peppers.',
-      options: [ 'Jalapeno', 'Poblano', 'Habanero', 'Guajillo' ],
-      correctAnswer: 'Jalapeno',
-      explanation: 'Jalapenos typically have a rating of 4,000-8,500 Scoville heat units. The hottest known pepper is the Pepper X, which has 2,693,000 Scoville heat units.'
-    },
-    {
-      id: 193,
-      question: "This company's first production car was the Model AA sedan, in 1936.",
-      options: [ 'Toyota', 'Ford', 'Chevrolet', 'Honda' ],
-      correctAnswer: 'Toyota',
-      explanation: 'The AA was essentially a copy of the DeSoto Airflow, and sold for about $530 in today\'s dollars.'
-    },
-    {
-      id: 194,
-      question: 'For a spirit to be considered bourbon, it has to be made with at least 51% ____.',
-      options: [ 'Corn', 'Wheat', 'Barley', 'Rye' ],
-      correctAnswer: 'Corn',
-      explanation: 'It also must be made in the US, in new oak barrels, and cannot be distilled to more than 160 proof (80% alcohol).'
-    },
-    {
-      id: 195,
-      question: 'What is the name for the whiskey that evaporates from a barrel as it ages?',
-      options: [ "The angel's share", "The Devil's take", "The Lord's tithe", 'None should evaporate from a barrel.' ],
-      correctAnswer: "The angel's share",
-      explanation: 'To be called Scotch, a whiskey must be aged in oak barrels in Scotland for a minimum of 3 years and a day.'
-    },
-    {
-      id: 196,
-      question: 'The ___ is the longest river in the world.',
-      options: [ 'Nile', 'Amazon', 'Mississippi', 'Yangtze' ],
-      correctAnswer: 'Nile',
-      explanation: 'While the Nile is about 6,650 km (4,130 mi) long, the Amazon has about 75 times the discharge rate of the Nile, making it the largest river by discharge.'
-    },
-    {
-      id: 197,
-      question: 'The first board game sold on Amazon was ____.',
-      options: [ 'Cranium', 'Monopoly', 'Stratego', 'Clue' ],
-      correctAnswer: 'Cranium',
-      explanation: "It was also the first game sold at Barnes and Noble bookstores, and was bought by Hasbro in 2008 for $77 million. The maker of Politics: The Game would happily consider a similar offer from Hasbro. Just sayin'."
-    },
-    {
-      id: 198,
-      question: 'Dry ice is a solid form of this gas.',
-      options: [ 'Carbon dioxide', 'Nitrous oxide', 'Dihydrogen monoxide', 'Butane dioxide' ],
-      correctAnswer: 'Carbon dioxide',
-      explanation: 'If you had a cooler full of dry ice in a small room, you could suffer hypercapnia and die as the solid turns directly into the gas form of CO2.'
-    },
-    {
-      id: 199,
-      question: "Yoda's appearance was influenced heavily by this famous scientist.",
-      options: [ 'Albert Einstein', 'Nikolai Tesla', 'Charles Darwin', 'Galileo Galilei' ],
-      correctAnswer: 'Albert Einstein',
-      explanation: 'Yoda\'s speech pattern is classified as anastrophic, meaning it does not follow the standard subject-verb-object pattern. Learn something you did.'
-    },
-    {
-      id: 200,
-      question: '"Rip Van Winkle" is set in which famous mountains?',
-      options: [ 'Catskills', 'Alps', 'Andes', 'Sierras' ],
-      correctAnswer: 'Catskills',
-      explanation: 'Washington Irving wrote the story, as well as The Legend of Sleepy Hollow.'
-    },
-    {
       id: 201,
       question: 'The deepest and largest volume lake in the world is _______.',
       options: [ 'Lake Baikal', 'Crater Lake', 'Lake Superior', 'Lake Tanganyika' ],
@@ -1440,14 +1055,14 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 205,
-      question: 'The ____ is the only true freshwater seal on the planet, living in Lake Baikal.',
+      question: "The ____ is the only true freshwater seal on the planet, living in Lake Baikal.",
       options: [ 'Nerpa', 'Monk seal', 'Ross seal', 'Elephant seal' ],
       correctAnswer: 'Nerpa',
       explanation: 'They can stay under water for up to 70 minutes, thanks in part to having 2 more liters of blood in their body than seals of comparable size.'
     },
     {
       id: 206,
-      question: 'Swanson rolled out the first national TV dinner in 1953 with a 3-compartment aluminum tray, 2 for side dishes, and one for this meat.',
+      question: "Swanson rolled out the first national TV dinner in 1953 with a 3-compartment aluminum tray, 2 for side dishes, and one for this meat.",
       options: [ 'Turkey', 'Meat loaf', 'Chicken', 'Pork chops' ],
       correctAnswer: 'Turkey',
       explanation: 'The idea came about because of low Thanksgiving turkey sales that year, which left them with 260 tons of turkey to sell. The original TV dinners were $0.98 (about $12 in 2025).'
@@ -1461,8 +1076,8 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 208,
-      question: 'In Einstein\'s famous equation, E=mc2, what does the C represent?',
-      options: [ 'Speed of light', 'Avogadro\'s constant', 'Carbon', 'Planck\'s constant' ],
+      question: "In Einstein's famous equation, E=mc2, what does the C represent?",
+      options: [ 'Speed of light', "Avogadro's constant", 'Carbon', "Planck's constant" ],
       correctAnswer: 'Speed of light',
       explanation: 'C is equal to 299,792,458 meters per second, or about 671 million miles per hour.'
     },
@@ -1517,7 +1132,7 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 216,
-      question: 'Of the following mammals, which has the most cervical (neck) vertebrae?',
+      question: "Of the following mammals, which has the most cervical (neck) vertebrae?",
       options: [ 'Three-toed sloth', 'Giraffe', 'Human', 'Manatee' ],
       correctAnswer: 'Three-toed sloth',
       explanation: 'They typically have 9 cervical vertebrae, which allows for greater head swiveling. Manatees have 6. All other mammals have 7.'
@@ -1538,8 +1153,8 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 219,
-      question: 'After Thanksgiving, this day has the highest food consumption per person.',
-      options: [ 'Super Bowl Sunday', 'July 4th', 'Christmas Day', 'New Year\'s Eve' ],
+      question: "After Thanksgiving, this day has the highest food consumption per person.",
+      options: [ 'Super Bowl Sunday', 'July 4th', 'Christmas Day', "New Year's Eve" ],
       correctAnswer: 'Super Bowl Sunday',
       explanation: 'The average American consumes 4.5 times the recommended daily caloric intake on Super Bowl Sunday (slightly ahead of the typical daily overconsumption rate of 1.4 times the recommended intake).'
     },
@@ -1555,7 +1170,7 @@ export const triviaData: { [key: string]: Question[] } = {
       question: 'These shoes were banned by the NBA when first introduced in 1985.',
       options: [ 'Air Jordans', 'Starburys', 'Converse All Stars', 'Adidas KB8' ],
       correctAnswer: 'Air Jordans',
-      explanation: 'The color scheme violated the League\'s uniform rules, and Jordan was fined $5,000 every time he wore them in a game. Nike paid the fines.'
+      explanation: "The color scheme violated the League's uniform rules, and Jordan was fined $5,000 every time he wore them in a game. Nike paid the fines."
     },
     {
       id: 222,
@@ -1566,17 +1181,17 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 223,
-      question: 'The first balloon at a Macy\'s Thanksgiving parade was of this character, in 1927.',
+      question: "The first balloon at a Macy's Thanksgiving parade was of this character, in 1927.",
       options: [ 'Felix the Cat', 'Mickey Mouse', 'Snoopy', 'Charlie Brown' ],
       correctAnswer: 'Felix the Cat',
       explanation: 'His balloon was paraded on stilts, as only regular air was used, not helium. Felix last appeared in 2016.'
     },
     {
       id: 224,
-      question: 'The mask Michael Myers wore in Halloween was a cast of this actor\'s face.',
+      question: "The mask Michael Myers wore in Halloween was a cast of this actor's face.",
       options: [ 'William Shatner', 'Al Pacino', 'Marlon Brando', 'Jack Nicholson' ],
       correctAnswer: 'William Shatner',
-      explanation: 'The mask was originally used in the award-winning 1975 William Shatner movie The Devil\'s Rain.'
+      explanation: "The mask was originally used in the award-winning 1975 William Shatner movie The Devil's Rain."
     },
     {
       id: 225,
@@ -1594,42 +1209,42 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 227,
-      question: 'Thor\'s hammer is more correctly known as ____.',
+      question: "Thor's hammer is more correctly known as ____.",
       options: [ 'Mjolnir', 'Skaoa', 'Hreindyri', 'Rythja' ],
       correctAnswer: 'Mjolnir',
       explanation: 'Forged by dwarf brothers, the hammer is both a weapon as well as an instrument to confer blessings.'
     },
     {
       id: 228,
-      question: 'The most dangerous thing to come out of Canada since Justin Bieber, this X-Men character has a skeleton and claws made of adamantium.',
+      question: "The most dangerous thing to come out of Canada since Justin Bieber, this X-Men character has a skeleton and claws made of adamantium.",
       options: [ 'Wolverine', 'Rogue', 'Magneto', 'Cyclops' ],
       correctAnswer: 'Wolverine',
       explanation: 'Born James Howlett in Alberta, he was the illegitimate son of Thomas Logan, who was the first person Wolverine killed.'
     },
     {
       id: 229,
-      question: 'Wakanda is the source of this metal, the most powerful on earth.',
+      question: "Wakanda is the source of this metal, the most powerful on earth.",
       options: [ 'Vibranium', 'Molybdenum', 'Titanium', 'Tantalum' ],
       correctAnswer: 'Vibranium',
       explanation: 'The metal has amazing abilities to capture, store and release energy, and was used in a suit worn by Black Panther, and the shield of Captain America.'
     },
     {
       id: 230,
-      question: 'Peter Quill/Star-Lord, from Guardians of the Galaxy, named his ship the ___ after his first crush, from Who\'s The Boss?',
+      question: "Peter Quill/Star-Lord, from Guardians of the Galaxy, named his ship the ___ after his first crush, from Who's The Boss?",
       options: [ 'Milano', 'Light', 'Winger', 'Foster' ],
       correctAnswer: 'Milano',
       explanation: 'A well-known activist, Alyssa Milano appeared in a 2007 commercial for PETA wearing a dress made entirely of vegetables. '
     },
     {
       id: 231,
-      question: 'The original five Avengers included Thor, Ant-Man, the Hulk, Iron Man and ___.',
+      question: "The original five Avengers included Thor, Ant-Man, the Hulk, Iron Man and ___.",
       options: [ 'The Wasp', 'The Hornet', 'Captain America', 'Green Lantern' ],
       correctAnswer: 'The Wasp',
       explanation: 'Premiering in September 1963, the Avengers added Captain America in issue #4 when he was thawed from a block of ice.'
     },
     {
       id: 232,
-      question: 'While James Earl Jones voiced him, ___ actually played Darth Vader in the original Star Wars trilogy.',
+      question: "While James Earl Jones voiced him, ___ actually played Darth Vader in the original Star Wars trilogy.",
       options: [ 'David Prowse', 'Anthony Hopkins', 'Anthony Daniels', 'Andre the Giant' ],
       correctAnswer: 'David Prowse',
       explanation: 'The Brit first gained fame as the Green Cross Man, a safety character in the UK to help pedestrians at intersections.'
@@ -1643,10 +1258,10 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 234,
-      question: 'These dogs were bred to hunt badgers, and their name translated into English means \'badger dog\'.',
+      question: "These dogs were bred to hunt badgers, and their name translated into English means 'badger dog'.",
       options: [ 'Dachshund', 'Affenpinscher', 'Basenji', 'Schnauzer' ],
       correctAnswer: 'Dachshund',
-      explanation: 'Jack Ruby, the man who shot Lee Harvey Oswald, had 4 dachsunds at the time, and had one of them, Sheba, with him at the time of the shooting.'
+      explanation: "Jack Ruby, the man who shot Lee Harvey Oswald, had 4 dachsunds at the time, and had one of them, Sheba, with him at the time of the shooting."
     },
     {
       id: 235,
@@ -1657,7 +1272,7 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 236,
-      question: 'The Eastern time zone covers the greatest number of states, at ___.',
+      question: "The Eastern time zone covers the greatest number of states, at ___.",
       options: [ '23', '25', '32', '14' ],
       correctAnswer: '23',
       explanation: 'The eastern zone is also the most populated. The least populated time zone is UTC -12, covering 2 uninhabited islands in the Pacific ocean.'
@@ -1671,14 +1286,14 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 238,
-      question: 'In 1975, while sailing from Wisconsin to Detroit, the SS Edmund Fitzgerald sunk in this lake.',
+      question: "In 1975, while sailing from Wisconsin to Detroit, the SS Edmund Fitzgerald sunk in this lake.",
       options: [ 'Superior', 'Ontario', 'Huron', 'Michigan' ],
       correctAnswer: 'Superior',
       explanation: 'Gordon Lightfoot wrote the classic song ""The Wreck of the Edmund Fitzgerald"" after seeing the name of the ship misspelled after the sinking. He thought it dishonored those killed.'
     },
     {
       id: 239,
-      question: 'From this major US city, you can travel south and enter Canada.',
+      question: "From this major US city, you can travel south and enter Canada.",
       options: [ 'Detroit', 'Milwaukee', 'Cleveland', 'Toledo' ],
       correctAnswer: 'Detroit',
       explanation: 'The city is north of Windsor, Ontario, and is the largest US city on the Canadian border.'
@@ -1699,17 +1314,17 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 242,
-      question: 'Paddington Bear\'s favorite snack is ___.',
+      question: "Paddington Bear's favorite snack is ___.",
       options: [ 'Orange marmalade', 'Vegemite', 'Chips and beans', 'Scotch egg' ],
       correctAnswer: 'Orange marmalade',
       explanation: 'He was a stowaway on a train from Peru, where he was orphaned in an earthquake.'
     },
     {
       id: 243,
-      question: 'Mrs. Who, Mrs. Whatsit and Mrs. Which are all characters from this young adult book.',
+      question: "Mrs. Who, Mrs. Whatsit and Mrs. Which are all characters from this young adult book.",
       options: [ 'A Wrinkle in Time', 'The Fault in Our Stars', 'Harry Potter and the Goblet of Fire', 'Hunger Games' ],
       correctAnswer: 'A Wrinkle in Time',
-      explanation: 'Written by Madeleine L\'Engle, it describes the adventures of a group of kids as they travel through space and time trying to save their father.'
+      explanation: "Written by Madeleine L'Engle, it describes the adventures of a group of kids as they travel through space and time trying to save their father."
     },
     {
       id: 244,
@@ -1720,10 +1335,10 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 245,
-      question: 'Matilda Wormwood, from the book Matilda by Roald Dahl, has this superpower.',
+      question: "Matilda Wormwood, from the book Matilda by Roald Dahl, has this superpower.",
       options: [ 'Telekinesis', 'Invisibility', 'Flight', 'Super strength' ],
       correctAnswer: 'Telekinesis',
-      explanation: 'Matilda was 5 1/2 years old in the book, but mysteriously, she became 6 1/2 years old in the movie version...'
+      explanation: "Matilda was 5 1/2 years old in the book, but mysteriously, she became 6 1/2 years old in the movie version..."
     },
     {
       id: 246,
@@ -1744,7 +1359,7 @@ export const triviaData: { [key: string]: Question[] } = {
       question: 'In ""Charlotte\'s Web"", what is the first message Charlotte writes to try and save Wilbur the pig?',
       options: [ '""Some pig""', '""Radiant""', '""Terrific""', '""Humble""' ],
       correctAnswer: '""Some pig""',
-      explanation: 'Wilbur is eventually saved from slaughter by Charlotte\'s work, even though she dies in the end of natural causes.'
+      explanation: "Wilbur is eventually saved from slaughter by Charlotte's work, even though she dies in the end of natural causes."
     },
     {
       id: 249,
@@ -1769,9 +1384,9 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 252,
-      question: 'Holly Golightly is a famous character played by Audrey Hepburn in this movie.',
-      options: [ 'Breakfast at Tiffany\'s', 'My Fair Lady', 'Charade', 'Roman Holiday' ],
-      correctAnswer: 'Breakfast at Tiffany\'s',
+      question: "Holly Golightly is a famous character played by Audrey Hepburn in this movie.",
+      options: [ "Breakfast at Tiffany's", 'My Fair Lady', 'Charade', 'Roman Holiday' ],
+      correctAnswer: "Breakfast at Tiffany's",
       explanation: 'Hepburn won numerous awards, and in 1992 was given the US Presidential Medal of Freedom in honor of her work as a UNICEF Goodwill Ambassador '
     },
     {
@@ -1868,13 +1483,13 @@ export const triviaData: { [key: string]: Question[] } = {
     {
       id: 266,
       question: 'The Headless Horseman was featured in what story by Washington Irving?',
-      options: [ 'The Legend of Sleepy Hollow', 'The Telltale Heart', 'The Monkey\'s Paw', 'The Pit and the Pendulum' ],
+      options: [ 'The Legend of Sleepy Hollow', "The Telltale Heart", "The Monkey's Paw", 'The Pit and the Pendulum' ],
       correctAnswer: 'The Legend of Sleepy Hollow',
       explanation: 'The Horseman was a Hessian soldier decapitated in battle, and each night he arises from the grave to look for his missing head.'
     },
     {
       id: 267,
-      question: 'What was the name of Paul Bunyan\'s pet blue ox?',
+      question: "What was the name of Paul Bunyan's pet blue ox?",
       options: [ 'Babe', 'Charlotte', 'Wilbur', 'Buck' ],
       correctAnswer: 'Babe',
       explanation: 'It took 5 giant storks to deliver the baby Paul to his parents, and his bed was a lumber wagon.'
@@ -1884,7 +1499,7 @@ export const triviaData: { [key: string]: Question[] } = {
       question: 'In which country might you find the Loch Ness monster?',
       options: [ 'Scotland', 'Wales', 'Ireland', 'England' ],
       correctAnswer: 'Scotland',
-      explanation: 'Nessie was first written about in the 7th century, where it was claimed a local man was killed by a \'water beast\' from the nearby lake.'
+      explanation: "Nessie was first written about in the 7th century, where it was claimed a local man was killed by a 'water beast' from the nearby lake."
     },
     {
       id: 269,
@@ -1895,28 +1510,28 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 270,
-      question: 'On Seinfeld, what was George\'s preferred pretend career?',
+      question: "On Seinfeld, what was George's preferred pretend career?",
       options: [ 'Architect', 'Bra salesman', 'Real estate agent', 'Baseball player' ],
       correctAnswer: 'Architect',
-      explanation: 'George often lied about his career, but architect was his go-to pretend career.'
+      explanation: "George often lied about his career, but architect was his go-to pretend career."
     },
     {
       id: 271,
       question: 'Which Kardashian has failed the bar exam three times?',
       options: [ 'Kim', 'Khloe', 'Kendall', 'Kylie' ],
       correctAnswer: 'Kim',
-      explanation: 'California is one of 6 states that allow someone to become a lawyer by \'apprenticing\' and ultimately taking the bar exam.'
+      explanation: "California is one of 6 states that allow someone to become a lawyer by 'apprenticing' and ultimately taking the bar exam."
     },
     {
       id: 272,
-      question: 'As of December 2024, which Taylor Swift album has sold the most copies?',
+      question: "As of December 2024, which Taylor Swift album has sold the most copies?",
       options: [ '1989', 'Fearless', '21', 'Red' ],
       correctAnswer: '1989',
       explanation: 'The little-known girlfriend of Travis Kelce, she sold over 14 million copies of 1989.'
     },
     {
       id: 273,
-      question: 'This compound, found in the leaves of poison oak as well as the skin of mangoes, is what can cause the itchy allergic skin reaction in some people.',
+      question: "This compound, found in the leaves of poison oak as well as the skin of mangoes, is what can cause the itchy allergic skin reaction in some people.",
       options: [ 'Urushiol', 'Chlorophyll', 'Calcium oxalate', 'Phorbol' ],
       correctAnswer: 'Urushiol',
       explanation: 'The molecule passes through the outer skin layer and activates the immune system, although in about 1/4 of people, it causes no symptoms.'
@@ -1930,7 +1545,7 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 275,
-      question: 'The star from the musical Hamilton, Lin Manuel Miranda, had a brief cameo in the final season of this HBO hit.',
+      question: "The star from the musical Hamilton, Lin Manuel Miranda, had a brief cameo in the final season of this HBO hit.",
       options: [ 'The Sopranos', 'The West Wing', 'The Wire', 'Girls' ],
       correctAnswer: 'The Sopranos',
       explanation: 'He portrayed a bellman at a hotel that Tony Soprano was entering.'
@@ -1944,7 +1559,7 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 277,
-      question: 'The world\'s most populous metropolitan area is ______, with over 37 million people.',
+      question: "The world's most populous metropolitan area is ______, with over 37 million people.",
       options: [ 'Tokyo', 'Mexico City', 'Beijing', 'Los Angeles' ],
       correctAnswer: 'Tokyo',
       explanation: 'As of 2024, it had approximately 37 million people, and at any given time, almost 36 million of them are taking a selfie.'
@@ -1979,14 +1594,14 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 282,
-      question: 'What did Mary Shelley subtitle her 1818 novel, Frankenstein?',
+      question: "What did Mary Shelley subtitle her 1818 novel, Frankenstein?",
       options: [ 'The Modern Prometheus', 'The Monster in Each of Us', 'The Dangers of Electricity', 'A Monster is Born' ],
       correctAnswer: 'The Modern Prometheus',
       explanation: 'Shelley felt that Dr Frankenstein was like Prometheus in that they both created life and suffered the consequences.'
     },
     {
       id: 283,
-      question: 'The world\'s first space station was called ____',
+      question: "The world's first space station was called ____",
       options: [ 'Salyut', 'Skylab', 'Mir', 'The ISS' ],
       correctAnswer: 'Salyut',
       explanation: 'Launched in April 1971 by Russia, the Salyut program served partly as a cover for a separate spy satellite program called Almaz.'
@@ -2010,35 +1625,35 @@ export const triviaData: { [key: string]: Question[] } = {
       question: 'What is the term for a baby kangaroo?',
       options: [ 'Joey', 'Roo', 'Pup', 'Foal' ],
       correctAnswer: 'Joey',
-      explanation: 'When born, they are 1/100,000 of their adult size and are still considered embryos, spending 6 months maturing in the mother\'s pouch.'
+      explanation: "When born, they are 1/100,000 of their adult size and are still considered embryos, spending 6 months maturing in the mother's pouch."
     },
     {
       id: 287,
-      question: 'What is considered the hardest wood in the world, with a Janka score of over 5,000.',
+      question: "What is considered the hardest wood in the world, with a Janka score of over 5,000.",
       options: [ 'Australian buloke', 'Ebony', 'Ipe', 'Bolivian cherry' ],
       correctAnswer: 'Australian buloke',
-      explanation: 'Appropriately a member of the ironwood tree family, it\'s wood is so dense that it sinks in water.'
+      explanation: "Appropriately a member of the ironwood tree family, it's wood is so dense that it sinks in water."
     },
     {
       id: 288,
-      question: 'What is the proper name of Mr Peanut, the British aristocrat who serves as the Planters peanut mascot.',
+      question: "What is the proper name of Mr Peanut, the British aristocrat who serves as the Planters peanut mascot.",
       options: [ 'Bartholomew Richard Fitzgerald-Smythe', 'Reginald Winston Throckmorton', 'Andrew Patrick Mugglestone', 'Peregrine Falcon Bysshart Rodendon' ],
       correctAnswer: 'Bartholomew Richard Fitzgerald-Smythe',
-      explanation: 'Designed by a Virginia schoolboy in 1916, Mr Peanut has even had a float in the Macy\'s Thanksgiving Day parade since 1997.'
+      explanation: "Designed by a Virginia schoolboy in 1916, Mr Peanut has even had a float in the Macy's Thanksgiving Day parade since 1997."
     },
     {
       id: 289,
-      question: 'She was the first female inducted into the Rock and Roll Hall of Fame, in 1987.',
+      question: "She was the first female inducted into the Rock and Roll Hall of Fame, in 1987.",
       options: [ 'Aretha Franklin', 'Madonna', 'Whitney Houston', 'Dolly Parton' ],
       correctAnswer: 'Aretha Franklin',
       explanation: 'She was inducted by Keith Richards, who gave a speech that was...bizarre, even by his standards.'
     },
     {
       id: 290,
-      question: 'Martin Luther King Jr paid for the birth of this Oscar winning actress in 1967, because her parents were struggling financially and were friends of the Kings.',
+      question: "Martin Luther King Jr paid for the birth of this Oscar winning actress in 1967, because her parents were struggling financially and were friends of the Kings.",
       options: [ 'Julia Roberts', 'Meryl Streep', 'Halle Berry', 'Kate Winslet' ],
       correctAnswer: 'Julia Roberts',
-      explanation: 'Julia\'s parents ran an acting school that was attended by the Kings\' children.'
+      explanation: "Julia's parents ran an acting school that was attended by the Kings' children."
     },
     {
       id: 291,
@@ -2049,7 +1664,7 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 292,
-      question: 'In a deck of cards, which King does not have a moustache?',
+      question: "In a deck of cards, which King does not have a moustache?",
       options: [ 'Hearts', 'Spades', 'Clubs', 'Diamonds' ],
       correctAnswer: 'Hearts',
       explanation: 'He is also known as the ""Suicide King"" because it looks like he is stabbing himself in the head with his sword.'
@@ -2070,21 +1685,21 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 295,
-      question: 'This singer\'s given name is Robyn Fenty.',
+      question: "This singer's given name is Robyn Fenty.",
       options: [ 'Rihanna', 'Beyonce', 'Cher', 'Madonna' ],
       correctAnswer: 'Rihanna',
       explanation: 'Her middle name is Rihanna and she was born in Barbados in 1988, and released her first album in 2005.'
     },
     {
       id: 296,
-      question: 'This famous rock guitarist played the iconic solo on Michael Jackson\'s ""Beat It""',
+      question: "This famous rock guitarist played the iconic solo on Michael Jackson's \"Beat It\"",
       options: [ 'Eddie Van Halen', 'Jimi Hendrix', 'Eric Clapton', 'Alex Lifeson' ],
       correctAnswer: 'Eddie Van Halen',
       explanation: 'He formed Van Halen with his brother Alex in 1973, and their only #1 Billboard hit was Jump from 1984.'
     },
     {
       id: 297,
-      question: 'This world-famous singer narrated the audiobook for E.T. - The Extra Terrestrial in 1982, at the same time he was about to release his biggest-selling album.',
+      question: "This world-famous singer narrated the audiobook for E.T. - The Extra Terrestrial in 1982, at the same time he was about to release his biggest-selling album.",
       options: [ 'Michael Jackson', 'Prince', 'Willie Nelson', 'Elton John' ],
       correctAnswer: 'Michael Jackson',
       explanation: 'He was finishing Thriller while finishing this album, both of which were produced by Quincy Jones.'
@@ -2098,21 +1713,21 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 299,
-      question: 'In 2018, the European Union enacted the GDPR, considered one of the most stringent online privacy protection laws. It stands for General Data ____ Regulation.',
+      question: "In 2018, the European Union enacted the GDPR, considered one of the most stringent online privacy protection laws. It stands for General Data ____ Regulation.",
       options: [ 'Protection', 'Privacy', 'Permission', 'Proactive' ],
       correctAnswer: 'Protection',
       explanation: 'Contrary to what you may think, the law does not require consent to obtain data on someone, nor does it guarantee an individual that their data must be deleted if requested. '
     },
     {
       id: 300,
-      question: 'The Great Leap Forward was an economic and social campaign in China started in 1958 that attempted to move China from an agrarian economy to an industrial one. It was proposed by this Chinese founder of the People\'s Republic of China.',
+      question: "The Great Leap Forward was an economic and social campaign in China started in 1958 that attempted to move China from an agrarian economy to an industrial one. It was proposed by this Chinese founder of the People's Republic of China.",
       options: [ 'Mao Zedong', 'Deng Xiaoping', 'Xi Jinping', 'Kim Jong Il' ],
       correctAnswer: 'Mao Zedong',
       explanation: 'The Great Leap Forward failed on many fronts, and directly led to the Great Chinese Famine, considered the deadliest famine in human history, killing between 15 and 55 million people.'
     },
     {
       id: 301,
-      question: 'The Mission: Impossible franchise follows the exploits of the fictitious spy agency IMF, which stands for ____.',
+      question: "The Mission: Impossible franchise follows the exploits of the fictitious spy agency IMF, which stands for ____.",
       options: [ 'Impossible Missions Force', 'International Mystery Force', 'International Missions Force', 'Interagency Multinational Force' ],
       correctAnswer: 'Impossible Missions Force',
       explanation: 'The IMF is tasked with, among other things, stopping the terrorist group known as the Syndicate. Mwahahahaha...'
@@ -2136,21 +1751,21 @@ export const triviaData: { [key: string]: Question[] } = {
       question: 'Bob Odenkirk and David Cross had a sketch comedy show that aired on HBO for 4 seasons called ___.',
       options: [ 'Mr Show', 'The Tambourine Men', 'Key & Peele', 'The McLaughlin Group' ],
       correctAnswer: 'Mr Show',
-      explanation: 'Odenkirk went on to have iconic roles in Breaking Bad and Better Call Saul, and Cross was the hilariously oblivious Tobias Funke on Arrested Development.'
+      explanation: "Odenkirk went on to have iconic roles in Breaking Bad and Better Call Saul, and Cross was the hilariously oblivious Tobias Funke on Arrested Development."
     },
     {
       id: 305,
-      question: 'Which Grimm fairy tale tells the story of a miller\'s daughter spinning straw into gold?',
+      question: "Which Grimm fairy tale tells the story of a miller's daughter spinning straw into gold?",
       options: [ 'Rumpelstiltskin', 'Rapunzel', 'Little Red Riding Hood', 'The Goose Girl' ],
       correctAnswer: 'Rumpelstiltskin',
-      explanation: 'The daughter in question was to give her first born to the imp that actually performed the magic spinning, but she was able to guess his name and keep her child. Your typical child\'s story.'
+      explanation: "The daughter in question was to give her first born to the imp that actually performed the magic spinning, but she was able to guess his name and keep her child. Your typical child's story."
     },
     {
       id: 306,
       question: 'This prog-rock drum legend for the band Rush died in 2020 of glioblastoma.',
       options: [ 'Neil Peart', 'John Bonham', 'John Entwhistle', 'Keith Moon' ],
       correctAnswer: 'Neil Peart',
-      explanation: 'Known as The Professor for his technical skill, he was also the lyricist for most of the band\'s songs over a 45 year career.'
+      explanation: "Known as The Professor for his technical skill, he was also the lyricist for most of the band's songs over a 45 year career."
     },
     {
       id: 307,
@@ -2168,10 +1783,10 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 309,
-      question: 'This Gen Alpha slang word has no fixed meaning, and likely had its origins in a 2018 song of the same name by Russian rave band Little Big.',
+      question: "This Gen Alpha slang word has no fixed meaning, and likely had its origins in a 2018 song of the same name by Russian rave band Little Big.",
       options: [ 'Skibidi', 'Farxiga', 'Ronkonkin', 'Jabberwocky' ],
       correctAnswer: 'Skibidi',
-      explanation: 'Depending on context, it could mean \'cool\', \'bad\' or \'dumb\', and can even be combined with other pseudowords like rizz.'
+      explanation: "Depending on context, it could mean 'cool', 'bad' or 'dumb', and can even be combined with other pseudowords like rizz."
     },
     {
       id: 310,
@@ -2196,15 +1811,15 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 313,
-      question: 'The name for this item that can be consumed (meaning, drank or eaten) comes from the German word for peppermint, pfefferminz.',
+      question: "The name for this item that can be consumed (meaning, drank or eaten) comes from the German word for peppermint, pfefferminz.",
       options: [ 'PEZ', 'Dr Pepper', 'Peppadew', 'York Peppermint Pattie' ],
       correctAnswer: 'PEZ',
-      explanation: 'PEZ was invented in Austria in 1927. Some rare PEZ dispensers can be worth over $20,000. But only if they are in \'mint\' condition.'
+      explanation: "PEZ was invented in Austria in 1927. Some rare PEZ dispensers can be worth over $20,000. But only if they are in 'mint' condition."
     },
     {
       id: 314,
       question: 'The first video ever played on MTV, in 1981, was Video Killed the Radio Star by this band.',
-      options: [ 'The Buggles', 'Cap\'n Bob and the Shanty Singers', 'The Beatles', 'The Eagles' ],
+      options: [ 'The Buggles', "Cap'n Bob and the Shanty Singers", 'The Beatles', 'The Eagles' ],
       correctAnswer: 'The Buggles',
       explanation: 'The band formed in 1977 and released their best known single in 1979. The duo broke up soon after to join the band Yes.'
     },
@@ -2231,24 +1846,24 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 318,
-      question: 'Carl Magee, of Oklahoma City, patented this coin-operated timer in 1935 to help businesses in downtown commercial areas.',
+      question: "Carl Magee, of Oklahoma City, patented this coin-operated timer in 1935 to help businesses in downtown commercial areas.",
       options: [ 'Parking meter', 'Coin-op washing machine', 'Coin-op toll booth', 'Pay phone' ],
       correctAnswer: 'Parking meter',
       explanation: 'Modern meters are fully electric and can monitor if a space is used or not, can remove remaining time when a car leaves, and in some cases can remotely ticket you even though you have time left on the meter.'
     },
     {
       id: 319,
-      question: 'What is Plankton\'s (Spongebob Square Pants\' nemesis), first name?',
+      question: "What is Plankton's (Spongebob Square Pants' nemesis), first name?",
       options: [ 'Sheldon', 'Alfred', 'Krusty', 'Satchel' ],
       correctAnswer: 'Sheldon',
-      explanation: 'Sheldon J. Plankton runs the Chum Bucket restaurant, a competitor of the Krusty Krab where Bob works.'
+      explanation: "Sheldon J. Plankton runs the Chum Bucket restaurant, a competitor of the Krusty Krab where Bob works."
     },
     {
       id: 320,
       question: 'The abdominal thrust maneuver to help someone who is choking is known as the ___ maneuver.',
       options: [ 'Heimlich', 'Oppenheimer', 'Stuttgart', 'Johnson' ],
       correctAnswer: 'Heimlich',
-      explanation: 'Dr Henry Heimlich invented the technique in 1974. He also espoused \'malariotherapy\', deliberately infecting someone with malaria to treat HIV, cancer and Lyme disease.'
+      explanation: "Dr Henry Heimlich invented the technique in 1974. He also espoused 'malariotherapy', deliberately infecting someone with malaria to treat HIV, cancer and Lyme disease."
     },
     {
       id: 321,
@@ -2262,11 +1877,11 @@ export const triviaData: { [key: string]: Question[] } = {
       question: '1984 is a book about a dystopian future written in 1949 by this writer, who also wrote Animal Farm.',
       options: [ 'George Orwell', 'Suzanne Collins', 'Jack Kerouac', 'Orson Welles' ],
       correctAnswer: 'George Orwell',
-      explanation: 'Orwell was born Eric Arthur Blair, but he used the pen name Orwell as a tribute to his favorite place, the River Orwell in England.'
+      explanation: "Orwell was born Eric Arthur Blair, but he used the pen name Orwell as a tribute to his favorite place, the River Orwell in England."
     },
     {
       id: 323,
-      question: 'Edward Cullen is Bella\'s love interest in this book/movie series.',
+      question: "Edward Cullen is Bella's love interest in this book/movie series.",
       options: [ 'Twilight', 'Interview with the Vampire', 'Travels with Charley', 'Woman, Eating' ],
       correctAnswer: 'Twilight',
       explanation: 'Edward is a telepathic vampire who ultimately fathers a daughter, Renesmee, with Bella, who is turned into a vampire right after giving birth. '
@@ -2283,7 +1898,7 @@ export const triviaData: { [key: string]: Question[] } = {
       question: 'The best-selling movie soundtrack of all time (at 50 million units sold) is from the movie ___.',
       options: [ 'The Bodyguard', 'Pulp Fiction', 'Saturday Night Fever', 'Titanic' ],
       correctAnswer: 'The Bodyguard',
-      explanation: 'It was the first album to sell over 1,000,000 copies in a week, and is still the highest selling album by a female artist.'
+      explanation: "It was the first album to sell over 1,000,000 copies in a week, and is still the highest selling album by a female artist."
     },
     {
       id: 326,
@@ -2294,7 +1909,7 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 327,
-      question: 'Which of these metals is the softest, and indeed considered the softest metal in the world.',
+      question: "Which of these metals is the softest, and indeed considered the softest metal in the world.",
       options: [ 'Cesium', 'Gold', 'Tin', 'Aluminum' ],
       correctAnswer: 'Cesium',
       explanation: 'Cesium is what\'s known as a Group 1A alkali metal, which are very soft, as alkali comes from an Arabic word meaning ""ashes"".'
@@ -2337,7 +1952,7 @@ export const triviaData: { [key: string]: Question[] } = {
     {
       id: 333,
       question: 'The idiom ""jumped the shark"" (referring to a moment when a creative work has exhausted its core ideas) was coined in 1985 in reference to a specific plot point on a 1977 episode of this show.',
-      options: [ 'Happy Days', 'The Brady Bunch', 'Magnum P.I.', 'Charlie\'s Angels' ],
+      options: [ 'Happy Days', 'The Brady Bunch', 'Magnum P.I.', "Charlie's Angels" ],
       correctAnswer: 'Happy Days',
       explanation: 'In the episode, the Fonz jumps a shark while waterskiing and wearing his trademark leather motorcycle jacket.'
     },
@@ -2353,7 +1968,7 @@ export const triviaData: { [key: string]: Question[] } = {
       question: 'What was the player number of Seong Gi-Hun, the main character of the Netflix series Squid Game.',
       options: [ '456', '1', '222', '999' ],
       correctAnswer: '456',
-      explanation: 'The dystopian South Korean show has players competing in sadistic and deadly versions of children\'s games for a chance to win about $40 million.'
+      explanation: "The dystopian South Korean show has players competing in sadistic and deadly versions of children's games for a chance to win about $40 million."
     },
     {
       id: 336,
@@ -2381,7 +1996,7 @@ export const triviaData: { [key: string]: Question[] } = {
       question: 'Fans of Lady Gaga are known as ______.',
       options: [ 'Little Monsters', 'Maggots', 'Head Cases', 'Trainwrecks' ],
       correctAnswer: 'Little Monsters',
-      explanation: 'All of these are fanbase nicknames, but as Gaga\'s fans call her Mother Monster, she refers to her fans as Little Monsters.'
+      explanation: "All of these are fanbase nicknames, but as Gaga's fans call her Mother Monster, she refers to her fans as Little Monsters."
     },
     {
       id: 340,
@@ -2392,7 +2007,7 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 341,
-      question: 'As of February 2025, which of these people has the most followers on Twitter?',
+      question: "As of February 2025, which of these people has the most followers on Twitter?",
       options: [ 'Barack Obama', 'Taylor Swift', 'Rihanna', 'Cristiano' ],
       correctAnswer: 'Barack Obama',
       explanation: 'He has 130 million followers, while Cristiano has 115 M, Rihanna has 107 M and Taylor Swift has 94 M.'
@@ -2413,14 +2028,14 @@ export const triviaData: { [key: string]: Question[] } = {
     },
     {
       id: 344,
-      question: 'Henry John Deutschendorf Jr, a singer of folk and country until his death in a plane crash, was much better known as _____.',
+      question: "Henry John Deutschendorf Jr, a singer of folk and country until his death in a plane crash, was much better known as _____.",
       options: [ 'John Denver', 'Johnny Cash', 'Merle Haggard', 'Bob Dylan' ],
       correctAnswer: 'John Denver',
       explanation: 'Denver sold over 33 million albums. He died while piloting a newly puchased plane where he could not access the fuel tank selector valve, in 1997 at age 53.'
     },
     {
       id: 345,
-      question: 'The tallest volcano on earth (based on elevation above sea level) is _____, at 22,615 ft (6,893m).',
+      question: "The tallest volcano on earth (based on elevation above sea level) is _____, at 22,615 ft (6,893m).",
       options: [ 'Nevado Ojos del Salado', 'Denali', 'Mt Everest', 'Mauna Kea' ],
       correctAnswer: 'Nevado Ojos del Salado',
       explanation: 'Denali and Everest are not actually volcanoes. Mauna Kea is 33,500 ft (10,211 m) from base to summit, but only 13,796 ft (4,205 m) above sea level.'
@@ -6246,7 +5861,1302 @@ export const triviaData: { [key: string]: Question[] } = {
         "William McKinley"
       ],
       correctAnswer: "Franklin D Roosevelt",
-      explanation: "He came down with a flaccid paralysis at age 39, which was assumed to be 'infantile paralysis', and he was paralyzed from the waist down. Current medical thinking is that he may have had a condition called Guillain-Barre Syndrome instead, which was not a well known condition at that time."
+      explanation: "He came down with a flaccid paralysis at age 39, which was assumed to be 'infantile paralysis', and he was paralyzed from the waist down. Current medical thinking is that he may have had a condition called Guillain-Barre Syndrome instead, which was not a well known condition at that time. "
+    },
+    {
+      id: 1549,
+      question: "This president's Secret Service codename was Rawhide.",
+      options: ["Ronald Reagan", "Teddy Roosevelt", "Bill Clinton", "Gerald Ford"],
+      correctAnswer: "Ronald Reagan",
+      explanation: "The names are actually chosen by the presidential candidate from a list of options, usually meant to reflect some aspect of their personality. Reagan fancied himself a cowboy, since he played one in numerous movies."
+    },
+    {
+      id: 1550,
+      question: "Jimmy Carter's Secret Service codename was ____, in recognition of his strong religious faith.",
+      options: ["Deacon", "Father", "Friar", "Preacher"],
+      correctAnswer: "Deacon",
+      explanation: "He was initially given the codename Dasher when he was a candidate. He had been a deacon since 1942, when he was only 18 years old."
+    },
+    {
+      id: 1551,
+      question: "Which president signed the Civil Rights Act of 1964 into law?",
+      options: ["Lyndon B Johnson", "Barack Obama", "Teddy Roosevelt", "Richard Nixon"],
+      correctAnswer: "Lyndon B Johnson",
+      explanation: "The legislation was originally proposed by John F Kennedy but it was filibustered. After JFK was killed, LBJ was able to get it passed."
+    },
+    {
+      id: 1552,
+      question: "This president was the first to die in office.",
+      options: ["William Henry Harrison", "John F Kennedy", "Abraham Lincoln", "George Washington"],
+      correctAnswer: "William Henry Harrison",
+      explanation: "Dying after just 31 days in office, his death set off a bit of a crisis in the government as up until that point, there was no plan for presidential succession."
+    },
+    {
+      id: 1553,
+      question: "Where was Abraham Lincoln when he was assassinated by John Wilkes Booth?",
+      options: ["At the theater", "In the bathroom", "Giving a speech to Congress", "On a camping trip"],
+      correctAnswer: "At the theater",
+      explanation: "He was sitting in a theater box when Booth crept in and shot him in the back of the head. The theater is now a National Historic Site."
+    },
+    {
+      id: 1554,
+      question: "A mentally-ill, attempted-assassin named John Hinckley tried to kill Ronald Reagan in 1981 because he was trying to impress this movie star after seeing her in Taxi Driver.",
+      options: ["Jodie Foster", "Racquel Welch", "Diane Keaton", "Meryl Streep"],
+      correctAnswer: "Jodie Foster",
+      explanation: "The lead character in the movie plans to assassinate a presidential candidate, and Hinckley initially targeted Jimmy Carter."
+    },
+    {
+      id: 1555,
+      question: "This president created the funding for the interstate highway system in 1956, by signing the Federal Aid Highway Act.",
+      options: ["Dwight D Eisenhower", "John F Kennedy", "Franklin D Roosevelt", "Harry S Truman"],
+      correctAnswer: "Dwight D Eisenhower",
+      explanation: "The need for such a system was brought into focus when the Army sent a convoy across the country in 1919, and it took 62 days. A young Eisenhower was in the Army and part of that expedition."
+    },
+    {
+      id: 1556,
+      question: "He was the only president born in New Jersey.",
+      options: ["Grover Cleveland", "Donald Trump", "Jimmy Carter", "Anthony Soprano"],
+      correctAnswer: "Grover Cleveland",
+      explanation: "He is also the only president to have spent his time in office being asked, \"What exit?\" at every press conference."
+    },
+    {
+      id: 1557,
+      question: "Richard Nixon liked to top his morning cottage cheese with this common condiment.",
+      options: ["Ketchup", "Salt", "Soy sauce", "Mustard"],
+      correctAnswer: "Ketchup",
+      explanation: "Ketchup is made with tomatoes, sugar and vinegar, and \"fancy\" ketchup has 33% tomato solids, vs 25% in regular ketchup. And 'catsup' is an abomination that should never be spoken."
+    },
+    {
+      id: 1558,
+      question: "This president's favorite snack in the 1980s was pork rinds.",
+      options: ["George H.W. Bush", "Bill Clinton", "Donald Trump", "Jimmy Carter"],
+      correctAnswer: "George H.W. Bush",
+      explanation: "Pork rinds were also a favorite snack of Homer Simpson, and they have enjoyed a popularity resurgence with the keto fad diet, as they are low in carbs."
+    },
+    {
+      id: 1559,
+      question: "This president put Jelly Bellys on the map, as he was known for always having a jar of them on his desk after using them to help him quit pipe smoking in 1966.",
+      options: ["Ronald Reagan", "George W Bush", "Lyndon B Johnson", "Harry S Truman"],
+      correctAnswer: "Ronald Reagan",
+      explanation: "As President, Reagan had over 300,000 Jelly Bellys shipped to the White House each month, and he would distribute them to Capitol Hill and other federal buildings."
+    },
+    {
+      id: 1560,
+      question: "This amendment, passed in 1933, negated the 18th, which prohibited the manufacture, sale or transport of alcohol.",
+      options: ["21st", "28th", "3rd", "19th"],
+      correctAnswer: "21st",
+      explanation: "One of the theories behind why Rolling Rock beer has \"33\" on its label is that it is a tribute to when Prohibition ended. "
+    },
+    {
+      id: 1561,
+      question: "This president, who served from 1923, after Warren Harding died of a heart attack, until 1929, had an electric horse installed in the White House, so he could still \"ride\".",
+      options: ["Calvin Coolidge", "Lyndon B Johnson", "Thomas Jefferson", "Teddy Roosevelt"],
+      correctAnswer: "Calvin Coolidge",
+      explanation: "The Secret Service prohibited him from riding real horses, so he had this installed so he could blow off steam and get some exercise as President."
+    },
+    {
+      id: 1562,
+      question: "This president, born in 1874 in Iowa and growing up in Oregon, was the first president born west of the Mississippi River, and served from 1929-1933.",
+      options: ["Herbert Hoover", "Abraham Lincoln", "Gerald Ford", "James K Polk"],
+      correctAnswer: "Herbert Hoover",
+      explanation: "Serving during the Great Depression, he signed the Smoot-Hawley Tariff Act which raised tariffs on foreign imports and crashed the economy further. Good thing that will never happen again!"
+    },
+    {
+      id: 1563,
+      question: "He was the first president to be impeached.",
+      options: ["Andrew Johnson", "Andrew Jackson", "James Monroe", "Franklin D Roosevelt"],
+      correctAnswer: "Andrew Johnson",
+      explanation: "He tried to use the Tenure of Office Act to get rid of his Secretary of War, Edwin Stanton. Congress took offense and impeached him."
+    },
+    {
+      id: 1564,
+      question: "This president fathered more children (15) than any other, and became president only after William Harrison died after 31 days in office.",
+      options: ["John Tyler", "John F Kennedy", "Thomas Jefferson", "Donald Trump"],
+      correctAnswer: "John Tyler",
+      explanation: "His last grandchild (Harrison Ruffin Tyler) died in May 2025 at age 96. He was born in 1928, while President Tyler was born in 1790."
+    },
+    {
+      id: 1565,
+      question: "He was the first left-handed president, elected in 1880, and he only served for 6 months before being assassinated (but not for being a lefty).",
+      options: ["James Garfield", "Martin Van Buren", "Woodrow Wilson", "Warren Harding"],
+      correctAnswer: "James Garfield",
+      explanation: "Garfield was killed by a mentally ill man who was convinced that Garfield was preventing him being named consul to Paris."
+    },
+    {
+      id: 1566,
+      question: "He was the second president to be assassinated in office in 1881, only 16 years after Lincoln was killed.",
+      options: ["James Garfield", "Chester D Witherington", "Ulysses S Grant", "Millard Fillmore"],
+      correctAnswer: "James Garfield",
+      explanation: "He was not running for president when nominated, and his nomination was meant to break a deadlock between two Republican factions at the time, the Stalwarts and the Half Breeds."
+    },
+    {
+      id: 1567,
+      question: "This president married a woman for whom he was previously a guardian (after her father died). It was and still is the only wedding held at the White House, in 1886. She was 21 and he was 49.",
+      options: ["Grover Cleveland", "Ulysses S Grant", "Millard Fillmore", "Teddy Roosevelt"],
+      correctAnswer: "Grover Cleveland",
+      explanation: "She is still the youngest First Lady in history, and they had 5 children."
+    },
+    {
+      id: 1568,
+      question: "This beloved president - the only one to serve more than two terms - married his cousin.",
+      options: ["Franklin D Roosevelt", "George Washington", "Grover Cleveland", "Donald Trump"],
+      correctAnswer: "Franklin D Roosevelt",
+      explanation: "FDR's parents were sixth cousins, so marrying his 5th cousin once removed was no big deal in his mind."
+    },
+    {
+      id: 1569,
+      question: "He was the only president, and prior to that, vice president, never elected to either position.",
+      options: ["Gerald Ford", "George W Bush", "Ronald Reagan", "Franklin D Roosevelt"],
+      correctAnswer: "Gerald Ford",
+      explanation: "Appointed VP after Nixon's VP Spiro Agnew resigned after being convicted of tax evasion. Then he became President when Nixon resigned while facing certain impeachment for the Watergate scandal."
+    },
+    {
+      id: 1570,
+      question: "His birth name was Leslie Lynch King, but by the time he was our 38th president, we knew him as ____.",
+      options: ["Gerald Ford", "Jimmy Carter", "Richard Nixon", "Ronald Reagan"],
+      correctAnswer: "Gerald Ford",
+      explanation: "His birth parents separated 16 days after his birth, and his mother remarried a man named Gerald Rudolff Ford when the future president was 3 years old. The official name change did not occur until he was 22 years old."
+    },
+    {
+      id: 1571,
+      question: "This president hosted his daughter Susan's prom at the White House in 1975, the only prom held there.",
+      options: ["Gerald Ford", "Jimmy Carter", "Ronald Reagan", "Richard Nixon"],
+      correctAnswer: "Gerald Ford",
+      explanation: "His daughte's senior class had to pay $1,300 to cover expenses, and had to agree to hire a band that had no outstanding drug charges. The President and his wife were in Europe for a NATO summit at the time."
+    },
+    {
+      id: 1572,
+      question: "Prior to Barack Obama, he was the last president to win the Nobel Peace Prize",
+      options: ["Jimmy Carter", "Woodrow Wilson", "Theodore Roosevelt", "George W Bush"],
+      correctAnswer: "Jimmy Carter",
+      explanation: "All except Bush were winners of the Nobel Peace Prize. But Bush does have a street named after him in Tbilisi, Georgia."
+    },
+    {
+      id: 1573,
+      question: "This presidential candidate told Playboy magazine that he \"committed adultery in my heart\" in 1976.",
+      options: ["Jimmy Carter", "Ronald Reagan", "Gerald Ford", "Bill Clinton"],
+      correctAnswer: "Jimmy Carter",
+      explanation: "In the interview, Carter was trying to explain that he would not be a rigid religious zealot if he were elected, but the comment was taken out of context and almost cost him the election."
+    },
+    {
+      id: 1574,
+      question: "This president installed solar panels on the grounds of the White House, to promote renewable energy during the midst of an energy crisis.",
+      options: ["Jimmy Carter", "Ronald Reagan", "Donald Trump", "Joe Biden"],
+      correctAnswer: "Jimmy Carter",
+      explanation: "The panels were used to supply power to water heaters. Reagan had them removed during his presidency because...oil. One of the panels found its way to a museum in China."
+    },
+    {
+      id: 1575,
+      question: "This president prevented the USA from competing in the summer Olympics in Moscow in 1980.",
+      options: ["Jimmy Carter", "Ronald Reagan", "Gerald Ford", "George HW Bush"],
+      correctAnswer: "Jimmy Carter",
+      explanation: "The boycott was done to protest the Soviet Union's invasion of Afghanistan in 1979. The USSR spent 10 years there and lost, in part due to weapons we gave the mujaheddin. The same weapons were used against us 12 years later when we invaded."
+    },
+    {
+      id: 1576,
+      question: "He was the first president to send and recieve email while in office.",
+      options: ["Bill Clinton", "George HW Bush", "Ronald Reagan", "Gerald Ford"],
+      correctAnswer: "Bill Clinton",
+      explanation: "Email was introduced to the White House toward the end of Bush's presidency, but Clinton was the first to have a public email address (ClintonPz@aol.com). He sent two emails as President."
+    },
+    {
+      id: 1577,
+      question: "This future president appeared on the game show What's My Line? while serving as governor in 1973.",
+      options: ["Jimmy Carter", "Bill Clinton", "Ronald Reagan", "Herbert Hoover"],
+      correctAnswer: "Jimmy Carter",
+      explanation: "What's My Line? was a game show where people asked yes/no questions of a mystery guest to try and figure out who they were. It aired from 1950-1975."
+    },
+    {
+      id: 1578,
+      question: "Jimmy Carter brokered a peace deal between Israel and ___ in 1978, the first such agreement between Israel and any of its neighbors.",
+      options: ["Egypt", "Syria", "Iran", "Iraq"],
+      correctAnswer: "Egypt",
+      explanation: "In 1978, secret talks were held at Camp David between Israel and Egypt, after 14 months of effort by Carter to get the two nations to talk."
+    },
+    {
+      id: 1579,
+      question: "He was the first president to be born in a hospital, in 1924, in Georgia.",
+      options: ["Jimmy Carter", "Calvin Coolidge", "John F Kennedy", "Richard Nixon"],
+      correctAnswer: "Jimmy Carter",
+      explanation: "Prior to this time, most births were done at home. Hospital births did not start becoming common until the 1920s."
+    },
+    {
+      id: 1580,
+      question: "The desk in the Oval Office that has been used by almost all presidents since 1880 is known as the ____ desk.",
+      options: ["Resolute", "Decision", "Commander's", "President's"],
+      correctAnswer: "Resolute",
+      explanation: "It was a gift from Queen Victoria and made from timbers from the HMS Resolute, a British Navy ship lost in the Arctic in 1854."
+    },
+    {
+      id: 1581,
+      question: "This amendment, which gave black men the right to vote, at least theoretically, was passed in 1870.",
+      options: ["15th", "19th", "13th", "14th"],
+      correctAnswer: "15th",
+      explanation: "It wasn't until 1965 with the Voting Rights Act that all deterrents to minority voting were abolished. And thanks to current efforts in many states, attempts are being made to once again disenfranchise minority voters."
+    },
+    {
+      id: 1582,
+      question: "Which of these presidents did NOT have a poetry reading at their inauguration?",
+      options: ["George HW Bush", "Bill Clinton", "John F Kennedy", "Barack Obama"],
+      correctAnswer: "George HW Bush",
+      explanation: "No Republican president to date has had poetry read at their inauguration."
+    },
+    {
+      id: 1583,
+      question: "Who was the first black man to serve in the US Congress?",
+      options: ["Hiram Revels", "John Lewis", "Edward Brooke", "Blanche Kelso Bruce"],
+      correctAnswer: "Hiram Revels",
+      explanation: "Appointed by the Mississippi legislature in 1870, he did not seek re-election in 1871. The second black congressman was also from Mississippi in 1875, Blanche Kelso Bruce."
+    },
+    {
+      id: 1584,
+      question: "Baby Ruth candy bars, developed in 1920, are allegedly named after this president's daughter, who was named Ruth but nicknamed Baby, and not after Babe Ruth, as commonly believed.",
+      options: ["Grover Cleveland", "Bill Clinton", "Jimmy Carter", "Thomas Jefferson"],
+      correctAnswer: "Grover Cleveland",
+      explanation: "There is also a hypothesis that the candy maker wanted to avoid paying royalties to Babe Ruth, and made up the story about naming the bar after the president's daughter."
+    },
+    {
+      id: 1585,
+      question: "Abraham Lincoln was known for being a lawyer, but he also held numerous other jobs before becoming president. Which of the following jobs did he NOT hold?",
+      options: ["Bartender", "Store clerk", "Railsplitter", "Boatman"],
+      correctAnswer: "Bartender",
+      explanation: "He was self educated and had to work many jobs as a young man to help support his family after his mother died when he was 9 years old. "
+    },
+    {
+      id: 1586,
+      question: "Andrew Johnson worked as a ____ before being elected president in 1864.",
+      options: ["Tailor", "Tinker", "Soldier", "Spy"],
+      correctAnswer: "Tailor",
+      explanation: "His mother apprenticed him to a local tailor at age 10 and he was legally obligated to serve as an apprentice until age 21, but he ran away at age 15."
+    },
+    {
+      id: 1587,
+      question: "Joe Biden had a job in college working as a(n) _____.",
+      options: ["Lifeguard", "Encyclopedia salesman", "Short order cook", "Ski instructor"],
+      correctAnswer: "Lifeguard",
+      explanation: "While working there, he had a run in with a local gang member named Corn Pop who threatened to cut the future politician with a straight razor."
+    },
+    {
+      id: 1588,
+      question: "If the Electoral College vote is tied, who/what determines who the President will be?",
+      options: ["House of Representatives", "Senate", "Supreme Court", "The current sitting president"],
+      correctAnswer: "House of Representatives",
+      explanation: "In the House, each state gets one vote and one person needs to get 26 or more votes to win. The Senate determines the Vice President by the same process."
+    },
+    {
+      id: 1589,
+      question: "The color blue on the US flag represents a number of things. Which of the following is NOT one of those things?",
+      options: ["Valor", "Vigilence", "Perseverence", "Justice"],
+      correctAnswer: "Valor",
+      explanation: "Valor is one of the meanings of the color red (the other is hardiness), and white stands for purity and innocence."
+    },
+    {
+      id: 1590,
+      question: "This university has produced the most US presidents, at 8 as of 2024.",
+      options: ["Harvard", "Yale", "Princeton", "Slippery Rock State University"],
+      correctAnswer: "Harvard",
+      explanation: "The last president who did not have a college degree was Harry S Truman, elected in 1944. "
+    },
+    {
+      id: 1591,
+      question: "This then-intern and her blue dress almost brought down the presidency of Bill Clinton.",
+      options: ["Monica Lewinsky", "Juanita Broaddrick", "Gennifer Flowers", "Paula Jones"],
+      correctAnswer: "Monica Lewinsky",
+      explanation: "The affair led to an impeachment of Clinton. Lewinsky is now an activist against cyberbullying."
+    },
+    {
+      id: 1592,
+      question: "Ruth Bader Ginsburg was appointed to the Supreme Court by this president.",
+      options: ["Bill Clinton", "Barack Obama", "George W Bush", "George HW Bush"],
+      correctAnswer: "Bill Clinton",
+      explanation: "Known as \"the Notorious RBG\", she was a liberal icon whose determination to stay on the Court until her death in 2020 led to Trump getting another Supreme Court nominee."
+    },
+    {
+      id: 1593,
+      question: "The Family and Medical Leave Act, giving up to 12 weeks of leave, was signed into law by this president.",
+      options: ["Bill Clinton", "Barack Obama", "George W Bush", "Jimmy Carter"],
+      correctAnswer: "Bill Clinton",
+      explanation: "To be eligible for FMLA, a person must have worked for their employer for at least 12 months, have worked at least 1,250 hours, and the employer must have at least 50 employees."
+    },
+    {
+      id: 1594,
+      question: "He was the first sitting president to visit an Olympic games outside the US, when he attended the Summer Olympics in Beijing.",
+      options: ["George W Bush", "Barack Obama", "Joe Biden", "Donald Trump"],
+      correctAnswer: "George W Bush",
+      explanation: "Bush was a well-known sports fan, and was hoping to separate the Olympics from politics by attending the Games as a fan."
+    },
+    {
+      id: 1595,
+      question: "He was the first elected president to be impeached.",
+      options: ["Bill Clinton", "Andrew Johnson", "Donald Trump", "Richard Nixon"],
+      correctAnswer: "Bill Clinton",
+      explanation: "Johnson was the first to be impeached in 1868, but he became president upon Lincoln's assassination. Nixon resigned before impeachment. Trump was impeached twice so far (as of 2025)."
+    },
+    {
+      id: 1596,
+      question: "He was the only president to have been a Rhodes Scholar.",
+      options: ["Bill Clinton", "George Washington", "Abraham Lincoln", "George W Bush"],
+      correctAnswer: "Bill Clinton",
+      explanation: "Rhodes Scholars are selected from American universities based on their scholarly achievements, commitment to others and the common good, and their potential for leadership in their field."
+    },
+    {
+      id: 1597,
+      question: "Al Gore defeated this Republican by more than 500,000 votes in 2000 but lost the Electoral College vote by 5.",
+      options: ["George W Bush", "Bill Clinton", "John McCain", "Mitt Romney"],
+      correctAnswer: "George W Bush",
+      explanation: "It was the first election since 1888 where the candidate who won the popular vote did not win the presidency."
+    },
+    {
+      id: 1598,
+      question: "This president's approach to gays and lesbians in the military was summarized as \"Don't ask, don't tell.\"",
+      options: ["Bill Clinton", "Ronald Reagan", "George HW Bush", "Barack Obama"],
+      correctAnswer: "Bill Clinton",
+      explanation: "Meant to be a compromise that would allow gays to serve without fear of punishment as long as they didn't admit they were gay, it was in effect from 1994-2011. Gays and lesbians can now serve openly."
+    },
+    {
+      id: 1599,
+      question: "Who was president during the 9/11 attacks?",
+      options: ["George W Bush", "Bill Clinton", "Barack Obama", "Dick Cheney"],
+      correctAnswer: "George W Bush",
+      explanation: "He was reading a story called \"The Pet Goat\" to a class of first graders, and he pronounced almost every word correctly!"
+    },
+    {
+      id: 1600,
+      question: "His administration oversaw the botched response to Hurricane Katrina.",
+      options: ["George W Bush", "Bill Clinton", "Barack Obama", "George HW Bush"],
+      correctAnswer: "George W Bush",
+      explanation: "Bush infamously praised his FEMA director Michael Brown saying, \"Brownie, you're doing a heckuva job!\" Katrina killed 1,833 and cost $170 billion."
+    },
+    {
+      id: 1601,
+      question: "He was the only president to have been a part owner of a MLB team.",
+      options: ["George W Bush", "Ronald Reagan", "Franklin Delano Roosevelt", "Donald Trump"],
+      correctAnswer: "George W Bush",
+      explanation: "He purchased part of the Houston Astros with a loan financed in part by his sale of stock in Harken Energy, which created suspicion of insider trading as he was on the board of Harken."
+    },
+    {
+      id: 1602,
+      question: "He was the only president to have twin daughters.",
+      options: ["George W Bush", "Barack Obama", "Herbert Hoover", "George Washington"],
+      correctAnswer: "George W Bush",
+      explanation: "Jenna and Barbra are fraternal twins born in 1981. George Washington had no children, Obama had 2 non-twin girls, and Hoover had 2 boys."
+    },
+    {
+      id: 1603,
+      question: "He is the only president to have an MBA.",
+      options: ["George W Bush", "Bill Clinton", "Donald Trump", "Barack Obama"],
+      correctAnswer: "George W Bush",
+      explanation: "JFK was the only other president to have gone to graduate school for business, but he audited classes and did not get a degree."
+    },
+    {
+      id: 1604,
+      question: "Who was the first president to have their State of the Union address broadcast live on the internet?",
+      options: ["Bill Clinton", "Barack Obama", "George HW Bush", "George W Bush"],
+      correctAnswer: "Bill Clinton",
+      explanation: "His second inauguration in 1997 was the first to be live streamed."
+    },
+    {
+      id: 1605,
+      question: "George Washington's inauguration as the first president took place in what city?",
+      options: ["New York", "Philadelphia", "Washington D.C.", "Baltimore"],
+      correctAnswer: "New York",
+      explanation: "The initial Federal Congress was in New York in 1789, but his inauguration was almost 2 months after he started his term."
+    },
+    {
+      id: 1606,
+      question: "Until 1937, inaugurations took place in which month?",
+      options: ["March", "April", "November", "January"],
+      correctAnswer: "March",
+      explanation: "It used to be on March 4 (or the 5th if the 4th was a Sunday) as that was the traditional start of the year for government operations. It was moved to January after the 1933 ratification of the 20th amendment."
+    },
+    {
+      id: 1607,
+      question: "Who normally officiates at the swearing-in of the new president?",
+      options: ["Chief Justice of Supreme Court", "The outgoing president", "The Speaker of the House", "The Secretary of Defense"],
+      correctAnswer: "Chief Justice of Supreme Court",
+      explanation: "The Chief Justice also presides during a presidential impeachment."
+    },
+    {
+      id: 1608,
+      question: "The first plane with the official designation of Air Force One was flown in by this president, in 1953.",
+      options: ["Dwight D Eisenhower", "John F Kennedy", "Richard Nixon", "Harry S Truman"],
+      correctAnswer: "Dwight D Eisenhower",
+      explanation: "The plane was the Columbine II, a 4-prop Lockheed Constellation, and is the only presidential plane to be sold to a private party."
+    },
+    {
+      id: 1609,
+      question: "How many of the 55 delegates to the Constitutional Convention actually signed the Constitution?",
+      options: ["39", "42", "54", "55"],
+      correctAnswer: "39",
+      explanation: "Numerous appointed delegates did not actually attend (but still submitted an expense report), and 3 of the attending delegates did not sign because there was no Bill of Rights."
+    },
+    {
+      id: 1610,
+      question: "The youngest person to sign the Constitution was James Dayton, 26, a New Jersey delegate. Who was the oldest?",
+      options: ["Benjamin Franklin", "George Washington", "Alexander Hamilton", "John Hancock"],
+      correctAnswer: "Benjamin Franklin",
+      explanation: "Franklin was 81 when he signed, and needed help to do so due to his infirmities."
+    },
+    {
+      id: 1611,
+      question: "Of the states in existence at the time of the Constitutional Convention, this is the only one that did not send any delegates.",
+      options: ["Rhode Island", "Georgia", "Maine", "Vermont"],
+      correctAnswer: "Rhode Island",
+      explanation: "Rhode Island was concerned that too much power would be put in a central government, and they feared a loss of religious freedom. Plus they wanted to continue printing their own money."
+    },
+    {
+      id: 1612,
+      question: "This state sent the most delegates at the Constitutional Convention, with 8.",
+      options: ["Pennsylvania", "New Jersey", "Virginia", "North Carolina"],
+      correctAnswer: "Pennsylvania",
+      explanation: "The number of delegates was determined by each state. The original purpose of the convention was to fix the Articles of Confederation, but framers quickly moved toward creating an entirely new government."
+    },
+    {
+      id: 1613,
+      question: "This state's name was misspelled on the US Constitution.",
+      options: ["Pennsylvania", "Connecticut", "California", "Massachusetts"],
+      correctAnswer: "Pennsylvania",
+      explanation: "Spelled 'Pensylvania' in the spot where the signers signed, it has also been spelled 'Pennsilvania', 'Pensilvania' and 'Pennsyltucky' over the centuries."
+    },
+    {
+      id: 1614,
+      question: "Ronald Reagan promoted a space-based laser and particle beam defense system commonly referred to as \"Star Wars\". It's real name was ___.",
+      options: ["SDI - Strategic Defense Initiative", "SSS - Stratospheric Shield System", "STOP - Strategic Tropospheric Operations for Protection", "MSM - Missiles Stopping Missiles"],
+      correctAnswer: "SDI - Strategic Defense Initiative",
+      explanation: "While the system was never successful, some argue that it still helped to bankrupt the Soviet military."
+    },
+    {
+      id: 1615,
+      question: "The term for when an accused person is deliverd from one jurisdiction to the law enforcement in another jurisdiction is ____.",
+      options: ["Extradition", "Elocution", "Ejectment", "Estoppel"],
+      correctAnswer: "Extradition",
+      explanation: "The US has extradition treaties with 116 nations, and the very first one was with Ecuador in 1873."
+    },
+    {
+      id: 1616,
+      question: "The highest ranking Asian American in US Government was Kamala Harris (who is half Indian American) when she was Vice President. Prior to her, who was the highest ranking Asian American?",
+      options: ["Daniel Inouye", "Norman Mineta", "Daniel Akaka", "Bob Matsui"],
+      correctAnswer: "Daniel Inouye",
+      explanation: "He represented Hawaii for just shy of 50 years, and died in office in 2012."
+    },
+    {
+      id: 1617,
+      question: "Who was the first black woman to serve as mayor of Chicago?",
+      options: ["Lori Lightfoot", "Keisha Lance Bottoms", "London Breed", "Queen Latifah"],
+      correctAnswer: "Lori Lightfoot",
+      explanation: "Elected in 2019, she was the first incumbent Chicago mayor in 40 years to not win re-election in 2023. "
+    },
+    {
+      id: 1618,
+      question: "The street in Washington, DC, most associated with lobbying is ____ Street.",
+      options: ["K", "M", "18th", "L"],
+      correctAnswer: "K",
+      explanation: "Lobbyists serve a vital role in making sure that large corporations and the wealthy are not unjustly discriminated against by all the poor and middle class people."
+    },
+    {
+      id: 1619,
+      question: "How long does a Supreme Court justice serve?",
+      options: ["As long as they want", "Until age 72", "For 25 years, regardless of age", "Until their death"],
+      correctAnswer: "As long as they want",
+      explanation: "Fortunately, Justices practice at the highest ethical, legal and moral standards, and would never do things like take large gifts from donors, rule on cases where they have a conflict of interest, or show support for insurrectionists. "
+    },
+    {
+      id: 1620,
+      question: "What word/phrase describes the practice of manipulating district boundaries to give an advantage to one political party?",
+      options: ["Gerrymandering", "Filibustering", "Vulcanizing", "Stacking and packing"],
+      correctAnswer: "Gerrymandering",
+      explanation: "Named after Gov. Eldridge Gerry of Massachusetts, the practice has been widely and illegally (as determined by courts) used by Republicans since 2008 with their project REDMAP."
+    },
+    {
+      id: 1621,
+      question: "The \"No Child Left Behind\" Act was signed into law in 2002 by this President.",
+      options: ["George W Bush", "Barack Obama", "Bill Clinton", "George HW Bush"],
+      correctAnswer: "George W Bush",
+      explanation: "The NCLB Act made sure that US school children were no longer at the bottom in math and reading scores, and guaranteed that all children would be above average. The law performed so well that it was completely abandoned in 2015, because the US had clearly become the smartest country in the world! USA! USA! USA!"
+    },
+    {
+      id: 1622,
+      question: "Arising from the Dutch term for \"free booter\" (meaning a plunderer), this is the word used to describe the delaying tactic often used in Congress.",
+      options: ["Filibuster", "Gerrymander", "Cloture", "Adjournment sine die"],
+      correctAnswer: "Filibuster",
+      explanation: "The first filibuster occurred at the very first Senate meeting in 1789, when Virginia representatives spoke at length to delay passage of a bill."
+    },
+    {
+      id: 1623,
+      question: "The Super PAC \"Americans for a Better Tomorrow, Tomorrow\" was founded by this late night comedian in 2012.",
+      options: ["Stephen Colbert", "Jimmy Kimmel", "Jimmy Fallon", "Jon Stewart"],
+      correctAnswer: "Stephen Colbert",
+      explanation: "Colbert also ran for President in 2008 and hosted a Rally to Restore Sanity and/or Fear in 2010 along with Jon Stewart."
+    },
+    {
+      id: 1624,
+      question: "Who lives at #10 Downing Street?",
+      options: ["The Prime Minister of the UK", "Oscar the Grouch", "The Vice President of the US", "The Speaker of the House"],
+      correctAnswer: "The Prime Minister of the UK",
+      explanation: "It is actually a combination of 3 houses that has over 100 rooms and a half-acre garden in the back, all right next to St James Park."
+    },
+    {
+      id: 1625,
+      question: "In June 1987, who did Ronald Reagan demand tear down the Berlin wall?",
+      options: ["Mikhail Gorbachev", "Helmut Kohl", "Margaret Thatcher", "Vladimir Putin"],
+      correctAnswer: "Mikhail Gorbachev",
+      explanation: "Standing in front of the Brandenburg Gate, Reagan gave the speech that many of his advisors did not want him to give. The wall came down in 1989."
+    },
+    {
+      id: 1626,
+      question: "This document was the first governing document for the newly formed United States. ",
+      options: ["Articles of Confederation", "Declaration of Independence", "US Constitution", "Magna Carta"],
+      correctAnswer: "Articles of Confederation",
+      explanation: "The Articles went into effect in 1781 and served as the first framework for the new government, and it purposely kept the central government weak. The Constitution replaced the Articles in 1789."
+    },
+    {
+      id: 1627,
+      question: "Who presided over the Constitutional Convention in Philadelphia in 1787, that wound up writing the US Constitution?",
+      options: ["George Washington", "James Madison", "Alexander Hamilton", "Benjamin Franklin"],
+      correctAnswer: "George Washington",
+      explanation: "Its purpose was to revise the Article of Confederation, not to rewrite a constitution, and it was not even called the Constitutional Convention, but rather, the Philadelphia Convention or the Federal Convention."
+    },
+    {
+      id: 1628,
+      question: "Which of the following countries does NOT have an extradition agreement with the US?",
+      options: ["China", "Egypt", "Mexico", "Kenya"],
+      correctAnswer: "China",
+      explanation: "While many US criminals may flee to Mexico, they do, in fact, have an extradition agreement with the US."
+    },
+    {
+      id: 1629,
+      question: "Martin Sheen's character on The West Wing was named _____, who was a direct descendent of a signer of the Declaration of Independence of the same name.",
+      options: ["Josiah Bartlet", "George Taylor", "James Wilson", "Button Gwinnett"],
+      correctAnswer: "Josiah Bartlet",
+      explanation: "The fictional Jed Bartlet served 2 terms as President. Button Gwinnett was one of 8 foreign-born signers of the Declaration."
+    },
+    {
+      id: 1630,
+      question: "This president, elected in 1856, never married during his life, but came close a few times.",
+      options: ["James Buchanan", "Andrew Jackson", "Andrew Johnson", "James K Polk"],
+      correctAnswer: "James Buchanan",
+      explanation: "His brief engagement to Anna Coleman was ended by her after a few months, and shortly after she died from \"hysterical convulsions\". "
+    },
+    {
+      id: 1631,
+      question: "The Vice President's home has been _________ since 1974.",
+      options: ["The Naval Observatory", "The Old Executive Building", "The Pentagon", "The Smithsonian Institution Castle"],
+      correctAnswer: "The Naval Observatory",
+      explanation: "The building at Number One Observatory Circle was built in 1893 and previously housed the Chief of Naval Operations. It is believed that a nuclear bunker was built under the building after the 9/11 attacks."
+    },
+    {
+      id: 1632,
+      question: "This person holds the record (as of 2024) for running for president the most times, at nine.",
+      options: ["Harold Stassen", "Ralph Nader", "Bernie Sanders", "Lyndon Larouche"],
+      correctAnswer: "Harold Stassen",
+      explanation: "He was the youngest governor MN has ever had, and he ran for president 9 times between 1944 and 1992, as well as running for various other political offices in MN and PA. Larouche ran for president 8 times."
+    },
+    {
+      id: 1633,
+      question: "He was the first US President to visit all 50 states while in office.",
+      options: ["Richard Nixon", "Gerald Ford", "Ronald Reagan", "Jimmy Carter"],
+      correctAnswer: "Richard Nixon",
+      explanation: "Nixon visited all 50 during his unsuccessful bid for president in 1960, and did it again during his first term starting in 1969. George HW Bush, Bill Clinton and Barack Obama are the other 3 who have done this. "
+    },
+    {
+      id: 1634,
+      question: "He is the only president to have served as a ranger for the National Park Service.",
+      options: ["Gerald Ford", "Jimmy Carter", "Theodore Roosevelt", "Barack Obama"],
+      correctAnswer: "Gerald Ford",
+      explanation: "He worked at Yellowstone in 1936 as a ranger and called it \"the greatest summer of my life\"."
+    },
+    {
+      id: 1635,
+      question: "He is the only president to have earned a PhD, in history and political science from Johns Hopkins.",
+      options: ["Woodrow Wilson", "Bill Clinton", "Herbert Hoover", "Dwight D Eisenhower"],
+      correctAnswer: "Woodrow Wilson",
+      explanation: "Wilson was considered to be the father of modern liberalism and was the leading architect of the League of Nations, dedicated to world peace."
+    },
+    {
+      id: 1636,
+      question: "He was the first president to be arrested while in office.",
+      options: ["Ulysses S Grant", "Donald Trump", "Richard Nixon", "George W Bush"],
+      correctAnswer: "Ulysses S Grant",
+      explanation: "While there is some question as to the details, it appears Grant was arrested in 1872 for speeding on a horse in Washington DC. Trump was arrested for interfering with the election in Georgia, and indicted 3 other times, with 91 total charges as of 2024. Bush was arrested prior to elected office, for DUI. Nixon was never arrested or charged with crimes."
+    },
+    {
+      id: 1637,
+      question: "Which of these two-term presidents had a VP that did not go on to become president?",
+      options: ["Bill Clinton", "Ronald Reagan", "Barack Obama", "George HW Bush"],
+      correctAnswer: "Bill Clinton",
+      explanation: "Clinton's VP was Al Gore, who conceded the 2000 election after the Supreme Court stepped in. George HW Bush only served one term, but it would have been very funny to have a President Quayle."
+    },
+    {
+      id: 1638,
+      question: "The long-running TV show M*A*S*H was set during the Korean War. Who was the president during this time?",
+      options: ["Harry S Truman", "John F Kennedy", "Lyndon Johnson", "Dwight D Eisenhower"],
+      correctAnswer: "Harry S Truman",
+      explanation: "The US involvement in the 'police action' lasted from 1950-1953, whereas the show ran from 1972-1983. There is no truce between North and South Korea to this day."
+    },
+    {
+      id: 1639,
+      question: "The majority of presidents have been inaugurated in this month.",
+      options: ["March", "January", "November", "December"],
+      correctAnswer: "March",
+      explanation: "Until 1933, inaugurations were held in March, and it was the 20th Amendment that changed the month to January."
+    },
+    {
+      id: 1640,
+      question: "Which of these presidents DID attend the swearing in of their successor?",
+      options: ["George Washington", "Donald Trump", "John Adams", "John Quincy Adams"],
+      correctAnswer: "George Washington",
+      explanation: "John Adams was the first to not attend, because his successor, Thomas Jefferson, was previously a good friend, but the men had a falling out. They eventually reconciled, and died within hours of each other on July 4, 1826"
+    },
+    {
+      id: 1641,
+      question: "David Rice Atchison may have served one day as President in 1849 because the man elected President, ___, refused to be sworn in on a Sunday.",
+      options: ["Zachary Taylor", "Abraham Lincoln", "Ulysses S Grant", "Theodore Roosevelt"],
+      correctAnswer: "Zachary Taylor",
+      explanation: "Atchison's tombstone reads, \"President of the United States for One Day\". But legal scholars say Taylor was the elected President, he just had not taken the oath of office yet."
+    },
+    {
+      id: 1642,
+      question: "In the rom-com Dave, this actor plays both the President and the President's body double, and falls in love with Sigourney Weaver.",
+      options: ["Kevin Kline", "Harrison Ford", "Kurt Russell", "Charles Durning"],
+      correctAnswer: "Kevin Kline",
+      explanation: "Kline's character was initially hired to stand in for the President while he had an affair with a staffer, but he suffered a major stroke during the 'interlude'."
+    },
+    {
+      id: 1643,
+      question: "Kevin Spacey played a power-hungry politician who connived his way into the presidency in the Netflix series House of Cards. It was based on a 1990 British series, called ___.",
+      options: ["House of Cards", "At Her Majesty's Pleasure", "King for a Day", "All the Queen's Men"],
+      correctAnswer: "House of Cards",
+      explanation: "Spacey was unceremnously dumped from the show in 2017 after sexual misconduct allegations, and the final season of the show was in 2018 with his wife serving as newly appointed President after his resignation and mysterious death."
+    },
+    {
+      id: 1644,
+      question: "In the movie Air Force One, the President, played by _____, is a prior Vietnam War Medal of Honor recipient.",
+      options: ["Harrison Ford", "Liam Neeson", "Daniel Day Lewis", "George Clooney"],
+      correctAnswer: "Harrison Ford",
+      explanation: "Ford's character single-handedly kills most of the terrorists, saves his family and dozens of hostages, and pilots Air Force One until seconds before it crashes into the Caspian Sea."
+    },
+    {
+      id: 1645,
+      question: "This President set the size of the Supreme Court at nine, by signing the Judiciary Act of 1869.",
+      options: ["Ulysses S Grant", "Abraham Lincoln", "Grover Cleveland", "Chester Arthur"],
+      correctAnswer: "Ulysses S Grant",
+      explanation: "Prior to this Act, the size of the Court varied from 5 to 10 members, depending on which party was in power. It is felt by many current legal scholars that the current size of the Court is much too small for the size of the country."
+    },
+    {
+      id: 1646,
+      question: "Which power is NOT exclusive to the US Senate?",
+      options: ["Ability to declare war", "Give consent to treaties", "Tries all impeachments", "Approve Supreme Court justices"],
+      correctAnswer: "Ability to declare war",
+      explanation: "Both the House and the Senate must jointly declare war."
+    },
+    {
+      id: 1647,
+      question: "The last formal declaration of war issued by the US was for this war.",
+      options: ["World War II", "Korean War", "Vietnam War", "War on Terror"],
+      correctAnswer: "World War II",
+      explanation: "All 'wars' since then have been mostly Presidents sending troops into countries for \"limited duration\" (such as 20 years in Afghanistan), with Congress giving its \"authorization\"."
+    },
+    {
+      id: 1648,
+      question: "Which of the following is a requirement to be a US Senator?",
+      options: ["Must be at least 30 years old", "Must be US born", "Must live in the state they want to represent", "Must have held some prior elected office"],
+      correctAnswer: "Must be at least 30 years old",
+      explanation: "They are only required to be US citizens for 9 years, according to Article 1 Section 3 of the Constitution."
+    },
+    {
+      id: 1649,
+      question: "Who presides over the Senate in the absence of the Vice President?",
+      options: ["President pro tempore", "Majority whip", "Senate parliamentarian", "Secretary of the Senate"],
+      correctAnswer: "President pro tempore",
+      explanation: "Typically the longest-serving Senator of the majority party, the president pro tem usually concedes their authority to the majority leader."
+    },
+    {
+      id: 1650,
+      question: "How many standing committees does the US House of Representatives have?",
+      options: ["20", "11", "6", "26"],
+      correctAnswer: "20",
+      explanation: "Committee chairs are typically chosen by the party in power. In addition to the 20 standing committees, there are numerous subcommittees and select committees."
+    },
+    {
+      id: 1651,
+      question: "This president was responsible for the greatest percent increase in federal debt, growing by a whopping 2,860% during his presidency.",
+      options: ["Abraham Lincoln", "Donald Trump", "Ronald Reagan", "George W Bush"],
+      correctAnswer: "Abraham Lincoln",
+      explanation: "The debt during the Civil War grew from $90 million to $2.68 billion."
+    },
+    {
+      id: 1652,
+      question: "He was the first president to ride in a car while on official duties, in 1902.",
+      options: ["Theodore Roosevelt", "William McKinley", "Franklin D Roosevelt", "Woodrow Wilson"],
+      correctAnswer: "Theodore Roosevelt",
+      explanation: "McKinley briefly rode in a private vehicle while visiting family, but Teddy rode in an electric car for an official trip to Connecticutt."
+    },
+    {
+      id: 1653,
+      question: "The first car designed to transport the president with Secret Service was a Lincoln V12 convertible nicknamed the Sunshine Special, given to this president in 1939.",
+      options: ["Franklin D Roosevelt", "Harry S Truman", "Dwight D Eisenhower", "John F Kennedy"],
+      correctAnswer: "Franklin D Roosevelt",
+      explanation: "After the attacks on Pearl Harbor, the car was further modified to have underarmor, 1 inch thick bulletproof glass, flat-proof tires and a compartment for machine guns. "
+    },
+    {
+      id: 1654,
+      question: "The first White House website was developed during this president's term.",
+      options: ["Bill Clinton", "George HW Bush", "George W Bush", "Ronald Reagan"],
+      correctAnswer: "Bill Clinton",
+      explanation: "George HW Bush's administration was the first to use email, in 1992, and the first White House website was 2 years later."
+    },
+    {
+      id: 1655,
+      question: "The tallest US President, as of 2024, was ___.",
+      options: ["Abraham Lincoln", "Lyndon Johnson", "James Madison", "Thomas Jefferson"],
+      correctAnswer: "Abraham Lincoln",
+      explanation: "At 6'4\", he ranks as tallest, while the tallest world leader ever was a former president of Montenegro, Filip Vujanovich, who was 6'7\"."
+    },
+    {
+      id: 1656,
+      question: "The shortest US President, as of 2024, was ___.",
+      options: ["James Madison", "Willam H Taft", "George Washington", "Lyndon Johnson"],
+      correctAnswer: "James Madison",
+      explanation: "At 5'4\", he was the shortest, and at 122 pounds (55 kg) he was also the lightest."
+    },
+    {
+      id: 1657,
+      question: "Colonists were protesting this tax when they tossed tea into Boston Harbor in 1773.",
+      options: ["Tea Act", "Stamp Act", "Coercive Act", "Sugar Act"],
+      correctAnswer: "Tea Act",
+      explanation: "The Tea Act was the culmination of \"taxation without representation\" and directly led to the start of the Revolutionary War in 1775."
+    },
+    {
+      id: 1658,
+      question: "Which of the following presidents was NOT left-handed?",
+      options: ["George W Bush", "Gerald Ford", "Barack Obama", "George HW Bush"],
+      correctAnswer: "George W Bush",
+      explanation: "Of the last 14 presidents, 6 have been left handed. Whereas in the general population, only about 13% of people are lefties."
+    },
+    {
+      id: 1659,
+      question: "Which of the following presidents was NOT obese (medically classified as a BMI of 30 or greater)?",
+      options: ["Bill Clinton", "Donald Trump", "William Taft", "Grover Cleveland"],
+      correctAnswer: "Bill Clinton",
+      explanation: "Clinton's BMI peaked at 28.3 during his term. Taft was the fattest, with a BMI of 42.3."
+    },
+    {
+      id: 1660,
+      question: "Teddy Roosevelt was the first to decree that the building he lived in be called the White House. Which of the following was NOT one of the names used for the building prior to that?",
+      options: ["White Palace", "President's House", "Presidential Mansion", "President's Palace"],
+      correctAnswer: "White Palace",
+      explanation: "The building's exterior is a white-painted Aquia Creek sandstone, which is naturally brown to light gray."
+    },
+    {
+      id: 1661,
+      question: "The designer of the White House was this Irish architect, personally chosen by George Washington.",
+      options: ["James Hoban", "Pierre Charles L'Enfant", "Seamus O'Malley", "Peter Whelihan"],
+      correctAnswer: "James Hoban",
+      explanation: "Hoban previously designed the Columbia, SC capitol building and the Charleston, SC courthouse, which apparently impressed George Washington who chose Hoban."
+    },
+    {
+      id: 1662,
+      question: "This president oversaw a massive remodel of the White House from 1949-1952, as it was deemed unsafe for occupancy in 1948.",
+      options: ["Harry S Truman", "Dwight D Eisenhower", "Franklin D Roosevelt", "Theodore Roosevelt"],
+      correctAnswer: "Harry S Truman",
+      explanation: "The original wood timber framing was damaged beyond repair and replaced with steel. Some of the old timbers were sawn into paneling that still lines some of the rooms in the White House today."
+    },
+    {
+      id: 1663,
+      question: "This Trump cabinet member in 2025 used the unsecured app Signal to share classified military information among a group including a journalist.",
+      options: ["Pete Hegseth", "Kash Patel", "Marco Rubio", "Kristi Noem"],
+      correctAnswer: "Pete Hegseth",
+      explanation: "But considering his history with alcohol abuse and domestic violence, what's a little national security breach among friends?"
+    },
+    {
+      id: 1664,
+      question: "During this war, the White House (and large parts of Washington) were burned, resulting in almost all of the White House being rebuilt.",
+      options: ["War of 1812", "World War I", "Spanish American War", "Second Barbary War"],
+      correctAnswer: "War of 1812",
+      explanation: "The British burned it in 1814 in retaliation for America's attack on York in Canada, and the entire building had to be rebuilt except for the south wall."
+    },
+    {
+      id: 1665,
+      question: "This president served in Congress for 18 years after his presidency, and died in Congress in 1848 from a massive stroke.",
+      options: ["John Quincy Adams", "William Taft", "Calvin Coolidge", "Grover Cleveland"],
+      correctAnswer: "John Quincy Adams",
+      explanation: "He had his first known stroke 2 years prior but recovered. His died in the Speaker's Chambers, where his last words were, \"This is the last of earth, but I am content\"."
+    },
+    {
+      id: 1666,
+      question: "This president was instrumental in ensuring that football was not abolished, due to the many deaths that were occurring at the time.",
+      options: ["Theodore Roosevelt", "Ronald Reagan", "John F Kennedy", "Warren Harding"],
+      correctAnswer: "Theodore Roosevelt",
+      explanation: "In its earliest days, football was even more brutal than it is now. Many schools were dropping the sport, and Roosevelt stepped in to urge the game to reform its rules to make the game safer."
+    },
+    {
+      id: 1667,
+      question: "In 1953, President ___ named Camp David, the presidential retreat in Maryland, after his 5 year old grandson.",
+      options: ["Dwight D Eisenhower", "Herbert Hoover", "Franklin D Roosevelt", "Harry S Truman"],
+      correctAnswer: "Dwight D Eisenhower",
+      explanation: "Built in 1938 by the Works Progress Administration, it was originally called \"Shangri-La\" by Roosevelt."
+    },
+    {
+      id: 1668,
+      question: "The Civilian Conservation Corp (CCC) was implemented by this president in 1933 as part of his New Deal.",
+      options: ["Franklin D Roosevelt", "Theodore Roosvelt", "Herbert Hoover", "John F Kennedy"],
+      correctAnswer: "Franklin D Roosevelt",
+      explanation: "Giving conservation jobs to single unemployed men aged 17-28, this part of the New Deal was one of the most successful government programs ever, and ended mainly because of WWII."
+    },
+    {
+      id: 1669,
+      question: "Which of the following presidents did NOT have a beard?",
+      options: ["Woodrow Wilson", "Abraham Lincoln", "Rutherford Hayes", "Benjamin Harrison"],
+      correctAnswer: "Woodrow Wilson",
+      explanation: "Hayes had the longest beard of the 5 presidents who have had beards in office, which may have been his greatest accomplishment as president."
+    },
+    {
+      id: 1670,
+      question: "As of 2025, he was the only man to be elected twice as VP and twice as President.",
+      options: ["Richard Nixon", "Ronald Reagan", "Franklin D Roosevelt", "Bill Clinton"],
+      correctAnswer: "Richard Nixon",
+      explanation: "He served 2 terms as VP to Dwight Eisenhower, from 1953-1961, and was elected president in 1968 and 1972. He resigned before impeachment for the Watergate scandal in 1974."
+    },
+    {
+      id: 1671,
+      question: "The largest currency note ever printed in the US was the $100,000 bill, issued in 1934. Which president's face was on the bill?",
+      options: ["Woodrow Wilson", "Frankling D Roosevelt", "George Washington", "Abraham Lincoln"],
+      correctAnswer: "Woodrow Wilson",
+      explanation: "The bill was only used in interbank transfers and was illegal for the public to own. It was issued as part of a plan to stop gold hoarding among the general public."
+    },
+    {
+      id: 1672,
+      question: "Walt Whitman's famous poem, \"O Captain, My Captain\", was written in 1865 as a tribute to this president.",
+      options: ["Abraham Lincoln", "George Washington", "Ulysses S Grant", "Thomas Jefferson"],
+      correctAnswer: "Abraham Lincoln",
+      explanation: "The poem describes a ship's captain dying after piloting the ship through rough and dangerous waters. It was also immortalized in Dead Poet's Society."
+    },
+    {
+      id: 1673,
+      question: "Lyndon Johnson's wife was known as \"Lady Bird\" from the time she was an infant. What was her actual first name? ",
+      options: ["Claudia", "Lydia", "Sarah", "Penelope"],
+      correctAnswer: "Claudia",
+      explanation: "She was named after her uncle Claud, but her nanny described her as \"pretty as a ladybird\", and the name stuck."
+    },
+    {
+      id: 1674,
+      question: "Which president's administration was commonly referred to as Camelot?",
+      options: ["John F Kennedy", "Ronald Reagan", "Franklin D Roosevelt", "George Washington"],
+      correctAnswer: "John F Kennedy",
+      explanation: "The public overall has a fond memory of Kennedy, his administration, and the US in general at that time, hence the nickname Camelot."
+    },
+    {
+      id: 1675,
+      question: "\"Speak softly and carry a big stick\" was a favorite saying of this president.",
+      options: ["Theodore Roosevelt", "Richard Nixon", "Thomas Jefferson", "George W Bush"],
+      correctAnswer: "Theodore Roosevelt",
+      explanation: "He described his approach to foreign policy as \"the exercise of intelligent forethought and of decisive action sufficiently far in advance of any likely crisis\"."
+    },
+    {
+      id: 1676,
+      question: "Which of the following presidents did NOT die in office?",
+      options: ["William H Taft", "Wiliam McKinley", "Zacharay Taylor", "Franklin Roosevelt"],
+      correctAnswer: "William H Taft",
+      explanation: "Despite his profound obesity, Taft lived until age 73. The others died in their late 50s or early 60s while serving as president."
+    },
+    {
+      id: 1677,
+      question: "Before Watergate, this scandal of the Harding administration was considered the biggest political scandal in the nation's history. (All scandal options offered are real)",
+      options: ["Teapot Dome", "Abscam", "XYZ Affair", "Petticoat Affair"],
+      correctAnswer: "Teapot Dome",
+      explanation: "The scandal involved a cabinet member taking bribes from oil companies to gain access to Navy petroleum reserves in Wyoming and California."
+    },
+    {
+      id: 1678,
+      question: "In the 1995 movie The American President, Annette Benning's character, Sydney Wade, pursues the widower President Andrew Shepherd, played by this actor.",
+      options: ["Michael Douglas", "John Travolta", "Harrison Ford", "Paul Newman"],
+      correctAnswer: "Michael Douglas",
+      explanation: "The film was directed by Rob Reiner, written by Aaron Sorkin, grossed $108 million on a $62 million budget, and was nominated for Best Original Musical or Comedy Score Academy Award."
+    },
+    {
+      id: 1679,
+      question: "The first woman to run for US president was ___.",
+      options: ["Victoria Woodhull", "Geraldine Ferraro", "Hillary Clinton", "Margaret Chase Smith"],
+      correctAnswer: "Victoria Woodhull",
+      explanation: "She was a suffragist who ran for president in 1872, although she was not technically old enough to legally run for president."
+    },
+    {
+      id: 1680,
+      question: "He was the only president to have served as both President of the US and Chief Justice of the Supreme Court.",
+      options: ["William H Taft", "George HW Bush", "Calvin Coolidge", "Richard Nixon"],
+      correctAnswer: "William H Taft",
+      explanation: "He was President from 1909-1913, and was on the Court from 1921 until his death in 1930. "
+    },
+    {
+      id: 1681,
+      question: "He was the last non-Democrat or non-Republican to win the Presidency, serving in the mid-19th century.",
+      options: ["Millard Fillmore", "Ulysses S Grant", "Theodore Roosevelt", "Franklin Pierce"],
+      correctAnswer: "Millard Fillmore",
+      explanation: "He was the last president from the Whig Party, a conservative party that produced 4 presidents over a roughly 30 year span."
+    },
+    {
+      id: 1682,
+      question: "He was the only president to have run a marathon before becoming president.",
+      options: ["George W Bush", "Jimmy Carter", "Bill Clinton", "Barack Obama"],
+      correctAnswer: "George W Bush",
+      explanation: "He ran the Houston Marathon at age 46, finishing in 3:44."
+    },
+    {
+      id: 1683,
+      question: "He was the first vice president to become president after the death of the president, William Harrison, in 1841.",
+      options: ["John Tyler", "Millard Fillmore", "Chester Arthur", "Ulysses S Grant"],
+      correctAnswer: "John Tyler",
+      explanation: "Harrison died just 31 days after inauguration, causing a bit of a crisis for the country, as there was no policy of succession in place at the time."
+    },
+    {
+      id: 1684,
+      question: "Fala, who lived from 1940 to 1952, was the famous Scottish terrier belonging to this president, and he was by the President's side until his death in 1945.",
+      options: ["Franklin D Roosevelt", "Abraham Lincoln", "Herbert Hoover", "Woodrow Wilson"],
+      correctAnswer: "Franklin D Roosevelt",
+      explanation: "Soldiers in WWII would ask \"who is the President's dog?\" as a way to check for German infiltrators."
+    },
+    {
+      id: 1685,
+      question: "This former president is credited with numerous inventions, among them the swivel chair.",
+      options: ["Thomas Jefferson", "Benjamin Franklin", "Abraham Lincoln", "Theodore Roosevelt"],
+      correctAnswer: "Thomas Jefferson",
+      explanation: "He wrote parts of the Declaration of Independence from his swivel chair. Jefferson also invented a revolving book stand, and improved the design of a pedometer. He even served on a patent review board before becoming president."
+    },
+    {
+      id: 1686,
+      question: "He was the last president to have any facial hair (mustache or beard).",
+      options: ["William H Taft", "Herbert Hoover", "Calvin Coolidge", "Franklin D Roosevelt"],
+      correctAnswer: "William H Taft",
+      explanation: "It's thought that facial hair fell out of favor once women gained the right to vote, as well as with the introduction of the double-edged safety razor."
+    },
+    {
+      id: 1687,
+      question: "Calvin Coolidge pardoned this animal that was sent to the White House for Thanksgiving dinner in 1926.",
+      options: ["Raccoon", "Turkey", "Chicken", "Pig"],
+      correctAnswer: "Raccoon",
+      explanation: "He would keep the raccoon as a pet, naming it Rebecca. At the time, many farmers would send animals for Thanksgiving, hoping to be chosen as the official provider of the Thanksgiving meal.  "
+    },
+    {
+      id: 1688,
+      question: "The first president to ever be featured on a US coin was ____.",
+      options: ["Abraham Lincoln", "George Washington", "Thomas Jefferson", "Warren Harding"],
+      correctAnswer: "Abraham Lincoln",
+      explanation: "In 1909, the penny was redesigned to honor Lincoln. Prior to this time, coins typically had an image of \"Lady Liberty\"."
+    },
+    {
+      id: 1689,
+      question: "How many vice presidents have held the office under two different presidents?",
+      options: ["2", "0", "1", "11"],
+      correctAnswer: "2",
+      explanation: "John C Calhoun served under John Quincy Adams and Andrew Jackson, and George Clinton served under Thomas Jefferson and James Madison."
+    },
+    {
+      id: 1690,
+      question: "This president was related to 11 other presidents, either by blood or marriage.",
+      options: ["Franklin D Roosevelt", "John F Kennedy", "George W Bush", "Thomas Jefferson"],
+      correctAnswer: "Franklin D Roosevelt",
+      explanation: "He was also related to his wife, Eleanor, as they were 5th cousins once removed."
+    },
+    {
+      id: 1691,
+      question: "Only 3 presidents have not had a family pet while in office. Of the following 4 presidents, which one DID have a pet in office?",
+      options: ["George HW Bush", "Donald Trump", "James K Polk", "Andrew Johnson"],
+      correctAnswer: "George HW Bush",
+      explanation: "The Bushes had Millie, an English Springer Spaniel who even wrote her own book, Millie's Book, in 1990."
+    },
+    {
+      id: 1692,
+      question: "The first president to host an Easter Egg Roll at the White House was our 19th president, in 1878.",
+      options: ["Rutherford B Hayes", "Theodore Roosevelt", "William McKinley", "Abraham Lincoln"],
+      correctAnswer: "Rutherford B Hayes",
+      explanation: "Prior to the first one on the South Lawn, they were held on the Capitol grounds but caused a lot of damage to the grass. It has been held every year since on the South Lawn, except for 2020 and 2021 (due to COVID-19)."
+    },
+    {
+      id: 1693,
+      question: "The tradition of a sitting president throwing out the ceremonial first pitch at a baseball game began in 1910 with this president, throwing out a ball at the Washington Senators opening day.",
+      options: ["William H Taft", "Theodore Roosevelt", "Calvin Coolidge", "Woodrow Wilson"],
+      correctAnswer: "William H Taft",
+      explanation: "The only presidents to not do it during their time in office (as of 2025) are Jimmy Carter (but he did do it after leaving office), Joe Biden (but he did do it while Vice President), and Donald Trump (who said he was going to do it in 2020 but oddly never did)."
+    },
+    {
+      id: 1694,
+      question: "As of 2024, which state has produced the most presidents, at 8?",
+      options: ["Virginia", "Illinois", "Texas", "New York"],
+      correctAnswer: "Virginia",
+      explanation: "The eight men that were born there are George Washington, Thomas Jefferson, James Madison, James Monroe, William Henry Harrison, John Tyler, Zachary Taylor, and Woodrow Wilson."
+    },
+    {
+      id: 1695,
+      question: "While campaigning for office, this president was shot in the chest, but he still gave his 50-minute speech.",
+      options: ["Theodore Roosevelt", "Ronald Reagan", "Abraham Lincoln", "Calvin Coolidge"],
+      correctAnswer: "Theodore Roosevelt",
+      explanation: "The bullet passed through a steel eyeglass case as well as a 50-page speech in his pocket, but still lodged in the left side of his chest, where it remained til his death in 1919."
+    },
+    {
+      id: 1696,
+      question: "Which of the following treatments was NOT done for William Harrison, the 9th president in 1841, who died after just 31 days in office?",
+      options: ["Antibiotics", "Mustard plaster", "Bloodletting", "Cupping"],
+      correctAnswer: "Antibiotics",
+      explanation: "The first true antibiotic, penicillin, was discovered in 1928 by Alexander Fleming."
+    },
+    {
+      id: 1697,
+      question: "This president signed an order in 1948 to desegregate the military.",
+      options: ["Harry S Truman", "Franklin D Roosevelt", "Dwight D Eisenhower", "John F Kennedy"],
+      correctAnswer: "Harry S Truman",
+      explanation: "He tried to get Congress to pass a comprehensive civil rights law, but they refused, so he signed an Executive Order which desegregated the military."
+    },
+    {
+      id: 1698,
+      question: "Which of these presidents did NOT die on July 4th?",
+      options: ["Calvin Coolidge", "Thomas Jefferson", "James Monroe", "John Adams"],
+      correctAnswer: "Calvin Coolidge",
+      explanation: "Coolidge was actually born on July 4, 1872, the only president born on July 4."
+    },
+    {
+      id: 1699,
+      question: "This president was the only person with a physical disability elected to the presidency (as of 2024).",
+      options: ["Franklin D Roosevelt", "Herbert Hoover", "Woodrow Wilson", "William McKinley"],
+      correctAnswer: "Franklin D Roosevelt",
+      explanation: "He came down with a flaccid paralysis at age 39, which was assumed to be 'infantile paralysis', and he was paralyzed from the waist down. Current medical thinking is that he may have had a condition called Guillain-Barre Syndrome instead, which was not a well known condition at that time. "
+    },
+    {
+      id: 1700,
+      question: "This Washington, DC street is synonymous with lobbying and lobbyists.",
+      options: ["K Street", "L Street", "M Street", "P Street"],
+      correctAnswer: "K Street",
+      explanation: "In recent years, most of the large lobbying and advocacy groups have moved from their K Street addresses to larger sites nearby. Because buying politicians is the true American pasttime."
+    },
+    {
+      id: 1701,
+      question: "This political party started in the 1850s as a secret society, and was anti-immigrant and other minorities, nativist, and anti-Catholic. ",
+      options: ["Know Nothing Party", "Republican Party", "Whig Party", "Personal Choice Party"],
+      correctAnswer: "Know Nothing Party",
+      explanation: "Officially known as the American Party, its members were required to answer \"I know nothing\" in response to any questions about the party and its platforms by outsiders."
+    },
+    {
+      id: 1702,
+      question: "This president established NASA, the National Aeronautics and Space Administration, in 1958.",
+      options: ["Dwight D Eisenhower", "John F Kennedy", "Franklin D Roosevelt", "Gerald Ford"],
+      correctAnswer: "Dwight D Eisenhower",
+      explanation: "NASA succeeded the National Advisory Committee for Aeronatics which was established in 1915."
+    },
+    {
+      id: 1703,
+      question: "This Amendment, passed in 1961, gave the District of Columbia the right to participate in presidential elections and granted it 3 electoral votes.",
+      options: ["23rd", "17th", "25th", "26th"],
+      correctAnswer: "23rd",
+      explanation: "The district can never have more electoral votes than the least populated state. The district also does not have full voting rights in Congress."
+    },
+    {
+      id: 1704,
+      question: "This form of government involves rulers who enrich themselves at the expense of those who are governed, with no regard for the rule of law.",
+      options: ["Kleptocracy", "Plutocracy", "Oligarchy", "Kakistocracy"],
+      correctAnswer: "Kleptocracy",
+      explanation: "While normally associated with dictatorships, kleptocracies can also be found in democracies where there is cronyism and lack of government oversight and accountability. Fun fact for 2025: A kakistocracy is a government run by the least qualified, most unscrupulous people."
+    },
+    {
+      id: 1705,
+      question: "The G7 is a group made of the 7 largest democracies in the world. Which of these countries is NOT part of the G7?",
+      options: ["Spain", "Italy", "France", "Germany"],
+      correctAnswer: "Spain",
+      explanation: "The group tries to discuss and devise solutions to major global challenges, such as trade, security and climate change."
+    },
+    {
+      id: 1706,
+      question: "William H Seward was the Secretary of State for this president, when he helped arrange for the purchase of Alaska from Russia in 1867.",
+      options: ["Andrew Johnson", "Theodore Roosevelt", "Calvin Coolidge", "Thomas Jefferson"],
+      correctAnswer: "Andrew Johnson",
+      explanation: "At a cost of $0.36 per acre, the purchase was considered the biggest accomplishment of the otherwise dismal Johnson presidency."
+    },
+    {
+      id: 1707,
+      question: "Shirley Chisholm was the first black woman to serve in the US Congress, elected in 1968 to represent the Bedford-Stuyvesent district in this state. ",
+      options: ["New York", "Arizona", "Arkansas", "Florida"],
+      correctAnswer: "New York",
+      explanation: "Her campaign slogan was \"unbought and unbossed\", and she served 7 terms. She even unsuccessfully ran for president in 1972."
+    },
+    {
+      id: 1708,
+      question: "In 1958, high school junior Robert Heft designed this item for the government, which is still in use today.",
+      options: ["US Flag", "$2 bill", "Official census format", "Logo for the National Park Service"],
+      correctAnswer: "US Flag",
+      explanation: "He designed the flag for a school project in anticipation of AK and HI becoming states. His teacher initially gave him a B-, but raised it to an A when the flag was chosen by President Eisenhower to be the official flag. "
+    },
+    {
+      id: 1709,
+      question: "This Constitutional amendment states that any Congressional pay changes do not take effect until the next House election cycle, and took almost 203 years to be passed.",
+      options: ["27th", "22nd", "3rd", "16th"],
+      correctAnswer: "27th",
+      explanation: "The final amendment was first proposed in September 1789 (at the same time as the original Bill of Rights) but did not get passed until May 1992, and even then only due to the work of a college sophomore named Greg Watson starting in 1982."
+    },
+    {
+      id: 1710,
+      question: "This Amendment allows for the removal of a president who is unfit, and also specifies that the VP becomes president if the existing president dies or leaves office.",
+      options: ["25th", "20th", "13th", "8th"],
+      correctAnswer: "25th",
+      explanation: "It is section 4 of the amendment that addresses the Vice President and Cabinet declaring a president incapacitated or unable to fulfill their duties, if the President him/herself does not voluntarily declare themselves unable to fulfill their duties. "
+    },
+    {
+      id: 1711,
+      question: "This Amendment allowed 18 year olds to vote in federal elecations, and was the fastest to be passed in just 100 days in 1971.",
+      options: ["26th", "23rd", "24th", "25th"],
+      correctAnswer: "26th",
+      explanation: "It was developed largely in response to the Vietnam War draft, which drafted men at age 18, while federal voting age was 21 at the time."
+    },
+    {
+      id: 1712,
+      question: "Which of the following does NOT fall under the power of the National Archives?",
+      options: ["Enforcing federal laws", "Preserving the original Declaration of Indepence", "Ensuring public access to government documents", "Transmitting Electoral College votes to Congress"],
+      correctAnswer: "Enforcing federal laws",
+      explanation: "Enforcing federal laws is the function of the Department of Justice. The National Archives and Records Administration was established in 1934 and became an independent agency in 1984."
+    },
+    {
+      id: 1713,
+      question: "This act, formally known as the Wall Street Reform and Consumer Protection Act, was passed in 2010 in response to the Great Recession, but is more commonly known by this name, reflecting the names of its two sponsors.",
+      options: ["Dodd-Frank", "Glass-Steagall", "Bankhead-Jones", "Lee-Lifeson"],
+      correctAnswer: "Dodd-Frank",
+      explanation: "Among other things, the act created the Consumer Financial Protection Bureau, designed to protect consumers from credit card and mortgage abuses. As of 2025, Trump is dismantling it, because clearly consumers need no protection from companies anymore."
+    },
+    {
+      id: 1714,
+      question: "The 16th Amendment, passed in 1909 and ratified in 1913, allowed Congress to levy a tax on this.",
+      options: ["Income", "Alcohol", "Tobacco", "Capital gains"],
+      correctAnswer: "Income",
+      explanation: "The first federal income tax was actually levied in 1861 to help pay for the Civil War. It was 3% of all income over the equivalent of $21,000."
+    },
+    {
+      id: 1715,
+      question: "Which one of these is NOT a presidential power?",
+      options: ["Approving foreign treaties", "Vetoing legislation", "Nominating Supreme Court justices", "Receiving ambassadors"],
+      correctAnswer: "Approving foreign treaties",
+      explanation: "The president can negotiate and sign treaties with the advice and consent of the Senate, which must approve the treaty by a 2/3 majority."
+    },
+    {
+      id: 1716,
+      question: "The highest peak in North America, Denali, was previously named in honor of this President elected in 1896.",
+      options: ["McKinley", "Taft", "Monroe", "Roosevelt"],
+      correctAnswer: "McKinley",
+      explanation: "At 20,310 ft (6,190m), it also has one of the highest base-to-peak heights of about 18,000 ft (greater than Everest) and has the longest glacier in the Alaska range, at 44 miles long."
+    },
+    {
+      id: 1717,
+      question: "In what year did a divided US Supreme Court rule that same sex marriage was legal in all 50 states, DC and US territories?",
+      options: ["2015", "2013", "2009", "2017"],
+      correctAnswer: "2015",
+      explanation: "The case, Obergefell v Hodges, was a 5-4 decision that argued the plaintiffs' 14th amendment rights were violated."
+    },
+    {
+      id: 1718,
+      question: "Former VP Al Gore won a Nobel Peace Prize. Only one other VP has done this, Charles Gates Dawes, who was VP under this President from 1925-1929.",
+      options: ["Calvin Coolidge", "Warren Harding", "Herbert Hoover", "Franklin Roosevelt"],
+      correctAnswer: "Calvin Coolidge",
+      explanation: "He won for his post-WWI peace plan. He also co-wrote a song that became a #1 hit in 1951, \"It's All In The Game\"."
+    },
+    {
+      id: 1719,
+      question: "Who was president during the space shuttle Challenger disaster?",
+      options: ["Ronald Reagan", "George HW Bush", "Jimmy Carter", "Bill Clinton"],
+      correctAnswer: "Ronald Reagan",
+      explanation: "The shuttle broke up 73 seconds into its flight in 1986 due to a known faulty O-ring, killing all 7 aboard including classroom teacher Christa McAuliffe."
+    },
+    {
+      id: 1720,
+      question: "This president issued the official government apology to the survivors of the Tuskegee Study, which purposefully did not treat 400 black men who had syphilis despite an easy treatment being available for decades.",
+      options: ["Bill Clinton", "Donald Trump", "Barack Obama", "George W Bush"],
+      correctAnswer: "Bill Clinton",
+      explanation: "The study was meant to last for only 6 months, but instead went from 1932-1972 and resulted in the death of 128 of the men. It is considered the worst breach of medical ethics in the US. "
+    },
+    {
+      id: 1721,
+      question: "The first woman to hold federal office was ___, elected from Montana in 1916 to the US House.",
+      options: ["Jeanette Rankin", "Harriet Tubman", "Elizabeth Cady Stanton", "Rebecca Latimer Felton"],
+      correctAnswer: "Jeanette Rankin",
+      explanation: "A life-long Pacifist elected before women even had the right to vote, she served one term but was elected again in 1940. To this day, she is the only woman elected to Congress from Montana."
+    },
+    {
+      id: 1722,
+      question: "____ was the first woman to serve in the US Senate, representing Georgia in 1922, and she was also an avowed white supremacist.",
+      options: ["Rebecca Latimer Felton", "Rosa Parks", "Shirley Chisholm", "Doris A Davis"],
+      correctAnswer: "Rebecca Latimer Felton",
+      explanation: "Serving for just one day, she was also the last slave-holding member of Congress."
+    },
+    {
+      id: 1723,
+      question: "Robert E Lee surrendered to Ulysses S Grant at this Civil War battle site in Virginia, effectively ending the Civil War in 1865.",
+      options: ["Appomattox Courthouse", "Gettysburg", "Bull Run", "Antietam"],
+      correctAnswer: "Appomattox Courthouse",
+      explanation: "The final battle for Lee occurred as he was trying to retreat west after a bruising and unsuccessful battle for Richmond, VA."
+    },
+    {
+      id: 1724,
+      question: "This president signed the Indian Removal Act of 1830, which forcibly moved over 60,000 native Americans west of the Mississippi.",
+      options: ["Andrew Jackson", "John Quincy Adams", "John Tyler", "Zachary Taylor"],
+      correctAnswer: "Andrew Jackson",
+      explanation: "The \"Trail of Tears\" was designed to effectively remove all natives east of the Mississippi and south of the Great Lakes, and meant to appease southern states by removing native land claims and expanding white settlement and slavery. "
+    },
+    {
+      id: 1725,
+      question: "The website FiveThirtyEight (538) was created by this person to serve as a place for political analysis, opinion polls and economics.",
+      options: ["Nate Silver", "Sam Bankman Fried", "Elon Musk", "Al Gore"],
+      correctAnswer: "Nate Silver",
+      explanation: "First gaining notoriety during the 2008 presidential election, 538 was known for incorporating both polls and demographics and has generally been more accurate than just polls alone. Silver left in 2023, and its new owner, Disney, closed it in 2025."
+    },
+    {
+      id: 1726,
+      question: "He is the only Eagle Scout to have become President, even though he was never actually elected to the office.",
+      options: ["Gerald Ford", "John F Kennedy", "Bill Clinton", "Donald Trump"],
+      correctAnswer: "Gerald Ford",
+      explanation: "JFK was the first President who was a Scout as a kid, reaching the level of Star Scout. Clinton was a Cub Scout. Trump says he tried to join, but couldn't pass the physical due to bone spurs in his feet."
+    },
+    {
+      id: 1727,
+      question: "She was the first female Speaker of the House, elected during George W Bush's tenure.",
+      options: ["Nancy Pelosi", "Alexandria Ocasio Cortez", "Tammy Baldwin", "Hillary Clinton"],
+      correctAnswer: "Nancy Pelosi",
+      explanation: "A completely non-polarizing figure on both the left and the right, she even has a street named in her honor in her hometown of San Francisco."
+    },
+    {
+      id: 1728,
+      question: "This radio personality ran for governor of New York in 1994, on a platform of reinstating the death penalty, removing highway tolls, and having road work only done at night.",
+      options: ["Howard Stern", "Rush Limbaugh", "Terry Gross", "Ira Glass"],
+      correctAnswer: "Howard Stern",
+      explanation: "Running under the Libertarian ticket, he promised to resign as soon as he achieved these 3 platform goals. He withdrew from the race as he refused to complete the required financial disclosure form. "
+    },
+    {
+      id: 1729,
+      question: "This person was the first black Secretary of State, serving from 2001 to 2005.",
+      options: ["Colin Powell", "Condoleeza Rice", "Barack Obama", "Jesse Jackson"],
+      correctAnswer: "Colin Powell",
+      explanation: "Powell served in the Army and rose to become a general, and has earned both the Purple Heart and the Presidential Medal of Freedom (twice)."
+    },
+    {
+      id: 1730,
+      question: "Who was the first sitting president to use a dedicated official Twitter / X account?",
+      options: ["Barack Obama", "Donald Trump", "Bill Clinton", "George W Bush"],
+      correctAnswer: "Barack Obama",
+      explanation: "Obama launched the @POTUS handle, but only Trump has used it like an angry tween mean girl since day 1."
+    },
+    {
+      id: 1731,
+      question: "Which of the following members of the second Trump administration were NOT former Fox News hosts?",
+      options: ["JD Vance", "Dan Bongino", "Pete Hegseth", "Sean Duffy"],
+      correctAnswer: "JD Vance",
+      explanation: "Despite his frat boy vibes and love of conspiracy theories, he did not work at Fox. Vance was a Yale Law school grad who once described Trump as \"an idiot\" and \"reprehensible\", and compared him to Hitler. "
+    },
+    {
+      id: 1732,
+      question: "This president signed the fewest executive orders during their time in office.",
+      options: ["William Harrison", "Donald Trump", "Franklin D Roosevelt", "George Washington"],
+      correctAnswer: "William Harrison",
+      explanation: "FDR signed 3,726 over his 12 years in office, for an average of 307 per year. Trump has signed 427 as of September 2025. Washington signed one. Harrison signed zero."
+    },
+    {
+      id: 1733,
+      question: "Which of the following sitting Vice Presidents shot and killed a man?",
+      options: ["Aaron Burr", "Dick Cheney", "Richard Nixon", "Dan Quayle"],
+      correctAnswer: "Aaron Burr",
+      explanation: "Burr killed Alexander Hamilton in a duel. Cheney shot a 78 year attorney in the face, neck and chest in a 'hunting accident' but the man lived."
     }
   ],
   'custom-trivia': []
