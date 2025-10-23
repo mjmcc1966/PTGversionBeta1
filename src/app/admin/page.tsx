@@ -10,7 +10,7 @@ import { wildcards } from '@/lib/data/wildcards';
 import { rulesData } from '@/lib/data/rules';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
 
 export default function MigratePage() {
