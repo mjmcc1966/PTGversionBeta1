@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -20,6 +19,11 @@ export default function BasePage() {
     router.push('/home');
   }
 
+  const handleFixWildcards = () => {
+    showLoader();
+    router.push('/admin/fix-wildcards');
+  }
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-4">
       <Card className="w-full max-w-md">
@@ -35,6 +39,9 @@ export default function BasePage() {
           </Button>
           <Button onClick={handleStartGame} className="w-full h-20 text-xl justify-center">
             Start the Game
+          </Button>
+           <Button onClick={handleFixWildcards} className="w-full h-16 text-lg justify-center" variant="destructive">
+            Fix Wildcard Data
           </Button>
         </CardContent>
       </Card>
