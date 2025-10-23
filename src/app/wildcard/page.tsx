@@ -5,7 +5,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import type { Wildcard } from '@/lib/data/wildcards';
 import { Home, Shuffle, Hourglass } from 'lucide-react';
 import Link from 'next/link';
 import {
@@ -19,7 +18,13 @@ import {
 } from '@/components/ui/alert-dialog';
 import { useLoading } from '@/app/context/loading-context';
 import { useFirestore, useCollection, useMemoFirebase } from '@/firebase';
-import { collection } from 'firebase/firestore';
+import { collection, DocumentData } from 'firebase/firestore';
+
+export interface Wildcard extends DocumentData {
+  id: string;
+  category: string;
+  text: string;
+}
 
 export default function WildcardPage() {
   const firestore = useFirestore();
@@ -156,7 +161,7 @@ export default function WildcardPage() {
               <p className="text-2xl mt-4">{currentCard.text}</p>
             </>
           ) : (
-            <p className="text-xl text-muted-foreground">No wildcards available.</p>
+            <p className="text-xl text-muted-foreground">No wildcards available. Please migrate data from the admin page.</p>
           )}
         </CardContent>
         <CardFooter className="flex justify-between items-center gap-4">

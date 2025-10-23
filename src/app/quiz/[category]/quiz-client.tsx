@@ -1,7 +1,6 @@
 
 "use client";
 
-import type { Question } from '@/lib/data/questions';
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -12,13 +11,22 @@ import { cn } from '@/lib/utils';
 import { CheckCircle, XCircle, Trophy, Lightbulb, Hourglass } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
-import { collection, query, where } from 'firebase/firestore';
+import { collection, query, where, DocumentData } from 'firebase/firestore';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useLoading } from '@/app/context/loading-context';
 
 const correctSoundBase64 = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=";
 const incorrectSoundBase64 = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=";
 
+export interface Question extends DocumentData {
+  id: string;
+  question: string;
+  imageUrl?: string;
+  options: string[];
+  correctAnswer: string;
+  explanation: string;
+  category: string;
+}
 
 export function QuizClient({ category }: { category: string }) {
   const [askedQuestionIds, setAskedQuestionIds] = useState<Set<string>>(new Set());
@@ -278,7 +286,7 @@ export function QuizClient({ category }: { category: string }) {
     return (
         <Card className="w-full max-w-2xl p-8 text-center shadow-lg">
             <CardTitle>No questions available</CardTitle>
-            <CardDescription>Could not load questions for this category. Try uploading some!</CardDescription>
+            <CardDescription>Could not load questions for this category. Try migrating data from the admin page.</CardDescription>
             <CardFooter>
                  <Link href="/home" passHref>
                     <Button variant="outline" className="mt-4">Home</Button>

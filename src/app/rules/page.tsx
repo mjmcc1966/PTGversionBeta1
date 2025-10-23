@@ -8,10 +8,10 @@ import { useLoading } from '@/app/context/loading-context';
 import { useEffect } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
-import { collection, orderBy, query } from 'firebase/firestore';
+import { collection, orderBy, query, DocumentData } from 'firebase/firestore';
 import { Skeleton } from '@/components/ui/skeleton';
 
-interface Rule {
+interface Rule extends DocumentData {
     id: string;
     title: string;
     content: string[];
@@ -59,7 +59,7 @@ export default function RulesPage() {
                     </div>
                 ))
             ) : (
-                <CardDescription>No rules found. Please migrate the data.</CardDescription>
+                <CardDescription>No rules found. Please migrate the data from the admin page.</CardDescription>
             )}
           
           <div className="text-center pt-4">
