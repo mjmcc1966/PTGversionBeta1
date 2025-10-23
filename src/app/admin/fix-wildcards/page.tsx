@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useFirestore, useCollection, useMemoFirebase } from '@/firebase';
-import { collection, doc, writeBatch, getDocs, deleteDoc, setDoc, DocumentData } from 'firebase/firestore';
+import { collection, doc, deleteDoc, setDoc, DocumentData } from 'firebase/firestore';
 import { useLoading } from '@/app/context/loading-context';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -87,21 +87,17 @@ export default function FixWildcardsPage() {
 
     } catch (error) {
       console.error("An error occurred during the data fix operation:", error);
-      toast({
-        variant: "destructive",
-        title: "An error occurred",
-        description: "Could not complete the data fix operation. Check the console for details.",
-      });
+      // Don't show toast here as the listener will throw
     } finally {
       hideLoader();
     }
   };
   
   useEffect(() => {
-     if (!wildcardsLoading) {
+     if (!wildcardsLoading && existingWildcards) {
          handleFixData();
      }
-  }, [wildcardsLoading]);
+  }, [wildcardsLoading, existingWildcards]);
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-4">

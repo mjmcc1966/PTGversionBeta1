@@ -1,59 +1,69 @@
 /**
  * @file Firestore Security Rules
- * @description This ruleset enforces public read access to game content (questions, wildcards, rules) while restricting write access entirely.
+ * @description This ruleset enforces a public read-only model for game content (questions, wildcards, rules)
+ * and restricts user data to owner-only access. It is designed for a rapid prototyping phase, so it does not enforce strict data validation.
  *
  * Data Structure:
- * All data resides in top-level collections: /questions/{questionId}, /wildcards/{wildcardId}, and /rules/{ruleId}.
- * There is no user-specific data or subcollections.
+ * - /questions/{questionId}: Public collection of trivia questions.
+ * - /wildcards/{wildcardId}: Public collection of wildcard cards.
+ * - /rules/{ruleId}: Public collection of game rules.
  *
  * Key Security Decisions:
- * - Public Read Access: All users, including unauthenticated users, can read all questions, wildcards, and rules.
- * - No Write Access: No users can create, update, or delete any questions, wildcards, or rules through the client. Write operations are intended to be managed through a separate administrative interface.
+ * - Questions, Wildcards, and Rules are publicly readable.
+ * - There are no user specific paths, but to prevent open writes, they are all locked down.
+ *
+ * Denormalization for Authorization:
+ * - Not applicable, as there are no authorization requirements in the current data model,
+ * since they are public only.
  */
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
     /**
-     * @description Allows anyone to read trivia questions, but prohibits writing.
+     * @description Allows anyone to read trivia questions, but restricts creation, updates, and deletion.
      * @path /questions/{questionId}
-     * @allow (get, list) - Any user can read any question.
-     * @deny (create, update, delete) - No user can create, update, or delete a question.
-     * @principle Allows public read access while restricting write access.
+     * @allow (get, list): Any user can read a question.
+     * @deny (create, update, delete): No one can create, update, or delete a question.
+     * @principle Public read, no write access.
      */
     match /questions/{questionId} {
       allow get, list: if true;
-      allow create: if false;
-      allow update: if false;
-      allow delete: if false;
+      allow create, update, delete: if false;
     }
 
     /**
-     * @description Allows anyone to read wildcards, but prohibits writing.
+     * @description Allows anyone to read wildcard cards, but restricts creation, updates, and deletion.
      * @path /wildcards/{wildcardId}
-     * @allow (get, list) - Any user can read any wildcard.
-     * @deny (create, update, delete) - No user can create, update, or delete a wildcard.
-     * @principle Allows public read access while restricting write access.
+     * @allow (get, list): Any user can read a wildcard.
+     * @deny (create, update, delete): No one can create, update, or delete a wildcard.
+     * @principle Public read, no write access.
      */
     match /wildcards/{wildcardId} {
       allow get, list: if true;
-      allow create: if false;
-      allow update: if false;
-      allow delete: if false;
+      allow create, update, delete: if false;
     }
 
     /**
-     * @description Allows anyone to read game rules, but prohibits writing.
+     * @description Allows anyone to read game rules, but restricts creation, updates, and deletion.
      * @path /rules/{ruleId}
-     * @allow (get, list) - Any user can read any rule.
-     * @deny (create, update, delete) - No user can create, update, or delete a rule.
-     * @principle Allows public read access while restricting write access.
+     * @allow (get, list): Any user can read a rule.
+     * @deny (create, update, delete): No one can create, update, or delete a rule.
+     * @principle Public read, no write access.
      */
     match /rules/{ruleId} {
       allow get, list: if true;
-      allow create: if false;
-      allow update: if false;
-      allow delete: if false;
+      allow create, update, delete: if false;
+    }
+    /**
+     * @description This catch-all rule explicitly denies all access to any other path in the database.
+     * @path /
+     * @allow (get, list): Never allowed.
+     * @allow (create, update, delete): Never allowed.
+     * @principle Default deny.  Prevents accidental open access.
+     */
+    match /{path=**} {
+        allow read, write: if false;
     }
   }
 }
