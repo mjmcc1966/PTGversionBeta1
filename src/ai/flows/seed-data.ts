@@ -9,17 +9,12 @@
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
 import * as admin from 'firebase-admin';
-import { GoogleAuth } from 'google-auth-library';
 
 // Initialize the Firebase Admin SDK if it hasn't been already.
+// This uses Application Default Credentials, which is the recommended way
+// for server-side environments like Firebase App Hosting.
 if (admin.apps.length === 0) {
-  admin.initializeApp({
-    credential: new admin.credential.GoogleAuth({
-      auth: new GoogleAuth({
-        scopes: ['https://www.googleapis.com/auth/cloud-platform'],
-      }),
-    }),
-  });
+  admin.initializeApp();
 }
 
 const db = admin.firestore();
