@@ -19,6 +19,11 @@ export default function BasePage() {
     router.push('/home');
   }
 
+  const handleFixWildcards = () => {
+    showLoader();
+    router.push('/admin/fix-wildcards');
+  }
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-4">
       <Card className="w-full max-w-md">
@@ -31,6 +36,9 @@ export default function BasePage() {
           </Button>
           <Button onClick={handleExpansionClick} className="w-full h-20 text-xl justify-center" variant="outline">
             Buy an Expansion Pack
+          </Button>
+          <Button onClick={handleFixWildcards} className="w-full h-20 text-xl justify-center" variant="destructive">
+            Fix Wildcard Data
           </Button>
           <Button onClick={handleStartGame} className="w-full h-20 text-xl justify-center">
             Start the Game
