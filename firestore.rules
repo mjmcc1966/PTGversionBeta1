@@ -1,0 +1,76 @@
+/**
+ * @fileoverview Firestore Security Rules for PTG Application
+ *
+ * Core Philosophy:
+ * This ruleset enforces a strict separation of concerns, ensuring that user-generated data is isolated and that core application data (questions, categories) remains immutable by end-users.  All writes to categories and questions are denied.
+ *
+ * Data Structure:
+ * - /categories: Top-level collection for question categories.
+ * - /categories/{categoryId}/questions/{questionId}: Subcollection for questions within each category.
+ * - /users/{userId}/user_questions/{userQuestionId}: Subcollection for tracking user-question associations.
+ *
+ * Key Security Decisions:
+ * - Categories and Questions:  End-users are explicitly denied write access. This ensures the integrity and immutability of the question bank.
+ * - UserQuestion: This collection is owned by the user and tracks question history. Only the owner can create, update, or delete documents.
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * @description Allows read-only access to the categories collection. No write access is allowed to end users.
+     * @path /categories
+     * @allow get, list: if true;
+     * @deny create, update, delete: if false;
+     * @principle Categories are read-only for end users.
+     */
+    match /categories {
+      allow get, list: if true;
+      allow create, update, delete: if false;
+    }
+
+    /**
+     * @description Allows read-only access to questions within a specific category. No write access is allowed to end users.
+     * @path /categories/{categoryId}/questions/{questionId}
+     * @allow get, list: if true;
+     * @deny create, update, delete: if false;
+     * @principle Questions are read-only for end users.
+     */
+    match /categories/{categoryId}/questions/{questionId} {
+      allow get, list: if true;
+      allow create, update, delete: if false;
+    }
+
+    /**
+     * @description Manages the association between a user and questions they have seen.  Enforces user-ownership.
+     * @path /users/{userId}/user_questions/{userQuestionId}
+     * @allow create: if isSignedIn() && request.auth.uid == userId && request.resource.data.userId == userId;
+     * @allow get, list: if isSignedIn() && request.auth.uid == userId;
+     * @allow update: if isExistingOwner(userId) && request.resource.data.userId == resource.data.userId;
+     * @allow delete: if isExistingOwner(userId);
+     * @deny create: if !isSignedIn() || request.auth.uid != userId || request.resource.data.userId != userId;
+     * @deny get, list: if !isSignedIn() || request.auth.uid != userId;
+     * @deny update: if !isExistingOwner(userId) || request.resource.data.userId != resource.data.userId;
+     * @deny delete: if !isExistingOwner(userId);
+     * @principle Enforces document ownership for writes and allows the owner to read.
+     */
+    match /users/{userId}/user_questions/{userQuestionId} {
+      allow get, list: if isOwner(userId);
+      allow create: if isSignedIn() && isOwner(userId) && request.resource.data.userId == userId;
+      allow update: if isExistingOwner(userId) && request.resource.data.userId == resource.data.userId;
+      allow delete: if isExistingOwner(userId);
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isExistingOwner(userId) {
+        return isSignedIn() && request.auth.uid == userId && resource != null;
+    }
+  }
+}
