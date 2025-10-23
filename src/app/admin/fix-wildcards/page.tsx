@@ -4,11 +4,12 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useAuth, useFirestore } from '@/firebase';
-import { writeBatch, collection, doc, getDocs, deleteDoc } from 'firebase/firestore';
+import { writeBatch, collection, getDocs } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
 import { errorEmitter } from '@/firebase/error-emitter';
 import { FirestorePermissionError } from '@/firebase/errors';
+import { useLoading } from '@/app/context/loading-context';
 
 const wildcards = [
     { id: "wildcard-01", category: "Media Spin", text: "A major news network runs a flattering exposé on your campaign. Gain 1 million popular votes." },
@@ -35,6 +36,7 @@ export default function FixWildcardsPage() {
   const router = useRouter();
   const firestore = useFirestore();
   const auth = useAuth();
+  const { hideLoader } = useLoading();
 
   const handleFixData = async () => {
     if (!firestore || !auth.currentUser) {
@@ -43,6 +45,7 @@ export default function FixWildcardsPage() {
         title: 'Error',
         description: 'You must be logged in to migrate data.',
       });
+      hideLoader();
       return;
     }
 
@@ -54,9 +57,9 @@ export default function FixWildcardsPage() {
 
     try {
       const batch = writeBatch(firestore);
-
-      // 1. Delete all existing wildcards
       const wildcardsCollection = collection(firestore, 'wildcards');
+      
+      // 1. Delete all existing wildcards
       const existingWildcards = await getDocs(wildcardsCollection);
       existingWildcards.forEach(doc => {
         batch.delete(doc.ref);
@@ -80,13 +83,15 @@ export default function FixWildcardsPage() {
       router.push('/');
 
     } catch (e: any) {
-      setIsMigrating(false);
       const permissionError = new FirestorePermissionError({
           path: 'batch operation',
           operation: 'write',
           requestResourceData: { note: 'Batch write to fix wildcards.' },
       });
       errorEmitter.emit('permission-error', permissionError);
+    } finally {
+        setIsMigrating(false);
+        hideLoader();
     }
   };
 
