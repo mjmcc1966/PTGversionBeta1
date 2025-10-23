@@ -1,4 +1,3 @@
-
 'use server';
 /**
  * @fileOverview A flow for seeding data into Firestore using the Admin SDK.
@@ -10,10 +9,17 @@
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
 import * as admin from 'firebase-admin';
+import { GoogleAuth } from 'google-auth-library';
 
 // Initialize the Firebase Admin SDK if it hasn't been already.
 if (admin.apps.length === 0) {
-  admin.initializeApp();
+  admin.initializeApp({
+    credential: new admin.credential.GoogleAuth({
+      auth: new GoogleAuth({
+        scopes: ['https://www.googleapis.com/auth/cloud-platform'],
+      }),
+    }),
+  });
 }
 
 const db = admin.firestore();
