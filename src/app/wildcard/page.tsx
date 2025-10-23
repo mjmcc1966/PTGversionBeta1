@@ -97,10 +97,16 @@ export default function WildcardPage() {
             <p className="text-xl text-muted-foreground">Loading wildcard...</p>
           )}
         </CardContent>
-        <CardFooter className="flex justify-center">
+        <CardFooter className="flex justify-center gap-4">
             <Button onClick={getNextCard} size="lg">
                 <Shuffle className="mr-2 h-5 w-5"/>
                 Draw Next Card
+            </Button>
+            <Button asChild size="lg" variant="outline">
+              <Link href="/home">
+                <Home className="mr-2 h-5 w-5"/>
+                Home
+              </Link>
             </Button>
         </CardFooter>
       </Card>
