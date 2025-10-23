@@ -1,0 +1,7 @@
+
+[
+  { "id": "1", "category": "Action", "text": "Move to any property on the board." },
+  { "id": "2", "category": "Event", "text": "A sudden stock market crash halves everyone's money." },
+  { "id": "3", "category": "Debate", "text": "Choose an opponent. You both have 1 minute to debate a topic chosen by another player. The other players vote on the winner, who gets $500,000." },
+  { "id": "4", "category": "Legislation", "text": "Propose a new rule for the game. All players vote. If it passes, it becomes a permanent rule." }
+]

@@ -1,0 +1,37 @@
+
+[
+    {
+      "id": "1",
+      "title": "Objective",
+      "content": [
+        "The objective of Politics: The Game is to be the first player to achieve 270 Electoral Votes. Players accumulate money, popular votes, and electoral votes by answering trivia questions, navigating the game board, and strategically using wildcards."
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Game Setup",
+      "content": [
+        "1. Each player chooses a playing piece and places it on the 'Start' space.",
+        "2. Each player is given $2,500,000 in cash.",
+        "3. The Wildcard and State Trivia cards are shuffled and placed on their designated spots on the board.",
+        "4. One player is chosen to be the banker."
+      ]
+    },
+    {
+      "id": "3",
+      "title": "General Game Play",
+      "content": [
+        "On your turn, roll two dice and move your piece the corresponding number of spaces. Follow the instructions for the space you land on.",
+        "If you roll doubles, you get to roll again. If you roll doubles three times in a row, you go to Jail.",
+        "Landing on an unowned state allows you to purchase it by correctly answering a State Trivia question. If you answer incorrectly, your turn ends.",
+        "If you land on a state owned by another player, you must answer a General Trivia question. If you answer correctly, you pay nothing. If you answer incorrectly, you must pay that player the number of popular votes listed for that state."
+      ]
+    },
+    {
+        "id": "4",
+        "title": "Winning the Game",
+        "content": [
+            "The first player to accumulate 270 Electoral Votes wins the election and the game. Players must announce when they have reached or exceeded 270 votes."
+        ]
+    }
+]

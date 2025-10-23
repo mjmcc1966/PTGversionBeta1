@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -28,6 +29,9 @@ export default function BasePage() {
         <CardContent className="grid gap-4">
           <Button asChild className="w-full h-20 text-xl justify-center" variant="outline" onClick={showLoader}>
             <Link href="/rules">Rules of Game Play</Link>
+          </Button>
+          <Button asChild className="w-full h-20 text-xl justify-center" variant="outline" onClick={showLoader}>
+            <Link href="/admin">Admin Page</Link>
           </Button>
           <Button onClick={handleExpansionClick} className="w-full h-20 text-xl justify-center" variant="outline">
             Buy an Expansion Pack
