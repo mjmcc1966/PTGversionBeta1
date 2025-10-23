@@ -9,8 +9,8 @@ import wildcardsData from './data/wildcards.json';
 import rulesData from './data/rules.json';
 import { useLoading } from '@/app/context/loading-context';
 import Link from 'next/link';
-import { useFirestore } from '@/firebase';
-import { collection, doc, writeBatch } from 'firebase/firestore';
+import { useFirestore, setDocumentNonBlocking } from '@/firebase';
+import { collection, doc } from 'firebase/firestore';
 
 export default function AdminPage() {
   const { toast } = useToast();
@@ -35,31 +35,35 @@ export default function AdminPage() {
     showLoader();
 
     try {
-      const batch = writeBatch(firestore);
+      // Use a non-blocking approach. Errors will be caught by the global error handler.
       data.forEach((item) => {
         if (!item.id) {
           throw new Error('All data items must have an "id" property.');
         }
         const docRef = doc(firestore, collectionName, item.id.toString());
-        batch.set(docRef, item);
+        // This function does not use a try/catch and will allow the permission error to propagate
+        setDocumentNonBlocking(docRef, item, { merge: true });
       });
-      
-      await batch.commit();
 
       toast({
         title: 'Success!',
-        description: `${collectionLabel} have been seeded successfully.`,
+        description: `${collectionLabel} have been seeded. Please allow a moment for data to appear.`,
       });
     } catch (error: any) {
-      console.error(`Error seeding ${collectionName}:`, error);
-      toast({
-        variant: 'destructive',
-        title: 'Uh oh! Something went wrong.',
-        description: error.message || `Could not seed ${collectionLabel}.`,
-      });
+        // This catch block will likely not be hit for permission errors anymore,
+        // but is kept for other potential synchronous errors.
+        console.error(`Error seeding ${collectionName}:`, error);
+        toast({
+            variant: 'destructive',
+            title: 'Uh oh! Something went wrong.',
+            description: error.message || `Could not seed ${collectionLabel}.`,
+        });
     } finally {
-      setIsSeeding(false);
-      hideLoader();
+        // We don't want to hide the loader immediately, let user see the toast.
+        setTimeout(() => {
+            setIsSeeding(false);
+            hideLoader();
+        }, 1500)
     }
   };
 

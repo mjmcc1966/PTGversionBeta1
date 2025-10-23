@@ -1,67 +1,51 @@
 /**
- * @fileoverview Firestore Security Rules for PTG application.
- *
- * Core Philosophy:
- * This ruleset provides public read access to game content (questions, wildcards, and rules)
- * while restricting write access to prevent unauthorized modifications. It does not include any private user data.
- *
- * Data Structure:
- * The database consists of three top-level collections:
- * - /questions/{questionId}: Stores trivia questions.
- * - /wildcards/{wildcardId}: Stores wildcard cards.
- * - /rules/{ruleId}: Stores game rules.
- *
- * Key Security Decisions:
- * - Public Read Access: All documents in the `/questions`, `/wildcards`, and `/rules` collections are publicly readable.
- * - No User Data: This ruleset does not handle any private user-specific data.
+ * @file Firestore Security Rules
+ * @core-philosophy This ruleset allows public read access to game content (questions, wildcards, rules)
+ * while restricting write access to prevent unauthorized modifications. Data validation is minimized
+ * for rapid prototyping.
+ * @data-structure The database consists of three top-level collections: `/questions/{questionId}`,
+ * `/wildcards/{wildcardId}`, and `/rules/{ruleId}`.
+ * @key-security-decisions Public read access is granted for all collections. Write access is denied
+ * to prevent unauthorized modifications. There is no user specific data.
  */
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
     /**
-     * @description Allows public read access to questions. Writes are disallowed.
+     * @description Allows anyone to read questions, but restricts creation, updates, and deletion.
      * @path /questions/{questionId}
-     * @allow (get, list) Public access to retrieve any question.
-     * @deny (create, update, delete) No one can create, update, or delete questions.
-     * @principle Allows open reads, restricts all writes.
+     * @allow (get, list) - Any user can read question documents.
+     * @deny (create, update, delete) - No one can create, update, or delete question documents.
+     * @principle Allows public reads and disallows writes
      */
     match /questions/{questionId} {
-      allow get: if true;
-      allow list: if true;
-      allow create: if false;
-      allow update: if false;
-      allow delete: if false;
+      allow get, list: if true;
+      allow create, update, delete: if false;
     }
 
     /**
-     * @description Allows public read access to wildcards. Writes are disallowed.
+     * @description Allows anyone to read wildcards, but restricts creation, updates, and deletion.
      * @path /wildcards/{wildcardId}
-     * @allow (get, list) Public access to retrieve any wildcard.
-     * @deny (create, update, delete) No one can create, update, or delete wildcards.
-     * @principle Allows open reads, restricts all writes.
+     * @allow (get, list) - Any user can read wildcard documents.
+     * @deny (create, update, delete) - No one can create, update, or delete wildcard documents.
+     * @principle Allows public reads and disallows writes
      */
     match /wildcards/{wildcardId} {
-      allow get: if true;
-      allow list: if true;
-      allow create: if false;
-      allow update: if false;
-      allow delete: if false;
+      allow get, list: if true;
+      allow create, update, delete: if false;
     }
 
     /**
-     * @description Allows public read access to game rules. Writes are disallowed.
+     * @description Allows anyone to read game rules, but restricts creation, updates, and deletion.
      * @path /rules/{ruleId}
-     * @allow (get, list) Public access to retrieve any rule.
-     * @deny (create, update, delete) No one can create, update, or delete rules.
-     * @principle Allows open reads, restricts all writes.
+     * @allow (get, list) - Any user can read rule documents.
+     * @deny (create, update, delete) - No one can create, update, or delete rule documents.
+     * @principle Allows public reads and disallows writes
      */
     match /rules/{ruleId} {
-      allow get: if true;
-      allow list: if true;
-      allow create: if false;
-      allow update: if false;
-      allow delete: if false;
+      allow get, list: if true;
+      allow create, update, delete: if false;
     }
   }
 }
