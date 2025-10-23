@@ -1,10 +1,7 @@
 'use server';
-/**
- * @fileOverview A flow for seeding data into Firestore using the Admin SDK.
- * This bypasses security rules for administrative tasks.
- */
+
 import * as admin from 'firebase-admin';
-import { getApps, initializeApp, getApp } from 'firebase-admin/app';
+import { getApps, initializeApp, getApp, App } from 'firebase-admin/app';
 import { z } from 'zod';
 
 // This is the recommended way to initialize the Admin SDK in a serverless environment.

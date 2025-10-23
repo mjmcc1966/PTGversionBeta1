@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -10,7 +9,7 @@ import wildcardsData from './data/wildcards.json';
 import rulesData from './data/rules.json';
 import { useLoading } from '@/app/context/loading-context';
 import Link from 'next/link';
-import { seedData } from '@/ai/flows/seed-data';
+import { seedData } from '@/app/admin/actions';
 
 export default function AdminPage() {
   const { toast } = useToast();
