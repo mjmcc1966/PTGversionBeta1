@@ -6,7 +6,7 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
-import { triviaData, Question } from '@/lib/questions';
+import type { Question } from '@/lib/questions';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 
@@ -59,9 +59,6 @@ export function UploadQuestionsDialog({ children }: { children: React.ReactNode 
         throw new Error('CSV must contain headers: question, option1, option2, option3, option4, correctAnswer, explanation');
     }
 
-    const allBaseIds = Object.values(triviaData).flat().map(q => q.id);
-    let maxId = Math.max(0, ...allBaseIds);
-
     for (let i = 1; i < lines.length; i++) {
       if (lines[i].trim() === '') continue;
 
@@ -77,7 +74,7 @@ export function UploadQuestionsDialog({ children }: { children: React.ReactNode 
       });
 
       questions.push({
-        id: ++maxId, 
+        id: Date.now() + Math.random(), // Generate a unique ID
         question: questionData.question,
         imageUrl: questionData.imageUrl,
         options: [questionData.option1, questionData.option2, questionData.option3, questionData.option4],
