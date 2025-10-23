@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
@@ -17,26 +16,28 @@ import {
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
 import { useLoading } from '@/app/context/loading-context';
-import { useFirestore, useCollection, useMemoFirebase } from '@/firebase';
-import { collection, DocumentData } from 'firebase/firestore';
+import allWildcardsData from '@/app/admin/data/wildcards.json';
 
-export interface Wildcard extends DocumentData {
+export interface Wildcard {
   id: string;
   category: string;
   text: string;
 }
 
 export default function WildcardPage() {
-  const firestore = useFirestore();
-  const wildcardsQuery = useMemoFirebase(() => firestore ? collection(firestore, 'wildcards') : null, [firestore]);
-  const { data: allWildcards, isLoading: wildcardsLoading } = useCollection<Wildcard>(wildcardsQuery);
-  
+  const [allWildcards, setAllWildcards] = useState<Wildcard[]>([]);
+  const [wildcardsLoading, setWildcardsLoading] = useState(true);
   const [currentCard, setCurrentCard] = useState<Wildcard | null>(null);
   const [usedCardIds, setUsedCardIds] = useState<Set<string>>(new Set());
   const [showReshuffleDialog, setShowReshuffleDialog] = useState(false);
   const { hideLoader } = useLoading();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
+  useEffect(() => {
+    setAllWildcards(allWildcardsData as Wildcard[]);
+    setWildcardsLoading(false);
+  }, []);
 
   useEffect(() => {
     hideLoader();
@@ -160,7 +161,7 @@ export default function WildcardPage() {
               <p className="text-2xl mt-4">{currentCard.text}</p>
             </>
           ) : (
-            <p className="text-xl text-muted-foreground">No wildcards available. Please migrate data from the admin page.</p>
+            <p className="text-xl text-muted-foreground">No wildcards available. The data file might be empty.</p>
           )}
         </CardContent>
         <CardFooter className="flex justify-between items-center gap-4">

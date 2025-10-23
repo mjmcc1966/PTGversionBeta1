@@ -1,17 +1,15 @@
-
 'use client';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import Link from 'next/link';
 import { useLoading } from '@/app/context/loading-context';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
-import { collection, orderBy, query, DocumentData } from 'firebase/firestore';
 import { Skeleton } from '@/components/ui/skeleton';
+import allRulesData from '@/app/admin/data/rules.json';
 
-interface Rule extends DocumentData {
+interface Rule {
     id: string;
     title: string;
     content: string[];
@@ -21,18 +19,19 @@ export default function RulesPage() {
   const { showLoader, hideLoader } = useLoading();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const firestore = useFirestore();
-  
-  const rulesQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
-    return query(collection(firestore, 'rules'), orderBy('id'));
-  }, [firestore]);
-
-  const { data: rulesData, isLoading: rulesLoading } = useCollection<Rule>(rulesQuery);
+  const [rulesData, setRulesData] = useState<Rule[]>([]);
+  const [rulesLoading, setRulesLoading] = useState(true);
 
   useEffect(() => {
     hideLoader();
   }, [pathname, searchParams, hideLoader]);
+
+  useEffect(() => {
+    // Sort rules by ID, assuming ID is numeric as a string
+    const sortedRules = [...allRulesData].sort((a, b) => parseInt(a.id, 10) - parseInt(b.id, 10));
+    setRulesData(sortedRules as Rule[]);
+    setRulesLoading(false);
+  }, []);
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-4">
@@ -59,7 +58,7 @@ export default function RulesPage() {
                     </div>
                 ))
             ) : (
-                <CardDescription>No rules found. Please migrate the data from the admin page.</CardDescription>
+                <CardDescription>No rules found. The data file may be missing or empty.</CardDescription>
             )}
           
           <div className="text-center pt-4">

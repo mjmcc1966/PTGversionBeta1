@@ -10,15 +10,14 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { CheckCircle, XCircle, Trophy, Lightbulb, Hourglass } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
-import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
-import { collection, query, where, DocumentData } from 'firebase/firestore';
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { useLoading } from '@/app/context/loading-context';
+import allQuestionsData from '@/app/admin/data/questions.json';
 
 const correctSoundBase64 = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=";
 const incorrectSoundBase64 = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=";
 
-export interface Question extends DocumentData {
+export interface Question {
   id: string;
   question: string;
   imageUrl?: string;
@@ -29,6 +28,8 @@ export interface Question extends DocumentData {
 }
 
 export function QuizClient({ category }: { category: string }) {
+  const [allQuestions, setAllQuestions] = useState<Question[]>([]);
+  const [questionsLoading, setQuestionsLoading] = useState(true);
   const [askedQuestionIds, setAskedQuestionIds] = useState<Set<string>>(new Set());
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
@@ -37,28 +38,24 @@ export function QuizClient({ category }: { category: string }) {
   const [score, setScore] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
   const [outOfQuestions, setOutOfQuestions] = useState(false);
-  const { user, isUserLoading: authLoading } = useUser();
-  const router = useRouter();
   const { hideLoader } = useLoading();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const firestore = useFirestore();
 
-  const questionsQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
-    const categoryToQuery = category.replace(/-/g, '_');
-    return query(collection(firestore, 'questions'), where('category', '==', categoryToQuery));
-  }, [firestore, category]);
-
-  const { data: allQuestions, isLoading: questionsLoading } = useCollection<Question>(questionsQuery);
-
+  const [timer, setTimer] = useState<number | null>(null);
+  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     hideLoader();
   }, [pathname, searchParams, hideLoader]);
+  
+  useEffect(() => {
+    const categoryToFilter = category.replace(/-/g, '_');
+    const filteredQuestions = (allQuestionsData as Question[]).filter(q => q.category === categoryToFilter);
+    setAllQuestions(filteredQuestions);
+    setQuestionsLoading(false);
+  }, [category]);
 
-  const [timer, setTimer] = useState<number | null>(null);
-  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
 
   const { correctAnswerSound, incorrectAnswerSound } = useMemo(() => {
     if (typeof window !== 'undefined') {
@@ -97,12 +94,6 @@ export function QuizClient({ category }: { category: string }) {
     setIntervalId(newIntervalId);
   };
 
-
-  useEffect(() => {
-    if (!authLoading && !user) {
-      router.push('/register');
-    }
-  }, [user, authLoading, router]);
 
   useEffect(() => {
     const storedAskedIds = sessionStorage.getItem(`askedQuestionIds_${category}`);
@@ -215,7 +206,7 @@ export function QuizClient({ category }: { category: string }) {
     }, 0);
   };
   
-  if (authLoading || questionsLoading) {
+  if (questionsLoading) {
     return (
         <Card className="w-full max-w-2xl shadow-lg">
             <CardHeader>
@@ -281,7 +272,7 @@ export function QuizClient({ category }: { category: string }) {
     return (
         <Card className="w-full max-w-2xl p-8 text-center shadow-lg">
             <CardTitle>No questions available</CardTitle>
-            <CardDescription>Could not load questions for this category. Try migrating data from the admin page.</CardDescription>
+            <CardDescription>Could not load questions for this category. The data file might be empty or missing.</CardDescription>
             <CardFooter>
                  <Link href="/home" passHref>
                     <Button variant="outline" className="mt-4">Home</Button>

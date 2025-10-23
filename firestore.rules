@@ -1,57 +1,68 @@
 /**
- * @fileoverview Firestore Security Rules for PTG application.
+ * @fileOverview Firestore Security Rules for PTG Application
  *
  * Core Philosophy:
- * This ruleset provides open read access to game content (questions, wildcards, rules)
- * but strictly restricts write access to prevent unauthorized modifications.
+ * This ruleset provides public read access to questions, wildcards, and rules,
+ * while restricting write access to prevent unauthorized data modification.
  *
  * Data Structure:
  * - /questions/{questionId}: Stores trivia questions.
  * - /wildcards/{wildcardId}: Stores wildcard cards.
- * - /rules/{ruleId}: Stores game rules.
+ * - /rules/{ruleId}: Stores the game rules.
  *
  * Key Security Decisions:
- * - Open read access for questions, wildcards, and rules.
- * - Write access is completely disabled for all collections in this prototype.
+ * - Public read access is granted to all collections.
+ * - All write operations (create, update, delete) are denied to prevent unauthorized modifications of game data.
+ * - There is no user-specific data or ownership model in this initial ruleset.
+ * - The application does not currently support user-generated content or data personalization.
  */
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
     /**
-     * @description Allows anyone to read questions, but no one to create, update, or delete them.
+     * @description Allows anyone to read questions but no one to write.
      * @path /questions/{questionId}
-     * @allow (get, list) Anyone can read questions.
-     * @deny (create, update, delete) No one can create, update, or delete questions.
-     * @principle Provides open read access to game content while preventing unauthorized modifications.
+     * @allow (get, list) Anyone can read.
+     * @deny (create, update, delete) No one can write.
+     * @principle Allows public read access while preventing unauthorized data modification.
      */
     match /questions/{questionId} {
-      allow get, list: if true;
-      allow create, update, delete: if false;
+      allow get: if true;
+      allow list: if true;
+      allow create: if false;
+      allow update: if false;
+      allow delete: if false;
     }
 
     /**
-     * @description Allows anyone to read wildcards, but no one to create, update, or delete them.
+     * @description Allows anyone to read wildcards but no one to write.
      * @path /wildcards/{wildcardId}
-     * @allow (get, list) Anyone can read wildcards.
-     * @deny (create, update, delete) No one can create, update, or delete wildcards.
-     * @principle Provides open read access to game content while preventing unauthorized modifications.
+     * @allow (get, list) Anyone can read.
+     * @deny (create, update, delete) No one can write.
+     * @principle Allows public read access while preventing unauthorized data modification.
      */
     match /wildcards/{wildcardId} {
-      allow get, list: if true;
-      allow create, update, delete: if false;
+      allow get: if true;
+      allow list: if true;
+      allow create: if false;
+      allow update: if false;
+      allow delete: if false;
     }
 
     /**
-     * @description Allows anyone to read rules, but no one to create, update, or delete them.
+     * @description Allows anyone to read game rules but no one to write.
      * @path /rules/{ruleId}
-     * @allow (get, list) Anyone can read rules.
-     * @deny (create, update, delete) No one can create, update, or delete rules.
-     * @principle Provides open read access to game content while preventing unauthorized modifications.
+     * @allow (get, list) Anyone can read.
+     * @deny (create, update, delete) No one can write.
+     * @principle Allows public read access while preventing unauthorized data modification.
      */
     match /rules/{ruleId} {
-      allow get, list: if true;
-      allow create, update, delete: if false;
+      allow get: if true;
+      allow list: if true;
+      allow create: if false;
+      allow update: if false;
+      allow delete: if false;
     }
   }
 }
