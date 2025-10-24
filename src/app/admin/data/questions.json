@@ -309,7 +309,7 @@
       "Route 1",
       "I-95"
     ],
-    "correctAnswer": "Route 20",
+    "correctAnswer": "US 20",
     "explanation": "US 20 was not planned to be coast-to-coast and initially it stopped at Yellowstone National Park. It was extended to the Pacific in 1940."
   },
   {
@@ -1058,8 +1058,8 @@
     "category": "state_trivia",
     "question": "Which state's name contains the fewest letters?",
     "options": [
-      "Utah",
       "Ohio",
+      "Utah",
       "Iowa",
       "Maine"
     ],
@@ -4475,7 +4475,7 @@
   {
     "id": "345",
     "category": "state_trivia",
-    "question": "This state is home to the largest park in the lower 48, at over 6,000,000 acres (9,375 sq mi).",
+    "question": "This state has the largest park in the lower 48, at over 6,000,000 acres (9,375 sq mi).",
     "options": [
       "New York",
       "California",
@@ -5645,7 +5645,7 @@
   {
     "id": "435",
     "category": "state_trivia",
-    "question": "This state has the highest peak east of the Mississippi, Harney Peak, which was recently renamed Black Elk Peak in honor of the Lakota Sioux medicine man.",
+    "question": "This state has the highest peak east of the Rocky Mountains, Harney Peak, which was recently renamed Black Elk Peak in honor of the Lakota Sioux medicine man.",
     "options": [
       "South Dakota",
       "New York",
@@ -8152,7 +8152,7 @@
     "explanation": "Prior to this time, most births were done at home. Hospital births did not start becoming common until the 1920s."
   },
   {
-    "id": 628,
+    "id": "628",
     "category": "government_trivia",
     "question": "The desk in the Oval Office that has been used by almost all presidents since 1880 is known as the ____ desk.",
     "options": [
@@ -8165,7 +8165,7 @@
     "explanation": "It was a gift from Queen Victoria and made from timbers from the HMS Resolute, a British Navy ship lost in the Arctic in 1854."
   },
   {
-    "id": 629,
+    "id": "629",
     "category": "government_trivia",
     "question": "Which amendment gave black men the right to vote, at least theoretically, in 1870.",
     "options": [
@@ -8178,9 +8178,9 @@
     "explanation": "It wasn't until 1965 with the Voting Rights Act that all deterrents to minority voting were abolished. And thanks to current efforts in many states, attempts are being made to once again disenfranchise minority voters."
   },
   {
-    "id": 630,
+    "id": "630",
     "category": "government_trivia",
-    "question": "Which of these presidents did NOT have a poetry reading at their inauguration?",
+    "question": "Which of the following presidents did NOT have a poetry reading at their inauguration?",
     "options": [
       "George HW Bush",
       "Bill Clinton",
@@ -8191,7 +8191,7 @@
     "explanation": "No Republican president to date has had poetry read at their inauguration."
   },
   {
-    "id": 631,
+    "id": "631",
     "category": "government_trivia",
     "question": "Who was the first black man to serve in the US Congress?",
     "options": [
@@ -8204,7 +8204,7 @@
     "explanation": "Appointed by the Mississippi legislature in 1870, he did not seek re-election in 1871. The second black congressman was also from Mississippi in 1875, Blanche Kelso Bruce."
   },
   {
-    "id": 632,
+    "id": "632",
     "category": "government_trivia",
     "question": "Baby Ruth candy bars, developed in 1920, are allegedly named after this president's daughter, who was named Ruth but nicknamed Baby, and not after Babe Ruth, as commonly believed.",
     "options": [
@@ -8217,7 +8217,7 @@
     "explanation": "There is also a hypothesis that the candy maker wanted to avoid paying royalties to Babe Ruth, and made up the story about naming the bar after the president's daughter."
   },
   {
-    "id": 633,
+    "id": "633",
     "category": "government_trivia",
     "question": "Abraham Lincoln was known for being a lawyer, but he also held numerous other jobs before becoming president. Which of the following jobs did he NOT hold?",
     "options": [
@@ -8230,7 +8230,7 @@
     "explanation": "He was self educated and had to work many jobs as a young man to help support his family after his mother died when he was 9 years old."
   },
   {
-    "id": 634,
+    "id": "634",
     "category": "government_trivia",
     "question": "Andrew Johnson worked as a ____ before being elected president in 1864.",
     "options": [
@@ -8243,7 +8243,7 @@
     "explanation": "His mother apprenticed him to a local tailor at age 10 and he was legally obligated to serve as an apprentice until age 21, but he ran away at age 15."
   },
   {
-    "id": 635,
+    "id": "635",
     "category": "government_trivia",
     "question": "Joe Biden had a job in college working as a(n) _____.",
     "options": [
@@ -8256,7 +8256,7 @@
     "explanation": "While working there, he had a run in with a local gang member named Corn Pop who threatened to cut the future politician with a straight razor."
   },
   {
-    "id": 636,
+    "id": "636",
     "category": "government_trivia",
     "question": "If the Electoral College vote is tied, who/what determines who the President will be?",
     "options": [
@@ -8269,7 +8269,7 @@
     "explanation": "In the House, each state gets one vote and one person needs to get 26 or more votes to win. The Senate determines the Vice President by the same process."
   },
   {
-    "id": 637,
+    "id": "637",
     "category": "government_trivia",
     "question": "The color blue on the US flag represents a number of things. Which of the following is NOT one of those things?",
     "options": [
@@ -8282,7 +8282,7 @@
     "explanation": "Valor is one of the meanings of the color red (the other is hardiness), and white stands for purity and innocence."
   },
   {
-    "id": 638,
+    "id": "638",
     "category": "government_trivia",
     "question": "This university has produced the most US presidents, at 8 as of 2024.",
     "options": [
@@ -8295,7 +8295,7 @@
     "explanation": "The last president who did not have a college degree was Harry S Truman, elected in 1944."
   },
   {
-    "id": 639,
+    "id": "639",
     "category": "government_trivia",
     "question": "This then-intern and her blue dress almost brought down the presidency of Bill Clinton.",
     "options": [
@@ -8308,7 +8308,7 @@
     "explanation": "The affair led to an impeachment of Clinton. Lewinsky is now an activist against cyberbullying."
   },
   {
-    "id": 640,
+    "id": "640",
     "category": "government_trivia",
     "question": "Ruth Bader Ginsburg was appointed to the Supreme Court by this president.",
     "options": [
@@ -8321,7 +8321,7 @@
     "explanation": "Known as \"the Notorious RBG\", she was a liberal icon whose determination to stay on the Court until her death in 2020 led to Trump getting another Supreme Court nominee."
   },
   {
-    "id": 641,
+    "id": "641",
     "category": "government_trivia",
     "question": "The Family and Medical Leave Act, giving up to 12 weeks of leave, was signed into law by this president.",
     "options": [
@@ -8334,7 +8334,7 @@
     "explanation": "To be eligible for FMLA, a person must have worked for their employer for at least 12 months, have worked at least 1,250 hours, and the employer must have at least 50 employees."
   },
   {
-    "id": 642,
+    "id": "642",
     "category": "government_trivia",
     "question": "He was the first sitting president to visit an Olympic games outside the US, when he attended the Summer Olympics in Beijing.",
     "options": [
@@ -8347,7 +8347,7 @@
     "explanation": "Bush was a well-known sports fan, and was hoping to separate the Olympics from politics by attending the Games as a fan."
   },
   {
-    "id": 643,
+    "id": "643",
     "category": "government_trivia",
     "question": "He was the first elected president to be impeached.",
     "options": [
@@ -8360,7 +8360,7 @@
     "explanation": "Johnson was the first to be impeached in 1868, but he became president upon Lincoln's assassination. Nixon resigned before impeachment. Trump was impeached twice so far (as of 2025)."
   },
   {
-    "id": 644,
+    "id": "644",
     "category": "government_trivia",
     "question": "He was the only president to have been a Rhodes Scholar.",
     "options": [
@@ -8373,7 +8373,7 @@
     "explanation": "Rhodes Scholars are selected from American universities based on their scholarly achievements, commitment to others and the common good, and their potential for leadership in their field."
   },
   {
-    "id": 645,
+    "id": "645",
     "category": "government_trivia",
     "question": "Al Gore defeated this Republican by more than 500,000 votes in 2000 but lost the Electoral College vote by 5.",
     "options": [
@@ -8386,7 +8386,7 @@
     "explanation": "It was the first election since 1888 where the candidate who won the popular vote did not win the presidency."
   },
   {
-    "id": 646,
+    "id": "646",
     "category": "government_trivia",
     "question": "This president's approach to gays and lesbians in the military was summarized as \"Don't ask, don't tell.\"",
     "options": [
@@ -8399,7 +8399,7 @@
     "explanation": "Meant to be a compromise that would allow gays to serve without fear of punishment as long as they didn't admit they were gay, it was in effect from 1994-2011. Gays and lesbians can now serve openly."
   },
   {
-    "id": 647,
+    "id": "647",
     "category": "government_trivia",
     "question": "Who was the first president to fly on an aircraft?",
     "options": [
@@ -8412,7 +8412,7 @@
     "explanation": "In 1910, after leaving office, he flew on an early Wright Flyer, flying over a county fair in St Louis."
   },
   {
-    "id": 648,
+    "id": "648",
     "category": "government_trivia",
     "question": "Who was President during the 9/11 attacks?",
     "options": [
@@ -8425,7 +8425,7 @@
     "explanation": "He was reading a story called \"The Pet Goat\" to a class of first graders, and he pronounced almost every word correctly!"
   },
   {
-    "id": 649,
+    "id": "649",
     "category": "government_trivia",
     "question": "His administration oversaw the botched response to Hurricane Katrina.",
     "options": [
@@ -8438,7 +8438,7 @@
     "explanation": "Bush infamously praised his FEMA director Michael Brown saying, \"Brownie, you're doing a heckuva job!\" Katrina killed 1,833 and cost $170 billion."
   },
   {
-    "id": 650,
+    "id": "650",
     "category": "government_trivia",
     "question": "He was the only president to have been a part owner of a MLB team.",
     "options": [
@@ -8451,7 +8451,7 @@
     "explanation": "He purchased part of the Houston Astros with a loan financed in part by his sale of stock in Harken Energy, which created suspicion of insider trading as he was on the board of Harken."
   },
   {
-    "id": 651,
+    "id": "651",
     "category": "government_trivia",
     "question": "He was the only president to have twin daughters.",
     "options": [
@@ -8464,9 +8464,9 @@
     "explanation": "Jenna and Barbra are fraternal twins born in 1981. George Washington had no children, Obama had 2 non-twin girls, and Hoover had 2 boys."
   },
   {
-    "id": 652,
+    "id": "652",
     "category": "government_trivia",
-    "question": "He is the only president to have earned a PhD.",
+    "question": "He is the only president to have an MBA.",
     "options": [
       "George W Bush",
       "Bill Clinton",
@@ -8477,7 +8477,7 @@
     "explanation": "JFK was the only other president to have gone to graduate school for business, but he audited classes and did not get a degree."
   },
   {
-    "id": 653,
+    "id": "653",
     "category": "government_trivia",
     "question": "Who was the first president to have their State of the Union address broadcast live on the internet?",
     "options": [
@@ -8490,7 +8490,7 @@
     "explanation": "His second inauguration in 1997 was the first to be live streamed."
   },
   {
-    "id": 654,
+    "id": "654",
     "category": "government_trivia",
     "question": "George Washington's inauguration as the first president took place in what city?",
     "options": [
@@ -8503,7 +8503,7 @@
     "explanation": "The initial Federal Congress was in New York in 1789, but his inauguration was almost 2 months after he started his term."
   },
   {
-    "id": 655,
+    "id": "655",
     "category": "government_trivia",
     "question": "Until 1937, inaugurations took place in which month?",
     "options": [
@@ -8516,7 +8516,7 @@
     "explanation": "It used to be on March 4 (or the 5th if the 4th was a Sunday) as that was the traditional start of the year for government operations. It was moved to January after the 1933 ratification of the 20th amendment."
   },
   {
-    "id": 656,
+    "id": "656",
     "category": "government_trivia",
     "question": "Who normally officiates at the swearing-in of the new president?",
     "options": [
@@ -8529,7 +8529,7 @@
     "explanation": "The Chief Justice also presides during a presidential impeachment."
   },
   {
-    "id": 657,
+    "id": "657",
     "category": "government_trivia",
     "question": "The first plane with the official designation of Air Force One was flown in by this president, in 1953.",
     "options": [
@@ -8542,7 +8542,7 @@
     "explanation": "The plane was the Columbine II, a 4-prop Lockheed Constellation, and is the only presidential plane to be sold to a private party."
   },
   {
-    "id": 658,
+    "id": "658",
     "category": "government_trivia",
     "question": "How many of the 55 delegates to the Constitutional Convention actually signed the Constitution?",
     "options": [
@@ -8555,7 +8555,7 @@
     "explanation": "Numerous appointed delegates did not actually attend (but still submitted an expense report), and 3 of the attending delegates did not sign because there was no Bill of Rights."
   },
   {
-    "id": 659,
+    "id": "659",
     "category": "government_trivia",
     "question": "The youngest person to sign the Constitution was James Dayton, 26, a New Jersey delegate. Who was the oldest?",
     "options": [
@@ -8568,7 +8568,7 @@
     "explanation": "Franklin was 81 when he signed, and needed help to do so due to his infirmities."
   },
   {
-    "id": 660,
+    "id": "660",
     "category": "government_trivia",
     "question": "Of the states in existence at the time of the Constitutional Convention, this is the only one that did not send any delegates.",
     "options": [
@@ -8581,7 +8581,7 @@
     "explanation": "Rhode Island was concerned that too much power would be put in a central government, and they feared a loss of religious freedom. Plus they wanted to continue printing their own money."
   },
   {
-    "id": 661,
+    "id": "661",
     "category": "government_trivia",
     "question": "This state sent the most delegates at the Constitutional Convention, with 8.",
     "options": [
@@ -8591,10 +8591,10 @@
       "North Carolina"
     ],
     "correctAnswer": "Pennsylvania",
-    "explanation": "The number of delegates was determined by each state. The original purpose of the convention was to fix the Articles of Confederation, but framers quickly moved toward creating an entirely new government."
+    "explanation": "The number of delegates was determined by each state. The original purpose of the convention was to revise the Articles of Confederation, but framers quickly moved toward creating an entirely new government."
   },
   {
-    "id": 662,
+    "id": "662",
     "category": "government_trivia",
     "question": "This state's name was misspelled on the US Constitution.",
     "options": [
@@ -8607,7 +8607,7 @@
     "explanation": "Spelled 'Pensylvania' in the spot where the signers signed, it has also been spelled 'Pennsilvania', 'Pensilvania' and 'Pennsyltucky' over the centuries."
   },
   {
-    "id": 663,
+    "id": "663",
     "category": "government_trivia",
     "question": "Ronald Reagan promoted a space-based laser and particle beam defense system commonly referred to as \"Star Wars\". It's real name was ___.",
     "options": [
@@ -8620,7 +8620,7 @@
     "explanation": "While the system was never successful, some argue that it still helped to bankrupt the Soviet military."
   },
   {
-    "id": 664,
+    "id": "664",
     "category": "government_trivia",
     "question": "The term for when an accused person is deliverd from one jurisdiction to the law enforcement in another jurisdiction is ____.",
     "options": [
@@ -8633,7 +8633,7 @@
     "explanation": "The US has extradition treaties with 116 nations, and the very first one was with Ecuador in 1873."
   },
   {
-    "id": 665,
+    "id": "665",
     "category": "government_trivia",
     "question": "The highest ranking Asian American in US Government was Kamala Harris (who is half Indian American) when she was Vice President. Prior to her, who was the highest ranking Asian American?",
     "options": [
@@ -8646,7 +8646,7 @@
     "explanation": "He represented Hawaii for just shy of 50 years, and died in office in 2012."
   },
   {
-    "id": 666,
+    "id": "666",
     "category": "government_trivia",
     "question": "Who was the first black woman to serve as mayor of Chicago?",
     "options": [
@@ -8659,7 +8659,7 @@
     "explanation": "Elected in 2019, she was the first incumbent Chicago mayor in 40 years to not win re-election in 2023."
   },
   {
-    "id": 667,
+    "id": "667",
     "category": "government_trivia",
     "question": "The street in Washington, DC, most associated with lobbying is ____ Street.",
     "options": [
@@ -8672,7 +8672,7 @@
     "explanation": "Lobbyists serve a vital role in making sure that large corporations and the wealthy are not unjustly discriminated against by all the poor and middle class people."
   },
   {
-    "id": 668,
+    "id": "668",
     "category": "government_trivia",
     "question": "How long does a Supreme Court justice serve?",
     "options": [
@@ -8685,7 +8685,7 @@
     "explanation": "Fortunately, Justices practice at the highest ethical, legal and moral standards, and would never do things like take large gifts from donors, rule on cases where they have a conflict of interest, or show support for insurrectionists."
   },
   {
-    "id": 669,
+    "id": "669",
     "category": "government_trivia",
     "question": "What word/phrase describes the practice of manipulating district boundaries to give an advantage to one political party?",
     "options": [
@@ -8698,7 +8698,7 @@
     "explanation": "Named after Gov. Eldridge Gerry of Massachusetts, the practice has been widely and illegally (as determined by courts) used by Republicans since 2008 with their project REDMAP."
   },
   {
-    "id": 670,
+    "id": "670",
     "category": "government_trivia",
     "question": "The \"No Child Left Behind\" Act was signed into law in 2002 by this President.",
     "options": [
@@ -8711,7 +8711,7 @@
     "explanation": "The NCLB Act made sure that US school children were no longer at the bottom in math and reading scores, and guaranteed that all children would be above average. The law performed so well that it was completely abandoned in 2015, because the US had clearly become the smartest country in the world! USA! USA! USA!"
   },
   {
-    "id": 671,
+    "id": "671",
     "category": "government_trivia",
     "question": "Arising from the Dutch term for \"free booter\" (meaning a plunderer), this is the word used to describe the delaying tactic often used in Congress.",
     "options": [
@@ -8724,7 +8724,7 @@
     "explanation": "The first filibuster occurred at the very first Senate meeting in 1789, when Virginia representatives spoke at length to delay passage of a bill."
   },
   {
-    "id": 672,
+    "id": "672",
     "category": "government_trivia",
     "question": "The Super PAC \"Americans for a Better Tomorrow, Tomorrow\" was founded by this late night comedian in 2012.",
     "options": [
@@ -8737,7 +8737,7 @@
     "explanation": "Colbert also ran for President in 2008 and hosted a Rally to Restore Sanity and/or Fear in 2010 along with Jon Stewart."
   },
   {
-    "id": 673,
+    "id": "673",
     "category": "government_trivia",
     "question": "Who lives at #10 Downing Street?",
     "options": [
@@ -8750,7 +8750,7 @@
     "explanation": "It is actually a combination of 3 houses that has over 100 rooms and a half-acre garden in the back, all right next to St James Park."
   },
   {
-    "id": 674,
+    "id": "674",
     "category": "government_trivia",
     "question": "In June 1987, who did Ronald Reagan demand tear down the Berlin wall?",
     "options": [
@@ -8763,7 +8763,7 @@
     "explanation": "Standing in front of the Brandenburg Gate, Reagan gave the speech that many of his advisors did not want him to give. The wall came down in 1989."
   },
   {
-    "id": 675,
+    "id": "675",
     "category": "government_trivia",
     "question": "This document was the first governing document for the newly formed United States.",
     "options": [
@@ -8776,7 +8776,7 @@
     "explanation": "The Articles went into effect in 1781 and served as the first framework for the new government, and it purposely kept the central government weak. The Constitution replaced the Articles in 1789."
   },
   {
-    "id": 676,
+    "id": "676",
     "category": "government_trivia",
     "question": "Who presided over the Constitutional Convention in Philadelphia in 1787, that wound up writing the US Constitution?",
     "options": [
@@ -8789,7 +8789,7 @@
     "explanation": "Its purpose was to revise the Article of Confederation, not to rewrite a constitution, and it was not even called the Constitutional Convention, but rather, the Philadelphia Convention or the Federal Convention."
   },
   {
-    "id": 677,
+    "id": "677",
     "category": "government_trivia",
     "question": "Which of the following countries does NOT have an extradition agreement with the US?",
     "options": [
@@ -8802,7 +8802,7 @@
     "explanation": "While many US criminals may flee to Mexico, they do, in fact, have an extradition agreement with the US."
   },
   {
-    "id": 678,
+    "id": "678",
     "category": "government_trivia",
     "question": "Martin Sheen's character on The West Wing was named _____, who was a direct descendent of a signer of the Declaration of Independence of the same name.",
     "options": [
@@ -8815,7 +8815,7 @@
     "explanation": "The fictional Jed Bartlet served 2 terms as President. Button Gwinnett was one of 8 foreign-born signers of the Declaration."
   },
   {
-    "id": 679,
+    "id": "679",
     "category": "government_trivia",
     "question": "This president, elected in 1856, never married during his life, but came close a few times.",
     "options": [
@@ -8828,7 +8828,7 @@
     "explanation": "His brief engagement to Anna Coleman was ended by her after a few months, and shortly after she died from \"hysterical convulsions\"."
   },
   {
-    "id": 680,
+    "id": "680",
     "category": "government_trivia",
     "question": "The Vice President's home has been _________ since 1974.",
     "options": [
@@ -8841,7 +8841,7 @@
     "explanation": "The building at Number One Observatory Circle was built in 1893 and previously housed the Chief of Naval Operations. It is believed that a nuclear bunker was built under the building after the 9/11 attacks."
   },
   {
-    "id": 681,
+    "id": "681",
     "category": "government_trivia",
     "question": "This person holds the record (as of 2024) for running for president the most times, at nine.",
     "options": [
@@ -8854,7 +8854,7 @@
     "explanation": "He was the youngest governor MN has ever had, and he ran for president 9 times between 1944 and 1992, as well as running for various other political offices in MN and PA. Larouche ran for president 8 times."
   },
   {
-    "id": 682,
+    "id": "682",
     "category": "government_trivia",
     "question": "He was the first US President to visit all 50 states while in office.",
     "options": [
@@ -8867,7 +8867,7 @@
     "explanation": "Nixon visited all 50 during his unsuccessful bid for president in 1960, and did it again during his first term starting in 1969. George HW Bush, Bill Clinton and Barack Obama are the other 3 who have done this."
   },
   {
-    "id": 683,
+    "id": "683",
     "category": "government_trivia",
     "question": "He is the only president to have served as a ranger for the National Park Service.",
     "options": [
@@ -8880,7 +8880,7 @@
     "explanation": "He worked at Yellowstone in 1936 as a ranger and called it \"the greatest summer of my life\"."
   },
   {
-    "id": 684,
+    "id": "684",
     "category": "government_trivia",
     "question": "He is the only president to have earned a PhD, in history and political science from Johns Hopkins.",
     "options": [
@@ -8893,7 +8893,7 @@
     "explanation": "Wilson was considered to be the father of modern liberalism and was the leading architect of the League of Nations, dedicated to world peace."
   },
   {
-    "id": 685,
+    "id": "685",
     "category": "government_trivia",
     "question": "He was the first president to be arrested while in office.",
     "options": [
@@ -8906,7 +8906,7 @@
     "explanation": "While there is some question as to the details, it appears Grant was arrested in 1872 for speeding on a horse in Washington DC. Trump was arrested for interfering with the election in Georgia, and indicted 3 other times, with 91 total charges as of 2024. Bush was arrested prior to elected office, for DUI. Nixon was never arrested or charged with crimes."
   },
   {
-    "id": 686,
+    "id": "686",
     "category": "government_trivia",
     "question": "Which of these two-term presidents had a VP that did not go on to become president?",
     "options": [
@@ -8919,7 +8919,7 @@
     "explanation": "Clinton's VP was Al Gore, who conceded the 2000 election after the Supreme Court stepped in. George HW Bush only served one term, but it would have been very funny to have a President Quayle."
   },
   {
-    "id": 687,
+    "id": "687",
     "category": "government_trivia",
     "question": "The long-running TV show M*A*S*H was set during the Korean War. Who was the president during this time?",
     "options": [
@@ -8932,7 +8932,7 @@
     "explanation": "The US involvement in the 'police action' lasted from 1950-1953, whereas the show ran from 1972-1983. There is no truce between North and South Korea to this day."
   },
   {
-    "id": 688,
+    "id": "688",
     "category": "government_trivia",
     "question": "The majority of presidents have been inaugurated in this month.",
     "options": [
@@ -8945,7 +8945,7 @@
     "explanation": "Until 1933, inaugurations were held in March, and it was the 20th Amendment that changed the month to January."
   },
   {
-    "id": 689,
+    "id": "689",
     "category": "government_trivia",
     "question": "Which of these presidents DID attend the swearing in of their successor?",
     "options": [
@@ -8958,7 +8958,7 @@
     "explanation": "John Adams was the first to not attend, because his successor, Thomas Jefferson, was previously a good friend, but the men had a falling out. They eventually reconciled, and died within hours of each other on July 4, 1826"
   },
   {
-    "id": 690,
+    "id": "690",
     "category": "government_trivia",
     "question": "David Rice Atchison may have served one day as President in 1849 because the man elected President, ___, refused to be sworn in on a Sunday.",
     "options": [
@@ -8971,7 +8971,7 @@
     "explanation": "Atchison's tombstone reads, \"President of the United States for One Day\". But legal scholars say Taylor was the elected President, he just had not taken the oath of office yet."
   },
   {
-    "id": 691,
+    "id": "691",
     "category": "government_trivia",
     "question": "In the rom-com Dave, this actor plays both the President and the President's body double, and falls in love with Sigourney Weaver.",
     "options": [
@@ -8984,7 +8984,7 @@
     "explanation": "Kline's character was initially hired to stand in for the President while he had an affair with a staffer, but he suffered a major stroke during the 'interlude'."
   },
   {
-    "id": 692,
+    "id": "692",
     "category": "government_trivia",
     "question": "Kevin Spacey played a power-hungry politician who connived his way into the presidency in the Netflix series House of Cards. It was based on a 1990 British series, called ___.",
     "options": [
@@ -8997,7 +8997,7 @@
     "explanation": "Spacey was unceremnously dumped from the show in 2017 after sexual misconduct allegations, and the final season of the show was in 2018 with his wife serving as newly appointed President after his resignation and mysterious death."
   },
   {
-    "id": 693,
+    "id": "693",
     "category": "government_trivia",
     "question": "In the movie Air Force One, the President, played by _____, is a prior Vietnam War Medal of Honor recipient.",
     "options": [
@@ -9010,7 +9010,7 @@
     "explanation": "Ford's character single-handedly kills most of the terrorists, saves his family and dozens of hostages, and pilots Air Force One until seconds before it crashes into the Caspian Sea."
   },
   {
-    "id": 694,
+    "id": "694",
     "category": "government_trivia",
     "question": "This President set the size of the Supreme Court at nine, by signing the Judiciary Act of 1869.",
     "options": [
@@ -9023,7 +9023,7 @@
     "explanation": "Prior to this Act, the size of the Court varied from 5 to 10 members, depending on which party was in power. It is felt by many current legal scholars that the current size of the Court is much too small for the size of the country."
   },
   {
-    "id": 695,
+    "id": "695",
     "category": "government_trivia",
     "question": "Which power is NOT exclusive to the US Senate?",
     "options": [
@@ -9036,7 +9036,7 @@
     "explanation": "Both the House and the Senate must jointly declare war."
   },
   {
-    "id": 696,
+    "id": "696",
     "category": "government_trivia",
     "question": "The last formal declaration of war issued by the US was for this war.",
     "options": [
@@ -9049,7 +9049,7 @@
     "explanation": "All 'wars' since then have been mostly Presidents sending troops into countries for \"limited duration\" (such as 20 years in Afghanistan), with Congress giving its \"authorization\"."
   },
   {
-    "id": 697,
+    "id": "697",
     "category": "government_trivia",
     "question": "Which of the following is a requirement to be a US Senator?",
     "options": [
@@ -9062,7 +9062,7 @@
     "explanation": "They are only required to be US citizens for 9 years, according to Article 1 Section 3 of the Constitution."
   },
   {
-    "id": 698,
+    "id": "698",
     "category": "government_trivia",
     "question": "Who presides over the Senate in the absence of the Vice President?",
     "options": [
@@ -9075,7 +9075,7 @@
     "explanation": "Typically the longest-serving Senator of the majority party, the president pro tem usually concedes their authority to the majority leader."
   },
   {
-    "id": 699,
+    "id": "699",
     "category": "government_trivia",
     "question": "How many standing committees does the US House of Representatives have?",
     "options": [
@@ -9088,7 +9088,7 @@
     "explanation": "Committee chairs are typically chosen by the party in power. In addition to the 20 standing committees, there are numerous subcommittees and select committees."
   },
   {
-    "id": 700,
+    "id": "700",
     "category": "government_trivia",
     "question": "This president was responsible for the greatest percent increase in federal debt, growing by a whopping 2,860% during his presidency.",
     "options": [
@@ -9101,7 +9101,7 @@
     "explanation": "The debt during the Civil War grew from $90 million to $2.68 billion."
   },
   {
-    "id": 701,
+    "id": "701",
     "category": "government_trivia",
     "question": "He was the first president to ride in a car while on official duties, in 1902.",
     "options": [
@@ -9114,7 +9114,7 @@
     "explanation": "McKinley briefly rode in a private vehicle while visiting family, but Teddy rode in an electric car for an official trip to Connecticutt."
   },
   {
-    "id": 702,
+    "id": "702",
     "category": "government_trivia",
     "question": "The first car designed to transport the president with Secret Service was a Lincoln V12 convertible nicknamed the Sunshine Special, given to this president in 1939.",
     "options": [
@@ -9127,7 +9127,7 @@
     "explanation": "After the attacks on Pearl Harbor, the car was further modified to have underarmor, 1 inch thick bulletproof glass, flat-proof tires and a compartment for machine guns."
   },
   {
-    "id": 703,
+    "id": "703",
     "category": "government_trivia",
     "question": "The first White House website was developed during this president's term.",
     "options": [
@@ -9140,7 +9140,7 @@
     "explanation": "George HW Bush's administration was the first to use email, in 1992, and the first White House website was 2 years later."
   },
   {
-    "id": 704,
+    "id": "704",
     "category": "government_trivia",
     "question": "The tallest US President, as of 2024, was ___.",
     "options": [
@@ -9153,7 +9153,7 @@
     "explanation": "At 6'4\", he ranks as tallest, while the tallest world leader ever was a former president of Montenegro, Filip Vujanovich, who was 6'7\"."
   },
   {
-    "id": 705,
+    "id": "705",
     "category": "government_trivia",
     "question": "The shortest US President, as of 2024, was ___.",
     "options": [
@@ -9166,7 +9166,7 @@
     "explanation": "At 5'4\", he was the shortest, and at 122 pounds (55 kg) he was also the lightest."
   },
   {
-    "id": 706,
+    "id": "706",
     "category": "government_trivia",
     "question": "Colonists were protesting this tax when they tossed tea into Boston Harbor in 1773.",
     "options": [
@@ -9179,7 +9179,7 @@
     "explanation": "The Tea Act was the culmination of \"taxation without representation\" and directly led to the start of the Revolutionary War in 1775."
   },
   {
-    "id": 707,
+    "id": "707",
     "category": "government_trivia",
     "question": "Which of the following presidents was NOT left-handed?",
     "options": [
@@ -9192,7 +9192,7 @@
     "explanation": "Of the last 14 presidents, 6 have been left handed. Whereas in the general population, only about 13% of people are lefties."
   },
   {
-    "id": 708,
+    "id": "708",
     "category": "government_trivia",
     "question": "Which of the following presidents was NOT obese (medically classified as a BMI of 30 or greater)?",
     "options": [
@@ -9205,7 +9205,7 @@
     "explanation": "Clinton's BMI peaked at 28.3 during his term. Taft was the fattest, with a BMI of 42.3."
   },
   {
-    "id": 709,
+    "id": "709",
     "category": "government_trivia",
     "question": "Teddy Roosevelt was the first to decree that the building he lived in be called the White House. Which of the following was NOT one of the names used for the building prior to that?",
     "options": [
@@ -9218,7 +9218,7 @@
     "explanation": "The building's exterior is a white-painted Aquia Creek sandstone, which is naturally brown to light gray."
   },
   {
-    "id": 710,
+    "id": "710",
     "category": "government_trivia",
     "question": "The designer of the White House was this Irish architect, personally chosen by George Washington.",
     "options": [
@@ -9231,7 +9231,7 @@
     "explanation": "Hoban previously designed the Columbia, SC capitol building and the Charleston, SC courthouse, which apparently impressed George Washington who chose Hoban."
   },
   {
-    "id": 711,
+    "id": "711",
     "category": "government_trivia",
     "question": "This president oversaw a massive remodel of the White House from 1949-1952, as it was deemed unsafe for occupancy in 1948.",
     "options": [
@@ -9244,7 +9244,7 @@
     "explanation": "The original wood timber framing was damaged beyond repair and replaced with steel. Some of the old timbers were sawn into paneling that still lines some of the rooms in the White House today."
   },
   {
-    "id": 712,
+    "id": "712",
     "category": "government_trivia",
     "question": "This Trump cabinet member in 2025 used the unsecured app Signal to share classified military information among a group including a journalist.",
     "options": [
@@ -9257,7 +9257,7 @@
     "explanation": "But considering his history with alcohol abuse and domestic violence, what's a little national security breach among friends?"
   },
   {
-    "id": 713,
+    "id": "713",
     "category": "government_trivia",
     "question": "During this war, the White House (and large parts of Washington) were burned, resulting in almost all of the White House being rebuilt.",
     "options": [
@@ -9270,7 +9270,7 @@
     "explanation": "The British burned it in 1814 in retaliation for America's attack on York in Canada, and the entire building had to be rebuilt except for the south wall."
   },
   {
-    "id": 714,
+    "id": "714",
     "category": "government_trivia",
     "question": "This president served in Congress for 18 years after his presidency, and died in Congress in 1848 from a massive stroke.",
     "options": [
@@ -9283,7 +9283,7 @@
     "explanation": "He had his first known stroke 2 years prior but recovered. His died in the Speaker's Chambers, where his last words were, \"This is the last of earth, but I am content\"."
   },
   {
-    "id": 715,
+    "id": "715",
     "category": "government_trivia",
     "question": "This president was instrumental in ensuring that football was not abolished, due to the many deaths that were occurring at the time.",
     "options": [
@@ -9296,7 +9296,7 @@
     "explanation": "In its earliest days, football was even more brutal than it is now. Many schools were dropping the sport, and Roosevelt stepped in to urge the game to reform its rules to make the game safer."
   },
   {
-    "id": 716,
+    "id": "716",
     "category": "government_trivia",
     "question": "In 1953, President ___ named Camp David, the presidential retreat in Maryland, after his 5 year old grandson.",
     "options": [
@@ -9309,7 +9309,7 @@
     "explanation": "Built in 1938 by the Works Progress Administration, it was originally called \"Shangri-La\" by Roosevelt."
   },
   {
-    "id": 717,
+    "id": "717",
     "category": "government_trivia",
     "question": "The Civilian Conservation Corp (CCC) was implemented by this president in 1933 as part of his New Deal.",
     "options": [
@@ -9322,7 +9322,7 @@
     "explanation": "Giving conservation jobs to single unemployed men aged 17-28, this part of the New Deal was one of the most successful government programs ever, and ended mainly because of WWII."
   },
   {
-    "id": 718,
+    "id": "718",
     "category": "government_trivia",
     "question": "Which of the following presidents did NOT have a beard?",
     "options": [
@@ -9335,7 +9335,7 @@
     "explanation": "Hayes had the longest beard of the 5 presidents who have had beards in office, which may have been his greatest accomplishment as president."
   },
   {
-    "id": 719,
+    "id": "719",
     "category": "government_trivia",
     "question": "As of 2025, he was the only man to be elected twice as VP and twice as President.",
     "options": [
@@ -9348,7 +9348,7 @@
     "explanation": "He served 2 terms as VP to Dwight Eisenhower, from 1953-1961, and was elected president in 1968 and 1972. He resigned before impeachment for the Watergate scandal in 1974."
   },
   {
-    "id": 720,
+    "id": "720",
     "category": "government_trivia",
     "question": "The largest currency note ever printed in the US was the $100,000 bill, issued in 1934. Which president's face was on the bill?",
     "options": [
@@ -9361,7 +9361,7 @@
     "explanation": "The bill was only used in interbank transfers and was illegal for the public to own. It was issued as part of a plan to stop gold hoarding among the general public."
   },
   {
-    "id": 721,
+    "id": "721",
     "category": "government_trivia",
     "question": "Walt Whitman's famous poem, \"O Captain, My Captain\", was written in 1865 as a tribute to this president.",
     "options": [
@@ -9374,7 +9374,7 @@
     "explanation": "The poem describes a ship's captain dying after piloting the ship through rough and dangerous waters. It was also immortalized in Dead Poet's Society."
   },
   {
-    "id": 722,
+    "id": "722",
     "category": "government_trivia",
     "question": "Lyndon Johnson's wife was known as \"Lady Bird\" from the time she was an infant. What was her actual first name? ",
     "options": [
@@ -9387,7 +9387,7 @@
     "explanation": "She was named after her uncle Claud, but her nanny described her as \"pretty as a ladybird\", and the name stuck."
   },
   {
-    "id": 723,
+    "id": "723",
     "category": "government_trivia",
     "question": "Which president's administration was commonly referred to as Camelot?",
     "options": [
@@ -9400,7 +9400,7 @@
     "explanation": "The public overall has a fond memory of Kennedy, his administration, and the US in general at that time, hence the nickname Camelot."
   },
   {
-    "id": 724,
+    "id": "724",
     "category": "government_trivia",
     "question": "\"Speak softly and carry a big stick\" was a favorite saying of this president.",
     "options": [
@@ -9413,7 +9413,7 @@
     "explanation": "He described his approach to foreign policy as \"the exercise of intelligent forethought and of decisive action sufficiently far in advance of any likely crisis\"."
   },
   {
-    "id": 725,
+    "id": "725",
     "category": "government_trivia",
     "question": "Which of the following presidents did NOT die on July 4th?",
     "options": [
@@ -9426,7 +9426,7 @@
     "explanation": "Coolidge was actually born on July 4, 1872, the only president born on July 4."
   },
   {
-    "id": 726,
+    "id": "726",
     "category": "government_trivia",
     "question": "This was the only person with a physical disability elected to the presidency (as of 2024).",
     "options": [
@@ -9439,7 +9439,7 @@
     "explanation": "He came down with a flaccid paralysis at age 39, which was assumed to be 'infantile paralysis', and he was paralyzed from the waist down. Current medical thinking is that he may have had a condition called Guillain-Barre Syndrome instead, which was not a well known condition at that time."
   },
   {
-    "id": 727,
+    "id": "727",
     "category": "government_trivia",
     "question": "This Washington, DC street is synonymous with lobbying and lobbyists.",
     "options": [
@@ -9452,7 +9452,7 @@
     "explanation": "In recent years, most of the large lobbying and advocacy groups have moved from their K Street addresses to larger sites nearby. Because buying politicians is the true American pasttime."
   },
   {
-    "id": 728,
+    "id": "728",
     "category": "government_trivia",
     "question": "This political party started in the 1850s as a secret society, and was anti-immigrant and other minorities, nativist, and anti-Catholic.",
     "options": [
@@ -9465,7 +9465,7 @@
     "explanation": "Officially known as the American Party, its members were required to answer \"I know nothing\" in response to any questions about the party and its platforms by outsiders."
   },
   {
-    "id": 729,
+    "id": "729",
     "category": "government_trivia",
     "question": "This president established NASA, the National Aeronautics and Space Administration, in 1958.",
     "options": [
@@ -9478,7 +9478,7 @@
     "explanation": "NASA succeeded the National Advisory Committee for Aeronatics which was established in 1915."
   },
   {
-    "id": 730,
+    "id": "730",
     "category": "government_trivia",
     "question": "This Amendment, passed in 1961, gave the District of Columbia the right to participate in presidential elections and granted it 3 electoral votes.",
     "options": [
@@ -9491,7 +9491,7 @@
     "explanation": "The district can never have more electoral votes than the least populated state. The district also does not have full voting rights in Congress."
   },
   {
-    "id": 731,
+    "id": "731",
     "category": "government_trivia",
     "question": "This act, formally known as the Wall Street Reform and Consumer Protection Act, was passed in 2010 in response to the Great Recession, but is more commonly known by this name, reflecting the names of its two sponsors.",
     "options": [
@@ -9504,7 +9504,7 @@
     "explanation": "Among other things, the act created the Consumer Financial Protection Bureau, designed to protect consumers from credit card and mortgage abuses. As of 2025, Trump is dismantling it, because clearly consumers need no protection from companies anymore."
   },
   {
-    "id": 732,
+    "id": "732",
     "category": "government_trivia",
     "question": "The 16th Amendment, passed in 1909 and ratified in 1913, allowed Congress to levy a tax on this.",
     "options": [
@@ -9517,7 +9517,7 @@
     "explanation": "The first federal income tax was actually levied in 1861 to help pay for the Civil War. It was 3% of all income over the equivalent of $21,000."
   },
   {
-    "id": 733,
+    "id": "733",
     "category": "government_trivia",
     "question": "Which of the following is NOT a presidential power?",
     "options": [
@@ -9530,7 +9530,7 @@
     "explanation": "The president can negotiate and sign treaties with the advice and consent of the Senate, which must approve the treaty by a 2/3 majority."
   },
   {
-    "id": 734,
+    "id": "734",
     "category": "government_trivia",
     "question": "The highest peak in North America, Denali, was previously named in honor of this President elected in 1896.",
     "options": [
@@ -9543,7 +9543,7 @@
     "explanation": "At 20,310 ft (6,190m), it also has one of the highest base-to-peak heights of about 18,000 ft (greater than Everest) and has the longest glacier in the Alaska range, at 44 miles long."
   },
   {
-    "id": 735,
+    "id": "735",
     "category": "government_trivia",
     "question": "In what year did a divided US Supreme Court rule that same sex marriage was legal in all 50 states, DC and US territories?",
     "options": [
@@ -9556,7 +9556,7 @@
     "explanation": "The case, Obergefell v Hodges, was a 5-4 decision that argued the plaintiffs' 14th amendment rights were violated."
   },
   {
-    "id": 736,
+    "id": "736",
     "category": "government_trivia",
     "question": "Former VP Al Gore won a Nobel Peace Prize. Only one other VP has done this, Charles Gates Dawes, who was VP under this President from 1925-1929.",
     "options": [
@@ -9569,7 +9569,7 @@
     "explanation": "He won for his post-WWI peace plan. He also co-wrote a song that became a #1 hit in 1951, \"It's All In The Game\"."
   },
   {
-    "id": 737,
+    "id": "737",
     "category": "government_trivia",
     "question": "Who was president during the space shuttle Challenger disaster?",
     "options": [
@@ -9582,7 +9582,7 @@
     "explanation": "The shuttle broke up 73 seconds into its flight in 1986 due to a known faulty O-ring, killing all 7 aboard including classroom teacher Christa McAuliffe."
   },
   {
-    "id": 738,
+    "id": "738",
     "category": "government_trivia",
     "question": "This president issued the official government apology to the survivors of the Tuskegee Study, which purposefully did not treat 400 black men who had syphilis despite an easy treatment being available for decades.",
     "options": [
@@ -9595,7 +9595,7 @@
     "explanation": "The study was meant to last for only 6 months, but instead went from 1932-1972 and resulted in the death of 128 of the men. It is considered the worst breach of medical ethics in the US."
   },
   {
-    "id": 739,
+    "id": "739",
     "category": "government_trivia",
     "question": "The first woman to hold federal office was ___, elected from Montana in 1916 to the US House.",
     "options": [
@@ -9608,7 +9608,7 @@
     "explanation": "A life-long Pacifist elected before women even had the right to vote, she served one term but was elected again in 1940. To this day, she is the only woman elected to Congress from Montana."
   },
   {
-    "id": 740,
+    "id": "740",
     "category": "government_trivia",
     "question": "____ was the first woman to serve in the US Senate, representing Georgia in 1922, and she was also an avowed white supremacist.",
     "options": [
@@ -9621,7 +9621,7 @@
     "explanation": "Serving for just one day, she was also the last slave-holding member of Congress."
   },
   {
-    "id": 741,
+    "id": "741",
     "category": "government_trivia",
     "question": "Robert E Lee surrendered to Ulysses S Grant at this Civil War battle site in Virginia, effectively ending the Civil War in 1865.",
     "options": [
@@ -9634,7 +9634,7 @@
     "explanation": "The final battle for Lee occurred as he was trying to retreat west after a bruising and unsuccessful battle for Richmond, VA."
   },
   {
-    "id": 742,
+    "id": "742",
     "category": "government_trivia",
     "question": "This president signed the Indian Removal Act of 1830, which forcibly moved over 60,000 native Americans west of the Mississippi.",
     "options": [
@@ -9647,7 +9647,7 @@
     "explanation": "The \"Trail of Tears\" was designed to effectively remove all natives east of the Mississippi and south of the Great Lakes, and meant to appease southern states by removing native land claims and expanding white settlement and slavery."
   },
   {
-    "id": 743,
+    "id": "743",
     "category": "government_trivia",
     "question": "The website FiveThirtyEight (538) was created by this person to serve as a place for political analysis, opinion polls and economics.",
     "options": [
@@ -9660,7 +9660,7 @@
     "explanation": "First gaining notoriety during the 2008 presidential election, 538 was known for incorporating both polls and demographics and has generally been more accurate than just polls alone. Silver left in 2023, and its new owner, Disney, closed it in 2025."
   },
   {
-    "id": 744,
+    "id": "744",
     "category": "government_trivia",
     "question": "He is the only Eagle Scout to have become President, even though he was never actually elected to the office.",
     "options": [
@@ -9673,7 +9673,7 @@
     "explanation": "JFK was the first President who was a Scout as a kid, reaching the level of Star Scout. Clinton was a Cub Scout. Trump says he tried to join, but couldn't pass the physical due to bone spurs in his feet."
   },
   {
-    "id": 745,
+    "id": "745",
     "category": "government_trivia",
     "question": "She was the first female Speaker of the House, elected during George W Bush's tenure.",
     "options": [
@@ -9686,7 +9686,7 @@
     "explanation": "A completely non-polarizing figure on both the left and the right, she even has a street named in her honor in her hometown of San Francisco."
   },
   {
-    "id": 746,
+    "id": "746",
     "category": "government_trivia",
     "question": "This radio personality ran for governor of New York in 1994, on a platform of reinstating the death penalty, removing highway tolls, and having road work only done at night.",
     "options": [
@@ -9699,7 +9699,7 @@
     "explanation": "Running under the Libertarian ticket, he promised to resign as soon as he achieved these 3 platform goals. He withdrew from the race as he refused to complete the required financial disclosure form."
   },
   {
-    "id": 747,
+    "id": "747",
     "category": "government_trivia",
     "question": "This person was the first black Secretary of State, serving from 2001 to 2005.",
     "options": [
@@ -9712,7 +9712,7 @@
     "explanation": "Powell served in the Army and rose to become a general, and has earned both the Purple Heart and the Presidential Medal of Freedom (twice)."
   },
   {
-    "id": 748,
+    "id": "748",
     "category": "government_trivia",
     "question": "Who was the first sitting president to use a dedicated official Twitter / X account?",
     "options": [
@@ -9725,7 +9725,7 @@
     "explanation": "Obama launched the @POTUS handle, but only Trump has used it like an angry tween mean girl since day 1."
   },
   {
-    "id": 749,
+    "id": "749",
     "category": "government_trivia",
     "question": "Which president established the most National Parks?",
     "options": [
@@ -9738,7 +9738,7 @@
     "explanation": "He created 5 Parks during his 8 years in office, but Carter added the most acreage, adding over half of the 85 million acres in the system."
   },
   {
-    "id": 750,
+    "id": "750",
     "category": "government_trivia",
     "question": "Which of the following members of the second Trump administration were NOT former Fox News hosts?",
     "options": [
@@ -9751,7 +9751,7 @@
     "explanation": "Despite his frat boy vibes and love of conspiracy theories, he did not work at Fox. Vance was a Yale Law school grad who once described Trump as \"an idiot\" and \"reprehensible\", and compared him to Hitler."
   },
   {
-    "id": 751,
+    "id": "751",
     "category": "government_trivia",
     "question": "This president signed the fewest executive orders during their time in office.",
     "options": [
@@ -9764,410 +9764,7 @@
     "explanation": "FDR signed 3,726 over his 12 years in office, for an average of 307 per year. Trump has signed 427 as of September 2025. Washington signed one. Harrison signed zero."
   },
   {
-    "id": 752,
-    "category": "government_trivia",
-    "question": "Which of the following sitting Vice Presidents shot and killed a man?",
-    "options": [
-      "Aaron Burr",
-      "Dick Cheney",
-      "Richard Nixon",
-      "Dan Quayle"
-    ],
-    "correctAnswer": "Aaron Burr",
-    "explanation": "Burr killed Alexander Hamilton in a duel. Cheney shot a 78 year attorney in the face, neck and chest in a 'hunting accident' but the man lived."
-  },
-   {
-    "id": "753",
-    "category": "government_trivia",
-    "question": "This form of government involves rulers who enrich themselves at the expense of those who are governed, with no regard for the rule of law.",
-    "options": [
-      "Kleptocracy",
-      "Plutocracy",
-      "Oligarchy",
-      "Kakistocracy"
-    ],
-    "correctAnswer": "Kleptocracy",
-    "explanation": "While normally associated with dictatorships, kleptocracies can also be found in democracies where there is cronyism and lack of government oversight and accountability. Fun fact for 2025: A kakistocracy is a government run by the least qualified, most unscrupulous people."
-  },
-   {
-    "id": "754",
-    "category": "government_trivia",
-    "question": "The G7 is a group made of the 7 largest democracies in the world. Which of these countries is NOT part of the G7?",
-    "options": [
-      "Spain",
-      "Italy",
-      "France",
-      "Germany"
-    ],
-    "correctAnswer": "Spain",
-    "explanation": "The group tries to discuss and devise solutions to major global challenges, such as trade, security and climate change."
-  },
-   {
-    "id": "755",
-    "category": "government_trivia",
-    "question": "William H Seward was the Secretary of State for this president, when he helped arrange for the purchase of Alaska from Russia in 1867.",
-    "options": [
-      "Andrew Johnson",
-      "Theodore Roosevelt",
-      "Calvin Coolidge",
-      "Thomas Jefferson"
-    ],
-    "correctAnswer": "Andrew Johnson",
-    "explanation": "At a cost of $0.36 per acre, the purchase was considered the biggest accomplishment of the otherwise dismal Johnson presidency."
-  },
-  {
-    "id": "756",
-    "category": "government_trivia",
-    "question": "Shirley Chisholm was the first black woman to serve in the US Congress, elected in 1968 to represent the Bedford-Stuyvesent district in this state.",
-    "options": [
-      "New York",
-      "Arizona",
-      "Arkansas",
-      "Florida"
-    ],
-    "correctAnswer": "New York",
-    "explanation": "Her campaign slogan was \"unbought and unbossed\", and she served 7 terms. She even unsuccessfully ran for president in 1972."
-  },
-  {
-    "id": "757",
-    "category": "government_trivia",
-    "question": "In 1958, high school junior Robert Heft designed this item for the government, which is still in use today.",
-    "options": [
-      "US Flag",
-      "$2 bill",
-      "Official census format",
-      "Logo for the National Park Service"
-    ],
-    "correctAnswer": "US Flag",
-    "explanation": "He designed the flag for a school project in anticipation of AK and HI becoming states. His teacher initially gave him a B-, but raised it to an A when the flag was chosen by President Eisenhower to be the official flag."
-  },
-  {
-    "id": "758",
-    "category": "government_trivia",
-    "question": "This Constitutional amendment states that any Congressional pay changes do not take effect until the next House election cycle, and took almost 203 years to be passed.",
-    "options": [
-      "27th",
-      "22nd",
-      "3rd",
-      "16th"
-    ],
-    "correctAnswer": "27th",
-    "explanation": "The final amendment was first proposed in September 1789 (at the same time as the original Bill of Rights) but did not get passed until May 1992, and even then only due to the work of a college sophomore named Greg Watson starting in 1982."
-  },
-  {
-    "id": "759",
-    "category": "government_trivia",
-    "question": "This Amendment allows for the removal of a president who is unfit, and also specifies that the VP becomes president if the existing president dies or leaves office.",
-    "options": [
-      "25th",
-      "20th",
-      "13th",
-      "8th"
-    ],
-    "correctAnswer": "25th",
-    "explanation": "It is section 4 of the amendment that addresses the Vice President and Cabinet declaring a president incapacitated or unable to fulfill their duties, if the President him/herself does not voluntarily declare themselves unable to fulfill their duties."
-  },
-  {
-    "id": 760,
-    "category": "government_trivia",
-    "question": "This Amendment allowed 18 year olds to vote in federal elecations, and was the fastest to be passed in just 100 days in 1971.",
-    "options": [
-      "26th",
-      "23rd",
-      "24th",
-      "25th"
-    ],
-    "correctAnswer": "26th",
-    "explanation": "It was developed largely in response to the Vietnam War draft, which drafted men at age 18, while federal voting age was 21 at the time."
-  },
-  {
-    "id": 761,
-    "category": "government_trivia",
-    "question": "Which of the following does NOT fall under the power of the National Archives?",
-    "options": [
-      "Enforcing federal laws",
-      "Preserving the original Declaration of Indepence",
-      "Ensuring public access to government documents",
-      "Transmitting Electoral College votes to Congress"
-    ],
-    "correctAnswer": "Enforcing federal laws",
-    "explanation": "Enforcing federal laws is the function of the Department of Justice. The National Archives and Records Administration was established in 1934 and became an independent agency in 1984."
-  },
-  {
-    "id": 762,
-    "category": "government_trivia",
-    "question": "This act, formally known as the Wall Street Reform and Consumer Protection Act, was passed in 2010 in response to the Great Recession, but is more commonly known by this name, reflecting the names of its two sponsors.",
-    "options": [
-      "Dodd-Frank",
-      "Glass-Steagall",
-      "Bankhead-Jones",
-      "Lee-Lifeson"
-    ],
-    "correctAnswer": "Dodd-Frank",
-    "explanation": "Among other things, the act created the Consumer Financial Protection Bureau, designed to protect consumers from credit card and mortgage abuses. As of 2025, Trump is dismantling it, because clearly consumers need no protection from companies anymore."
-  },
-  {
-    "id": 763,
-    "category": "government_trivia",
-    "question": "The 16th Amendment, passed in 1909 and ratified in 1913, allowed Congress to levy a tax on this.",
-    "options": [
-      "Income",
-      "Alcohol",
-      "Tobacco",
-      "Capital gains"
-    ],
-    "correctAnswer": "Income",
-    "explanation": "The first federal income tax was actually levied in 1861 to help pay for the Civil War. It was 3% of all income over the equivalent of $21,000."
-  },
-  {
-    "id": 764,
-    "category": "government_trivia",
-    "question": "Which one of these is NOT a presidential power?",
-    "options": [
-      "Approving foreign treaties",
-      "Vetoing legislation",
-      "Nominating Supreme Court justices",
-      "Receiving ambassadors"
-    ],
-    "correctAnswer": "Approving foreign treaties",
-    "explanation": "The president can negotiate and sign treaties with the advice and consent of the Senate, which must approve the treaty by a 2/3 majority."
-  },
-  {
-    "id": 765,
-    "category": "government_trivia",
-    "question": "The highest peak in North America, Denali, was previously named in honor of this President elected in 1896.",
-    "options": [
-      "McKinley",
-      "Taft",
-      "Monroe",
-      "Roosevelt"
-    ],
-    "correctAnswer": "McKinley",
-    "explanation": "At 20,310 ft (6,190m), it also has one of the highest base-to-peak heights of about 18,000 ft (greater than Everest) and has the longest glacier in the Alaska range, at 44 miles long."
-  },
-  {
-    "id": 766,
-    "category": "government_trivia",
-    "question": "In what year did a divided US Supreme Court rule that same sex marriage was legal in all 50 states, DC and US territories?",
-    "options": [
-      "2015",
-      "2013",
-      "2009",
-      "2017"
-    ],
-    "correctAnswer": "2015",
-    "explanation": "The case, Obergefell v Hodges, was a 5-4 decision that argued the plaintiffs' 14th amendment rights were violated."
-  },
-  {
-    "id": 767,
-    "category": "government_trivia",
-    "question": "Former VP Al Gore won a Nobel Peace Prize. Only one other VP has done this, Charles Gates Dawes, who was VP under this President from 1925-1929.",
-    "options": [
-      "Calvin Coolidge",
-      "Warren Harding",
-      "Herbert Hoover",
-      "Franklin Roosevelt"
-    ],
-    "correctAnswer": "Calvin Coolidge",
-    "explanation": "He won for his post-WWI peace plan. He also co-wrote a song that became a #1 hit in 1951, \"It's All In The Game\"."
-  },
-  {
-    "id": 768,
-    "category": "government_trivia",
-    "question": "Who was president during the space shuttle Challenger disaster?",
-    "options": [
-      "Ronald Reagan",
-      "George HW Bush",
-      "Jimmy Carter",
-      "Bill Clinton"
-    ],
-    "correctAnswer": "Ronald Reagan",
-    "explanation": "The shuttle broke up 73 seconds into its flight in 1986 due to a known faulty O-ring, killing all 7 aboard including classroom teacher Christa McAuliffe."
-  },
-  {
-    "id": 769,
-    "category": "government_trivia",
-    "question": "This president issued the official government apology to the survivors of the Tuskegee Study, which purposefully did not treat 400 black men who had syphilis despite an easy treatment being available for decades.",
-    "options": [
-      "Bill Clinton",
-      "Donald Trump",
-      "Barack Obama",
-      "George W Bush"
-    ],
-    "correctAnswer": "Bill Clinton",
-    "explanation": "The study was meant to last for only 6 months, but instead went from 1932-1972 and resulted in the death of 128 of the men. It is considered the worst breach of medical ethics in the US."
-  },
-  {
-    "id": 770,
-    "category": "government_trivia",
-    "question": "The first woman to hold federal office was ___, elected from Montana in 1916 to the US House.",
-    "options": [
-      "Jeanette Rankin",
-      "Harriet Tubman",
-      "Elizabeth Cady Stanton",
-      "Rebecca Latimer Felton"
-    ],
-    "correctAnswer": "Jeanette Rankin",
-    "explanation": "A life-long Pacifist elected before women even had the right to vote, she served one term but was elected again in 1940. To this day, she is the only woman elected to Congress from Montana."
-  },
-  {
-    "id": 771,
-    "category": "government_trivia",
-    "question": "____ was the first woman to serve in the US Senate, representing Georgia in 1922, and she was also an avowed white supremacist.",
-    "options": [
-      "Rebecca Latimer Felton",
-      "Rosa Parks",
-      "Shirley Chisholm",
-      "Doris A Davis"
-    ],
-    "correctAnswer": "Rebecca Latimer Felton",
-    "explanation": "Serving for just one day, she was also the last slave-holding member of Congress."
-  },
-  {
-    "id": 772,
-    "category": "government_trivia",
-    "question": "Robert E Lee surrendered to Ulysses S Grant at this Civil War battle site in Virginia, effectively ending the Civil War in 1865.",
-    "options": [
-      "Appomattox Courthouse",
-      "Gettysburg",
-      "Bull Run",
-      "Antietam"
-    ],
-    "correctAnswer": "Appomattox Courthouse",
-    "explanation": "The final battle for Lee occurred as he was trying to retreat west after a bruising and unsuccessful battle for Richmond, VA."
-  },
-  {
-    "id": 773,
-    "category": "government_trivia",
-    "question": "This president signed the Indian Removal Act of 1830, which forcibly moved over 60,000 native Americans west of the Mississippi.",
-    "options": [
-      "Andrew Jackson",
-      "John Quincy Adams",
-      "John Tyler",
-      "Zachary Taylor"
-    ],
-    "correctAnswer": "Andrew Jackson",
-    "explanation": "The \"Trail of Tears\" was designed to effectively remove all natives east of the Mississippi and south of the Great Lakes, and meant to appease southern states by removing native land claims and expanding white settlement and slavery."
-  },
-  {
-    "id": 774,
-    "category": "government_trivia",
-    "question": "The website FiveThirtyEight (538) was created by this person to serve as a place for political analysis, opinion polls and economics.",
-    "options": [
-      "Nate Silver",
-      "Sam Bankman Fried",
-      "Elon Musk",
-      "Al Gore"
-    ],
-    "correctAnswer": "Nate Silver",
-    "explanation": "First gaining notoriety during the 2008 presidential election, 538 was known for incorporating both polls and demographics and has generally been more accurate than just polls alone. Silver left in 2023, and its new owner, Disney, closed it in 2025."
-  },
-  {
-    "id": 775,
-    "category": "government_trivia",
-    "question": "He is the only Eagle Scout to have become President, even though he was never actually elected to the office.",
-    "options": [
-      "Gerald Ford",
-      "John F Kennedy",
-      "Bill Clinton",
-      "Donald Trump"
-    ],
-    "correctAnswer": "Gerald Ford",
-    "explanation": "JFK was the first President who was a Scout as a kid, reaching the level of Star Scout. Clinton was a Cub Scout. Trump says he tried to join, but couldn't pass the physical due to bone spurs in his feet."
-  },
-  {
-    "id": 776,
-    "category": "government_trivia",
-    "question": "She was the first female Speaker of the House, elected during George W Bush's tenure.",
-    "options": [
-      "Nancy Pelosi",
-      "Alexandria Ocasio Cortez",
-      "Tammy Baldwin",
-      "Hillary Clinton"
-    ],
-    "correctAnswer": "Nancy Pelosi",
-    "explanation": "A completely non-polarizing figure on both the left and the right, she even has a street named in her honor in her hometown of San Francisco."
-  },
-  {
-    "id": 777,
-    "category": "government_trivia",
-    "question": "This radio personality ran for governor of New York in 1994, on a platform of reinstating the death penalty, removing highway tolls, and having road work only done at night.",
-    "options": [
-      "Howard Stern",
-      "Rush Limbaugh",
-      "Terry Gross",
-      "Ira Glass"
-    ],
-    "correctAnswer": "Howard Stern",
-    "explanation": "Running under the Libertarian ticket, he promised to resign as soon as he achieved these 3 platform goals. He withdrew from the race as he refused to complete the required financial disclosure form."
-  },
-  {
-    "id": 778,
-    "category": "government_trivia",
-    "question": "This person was the first black Secretary of State, serving from 2001 to 2005.",
-    "options": [
-      "Colin Powell",
-      "Condoleeza Rice",
-      "Barack Obama",
-      "Jesse Jackson"
-    ],
-    "correctAnswer": "Colin Powell",
-    "explanation": "Powell served in the Army and rose to become a general, and has earned both the Purple Heart and the Presidential Medal of Freedom (twice)."
-  },
-  {
-    "id": 779,
-    "category": "government_trivia",
-    "question": "Who was the first sitting president to use a dedicated official Twitter / X account?",
-    "options": [
-      "Barack Obama",
-      "Donald Trump",
-      "Bill Clinton",
-      "George W Bush"
-    ],
-    "correctAnswer": "Barack Obama",
-    "explanation": "Obama launched the @POTUS handle, but only Trump has used it like an angry tween mean girl since day 1."
-  },
-  {
-    "id": 780,
-    "category": "government_trivia",
-    "question": "Which president established the most National Parks?",
-    "options": [
-      "Theodore Roosevelt",
-      "Ronald Reagan",
-      "Jimmy Carter",
-      "Franklin D Roosevelt"
-    ],
-    "correctAnswer": "Theodore Roosevelt",
-    "explanation": "He created 5 Parks during his 8 years in office, but Carter added the most acreage, adding over half of the 85 million acres in the system."
-  },
-  {
-    "id": 781,
-    "category": "government_trivia",
-    "question": "Which of the following members of the second Trump administration were NOT former Fox News hosts?",
-    "options": [
-      "JD Vance",
-      "Dan Bongino",
-      "Pete Hegseth",
-      "Sean Duffy"
-    ],
-    "correctAnswer": "JD Vance",
-    "explanation": "Despite his frat boy vibes and love of conspiracy theories, he did not work at Fox. Vance was a Yale Law school grad who once described Trump as \"an idiot\" and \"reprehensible\", and compared him to Hitler."
-  },
-  {
-    "id": 782,
-    "category": "government_trivia",
-    "question": "This president signed the fewest executive orders during their time in office.",
-    "options": [
-      "William Harrison",
-      "Donald Trump",
-      "Franklin D Roosevelt",
-      "George Washington"
-    ],
-    "correctAnswer": "William Harrison",
-    "explanation": "FDR signed 3,726 over his 12 years in office, for an average of 307 per year. Trump has signed 427 as of September 2025. Washington signed one. Harrison signed zero."
-  },
-  {
-    "id": 783,
+    "id": "752",
     "category": "government_trivia",
     "question": "Which of the following sitting Vice Presidents shot and killed a man?",
     "options": [
@@ -10180,5 +9777,3 @@
     "explanation": "Burr killed Alexander Hamilton in a duel. Cheney shot a 78 year attorney in the face, neck and chest in a 'hunting accident' but the man lived."
   }
 ]
-
-    
