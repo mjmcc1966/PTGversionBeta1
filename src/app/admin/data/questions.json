@@ -2884,7 +2884,7 @@
       "Texas"
     ],
     "correctAnswer": "Louisiana",
-    "explanation": "They are also known as crayfish, crawdads, craydids, mountain lobsters, rock lobsters and mudbugs."
+    "explanation": "They are also known as crayfish, crawdads, craydids, mountain lobsters, and mudbugs."
   },
   {
     "id": "223",
@@ -4070,7 +4070,7 @@
     "explanation": "Only 0.20% of the state is covered in water, followed by Arizona at 0.30%, PA at 2.8% and UT at 3.2%."
   },
   {
-    "id": 314",
+    "id": "314",
     "category": "general_trivia",
     "question": "The oldest continuously occupied public building in the US, The Palace of the Governors, dates from 1610 and is in this state.",
     "options": [
@@ -4487,7 +4487,7 @@
   },
   {
     "id": "346",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The only government-owned general services bank (meaning, it is a bank that the general public can use) in the US is found in this state.",
     "options": [
       "North Dakota",
@@ -4500,7 +4500,7 @@
   },
   {
     "id": "347",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state has a Pharmacy Ownership Law that means pharmacies must be at least 51% owned by pharmacists, meaning the big chains do not operate there.",
     "options": [
       "North Dakota",
@@ -4513,7 +4513,7 @@
   },
   {
     "id": "348",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The world's largest scrap metal sculpture (Geese in Flight) was made by Gary Greff in 2001 in this state, on a road running between Regent and Gladstone south of I-94.",
     "options": [
       "North Dakota",
@@ -4526,7 +4526,7 @@
   },
   {
     "id": "349",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "A city (at one point nicknamed 'the mistake on the lake') in this state was the first to be lit by electric lights, in 1879.",
     "options": [
       "Ohio",
@@ -4539,7 +4539,7 @@
   },
   {
     "id": "350",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The first traffic light in the US was installed in 1914 in this state",
     "options": [
       "Ohio",
@@ -4552,7 +4552,7 @@
   },
   {
     "id": "351",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The first professional, paid baseball team, the Red Stockings, was established in 1869 in this state, and eventually became the Atlanta Braves.",
     "options": [
       "Ohio",
@@ -4565,7 +4565,7 @@
   },
   {
     "id": "352",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The Rock and Roll Hall of Fame can be found in this state",
     "options": [
       "Ohio",
@@ -4578,7 +4578,7 @@
   },
   {
     "id": "353",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The Pro Football Hall of Fame is located in Canton in this state",
     "options": [
       "Ohio",
@@ -4591,7 +4591,7 @@
   },
   {
     "id": "354",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The first man to walk on the moon (in July 1969), Neil Armstrong, hailed from Wapakoneta in this state.",
     "options": [
       "Ohio",
@@ -4604,7 +4604,7 @@
   },
   {
     "id": "355",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state's flag is the only one that is not a rectangular design, and is known as a \"burgee\"",
     "options": [
       "Ohio",
@@ -4617,7 +4617,7 @@
   },
   {
     "id": "356",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The first co-educational college, Oberlin, in the US is in this state",
     "options": [
       "Ohio",
@@ -4630,7 +4630,7 @@
   },
   {
     "id": "357",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "Thomas Edison was born in Milan in this state in 1847, but grew up in Michigan",
     "options": [
       "Ohio",
@@ -4643,7 +4643,7 @@
   },
   {
     "id": "358",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The Olympic gold medalist Jesse Owens was born in Alabama but grew up in this state when his family moved north for better opportunities.",
     "options": [
       "Ohio",
@@ -4656,7 +4656,7 @@
   },
   {
     "id": "359",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state is known as the Buckeye state, named after a common tree in the area",
     "options": [
       "Ohio",
@@ -4669,7 +4669,7 @@
   },
   {
     "id": "360",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "Which state's first permanent settlement was named Marietta, after Marie Antoinette?",
     "options": [
       "Ohio",
@@ -4682,7 +4682,7 @@
   },
   {
     "id": "361",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The world's first parking meter was installed in this state in July 1935.",
     "options": [
       "Oklahoma",
@@ -4695,7 +4695,7 @@
   },
   {
     "id": "362",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The National Cowboy Hall of Fame is located in this state",
     "options": [
       "Oklahoma",
@@ -4708,7 +4708,7 @@
   },
   {
     "id": "363",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The first shopping cart was introduced at the Humpty Dumpty store in this state in 1937",
     "options": [
       "Oklahoma",
@@ -4721,7 +4721,7 @@
   },
   {
     "id": "364",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The only state with an official state meal is _____, and includes chicken fried steak, barbecue pork, sausage and gravy.",
     "options": [
       "Oklahoma",
@@ -4734,7 +4734,7 @@
   },
   {
     "id": "365",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state's state vegetable is actually the watermelon, a fruit, because the spot of state fruit was already claimed by the strawberry.",
     "options": [
       "Oklahoma",
@@ -4747,7 +4747,7 @@
   },
   {
     "id": "366",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state is where Garth Brooks, the artist with the most diamond-status (10 million or more copies) records, grew up.",
     "options": [
       "Oklahoma",
@@ -4760,7 +4760,7 @@
   },
   {
     "id": "367",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This is the only state capital with an oil well underneath it, even though it ran dry in 1986.",
     "options": [
       "Oklahoma",
@@ -4773,7 +4773,7 @@
   },
   {
     "id": "368",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state produces the most hazelnuts of any state in the US",
     "options": [
       "Oregon",
@@ -4786,7 +4786,7 @@
   },
   {
     "id": "369",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The Lewis and Clark expedition officially reached the Pacific Ocean in this state in 1805.",
     "options": [
       "Oregon",
@@ -4799,7 +4799,7 @@
   },
   {
     "id": "370",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This is the only state with a flag that has a different design on each side, with one side having the state mammal.",
     "options": [
       "Oregon",
@@ -4812,7 +4812,7 @@
   },
   {
     "id": "371",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The deepest lake in the US is found in this state",
     "options": [
       "Oregon",
@@ -4825,7 +4825,7 @@
   },
   {
     "id": "372",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The deepest river gorge in the US is found on the border of Idaho and this state.",
     "options": [
       "Oregon",
@@ -4838,7 +4838,7 @@
   },
   {
     "id": "373",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The largest sea cave in the US is found in this state",
     "options": [
       "Oregon",
@@ -4851,7 +4851,7 @@
   },
   {
     "id": "374",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The largest clear-span wooden structure in the world housed blimps during WWII in this state",
     "options": [
       "Oregon",
@@ -4864,7 +4864,7 @@
   },
   {
     "id": "375",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "In which state would you find Powell's City of Books, the largest independent bookstore in the world?",
     "options": [
       "Oregon",
@@ -4877,7 +4877,7 @@
   },
   {
     "id": "376",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "One of the state universities of this state uses orange as one of its colors (the other being black) in honor of the tooth color of its mascot (which is also the state mammal).",
     "options": [
       "Oregon",
@@ -4890,7 +4890,7 @@
   },
   {
     "id": "377",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The nation's first commercial oil well was in this state in 1859",
     "options": [
       "Pennsylvania",
@@ -4903,7 +4903,7 @@
   },
   {
     "id": "378",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state has 2 of the original teams that formed what became Major League Baseball.",
     "options": [
       "Pennsylvania",
@@ -4916,7 +4916,7 @@
   },
   {
     "id": "379",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The chocolate capital of the US is in Hershey, in this state",
     "options": [
       "Pennsylvania",
@@ -4929,1525 +4929,1263 @@
   },
   {
     "id": "380",
-    "category": "general_trivia",
-    "question": "ENIAC, the first programmable electronic computer, was made in this state in 1946",
+    "category": "state_trivia",
+    "question": "This state has what is considered to be the oldest residential street in the country",
     "options": [
       "Pennsylvania",
       "Massachusetts",
-      "New York",
-      "New Jersey"
+      "Georgia",
+      "New York"
     ],
     "correctAnswer": "Pennsylvania",
-    "explanation": "Designed at the University of Pennsylvania to help the Army calculate artillery firing tables, it cost about $6 million in current dollars."
+    "explanation": "Elfreth's Alley in Philadelphia was created in 1702 and still has 32 houses."
   },
   {
     "id": "381",
-    "category": "general_trivia",
-    "question": "The nation's first daily newspaper came out in 1784 in this state",
+    "category": "state_trivia",
+    "question": "The first computer was invented in this state (but not the first to be widely sold, that was the Altair 8800 from New Mexico)",
     "options": [
       "Pennsylvania",
-      "Delaware",
-      "Virginia",
-      "California"
-    ],
-    "correctAnswer": "Pennsylvania",
-    "explanation": "The Pennsylvania Packet and Daily Advertiser started daily publication in September of that year."
-  },
-  {
-    "id": "382",
-    "category": "general_trivia",
-    "question": "Myth holds that he first American flag was made by Betsy Ross in this state in 1776.",
-    "options": [
-      "Pennsylvania",
-      "New York",
-      "New Jersey",
-      "Virginia"
-    ],
-    "correctAnswer": "Pennsylvania",
-    "explanation": "Ross did make flags for the Pennsylvania Navy, but there is no solid evidence that she made any official US flag. The first official 'stars and stripes' was designed by Francis Hopkinson of New Jersey in 1777."
-  },
-  {
-    "id": "383",
-    "category": "general_trivia",
-    "question": "The longest stone arch bridge in the world, the Rockville Bridge, was built in 1902 and is found in this state.",
-    "options": [
-      "Pennsylvania",
-      "New Mexico",
-      "Maryland",
-      "Washington"
-    ],
-    "correctAnswer": "Pennsylvania",
-    "explanation": "It is 3,820 ft (1,160m) long and crosses the Susquehanna River, and is still in use by the Norfolk Southern Railway and Amtrak."
-  },
-  {
-    "id": "384",
-    "category": "general_trivia",
-    "question": "The world's first commercial radio station went on the air in 1920 in this state.",
-    "options": [
-      "Pennsylvania",
-      "Massachusetts",
-      "Rhode Island",
-      "South Carolina"
-    ],
-    "correctAnswer": "Pennsylvania",
-    "explanation": "While other stations were operating at the time, KDKA in Pittsburgh was the first to go on the air as a licensed commercial station."
-  },
-  {
-    "id": "385",
-    "category": "general_trivia",
-    "question": "This state is the only one of the 13 original colonies not bordered by the Atlantic Ocean.",
-    "options": [
-      "Pennsylvania",
-      "Ohio",
-      "Vermont",
-      "West Virginia"
-    ],
-    "correctAnswer": "Pennsylvania",
-    "explanation": "OH, VT and WV, while not bordering the Atlantic, were also not part of the original 13 colonies."
-  },
-  {
-    "id": "386",
-    "category": "general_trivia",
-    "question": "The first public zoo in the US was founded in this state in 1874 and is still operating today.",
-    "options": [
-      "Pennsylvania",
-      "Missouri",
-      "Washington",
-      "New York"
-    ],
-    "correctAnswer": "Pennsylvania",
-    "explanation": "The Philadelphia Zoo was founded in 1859, but did not officially open until 1874 due to the Civil War, but it was still the first of its kind in the US."
-  },
-  {
-    "id": "387",
-    "category": "general_trivia",
-    "question": "The first Little League World Series was held in this state in 1946, and is still held there every August.",
-    "options": [
-      "Pennsylvania",
-      "New Jersey",
-      "Ohio",
-      "New York"
-    ],
-    "correctAnswer": "Pennsylvania",
-    "explanation": "Originally called the National Little League Tournament, it has been held since 1947 in South Williamsport."
-  },
-  {
-    "id": "388",
-    "category": "general_trivia",
-    "question": "The first driver's education class was taught in this state in 1934.",
-    "options": [
-      "Pennsylvania",
-      "New Jersey",
-      "Massachusetts",
-      "Nebraska"
-    ],
-    "correctAnswer": "Pennsylvania",
-    "explanation": "And Pennsylvania drivers have been the best in the country ever since..."
-  },
-  {
-    "id": "389",
-    "category": "general_trivia",
-    "question": "Zippo lighters were developed and made in Bradford in this state",
-    "options": [
-      "Pennsylvania",
-      "California",
       "Texas",
-      "North Carolina"
-    ],
-    "correctAnswer": "Pennsylvania",
-    "explanation": "They have been made there since 1933, and the founder liked the word 'zipper' but thought 'zippo' sounded more modern."
-  },
-  {
-    "id": "390",
-    "category": "general_trivia",
-    "question": "This state forms the northern border of the Mason-Dixon line",
-    "options": [
-      "Pennsylvania",
-      "Virginia",
-      "Maryland",
-      "North Carolina"
-    ],
-    "correctAnswer": "Pennsylvania",
-    "explanation": "Originally made to end a boundary dispute between two British colonies, it came to denote the separation between southern slave states and northern free states."
-  },
-  {
-    "id": "391",
-    "category": "general_trivia",
-    "question": "The weather-predicting groundhog Punxsutawney Phil lives in this state",
-    "options": [
-      "Pennsylvania",
-      "Vermont",
-      "Maine",
-      "Michigan"
-    ],
-    "correctAnswer": "Pennsylvania",
-    "explanation": "Each February 2, if he sees his shadow from his temporary home on Gobbler's Knob, there will be 6 more weeks of people complaining about completely typical winter weather."
-  },
-  {
-    "id": "392",
-    "category": "general_trivia",
-    "question": "The towns of Blue Ball, Bird In Hand, Intercourse and Pleasureville are all found in this state",
-    "options": [
-      "Pennsylvania",
       "New York",
-      "Wisconsin",
-      "Minnesota"
-    ],
-    "correctAnswer": "Pennsylvania",
-    "explanation": "All these towns are found in Pennsylvania Dutch country, which has a high population of apparently sex-obsessed Amish."
-  },
-  {
-    "id": "393",
-    "category": "general_trivia",
-    "question": "A city in this state is known for its cheesesteak sandwiches, often credited to brothers Pat and Harry Olivieri.",
-    "options": [
-      "Pennsylvania",
-      "New York",
-      "New Jersey",
-      "Louisiana"
-    ],
-    "correctAnswer": "Pennsylvania",
-    "explanation": "In Philadelphia, families are divided and friendships are made or broken over whether one prefers their cheesesteak from Pat's or Geno's."
-  },
-  {
-    "id": "394",
-    "category": "general_trivia",
-    "question": "You can visit the Big Mac museum in this state, where the sandwich was invented in 1967.",
-    "options": [
-      "Pennsylvania",
-      "Illinois",
-      "California",
-      "Wisconsin"
-    ],
-    "correctAnswer": "Pennsylvania",
-    "explanation": "It was created by Jim Delligatti in Pittsburgh, who was operating a number of McDonald's franchises, and was originally called The Aristocrat, then the Blue RIbbon Burger."
-  },
-  {
-    "id": "395",
-    "category": "general_trivia",
-    "question": "The oldest surviving roadway bridge in the US, built in 1697, crosses Pennypack Creek in this state.",
-    "options": [
-      "Pennsylvania",
-      "New York",
-      "Connecticut",
-      "Oklahoma"
-    ],
-    "correctAnswer": "Pennsylvania",
-    "explanation": "The Frankford Avenue bridge has 3 spans and is 73 ft (22m) long and was built to connect William Penn's mansion to the city of Philadelphia."
-  },
-  {
-    "id": "396",
-    "category": "general_trivia",
-    "question": "The oldest funicular railway, overlooking the Monongahela River, is found in this state.",
-    "options": [
-      "Pennsylvania",
-      "Ohio",
-      "New Jersey",
       "Colorado"
     ],
     "correctAnswer": "Pennsylvania",
-    "explanation": "A funicular has two counterbalanced rail cars that climb a steep track."
+    "explanation": "The Electronic Numerical Integrator and Computer (ENIAC) was built by Mauchly and Eckert at the University of Pennsylvania and was dedicated in 1946. It filled a 20 by 40 foot room and weighed 30 tons!"
   },
   {
-    "id": "397",
-    "category": "general_trivia",
-    "question": "After 2 trains collided head-on in this state in 1853 due to engineers having the wrong time, the 4 continental time zones were created.",
+    "id": "382",
+    "category": "state_trivia",
+    "question": "This state is home of the annual Punxsutawney Phil Groundhog Day festivities.",
     "options": [
-      "Rhode Island",
+      "Pennsylvania",
+      "Georgia",
+      "Minnesota",
+      "Alabama"
+    ],
+    "correctAnswer": "Pennsylvania",
+    "explanation": "The first official trek to Gobbler's Knob occurred on Feb 2, 1887. Phil has never seen his shadow."
+  },
+  {
+    "id": "383",
+    "category": "state_trivia",
+    "question": "There are three locations in this state where you can stand in one spot and see 3 states at once.",
+    "options": [
+      "Pennsylvania",
+      "Ohio",
       "New Jersey",
+      "Maryland"
+    ],
+    "correctAnswer": "Pennsylvania",
+    "explanation": "They are in the extreme southwest (where you can see Ohio, West Virginia and PA); in the extreme northeast (where you can see New York, New Jersey and PA); and near the 'tri-state marker' (where you can see Delaware, Maryland and PA)."
+  },
+  {
+    "id": "384",
+    "category": "state_trivia",
+    "question": "The Liberty Bell is one of the main tourist attractions in this state",
+    "options": [
+      "Pennsylvania",
+      "Georgia",
       "Utah",
-      "California"
+      "Maryland"
     ],
-    "correctAnswer": "Rhode Island",
-    "explanation": "It still took 30 years for the railroads to adopt the 4 continental time zones, and it wasn't until 1918 that Congress made it national."
+    "correctAnswer": "Pennsylvania",
+    "explanation": "Cast in 1752, it first cracked when it was rung after arriving in the city, and again 73 years later when rung to commemorate George Washington's birthday. Despite multiple theories, the actual reason for the crack is unknown."
   },
   {
-    "id": "398",
-    "category": "general_trivia",
-    "question": "The smallest state by land area is this state",
+    "id": "385",
+    "category": "state_trivia",
+    "question": "The first hospital in the US was founded in this state, and was co-founded by Benjamin Franklin in 1751.",
     "options": [
-      "Rhode Island",
-      "Delaware",
-      "Hawaii",
-      "Texas"
-    ],
-    "correctAnswer": "Rhode Island",
-    "explanation": "Delaware is second smallest in area, Texas is second largest."
-  },
-  {
-    "id": "399",
-    "category": "general_trivia",
-    "question": "The tennis Hall of Fame is located in Newport in this state",
-    "options": [
-      "Rhode Island",
-      "Connecticut",
-      "Massachusetts",
-      "New York"
-    ],
-    "correctAnswer": "Rhode Island",
-    "explanation": "The site in Newport was a former resort for the wealthy and hosted the first US Lawn Tennis championship in 1881."
-  },
-  {
-    "id": "400",
-    "category": "general_trivia",
-    "question": "The oldest tavern in the US is found in this state, operating since 1673.",
-    "options": [
-      "Rhode Island",
       "Pennsylvania",
       "New York",
-      "Delaware"
+      "Massachusetts",
+      "Virginia"
     ],
-    "correctAnswer": "Rhode Island",
-    "explanation": "The White Horse Tavern in Newport has been operating since 1673 in a building that was built in 1652 and originally used as a home."
+    "correctAnswer": "Pennsylvania",
+    "explanation": "The hospital was founded to care for the poor and sick. The first patient was a woman with \"Lunacy\"."
   },
   {
-    "id": "401",
-    "category": "general_trivia",
-    "question": "The Quonset hut was developed at Quonset Point in this state",
+    "id": "386",
+    "category": "state_trivia",
+    "question": "This state is home of the first KDKA commercial radio broadcasting station in the US, in 1920.",
     "options": [
-      "Rhode Island",
-      "Washington",
-      "Florida",
-      "Georgia"
+      "Pennsylvania",
+      "New York",
+      "Georgia",
+      "California"
     ],
-    "correctAnswer": "Rhode Island",
-    "explanation": "In 1941 the US Navy needed a cheap, all-purpose structure, and between 150,000 and 170,000 of the semi-cylindrical structures were built during WWII."
+    "correctAnswer": "Pennsylvania",
+    "explanation": "The station first broadcast from the Westinghouse plant in Pittsburgh. Most stations at that time were amateur."
   },
   {
-    "id": "402",
-    "category": "general_trivia",
-    "question": "This colony (state) was the first to declare independence from Britain, on May 4, 1776, and yet the last to ratify the Constitution.",
+    "id": "387",
+    "category": "state_trivia",
+    "question": "The first World Series was played in 1903 between Boston and a city in this state.",
     "options": [
-      "Rhode Island",
-      "Delaware",
-      "Virginia",
-      "Pennsylvania"
+      "Pennsylvania",
+      "Ohio",
+      "New York",
+      "Indiana"
     ],
-    "correctAnswer": "Rhode Island",
-    "explanation": "The state ratified the Constitution in 1790 under threats of tariffs by the other former colonies."
+    "correctAnswer": "Pennsylvania",
+    "explanation": "Boston beat the Pittsburgh Pirates, 5 games to 3, with Boston winning the last 4 games in a row. Tickets cost 50 cents."
   },
   {
-    "id": "403",
-    "category": "general_trivia",
-    "question": "Which state has an official appetizer, of calamari?",
+    "id": "388",
+    "category": "state_trivia",
+    "question": "The oldest public zoo in the US is located in this state",
+    "options": [
+      "Pennsylvania",
+      "Ohio",
+      "New York",
+      "California"
+    ],
+    "correctAnswer": "Pennsylvania",
+    "explanation": "The Philadelphia Zoo opened on July 1, 1874, and now has 1,300 animals and receives 1.2 million visitors each year."
+  },
+  {
+    "id": "389",
+    "category": "state_trivia",
+    "question": "This state has over 120 covered bridges, second most in the US after Pennsylvania. (Not a trivia question)",
+    "options": [
+      "Vermont",
+      "New Hampshire",
+      "Maine",
+      "Texas"
+    ],
+    "correctAnswer": "Vermont",
+    "explanation": "Ohio has the second most with a little over 120 covered bridges still standing. Pennsy has over 200."
+  },
+  {
+    "id": "390",
+    "category": "state_trivia",
+    "question": "This state's name is derived from a Dutch island that means \"red island\".",
     "options": [
       "Rhode Island",
-      "Louisiana",
+      "New York",
       "Hawaii",
       "Florida"
     ],
     "correctAnswer": "Rhode Island",
-    "explanation": "The state claims to have the largest squid fishing fleet in the nation."
+    "explanation": "Italian explorer Giovanni da Verrazzano thought the island looked similar to one off the coast of Italy. Also, \"Rhode\" is pronounced \"Rod\"."
   },
   {
-    "id": "404",
-    "category": "general_trivia",
-    "question": "The first battle of the Civil War took place at Fort Sumter in this state.",
+    "id": "391",
+    "category": "state_trivia",
+    "question": "This state's official beverage is coffee milk, because a large number of the state's residents are originally from Portugal, which is a major coffee producer.",
+    "options": [
+      "Rhode Island",
+      "New York",
+      "Vermont",
+      "Massachusetts"
+    ],
+    "correctAnswer": "Rhode Island",
+    "explanation": "It is made by mixing coffee extract with milk and it has been sold in the state since the 1930s."
+  },
+  {
+    "id": "392",
+    "category": "state_trivia",
+    "question": "The first circus in the US was held in this state in 1774.",
+    "options": [
+      "Rhode Island",
+      "New York",
+      "Pennsylvania",
+      "New Jersey"
+    ],
+    "correctAnswer": "Rhode Island",
+    "explanation": "It was put on by a Brit named John Bill Ricketts and consisted of a horse riding show, some rope tricks and a clown. It was considered a pretty good show for 1774, when not much happened anyway."
+  },
+  {
+    "id": "393",
+    "category": "state_trivia",
+    "question": "The tennis Hall of Fame can be found in this state.",
+    "options": [
+      "Rhode Island",
+      "New York",
+      "California",
+      "Florida"
+    ],
+    "correctAnswer": "Rhode Island",
+    "explanation": "Founded in 1954, it is where the first US National Championship was held in 1881, where 33 men competed. The first women's event was held in 1887."
+  },
+  {
+    "id": "394",
+    "category": "state_trivia",
+    "question": "The first Quonset huts, light weight pre-fab structures used during WWII, were made in this state.",
+    "options": [
+      "Rhode Island",
+      "Michigan",
+      "New York",
+      "Kansas"
+    ],
+    "correctAnswer": "Rhode Island",
+    "explanation": "They were first used by the US Navy and could be assembled by 4-6 men in 1-2 days, and were a version of the British Nissen huts."
+  },
+  {
+    "id": "395",
+    "category": "state_trivia",
+    "question": "Newport in this state is known as the \"Sailing Capital of the World\".",
+    "options": [
+      "Rhode Island",
+      "Florida",
+      "California",
+      "Hawaii"
+    ],
+    "correctAnswer": "Rhode Island",
+    "explanation": "With the nickname, it should come as no surprise that the state also boasts a large number of beautiful beaches."
+  },
+  {
+    "id": "396",
+    "category": "state_trivia",
+    "question": "This is the smallest US state in area, as well as being the state with the longest official name.",
+    "options": [
+      "Rhode Island",
+      "Delaware",
+      "New Jersey",
+      "Connecticut"
+    ],
+    "correctAnswer": "Rhode Island",
+    "explanation": "The State of Rhode Island and Providence Plantations is its actual name. Just try to get that on a license plate!"
+  },
+  {
+    "id": "397",
+    "category": "state_trivia",
+    "question": "This state has no counties. They were abolished in 1961.",
+    "options": [
+      "Rhode Island",
+      "Connecticut",
+      "Delaware",
+      "Maryland"
+    ],
+    "correctAnswer": "Rhode Island",
+    "explanation": "The state is divided into 39 cities and towns that handle things that are typically run by a county, such as law enforcement, schools, and trash collection."
+  },
+  {
+    "id": "398",
+    "category": "state_trivia",
+    "question": "What state's official nickname is the Palmetto State?",
+    "options": [
+      "South Carolina",
+      "Georgia",
+      "Florida",
+      "Arkansas"
+    ],
+    "correctAnswer": "South Carolina",
+    "explanation": "The palmetto is known for its spongy wood, which absorbed cannonballs during the Revolutionary War. The tree is on the state flag."
+  },
+  {
+    "id": "399",
+    "category": "state_trivia",
+    "question": "This state has the only tea plantation in the US.",
+    "options": [
+      "South Carolina",
+      "Georgia",
+      "North Carolina",
+      "Virginia"
+    ],
+    "correctAnswer": "South Carolina",
+    "explanation": "Charleston Tea Garden is on Wadmalaw Island and has been producing tea since 1987, and you can tour it."
+  },
+  {
+    "id": "400",
+    "category": "state_trivia",
+    "question": "Hootie and the Blowfish met and started as a band at the University of this state in 1986.",
+    "options": [
+      "South Carolina",
+      "North Carolina",
+      "Georgia",
+      "Florida"
+    ],
+    "correctAnswer": "South Carolina",
+    "explanation": "The band's name comes from the nicknames of two college friends. The frontman, Darius Rucker, has had a successful career as a country artist."
+  },
+  {
+    "id": "401",
+    "category": "state_trivia",
+    "question": "This state has a town called Ninety Six, so named for a misunderstanding of how many miles it was to the closest Native American village.",
+    "options": [
+      "South Carolina",
+      "North Carolina",
+      "Georgia",
+      "Florida"
+    ],
+    "correctAnswer": "South Carolina",
+    "explanation": "The town was established in the 1700s as a trading post and was the site of a Revolutionary War battle."
+  },
+  {
+    "id": "402",
+    "category": "state_trivia",
+    "question": "This state is known for its sweet peaches",
+    "options": [
+      "South Carolina",
+      "Georgia",
+      "Delaware",
+      "Hawaii"
+    ],
+    "correctAnswer": "South Carolina",
+    "explanation": "While Georgia is known as the Peach State, S. Carolina actually produces more of them, with about 17,600 tons in 2020. So, haha Georgia, suck it!"
+  },
+  {
+    "id": "403",
+    "category": "state_trivia",
+    "question": "What is the only state to share its name with a city in the Netherlands?",
     "options": [
       "South Carolina",
       "Virginia",
-      "Maryland",
-      "Pennsylvania"
-    ],
-    "correctAnswer": "South Carolina",
-    "explanation": "The fort was originally begun in 1829 as a defense against a foreign navy, but in 1861 it was attacked by the South Carolina militia to start the Civil War."
-  },
-  {
-    "id": "405",
-    "category": "general_trivia",
-    "question": "This was the first state to secede from the Union, on Dec 20, 1860.",
-    "options": [
-      "South Carolina",
-      "Delaware",
-      "Tennessee",
-      "Kansas"
-    ],
-    "correctAnswer": "South Carolina",
-    "explanation": "Over the following 6 months, 10 other states would join South Carolina to form the Confederate States of America."
-  },
-  {
-    "id": "406",
-    "category": "general_trivia",
-    "question": "Morgan Island, aka Monkey Island, found off the coast of this state, is the only island in the US inhabited entirely by about 3,500 rhesus monkeys.",
-    "options": [
-      "South Carolina",
-      "Michigan",
-      "California",
+      "Kansas",
       "North Dakota"
     ],
     "correctAnswer": "South Carolina",
-    "explanation": "The original colony of 1,400 monkeys was moved from a research lab in Puerto Rico in 1979 because they were spreading disease to humans."
+    "explanation": "South Caralina is named after Charles I of England but this is not correct! Should not have been added."
+  },
+  {
+    "id": "404",
+    "category": "state_trivia",
+    "question": "This state has 187 miles of coastline, the 8th fewest of all the coastal states.",
+    "options": [
+      "South Carolina",
+      "Georgia",
+      "Louisiana",
+      "North Carolina"
+    ],
+    "correctAnswer": "South Carolina",
+    "explanation": "Florida has 1350 miles of coastline. Even Ohio has more than South Carolina! And Ohio doesn't even have a coastline!"
+  },
+  {
+    "id": "405",
+    "category": "state_trivia",
+    "question": "The first state capital, in this state, was destroyed in 1865.",
+    "options": [
+      "South Carolina",
+      "Florida",
+      "Utah",
+      "Louisiana"
+    ],
+    "correctAnswer": "South Carolina",
+    "explanation": "Columbia was burned to the ground by General Sherman's troops and little was left standing."
+  },
+  {
+    "id": "406",
+    "category": "state_trivia",
+    "question": "The Crazy Horse Memorial, a sculpture of a Lakota warrior on horseback, is carved out of the Black Hills of this state.",
+    "options": [
+      "South Dakota",
+      "North Dakota",
+      "Montana",
+      "Wyoming"
+    ],
+    "correctAnswer": "South Dakota",
+    "explanation": "When completed, it will be the world's largest mountain carving, at 641 ft (195m) long and 563 ft (172m) high."
   },
   {
     "id": "407",
     "category": "state_trivia",
-    "question": "The longest single-person filibuster in history was given by Strom Thurmond, a segregationist Senator from this state.",
+    "question": "Which state contains Wall Drug, the tourist stop famous for advertising signs along hundreds of miles of Interstate?",
     "options": [
-      "South Carolina",
-      "Utah",
-      "Texas",
-      "Louisiana"
+      "South Dakota",
+      "Montana",
+      "North Dakota",
+      "Wyoming"
     ],
-    "correctAnswer": "South Carolina",
-    "explanation": "He talked for 24 hours and 18 minutes in opposition to the Civil Rights Act in 1957. He represented the state for 48 years until he died at age 100. Cory Booker spoke for over 25 hours in April 2025, but it was not technically a filibuster."
+    "correctAnswer": "South Dakota",
+    "explanation": "A pharmacist named Ted Hustead bought the drugstore in Wall, SD in 1931 and was nearly bankrupt before his wife suggested giving away free ice water to parched travelers. That, and all the signs, turned it into a tourist mecca."
   },
   {
     "id": "408",
     "category": "state_trivia",
-    "question": "This is the only state with a state-run school bus system, begun in the 1950s when its schools were being integrated.",
+    "question": "The Homestake gold mine, the largest and deepest in North America, used to be located in this state.",
     "options": [
-      "South Carolina",
-      "California",
-      "New Mexico",
+      "South Dakota",
+      "Nevada",
+      "Utah",
       "Colorado"
     ],
-    "correctAnswer": "South Carolina",
-    "explanation": "One version of why the state does this is that they were trying to ensure equality among all students."
+    "correctAnswer": "South Dakota",
+    "explanation": "It closed in 2002 after 126 years of operation and now hosts the Sanford Underground Research Facility, where scientists are studying dark matter."
   },
   {
     "id": "409",
     "category": "state_trivia",
-    "question": "The \"Godfather of Soul\", James Brown, was born in this state in 1933 and lived here until he was 5.",
+    "question": "This state's official dessert is kuchen, a cake made with German sweet dough and various fruit fillings.",
     "options": [
-      "South Carolina",
-      "Maine",
-      "Vermont",
-      "New York"
+      "South Dakota",
+      "North Dakota",
+      "Wisconsin",
+      "Minnesota"
     ],
-    "correctAnswer": "South Carolina",
-    "explanation": "Brown was one of the first ten original inductees into the Rock and Roll Hall of Fame in 1986."
+    "correctAnswer": "South Dakota",
+    "explanation": "Due to a large influx of German immigrants in the 1880s, the dessert became very popular in the state."
   },
   {
     "id": "410",
     "category": "state_trivia",
-    "question": "Despite other states' claims, this state is second only to California in peach production.",
+    "question": "What is the only state whose borders are entirely lines of latitude and longitude?",
     "options": [
-      "South Carolina",
-      "Georgia",
-      "New Jersey",
-      "Florida"
+      "Wyoming",
+      "Colorado",
+      "Kansas",
+      "South Dakota"
     ],
-    "correctAnswer": "South Carolina",
-    "explanation": "The 1996 song Peaches by The Presidents of the United States of America topped the charts in Iceland and Canada."
+    "correctAnswer": "Wyoming",
+    "explanation": "You were so close but so far. You fell into the classic trap!"
   },
   {
     "id": "411",
     "category": "state_trivia",
-    "question": "Mount Rushmore is found in this state.",
+    "question": "Which state has the official motto \"Under God the People Rule?\"",
     "options": [
       "South Dakota",
       "North Dakota",
-      "Wyoming",
-      "Idaho"
+      "Texas",
+      "Florida"
     ],
     "correctAnswer": "South Dakota",
-    "explanation": "Carved between 1927 and 1941 by Gutzon Borglum and his team, it was supposed to show the 4 presidents down to their waist, but the project ran out of funding."
+    "explanation": "Despite being a theocracy, it does not have a state religion. At least they are up front about it."
   },
   {
     "id": "412",
     "category": "state_trivia",
-    "question": "The Corn Palace can be found in Mitchell, in this state.",
+    "question": "The first archeological discovery of a tyrannosaurus rex, \"Sue\", was found in this state in 1990",
     "options": [
       "South Dakota",
-      "North Dakota",
-      "Iowa",
-      "Kansas"
+      "Wyoming",
+      "Colorado",
+      "Montana"
     ],
     "correctAnswer": "South Dakota",
-    "explanation": "The interior and exterior are covered with different crop art-based murals every year since 1921."
+    "explanation": "It is the most complete T-Rex fossil ever discovered, at 90% complete, and measures over 40 ft long and 13 ft high."
   },
   {
     "id": "413",
     "category": "state_trivia",
-    "question": "A gold strike in 1875 and the murder of Wild Bill Hickok in 1876 made Deadwood, in this state, world famous.",
+    "question": "The first inhabitants of the South were referred to as Tennesseans, and Tennessee derives its name from the old Yuchi Indian word, 'Tana-see,' meaning ______. (State trivia question)",
     "options": [
-      "South Dakota",
-      "California",
-      "Montana",
-      "North Dakota"
+      "The meeting place",
+      "Land of lakes",
+      "The great land",
+      "Home by the water"
     ],
-    "correctAnswer": "South Dakota",
-    "explanation": "Wild Bill was killed while playing cards, purportedly holding 2 pairs, black aces and eights, called the Dead Man's Hand in his honor."
+    "correctAnswer": "The meeting place",
+    "explanation": "After Tennessee was admitted to the union in 1796, settlers began calling themselves 'Tennesseans'."
   },
   {
     "id": "414",
     "category": "state_trivia",
-    "question": "The geographic center of all 50 states is found north of the town of Belle Fourche, in this state.",
+    "question": "The biggest earthquake in this state's history, the 1811-1812 New Madrid earthquakes, caused the Mississippi River to flow backwards for two days (State trivia question).",
     "options": [
-      "South Dakota",
-      "North Dakota",
-      "Montana",
-      "Nebraska"
+      "Tennessee",
+      "Missouri",
+      "Arkansas",
+      "Mississippi"
     ],
-    "correctAnswer": "South Dakota",
-    "explanation": "Excluding Hawaii and Alaska, the geographic center is in Kansas."
+    "correctAnswer": "Tennessee",
+    "explanation": "The 1811-1812 New Madrid earthquakes were the largest to ever occur on the North American continent east of the Rocky Mountains."
   },
   {
     "id": "415",
     "category": "state_trivia",
-    "question": "This state has the highest peak east of the Rocky Mountains, Harney Peak, which was recently renamed Black Elk Peak in honor of the Lakota Sioux medicine man.",
+    "question": "This state is home to the world's only museum dedicated to pinball (State trivia question)",
     "options": [
-      "South Dakota",
-      "New York",
-      "Vermont",
-      "Michigan"
+      "Tennessee",
+      "Ohio",
+      "Indiana",
+      "Kentucky"
     ],
-    "correctAnswer": "South Dakota",
-    "explanation": "At 7,231 feet (2,204 m) it is geologically separate from the Rocky Mountains."
+    "correctAnswer": "Tennessee",
+    "explanation": "Located in Knoxville, The Pinball Museum features nearly 100 machines, many of which are available to play. All proceeds go to charity."
   },
   {
     "id": "416",
     "category": "state_trivia",
-    "question": "The biggest motorcycle rally in the world occurs each year in Sturgis, in this state.",
+    "question": "One of the most visited and picturesque areas in the country can be found in the eastern section of this state (State trivia question).",
     "options": [
-      "South Dakota",
-      "California",
-      "New York",
-      "Arizona"
+      "Tennessee",
+      "North Carolina",
+      "Georgia",
+      "South Carolina"
     ],
-    "correctAnswer": "South Dakota",
-    "explanation": "Held every August since 1938 (except for during WWII), it is closely trailed by the biggest mobile STD clinic in the world."
+    "correctAnswer": "Tennessee",
+    "explanation": "Home to the Great Smoky Mountains National Park, which spans over 520,000 acres, it draws approximately 14 million visitors every year."
   },
   {
     "id": "417",
     "category": "state_trivia",
-    "question": "Badlands National Park is found in the southwest part of this state.",
+    "question": "Which state's official state song has been changed 9 times due to complaints of racist lyrics? (State trivia question)",
     "options": [
-      "South Dakota",
-      "Virginia",
-      "Kansas",
-      "Utah"
+      "Tennessee",
+      "Georgia",
+      "Alabama",
+      "Mississippi"
     ],
-    "correctAnswer": "South Dakota",
-    "explanation": "Originally the area was promised to the Oglala Sioux in 1868 in a treaty, but by 1889 the US had broken the treaty and taken the land to use for homesteaders."
+    "correctAnswer": "Tennessee",
+    "explanation": "It has had 9 official state songs (currently it has 8), beginning with 'My Homeland Tennessee', adopted in 1925. All other songs were added between 1935 and 1965."
   },
   {
     "id": "418",
     "category": "state_trivia",
-    "question": "The 1982 World's Fair was held in a city in this southeastern state.",
+    "question": "This state has 3 cities that boast their own style of BBQ, each wildly different from each other.(State trivia question)",
     "options": [
       "Tennessee",
-      "Kentucky",
-      "Kansas",
-      "Alabama"
+      "Texas",
+      "North Carolina",
+      "South Carolina"
     ],
     "correctAnswer": "Tennessee",
-    "explanation": "Held in Knoxville, it was officially known as the Knoxville International Energy Exposition and had 11 million visitors."
+    "explanation": "Memphis BBQ uses a dry rub with ribs and pork, West Tennessee BBQ uses a wet mop sauce for pulled pork, and Eastern Tennessee BBQ is known for its tomato-based BBQ with pork shoulder."
   },
   {
     "id": "419",
     "category": "state_trivia",
-    "question": "This state has the most known caves, with over 10,000.",
+    "question": "One of the most well known music cities in the world is found in this state.(State trivia question)",
     "options": [
       "Tennessee",
-      "Kentucky",
-      "California",
-      "Pennsylvania"
+      "Louisiana",
+      "New York",
+      "California"
     ],
     "correctAnswer": "Tennessee",
-    "explanation": "While Missouri calls itself the cave state, Tennessee has almost twice as many known caves."
+    "explanation": "Nashville is nicknamed Music City, and is considered the home of country music. Also home to the Grand Ol Opry!"
   },
   {
     "id": "420",
     "category": "state_trivia",
-    "question": "The second (to the White House) most visited home in the US is Graceland, the former home of Elvis Presley, found in this state.",
+    "question": "This state has a city known as the \"buckle on the Bible Belt\"? (State trivia question)",
     "options": [
       "Tennessee",
-      "Virginia",
-      "Kentucky",
-      "Alabama"
+      "Texas",
+      "Oklahoma",
+      "Kansas"
     ],
     "correctAnswer": "Tennessee",
-    "explanation": "Purchased by Presley in 1957 for $102,500, the estate is now valued at around $55 million."
+    "explanation": "Murfreesboro in is about 30 miles southeast of Nashville, and is the geographic center of the state. It has a large population of devout Christians and a multitude of churches."
   },
   {
     "id": "421",
     "category": "state_trivia",
-    "question": "Martin Luther King Jr was assassinated in this state in 1968.",
+    "question": "This state boasts a road that traverses 10 of the 14 different climate zones in North America. (State trivia question)",
     "options": [
-      "Tennessee",
-      "Georgia",
-      "Mississippi",
-      "Alabama"
+      "Texas",
+      "Alaska",
+      "California",
+      "Florida"
     ],
-    "correctAnswer": "Tennessee",
-    "explanation": "Killed while standing on the balcony of the Lorraine Motel, which has since been converted into the National Civil Rights Museum."
+    "correctAnswer": "Texas",
+    "explanation": "Highway 170, also known as River Road, travels through 50 miles of the Big Bend region. Climate zones are characterized by average temperature ranges, rainfall, and latitude"
   },
   {
     "id": "422",
     "category": "state_trivia",
-    "question": "Maxwell House coffee is named after the Maxwell House Hotel in this state, which was also its first major customer.",
+    "question": "This state's name derives from the Caddo Indian word teyshas, meaning friends, and is also known as the Friendship State (State trivia question)",
     "options": [
-      "Tennessee",
-      "North Carolina",
-      "New Jersey",
-      "Illinois"
+      "Texas",
+      "Florida",
+      "Oregon",
+      "Kentucky"
     ],
-    "correctAnswer": "Tennessee",
-    "explanation": "It was Nashville's largest hotel, with 240 beds, and cost $500,000 to build in 1869."
+    "correctAnswer": "Texas",
+    "explanation": "The state is also known as the Lone Star State, owing to the single star on the state flag."
   },
   {
     "id": "423",
     "category": "state_trivia",
-    "question": "This state has a city, known for its thriving blues scene, that shares a name with an ancient capital of Egypt.",
+    "question": "The Capitol building in this state is actually taller than the US Capitol building in Washington DC. (State trivia question)",
     "options": [
-      "Tennessee",
-      "Kentucky",
-      "Louisiana",
-      "Georgia"
+      "Texas",
+      "Florida",
+      "California",
+      "Louisiana"
     ],
-    "correctAnswer": "Tennessee",
-    "explanation": "The Egyptian Memphis and its ruins were designated a World Heritage site in 1979."
+    "correctAnswer": "Texas",
+    "explanation": "The Texas capitol is 302.64 ft (92.24m) high while the US Capitol is 289 ft (88m) high. And the Washington Monument is still taller, in case you were wondering."
   },
   {
     "id": "424",
     "category": "state_trivia",
-    "question": "This state has 14 official state songs, with the most recent one adopted in 2024.",
+    "question": "This state has 3 official \"state somethings\" that include a chile pepper.",
     "options": [
-      "Tennessee",
-      "California",
       "Texas",
-      "Florida"
+      "New Mexico",
+      "Arizona",
+      "California"
     ],
-    "correctAnswer": "Tennessee",
-    "explanation": "Among the songs is a rap song written by an elderly white woman in honor of the state's bicentennial in 1996."
+    "correctAnswer": "New Mexico",
+    "explanation": "New Mexico, which is also known as the Chile state. This question was added by accident."
   },
   {
     "id": "425",
     "category": "state_trivia",
-    "question": "Six nations have had sovereignty over this state at one time, giving rise to the name of the Six Flags amusement parks, headquartered here.",
+    "question": "This is the only state that was a sovereign nation before joining the US, after winning its independence from Mexico in 1836 (State trivia question)",
     "options": [
       "Texas",
+      "Hawaii",
       "California",
-      "New York",
-      "New Mexico"
+      "Florida"
     ],
     "correctAnswer": "Texas",
-    "explanation": "Spain, France and Mexico were the 3 foreign countries that once ruled Texas, along with the Republic of Texas, the Confederacy, and finally the USA."
+    "explanation": "After winning its independence from Mexico, Texas was known as the Republic of Texas for about 10 years before joining the US."
   },
   {
     "id": "426",
     "category": "state_trivia",
-    "question": "This state produces more wool than any other.",
+    "question": "The original Dallas Cowboys were almost named the Steers, Rangers or Bluebonnets before settling on a name in this state. (State trivia question)",
     "options": [
       "Texas",
-      "Colorado",
-      "Kansas",
-      "California"
+      "Oklahoma",
+      "North Carolina",
+      "Kentucky"
     ],
     "correctAnswer": "Texas",
-    "explanation": "The average production of wool per shorn sheep is 7.2 pounds (3.2 kg)."
+    "explanation": "Since they are named after cowboys, the name seemed like a good fit, but it was the least favorite in a name-the-team contest held by the team."
   },
   {
     "id": "427",
     "category": "state_trivia",
-    "question": "This state's capital is the only one located on the banks of the Colorado River.",
+    "question": "This state, with over 860 native species of birds, has the highest number of native bird species of any other in the US. (State trivia question)",
     "options": [
       "Texas",
-      "Colorado",
-      "Arizona",
-      "Utah"
+      "California",
+      "Hawaii",
+      "Florida"
     ],
     "correctAnswer": "Texas",
-    "explanation": "Originally known as Waterloo, it was named Austin in honor of Stephen Austin, the \"father of Texas\"."
+    "explanation": "Most bird species migrate south to warmer climates in the winter, and for many migratory bird species, Texas is their winter home."
   },
   {
     "id": "428",
     "category": "state_trivia",
-    "question": "Dr Pepper was invented in this state in 1885, one year before Coca Cola.",
+    "question": "While the Alamo is a tourist stop that had a key role in the Texas Revolution, it was built by Spanish Catholics as a what? (State trivia question)",
     "options": [
-      "Texas",
-      "New York",
-      "Georgia",
-      "Louisiana"
+      "Mission",
+      "School",
+      "Factory",
+      "Tomb"
     ],
-    "correctAnswer": "Texas",
-    "explanation": "First served in 1885 in Waco, it actually has its own food category at the FDA, \"pepper soda\"."
+    "correctAnswer": "Mission",
+    "explanation": "The Alamo was one of five missions that Spain established in what is now San Antonio. It started in 1718 and was a fort as well."
   },
   {
     "id": "429",
     "category": "state_trivia",
-    "question": "The first words allegedly spoken from the surface of the moon (\"___, Tranquility Base here. The Eagle has landed\") was the name of a city in this state, where NASA control was located.",
+    "question": "This state is where you can find the Great Salt Lake, the largest saltwater lake in the western hemisphere. (State trivia question)",
     "options": [
-      "Texas",
-      "Florida",
-      "Virginia",
-      "California"
+      "Utah",
+      "Nevada",
+      "California",
+      "Arizona"
     ],
-    "correctAnswer": "Texas",
-    "explanation": "Houston is still the home of the Johnson Space Center. The first words actually spoken were \"contact light\" spoken by Buzz Aldrin upon the lander setting down."
+    "correctAnswer": "Utah",
+    "explanation": "The lake is about 75 miles (121 km) long by 35 miles (56 km) wide, and is too salty to swim in."
   },
   {
     "id": "430",
     "category": "state_trivia",
-    "question": "Which state is the only state to have sold Ben & Jerry's \"Bourbon Pecan Pie\" ice cream?",
+    "question": "KFC Colonel Harland Sanders was never an actual Colonel, but the founder of another well known chain was a US Army colonel in this state.",
     "options": [
-      "Texas",
-      "Louisiana",
-      "Kentucky",
-      "West Virginia"
+      "Utah",
+      "California",
+      "New Jersey",
+      "Florida"
     ],
-    "correctAnswer": "Texas",
-    "explanation": "It was introduced in 2015 after a statewide taste test and is no longer available."
+    "correctAnswer": "Utah",
+    "explanation": "Sanders got his colonel title from the governor of Kentucky. Harland Sanders - was Colonel Sanders not a real colonel?. Dave Thomas was a US Army colonel that was stationed in Utah."
   },
   {
     "id": "431",
     "category": "state_trivia",
-    "question": "This state has the most miles of interstate highway, with 3,232 miles.",
+    "question": "The first McDonald's drive-thru was built in a city in this state, to make it easier for military personnel to grab a bite while in uniform. (State trivia question)",
     "options": [
-      "Texas",
-      "Alaska",
-      "New Jersey",
-      "California"
+      "Utah",
+      "California",
+      "New York",
+      "Oregon"
     ],
-    "correctAnswer": "Texas",
-    "explanation": "It also has the most lane miles, at over 683,000. And you still can't find a clean rest stop among them all."
+    "correctAnswer": "Utah",
+    "explanation": "It was built in Sierra Vista near Fort Huachuca, an Army base."
   },
   {
     "id": "432",
     "category": "state_trivia",
-    "question": "This state was named after the Indian tribe whose name means \"people of the mountains\"",
+    "question": "The annual Sundance Film Festival is held in Park City in this state (State trivia question)",
     "options": [
       "Utah",
-      "Minnesota",
-      "Iowa",
-      "Wyoming"
+      "California",
+      "Colorado",
+      "New Mexico"
     ],
     "correctAnswer": "Utah",
-    "explanation": "The Ute tribe had 12 historic bands that occupied present day Utah and Colorado."
+    "explanation": "Named after the Robert Redford film Sundance Kid, the festival features hundreds of films and is a key stop for independent filmmakers to get their work shown. Some folks even use their real names."
   },
   {
     "id": "433",
     "category": "state_trivia",
-    "question": "The world's first transcontinental railroad was completed in this state in 1869, at Promontory Summit.",
+    "question": "This state has what is considered to be the world's largest copper mine, and is visible from space (State trivia question)",
     "options": [
       "Utah",
-      "Kansas",
-      "Oklahoma",
-      "Colorado"
+      "Arizona",
+      "Montana",
+      "New Mexico"
     ],
     "correctAnswer": "Utah",
-    "explanation": "The Summit was at 4,902 ft (1,494m) and was the spot where the rail line from Sacramento to Omaha was completed."
+    "explanation": "The Bingham Canyon Mine produces copper, gold, silver and molybdenum, and as of 2019, it was 0.75 miles (1.2 km) deep, 2.5 miles (4 km) wide and covered 1,900 acres (770 ha)."
   },
   {
     "id": "434",
     "category": "state_trivia",
-    "question": "Landscape Arch, at 290 ft (88m) the largest natural rock span in the US and 5th largest in the world, can be found in this state in, oddly enough, Arches National Park.",
+    "question": "While its population is only about 3.3 million, this state has 5 national parks (Arches, Bryce Canyon, Canyonlands, Capitol Reef, Zion National Park).",
     "options": [
       "Utah",
-      "California",
       "Colorado",
-      "Idaho"
+      "Arizona",
+      "Washington"
     ],
     "correctAnswer": "Utah",
-    "explanation": "The four largest rock arches are all found in China (and were NOT made with child labor)."
+    "explanation": "California has the most with 9, while Alaska has 8. There are 63 total National Parks in the US."
   },
   {
     "id": "435",
     "category": "state_trivia",
-    "question": "This state's symbol, the beehive, symbolizes industry, which the early pioneers had to rely on.",
+    "question": "This state is one of two that completely ban gambling in any form. The other is Hawaii, but which one is this?(State trivia question)",
     "options": [
       "Utah",
-      "Arkansas",
-      "Iowa",
-      "Nebraska"
+      "Alaska",
+      "New Mexico",
+      "North Dakota"
     ],
     "correctAnswer": "Utah",
-    "explanation": "The wicker hive used in the state logo is actually called a skep, and is illegal in the US to use them because the bees inside are killed when the honey is collected."
+    "explanation": "Hawaii does allow \"social gambling\", which it defines as bets between individuals, not in any business or public area, with no \"house take\"."
   },
   {
     "id": "436",
     "category": "state_trivia",
-    "question": "Miami, FL has the most plastic surgeons per capita, at 3.9/100,000 residents. A city in this state has the second most.",
+    "question": "In the 1890s, which state was the first one to give women the right to vote and later become the 44th state? (State Trivia question)",
     "options": [
+      "Wyoming",
       "Utah",
-      "California",
-      "New York",
-      "Illinois"
+      "Arizona",
+      "Colorado"
     ],
     "correctAnswer": "Utah",
-    "explanation": "With 3.1 plastic surgeons per 100,000 people, the number one procedure done in Utah is a toothy, judgy perma-smile."
+    "explanation": "Wyoming actually was the first state to give women the right to vote, they just were'nt the 44th state to join the United States of America. This question should have been removed!"
   },
   {
     "id": "437",
     "category": "state_trivia",
-    "question": "The world's longest skid occurred in 1964 at the Bonneville Salt Flats in this state.",
+    "question": "This is the least populated state on the East Coast, with just over 640,000 people (State trivia question)",
     "options": [
-      "Utah",
-      "Washington",
-      "Texas",
-      "New Mexico"
+      "Vermont",
+      "New Hampshire",
+      "Maine",
+      "Delaware"
     ],
-    "correctAnswer": "Utah",
-    "explanation": "Craig Breedlove set a land speed record at over 527 mph (850 km/hr), but when his parachute broke, he skidded for over 5 miles until finally coming to rest in a pond."
+    "correctAnswer": "Vermont",
+    "explanation": "The state is only about 40 miles from Canada. Its southern and western borders are only 1 hour from NYC by air."
   },
   {
     "id": "438",
     "category": "state_trivia",
-    "question": "This state donates the most to charity and has the highest volunteerism rate in the nation.",
+    "question": "The first state to outlaw slavery was the Republic of ___, before it joined the union. (State trivia question)",
     "options": [
-      "Utah",
-      "Tennessee",
-      "Florida",
+      "Vermont",
+      "Maine",
+      "Hawaii",
       "Texas"
     ],
-    "correctAnswer": "Utah",
-    "explanation": "Due to their 10% tithe to the Mormon church, they donate more than any other state. And 51% of state residents volunteer. Florida has the lowest volunteer rate, at 21%."
+    "correctAnswer": "Vermont",
+    "explanation": "The republic was independent for 14 years and wrote into its constitution the outlawing of slavery."
   },
   {
     "id": "439",
     "category": "state_trivia",
-    "question": "The smallest state capital, with a population of only around 8,000, is in this state.",
+    "question": "This is the only state that banned billboards (in 1968). (State trivia question)",
     "options": [
       "Vermont",
-      "Delaware",
-      "Rhode Island",
-      "Wyoming"
+      "Hawaii",
+      "Oregon",
+      "New Jersey"
     ],
     "correctAnswer": "Vermont",
-    "explanation": "Montpelier had 7,991 people as of 2023 and its sister city is Zapopan, Mexico, with a population of 1.3 million."
+    "explanation": "While the state has many ugly, run-down general stores that may detract from the scenery, at least they have no billboards to distract you!"
   },
   {
     "id": "440",
     "category": "state_trivia",
-    "question": "The only state capital without a McDonald's is in this state.",
+    "question": "This state has one of the few cities in the US that has never had a McDonald's. (State trivia question)",
     "options": [
       "Vermont",
+      "Hawaii",
       "Alaska",
-      "Rhode Island",
-      "Maine"
+      "California"
     ],
     "correctAnswer": "Vermont",
-    "explanation": "It does not have a Burger King, either, but both can be found in the nearby town of Barre."
+    "explanation": "Since it is illegal to put up a billboard, the population is too small and spread out, and there are very few traffic lights, McDonalds has never bothered building in Stowe."
   },
   {
     "id": "441",
     "category": "state_trivia",
-    "question": "The only US president born on the 4th of July, Calvin Coolidge, was born in Plymouth in this state in 1872.",
+    "question": "More than 1/2 of this state is covered in forest. (State trivia question)",
     "options": [
       "Vermont",
-      "New Jersey",
-      "Pennsylvania",
-      "Massachusetts"
+      "Maine",
+      "Oregon",
+      "Washington"
     ],
     "correctAnswer": "Vermont",
-    "explanation": "He was the VP for President Harding and became president in 1923 when Harding died halfway through his term."
+    "explanation": "While Maine is known as the Pine Tree State, 76% of it is covered with forest, compared to just over 50% for Vermont."
   },
   {
     "id": "442",
     "category": "state_trivia",
-    "question": "It is illegal to throw away scraps of food in this state (it must be composted).",
+    "question": "This state produces the most maple syrup of any in the US. (State trivia question)",
     "options": [
       "Vermont",
-      "Oregon",
+      "New York",
       "Maine",
-      "Kansas"
+      "New Hampshire"
     ],
     "correctAnswer": "Vermont",
-    "explanation": "Food waste in a dump produces methane gas, whereas composted food does not produce this extremely potent greenhouse gas."
+    "explanation": "While it produces 6% of the world's supply of maple syrup, that is small in comparison to Canada, which produces over 80%. "
   },
   {
     "id": "443",
     "category": "state_trivia",
-    "question": "Two states have a smaller population than Washington DC (about 678,000). Wyoming is one, with about 585,000. What's the other?",
+    "question": "This state has almost the same number of dairy cows as people.(State trivia question)",
     "options": [
       "Vermont",
-      "Alaska",
-      "Delaware",
+      "Wisconsin",
+      "New York",
       "Montana"
     ],
     "correctAnswer": "Vermont",
-    "explanation": "Vermont has about 625,000, while Alaska has about 733,000, and Delaware and Montana are each over a million."
+    "explanation": "While the number of cows has decreased slightly over the past few years, the state currently has about 125,000 cows, and 640,000 people."
   },
   {
     "id": "444",
     "category": "state_trivia",
-    "question": "Which state was the first admitted to the union after the original 13 colonies?",
+    "question": "The only US state that shares a land border with only one other state is ____.(State trivia question)",
     "options": [
-      "Vermont",
-      "New Hampshire",
-      "Ohio",
-      "Washington"
+      "Virginia",
+      "Hawaii",
+      "Florida",
+      "Ohio"
     ],
-    "correctAnswer": "Vermont",
-    "explanation": "It was admitted in 1791, just 10 months after Rhode Island."
+    "correctAnswer": "Virginia",
+    "explanation": "You really should pick the right answer."
   },
   {
     "id": "445",
     "category": "state_trivia",
-    "question": "This state has more covered bridges per square mile than any other state.",
+    "question": "While it is known for its peaches, peanuts and pecans, a different crop is actually this state's largest, netting more than $70 million in cash receipts in 2020.",
     "options": [
-      "Vermont",
-      "New York",
-      "Georgia",
-      "Pennsylvania"
+      "Virginia",
+      "North Carolina",
+      "South Carolina",
+      "Oklahoma"
     ],
-    "correctAnswer": "Vermont",
-    "explanation": "With over 100 covered bridges, each one also has at least one retired person trying to paint a watercolor of that bridge at any given time."
+    "correctAnswer": "Virginia",
+    "explanation": "The largest cash crop is actually soybeans (although they don't make for nearly as much of a nice pie)."
   },
   {
     "id": "446",
     "category": "state_trivia",
-    "question": "This state was named for the virgin queen, Elizabeth I.",
+    "question": "Of the 50 US states, this one has the most cities that were originally named after British monarchs, such as Jamestown, Williamsburg and Portsmouth.",
     "options": [
       "Virginia",
-      "Louisiana",
+      "Massachusetts",
       "Georgia",
-      "Massachusetts"
+      "Maryland"
     ],
     "correctAnswer": "Virginia",
-    "explanation": "Serving from 1558-1603, she was the last of the five monarchs of the House of Tudor."
+    "explanation": "There are over 20 with names that can be traced back to the British royals. The name of the state itself comes from Queen Elizabeth I, also known as The Virgin Queen."
   },
   {
     "id": "447",
     "category": "state_trivia",
-    "question": "Thomas Jefferson's estate of Monticello can be found in this state.",
+    "question": "Arlington National Cemetery is located in this state, the largest military cemetery in the US",
     "options": [
       "Virginia",
-      "Maryland",
-      "South Carolina",
-      "North Carolina"
+      "Texas",
+      "California",
+      "New York"
     ],
     "correctAnswer": "Virginia",
-    "explanation": "He began designing it at age 14, and it is the only private residence to be designated a UNESCO World Heritage Site."
+    "explanation": "The cemetery is about 639 acres (259 hectares) and is the final resting place for over 400,000 veterans and their eligible dependents."
   },
   {
     "id": "448",
     "category": "state_trivia",
-    "question": "The first permanent English settlement in America was in Jamestown, established in 1607 in this state.",
+    "question": "The Battle of Yorktown, the last significant battle of the Revolutionary War, was fought in this state.",
     "options": [
       "Virginia",
-      "Rhode Island",
       "Massachusetts",
-      "New York"
+      "New York",
+      "South Carolina"
     ],
     "correctAnswer": "Virginia",
-    "explanation": "The Roanoke colony was established in 1585, but its inhabitants had all mysteriously disappeared by 1590 and are known as the Lost Colony."
+    "explanation": "It occurred in 1781 with the combined forces of America and France defeating the British, prompting the British government to begin negotiating an end to the war."
   },
   {
     "id": "449",
     "category": "state_trivia",
-    "question": "Smithfield ham is a type of ham that can only be made in the town of that name in this state.",
+    "question": "Mount Vernon, the home of George Washington, is located in this state.",
     "options": [
       "Virginia",
-      "Ohio",
-      "New Jersey",
-      "Massachusetts"
+      "Maryland",
+      "Pennsylvania",
+      "West Virginia"
     ],
     "correctAnswer": "Virginia",
-    "explanation": "The first recorded sale of a Smithfield ham was in 1779, and sadly production stopped in 2024 due to reduced demand."
+    "explanation": "He inherited the home in 1761 and greatly expanded the original structure. Washington is buried there in a family crypt."
   },
   {
     "id": "450",
     "category": "state_trivia",
-    "question": "The eastern tiger swallowtail butterfly is the state butterfly of 5 different states, but is the state insect of only this state.",
+    "question": "This state is the birthplace of 8 US presidents.",
     "options": [
       "Virginia",
-      "North Carolina",
-      "Delaware",
+      "Ohio",
+      "New York",
       "Texas"
     ],
     "correctAnswer": "Virginia",
-    "explanation": "The insect lays green eggs, has a wingspan of 3-5.5 inches, and seems to prefer to feed from plants with red or pink flowers."
+    "explanation": "Also known as the Mother of Presidents, those being George Washington, Thomas Jefferson, James Madison, James Monroe, William Henry Harrison, John Tyler, Zachary Taylor, and Woodrow Wilson."
   },
   {
     "id": "451",
     "category": "state_trivia",
-    "question": "Peanuts were first grown in the US in this state in the early 1800s.",
+    "question": "Seattle in this state is where the World's Fair was held in 1962",
     "options": [
-      "Virginia",
-      "Alabama",
-      "Georgia",
+      "Washington",
+      "California",
+      "Oregon",
       "New York"
     ],
-    "correctAnswer": "Virginia",
-    "explanation": "Georgia now grows over 50% of the peanuts in the US."
+    "correctAnswer": "Washington",
+    "explanation": "More than 10 million people visited the fair, whose theme was \"Space Age,\" and which featured the iconic Space Needle."
   },
   {
     "id": "452",
     "category": "state_trivia",
-    "question": "The British surrendered to the Americans to effectively end the Revolutionary War in 1781 at Yorktown, in this state.",
+    "question": "While much of the state is forested, this state grows more apples than any other in the US (although a distant second to China)",
     "options": [
-      "Virginia",
-      "Maryland",
-      "New York",
-      "Massachusetts"
+      "Washington",
+      "Oregon",
+      "Idaho",
+      "California"
     ],
-    "correctAnswer": "Virginia",
-    "explanation": "General George Cornwallis surrendered to George Washington on October 9, 1781, but the war continued for another year."
+    "correctAnswer": "Washington",
+    "explanation": "It produces about 70% of the apples grown in the US, at over 12 billion pounds per year. Also known for its delicious rainier cherries, too."
   },
   {
     "id": "453",
     "category": "state_trivia",
-    "question": "This state was the site of the most battles fought in the Civil War.",
+    "question": "The lowest point in this state, where the Snake River enters the Columbia, is just 48 ft (15m)",
     "options": [
-      "Virginia",
-      "Georgia",
-      "North Carolina",
-      "Pennsylvania"
+      "Washington",
+      "Oregon",
+      "Idaho",
+      "California"
     ],
-    "correctAnswer": "Virginia",
-    "explanation": "There were 384 \"principal battles\" in the Civil War, and 123 of them occurred in Virginia, as well as upwards of 2,000 skirmishes."
+    "correctAnswer": "Washington",
+    "explanation": "This is also the lowest point in the Pacific Northwest region and about 14,400 ft (4,400m) lower than the highest point."
   },
   {
     "id": "454",
     "category": "state_trivia",
-    "question": "The Tomb of the Unknown Soldier is found in this state.",
+    "question": "This is the only state to be named after a US president (although that president had never even been there!)",
     "options": [
-      "Virginia",
-      "Maryland",
-      "Pennsylvania",
-      "New York"
+      "Washington",
+      "Oregon",
+      "Wyoming",
+      "Texas"
     ],
-    "correctAnswer": "Virginia",
-    "explanation": "Dedicated to US service members whose remains have not been identified, it is located in Arlington National Cemetery."
+    "correctAnswer": "Washington",
+    "explanation": "The state was named after George Washington, and he also never visited Washington, DC."
   },
   {
     "id": "455",
     "category": "state_trivia",
-    "question": "George Washington's Mount Vernon estate is located in this state.",
+    "question": "What is the only state that can be spelled using just one row on a QWERTY keyboard? (State trivia question)",
     "options": [
-      "Virginia",
-      "New York",
-      "Pennsylvania",
-      "Massachusetts"
+      "Texas",
+      "Iowa",
+      "Alaska",
+      "Washington"
     ],
-    "correctAnswer": "Virginia",
-    "explanation": "Washington and his wife Martha both died there and are buried there."
+    "correctAnswer": "Texas",
+    "explanation": "It also has the fewest letters. The row is QWERTYUIOP."
   },
   {
     "id": "456",
     "category": "state_trivia",
-    "question": "This state produces more apples than any other.",
+    "question": "The world’s first revolving restaurant, The Eye of the Needle, was built atop the Space Needle for the World Fair in Seattle in this state. (State trivia question)",
     "options": [
       "Washington",
-      "New York",
-      "Kansas",
-      "Iowa"
+      "Oregon",
+      "California",
+      "New York"
     ],
     "correctAnswer": "Washington",
-    "explanation": "Washington produces over half the nation's apple crop, and the US is 2nd (to China) in global apple production."
+    "explanation": "The restaurant slowly rotates 360 degrees so guests can see all of Seattle while they enjoy their meal."
   },
   {
     "id": "457",
     "category": "state_trivia",
-    "question": "This state has the largest building in the world, by volume, at the Boeing plant in Everett.",
+    "question": "This state is only divided into 39 counties.(State trivia question)",
     "options": [
       "Washington",
-      "Florida",
-      "Texas",
-      "Arizona"
+      "Kansas",
+      "New Jersey",
+      "Florida"
     ],
     "correctAnswer": "Washington",
-    "explanation": "At 13.3 million cubic meters (472 million cubic ft), it is twice as large as the next largest building and is where Boeing makes those EZ-off door plugs."
+    "explanation": "Delaware has the fewest with just 3, while Texas has the most with 254."
   },
   {
     "id": "458",
     "category": "state_trivia",
-    "question": "The highest point in this state (at 14,411 ft / 4,392 m) was named after Peter Rainier, a British soldier who fought against America.",
+    "question": "This state is the only one that can claim to be part of two former countries.",
     "options": [
       "Washington",
-      "Colorado",
-      "New Hampshire",
-      "Massachusetts"
+      "California",
+      "Alaska",
+      "Utah"
     ],
     "correctAnswer": "Washington",
-    "explanation": "Also known as Tahoma or Tacoma, it also loaned its name to Rainier beer, the Pabst of the Northwest (Pabst bought Rainier in 1999)."
+    "explanation": "Parts of the state were claimed by both Great Britain and Russia before it became part of the US. Now, can you show me where that is on the map?"
   },
   {
     "id": "459",
     "category": "state_trivia",
-    "question": "The longest floating bridge in the world crosses Lake Washington in this state.",
+    "question": "West Virginia is the only state to secede from which side to join the Union?",
     "options": [
-      "Washington",
-      "Texas",
-      "Alaska",
-      "Maine"
+      "Confederacy",
+      "Union",
+      "England",
+      "Mexico"
     ],
-    "correctAnswer": "Washington",
-    "explanation": "Connecting Seattle to Bellevue, the Evergreen Point Floating Bridge is 7,708 ft (2,349m) long."
+    "correctAnswer": "Confederacy",
+    "explanation": "West Virginia seceded from the confederacy and its request for statehood was granted in 1863, making it the only state to break off from another during the Civil War."
   },
   {
     "id": "460",
     "category": "state_trivia",
-    "question": "This state is the birthplace of both Jimi Hendrix and Bing Crosby.",
+    "question": "The New River, one of the oldest rivers in the world, goes through this state, flowing north against prevailing waterways and actually carving through the Appalachian Mountains.",
     "options": [
-      "Washington",
+      "West Virginia",
       "Ohio",
-      "New York",
-      "Missouri"
+      "Virginia",
+      "Tennessee"
     ],
-    "correctAnswer": "Washington",
-    "explanation": "\"Bob Hope to Die\" was an English indie rock band in the 1980s that released a 12\" mini album called \"The Living Embodiment of Jimi Hendrix\"."
+    "correctAnswer": "West Virginia",
+    "explanation": "The river is estimated to be between 360 million and 300 million years old and is only 320 miles long."
   },
   {
     "id": "461",
     "category": "state_trivia",
-    "question": "The largest power generating dam in the country is in this state.",
+    "question": "This state is the most obese in the US and, by an amazing coincidence, has the most fast food restaurants per capita. (State trivia question)",
     "options": [
-      "Washington",
-      "Nevada",
-      "Colorado",
-      "California"
+      "West Virginia",
+      "Tennessee",
+      "Florida",
+      "Georgia"
     ],
-    "correctAnswer": "Washington",
-    "explanation": "The Grand Coulee on the Columbia River has a capacity of 6,809 megawatts, enough to power 2.1 million homes (or one AI data center) per year."
+    "correctAnswer": "West Virginia",
+    "explanation": "41.2% of the population meets criteria for obesity, according to a 2023 study. The state has 49 fast food places per 100,000 residents."
   },
   {
     "id": "462",
     "category": "state_trivia",
-    "question": "The volcanic peak in this state lost over 1,300 feet when it erupted in 1980.",
+    "question": "The first brick paved street in the world, Summers Street, was laid in this state.",
     "options": [
-      "Washington",
-      "Hawaii",
-      "Alaska",
-      "Oregon"
+      "West Virginia",
+      "Ohio",
+      "New York",
+      "Illinois"
     ],
-    "correctAnswer": "Washington",
-    "explanation": "Mt St Helens had continuous volcanic activity until 2008, and is still the deadliest and costliest volcanic eruption in US history."
+    "correctAnswer": "West Virginia",
+    "explanation": "The street in Charleston was paved with bricks in 1870 and is still in use today."
   },
   {
     "id": "463",
     "category": "state_trivia",
-    "question": "Of these states, which has the most national parks, with 3?",
+    "question": "Black bears can be found in all 55 counties in this state (State trivia question)",
     "options": [
-      "Washington",
-      "Nevada",
-      "South Dakota",
-      "Wyoming"
+      "West Virginia",
+      "Alaska",
+      "New York",
+      "Florida"
     ],
-    "correctAnswer": "Washington",
-    "explanation": "The other states listed each have 2 National Parks."
+    "correctAnswer": "West Virginia",
+    "explanation": "As of 2024, an estimated 12,000 black bears call the state home."
   },
   {
     "id": "464",
     "category": "state_trivia",
-    "question": "Mother's Day was originated in this state, by Anna Jarvis in 1908.",
+    "question": "While some people live in the state, it is best known for its cheese, and is known as America's Dairyland (State trivia question)",
     "options": [
-      "West Virginia",
-      "Pennsylvania",
-      "Texas",
-      "Oklahoma"
+      "Wisconsin",
+      "Vermont",
+      "New York",
+      "California"
     ],
-    "correctAnswer": "West Virginia",
-    "explanation": "The state is the home of the International Mother's Day Shrine, where mothers can go and wonder why their kids don't call more often."
+    "correctAnswer": "Wisconsin",
+    "explanation": "Despite recent issues with farmers and water shortages in the west, the Dairy State has long been known for its dairy production. Go Packers!"
   },
   {
     "id": "465",
     "category": "state_trivia",
-    "question": "This state was originally part of Virginia, but it decided to break away when Virginia voted to secede from the Union.",
+    "question": "The first ice cream sundae originated in this state (State trivia question)",
     "options": [
-      "West Virginia",
-      "Kentucky",
-      "North Carolina",
-      "Maryland"
+      "Wisconsin",
+      "Illinois",
+      "Texas",
+      "Georgia"
     ],
-    "correctAnswer": "West Virginia",
-    "explanation": "It is the only state to form from a Confederate state, and was one of 2 states (the other is Nevada) admitted to the Union during the Civil War."
+    "correctAnswer": "Wisconsin",
+    "explanation": "It was created in 1881 by a druggist in Two Rivers, and was known as an ice cream soda without the soda syrup."
   },
   {
     "id": "466",
     "category": "state_trivia",
-    "question": "In May, 1921, this state was the first to enact a statewide sales tax.",
+    "question": "This state is the birthplace of the Republican Party, which was founded in 1854 (State trivia question)",
     "options": [
-      "West Virginia",
-      "Ohio",
-      "Kentucky",
-      "Idaho"
+      "Wisconsin",
+      "Michigan",
+      "California",
+      "Oregon"
     ],
-    "correctAnswer": "West Virginia",
-    "explanation": "The original tax was well under 1%, and currently stands at 6%."
+    "correctAnswer": "Wisconsin",
+    "explanation": "The party was formed in Ripon to fight against slavery, so today's crop of Republicans would be horrified!"
   },
   {
     "id": "467",
     "category": "state_trivia",
-    "question": "In 1927, the first federal prison for women opened in this state.",
+    "question": "The first kindergarten in the US was established in this state. (State trivia question)",
     "options": [
-      "West Virginia",
-      "New Jersey",
-      "Delaware",
-      "Nevada"
+      "Wisconsin",
+      "Pennsylvania",
+      "Maine",
+      "Vermont"
     ],
-    "correctAnswer": "West Virginia",
-    "explanation": "Prior to this, women were housed separately and alone in all-male prisons."
+    "correctAnswer": "Wisconsin",
+    "explanation": "Margarethe Schurz started it in 1856, and taught only in German in a house in Watertown, and the town still celebrates Kinderfest each September."
   },
   {
     "id": "468",
     "category": "state_trivia",
-    "question": "The New River Gorge bridge, found in this state, is the longest steel arch bridge in the US.",
+    "question": "You can find the House on the Rock, an unusual structure and collection of oddities, in this state. (State trivia question)",
     "options": [
-      "West Virginia",
-      "Idaho",
-      "Colorado",
-      "Washington"
+      "Wisconsin",
+      "Texas",
+      "Oklahoma",
+      "Kansas"
     ],
-    "correctAnswer": "West Virginia",
-    "explanation": "At 1,699 ft (518 m), it was the longest isingle span arch in the world for the first 26 years after it opened. Once a year (the 3rd Saturday of October), it is legal for people to climb on or jump from the bridge."
+    "correctAnswer": "Wisconsin",
+    "explanation": "The structure was built starting in 1945 by Alex Jordan Jr. It is considered an oddity because it actually contains almost nothing related to rock, geology or music."
   },
   {
     "id": "469",
     "category": "state_trivia",
-    "question": "This state's motto is \"montani semper liberi\" (\"Mountaineers are always free\").",
+    "question": "The first practical mechanical typewriter was invented in Milwaukee in this state in 1868 by Christopher Latham Sholes. (State trivia question)",
     "options": [
-      "West Virginia",
-      "Colorado",
-      "Wyoming",
-      "Montana"
+      "Wisconsin",
+      "Michigan",
+      "Illinois",
+      "Indiana"
     ],
-    "correctAnswer": "West Virginia",
-    "explanation": "The state is almost entirely mountainous, and is the 2nd most dependent on federal financial support (getting almost $3 back for each $1 sent to the feds in taxes). Freedom!"
+    "correctAnswer": "Wisconsin",
+    "explanation": "Interestingly, this is the same person who came up with the QWERTY keyboard layout, but he may not have developed that layout to slow down typing, as is commonly believed."
   },
   {
     "id": "470",
     "category": "state_trivia",
-    "question": "The Greenbrier Hotel in this state was the location of Project Greek Island, a huge underground bunker meant to house Congress in case of national emergency.",
+    "question": "This is the only state whose flag has an image of an animal on both sides",
     "options": [
-      "West Virginia",
-      "Delaware",
-      "Florida",
-      "Pennsylvania"
+      "Wyoming",
+      "Ohio",
+      "Oklahoma",
+      "Maryland"
     ],
-    "correctAnswer": "West Virginia",
-    "explanation": "It functioned in this role from 1962 until 1992, when it was exposed by The Washington Post and now serves as a data storage center and can be toured."
+    "correctAnswer": "Wyoming",
+    "explanation": "The state seal contains a woman and a cowboy, and an elk and a bison serve as state animals on the state flag."
   },
   {
-    "id":471",
+    "id": "471",
     "category": "state_trivia",
-    "question": "The American Birkebeiner, the largest cross country ski race in the US, takes place each February in this state.",
+    "question": "This state boasts the first national monument (Devil's Tower) designated in the US, created in 1906 by Theodore Roosevelt",
     "options": [
-      "Wisconsin",
-      "Minnesota",
-      "Colorado",
-      "New York"
+      "Wyoming",
+      "Arizona",
+      "New Mexico",
+      "Colorado"
     ],
-    "correctAnswer": "Wisconsin",
-    "explanation": "Started in 1973, the 55km (34 mi) classic style event goes from Cable to Hayward, WI and attracts 10,000 competitors each year."
+    "correctAnswer": "Wyoming",
+    "explanation": "The monolith is about 867 ft from base to summit. It was also the site where a spaceship landed in the movie Close Encounters of the Third Kind."
   },
   {
     "id": "472",
     "category": "state_trivia",
-    "question": "The nation's first kindergarten was established in Watertown in this state in 1854.",
+    "question": "The westernmost point that a Confederate soldier ever reached was in this state during the Civil War.",
     "options": [
-      "Wisconsin",
-      "New York",
-      "Delaware",
-      "Maine"
+      "Wyoming",
+      "New Mexico",
+      "Arizona",
+      "Colorado"
     ],
-    "correctAnswer": "Wisconsin",
-    "explanation": "Margarethe Schurz opened a German language kindergarten. It operated for 2 years until Schurz's health caused her to close it."
+    "correctAnswer": "Wyoming",
+    "explanation": "That soldier was Capt. John McMurty, who was killed by Native Americans in what is now Story, Wyo."
   },
   {
     "id": "473",
     "category": "state_trivia",
-    "question": "The home of Harley Davidson motorcycles is in this state.",
+    "question": "This state's license plates feature a bucking horse and rider",
     "options": [
-      "Wisconsin",
-      "Indiana",
-      "Georgia",
-      "Texas"
+      "Wyoming",
+      "Montana",
+      "Texas",
+      "Oklahoma"
     ],
-    "correctAnswer": "Wisconsin",
-    "explanation": "Founded in Milwaukee and still headquartered there, their bikes are now also made in York, PA, Brazil, and Thailand. (A plant in India closed in 2020.)"
+    "correctAnswer": "Wyoming",
+    "explanation": "The image began appearing on license plates in 1936, and is now a registered trademark of the state. So you can't even copy a license plate from the state for use on your scooter!"
   },
   {
     "id": "474",
     "category": "state_trivia",
-    "question": "A 1917 state law made this state the first one to use numbers for its highways, instead of names, a practice that was soon adopted nationwide.",
+    "question": "This is the least populated state, and the only one with fewer than 600,000 people.",
     "options": [
-      "Wisconsin",
-      "Arizona",
-      "New Mexico",
-      "Pennsylvania"
+      "Wyoming",
+      "Vermont",
+      "Alaska",
+      "Montana"
     ],
-    "correctAnswer": "Wisconsin",
-    "explanation": "The distinctive shield design for signs was adopted in 1925, and the most current version was adopted in 1971."
+    "correctAnswer": "Wyoming",
+    "explanation": "That's fewer people than live in most large cities. Or that subscribe to some Youtubers."
   },
   {
     "id": "475",
     "category": "state_trivia",
-    "question": "Harry Houdini was born in Budapest but grew up in Appleton in this state, before escaping (see what I did there?) to New York.",
+    "question": "In this state, it is illegal to photograph rabbits from January to April, unless you have a special permit",
     "options": [
-      "Wisconsin",
-      "Pennsylvania",
-      "Washington",
-      "Massachusetts"
+      "Wyoming",
+      "Texas",
+      "Arizona",
+      "Kansas"
     ],
-    "correctAnswer": "Wisconsin",
-    "explanation": "Houdini died at age 52 from complications of a ruptured appendix. Apparently he could not escape peritonitis."
+    "correctAnswer": "Wyoming",
+    "explanation": "It is thought that this law was passed to protect rabbit migration and breeding during those months, but it is actually an urban legend. There is no such law."
   },
   {
     "id": "476",
     "category": "state_trivia",
-    "question": "The toilet paper capital of the world is in this state due to Northern Paper Mill figuring out how to make splinter-free TP in 1935.",
-    "options": [
-      "Wisconsin",
-      "Michigan",
-      "Minnesota",
-      "Maine"
-    ],
-    "correctAnswer": "Wisconsin",
-    "explanation": "The mill led the world in TP production, making Green Bay number 1 with number 2!"
-  },
-  {
-    "id": "477",
-    "category": "state_trivia",
-    "question": "The only community owned pro sports team is located in this state, in the smallest sports market in North America.",
-    "options": [
-      "Wisconsin",
-      "Michigan",
-      "New York",
-      "Pennsylvania"
-    ],
-    "correctAnswer": "Wisconsin",
-    "explanation": "The Green Bay Packers are worth about $7 billion as of 2025, but owning shares does not entitle you to dividends, cannot be traded, has no ticket privileges and has no equity interest."
-  },
-  {
-    "id": "478",
-    "category": "state_trivia",
-    "question": "The Cunninghams, Potsie, Ralph Malph and the Fonz, from Happy Days, were fictitious residents of this state.",
-    "options": [
-      "Wisconsin",
-      "Michigan",
-      "Minnesota",
-      "New York"
-    ],
-    "correctAnswer": "Wisconsin",
-    "explanation": "Happy Days ran for 11 seasons and spun off 7 different shows and was the show that gave rise to the phrase \"jumped the shark\", indicating when a show has lost its way or purpose."
-  },
-  {
-    "id": "479",
-    "category": "state_trivia",
-    "question": "This state's license plate features a man on a bucking bronco.",
+    "question": "This is the only state that is almost a perfect rectangle",
     "options": [
       "Wyoming",
       "Colorado",
-      "Montana",
-      "New Mexico"
-    ],
-    "correctAnswer": "Wyoming",
-    "explanation": "The Bucking Horse and Rider logo is trademarked by the state of WY since 1936 and has been used on plates since 1918."
-  },
-  {
-    "id": "480",
-    "category": "state_trivia",
-    "question": "The first national monument was Devil's Tower, found in this state.",
-    "options": [
-      "Wyoming",
-      "Utah",
-      "Arizona",
-      "California"
-    ],
-    "correctAnswer": "Wyoming",
-    "explanation": "Established in September 1906 by President Theodore Roosevelt, it is an igneous rock butte rising 1,267 ft (386m) and played a key part in Close Encounters of the Third Kind."
-  },
-  {
-    "id": "481",
-    "category": "state_trivia",
-    "question": "JCPenney stores originated in the town of Kemmerer in this state, in 1902.",
-    "options": [
-      "Wyoming",
-      "Massachusetts",
-      "Maine",
-      "Montana"
-    ],
-    "correctAnswer": "Wyoming",
-    "explanation": "James Cash Penney opened the store with 2 partners, but bought them out in 1907 and by 1909 moved his headquarters to Salt Lake City."
-  },
-  {
-    "id": "482",
-    "category": "state_trivia",
-    "question": "This state is known as the Equality State, because it was the first to give full suffrage to women in 1869.",
-    "options": [
-      "Wyoming",
-      "Arkansas",
-      "Utah",
-      "Indiana"
-    ],
-    "correctAnswer": "Wyoming",
-    "explanation": "Louisa Swain was the first woman in the US to cast a ballot in a general election, in 1870. She was 69 years old at the time."
-  },
-  {
-    "id": "483",
-    "category": "state_trivia",
-    "question": "The first female governor, Nellie Ross, became governor of this state (the same state where women first voted) in January 1925 when her husband died while in office.",
-    "options": [
-      "Wyoming",
-      "New Jersey",
-      "New Hampshire",
-      "New York"
-    ],
-    "correctAnswer": "Wyoming",
-    "explanation": "Ross went on to become the first female director of the US Mint in 1933."
-  },
-  {
-    "id": "484",
-    "category": "state_trivia",
-    "question": "The largest source of trona (a source of sodium carbonate, or soda ash) in the world is found near Green River in this state.",
-    "options": [
-      "Wyoming",
-      "California",
-      "Idaho",
-      "Vermont"
-    ],
-    "correctAnswer": "Wyoming",
-    "explanation": "Sodium carbonate is used to make glass, textiles, chemicals, paper and detergent, among other uses."
-  },
-  {
-    "id": "485",
-    "category": "state_trivia",
-    "question": "The first National Park in the US, Yellowstone, is located primarily in this state.",
-    "options": [
-      "Wyoming",
-      "California",
-      "Colorado",
-      "Washington"
-    ],
-    "correctAnswer": "Wyoming",
-    "explanation": "Established in 1872 by Pres. Ulysses S Grant, the park also has portions in Montana and Idaho, and contains the continent's largest supervolcano."
-  },
-  {
-    "id": "486",
-    "category": "state_trivia",
-    "question": "The Breakers was the summer home for the Vanderbilts, and it is located in this state.",
-    "options": [
-      "Rhode Island",
-      "Maine",
-      "California",
-      "New Jersey"
-    ],
-    "correctAnswer": "Rhode Island",
-    "explanation": "The designer Gloria Vanderbilt, the mother of Anderson Cooper, grew up at the Breakers."
-  },
-  {
-    "id": "487",
-    "category": "state_trivia",
-    "question": "Ca' d'Zan, often called the Ringling Mansion, was the home of John Ringling, one of the founding brothers of the Ringling Brothers Circus and it is found in this state.",
-    "options": [
-      "Florida",
-      "Nevada",
       "Kansas",
-      "Georgia"
-    ],
-    "correctAnswer": "Florida",
-    "explanation": "Ca' d'Zan translates as 'House of John' in the Venetian dialect, because Ringling loved his travels to Venice."
-  },
-  {
-    "id": "488",
-    "category": "state_trivia",
-    "question": "Citizen Kane's Xanadu was based on the Hearst Castle, found in this state.",
-    "options": [
-      "California",
-      "New York",
-      "North Carolina",
-      "Montana"
-    ],
-    "correctAnswer": "California",
-    "explanation": "Hearst Castle sits on 250,000 acres and has 60 bathrooms, 41 fireplaces and 58 bedrooms."
-  },
-  {
-    "id": "489",
-    "category": "state_trivia",
-    "question": "The Nemours Estate, built by Alfred duPont, can be found in this state.",
-    "options": [
-      "Delaware",
-      "Connecticut",
-      "South Dakota",
-      "Virginia"
-    ],
-    "correctAnswer": "Delaware",
-    "explanation": "It has the largest French formal garden in the US, at 200 acres, with the largest jardin a la francaise coming in at over 37,000 acres at Versailles."
-  },
-  {
-    "id": "490",
-    "category": "state_trivia",
-    "question": "This state's capital is the most populous in the country.",
-    "options": [
-      "Arizona",
-      "Texas",
-      "California",
-      "Florida"
-    ],
-    "correctAnswer": "Arizona",
-    "explanation": "Phoenix has a population of about 1.7 million (as of 2020), about 70% more than runner-up Austin."
-  },
-  {
-    "id": "491",
-    "category": "state_trivia",
-    "question": "The official bat of Major League Baseball was made in a city in this state (even though the parent company is now Chinese-owned).",
-    "options": [
-      "Kentucky",
-      "Tennessee",
-      "North Carolina",
-      "Pennsylvania"
-    ],
-    "correctAnswer": "Kentucky",
-    "explanation": "Up until 2025, the Louisville Slugger was the official bat of MLB. It has been replaced by Marucci and Victus bats."
-  },
-  {
-    "id": "492",
-    "category": "state_trivia",
-    "question": "The first McDonald's drive through appeared in this state in 1975.",
-    "options": [
-      "Arizona",
-      "Oklahoma",
-      "California",
-      "Texas"
-    ],
-    "correctAnswer": "Arizona",
-    "explanation": "It was installed because it was very close to a military base, and at the time military personnel could not go into public establishments in uniform."
-  },
-  {
-    "id": "493",
-    "category": "state_trivia",
-    "question": "This state has the longest coastline relative to the state's overall square mileage.",
-    "options": [
-      "Maryland",
-      "Alaska",
-      "Florida",
-      "Michigan"
-    ],
-    "correctAnswer": "Maryland",
-    "explanation": "With 1,400 ft of coastline for every square mile of state, it is about 6 times the ratio of Alaska's coastline."
-  },
-  {
-    "id": "494",
-    "category": "state_trivia",
-    "question": "The oldest professional baseball park (Rickwood Field) opened in 1910 in this state.",
-    "options": [
-      "Alabama",
-      "Connecticut",
-      "New York",
-      "Georgia"
-    ],
-    "correctAnswer": "Alabama",
-    "explanation": "Found in Birmingham, it was where Willie Mays first played professionally at age 16."
-  },
-  {
-    "id": "495",
-    "category": "state_trivia",
-    "question": "This state has the longest state constitution, with over 370,000 words.",
-    "options": [
-      "Alabama",
-      "California",
-      "Texas",
       "Utah"
     ],
-    "correctAnswer": "Alabama",
-    "explanation": "Even after significant revisions in 2022, it still is about 3.5 times as long as second-longest Texas."
-  },
-  {
-    "id": "496",
-    "category": "state_trivia",
-    "question": "The three highest waterfalls in the United States are all found in this state.",
-    "options": [
-      "Hawaii",
-      "California",
-      "New York",
-      "Washington"
-    ],
-    "correctAnswer": "Hawaii",
-    "explanation": "Olo'upena Falls are 2,953 ft, Pu'uka'oku Falls are 2,756 ft, and Waihilau Falls are 2,598 ft. Niagra Falls are a paltry 187 ft high."
+    "correctAnswer": "Wyoming",
+    "explanation": "It has borders at 41 and 45 degrees north latitude and 104 and 111 degrees west longitude, but is technically a parellelogram, not a rectangle."
   }
 ]
-
-    
