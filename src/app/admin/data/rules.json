@@ -18,9 +18,9 @@
     "id": "3",
     "title": "BIG PICTURE",
     "content": [
-      "Spin the dice and move your game piece",
-      "Choose a question type and answer it correctly to win either cash, Popular Votes or Electoral Votes",
-      "The first candidate/team to get at least 270 Electoral Votes AND the most Popular Votes wins!",
+      "1. Spin the dice and move your game piece",
+      "2. Choose a question type and answer it correctly to win either cash, Popular Votes or Electoral Votes",
+      "3. The first candidate/team to get at least 270 Electoral Votes AND the most Popular Votes wins!",
       "Now for the details..."
     ]
   },
@@ -224,3 +224,4 @@
     ]
   }
 ]
+    
