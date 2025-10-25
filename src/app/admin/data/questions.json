@@ -2250,6 +2250,656 @@
     "explanation": "Because it is one of the most isolated island groups in the world, there are numerous native birds (all endangered) but only one native mammal."
   },
   {
+    "id": "174",
+    "category": "state_trivia",
+    "question": "Which state is known as the yellowhammer state (after the state bird), also called the Cotton State?",
+    "options": [
+      "Alabama",
+      "Louisiana",
+      "Ohio",
+      "West Virginia"
+    ],
+    "correctAnswer": "Alabama",
+    "explanation": "The northern flicker is also known as the yellowhammer. There was also a company of soldiers in the Civil War known as the yellowhammers."
+  },
+  {
+    "id": "175",
+    "category": "state_trivia",
+    "question": "In which state will you find \"Rocket City USA\",",
+    "options": [
+      "Alabama",
+      "California",
+      "Texas",
+      "Florida"
+    ],
+    "correctAnswer": "Alabama",
+    "explanation": "NASA's Marshall Space Flight Center is in Huntsville, the most populous city in AL, and is where the Saturn rockets were built."
+  },
+  {
+    "id": "176",
+    "category": "state_trivia",
+    "question": "The Tennessee River starts and ends in Tennessee, but a long stretch in the middle passes into this state",
+    "options": [
+      "Alabama",
+      "Mississippi",
+      "Georgia",
+      "Oklahoma"
+    ],
+    "correctAnswer": "Alabama",
+    "explanation": "It was once known as the Cherokee River, and it starts in Knoxville before ending in the Ohio River."
+  },
+  {
+    "id": "177",
+    "category": "state_trivia",
+    "question": "Which state's capital is known as the Cradle of the Confederacy?",
+    "options": [
+      "Alabama",
+      "Arkansas",
+      "Mississippi",
+      "Georgia"
+    ],
+    "correctAnswer": "Alabama",
+    "explanation": "Montgomery hosted the Southern Convention in 1861, in which 7 seceding southern states established the Confederacy."
+  },
+  {
+    "id": "178",
+    "category": "state_trivia",
+    "question": "The first 911 call in the US was made in this state.",
+    "options": [
+      "Alabama",
+      "Tennessee",
+      "Pennsylvania",
+      "New York"
+    ],
+    "correctAnswer": "Alabama",
+    "explanation": "It was in 1968 in Haleyville, AL, and ushered in the era of people considering anything annoying, inconvenient or stressful to be an emergency."
+  },
+  {
+    "id": "179",
+    "category": "state_trivia",
+    "question": "This state has the most fast food restaurants per capita.",
+    "options": [
+      "West Virginia",
+      "Arkansas",
+      "New Jersey",
+      "Alabama"
+    ],
+    "correctAnswer": "West Virginia",
+    "explanation": "According to Pricelisto, the state has 49.04 fast food places per 100,000 residents. By complete and utter coincidence, the state is the most obese, with 41.2% of the population meeting criteria for obesity."
+  },
+  {
+    "id": "180",
+    "category": "state_trivia",
+    "question": "This state outlaws dressing up as a nun, priest or rabbi on Halloween.",
+    "options": [
+      "Alabama",
+      "Utah",
+      "Texas",
+      "Mississippi"
+    ],
+    "correctAnswer": "Alabama",
+    "explanation": "It is a misdemeanor to dress as clergy any time, with a fine of up to $500 and up to 1 year in jail. The law was enacted during civil rights protests in 1965."
+  },
+  {
+    "id": "181",
+    "category": "state_trivia",
+    "question": "This state is known as The Last Frontier.",
+    "options": [
+      "Alaska",
+      "Montana",
+      "Nevada",
+      "Wyoming"
+    ],
+    "correctAnswer": "Alaska",
+    "explanation": "About 90% of the state is not accessible by any road and much of it is still relatively unexplored."
+  },
+  {
+    "id": "182",
+    "category": "state_trivia",
+    "question": "This state has 6 times the number of pilots per capita, and 16 times the number of aircraft per capita, than any other state.",
+    "options": [
+      "Alaska",
+      "New York",
+      "California",
+      "Wyoming"
+    ],
+    "correctAnswer": "Alaska",
+    "explanation": "Since there are so few roads in the state, airplanes are the chief way to get around."
+  },
+  {
+    "id": "183",
+    "category": "state_trivia",
+    "question": "This state has the most coastline, in terms of total miles",
+    "options": [
+      "Alaska",
+      "California",
+      "Michigan",
+      "Florida"
+    ],
+    "correctAnswer": "Alaska",
+    "explanation": "It has 33,904 miles (54,563 km) of coastline, about 4 times more than runner-up Florida."
+  },
+  {
+    "id": "184",
+    "category": "state_trivia",
+    "question": "The largest urban park in the world is 495,000 acres and located in this state",
+    "options": [
+      "Alaska",
+      "New York",
+      "Pennsylvania",
+      "Florida"
+    ],
+    "correctAnswer": "Alaska",
+    "explanation": "Chugach State Park, established in 1970, is located entirely within the Anchorage metropolitan area."
+  },
+  {
+    "id": "185",
+    "category": "state_trivia",
+    "question": "This state's capital is the largest by land area, at 3,255 sq miles.",
+    "options": [
+      "Alaska",
+      "Oklahoma",
+      "Florida",
+      "Arizona"
+    ],
+    "correctAnswer": "Alaska",
+    "explanation": "Juneau is also the only mainland North America capital that is not connected by road to the rest of the state or to North America."
+  },
+  {
+    "id": "186",
+    "category": "state_trivia",
+    "question": "This state has the longest border with another country, at 1,538 miles",
+    "options": [
+      "Alaska",
+      "Michigan",
+      "Texas",
+      "Maine"
+    ],
+    "correctAnswer": "Alaska",
+    "explanation": "Texas has a 1,241 mile border with Mexico."
+  },
+  {
+    "id": "187",
+    "category": "state_trivia",
+    "question": "The king, or Chinook, salmon is the official fish of Oregon and of this state.",
+    "options": [
+      "Alaska",
+      "Washington",
+      "Maine",
+      "Colorado"
+    ],
+    "correctAnswer": "Alaska",
+    "explanation": "The largest of the Pacific salmon, it is anadromous, meaning it migrates from the sea to freshwater rivers to spawn."
+  },
+  {
+    "id": "188",
+    "category": "state_trivia",
+    "question": "This state has the most volcanoes, with 141.",
+    "options": [
+      "Alaska",
+      "Hawaii",
+      "California",
+      "Oregon"
+    ],
+    "correctAnswer": "Alaska",
+    "explanation": "California is a distant second, with 18, and Oregon has 17, but the largest volcano in the world is Mauna Loa in Hawaii."
+  },
+  {
+    "id": "189",
+    "category": "state_trivia",
+    "question": "This state is the easternmost, westernmost and northernmost.",
+    "options": [
+      "Alaska",
+      "Florida",
+      "Hawaii",
+      "Maine"
+    ],
+    "correctAnswer": "Alaska",
+    "explanation": "The Aleutian Islands cross the 180 degree longitude mark, which makes the state both easternmost and westernmost."
+  },
+  {
+    "id": "190",
+    "category": "state_trivia",
+    "question": "This state has the highest percentage of men, at over 52%.",
+    "options": [
+      "Alaska",
+      "California",
+      "New York",
+      "Maine"
+    ],
+    "correctAnswer": "Alaska",
+    "explanation": "The US overall is 50.8% female, and only 10 states have more men than women."
+  },
+  {
+    "id": "191",
+    "category": "state_trivia",
+    "question": "In this state, you can find the San Francisco mountain range, with its high point of Humphrey's Peak (which is also the highest point in the state).",
+    "options": [
+      "Arizona",
+      "California",
+      "Nevada",
+      "New Mexico"
+    ],
+    "correctAnswer": "Arizona",
+    "explanation": "North of Flagstaff, Humphrey's Peak sits at 12,633 ft (3,851m)."
+  },
+  {
+    "id": "192",
+    "category": "state_trivia",
+    "question": "Hawaii was the 50th state, Alaska was the 49th. Which state was the 48th (in 1912)?",
+    "options": [
+      "Arizona",
+      "Utah",
+      "Idaho",
+      "Oregon"
+    ],
+    "correctAnswer": "Arizona",
+    "explanation": "It was the last of the contiguous states to be admitted, on Feb 14 of that year."
+  },
+  {
+    "id": "193",
+    "category": "state_trivia",
+    "question": "Lemonade is the official beverage of this desert state",
+    "options": [
+      "Arizona",
+      "Utah",
+      "Nevada",
+      "New Mexico"
+    ],
+    "correctAnswer": "Arizona",
+    "explanation": "It became such in 2019, due to the efforts of a local teenager."
+  },
+  {
+    "id": "194",
+    "category": "state_trivia",
+    "question": "The town of Tombstone in this state is known as \"The Town Too Tough To Die\", and is famous for a gunfight in 1881.",
+    "options": [
+      "Arizona",
+      "New Mexico",
+      "Texas",
+      "Nevada"
+    ],
+    "correctAnswer": "Arizona",
+    "explanation": "While the shootout is widely believed to have had Wyatt Earp as the central figure, it was actually his brother Virgil who was the marshal of Tombstone at the time."
+  },
+  {
+    "id": "195",
+    "category": "state_trivia",
+    "question": "You will find the London Bridge, that once spanned the River Thames, in Lake Havasu City in this state.",
+    "options": [
+      "Arizona",
+      "New Mexico",
+      "Colorado",
+      "Nevada"
+    ],
+    "correctAnswer": "Arizona",
+    "explanation": "It was shipped via the Panama Canal to California, then transported by truck to Arizona in 1968."
+  },
+  {
+    "id": "196",
+    "category": "state_trivia",
+    "question": "The world's first professional rodeo took place in Prescott, in this state in 1888, before it was even a state.",
+    "options": [
+      "Arizona",
+      "Wyoming",
+      "Montana",
+      "Texas"
+    ],
+    "correctAnswer": "Arizona",
+    "explanation": "While the first rodeo was held in Cheyenne, WY, Arizona was the first to charge admission and award prizes."
+  },
+  {
+    "id": "197",
+    "category": "state_trivia",
+    "question": "The only US interstate highway with distances listed in meters and kilometers is found in this state.",
+    "options": [
+      "Arizona",
+      "California",
+      "Maine",
+      "Michigan"
+    ],
+    "correctAnswer": "Arizona",
+    "explanation": "When I-19 was re-signed in 1980, the US was on a (failed) push to adopt the metric system, so this road connecting Nogales to Tucson has distances in metric, but the speed limit signs use MPH."
+  },
+  {
+    "id": "198",
+    "category": "state_trivia",
+    "question": "Hattie Caraway, the first female US senator, represented this state when she replaced her husband who died in office in 1931.",
+    "options": [
+      "Arkansas",
+      "New York",
+      "Indiana",
+      "Pennsylvania"
+    ],
+    "correctAnswer": "Arkansas",
+    "explanation": "Initially appointed as a placeholder, she won election to a full term in 1932 and re-election in 1938."
+  },
+  {
+    "id": "199",
+    "category": "state_trivia",
+    "question": "Bill Clinton and Mike Huckabee both sprang from Hope, in this state.",
+    "options": [
+      "Arkansas",
+      "Georgia",
+      "Alabama",
+      "Mississippi"
+    ],
+    "correctAnswer": "Arkansas",
+    "explanation": "Hope is also the self proclaimed watermelon capital of the world."
+  },
+  {
+    "id": "200",
+    "category": "state_trivia",
+    "question": "Sam Walton started the chain that became Walmart in this state in 1945.",
+    "options": [
+      "Arkansas",
+      "Missouri",
+      "Georgia",
+      "Nevada"
+    ],
+    "correctAnswer": "Arkansas",
+    "explanation": "Bentonville-based Walmart is the largest private employer in the world, with 2.2 million employees that are provided with living wages, excellent benefits and a great health care plan. As long as you're in management."
+  },
+  {
+    "id": "201",
+    "category": "state_trivia",
+    "question": "The only active diamond mine in the US is found in this state.",
+    "options": [
+      "Arkansas",
+      "California",
+      "Nevada",
+      "Pennsylvania"
+    ],
+    "correctAnswer": "Arkansas",
+    "explanation": "The Crater of Diamonds mine is in a state park, and visitors are able to \"pay to dig\" and keep any diamonds they find."
+  },
+  {
+    "id": "202",
+    "category": "state_trivia",
+    "question": "The World's Championship Duck Calling Contest is held in Stuttgart in this state each year.",
+    "options": [
+      "Arkansas",
+      "Louisiana",
+      "South Carolina",
+      "Colorado"
+    ],
+    "correctAnswer": "Arkansas",
+    "explanation": "Held each November over Thanksgiving weekend, competitors must first qualify in a sanctioned preliminary event."
+  },
+  {
+    "id": "203",
+    "category": "state_trivia",
+    "question": "Tyson Foods, the world's 2nd largest processor of chicken, beef and pork, is based in this state.",
+    "options": [
+      "Arkansas",
+      "Mississippi",
+      "Georgia",
+      "Alabama"
+    ],
+    "correctAnswer": "Arkansas",
+    "explanation": "Its brands includes Jimmy Dean, Ball Park and Hillshire Farm, and the company has over 144,000 employees worldwide, and has no problems whatsoever with how it treats its animals, its workers or the environment."
+  },
+  {
+    "id": "204",
+    "category": "state_trivia",
+    "question": "This state's legislature passed a law in 1881 dictating the proper pronunciation of the state's name.",
+    "options": [
+      "Arkansas",
+      "Louisiana",
+      "Texas",
+      "Maryland"
+    ],
+    "correctAnswer": "Arkansas",
+    "explanation": "Arkansas Code 1-4-105 states in part, \"...it should be pronounced in three syllables, with the final 's' silent...\""
+  },
+  {
+    "id": "205",
+    "category": "state_trivia",
+    "question": "Which state is known as the Golden State?",
+    "options": [
+      "California",
+      "Florida",
+      "Utah",
+      "New Mexico"
+    ],
+    "correctAnswer": "California",
+    "explanation": "It became the official state nickname in 1968, based largely on the state's history of gold mining."
+  },
+  {
+    "id": "206",
+    "category": "state_trivia",
+    "question": "The first McDonald's was opened in this state in 1940.",
+    "options": [
+      "California",
+      "Illinois",
+      "Minnesota",
+      "Texas"
+    ],
+    "correctAnswer": "California",
+    "explanation": "It was originally a BBQ drive in, but the McDonald brothers realized most of their money was coming from hamburgers."
+  },
+  {
+    "id": "207",
+    "category": "state_trivia",
+    "question": "Which state's entire coastline is a National Monument?",
+    "options": [
+      "California",
+      "Alaska",
+      "Oregon",
+      "Maine"
+    ],
+    "correctAnswer": "California",
+    "explanation": "The California Coastal National Monument was created via Presidential proclamation by Bill Clinton in January 2000, a few days before he left office."
+  },
+  {
+    "id": "208",
+    "category": "state_trivia",
+    "question": "This state experiences the strong, dry, downslope Santa Ana winds every year, which often fuel massive wildfires.",
+    "options": [
+      "California",
+      "Arizona",
+      "Colorado",
+      "Oregon"
+    ],
+    "correctAnswer": "California",
+    "explanation": "They are katabatic winds, meaning they bring high-density air from higher elevations down toward sea level."
+  },
+  {
+    "id": "209",
+    "category": "state_trivia",
+    "question": "98% of the pistachios grown in the US are grown in this state, and fortunately they do not require as much water as almonds.",
+    "options": [
+      "California",
+      "Oregon",
+      "Nevada",
+      "Oklahoma"
+    ],
+    "correctAnswer": "California",
+    "explanation": "Pistachios are a member of the cashew family, and if stored or processed improperly can produce aflatoxin which can be fatal."
+  },
+  {
+    "id": "210",
+    "category": "state_trivia",
+    "question": "This state's economy is the 4th largest in the world as of April 2025, just below Japan and above India.",
+    "options": [
+      "California",
+      "Texas",
+      "Alaska",
+      "New York"
+    ],
+    "correctAnswer": "California",
+    "explanation": "With a $4.1 trillion gross state product, it still faces a $12-$20 billion deficit in 2025 (an amount greater than the entire budget of 19 other states)."
+  },
+  {
+    "id": "211",
+    "category": "state_trivia",
+    "question": "This state has the largest county in the contiguous US, by area, at over 20,000 square miles.",
+    "options": [
+      "California",
+      "Texas",
+      "Alaska",
+      "Nevada"
+    ],
+    "correctAnswer": "California",
+    "explanation": "San Bernardino county is close to the size of West Virginia and has over 2,000,000 people. (Alaska has boroughs, not counties.)"
+  },
+  {
+    "id": "212",
+    "category": "state_trivia",
+    "question": "The hottest, driest and lowest National Park is found in this state.",
+    "options": [
+      "California",
+      "Texas",
+      "Arizona",
+      "Utah"
+    ],
+    "correctAnswer": "California",
+    "explanation": "Death Valley is 282 ft (86m) below sea level and has the record for the hottest air temperature ever recorded on Earth as of 2021, at 134 degrees F (56.7 C)."
+  },
+  {
+    "id": "213",
+    "category": "state_trivia",
+    "question": "This state has the largest landlocked harbor, meaning most of its sides are surrounded by land and has a small channel to the sea.",
+    "options": [
+      "California",
+      "Florida",
+      "Maine",
+      "Illinois"
+    ],
+    "correctAnswer": "California",
+    "explanation": "San Francisco Bay is about 60 mi (97 km) long and 3-12 mi (4.5-20km) wide and drains about 40% of California's water."
+  },
+  {
+    "id": "214",
+    "category": "state_trivia",
+    "question": "The oldest known living tree in the world, a bristlecone pine known as Methuselah, is found in this state.",
+    "options": [
+      "California",
+      "Nevada",
+      "New Mexico",
+      "Florida"
+    ],
+    "correctAnswer": "California",
+    "explanation": "Core samples indicate it is 4,853 years old."
+  },
+  {
+    "id": "215",
+    "category": "state_trivia",
+    "question": "This state has the most mountain peaks over 14,000 feet",
+    "options": [
+      "Colorado",
+      "California",
+      "Alaska",
+      "Wyoming"
+    ],
+    "correctAnswer": "Colorado",
+    "explanation": "The highest is Mt Elbert at 14,433 ft (4,400m)."
+  },
+  {
+    "id": "216",
+    "category": "state_trivia",
+    "question": "This state has the highest average elevation, at about 6,800 feet",
+    "options": [
+      "Colorado",
+      "Alaska",
+      "Montana",
+      "Arizona"
+    ],
+    "correctAnswer": "Colorado",
+    "explanation": "AK is 1,900 ft (580m); MT is 3,400 ft (1,040m); AZ is 4,100 ft (1,250m)."
+  },
+  {
+    "id": "217",
+    "category": "state_trivia",
+    "question": "Which state has the highest low point, at 3,317 ft?",
+    "options": [
+      "Colorado",
+      "Wyoming",
+      "Alaska",
+      "Montana"
+    ],
+    "correctAnswer": "Colorado",
+    "explanation": "WY is 3,105 ft (946m); AK is sea level; MT is 1,804 ft (550m)."
+  },
+  {
+    "id": "218",
+    "category": "state_trivia",
+    "question": "The longest continuous commercial street in the US, Colfax Avenue, is found in this state.",
+    "options": [
+      "Colorado",
+      "New York",
+      "California",
+      "Alaska"
+    ],
+    "correctAnswer": "Colorado",
+    "explanation": "Colfax Avenue runs for about 50 miles through the Denver metropolitan area."
+  },
+  {
+    "id": "219",
+    "category": "state_trivia",
+    "question": "This state has the highest mountain tunnel in the US, the Eisenhower Tunnel, going through the Continental Divide.",
+    "options": [
+      "Colorado",
+      "New Mexico",
+      "Wyoming",
+      "Montana"
+    ],
+    "correctAnswer": "Colorado",
+    "explanation": "The tunnel is at an elevation of 11,158 ft (3,401m) above sea level and is about 1.7 mi (2.7km) long."
+  },
+  {
+    "id": "220",
+    "category": "state_trivia",
+    "question": "The Royal Gorge Bridge, above the Arkansas River in this state, is still the highest bridge in the US, despite being built in 1929.",
+    "options": [
+      "Colorado",
+      "Virginia",
+      "West Virginia",
+      "New Mexico"
+    ],
+    "correctAnswer": "Colorado",
+    "explanation": "Rising 955 ft (291m) above the Arkansas River, it is 1,260 ft (384m) long and was the highest bridge in the world until 2001."
+  },
+  {
+    "id": "221",
+    "category": "state_trivia",
+    "question": "Pagosa hot springs in this state are the deepest ones yet measured in the world, at 1,002 ft (305m).",
+    "options": [
+      "Colorado",
+      "Oregon",
+      "Nevada",
+      "North Carolina"
+    ],
+    "correctAnswer": "Colorado",
+    "explanation": "The true depth is unknown because the plumb line used to measure it was only 1,002 ft long."
+  },
+  {
+    "id": "222",
+    "category": "state_trivia",
+    "question": "The country's oldest continuously published newspaper originated in this state in 1764.",
+    "options": [
+      "Connecticut",
+      "Pennsylvania",
+      "Ohio",
+      "Delaware"
+    ],
+    "correctAnswer": "Connecticut",
+    "explanation": "The Hartford Courant began as a semi-weekly and became a daily publication in 1837. It is still being published as of January 2022."
+  },
+  {
+    "id": "223",
+    "category": "state_trivia",
+    "question": "The first telephone book was a list of 50 businesses and individuals in New Haven in this state, and was published in February 1878.",
+    "options": [
+      "Connecticut",
+      "New York",
+      "Pennsylvania",
+      "Maine"
+    ],
+    "correctAnswer": "Connecticut",
+    "explanation": "Printed on a piece of cardboard in New Haven, it was not alphabetized and had no numbers associated with the names. It simply indicated that the people and places listed actually had a telephone."
+  },
+  {
     "id": "752",
     "category": "government_trivia",
     "question": "This series of papers, released in 1971 by Daniel Ellsberg, documented how multiple administrations lied to the public about US involvement in VietNam",
