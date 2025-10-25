@@ -2250,1074 +2250,8 @@
     "explanation": "Because it is one of the most isolated island groups in the world, there are numerous native birds (all endangered) but only one native mammal."
   },
   {
-    "id": "174",
-    "category": "general_trivia",
-    "question": "Which state's north and south are in different time zones?",
-    "options": [
-      "Idaho",
-      "Indiana",
-      "Oklahoma",
-      "Utah"
-    ],
-    "correctAnswer": "Idaho",
-    "explanation": "The panhandle follows Pacific time, whereas the southern portion of the state follows Mountain time."
-  },
-  {
-    "id": "175",
-    "category": "general_trivia",
-    "question": "Craters of the Moon National Monument is found in this state and encompasses 3 major lava fields.",
-    "options": [
-      "Idaho",
-      "New Mexico",
-      "Alaska",
-      "California"
-    ],
-    "correctAnswer": "Idaho",
-    "explanation": "The lava fields lie along the Great Rift of Idaho, which has the deepest known rift in the world at 800 ft (240m)."
-  },
-  {
-    "id": "176",
-    "category": "general_trivia",
-    "question": "Evel Knievel attempted to jump his Skycycle across the Snake River in this state in 1974.",
-    "options": [
-      "Idaho",
-      "Oregon",
-      "Wyoming",
-      "Utah"
-    ],
-    "correctAnswer": "Idaho",
-    "explanation": "The area he tried to jump was a mile wide, and the chute on the steam powered rocket opened early, causing him to not make it across. He did survive."
-  },
-  {
-    "id": "177",
-    "category": "general_trivia",
-    "question": "Albertson's grocery stores were founded in this state in 1939.",
-    "options": [
-      "Idaho",
-      "California",
-      "New York",
-      "Colorado"
-    ],
-    "correctAnswer": "Idaho",
-    "explanation": "The store was one of the first to offer free parking and a money-back guarantee, and is the second largest supermarket chain in North America."
-  },
-  {
-    "id": "178",
-    "category": "general_trivia",
-    "question": "The world's first nuclear reactor used to generate electricity was opened in this state in 1951.",
-    "options": [
-      "Idaho",
-      "Pennsylvania",
-      "California",
-      "Nevada"
-    ],
-    "correctAnswer": "Idaho",
-    "explanation": "The EBR-1 (Experimental Breeder Reactor) reactor produced about 100 kW of power outside of Arco, ID."
-  },
-  {
-    "id": "179",
-    "category": "general_trivia",
-    "question": "A city in this state has a law prohibiting \"frowns, grimaces, scowls, threatening and lowering looks, gloomy and depressed facial appearances.\"",
-    "options": [
-      "Idaho",
-      "Utah",
-      "Maine",
-      "Vermont"
-    ],
-    "correctAnswer": "Idaho",
-    "explanation": "The mayor of Pocatello made the tongue-in-cheek law after a particularly bad winter. It was in effect for one week in August, but is technically still on the books."
-  },
-  {
-    "id": "180",
-    "category": "general_trivia",
-    "question": "The Pulaski, a special hand tool for fighting wildfires, was invented in this state in 1911.",
-    "options": [
-      "Idaho",
-      "Nevada",
-      "North Carolina",
-      "New Jersey"
-    ],
-    "correctAnswer": "Idaho",
-    "explanation": "Ed Pulaski is credited with the invention of the tool that is a Forest Service standard issue."
-  },
-  {
-    "id": "181",
-    "category": "general_trivia",
-    "question": "A city in this state is home to the first skyscraper, built in 1885.",
-    "options": [
-      "Illinois",
-      "New York",
-      "Pennsylvania",
-      "Maryland"
-    ],
-    "correctAnswer": "Illinois",
-    "explanation": "The Home Insurance Building in Chicago was 138 ft (42m) tall and was the first building to be supported inside and out by steel."
-  },
-  {
-    "id": "182",
-    "category": "general_trivia",
-    "question": "This state was the first to ratify the 13th Amendment, abolishing slavery.",
-    "options": [
-      "Illinois",
-      "Pennsylvania",
-      "New York",
-      "Ohio"
-    ],
-    "correctAnswer": "Illinois",
-    "explanation": "On February 1, 1865, IL was the first of the 27 states needed to ratify the Amendment."
-  },
-  {
-    "id": "183",
-    "category": "general_trivia",
-    "question": "On December 2, 1942, the world's first human generated nuclear reaction occurred in this state.",
-    "options": [
-      "Illinois",
-      "Nevada",
-      "New Mexico",
-      "California"
-    ],
-    "correctAnswer": "Illinois",
-    "explanation": "Enrico Fermi led the Chicago Pile-1 experiment, a key part of the Manhattan Project."
-  },
-  {
-    "id": "184",
-    "category": "general_trivia",
-    "question": "This state's capital is also the site of the Lincoln Home National Historic Site.",
-    "options": [
-      "Illinois",
-      "Kentucky",
-      "Indiana",
-      "Ohio"
-    ],
-    "correctAnswer": "Illinois",
-    "explanation": "Lincoln lived in Springfield for 17 years before becoming President in 1861."
-  },
-  {
-    "id": "185",
-    "category": "general_trivia",
-    "question": "The tallest person in the world (with irrefutable evidence) was Robert Wadlow, born in Alton in this state in 1918.",
-    "options": [
-      "Illinois",
-      "Oregon",
-      "Colorado",
-      "Kansas"
-    ],
-    "correctAnswer": "Illinois",
-    "explanation": "He was 8'11\" (2.72m) tall (and 439 lbs/199 kg) due to a pituitary disorder, and died at age 22 from complications of that."
-  },
-  {
-    "id": "186",
-    "category": "general_trivia",
-    "question": "The largest bakery in the world, a Nabisco facility, is in a city in this state.",
-    "options": [
-      "Illinois",
-      "Ohio",
-      "California",
-      "Virginia"
-    ],
-    "correctAnswer": "Illinois",
-    "explanation": "The Chicago plant is 1.8 million sq ft (170,000 sq m) and employs 1200 people making Chips Ahoy!, Oreos and other health foods."
-  },
-  {
-    "id": "187",
-    "category": "general_trivia",
-    "question": "This state has the greatest nuclear power capacity, at over 98,000 gigawatts per year.",
-    "options": [
-      "Illinois",
-      "California",
-      "Pennsylvania",
-      "Tennessee"
-    ],
-    "correctAnswer": "Illinois",
-    "explanation": "The state generates about 54% of its power from 11 nuclear reactors, more than any other state."
-  },
-  {
-    "id": "188",
-    "category": "general_trivia",
-    "question": "Although the origin is unclear, people from this state are referred to as Hoosiers.",
-    "options": [
-      "Indiana",
-      "Illinois",
-      "Kansas",
-      "Pennsylvania"
-    ],
-    "correctAnswer": "Indiana",
-    "explanation": "One origin theory says it comes from yelling out \"Who's here?\" when a stranger approached your farm."
-  },
-  {
-    "id": "189",
-    "category": "general_trivia",
-    "question": "The town of Speedway in this state is named after the very large car race held each Memorial Day.",
-    "options": [
-      "Indiana",
-      "Florida",
-      "California",
-      "New Jersey"
-    ],
-    "correctAnswer": "Indiana",
-    "explanation": "The Indianapolis 500 started in 1911, and the track referred to as the Brickyard was originally paved in brick (go figure)."
-  },
-  {
-    "id": "190",
-    "category": "general_trivia",
-    "question": "French Lick, Gnaw Bone and Gas City are all towns you can find in this state.",
-    "options": [
-      "Indiana",
-      "Arkansas",
-      "Alabama",
-      "Nebraska"
-    ],
-    "correctAnswer": "Indiana",
-    "explanation": "French Lick is the home of NBA legend Larry Bird. Gas City is named after the natural gas deposits found there. And Gnaw Bone may relate to a French settlement in the area called Narbonne. Or maybe it was named by a dog."
-  },
-  {
-    "id": "191",
-    "category": "general_trivia",
-    "question": "Dan Quayle, the famously dim-witted vice president who misspelled potato in front of a class of 6th graders, was a Senator from this state.",
-    "options": [
-      "Indiana",
-      "Mississippi",
-      "Missouri",
-      "Ohio"
-    ],
-    "correctAnswer": "Indiana",
-    "explanation": "Among his many moronic statements, he once said, \"I have made good judgments in the past. I have made good judgments in the future.\""
-  },
-  {
-    "id": "192",
-    "category": "general_trivia",
-    "question": "Elvis Presley performed his final concert at the Market City Arena in the most populous city in this state, in 1977.",
-    "options": [
-      "Indiana",
-      "New York",
-      "Tennessee",
-      "Nevada"
-    ],
-    "correctAnswer": "Indiana",
-    "explanation": "Presley died 7 weeks later from a drug overdose. The Arena was built in 1974 for $23 million, and was demolished in 2001."
-  },
-  {
-    "id": "193",
-    "category": "general_trivia",
-    "question": "A town in this state is the home of the Jackson 5, including the youngest, Michael.",
-    "options": [
-      "Indiana",
-      "New York",
-      "California",
-      "Louisiana"
-    ],
-    "correctAnswer": "Indiana",
-    "explanation": "The town of Gary was once a prosperous steel town, but it is now estimated that 1/3 of its houses are abandoned."
-  },
-  {
-    "id": "194",
-    "category": "general_trivia",
-    "question": "The iconic shape of the Coca Cola bottle was designed in this state in 1915.",
-    "options": [
-      "Indiana",
-      "South Carolina",
-      "Georgia",
-      "New Jersey"
-    ],
-    "correctAnswer": "Indiana",
-    "explanation": "A designer at the Root Glass Company of Terre Haute designed it and was given a \"lifetime\" job at the company - which lasted until the company was sold in the mid-1930s."
-  },
-  {
-    "id": "195",
-    "category": "general_trivia",
-    "question": "The Field of Dreams, from the Kevin Costner film, can be found in this state outside the town of Dyersville.",
-    "options": [
-      "Iowa",
-      "New York",
-      "Kansas",
-      "Ohio"
-    ],
-    "correctAnswer": "Iowa",
-    "explanation": "It was built as a set for the film but has continued to draw thousands of tourists each year, and even hosted a Major League Baseball game in Aug 2021."
-  },
-  {
-    "id": "196",
-    "category": "general_trivia",
-    "question": "The town of Washington in this state is home to the oldest continuously operating movie theater, opening in 1897.",
-    "options": [
-      "Iowa",
-      "California",
-      "Pennsylvania",
-      "Ohio"
-    ],
-    "correctAnswer": "Iowa",
-    "explanation": "The State Theater is now owned by the Fridley Theatres chain, but is still showing first run films as of January 2025."
-  },
-  {
-    "id": "197",
-    "category": "general_trivia",
-    "question": "What is the only state to have two vowels as its two letter abbreviation.",
-    "options": [
-      "Iowa",
-      "Alabama",
-      "Arkansas",
-      "Alaska"
-    ],
-    "correctAnswer": "Iowa",
-    "explanation": "Iowa is bordered by six states, as well as the Mississippi River to the east and the Missouri River to the west."
-  },
-  {
-    "id": "198",
-    "category": "general_trivia",
-    "question": "The first president born west of the Mississippi River, Herbert Hoover, was born in 1874 in West Branch in this state.",
-    "options": [
-      "Iowa",
-      "Oregon",
-      "North Dakota",
-      "New Mexico"
-    ],
-    "correctAnswer": "Iowa",
-    "explanation": "He is considered the 36th best president!"
-  },
-  {
-    "id": "199",
-    "category": "general_trivia",
-    "question": "John Wayne grew up in southern California before becoming a film icon, but he was born in this state.",
-    "options": [
-      "Iowa",
-      "South Dakota",
-      "Missouri",
-      "Vermont"
-    ],
-    "correctAnswer": "Iowa",
-    "explanation": "Born Marion Robert Morrison, he appeared in 142 films from the 1920s to the 1970s."
-  },
-  {
-    "id": "200",
-    "category": "general_trivia",
-    "question": "WInnebago, the maker of iconic RVs, was founded in this state in 1958.",
-    "options": [
-      "Iowa",
-      "Minnesota",
-      "Florida",
-      "New York"
-    ],
-    "correctAnswer": "Iowa",
-    "explanation": "A highly modified Winnebago was fitted with wings and rocket engines in the 1987 comedy Spaceballs."
-  },
-  {
-    "id": "201",
-    "category": "general_trivia",
-    "question": "This is the only state to have its entire eastern and western borders formed by 2 rivers, the Missouri and Mississippi.",
-    "options": [
-      "Iowa",
-      "Missouri",
-      "Minnesota",
-      "Louisiana"
-    ],
-    "correctAnswer": "Iowa",
-    "explanation": "The Missouri and Mississippi Rivers are the longest and second longest, respectively, rivers in North America."
-  },
-  {
-    "id": "202",
-    "category": "general_trivia",
-    "question": "What state's official song is \"Home on the Range?\"",
-    "options": [
-      "Kansas",
-      "Texas",
-      "Colorado",
-      "Wyoming"
-    ],
-    "correctAnswer": "Kansas",
-    "explanation": "Credit is given to Dr. Brewster Higley of Smith County, KS, who wrote the poem sometime around 1872 that was later turned into a song."
-  },
-  {
-    "id": "203",
-    "category": "general_trivia",
-    "question": "Hattie McDaniel, the first black woman to win an Oscar (for Gone With the Wind), hailed from this state.",
-    "options": [
-      "Kansas",
-      "Louisiana",
-      "Mississippi",
-      "Florida"
-    ],
-    "correctAnswer": "Kansas",
-    "explanation": "She won a Best Supporting Actress award for her role as Mammy, who served as the slave/guardian of Scarlett O'Hara."
-  },
-  {
-    "id": "204",
-    "category": "general_trivia",
-    "question": "The geographic center of the contiguous 48 states is found outside Lebanon, in this state.",
-    "options": [
-      "Kansas",
-      "Missouri",
-      "Florida",
-      "Illinois"
-    ],
-    "correctAnswer": "Kansas",
-    "explanation": "If AK and HI are included, the center shifts to South Dakota."
-  },
-  {
-    "id": "205",
-    "category": "general_trivia",
-    "question": "The first Pizza Hut opened in this state in 1958.",
-    "options": [
-      "Kansas",
-      "California",
-      "New York",
-      "Illinois"
-    ],
-    "correctAnswer": "Kansas",
-    "explanation": "Dan and Frank Carney opened the first one in Wichita while students at Wichita State University. Later in life, Frank became a franchisee for Papa John's Pizza."
-  },
-  {
-    "id": "206",
-    "category": "general_trivia",
-    "question": "White Castle was founded in a college town in 1921 in this state known for beef cattle.",
-    "options": [
-      "Kansas",
-      "Nebraska",
-      "Texas",
-      "Nevada"
-    ],
-    "correctAnswer": "Kansas",
-    "explanation": "Despite being founded in Wichita and being considered the first fast food restaurant, there are no White Castles in all of Kansas as of 2025."
-  },
-  {
-    "id": "207",
-    "category": "general_trivia",
-    "question": "Until 1989, the geodetic center - the point from which all latitude and longitude measurements in the US are taken - was at Meade's Ranch, 20 miles south of Osborne in this state.",
-    "options": [
-      "Kansas",
-      "Colorado",
-      "Florida",
-      "Nebraska"
-    ],
-    "correctAnswer": "Kansas",
-    "explanation": "This spot was the basis for the NAD27 datum. It has been mostly replaced by the NAD83 and WGS84. But you knew that."
-  },
-  {
-    "id": "208",
-    "category": "general_trivia",
-    "question": "The case that ended public school segregation, Brown vs. Board of Education, was initially filed in this state in 1951.",
-    "options": [
-      "Kansas",
-      "Georgia",
-      "Maine",
-      "Arkansas"
-    ],
-    "correctAnswer": "Kansas",
-    "explanation": "The Topeka school board was sued by 13 local black families in the landmark case decided by the Warren Court in 1954."
-  },
-  {
-    "id": "209",
-    "category": "general_trivia",
-    "question": "Dorothy in The Wonderful Wizard of Oz was swept away from her farm in this state by a tornado.",
-    "options": [
-      "Kansas",
-      "Iowa",
-      "Nebraska",
-      "Georgia"
-    ],
-    "correctAnswer": "Kansas",
-    "explanation": "Her ruby slippers were silver in the L. Frank Baum book, but changed in the movie to take advantage of the new technology of Technicolor!"
-  },
-  {
-    "id": "210",
-    "category": "general_trivia",
-    "question": "Abraham Lincoln was born near Hodgenville in this state.",
-    "options": [
-      "Kentucky",
-      "Illinois",
-      "Missouri",
-      "Indiana"
-    ],
-    "correctAnswer": "Kentucky",
-    "explanation": "Born near Hodgenville, his family moved to Indiana when he was 7, then again to Illinois at age 21."
-  },
-  {
-    "id": "211",
-    "category": "general_trivia",
-    "question": "Churchill Downs, where a famous horse race is held, is in this state.",
-    "options": [
-      "Kentucky",
-      "New York",
-      "California",
-      "Virginia"
-    ],
-    "correctAnswer": "Kentucky",
-    "explanation": "It officially opened in 1875, and held the first Kentucky Derby that same year."
-  },
-  {
-    "id": "212",
-    "category": "general_trivia",
-    "question": "This state opened the first commercial winery in the US, called First Vineyard, started by the Dufour family in 1799, and it is still operating outside Nicholasville.",
-    "options": [
-      "Kentucky",
-      "California",
-      "New York",
-      "Virginia"
-    ],
-    "correctAnswer": "Kentucky",
-    "explanation": "It produced wine for about 10 years until a bad frost killed the plants, but the winery was re-established in 2012 and has been making wine since."
-  },
-  {
-    "id": "213",
-    "category": "general_trivia",
-    "question": "Transylvania University, a private school founded in 1780, is found in this state.",
-    "options": [
-      "Kentucky",
-      "Pennsylvania",
-      "New York",
-      "Virginia"
-    ],
-    "correctAnswer": "Kentucky",
-    "explanation": "It is the first university founded in Kentucky and offers 48 majors (and none of them in coal mining!)."
-  },
-  {
-    "id": "214",
-    "category": "general_trivia",
-    "question": "The longest cave system in the world, Mammoth Cave, is located in this state.",
-    "options": [
-      "Kentucky",
-      "Alabama",
-      "California",
-      "Ohio"
-    ],
-    "correctAnswer": "Kentucky",
-    "explanation": "With over 420 miles (680 km) mapped, it is almost twice as long as the next largest cave system in Mexico."
-  },
-  {
-    "id": "215",
-    "category": "general_trivia",
-    "question": "While the first franchise was opened in Utah in 1952, Kentucky Fried Chicken was actually started in this state in the 1930s.",
-    "options": [
-      "Kentucky",
-      "North Carolina",
-      "New Jersey",
-      "Michigan"
-    ],
-    "correctAnswer": "Kentucky",
-    "explanation": "The original recipe and method of preparation was developed by Harlan Sanders, who opened his first restaurant in 1930 as part of a Shell gas station."
-  },
-  {
-    "id": "216",
-    "category": "general_trivia",
-    "question": "Abe Lincoln, President of the Union, and Jefferson Davis, President of the Confederacy, were both born in this state, less than 1 year and 100 miles apart.",
-    "options": [
-      "Kentucky",
-      "Illinois",
-      "Indiana",
-      "Virginia"
-    ],
-    "correctAnswer": "Kentucky",
-    "explanation": "Lincoln was born in Hodgenville in Feb 1809, and Davis was born in June 1808 in Fairview."
-  },
-  {
-    "id": "217",
-    "category": "general_trivia",
-    "question": "This state's capitol building is the tallest in the US, at 460 feet, and is 150 ft taller than any other building in the city.",
-    "options": [
-      "Louisiana",
-      "New York",
-      "Oregon",
-      "Hawaii"
-    ],
-    "correctAnswer": "Louisiana",
-    "explanation": "The Baton Rouge capitol building was completed in 1932 in a classical / Art Deco style."
-  },
-  {
-    "id": "218",
-    "category": "general_trivia",
-    "question": "The longest continuous bridge over water is just under 24 mi (38km) long and is found in this state.",
-    "options": [
-      "Louisiana",
-      "California",
-      "Wisconsin",
-      "Michigan"
-    ],
-    "correctAnswer": "Louisiana",
-    "explanation": "The Lake Pontchartrain Causeway holds the Guinness record for longest continuous span over water."
-  },
-  {
-    "id": "219",
-    "category": "general_trivia",
-    "question": "One of the two \"mobile\" National Historic Landmarks is the St Charles Streetcar line found in this state.",
-    "options": [
-      "Louisiana",
-      "Florida",
-      "New York",
-      "New Mexico"
-    ],
-    "correctAnswer": "Louisiana",
-    "explanation": "Found in New Orleans, it is the oldest continuously operating streetcar line in the world, in use since 1835."
-  },
-  {
-    "id": "220",
-    "category": "general_trivia",
-    "question": "The only commercial Elvis Presley ever did was in 1954 for the Southern Maid donut store, which was started in this state.",
-    "options": [
-      "Louisiana",
-      "Tennessee",
-      "Georgia",
-      "Alabama"
-    ],
-    "correctAnswer": "Louisiana",
-    "explanation": "He sang the jingle in exchange for a box of glazed donuts."
-  },
-  {
-    "id": "221",
-    "category": "general_trivia",
-    "question": "Tabasco sauce originated on Avery Island in this state, in 1868.",
-    "options": [
-      "Louisiana",
-      "North Carolina",
-      "South Carolina",
-      "Alabama"
-    ],
-    "correctAnswer": "Louisiana",
-    "explanation": "The tabasco pepper is native to Mexico and rates from 30,000-50,000 on the Scoville scale."
-  },
-  {
-    "id": "222",
-    "category": "general_trivia",
-    "question": "Of the 6 states that have a designated state crustacean, this is the only state that uses the crawfish for this honor.",
-    "options": [
-      "Louisiana",
-      "Maryland",
-      "Alabama",
-      "Texas"
-    ],
-    "correctAnswer": "Louisiana",
-    "explanation": "They are also known as crayfish, crawdads, craydids, mountain lobsters, and mudbugs."
-  },
-  {
-    "id": "223",
-    "category": "general_trivia",
-    "question": "The Hurricane cocktail was created at Pat O'Brien's bar in the 1940s in this state and is now an iconic drink.",
-    "options": [
-      "Louisiana",
-      "Texas",
-      "Florida",
-      "Oklahoma"
-    ],
-    "correctAnswer": "Louisiana",
-    "explanation": "During Prohibition, the New Orleans bar was known as Mr O'Brien's Club Tipperary, with a password of \"storm's brewin\" to get in."
-  },
-  {
-    "id": "224",
-    "category": "general_trivia",
-    "question": "The Appalachian trail typically ends (for those traveling south to north) at Mt Katahdin in this state",
-    "options": [
-      "Maine",
-      "New York",
-      "Vermont",
-      "New Hampshire"
-    ],
-    "correctAnswer": "Maine",
-    "explanation": "It is the highest point in Maine at 5,269 ft (1,606m) and its name means \"the greatest mountain\"."
-  },
-  {
-    "id": "225",
-    "category": "general_trivia",
-    "question": "This state is home of the first national park (Acadia NP) east of the Mississippi.",
-    "options": [
-      "Maine",
-      "North Carolina",
-      "West Virginia",
-      "Virginia"
-    ],
-    "correctAnswer": "Maine",
-    "explanation": "Designated in 1919, it was also the first national park created from private lands that were gifted to the government."
-  },
-  {
-    "id": "226",
-    "category": "general_trivia",
-    "question": "Which state's official slogan is Vacationland?",
-    "options": [
-      "Maine",
-      "Florida",
-      "Hawaii",
-      "New Jersey"
-    ],
-    "correctAnswer": "Maine",
-    "explanation": "The origins are unclear, but it has been on state license plates since 1936."
-  },
-  {
-    "id": "227",
-    "category": "general_trivia",
-    "question": "This state's state flower, the eastern pine cone, is not actually a flower, and was chosen because the state is often called the Pine Tree state.",
-    "options": [
-      "Maine",
-      "Oregon",
-      "Washington",
-      "Arkansas"
-    ],
-    "correctAnswer": "Maine",
-    "explanation": "The pine tree is featured on the state's flag, seal and quarter, and over 80% of the state is forested."
-  },
-  {
-    "id": "228",
-    "category": "general_trivia",
-    "question": "This state is the closest to Africa, \"as the crow flies\".",
-    "options": [
-      "Maine",
-      "Florida",
-      "Hawaii",
-      "North Carolina"
-    ],
-    "correctAnswer": "Maine",
-    "explanation": "If you really thought Hawaii was an option, then you need to look at a globe tonight."
-  },
-  {
-    "id": "229",
-    "category": "general_trivia",
-    "question": "Stephen King was born in, and still resides in, this state.",
-    "options": [
-      "Maine",
-      "California",
-      "New York",
-      "Connecticut"
-    ],
-    "correctAnswer": "Maine",
-    "explanation": "He has written 63 novels and sold over 350 million copies, and Carrie was his first novel to be published."
-  },
-  {
-    "id": "230",
-    "category": "general_trivia",
-    "question": "The first naval battle of the Revolutionary War took place in the waters off Machias in this state.",
-    "options": [
-      "Maine",
-      "New York",
-      "Florida",
-      "Ohio"
-    ],
-    "correctAnswer": "Maine",
-    "explanation": "The Revolutionary War began just 2 months prior to this battle in Maine, and Maine was still a territory of Massachusetts."
-  },
-  {
-    "id": "231",
-    "category": "general_trivia",
-    "question": "This state was one of two that never passed local laws supporting Prohibition, because the residents thought it infringed on their rights.",
-    "options": [
-      "Maryland",
-      "Texas",
-      "Alaska",
-      "South Carolina"
-    ],
-    "correctAnswer": "Maryland",
-    "explanation": "The 18th Amendment banned alcohol staring in 1920, but Maryland and New York did not ratify it. The 21st Amendment repealed it in 1933."
-  },
-  {
-    "id": "232",
-    "category": "general_trivia",
-    "question": "The US Naval Academy has been in this state since its founding in 1845.",
-    "options": [
-      "Maryland",
-      "New York",
-      "California",
-      "Virginia"
-    ],
-    "correctAnswer": "Maryland",
-    "explanation": "Annapolis is the capital of Maryland and sits on the Chesapeake Bay. Which is handy for boats and subs."
-  },
-  {
-    "id": "233",
-    "category": "general_trivia",
-    "question": "The B&O railroad, the first common carrier railroad in the US, began operations in this state in 1830.",
-    "options": [
-      "Maryland",
-      "Utah",
-      "Virginia",
-      "Ohio"
-    ],
-    "correctAnswer": "Maryland",
-    "explanation": "It was the only railroad featured in Monopoly that did not directly serve Atlantic City."
-  },
-  {
-    "id": "234",
-    "category": "general_trivia",
-    "question": "The first dental college in the US was established in this state in 1840.",
-    "options": [
-      "Maryland",
-      "Pennsylvania",
-      "New Jersey",
-      "Alabama"
-    ],
-    "correctAnswer": "Maryland",
-    "explanation": "The Baltimore College of Dental Surgery is now known as the University of Maryland Dental School and was the birthplace of the DDS degree."
-  },
-  {
-    "id": "235",
-    "category": "general_trivia",
-    "question": "The Star Spangled Banner was written by Francis Scott Key after watching a naval battle in this state.",
-    "options": [
-      "Maryland",
-      "Virginia",
-      "Connecticut",
-      "Pennsylvania"
-    ],
-    "correctAnswer": "Maryland",
-    "explanation": "Key wrote the poem and set it to the music of \"To Anacreon in Heaven\", a song that spanned one and a half octaves. Which is why it's so easy to sing it well. Like"
-  },
-  {
-    "id": "236",
-    "category": "general_trivia",
-    "question": "This state's capitol building is the oldest one in continuous use, built in 1772.",
-    "options": [
-      "Maryland",
-      "New Jersey",
-      "Delaware",
-      "New Mexico"
-    ],
-    "correctAnswer": "Maryland",
-    "explanation": "Annapolis is also the only state capital to have served as the nation's capital, for a brief period from November 1783 to August 1784."
-  },
-  {
-    "id": "237",
-    "category": "general_trivia",
-    "question": "This state was the first one to adopt an official state exercise, walking, in 2008.",
-    "options": [
-      "Maryland",
-      "Missouri",
-      "Arkansas",
-      "Alabama"
-    ],
-    "correctAnswer": "Maryland",
-    "explanation": "Interestingly, Missouri adopted jumping jacks in 2014. Alabama has proposed 'chasing heathens' and Arkansas is considering 'muddin' as their respective state exercises."
-  },
-  {
-    "id": "238",
-    "category": "general_trivia",
-    "question": "Plymouth Rock is found in this state.",
-    "options": [
-      "Massachusetts",
-      "Connecticut",
-      "Rhode Island",
-      "New Hampshire"
-    ],
-    "correctAnswer": "Massachusetts",
-    "explanation": "While not referred to until 121 years after the 1620 landing of the Mayflower, it is still considered the symbolic site of the landing."
-  },
-  {
-    "id": "239",
-    "category": "general_trivia",
-    "question": "The nation's first public school was opened in this state.",
-    "options": [
-      "Massachusetts",
-      "New York",
-      "Pennsylvania",
-      "Virginia"
-    ],
-    "correctAnswer": "Massachusetts",
-    "explanation": "The Boston Latin School was founded in 1635 and was for boys only until 1972. It is a public school where entrance is determined by exam."
-  },
-  {
-    "id": "240",
-    "category": "general_trivia",
-    "question": "Have some cranberry juice and you'd be drinking the official state beverage of this state.",
-    "options": [
-      "Massachusetts",
-      "Louisiana",
-      "Oregon",
-      "Georgia"
-    ],
-    "correctAnswer": "Massachusetts",
-    "explanation": "While Wisconsin produces the most cranberries, Massachussets made it the official beverage in 1970."
-  },
-  {
-    "id": "241",
-    "category": "general_trivia",
-    "question": "Vulcanized rubber, as used in Goodyear tires, was developed in Woburn in this state in 1839.",
-    "options": [
-      "Massachusetts",
-      "Ohio",
-      "Oklahoma",
-      "Missouri"
-    ],
-    "correctAnswer": "Massachusetts",
-    "explanation": "Charles Goodyear accidentally dropped a mixture of rubber and sulfur in a frying pan, discovering a way to permanently harden the rubber."
-  },
-  {
-    "id": "242",
-    "category": "general_trivia",
-    "question": "The first subway in the US was built in a city in this state in 1897, a full 7 years before New York's first subway.",
-    "options": [
-      "Massachusetts",
-      "New Jersey",
-      "Pennsylvania",
-      "Maryland"
-    ],
-    "correctAnswer": "Massachusetts",
-    "explanation": "Boston's Tremont Street subway opened 7 years before New York's IRT line, which took 20 years of debate before approval."
-  },
-  {
-    "id": "243",
-    "category": "general_trivia",
-    "question": "In 1895, William Morgan invented volleyball at a YMCA in this state.",
-    "options": [
-      "Massachusetts",
-      "California",
-      "Utah",
-      "Illinois"
-    ],
-    "correctAnswer": "Massachusetts",
-    "explanation": "He originally called the game mintonette because of its similarities to badminton. And he most certainly did not invent volleyball shorts."
-  },
-  {
-    "id": "244",
-    "category": "general_trivia",
-    "question": "The basketball Hall of Fame is located in Springfield in this state, in honor of where the sport was invented.",
-    "options": [
-      "Massachusetts",
-      "Ohio",
-      "Kentucky",
-      "Illinois"
-    ],
-    "correctAnswer": "Massachusetts",
-    "explanation": "James Naismith invented the game in response to a particularly rowdy class that needed an indoor game to play during harsh New England winters."
-  },
-  {
-    "id": "245",
-    "category": "general_trivia",
-    "question": "This state has the greatest percentage of water-to-land, at 41.5%",
-    "options": [
-      "Michigan",
-      "Alaska",
-      "Minnesota",
-      "Florida"
-    ],
-    "correctAnswer": "Michigan",
-    "explanation": "While Alaska has the most total water surface, it only accounts for about 14% of the state area. And the famous \"10,000 lakes\" of Minnesota only cover about 8% of the land."
-  },
-  {
-    "id": "246",
-    "category": "general_trivia",
-    "question": "This state's official sport is wakeboarding, because it was so popular on the many large lakes.",
-    "options": [
-      "Michigan",
-      "Minnesota",
-      "Florida",
-      "Texas"
-    ],
-    "correctAnswer": "Michigan",
-    "explanation": "In wakeboarding, the rider stands on a short board with two bindings and is towed by a boat or other similar craft."
-  },
-  {
-    "id": "247",
-    "category": "general_trivia",
-    "question": "The largest stadium in the western hemisphere can be found in this state.",
-    "options": [
-      "Michigan",
-      "Pennsylvania",
-      "Ohio",
-      "Texas"
-    ],
-    "correctAnswer": "Michigan",
-    "explanation": "Known as \"The Big House\", the University of Michigan stadium in Ann Arbor seats over 107,000 people. Eight of the top 10 largest stadiums are in the US and are all used for college football."
-  },
-  {
-    "id": "248",
-    "category": "general_trivia",
-    "question": "The city of Battle Creek, nicknamed \"Cereal City\",  is found in this state.",
-    "options": [
-      "Michigan",
-      "Ohio",
-      "Minnesota",
-      "Pennsylvania"
-    ],
-    "correctAnswer": "Michigan",
-    "explanation": "Battle Creek is the home of Kellogg's and is where Post cereals was founded."
-  },
-  {
-    "id": "249",
-    "category": "general_trivia",
-    "question": "This state is the only one with a floating zip code, one that is based on a boat.",
-    "options": [
-      "Michigan",
-      "Minnesota",
-      "Ohio",
-      "Louisiana"
-    ],
-    "correctAnswer": "Michigan",
-    "explanation": "The J.W.Westcott II is a boat that provides mail service to ships transiting the Detroit River, and has a zip code of 48222."
-  },
-  {
-    "id": "250",
-    "category": "general_trivia",
-    "question": "The 2nd largest crucifix in the world, known as Cross in the Woods, is found in this state.",
-    "options": [
-      "Michigan",
-      "Arkansas",
-      "Mississippi",
-      "Georgia"
-    ],
-    "correctAnswer": "Michigan",
-    "explanation": "At 55 ft (16.7 m) tall, it was surpassed in 1986 by a 60 ft (18.5m) crucifix in Kentucky."
-  },
-  {
-    "id": "251",
-    "category": "general_trivia",
-    "question": "The first underwater tunnel between two nations opened in this state in 1891, going from Port Huron to Sarnia.",
-    "options": [
-      "Michigan",
-      "New York",
-      "Texas",
-      "California"
-    ],
-    "correctAnswer": "Michigan",
-    "explanation": "It was the first full-sized sub-aqueous tunnel in North America and was 6,025 ft (1,836m) long. It was used for over 100 years until it was replaced in 1994."
-  },
-  {
-    "id": "252",
-    "category": "general_trivia",
-    "question": "In which state does the Mississippi River find its headwaters?",
-    "options": [
-      "Minnesota",
-      "Mississippi",
-      "Wisconsin",
-      "North Dakota"
-    ],
-    "correctAnswer": "Minnesota",
-    "explanation": "The 2nd longest river in North America starts in Lake Itasca and drains all or part of 32 states."
-  },
-  {
-    "id": "253",
-    "category": "general_trivia",
-    "question": "The Land of 10,000 Lakes is otherwise known as the state of ___.",
-    "options": [
-      "Minnesota",
-      "Florida",
-      "Alaska",
-      "Michigan"
-    ],
-    "correctAnswer": "Minnesota",
-    "explanation": "It actually has over 14,000 bodies of water of at least 10 acres (4 hectares) in size."
-  },
-  {
-    "id": "254",
-    "category": "general_trivia",
-    "question": "This state's unofficial nickname is the Gopher State, relating to a political cartoon from 1857 ridiculing a $5 million loan to railroad barons.",
-    "options": [
-      "Minnesota",
-      "Wisconsin",
-      "West Virginia",
-      "Kansas"
-    ],
-    "correctAnswer": "Minnesota",
-    "explanation": "Most humor in the 1850s revolved around gophers, I guess."
-  },
-  {
-    "id": "255",
-    "category": "general_trivia",
-    "question": "The Mall of America, the largest in the western hemisphere, is found in Bloomington in this state.",
-    "options": [
-      "Minnesota",
-      "Michigan",
-      "Florida",
-      "California"
-    ],
-    "correctAnswer": "Minnesota",
-    "explanation": "The Mall has over 11,000 employees, its own zip code, and has 2 hotels on the property."
-  },
-  {
     "id": "256",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "Which of the following states DOES have a National Park?",
     "options": [
       "Minnesota",
@@ -3330,7 +2264,7 @@
   },
   {
     "id": "257",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "Masking tape, scotch tape and post-it notes were all invented in this state.",
     "options": [
       "Minnesota",
@@ -3343,7 +2277,7 @@
   },
   {
     "id": "258",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The world-renowned Mayo Clinic first opened in 1864 in Rochester, in this state.",
     "options": [
       "Minnesota",
@@ -3356,7 +2290,7 @@
   },
   {
     "id": "259",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "Elvis Presley was born in 1935 in this state.",
     "options": [
       "Mississippi",
@@ -3369,7 +2303,7 @@
   },
   {
     "id": "260",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state ranks 51st in healthcare and 2nd in obesity rates, as of 2023, according to the Commonwealth Fund.",
     "options": [
       "Mississippi",
@@ -3382,7 +2316,7 @@
   },
   {
     "id": "261",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "Dr. James Hardy performed the world's first lung transplant in 1963 and the first heart transplant (using a chimp heart) in 1964 in this state.",
     "options": [
       "Mississippi",
@@ -3395,7 +2329,7 @@
   },
   {
     "id": "262",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "Henry Merrill, who made the first round-trip trans-Atlantic flight (from New York to London and back) in 1936, hailed from the small town of Iuka in this state.",
     "options": [
       "Mississippi",
@@ -3408,7 +2342,7 @@
   },
   {
     "id": "263",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This was the last of the 36 states in existence at the time to ratify the 13th Amendment, which prohibited slavery.",
     "options": [
       "Mississippi",
@@ -3421,7 +2355,7 @@
   },
   {
     "id": "264",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The world's longest man-made beach, at 26 mi (42 km), is found on the Gulf Coast starting at Henderson Point in this state.",
     "options": [
       "Mississippi",
@@ -3434,7 +2368,7 @@
   },
   {
     "id": "265",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state has the only city in the US sanctioned to hold the International Ballet Competition, the \"Olympics of Ballet\".",
     "options": [
       "Mississippi",
@@ -3447,7 +2381,7 @@
   },
   {
     "id": "266",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "Iced tea became widely popular after it was introduced at the 1904 World's Fair in this state.",
     "options": [
       "Missouri",
@@ -3460,7 +2394,7 @@
   },
   {
     "id": "267",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The most powerful earthquakes east of the Rockies occurred along the New Madrid Seismic Zone in 1811-1812, which is named after the town of New Madrid in this state.",
     "options": [
       "Missouri",
@@ -3473,7 +2407,7 @@
   },
   {
     "id": "268",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "You can find the Mark Twain National Forest in this state, where Twain was born and raised.",
     "options": [
       "Missouri",
@@ -3486,7 +2420,7 @@
   },
   {
     "id": "269",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The original Anheuser-Busch brewery can still be found and toured in this state.",
     "options": [
       "Missouri",
@@ -3499,7 +2433,7 @@
   },
   {
     "id": "270",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "Robert Wadlow, the tallest verified person in the history of the world, hailed from Alton in this state.",
     "options": [
       "Missouri",
@@ -3512,7 +2446,7 @@
   },
   {
     "id": "271",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The Pony Express used horse-mounted riders to deliver mail between California and this state, starting in 1860.",
     "options": [
       "Missouri",
@@ -3525,7 +2459,7 @@
   },
   {
     "id": "272",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "In 1892, Joseph Pulitzer offered Columbia University $2 million to set up the world's first school of journalism. They turned it down, and instead it was set up in this state.",
     "options": [
       "Missouri",
@@ -3538,7 +2472,7 @@
   },
   {
     "id": "273",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "Going to the Sun Road is found in Glacier National Park in this state",
     "options": [
       "Montana",
@@ -3551,7 +2485,7 @@
   },
   {
     "id": "274",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state's official motto is \"Oro y plata\" (gold and silver) because of its significant mining history.",
     "options": [
       "Montana",
@@ -3564,7 +2498,7 @@
   },
   {
     "id": "275",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The town of Loma in this state holds the world record for the greatest temperature rise in a 24 hour period (103 degrees change).",
     "options": [
       "Montana",
@@ -3577,7 +2511,7 @@
   },
   {
     "id": "276",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This is the only state to share a land border with 3 Canadian provinces.",
     "options": [
       "Montana",
@@ -3590,7 +2524,7 @@
   },
   {
     "id": "277",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state has a peak called Triple Divide (8,025 ft), because water from it flows into 3 different oceans.",
     "options": [
       "Montana",
@@ -3603,7 +2537,7 @@
   },
   {
     "id": "278",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The longest undammed river (the Yellowstone River) in the contiguous US empties into the Missouri River and is found primarily in this state.",
     "options": [
       "Montana",
@@ -3616,7 +2550,7 @@
   },
   {
     "id": "279",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state's congressional House district has the largest population, with over 1.1 million people represented.",
     "options": [
       "Montana",
@@ -3629,7 +2563,7 @@
   },
   {
     "id": "280",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state's two letter abbreviation is the only one that has changed since it was first introduced, because the original abberviation was getting confused with a province in Canada.",
     "options": [
       "Nebraska",
@@ -3642,7 +2576,7 @@
   },
   {
     "id": "281",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The College World Series has been held in the largest city in this state since 1950.",
     "options": [
       "Nebraska",
@@ -3655,7 +2589,7 @@
   },
   {
     "id": "282",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "Kool-Aid was invented in Hastings in this state in 1927, and originally called Fruit Smack.",
     "options": [
       "Nebraska",
@@ -3668,7 +2602,7 @@
   },
   {
     "id": "283",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state's Oto Indian name means 'flat water', referencing the Platte River in the state.",
     "options": [
       "Nebraska",
@@ -3681,7 +2615,7 @@
   },
   {
     "id": "284",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "Warren Buffet is the \"sage\" of the largest city in this state.",
     "options": [
       "Nebraska",
@@ -3694,7 +2628,7 @@
   },
   {
     "id": "285",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "Tourism to this state actually increased after introducing its new slogan, \"Honestly, it's not for everyone.\"",
     "options": [
       "Nebraska",
@@ -3707,7 +2641,7 @@
   },
   {
     "id": "286",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This is the only state with a unicameral (one legislative chamber) legislature.",
     "options": [
       "Nebraska",
@@ -3720,7 +2654,7 @@
   },
   {
     "id": "287",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "Bailey Yard, the world's largest railroad yard, is found in North Platte in this state.",
     "options": [
       "Nebraska",
@@ -3733,7 +2667,7 @@
   },
   {
     "id": "288",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This was the 36th state admitted to the union, on Halloween 1864, just a few days before the election so the residents could help with Lincoln's re-election.",
     "options": [
       "Nevada",
@@ -3746,7 +2680,7 @@
   },
   {
     "id": "289",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state's name, in Spanish, means 'snow clad'",
     "options": [
       "Nevada",
@@ -3759,7 +2693,7 @@
   },
   {
     "id": "290",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state is the largest gold producer in the nation.",
     "options": [
       "Nevada",
@@ -3772,7 +2706,7 @@
   },
   {
     "id": "291",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "Groom Lake or Homey Airport, where conspiracy theorists think UFOs are stored, is found in this state.",
     "options": [
       "Nevada",
@@ -3785,7 +2719,7 @@
   },
   {
     "id": "292",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state has the ZIP code (89049) that covers the greatest land area in the lower 48 states, about 10,000 square miles.",
     "options": [
       "Nevada",
@@ -3798,7 +2732,7 @@
   },
   {
     "id": "293",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "A city in this state has more hotel rooms than any other (as of 2024).",
     "options": [
       "Nevada",
@@ -3811,7 +2745,7 @@
   },
   {
     "id": "294",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The Comstock Lode, one of the largest silver deposits in the US, was found near Virginia City in 1859 in this state.",
     "options": [
       "Nevada",
@@ -3824,7 +2758,7 @@
   },
   {
     "id": "295",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The Old Man of the Mountain, a stone formation in the White Mountains, broke off in a storm in 2003 in this state",
     "options": [
       "New Hampshire",
@@ -3837,7 +2771,7 @@
   },
   {
     "id": "296",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state is the only one to host the end of a foreign war (the Russo-Japanese War).",
     "options": [
       "New Hampshire",
@@ -3850,7 +2784,7 @@
   },
   {
     "id": "297",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The first civilian in space, Christa McAuliffe, was a teacher in Concord in this state.",
     "options": [
       "New Hampshire",
@@ -3863,7 +2797,7 @@
   },
   {
     "id": "298",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "Which state recorded the highest non-tornado wind speed ever, at 231 mph, on April 12, 1934?",
     "options": [
       "New Hampshire",
@@ -3876,7 +2810,7 @@
   },
   {
     "id": "299",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "In what state would you find \"America's Stonehenge\", in the town of Salem?",
     "options": [
       "New Hampshire",
@@ -3889,7 +2823,7 @@
   },
   {
     "id": "300",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state's official fruit is the pumpkin, prompted by a grade school campaign, even though Illinois by far produces the most pumpkins of any state.",
     "options": [
       "New Hampshire",
@@ -3902,7 +2836,7 @@
   },
   {
     "id": "301",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The Zach Braff movie Garden State is a reference to this state's nickname.",
     "options": [
       "New Jersey",
@@ -3915,7 +2849,7 @@
   },
   {
     "id": "302",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The most densely populated state with the most roadway per square mile is ___",
     "options": [
       "New Jersey",
@@ -3928,7 +2862,7 @@
   },
   {
     "id": "303",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state is home to the first drive-in movie theater, which opened in 1933 in Camden.",
     "options": [
       "New Jersey",
@@ -3941,7 +2875,7 @@
   },
   {
     "id": "304",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The first native American reservation, initially called Brotherton and now known as Indian Mills, was in this state in 1758.",
     "options": [
       "New Jersey",
@@ -3954,7 +2888,7 @@
   },
   {
     "id": "305",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The first officially recorded baseball game was played in 1846 in Hoboken in this state",
     "options": [
       "New Jersey",
@@ -3967,7 +2901,7 @@
   },
   {
     "id": "306",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The street names of a city in this state provided the names of the properties in Monopoly.",
     "options": [
       "New Jersey",
@@ -3980,7 +2914,7 @@
   },
   {
     "id": "307",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state ranks 47th in size, but first in population density.",
     "options": [
       "New Jersey",
@@ -3993,7 +2927,7 @@
   },
   {
     "id": "308",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The candy apple was invented in 1908 in Newark in this state.",
     "options": [
       "New Jersey",
@@ -4006,7 +2940,7 @@
   },
   {
     "id": "309",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The only state with no self-serve gasoline option (as of 2024) is ___.",
     "options": [
       "New Jersey",
@@ -4019,7 +2953,7 @@
   },
   {
     "id": "310",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state contains the oldest and longest boardwalk in the world.",
     "options": [
       "New Jersey",
@@ -4032,7 +2966,7 @@
   },
   {
     "id": "311",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state's capital is the highest, at 7,199 feet.",
     "options": [
       "New Mexico",
@@ -4045,7 +2979,7 @@
   },
   {
     "id": "312",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The first atomic bomb was exploded in Alamogordo in this state, on July 6, 1945, as part of the Trinity program.",
     "options": [
       "New Mexico",
@@ -4058,7 +2992,7 @@
   },
   {
     "id": "313",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state has the lowest water-to-land ratio, at 0.2%",
     "options": [
       "New Mexico",
@@ -4071,7 +3005,7 @@
   },
   {
     "id": "314",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The oldest continuously occupied public building in the US, The Palace of the Governors, dates from 1610 and is in this state.",
     "options": [
       "New Mexico",
@@ -4084,7 +3018,7 @@
   },
   {
     "id": "315",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "Smokey Bear was born in this state, after he was found stuck in a tree due to a forest fire in the Capitan Mountains.",
     "options": [
       "New Mexico",
@@ -4097,7 +3031,7 @@
   },
   {
     "id": "316",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state is the only one with \"USA\" on its standard license plate",
     "options": [
       "New Mexico",
@@ -4110,7 +3044,7 @@
   },
   {
     "id": "317",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The largest hot air balloon festival in the world is held each October in a city in this state.",
     "options": [
       "New Mexico",
@@ -4123,7 +3057,7 @@
   },
   {
     "id": "318",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "As of 2024, the only state to have hosted two Winter Olympics is ___.",
     "options": [
       "New York",
@@ -4136,7 +3070,7 @@
   },
   {
     "id": "319",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The longest toll road in the US, the Dewey Thruway, is found in this state",
     "options": [
       "New York",
@@ -4149,7 +3083,7 @@
   },
   {
     "id": "320",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The \"Miracle on Ice\", when the US beat the USSR in ice hockey at the Olympics, occurred in this state in 1980",
     "options": [
       "New York",
@@ -4162,7 +3096,7 @@
   },
   {
     "id": "321",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state has a subway system with one line that is over 31 miles long",
     "options": [
       "New York",
@@ -4175,7 +3109,7 @@
   },
   {
     "id": "322",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state is home to the world's smallest church, Cross Island Chapel",
     "options": [
       "New York",
@@ -4188,7 +3122,7 @@
   },
   {
     "id": "323",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "Modern commercial toilet paper was invented in this state in 1857, with JC Gayetty selling his \"Medicated Paper for the Water Closet\"",
     "options": [
       "New York",
@@ -4201,7 +3135,7 @@
   },
   {
     "id": "324",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "America's oldest cattle ranch (now part of Suffolk County parks) is found in this state.",
     "options": [
       "New York",
@@ -4214,7 +3148,7 @@
   },
   {
     "id": "325",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state has the largest park in the lower 48, at over 6,000,000 acres (9,375 sq mi).",
     "options": [
       "New York",
@@ -4227,7 +3161,7 @@
   },
   {
     "id": "326",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The first state to require license plates on cars was ___,  in 1901, and they were handmade by the car owner",
     "options": [
       "New York",
@@ -4240,7 +3174,7 @@
   },
   {
     "id": "327",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state has the nation's first department store, Arnold Constable and Co, which operated from 1825 until 1975.",
     "options": [
       "New York",
@@ -4253,7 +3187,7 @@
   },
   {
     "id": "328",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "An amusement park in this state was home to America's first roller coaster in 1884, going 6 miles an hour and costing a nickel.",
     "options": [
       "New York",
@@ -4266,7 +3200,7 @@
   },
   {
     "id": "329",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state has the most Ivy League schools, with two of the 8 schools located here.",
     "options": [
       "New York",
@@ -4279,7 +3213,7 @@
   },
   {
     "id": "330",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The first state to pass a mandatory seat belt law, in 1984, was ________",
     "options": [
       "New York",
@@ -4292,7 +3226,7 @@
   },
   {
     "id": "331",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The first successful flight by the Wright Brothers occurred at Kitty Hawk in this state",
     "options": [
       "North Carolina",
@@ -4305,7 +3239,7 @@
   },
   {
     "id": "332",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "Krispy Kreme donuts were founded in \"Old Salem\" in this state in 1937.",
     "options": [
       "North Carolina",
@@ -4318,7 +3252,7 @@
   },
   {
     "id": "333",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "Thistle Dhu, the first commercial mini-golf course, was opened in 1919 in Pinehurst in this state.",
     "options": [
       "North Carolina",
@@ -4331,7 +3265,7 @@
   },
   {
     "id": "334",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The largest privately owned home, the Biltmore Estate, was built by George Vanderbilt and is located in this state.",
     "options": [
       "North Carolina",
@@ -4344,7 +3278,7 @@
   },
   {
     "id": "335",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "Introduced as \"Brad's Drink\" in 1893 and invented in this state, it went on to become Pepsi Cola, the biggest rival of Coke.",
     "options": [
       "North Carolina",
@@ -4357,7 +3291,7 @@
   },
   {
     "id": "336",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "They Might Be Giants wrote a song about James K Polk, the 11th president, who was born in Pineville in this state.",
     "options": [
       "North Carolina",
@@ -4370,7 +3304,7 @@
   },
   {
     "id": "337",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "Which state has stock car racing as its official sport?",
     "options": [
       "North Carolina",
@@ -4383,7 +3317,7 @@
   },
   {
     "id": "338",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "Mount Mitchell, in this state, is the tallest point (6,684 ft, 2,037m) east of the Mississippi.",
     "options": [
       "North Carolina",
@@ -4396,7 +3330,7 @@
   },
   {
     "id": "339",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "60% of all furniture made in the US comes from within a 125 mile radius of the town of High Point in this state.",
     "options": [
       "North Carolina",
@@ -4409,7 +3343,7 @@
   },
   {
     "id": "340",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This is the only state with an official state toast, based on a poem called \"The Old North State\" written in 1904.",
     "options": [
       "North Carolina",
@@ -4422,7 +3356,7 @@
   },
   {
     "id": "341",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The geographic center of North America is found in this state",
     "options": [
       "North Dakota",
@@ -4435,7 +3369,7 @@
   },
   {
     "id": "342",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The tallest man-made structure in the western hemisphere is a 2,063 foot (629 m) TV mast just west of Blanchard, in this state.",
     "options": [
       "North Dakota",
@@ -4448,7 +3382,7 @@
   },
   {
     "id": "343",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "Due to a technical error in its state constitution, this state was theoretically still a territory until 2012, when it finally became a state",
     "options": [
       "North Dakota",
@@ -4461,7 +3395,7 @@
   },
   {
     "id": "344",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "The only national park named after a single person, Theodore Roosevelt National Park, is located in this state.",
     "options": [
       "North Dakota",
@@ -4474,7 +3408,7 @@
   },
   {
     "id": "345",
-    "category": "general_trivia",
+    "category": "state_trivia",
     "question": "This state produces more honey than any other, at over 38,000,000 pounds (17.2 million kg) in 2020.",
     "options": [
       "North Dakota",
@@ -9964,9 +8898,9 @@
     "question": "Until 1937, inaugurations took place in which month?",
     "options": [
       "March",
-      "April",
+      "January",
       "November",
-      "January"
+      "December"
     ],
     "correctAnswer": "March",
     "explanation": "It used to be on March 4 (or the 5th if the 4th was a Sunday) as that was the traditional start of the year for government operations. It was moved to January after the 1933 ratification of the 20th amendment."
@@ -11636,3 +10570,5 @@
     "explanation": "Burr killed Alexander Hamilton in a duel. Cheney shot a 78 year attorney in the face, neck and chest in a 'hunting accident' but the man lived."
   }
 ]
+
+  
