@@ -1,7 +1,453 @@
 
 [
-  { "id": "1", "category": "Action", "text": "Move to any property on the board." },
-  { "id": "2", "category": "Event", "text": "A sudden stock market crash halves everyone's money." },
-  { "id": "3", "category": "Debate", "text": "Choose an opponent. You both have 1 minute to debate a topic chosen by another player. The other players vote on the winner, who gets $500,000." },
-  { "id": "4", "category": "Legislation", "text": "Propose a new rule for the game. All players vote. If it passes, it becomes a permanent rule." }
+  {
+    "id": "1",
+    "category": "Feel your pain",
+    "text": "Act out 'Santa Claus delivering gifts to a house by coming down the chimney'."
+  },
+  {
+    "id": "2",
+    "category": "Feel your pain",
+    "text": "Act out 'Parallel parking a car'."
+  },
+  {
+    "id": "3",
+    "category": "Feel your pain",
+    "text": "Act out 'Whitewater kayaking down a set of rapids'."
+  },
+  {
+    "id": "4",
+    "category": "Feel your pain",
+    "text": "Act out 'Figure skating in a competition and one of your blades breaks'."
+  },
+  {
+    "id": "5",
+    "category": "Feel your pain",
+    "text": "Act out 'Playing spikeball'."
+  },
+  {
+    "id": "6",
+    "category": "Feel your pain",
+    "text": "Act out 'Pulling the wool over someone's eyes' (as in deceiving someone)."
+  },
+  {
+    "id": "7",
+    "category": "Feel your pain",
+    "text": "Act out 'Someone putting on clown makeup'."
+  },
+  {
+    "id": "8",
+    "category": "Feel your pain",
+    "text": "Act out 'Raining cats and dogs'."
+  },
+  {
+    "id": "9",
+    "category": "Feel your pain",
+    "text": "Act out 'Giving a bath to a large dog'."
+  },
+  {
+    "id": "10",
+    "category": "Feel your pain",
+    "text": "Act out 'Salmon swimming up a fish ladder at a dam'."
+  },
+  {
+    "id": "11",
+    "category": "Feel your pain",
+    "text": "Act out 'Shape up or ship out'."
+  },
+  {
+    "id": "12",
+    "category": "Feel your pain",
+    "text": "Act out 'Flying in first class'."
+  },
+  {
+    "id": "13",
+    "category": "Feel your pain",
+    "text": "Act out 'Placing cookie dough on a baking sheet'."
+  },
+  {
+    "id": "14",
+    "category": "Feel your pain",
+    "text": "Act out 'Tanning at a tanning bed'."
+  },
+  {
+    "id": "15",
+    "category": "Feel your pain",
+    "text": "Act out 'Changing a baby's diaper'."
+  },
+  {
+    "id": "16",
+    "category": "Party platform",
+    "text": "Draw 'Barking up the wrong tree'."
+  },
+  {
+    "id": "17",
+    "category": "Party platform",
+    "text": "Draw 'Actions speak louder than words'."
+  },
+  {
+    "id": "18",
+    "category": "Party platform",
+    "text": "Draw 'Stuck between a rock and a hard place'."
+  },
+  {
+    "id": "19",
+    "category": "Party platform",
+    "text": "Draw 'Play it by ear'."
+  },
+  {
+    "id": "20",
+    "category": "Party platform",
+    "text": "Draw 'A bird in the hand is worth two in the bush'."
+  },
+  {
+    "id": "21",
+    "category": "Party platform",
+    "text": "Draw 'Listening to classical music'."
+  },
+  {
+    "id": "22",
+    "category": "Party platform",
+    "text": "Draw 'An elephant taking a dust bath'."
+  },
+  {
+    "id": "23",
+    "category": "Party platform",
+    "text": "Draw 'Making a cup of coffee using a coffee machine'."
+  },
+  {
+    "id": "24",
+    "category": "Party platform",
+    "text": "Draw 'Watching the Super Bowl while eating nachos'."
+  },
+  {
+    "id": "25",
+    "category": "Party platform",
+    "text": "Draw 'Someone playing a game where they have to draw a given word or phrase and have other people guess what is being drawn'."
+  },
+  {
+    "id": "26",
+    "category": "Party platform",
+    "text": "Draw 'Back to the drawing board' (the idea of starting over)."
+  },
+  {
+    "id": "27",
+    "category": "Party platform",
+    "text": "Draw 'A wolf in sheep's clothing'."
+  },
+  {
+    "id": "28",
+    "category": "Party platform",
+    "text": "Draw 'Up a creek without a paddle'."
+  },
+  {
+    "id": "29",
+    "category": "Party platform",
+    "text": "Draw 'The squeaky wheel gets the grease'."
+  },
+  {
+    "id": "30",
+    "category": "Party platform",
+    "text": "Draw 'A bald eagle catching a fish in a lake'."
+  },
+  {
+    "id": "31",
+    "category": "Glad-handing",
+    "text": "Do 10 good push-ups."
+  },
+  {
+    "id": "32",
+    "category": "Glad-handing",
+    "text": "Hold a plank for 30 seconds. Your body should be supported only by your toes and forearms."
+  },
+  {
+    "id": "33",
+    "category": "Glad-handing",
+    "text": "Stand on one leg, pat your head with your right hand and rub your belly with your left hand, all while singing I'm A Little Teapot."
+  },
+  {
+    "id": "34",
+    "category": "Glad-handing",
+    "text": "Do 20 jumping jacks."
+  },
+  {
+    "id": "35",
+    "category": "Glad-handing",
+    "text": "Spin around 10 times and then walk a straight line."
+  },
+  {
+    "id": "36",
+    "category": "Glad-handing",
+    "text": "Recite the alphabet backwards."
+  },
+  {
+    "id": "37",
+    "category": "Glad-handing",
+    "text": "Hold a wall sit for 30 seconds. There must be a 90 degree angle between your thighs and torso."
+  },
+  {
+    "id": "38",
+    "category": "Glad-handing",
+    "text": "Sit in a chair with both feet flat on the floor. Lift your right foot a few inches and make clockwise circles with your foot. At the same time, draw the number 6 in the air with your right index finger."
+  },
+  {
+    "id": "39",
+    "category": "Glad-handing",
+    "text": "Find 3 soft and/or non-breakable things and juggle them for at least 5 seconds."
+  },
+  {
+    "id": "40",
+    "category": "Glad-handing",
+    "text": "You have 2 minutes to try and get an egg to balance on one of its ends. It must stay upright for at least 3 seconds, and it must not break."
+  },
+  {
+    "id": "41",
+    "category": "Glad-handing",
+    "text": "Hold a broom or mop handle with both hands, about shoulder width apart. Then bend over so the handle is as close to the floor as you can get it. Step over the handle, one foot at a time, without falling."
+  },
+  {
+    "id": "42",
+    "category": "Glad-handing",
+    "text": "Get on your knees and place your elbows on the floor in front of you. Now take one arm and place it on your low back, then place the other arm there, all without falling forward."
+  },
+  {
+    "id": "43",
+    "category": "Glad-handing",
+    "text": "Draw a standard analog clock, showing the time of 3:40, with your eyes closed the entire time."
+  },
+  {
+    "id": "44",
+    "category": "Glad-handing",
+    "text": "Do 'the floss' dance move for 10 seconds."
+  },
+  {
+    "id": "45",
+    "category": "Glad-handing",
+    "text": "Hop on one foot 20 times, without the other foot touching the ground."
+  },
+  {
+    "id": "46",
+    "category": "Chicken dinner",
+    "text": "Sing the first verse of 'The Star-Spangled Banner' in the style of an opera singer."
+  },
+  {
+    "id": "47",
+    "category": "Chicken dinner",
+    "text": "Sing the Pledge of Allegiance in the style of a death metal song."
+  },
+  {
+    "id": "48",
+    "category": "Chicken dinner",
+    "text": "Sing the first two verses of 'Rudolph, the Red-Nosed Reindeer' in an emo style."
+  },
+  {
+    "id": "49",
+    "category": "Chicken dinner",
+    "text": "Make up a rap song about why your should be president."
+  },
+  {
+    "id": "50",
+    "category": "Chicken dinner",
+    "text": "XX'."
+  },
+  {
+    "id": "51",
+    "category": "Chicken dinner",
+    "text": "XXng Jr. (first minute)."
+  },
+  {
+    "id": "52",
+    "category": "Chicken dinner",
+    "text": "XX'."
+  },
+  {
+    "id": "53",
+    "category": "Chicken dinner",
+    "text": "XX."
+  },
+  {
+    "id": "54",
+    "category": "Chicken dinner",
+    "text": "XX'."
+  },
+  {
+    "id": "55",
+    "category": "Chicken dinner",
+    "text": "XX."
+  },
+  {
+    "id": "56",
+    "category": "Chicken dinner",
+    "text": "SXX)."
+  },
+  {
+    "id": "57",
+    "category": "Chicken dinner",
+    "text": "XX."
+  },
+  {
+    "id": "58",
+    "category": "Chicken dinner",
+    "text": "XX."
+  },
+  {
+    "id": "59",
+    "category": "Chicken dinner",
+    "text": "Give a dramatic reading of a recent political news headline."
+  },
+  {
+    "id": "60",
+    "category": "Chicken dinner",
+    "text": "Sing a nursery rhyme in an opera voice."
+  },
+{
+    "id": "61",
+    "category": "Puppet Master",
+    "text": "Have another player act out 'Climbing a ladder'."
+  },
+  {
+    "id": "62",
+    "category": "Puppet Master",
+    "text": "Have another player act out 'Shooting a free throw in basketball'."
+  },
+  {
+    "id": "63",
+    "category": "Puppet Master",
+    "text": "Have another player act out 'Arranging a vase full of flowers'."
+  },
+  {
+    "id": "64",
+    "category": "Puppet Master",
+    "text": "Have another player act out 'Making a snowball'."
+  },
+  {
+    "id": "65",
+    "category": "Puppet Master",
+    "text": "Have another player act out 'Playing the saxophone'."
+  },
+  {
+    "id": "66",
+    "category": "Puppet Master",
+    "text": "Have another player act out 'Playing the harp'."
+  },
+  {
+    "id": "67",
+    "category": "Puppet Master",
+    "text": "Have another player act out 'Swimming the backstroke'."
+  },
+  {
+    "id": "68",
+    "category": "Puppet Master",
+    "text": "Have another player act out 'Making a TikTok dance video'."
+  },
+  {
+    "id": "69",
+    "category": "Puppet Master",
+    "text": "Have another player act out 'Hitting a tee shot with a golf club'."
+  },
+  {
+    "id": "70",
+    "category": "Puppet Master",
+    "text": "Have another player act out 'Using a rotary phone to call the police'."
+  },
+  {
+    "id": "71",
+    "category": "Puppet Master",
+    "text": "Have another player act out 'XX'."
+  },
+  {
+    "id": "72",
+    "category": "Puppet Master",
+    "text": "Have another player act out 'XX'."
+  },
+  {
+    "id": "73",
+    "category": "Puppet Master",
+    "text": "Have another player act out 'Catching a fly ball in baseball'."
+  },
+  {
+    "id": "74",
+    "category": "Puppet Master",
+    "text": "Have another player act out 'XX'."
+  },
+  {
+    "id": "75",
+    "category": "Puppet Master",
+    "text": "Have another player act out 'Playing dodgeball'."
+  },
+  {
+    "id": "76",
+    "category": "Random",
+    "text": "Your home state got hit with a hurricane, a mudslide and a wildfire, and your administration bungled the response. Repairing the PR damage will cost you $1 million for each Electoral Vote in your state."
+  },
+  {
+    "id": "77",
+    "category": "Random",
+    "text": "Move yourself to either Indiana or Arizona, free of charge, and claim the Electoral Vote chip for that state. If someone else already has it, they must give it to you."
+  },
+  {
+    "id": "78",
+    "category": "Random",
+    "text": "Every candidate wearing socks must give you $1 million."
+  },
+  {
+    "id": "79",
+    "category": "Random",
+    "text": "You've been caught taking a $400 million bribe from the Qatar government. Go to D.C. and miss two turns. You do NOT collect any money for those missed turns."
+  },
+  {
+    "id": "80",
+    "category": "Random",
+    "text": "Every candidate wearing a watch of any kind must give you 2 million of their Popular Votes (or $2 million if they have no PVs)."
+  },
+  {
+    "id": "81",
+    "category": "Random",
+    "text": "Every candidate under age 60 must give you $1 million."
+  },
+  {
+    "id": "82",
+    "category": "Random",
+    "text": "You made a gaffe in a recent speech. Give $2 million to each other player."
+  },
+  {
+    "id": "83",
+    "category": "Random",
+    "text": "A grassroots movement has sprung up in your favor. Collect 10 million popular votes."
+  },
+  {
+    "id": "84",
+    "category": "Random",
+    "text": "An audit reveals you have unpaid taxes. Pay the bank $5 million."
+  },
+  {
+    "id": "85",
+    "category": "Random",
+    "text": "You deliver a great debate performance. Collect 5 million popular votes."
+  },
+  {
+    "id": "86",
+    "category": "Random",
+    "text": "You are caught flip-flopping on a major issue. Lose 5 million popular votes."
+  },
+  {
+    "id": "87",
+    "category": "Random",
+    "text": "A celebrity endorses you. Gain 2 million popular votes."
+  },
+  {
+    "id": "88",
+    "category": "Random",
+    "text": "You get a surprisingly positive story in the news. Collect $3 million from the bank."
+  },
+  {
+    "id": "89",
+    "category": "Random",
+    "text": "A damaging story from your past resurfaces. Lose $5 million and 5 million popular votes."
+  },
+  {
+    "id": "90",
+    "category": "Random",
+    "text": "Your campaign manager quits. Miss your next turn."
+  }
 ]
