@@ -59,18 +59,26 @@ export function QuizClient({ category }: { category: string }) {
     setQuestionsLoading(false);
   }, [category]);
 
-  useEffect(() => {
+  const categoryKey = useMemo(() => category.replace(/-/g, '_'), [category]);
+
+  const fetchAskedQuestionIds = useCallback(async () => {
     if (user && firestore) {
       const userDocRef = doc(firestore, 'users', user.uid);
-      getDoc(userDocRef).then(docSnap => {
-        if (docSnap.exists()) {
-          const userData = docSnap.data();
-          const seenForCategory = userData.seenQuestions?.[category.replace(/-/g, '_')] || [];
-          setAskedQuestionIds(new Set(seenForCategory));
-        }
-      });
+      const docSnap = await getDoc(userDocRef);
+      if (docSnap.exists()) {
+        const userData = docSnap.data();
+        const seenForCategory = userData.seenQuestions?.[categoryKey] || [];
+        setAskedQuestionIds(new Set(seenForCategory));
+      } else {
+        setAskedQuestionIds(new Set());
+      }
     }
-  }, [user, firestore, category]);
+  }, [user, firestore, categoryKey]);
+
+
+  useEffect(() => {
+    fetchAskedQuestionIds();
+  }, [fetchAskedQuestionIds]);
 
 
   const { correctAnswerSound, incorrectAnswerSound } = useMemo(() => {
@@ -113,10 +121,12 @@ export function QuizClient({ category }: { category: string }) {
 
   const selectNewQuestion = useCallback(() => {
     if (!allQuestions || allQuestions.length === 0) return;
+    
     const availableQuestions = allQuestions.filter(q => !askedQuestionIds.has(q.id));
     
     if (availableQuestions.length === 0) {
       setOutOfQuestions(true);
+      setQuizFinished(true);
       return;
     }
     
@@ -131,10 +141,10 @@ export function QuizClient({ category }: { category: string }) {
 
 
   useEffect(() => {
-    if (allQuestions && allQuestions.length > 0 && !currentQuestion && askedQuestionIds.size < allQuestions.length) {
+    if (allQuestions && allQuestions.length > 0 && !currentQuestion && !quizFinished) {
       selectNewQuestion();
     }
-  }, [allQuestions, currentQuestion, selectNewQuestion, askedQuestionIds]);
+  }, [allQuestions, currentQuestion, selectNewQuestion, askedQuestionIds, quizFinished]);
 
   const shuffledOptions = useMemo(() => {
     if (!currentQuestion) return [];
@@ -149,20 +159,17 @@ export function QuizClient({ category }: { category: string }) {
   const updateSeenQuestionsInFirestore = async (questionId: string) => {
     if (!user || !firestore) return;
     const userDocRef = doc(firestore, 'users', user.uid);
-    const categoryKey = `seenQuestions.${category.replace(/-/g, '_')}`;
+    const categoryKeyToUpdate = `seenQuestions.${categoryKey}`;
     
     try {
-      // Use updateDoc with arrayUnion to atomically add the new question ID.
-      // This is safer than get/set for concurrent updates.
       await updateDoc(userDocRef, {
-        [categoryKey]: arrayUnion(questionId)
+        [categoryKeyToUpdate]: arrayUnion(questionId)
       });
     } catch (error: any) {
        if (error.code === 'not-found') {
-        // If the document or the seenQuestions map doesn't exist, create it.
         await setDoc(userDocRef, { 
             seenQuestions: { 
-                [category.replace(/-/g, '_')]: [questionId] 
+                [categoryKey]: [questionId] 
             } 
         }, { merge: true });
        } else {
@@ -171,7 +178,15 @@ export function QuizClient({ category }: { category: string }) {
     }
 };
 
-  const handleSubmitAnswer = () => {
+  const markQuestionAsSeen = async (questionId: string) => {
+    const newAskedQuestionIds = new Set(askedQuestionIds);
+    newAskedQuestionIds.add(questionId);
+    setAskedQuestionIds(newAskedQuestionIds);
+    await updateSeenQuestionsInFirestore(questionId);
+  };
+
+
+  const handleSubmitAnswer = async () => {
     if (!selectedAnswer || !currentQuestion || !allQuestions) return;
 
     if (intervalId) {
@@ -191,25 +206,19 @@ export function QuizClient({ category }: { category: string }) {
       incorrectAnswerSound?.play();
     }
 
-    const newAskedQuestionIds = new Set(askedQuestionIds).add(currentQuestion.id);
-    setAskedQuestionIds(newAskedQuestionIds);
-    updateSeenQuestionsInFirestore(currentQuestion.id);
+    await markQuestionAsSeen(currentQuestion.id);
 
-
-    if (newAskedQuestionIds.size >= allQuestions.length && allQuestions.length > 0) {
+    if (askedQuestionIds.size + 1 >= allQuestions.length) {
         setTimeout(() => setQuizFinished(true), 3000);
     }
   };
 
 
-  const handleSkipQuestion = () => {
+  const handleSkipQuestion = async () => {
     if (!currentQuestion || !allQuestions) return;
+    await markQuestionAsSeen(currentQuestion.id);
 
-    const newAskedQuestionIds = new Set(askedQuestionIds).add(currentQuestion.id);
-    setAskedQuestionIds(newAskedQuestionIds);
-    updateSeenQuestionsInFirestore(currentQuestion.id);
-
-    if (newAskedQuestionIds.size >= allQuestions.length) {
+    if (askedQuestionIds.size + 1 >= allQuestions.length) {
       setQuizFinished(true);
     } else {
       selectNewQuestion();
@@ -220,17 +229,18 @@ export function QuizClient({ category }: { category: string }) {
     if (!user || !firestore) return;
     
     const userDocRef = doc(firestore, 'users', user.uid);
-    const categoryKey = `seenQuestions.${category.replace(/-/g, '_')}`;
+    const categoryKeyToReset = `seenQuestions.${categoryKey}`;
 
     await updateDoc(userDocRef, {
-        [categoryKey]: []
+        [categoryKeyToReset]: []
     });
 
     setAskedQuestionIds(new Set());
     setScore(0);
     setOutOfQuestions(false);
     setQuizFinished(false);
-    // Let useEffect trigger the new question selection
+    setCurrentQuestion(null); 
+    // This will trigger the useEffect to select a new question
   };
   
   if (questionsLoading) {
@@ -273,7 +283,7 @@ export function QuizClient({ category }: { category: string }) {
     );
   }
 
-  if (quizFinished) {
+  if (quizFinished && !outOfQuestions) {
     return (
       <Card className="w-full max-w-2xl text-center p-8 shadow-2xl animate-in fade-in zoom-in-95">
         <CardHeader>
@@ -406,3 +416,5 @@ export function QuizClient({ category }: { category: string }) {
     </>
   );
 }
+
+    
