@@ -28,32 +28,19 @@ interface Question {
   imageUrl?: string;
 }
 
-interface QuizState {
-  isLoading: boolean;
-  currentQuestion: Question | null;
-  selectedAnswer: string | null;
-  isAnswered: boolean;
-  showAllAnsweredScreen: boolean;
-  questionNumber: number;
-  totalQuestions: number;
-  seenQuestionIds: Set<string>;
-}
-
 export function QuizClient({ category }: { category: string }) {
   const { auth, firestore } = useFirebase();
   const router = useRouter();
   const { hideLoader, showLoader } = useLoading();
 
-  const [quizState, setQuizState] = useState<QuizState>({
-    isLoading: true,
-    currentQuestion: null,
-    selectedAnswer: null,
-    isAnswered: false,
-    showAllAnsweredScreen: false,
-    questionNumber: 0,
-    totalQuestions: 0,
-    seenQuestionIds: new Set(),
-  });
+  const [isLoading, setIsLoading] = useState(true);
+  const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
+  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  const [isAnswered, setIsAnswered] = useState(false);
+  const [showAllAnsweredScreen, setShowAllAnsweredScreen] = useState(false);
+  const [questionNumber, setQuestionNumber] = useState(0);
+  const [totalQuestions, setTotalQuestions] = useState(0);
+  const [seenQuestionIds, setSeenQuestionIds] = useState<Set<string>>(new Set());
 
   const categoryKey = useMemo(() => {
     if (category === 'state-trivia') return 'state_trivia';
@@ -69,107 +56,97 @@ export function QuizClient({ category }: { category: string }) {
     );
   }, [categoryKey]);
 
-  const loadAndSelectQuestion = useCallback(async () => {
-    setQuizState(prevState => ({ ...prevState, isLoading: true }));
-    
-    let seenIds = new Set<string>();
-
-    if (auth?.currentUser && firestore) {
-        try {
-          const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
-          const userDoc = await getDoc(userDocRef);
-          if (userDoc.exists()) {
-            const userData = userDoc.data();
-            const seenForCategory = userData.seenQuestions?.[category] || [];
-            seenIds = new Set(seenForCategory);
-          }
-        } catch (error) {
-          console.error("Error fetching user progress:", error);
-        }
-      } else {
-        const sessionSeen = sessionStorage.getItem(`seen_${category}`);
-        if (sessionSeen) {
-          seenIds = new Set(JSON.parse(sessionSeen));
-        }
-      }
-
-    const availableQuestions = filteredQuestions.filter(q => !seenIds.has(q.id));
+  const loadNextQuestion = useCallback((currentSeenIds: Set<string>) => {
+    const availableQuestions = filteredQuestions.filter(q => !currentSeenIds.has(q.id));
 
     if (availableQuestions.length > 0) {
       const randomIndex = Math.floor(Math.random() * availableQuestions.length);
       const nextQuestion = availableQuestions[randomIndex];
       const shuffledOptions = [...nextQuestion.options].sort(() => Math.random() - 0.5);
 
-      setQuizState({
-        isLoading: false,
-        currentQuestion: { ...nextQuestion, options: shuffledOptions },
-        selectedAnswer: null,
-        isAnswered: false,
-        showAllAnsweredScreen: false,
-        questionNumber: seenIds.size + 1,
-        totalQuestions: filteredQuestions.length,
-        seenQuestionIds: seenIds,
-      });
+      setCurrentQuestion({ ...nextQuestion, options: shuffledOptions });
+      setQuestionNumber(currentSeenIds.size + 1);
+      setTotalQuestions(filteredQuestions.length);
+      setSelectedAnswer(null);
+      setIsAnswered(false);
+      setShowAllAnsweredScreen(false);
     } else {
-      setQuizState({
-        isLoading: false,
-        currentQuestion: null,
-        selectedAnswer: null,
-        isAnswered: false,
-        showAllAnsweredScreen: filteredQuestions.length > 0,
-        questionNumber: seenIds.size,
-        totalQuestions: filteredQuestions.length,
-        seenQuestionIds: seenIds,
-      });
+      setShowAllAnsweredScreen(filteredQuestions.length > 0);
+      setCurrentQuestion(null);
     }
+    setIsLoading(false);
     hideLoader();
-  }, [auth, firestore, category, filteredQuestions, hideLoader]);
+  }, [filteredQuestions, hideLoader]);
+
+  const initializeQuiz = useCallback(async () => {
+    setIsLoading(true);
+    let initialSeenIds = new Set<string>();
+
+    if (auth?.currentUser && firestore) {
+      try {
+        const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
+        const userDoc = await getDoc(userDocRef);
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
+          const seenForCategory = userData.seenQuestions?.[category] || [];
+          initialSeenIds = new Set(seenForCategory);
+        }
+      } catch (error) {
+        console.error("Error fetching user progress:", error);
+      }
+    } else {
+      const sessionSeen = sessionStorage.getItem(`seen_${category}`);
+      if (sessionSeen) {
+        initialSeenIds = new Set(JSON.parse(sessionSeen));
+      }
+    }
+
+    setSeenQuestionIds(initialSeenIds);
+    loadNextQuestion(initialSeenIds);
+  }, [auth, firestore, category, loadNextQuestion]);
 
   useEffect(() => {
-    loadAndSelectQuestion();
+    initializeQuiz();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const updateSeenQuestionsInDB = async (questionId: string) => {
+  const markQuestionAsSeen = async (questionId: string) => {
+    const newSeenIds = new Set(seenQuestionIds);
+    newSeenIds.add(questionId);
+    setSeenQuestionIds(newSeenIds);
+    
     if (auth?.currentUser && firestore) {
       const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
       try {
-        await updateDoc(userDocRef, {
-          [`seenQuestions.${category}`]: arrayUnion(questionId),
-        });
+        // Use set with merge to create the document if it doesn't exist
+        await setDoc(userDocRef, { 
+            seenQuestions: { [category]: Array.from(newSeenIds) } 
+        }, { merge: true });
       } catch (err) {
-        const error = err as { code: string };
-        if (error.code === 'not-found') {
-          await setDoc(userDocRef, { seenQuestions: { [category]: [questionId] } }, { merge: true });
-        } else {
-          console.error("Error updating seen questions in DB:", err);
-        }
+        console.error("Error updating seen questions in DB:", err);
       }
     } else {
-      const newSeenIds = new Set(quizState.seenQuestionIds).add(questionId);
       sessionStorage.setItem(`seen_${category}`, JSON.stringify(Array.from(newSeenIds)));
     }
   };
   
   const handleAnswerSubmit = async () => {
-    if (!quizState.currentQuestion || quizState.isAnswered) return;
+    if (!currentQuestion || isAnswered) return;
 
-    const audio = new Audio(quizState.selectedAnswer === quizState.currentQuestion.correctAnswer ? correctSoundBase64 : incorrectSoundBase64);
+    const audio = new Audio(selectedAnswer === currentQuestion.correctAnswer ? correctSoundBase64 : incorrectSoundBase64);
     audio.play();
 
-    setQuizState(prevState => ({
-      ...prevState,
-      isAnswered: true,
-    }));
-    
-    await updateSeenQuestionsInDB(quizState.currentQuestion.id);
+    setIsAnswered(true);
+    await markQuestionAsSeen(currentQuestion.id);
   };
   
   const handleSkipQuestion = async () => {
-    if (quizState.currentQuestion) {
-      await updateSeenQuestionsInDB(quizState.currentQuestion.id);
+    if (currentQuestion) {
       showLoader();
-      loadAndSelectQuestion();
+      await markQuestionAsSeen(currentQuestion.id);
+      const newSeenIds = new Set(seenQuestionIds);
+      newSeenIds.add(currentQuestion.id);
+      loadNextQuestion(newSeenIds);
     }
   };
 
@@ -179,6 +156,7 @@ export function QuizClient({ category }: { category: string }) {
   };
 
   const handleReuseQuestions = async () => {
+    showLoader();
     if (auth?.currentUser && firestore) {
       const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
       try {
@@ -191,15 +169,15 @@ export function QuizClient({ category }: { category: string }) {
     } else {
         sessionStorage.removeItem(`seen_${category}`);
     }
-    showLoader();
-    loadAndSelectQuestion();
+    setSeenQuestionIds(new Set());
+    loadNextQuestion(new Set());
   };
 
   const handleBuyExpansion = () => {
     alert('Expansion packs are not yet available.');
   };
 
-  if (quizState.isLoading) {
+  if (isLoading) {
     return (
       <div className="w-full max-w-2xl mx-auto">
         <p className="text-center text-muted-foreground mb-4">Loading...</p>
@@ -223,7 +201,7 @@ export function QuizClient({ category }: { category: string }) {
     );
   }
 
-  if (quizState.showAllAnsweredScreen) {
+  if (showAllAnsweredScreen) {
     return (
       <Card className="w-full max-w-md text-center">
         <CardHeader>
@@ -251,7 +229,7 @@ export function QuizClient({ category }: { category: string }) {
     );
   }
 
-  if (!quizState.currentQuestion) {
+  if (!currentQuestion) {
       return (
         <Card className="w-full max-w-md text-center">
             <CardHeader>
@@ -271,30 +249,30 @@ export function QuizClient({ category }: { category: string }) {
   return (
     <div className="w-full max-w-2xl mx-auto">
       <div className="mb-4">
-        <p className="text-sm text-muted-foreground">Question {quizState.questionNumber} of {quizState.totalQuestions}</p>
-        <Progress value={quizState.totalQuestions > 0 ? (quizState.questionNumber / quizState.totalQuestions) * 100 : 0} className="w-full" />
+        <p className="text-sm text-muted-foreground">Question {questionNumber} of {totalQuestions}</p>
+        <Progress value={totalQuestions > 0 ? (questionNumber / totalQuestions) * 100 : 0} className="w-full" />
       </div>
       <Card>
-        {!quizState.isAnswered ? (
+        {!isAnswered ? (
           <>
             <CardHeader>
-              {quizState.currentQuestion.imageUrl && (
+              {currentQuestion.imageUrl && (
                 <div className="relative h-48 w-full mb-4 rounded-t-lg overflow-hidden">
-                  <Image src={quizState.currentQuestion.imageUrl} alt="Question image" fill style={{objectFit:"cover"}} />
+                  <Image src={currentQuestion.imageUrl} alt="Question image" fill style={{objectFit:"cover"}} />
                 </div>
               )}
-              <CardTitle className="text-2xl font-bold">{quizState.currentQuestion.question}</CardTitle>
+              <CardTitle className="text-2xl font-bold">{currentQuestion.question}</CardTitle>
             </CardHeader>
             <CardContent className="grid gap-4">
-              {quizState.currentQuestion.options.map((option) => (
+              {currentQuestion.options.map((option) => (
                 <Button
                   key={option}
                   variant="outline"
                   className={cn(
                     "w-full justify-start text-left h-auto py-3 px-4 whitespace-normal",
-                    quizState.selectedAnswer === option && "bg-accent text-accent-foreground ring-2 ring-primary"
+                    selectedAnswer === option && "bg-accent text-accent-foreground ring-2 ring-primary"
                   )}
-                  onClick={() => setQuizState(prevState => ({ ...prevState, selectedAnswer: option }))}
+                  onClick={() => setSelectedAnswer(option)}
                 >
                   {option}
                 </Button>
@@ -305,18 +283,18 @@ export function QuizClient({ category }: { category: string }) {
                 <SkipForward className="mr-2 h-4 w-4" />
                 Skip Question
               </Button>
-              <Button onClick={handleAnswerSubmit} disabled={!quizState.selectedAnswer}>Submit Answer</Button>
+              <Button onClick={handleAnswerSubmit} disabled={!selectedAnswer}>Submit Answer</Button>
             </CardFooter>
           </>
         ) : (
           <>
             <CardHeader>
-              <CardTitle className="text-2xl font-bold">{quizState.currentQuestion.question}</CardTitle>
+              <CardTitle className="text-2xl font-bold">{currentQuestion.question}</CardTitle>
             </CardHeader>
             <CardContent className="grid gap-4">
-              {quizState.currentQuestion.options.map((option) => {
-                const isCorrect = option === quizState.currentQuestion.correctAnswer;
-                const isSelected = option === quizState.selectedAnswer;
+              {currentQuestion.options.map((option) => {
+                const isCorrect = option === currentQuestion.correctAnswer;
+                const isSelected = option === selectedAnswer;
                 return (
                   <div
                     key={option}
@@ -338,7 +316,7 @@ export function QuizClient({ category }: { category: string }) {
                 <Lightbulb className="h-6 w-6 text-yellow-400 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-bold text-lg">Explanation</h3>
-                  <p className="text-muted-foreground">{quizState.currentQuestion.explanation}</p>
+                  <p className="text-muted-foreground">{currentQuestion.explanation}</p>
                 </div>
               </div>
               <div className="w-full mt-4">
@@ -354,3 +332,5 @@ export function QuizClient({ category }: { category: string }) {
     </div>
   );
 }
+
+    
