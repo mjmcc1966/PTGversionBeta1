@@ -4,7 +4,7 @@
 import { firebaseConfig } from '@/firebase/config';
 import { initializeApp, getApps, getApp, FirebaseApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-import { initializeFirestore, memoryLocalCache } from 'firebase/firestore'
+import { getFirestore } from 'firebase/firestore'
 
 // IMPORTANT: DO NOT MODIFY THIS FUNCTION
 export function initializeFirebase() {
@@ -29,13 +29,7 @@ export function getSdks(firebaseApp: FirebaseApp) {
   return {
     firebaseApp,
     auth: getAuth(firebaseApp),
-    firestore: initializeFirestore(firebaseApp, {
-      localCache: memoryLocalCache({
-        garbageCollection: {
-          cacheSizeBytes: 104857600
-        },
-      }),
-    })
+    firestore: getFirestore(firebaseApp)
   };
 }
 
@@ -47,3 +41,4 @@ export * from './non-blocking-updates';
 export * from './non-blocking-login';
 export * from './errors';
 export * from './error-emitter';
+
