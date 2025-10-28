@@ -6,19 +6,12 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Brain, Map, Scale, Hourglass, HelpCircle, Shuffle } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useLoading } from '@/app/context/loading-context';
 
 export default function Home() {
   const router = useRouter();
-  const { showLoader, hideLoader } = useLoading();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
-    hideLoader();
-  }, [pathname, searchParams, hideLoader]);
-
+  const { showLoader } = useLoading();
 
   const categories = [
     { name: (<div>General Trivia<br/>$10,000,000</div>), href: '/quiz/general-trivia', icon: <Brain className="w-6 h-6" /> },

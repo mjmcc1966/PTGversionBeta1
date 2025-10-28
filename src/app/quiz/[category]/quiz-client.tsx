@@ -36,6 +36,7 @@ interface QuizState {
   isAnswered: boolean;
   isFinished: boolean;
   isLoading: boolean;
+  questionNumber: number;
 }
 
 export function QuizClient({ category }: { category: string }) {
@@ -52,6 +53,7 @@ export function QuizClient({ category }: { category: string }) {
     isAnswered: false,
     isFinished: false,
     isLoading: true,
+    questionNumber: 1,
   });
 
   const categoryKey = useMemo(() => {
@@ -60,7 +62,7 @@ export function QuizClient({ category }: { category: string }) {
     if (category === 'government-trivia') return 'government_trivia';
     return category;
   }, [category]);
-
+  
   const selectNextQuestion = useCallback((questions: Question[], seenIds: Set<string>): Question | null => {
     const availableQuestions = questions.filter(q => !seenIds.has(q.id));
     if (availableQuestions.length === 0) {
@@ -126,6 +128,7 @@ export function QuizClient({ category }: { category: string }) {
         isLoading: false,
         isAnswered: false,
         selectedAnswer: null,
+        questionNumber: initialSeenIds.size + 1,
       });
 
       hideLoader();
@@ -150,6 +153,7 @@ export function QuizClient({ category }: { category: string }) {
       selectedAnswer: null,
       isAnswered: false,
       isFinished: prevState.allCategoryQuestions.length > 0 && nextQuestion === null,
+      questionNumber: newSeenIds.size + 1,
     }));
     
     hideLoader();
@@ -168,7 +172,8 @@ export function QuizClient({ category }: { category: string }) {
     setQuizState(prevState => ({
         ...prevState,
         isAnswered: true,
-        seenQuestionIds: newSeenIds
+        seenQuestionIds: newSeenIds,
+        questionNumber: newSeenIds.size
     }));
   };
 
@@ -194,6 +199,7 @@ export function QuizClient({ category }: { category: string }) {
       isFinished: false,
       isAnswered: false,
       selectedAnswer: null,
+      questionNumber: 1,
     }));
     hideLoader();
   };
@@ -207,7 +213,7 @@ export function QuizClient({ category }: { category: string }) {
     isFinished,
     currentQuestion,
     allCategoryQuestions,
-    seenQuestionIds,
+    questionNumber,
     isAnswered,
     selectedAnswer
   } = quizState;
@@ -280,7 +286,6 @@ export function QuizClient({ category }: { category: string }) {
       )
   }
 
-  const questionNumber = seenQuestionIds.size + 1;
   const totalQuestions = allCategoryQuestions.length;
 
   return (
@@ -369,5 +374,3 @@ export function QuizClient({ category }: { category: string }) {
     </div>
   );
 }
-
-    
