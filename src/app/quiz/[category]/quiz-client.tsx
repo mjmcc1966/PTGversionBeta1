@@ -16,7 +16,7 @@ import { useFirebase } from '@/firebase';
 import { doc, getDoc, updateDoc, arrayUnion, setDoc } from 'firebase/firestore';
 
 const correctSoundBase64 = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=";
-const incorrectSoundBase64 = "data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAIARKwAAIhYAQACABgAZGF0YQISAACAgICAgICAgICAgICAgICAgIA=";
+const incorrectSoundBase64 = "data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAIARKwAAIhYAQACABgAZGF0YQISAACAgIA=";
 
 interface Question {
   id: string;
@@ -33,12 +33,12 @@ export function QuizClient({ category }: { category: string }) {
   const router = useRouter();
   const { hideLoader, showLoader } = useLoading();
 
-  const [componentIsLoading, setComponentIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
-  const [askedQuestionIds, setAskedQuestionIds] = useState<Set<string>>(new Set());
-  const [allQuestionsAnswered, setAllQuestionsAnswered] = useState(false);
+  const [seenQuestionIds, setSeenQuestionIds] = useState<Set<string>>(new Set());
+  const [showAllAnsweredScreen, setShowAllAnsweredScreen] = useState(false);
   const [questionNumber, setQuestionNumber] = useState(0);
 
   const categoryKey = useMemo(() => {
@@ -55,57 +55,55 @@ export function QuizClient({ category }: { category: string }) {
     );
   }, [categoryKey]);
 
-  const selectNewQuestion = useCallback((seenIds: Set<string>) => {
-    const unaskedQuestions = filteredQuestions.filter(q => !seenIds.has(q.id));
+  const selectNewQuestion = useCallback((currentSeenIds: Set<string>) => {
+    const unaskedQuestions = filteredQuestions.filter(q => !currentSeenIds.has(q.id));
 
     if (unaskedQuestions.length > 0) {
       const randomIndex = Math.floor(Math.random() * unaskedQuestions.length);
       const newQuestion = unaskedQuestions[randomIndex];
       const shuffledOptions = [...newQuestion.options].sort(() => Math.random() - 0.5);
       setCurrentQuestion({ ...newQuestion, options: shuffledOptions });
-      setQuestionNumber(seenIds.size + 1);
-      setAllQuestionsAnswered(false);
+      setQuestionNumber(currentSeenIds.size + 1);
+      setShowAllAnsweredScreen(false);
     } else {
       setCurrentQuestion(null);
       if (filteredQuestions.length > 0) {
-        setAllQuestionsAnswered(true);
+        setShowAllAnsweredScreen(true);
       }
     }
   }, [filteredQuestions]);
 
   useEffect(() => {
     const initializeQuiz = async () => {
+      setIsLoading(true);
       hideLoader();
-      if (!auth?.currentUser || !firestore) {
-          setComponentIsLoading(false);
-          return;
-      };
+      
+      let currentSeenIds = new Set<string>();
 
-      try {
-        const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
-        const userDoc = await getDoc(userDocRef);
-        let seenIds = new Set<string>();
-
-        if (userDoc.exists()) {
-          const userData = userDoc.data();
-          const seenForCategory = userData.seenQuestions?.[category] || [];
-          seenIds = new Set(seenForCategory);
-        } else {
-           await setDoc(doc(firestore, 'users', auth.currentUser.uid), { 
-            email: auth.currentUser.email, 
-            createdAt: new Date() 
-          });
+      if (auth?.currentUser && firestore) {
+        try {
+          const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
+          const userDoc = await getDoc(userDocRef);
+          
+          if (userDoc.exists()) {
+            const userData = userDoc.data();
+            const seenForCategory = userData.seenQuestions?.[category] || [];
+            currentSeenIds = new Set(seenForCategory);
+          } else {
+            // This case should be handled by AuthGate, but as a fallback:
+            await setDoc(doc(firestore, 'users', auth.currentUser.uid), { 
+              email: auth.currentUser.email,
+              createdAt: new Date() 
+            });
+          }
+        } catch (error) {
+          console.error("Error fetching user progress:", error);
         }
-        
-        setAskedQuestionIds(seenIds);
-        selectNewQuestion(seenIds);
-
-      } catch (error) {
-        console.error("Error initializing quiz:", error);
-        setCurrentQuestion(null); 
-      } finally {
-        setComponentIsLoading(false);
       }
+      
+      setSeenQuestionIds(currentSeenIds);
+      selectNewQuestion(currentSeenIds);
+      setIsLoading(false);
     };
 
     initializeQuiz();
@@ -120,9 +118,8 @@ export function QuizClient({ category }: { category: string }) {
           [`seenQuestions.${category}`]: arrayUnion(questionId),
         });
       } catch (err) {
-        // If the document or field doesn't exist, create it.
         const error = err as { code: string };
-        if (error.code === 'not-found' || error.code === 'invalid-argument') { // 'invalid-argument' can happen if document doesn't exist
+        if (error.code === 'not-found' || error.code === 'invalid-argument') {
             await setDoc(userDocRef, { seenQuestions: { [category]: [questionId] } }, { merge: true });
         } else {
             console.error("Error updating seen questions in DB:", err);
@@ -137,30 +134,24 @@ export function QuizClient({ category }: { category: string }) {
       const audio = new Audio(selectedAnswer === currentQuestion.correctAnswer ? correctSoundBase64 : incorrectSoundBase64);
       audio.play();
 
-      const newAskedIds = new Set(askedQuestionIds).add(currentQuestion.id);
-      setAskedQuestionIds(newAskedIds);
+      const newSeenIds = new Set(seenQuestionIds).add(currentQuestion.id);
+      setSeenQuestionIds(newSeenIds);
       updateSeenQuestionsInDb(currentQuestion.id);
     }
   };
-
-  const handleNextQuestion = () => {
-      setSelectedAnswer(null);
-      setIsAnswered(false);
-      selectNewQuestion(askedQuestionIds);
-  }
-
-  const handleSkipQuestion = () => {
+  
+  const handleSkipQuestion = async () => {
     if (!currentQuestion) return;
     
-    setComponentIsLoading(true);
-    const newAskedIds = new Set(askedQuestionIds).add(currentQuestion.id);
-    setAskedQuestionIds(newAskedIds);
-    updateSeenQuestionsInDb(currentQuestion.id);
+    setIsLoading(true);
+    const newSeenIds = new Set(seenQuestionIds).add(currentQuestion.id);
+    setSeenQuestionIds(newSeenIds);
+    await updateSeenQuestionsInDb(currentQuestion.id);
     
     setSelectedAnswer(null);
     setIsAnswered(false);
-    selectNewQuestion(newAskedIds);
-    setComponentIsLoading(false);
+    selectNewQuestion(newSeenIds);
+    setIsLoading(false);
   };
   
   const handleGoHome = () => {
@@ -169,7 +160,7 @@ export function QuizClient({ category }: { category: string }) {
   }
 
   const handleReuseQuestions = async () => {
-    setComponentIsLoading(true);
+    setIsLoading(true);
     if (auth?.currentUser && firestore) {
       const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
       try {
@@ -181,17 +172,17 @@ export function QuizClient({ category }: { category: string }) {
       }
     }
     const newSeenIds = new Set<string>();
-    setAskedQuestionIds(newSeenIds);
-    setAllQuestionsAnswered(false);
+    setSeenQuestionIds(newSeenIds);
+    setShowAllAnsweredScreen(false);
     selectNewQuestion(newSeenIds);
-    setComponentIsLoading(false);
+    setIsLoading(false);
   };
 
   const handleBuyExpansion = () => {
     alert('Expansion packs are not yet available.');
   };
   
-  if (componentIsLoading) {
+  if (isLoading) {
     return (
       <div className="w-full max-w-2xl mx-auto">
         <Skeleton className="h-10 w-1/4 mb-4" />
@@ -214,7 +205,7 @@ export function QuizClient({ category }: { category: string }) {
     );
   }
 
-  if (allQuestionsAnswered) {
+  if (showAllAnsweredScreen) {
     return (
       <Card className="w-full max-w-md text-center">
         <CardHeader>
@@ -225,7 +216,7 @@ export function QuizClient({ category }: { category: string }) {
         <CardContent className="grid gap-4">
            <Button onClick={handleReuseQuestions} className="w-full">
             <RefreshCw className="mr-2 h-4 w-4" />
-            Reuse All Questions
+            Start Over
           </Button>
           <Button onClick={handleBuyExpansion} className="w-full">
             <ShoppingCart className="mr-2 h-4 w-4" />
@@ -247,16 +238,12 @@ export function QuizClient({ category }: { category: string }) {
        <Card className="w-full max-w-md text-center">
         <CardHeader>
           <CardTitle className="text-2xl font-bold">No Questions</CardTitle>
-          <CardDescription>There are no questions available for this category. This could be because you've answered them all, or the data file is empty.</CardDescription>
+          <CardDescription>There are no questions available for this category. This could be because the data file is empty or missing.</CardDescription>
         </CardHeader>
         <CardFooter className="flex-col gap-4">
             <Button onClick={handleGoHome} className="w-full" variant="outline">
                 <Home className="mr-2 h-4 w-4" />
                 Return to Home
-            </Button>
-             <Button onClick={handleReuseQuestions} className="w-full">
-                <RefreshCw className="mr-2 h-4 w-4" />
-                Start Over
             </Button>
         </CardFooter>
       </Card>
