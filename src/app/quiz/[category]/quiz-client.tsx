@@ -224,6 +224,11 @@ export function QuizClient({ category }: { category: string }) {
     }
   };
 
+  const handleNextQuestion = () => {
+    if (quizFinished) return;
+    selectNewQuestion();
+  };
+
   const handleResetQuiz = async () => {
     showLoader();
     if (!user || !firestore) return;
@@ -338,7 +343,7 @@ export function QuizClient({ category }: { category: string }) {
   };
   
   const progress = allQuestions && allQuestions.length > 0 ? (askedQuestionIds.size / allQuestions.length) * 100 : 0;
-  const questionNumber = askedQuestionIds.size + (submitted ? 0 : 1);
+  const questionNumber = askedQuestionIds.size + 1;
 
 
   return (
@@ -402,9 +407,12 @@ export function QuizClient({ category }: { category: string }) {
               <h3 className="font-bold text-lg flex items-center gap-2 text-primary"><Lightbulb/> Explanation</h3>
               <p className="mt-2 text-foreground/80">{currentQuestion.explanation}</p>
             </div>
-            <div className="flex w-full justify-end items-center gap-2">
+            <div className="flex w-full justify-between items-center gap-2">
+               <Button onClick={handleNextQuestion}>
+                Next Question
+              </Button>
               <Link href="/home" passHref>
-                  <Button asChild variant="outline" className="w-full md:w-auto">
+                  <Button asChild variant="outline">
                       <a>Home</a>
                   </Button>
               </Link>
@@ -415,5 +423,3 @@ export function QuizClient({ category }: { category: string }) {
     </>
   );
 }
-
-    
