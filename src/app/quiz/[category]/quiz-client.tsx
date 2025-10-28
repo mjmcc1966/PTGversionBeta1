@@ -69,13 +69,12 @@ export function QuizClient({ category }: { category: string }) {
     );
   }, [categoryKey]);
 
-  const loadAndSelectQuestion = useCallback(async (currentSeenIds: Set<string>) => {
-    setQuizState(prevState => ({ ...prevState, isLoading: true, isAnswered: false, selectedAnswer: null }));
+  const loadAndSelectQuestion = useCallback(async () => {
+    setQuizState(prevState => ({ ...prevState, isLoading: true }));
     
-    let seenIds = currentSeenIds;
-    // On initial load, fetch from DB/session
-    if (currentSeenIds.size === 0) {
-      if (auth?.currentUser && firestore) {
+    let seenIds = new Set<string>();
+
+    if (auth?.currentUser && firestore) {
         try {
           const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
           const userDoc = await getDoc(userDocRef);
@@ -93,7 +92,6 @@ export function QuizClient({ category }: { category: string }) {
           seenIds = new Set(JSON.parse(sessionSeen));
         }
       }
-    }
 
     const availableQuestions = filteredQuestions.filter(q => !seenIds.has(q.id));
 
@@ -113,21 +111,22 @@ export function QuizClient({ category }: { category: string }) {
         seenQuestionIds: seenIds,
       });
     } else {
-      setQuizState(prevState => ({
-        ...prevState,
+      setQuizState({
         isLoading: false,
         currentQuestion: null,
+        selectedAnswer: null,
+        isAnswered: false,
         showAllAnsweredScreen: filteredQuestions.length > 0,
         questionNumber: seenIds.size,
         totalQuestions: filteredQuestions.length,
         seenQuestionIds: seenIds,
-      }));
+      });
     }
     hideLoader();
   }, [auth, firestore, category, filteredQuestions, hideLoader]);
 
   useEffect(() => {
-    loadAndSelectQuestion(new Set());
+    loadAndSelectQuestion();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -151,30 +150,26 @@ export function QuizClient({ category }: { category: string }) {
       sessionStorage.setItem(`seen_${category}`, JSON.stringify(Array.from(newSeenIds)));
     }
   };
-
+  
   const handleAnswerSubmit = async () => {
-    if (quizState.selectedAnswer && quizState.currentQuestion) {
-      const audio = new Audio(quizState.selectedAnswer === quizState.currentQuestion.correctAnswer ? correctSoundBase64 : incorrectSoundBase64);
-      audio.play();
-      
-      const newSeenIds = new Set(quizState.seenQuestionIds).add(quizState.currentQuestion.id);
-      
-      await updateSeenQuestionsInDB(quizState.currentQuestion.id);
+    if (!quizState.currentQuestion || quizState.isAnswered) return;
 
-      setQuizState(prevState => ({
-          ...prevState,
-          isAnswered: true,
-          seenQuestionIds: newSeenIds
-      }));
-    }
+    const audio = new Audio(quizState.selectedAnswer === quizState.currentQuestion.correctAnswer ? correctSoundBase64 : incorrectSoundBase64);
+    audio.play();
+
+    setQuizState(prevState => ({
+      ...prevState,
+      isAnswered: true,
+    }));
+    
+    await updateSeenQuestionsInDB(quizState.currentQuestion.id);
   };
   
   const handleSkipQuestion = async () => {
     if (quizState.currentQuestion) {
-      const newSeenIds = new Set(quizState.seenQuestionIds).add(quizState.currentQuestion.id);
       await updateSeenQuestionsInDB(quizState.currentQuestion.id);
       showLoader();
-      loadAndSelectQuestion(newSeenIds);
+      loadAndSelectQuestion();
     }
   };
 
@@ -197,7 +192,7 @@ export function QuizClient({ category }: { category: string }) {
         sessionStorage.removeItem(`seen_${category}`);
     }
     showLoader();
-    loadAndSelectQuestion(new Set());
+    loadAndSelectQuestion();
   };
 
   const handleBuyExpansion = () => {
