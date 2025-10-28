@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
-import { CheckCircle, XCircle, Lightbulb, Home, SkipForward, RefreshCw, ShoppingCart, Trophy } from 'lucide-react';
+import { CheckCircle, XCircle, Lightbulb, Home, SkipForward, RefreshCw, ShoppingCart, Trophy, ArrowRight } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { useRouter } from 'next/navigation';
 import { useLoading } from '@/app/context/loading-context';
@@ -83,7 +83,6 @@ export function QuizClient({ category }: { category: string }) {
 
         setDoc(userDocRef, dataToSet, { merge: true })
             .catch((error) => {
-                console.error("Non-blocking update error:", error);
                 const permissionError = new FirestorePermissionError({
                     path: userDocRef.path,
                     operation: 'update',
@@ -148,22 +147,16 @@ export function QuizClient({ category }: { category: string }) {
   }, [category, categoryKey, user, isUserLoading, firestore, selectNextQuestion, hideLoader]);
 
   const advanceToNext = useCallback(() => {
-    if (!quizState.currentQuestion) return;
-
-    const newSeenIds = new Set(quizState.seenQuestionIds).add(quizState.currentQuestion.id);
-    updateSeenInStorage(newSeenIds);
-    const nextQuestion = selectNextQuestion(quizState.allCategoryQuestions, newSeenIds);
+    const nextQuestion = selectNextQuestion(quizState.allCategoryQuestions, quizState.seenQuestionIds);
 
     setQuizState(prevState => ({
       ...prevState,
-      seenQuestionIds: newSeenIds,
       currentQuestion: nextQuestion,
       selectedAnswer: null,
       isAnswered: false,
       isFinished: prevState.allCategoryQuestions.length > 0 && nextQuestion === null,
-      questionNumber: newSeenIds.size,
     }));
-  }, [quizState.currentQuestion, quizState.seenQuestionIds, quizState.allCategoryQuestions, updateSeenInStorage, selectNextQuestion]);
+  }, [quizState.allCategoryQuestions, quizState.seenQuestionIds, selectNextQuestion]);
 
 
   const handleAnswerSubmit = () => {
@@ -366,10 +359,14 @@ export function QuizClient({ category }: { category: string }) {
                   <p className="text-muted-foreground">{currentQuestion.explanation}</p>
                 </div>
               </div>
-              <div className="w-full mt-4 flex gap-4">
+              <div className="w-full mt-4 flex justify-between gap-4">
                  <Button onClick={handleGoHome} variant="outline" className="flex-1">
                     <Home className="mr-2 h-4 w-4" />
                     Return to Home
+                </Button>
+                <Button onClick={advanceToNext} className="flex-1">
+                    Next Question
+                    <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
             </CardFooter>
@@ -379,3 +376,5 @@ export function QuizClient({ category }: { category: string }) {
     </div>
   );
 }
+
+    
