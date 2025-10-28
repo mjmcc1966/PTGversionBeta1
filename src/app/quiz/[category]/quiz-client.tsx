@@ -8,7 +8,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
-import { CheckCircle, XCircle, Trophy, Lightbulb, Hourglass, Home } from 'lucide-react';
+import { CheckCircle, XCircle, Trophy, Lightbulb, Hourglass, Home, ArrowRight } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useLoading } from '@/app/context/loading-context';
@@ -37,7 +37,6 @@ export function QuizClient({ category }: { category: string }) {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
-  const [score, setScore] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
   const [outOfQuestions, setOutOfQuestions] = useState(false);
   const [questionNumber, setQuestionNumber] = useState(0);
@@ -70,10 +69,9 @@ export function QuizClient({ category }: { category: string }) {
         const userData = docSnap.data();
         const seenForCategory = userData.seenQuestions?.[categoryKey] || [];
         setAskedQuestionIds(new Set(seenForCategory));
-        setQuestionNumber(seenForCategory.length);
       } else {
+        await setDoc(userDocRef, { seenQuestions: {} }, { merge: true });
         setAskedQuestionIds(new Set());
-        setQuestionNumber(0);
       }
     }
   }, [user, firestore, categoryKey]);
@@ -123,8 +121,8 @@ export function QuizClient({ category }: { category: string }) {
 
 
   const selectNewQuestion = useCallback(() => {
-    if (!allQuestions || allQuestions.length === 0) return;
-    
+    if (questionsLoading || !allQuestions || allQuestions.length === 0) return;
+
     const availableQuestions = allQuestions.filter(q => !askedQuestionIds.has(q.id));
     
     if (availableQuestions.length === 0) {
@@ -140,14 +138,16 @@ export function QuizClient({ category }: { category: string }) {
     setSelectedAnswer(null);
     setSubmitted(false);
     setIsCorrect(null);
-  }, [allQuestions, askedQuestionIds]);
+    setQuestionNumber(askedQuestionIds.size + 1);
+
+  }, [allQuestions, askedQuestionIds, questionsLoading]);
 
 
   useEffect(() => {
-    if (allQuestions && allQuestions.length > 0 && !currentQuestion && !quizFinished) {
+    if (!questionsLoading && !currentQuestion && !quizFinished) {
       selectNewQuestion();
     }
-  }, [allQuestions, currentQuestion, selectNewQuestion, askedQuestionIds, quizFinished]);
+  }, [questionsLoading, currentQuestion, selectNewQuestion, quizFinished]);
 
   const shuffledOptions = useMemo(() => {
     if (!currentQuestion) return [];
@@ -165,19 +165,16 @@ export function QuizClient({ category }: { category: string }) {
     const categoryKeyToUpdate = `seenQuestions.${categoryKey}`;
     
     try {
-      await updateDoc(userDocRef, {
-        [categoryKeyToUpdate]: arrayUnion(questionId)
-      });
+      const docSnap = await getDoc(userDocRef);
+      if (!docSnap.exists()) {
+        await setDoc(userDocRef, { seenQuestions: { [categoryKey]: [questionId] } }, { merge: true });
+      } else {
+        await updateDoc(userDocRef, {
+          [categoryKeyToUpdate]: arrayUnion(questionId)
+        });
+      }
     } catch (error: any) {
-       if (error.code === 'not-found') {
-        await setDoc(userDocRef, { 
-            seenQuestions: { 
-                [categoryKey]: [questionId] 
-            } 
-        }, { merge: true });
-       } else {
         console.error("Error updating seen questions:", error);
-       }
     }
 };
 
@@ -187,7 +184,6 @@ export function QuizClient({ category }: { category: string }) {
         newAskedQuestionIds.add(questionId);
         return newAskedQuestionIds;
     });
-    setQuestionNumber(prev => prev + 1);
     await updateSeenQuestionsInFirestore(questionId);
   };
 
@@ -201,17 +197,16 @@ export function QuizClient({ category }: { category: string }) {
       setTimer(null);
     }
 
-    setSubmitted(true);
     const correct = selectedAnswer === currentQuestion.correctAnswer;
     setIsCorrect(correct);
     
     if (correct) {
-      setScore(prev => prev + 1);
       correctAnswerSound?.play();
     } else {
       incorrectAnswerSound?.play();
     }
-
+    
+    setSubmitted(true);
     await markQuestionAsSeen(currentQuestion.id);
 
     if (askedQuestionIds.size + 1 >= allQuestions.length) {
@@ -219,35 +214,41 @@ export function QuizClient({ category }: { category: string }) {
     }
   };
   
-  const handleSkipQuestion = () => {
+  const handleSkipQuestion = async () => {
     if (!currentQuestion || !allQuestions) return;
     
-    markQuestionAsSeen(currentQuestion.id).then(() => {
-        if (askedQuestionIds.size +1 >= allQuestions.length) {
-            setQuizFinished(true);
-        } else {
-            selectNewQuestion();
-        }
-    });
+    await markQuestionAsSeen(currentQuestion.id);
+    if (askedQuestionIds.size + 1 >= allQuestions.length) {
+        setQuizFinished(true);
+    } else {
+        selectNewQuestion();
+    }
   };
 
   const handleResetQuiz = async () => {
     showLoader();
-    if (!user || !firestore) return;
+    if (!user || !firestore) {
+      hideLoader();
+      return;
+    };
     
     const userDocRef = doc(firestore, 'users', user.uid);
     const categoryKeyToReset = `seenQuestions.${categoryKey}`;
 
-    await updateDoc(userDocRef, {
-        [categoryKeyToReset]: []
-    });
+    try {
+       await updateDoc(userDocRef, {
+           [categoryKeyToReset]: []
+       });
+    } catch (e) {
+       console.error("Could not reset quiz progress in Firestore", e);
+    }
 
     setAskedQuestionIds(new Set());
-    setScore(0);
     setOutOfQuestions(false);
     setQuizFinished(false);
     setCurrentQuestion(null);
     setQuestionNumber(0);
+    selectNewQuestion();
     hideLoader();
   };
   
@@ -345,7 +346,7 @@ export function QuizClient({ category }: { category: string }) {
     return "bg-card/50 border-primary/10 text-muted-foreground";
   };
   
-  const progress = allQuestions && allQuestions.length > 0 ? ((askedQuestionIds.size) / allQuestions.length) * 100 : 0;
+  const progress = allQuestions && allQuestions.length > 0 ? ((questionNumber - 1) / allQuestions.length) * 100 : 0;
 
 
   return (
@@ -359,7 +360,7 @@ export function QuizClient({ category }: { category: string }) {
         <CardHeader>
           <div className="mb-4">
             <Progress value={progress} className="h-2" />
-            <p className="text-sm text-muted-foreground mt-2 text-center">Question {questionNumber + 1} of {allQuestions?.length}</p>
+            <p className="text-sm text-muted-foreground mt-2 text-center">Question {questionNumber} of {allQuestions?.length}</p>
           </div>
           {currentQuestion.imageUrl && (
             <div className="relative w-full h-64 mb-4 rounded-lg overflow-hidden">
