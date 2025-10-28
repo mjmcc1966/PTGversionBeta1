@@ -8,7 +8,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
-import { CheckCircle, XCircle, Lightbulb, Home, SkipForward, RefreshCw, ShoppingCart } from 'lucide-react';
+import { CheckCircle, XCircle, Lightbulb, Home, SkipForward, RefreshCw, ShoppingCart, Trophy } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { useRouter } from 'next/navigation';
 import { useLoading } from '@/app/context/loading-context';
@@ -18,6 +18,7 @@ import { doc, getDoc, updateDoc, arrayUnion, setDoc } from 'firebase/firestore';
 
 const correctSoundBase64 = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=";
 const incorrectSoundBase64 = "data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAIARKwAAIhYAQACABgAZGF0YQISAACAgICAgICAgICAgICAgICAgIA=";
+
 
 interface Question {
   id: string;
@@ -40,14 +41,20 @@ export function QuizClient({ category }: { category: string }) {
   const [isAnswered, setIsAnswered] = useState(false);
   const [askedQuestionIds, setAskedQuestionIds] = useState<Set<string>>(new Set());
   const [allQuestionsAnswered, setAllQuestionsAnswered] = useState(false);
+  const [questionNumber, setQuestionNumber] = useState(0);
 
   const filteredQuestions = useMemo(() => {
     if (!allQuestionsData) return [];
+    let categoryToFilter = category;
+    if (category === 'state-trivia') categoryToFilter = 'state_trivia';
+    if (category === 'general-trivia') categoryToFilter = 'general_trivia';
+    if (category === 'government-trivia') categoryToFilter = 'government_trivia';
+
     return (allQuestionsData as Question[]).filter(
-      (q) => q.category.toLowerCase().replace(/ /g, '-') === category
+      (q) => q.category.toLowerCase().replace(/ /g, '_') === categoryToFilter
     );
   }, [category]);
-  
+
   const selectNewQuestion = useCallback((seenIds: Set<string>) => {
     const unaskedQuestions = filteredQuestions.filter(q => !seenIds.has(q.id));
 
@@ -56,6 +63,7 @@ export function QuizClient({ category }: { category: string }) {
       const newQuestion = unaskedQuestions[randomIndex];
       const shuffledOptions = [...newQuestion.options].sort(() => Math.random() - 0.5);
       setCurrentQuestion({ ...newQuestion, options: shuffledOptions });
+      setQuestionNumber(seenIds.size + 1);
       setAllQuestionsAnswered(false);
     } else {
       setCurrentQuestion(null);
@@ -63,45 +71,43 @@ export function QuizClient({ category }: { category: string }) {
         setAllQuestionsAnswered(true);
       }
     }
-  }, [filteredQuestions]);
+    setIsLoading(false);
+    hideLoader();
+  }, [filteredQuestions, hideLoader]);
 
   useEffect(() => {
-    const initializeQuiz = async () => {
-      // 1. Start loading
-      setIsLoading(true);
-      let seenIds = new Set<string>();
-
-      // 2. Fetch data from Firestore
-      if (auth?.currentUser && firestore) {
-        const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
-        try {
-            const userDoc = await getDoc(userDocRef);
-            if (userDoc.exists()) {
-              const userData = userDoc.data();
-              const seenForCategory = userData.seenQuestions?.[category] || [];
-              seenIds = new Set(seenForCategory);
-            } else {
-              // If user doc doesn't exist, create it.
-              await setDoc(userDocRef, { email: auth.currentUser.email, createdAt: new Date() });
-            }
-        } catch (error) {
-            console.error("Error fetching or creating user data:", error);
+    if (!auth?.currentUser || !firestore || filteredQuestions.length === 0) {
+        if(filteredQuestions.length === 0){
+             setIsLoading(false);
+             hideLoader();
         }
+        return;
+    };
+
+    const initializeQuiz = async () => {
+      setIsLoading(true);
+      const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
+      try {
+        const userDoc = await getDoc(userDocRef);
+        let seenIds = new Set<string>();
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
+          const seenForCategory = userData.seenQuestions?.[category] || [];
+          seenIds = new Set(seenForCategory);
+        } else {
+          await setDoc(userDocRef, { email: auth.currentUser.email, createdAt: new Date() });
+        }
+        setAskedQuestionIds(seenIds);
+        selectNewQuestion(seenIds);
+      } catch (error) {
+        console.error("Error initializing quiz:", error);
+        setIsLoading(false);
+        hideLoader();
       }
-      
-      // 3. Set state based on fetched data
-      setAskedQuestionIds(seenIds);
-      
-      // 4. Select a question
-      selectNewQuestion(seenIds);
-      
-      // 5. End loading
-      setIsLoading(false);
-      hideLoader();
     };
 
     initializeQuiz();
-  }, [auth?.currentUser, firestore, category, selectNewQuestion, hideLoader]);
+  }, [auth?.currentUser, firestore, category, selectNewQuestion, filteredQuestions.length]);
 
 
   const updateSeenQuestionsInDb = async (questionId: string) => {
@@ -123,7 +129,6 @@ export function QuizClient({ category }: { category: string }) {
       const audio = new Audio(selectedAnswer === currentQuestion.correctAnswer ? correctSoundBase64 : incorrectSoundBase64);
       audio.play();
 
-      // Mark as seen immediately on answer
       const newAskedIds = new Set(askedQuestionIds).add(currentQuestion.id);
       setAskedQuestionIds(newAskedIds);
       updateSeenQuestionsInDb(currentQuestion.id);
@@ -148,6 +153,7 @@ export function QuizClient({ category }: { category: string }) {
   }
 
   const handleReuseQuestions = async () => {
+    setIsLoading(true);
     if (auth?.currentUser && firestore) {
       const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
       try {
@@ -158,9 +164,11 @@ export function QuizClient({ category }: { category: string }) {
         console.error("Error resetting questions:", error);
       }
     }
-    setAskedQuestionIds(new Set());
+    const newSeenIds = new Set<string>();
+    setAskedQuestionIds(newSeenIds);
     setAllQuestionsAnswered(false);
-    selectNewQuestion(new Set());
+    selectNewQuestion(newSeenIds);
+    setIsLoading(false);
   };
 
   const handleBuyExpansion = () => {
@@ -209,9 +217,10 @@ export function QuizClient({ category }: { category: string }) {
           </Button>
         </CardContent>
         <CardFooter>
-          <Button asChild className="w-full" variant="outline" onClick={handleGoHome}>
-            <Link href="/home">Return to Home</Link>
-          </Button>
+            <Button onClick={handleGoHome} className="w-full" variant="outline">
+                <Home className="mr-2 h-4 w-4" />
+                Return to Home
+            </Button>
         </CardFooter>
       </Card>
     );
@@ -225,22 +234,22 @@ export function QuizClient({ category }: { category: string }) {
           <CardDescription>There are no questions available for this category.</CardDescription>
         </CardHeader>
         <CardFooter>
-          <Button asChild className="w-full" variant="outline" onClick={handleGoHome}>
-            <Link href="/home">Return to Home</Link>
-          </Button>
+            <Button onClick={handleGoHome} className="w-full" variant="outline">
+                <Home className="mr-2 h-4 w-4" />
+                Return to Home
+            </Button>
         </CardFooter>
       </Card>
     );
   }
 
   const totalQuestions = filteredQuestions.length;
-  const questionNumber = askedQuestionIds.size;
 
   return (
     <div className="w-full max-w-2xl mx-auto">
        <div className="mb-4">
-        <p className="text-sm text-muted-foreground">Question {questionNumber + 1} of {totalQuestions}</p>
-        <Progress value={totalQuestions > 0 ? ((questionNumber + 1) / totalQuestions) * 100 : 0} className="w-full" />
+        <p className="text-sm text-muted-foreground">Question {questionNumber} of {totalQuestions}</p>
+        <Progress value={totalQuestions > 0 ? (questionNumber / totalQuestions) * 100 : 0} className="w-full" />
       </div>
       <Card>
         {!isAnswered ? (
@@ -320,3 +329,4 @@ export function QuizClient({ category }: { category: string }) {
     </div>
   );
 }
+
