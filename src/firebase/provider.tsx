@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { DependencyList, createContext, useContext, ReactNode, useMemo, useState, useEffect } from 'react';
@@ -74,8 +75,6 @@ export const FirebaseProvider: React.FC<FirebaseProviderProps> = ({
       return;
     }
 
-    setUserAuthState({ user: null, isUserLoading: true, userError: null }); // Reset on auth instance change
-
     const unsubscribe = onAuthStateChanged(
       auth,
       (firebaseUser) => { // Auth state determined
@@ -137,21 +136,18 @@ export const useFirebase = (): FirebaseServicesAndUser => {
 };
 
 /** Hook to access Firebase Auth instance. */
-export const useAuth = (): Auth => {
-  const { auth } = useFirebase();
-  return auth;
+export const useAuth = (): Auth | null => {
+  return useContext(FirebaseContext)?.auth ?? null;
 };
 
 /** Hook to access Firestore instance. */
-export const useFirestore = (): Firestore => {
-  const { firestore } = useFirebase();
-  return firestore;
+export const useFirestore = (): Firestore | null => {
+  return useContext(FirebaseContext)?.firestore ?? null;
 };
 
 /** Hook to access Firebase App instance. */
-export const useFirebaseApp = (): FirebaseApp => {
-  const { firebaseApp } = useFirebase();
-  return firebaseApp;
+export const useFirebaseApp = (): FirebaseApp | null => {
+  return useContext(FirebaseContext)?.firebaseApp ?? null;
 };
 
 type MemoFirebase <T> = T & {__memo?: boolean};
@@ -171,6 +167,9 @@ export function useMemoFirebase<T>(factory: () => T, deps: DependencyList): T | 
  * @returns {UserHookResult} Object with user, isUserLoading, userError.
  */
 export const useUser = (): UserHookResult => { // Renamed from useAuthUser
-  const { user, isUserLoading, userError } = useFirebase(); // Leverages the main hook
-  return { user, isUserLoading, userError };
+  const context = useContext(FirebaseContext);
+  if (context === undefined) {
+    return { user: null, isUserLoading: true, userError: new Error("useUser must be used within a FirebaseProvider.") };
+  }
+  return { user: context.user, isUserLoading: context.isUserLoading, userError: context.userError };
 };

@@ -16,6 +16,7 @@ export function FirebaseClientProvider({ children }: FirebaseClientProviderProps
   const firebaseServices = useMemo(() => {
     const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
     const auth = getAuth(app);
+    // Pass cache settings to initializeFirestore to prevent re-initialization errors
     const firestore = initializeFirestore(app, {
       localCache: memoryLocalCache(),
     });
