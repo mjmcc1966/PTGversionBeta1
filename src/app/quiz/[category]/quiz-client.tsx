@@ -365,10 +365,9 @@ export function QuizClient({ category }: { category: string }) {
               <h3 className="font-bold text-lg flex items-center gap-2 text-primary"><Lightbulb/> Explanation</h3>
               <p className="mt-2 text-foreground/80">{currentQuestion.explanation}</p>
             </div>
-            <div className="flex w-full justify-between gap-2">
-               <Button onClick={() => submitted && selectNewQuestion()} className="w-full md:w-auto">Next Question</Button>
-              <Link href="/home" passHref>
-                  <Button variant="outline" className="w-full md:w-auto self-end">Home</Button>
+            <div className="flex w-full justify-end gap-2">
+              <Link href="#" passHref>
+                  <Button onClick={() => submitted && selectNewQuestion()} variant="outline" className="w-full md:w-auto self-end">Home</Button>
               </Link>
             </div>
           </CardFooter>

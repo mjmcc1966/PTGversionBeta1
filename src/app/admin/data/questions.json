@@ -8089,7 +8089,7 @@
   {
     "id": "1277",
     "category": "state_trivia",
-    "question": "This state produces the most hazelnuts of any state in the US"
+    "question": "This state produces the most hazelnuts of any state in the US",
     "options": [
       "Oregon",
       "New Jersey",
@@ -8960,7 +8960,7 @@
   {
     "id": "1344",
     "category": "state_trivia",
-    "question": "This state's symbol, the beehive, symbolizes industry, which the early pioneers had to rely on."
+    "question": "This state's symbol, the beehive, symbolizes industry, which the early pioneers had to rely on.",
     "options": [
       "Utah",
       "Arkansas",

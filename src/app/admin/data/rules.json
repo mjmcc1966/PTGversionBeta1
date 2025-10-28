@@ -44,7 +44,7 @@
     "id": "5",
     "title": "GENERAL GAME PLAY",
     "content": [
-      "1. Gerrymander cards should be shuffled, and each candidate/team should be dealt 3 cards. Choose 2 cards and return the 3rd one to the deck. The deck then gets placed face-down on the Gerrymander card space on the board. Read the details on Gerrymander cards below",
+      "1. Gerrymander cards should be shuffled, and each candidate/team should be dealt 3 cards. Choose 2 cards and return the 3rd one to the deck. The deck then gets placed face-down on the Gerrymander card space on the board. Read the <a href=\"#10\">details on Gerrymander cards</a> below.",
       "2. Next, each candidate/team rolls the 2 dice.",
       "3. The candidate/team with the highest roll gets to choose their starting state. Place your game piece in that state. The next highest roll then chooses their home state, and so on. There can only be one candidate/team per state to start the game. No candidate/team may choose D.C. as their home state.",
       "4. The candidate/team with the lowest roll from above goes first. Play then proceeds counterclockwise (to your right)."
@@ -64,7 +64,7 @@
       "• If your offer is accepted, and you answer the trivia question correctly, then make your payment, claim your chip, and your turn is over. (If you answer incorrectly, then you do NOT need to make the payment and your turn is over, like it would be on any other turn.)",
       "• If your offer is rejected, then you can still opt to choose either a General or State trivia question.",
       "D.C. is where politicians go to recharge. When you are in D.C., you get $10 million from the bank for each missed turn. For example, if you forfeit 3 turns, you get $30 million. You can choose to land there as part of your regular turn, or you may get forced to go there (like if you run out of cash, or if a Wildcard sends you there). For example, you are currently in North Carolina and you roll a 3, so you move yourself to D.C. Your turn is over (you do not get to answer any questions), but you collect $10 million. If you forfeit your next roll of the dice on your next turn, you get another $10 million. You can stay in D.C. for a maximum of 4 turns in a row.",
-      "<b>Note that D.C. has 3 Electoral Votes.</b> They can be claimed by the first candidate/team that correctly answers a Government Trivia question for any of the states. That candidate MUST make a verbal claim on those Electoral Votes AFTER they correctly answer a Government Trivia question and BEFORE the next candidate throws the dice. If they miss their opportunity, then the next candidate who correctly answers a Government Trivia question can claim the DC Electoral Votes in the same manner."
+      "<b>**Note that D.C. has 3 Electoral Votes.**</b> They can be claimed by the first candidate/team that correctly answers a Government Trivia question for any of the states. That candidate <b>MUST</b> make a verbal claim on those Electoral Votes AFTER they correctly answer a Government trivia question and BEFORE the next candidate throws the dice. If they miss their opportunity, then the next candidate who correctly answers a Government Trivia question can claim the DC Electoral Votes in the same manner."
     ]
   },
   {
@@ -82,7 +82,7 @@
       "• If one candidate/team has at least 270 Electoral Votes, but another candidate/team has more Popular Votes, then those 2 candidates/teams go “head to head” to determine the final winner. (If there are multiple candidates/teams with more Popular Votes than the candidate/team with 270+ Electoral Votes, then only the candidate/team with the highest Popular Vote total gets to be in the Runoff.)",
       "• Each Runoff candidate/team should be given a piece of paper and something to write with.",
       "• Both Runoff candidates/teams will be asked 5 General Trivia questions AND 5 State Trivia questions, read by another candidate.",
-      "• Multiple choice options will not be given, nor is outside help allowed.",
+      "• <b>Multiple choice options will not be given, nor is outside help allowed.</b>",
       "• Once the candidate reading the question moves on to the next question, there is no way to go back and repeat the question.",
       "• Both Runoff candidates/teams are answering the same 10 questions.",
       "• Candidates/teams should write down their answers, and the person asking the questions should secretly write down the correct answer for each question. (Choose an answer from the options and Submit to find out the correct answer.)",
@@ -99,7 +99,7 @@
       "• Each candidate/team needs a piece of paper and something to write with.",
       "• Add up all the Electoral Votes that each candidate/team already has.",
       "• The two candidates/teams with the lowest Electoral Vote total will go head-to-head in round 1.",
-      "• The two candidates/teams get asked 5 General trivia questions, read by another candidate. Multiple choice options will not be given, nor is outside help allowed. The candidates/teams should write down their answers. The person asking the questions should also secretly write down the correct answers.",
+      "• The two candidates/teams get asked 5 General trivia questions, read by another candidate. <b>Multiple choice options will not be given, nor is outside help allowed.</b> The candidates/teams should write down their answers. The person asking the questions should also secretly write down the correct answers.",
       "• The candidate/team that answers more questions correctly will get to take all of the votes (Popular and Electoral) from the other candidate/team, who is now eliminated from the Race. (If there is a tie, then repeat step d.)",
       "• The candidate/team that won Round 1 now goes head-to-head against the candidate/team that had the 3rd lowest Electoral Vote total. Repeat steps d) and e) above until each candidate/team has had a head-to-head round.",
       "Last one standing is now the leader of the (sorta) free world!"
@@ -109,9 +109,9 @@
     "id": "10",
     "title": "GERRYMANDER CARDS",
     "content": [
-      "These are a way to obtain specific rewards in an alternative manner. You can play a Gerrymander card at any time during your turn. Once you play a card, then that card gets placed in front of you, face up, to indicate that it has been played. You must then choose the next Gerrymander card from the deck so that you always have 2 ‘active’ Gerrymander cards in your possession. NO GERRYMANDER CARDS MAY BE PLAYED DURING RUNOFFS OR DURING SPEED PLAY.",
-      "• If you play a Gerrymander card, the Things Needed side of the card lists the items you need to have in your possession to claim the Reward. Any EV chips that you are required to have will be placed back into their respective state(s) when you play your Gerrymander card; any money you are required to have will go back to the bank; and any Popular Votes you are required to have will simply get deducted from your PV total.",
-      "• On the Reward side of the Gerrymander card, if money is part of the Reward, then that money comes from the bank unless stated otherwise. Any Popular Votes just get added to your total. The EV chips you get as a Reward either get taken from their respective state(s), or if they have already been claimed, then the current owner must forfeit them to you.",
+      "These are a way to obtain specific rewards in an alternative manner. You can play a Gerrymander card at any time during your turn. Once you play a card, then that card gets placed in front of you, face up, to indicate that it has been played. You must then choose the next Gerrymander card from the deck so that you always have 2 ‘active’ Gerrymander cards in your possession. <b>NO GERRYMANDER CARDS MAY BE PLAYED DURING RUNOFFS OR DURING SPEED PLAY.</b>",
+      "• If you play a Gerrymander card, the <b>Things Needed</b> side of the card lists the items you need to have in your possession to claim the Reward. Any EV chips that you are required to have will be placed back into their respective state(s) when you play your Gerrymander card; any money you are required to have will go back to the bank; and any Popular Votes you are required to have will simply get deducted from your PV total.",
+      "• On the <b>Reward</b> side of the Gerrymander card, if money is part of the Reward, then that money comes from the bank unless stated otherwise. Any Popular Votes just get added to your total. The EV chips you get as a Reward either get taken from their respective state(s), or if they have already been claimed, then the current owner must forfeit them to you.",
       "Example: your Gerrymander card states that if you have the Alabama, Arkansas and Mississippi EV chips, as well as $5 million cash, you can turn those things in for the Florida EV chip plus 20 million Popular Votes. Once you have those things under the Things Needed column, turn them in (EV chips back to the state, cash to the bank). You can now take the Florida EV chip (wherever it may be located) and add 20 million Popular Votes to your total."
     ]
   },
@@ -122,7 +122,7 @@
       "Wildcards are chosen whenever a candidate throws doubles. (Two 1s, two 2s, etc)",
       "Unless the Wildcard states otherwise, if you are told that you lose some amount of cash or votes, those items just go back to the bank (cash), or get erased from your tally (votes).",
       "Once a Wildcard is played, place it face up on the bottom of the Wildcard deck. After all cards have been played, the Speaker should shuffle the deck and return it to service.",
-      "See the Wildcard reference sheet for details on each type of Wildcard"
+      "See the <a href=\"#14\">Wildcard reference sheet</a> for details on each type of Wildcard"
     ]
   },
   {
