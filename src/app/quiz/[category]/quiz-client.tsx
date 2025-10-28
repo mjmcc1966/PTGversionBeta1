@@ -37,9 +37,9 @@ export function QuizClient({ category }: { category: string }) {
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
-  const [seenQuestionIds, setSeenQuestionIds] = useState<Set<string>>(new Set());
   const [showAllAnsweredScreen, setShowAllAnsweredScreen] = useState(false);
   const [questionNumber, setQuestionNumber] = useState(0);
+  const [totalQuestions, setTotalQuestions] = useState(0);
 
   const categoryKey = useMemo(() => {
     if (category === 'state-trivia') return 'state_trivia';
@@ -55,61 +55,52 @@ export function QuizClient({ category }: { category: string }) {
     );
   }, [categoryKey]);
 
-  const totalQuestions = filteredQuestions.length;
-  
-  const selectNewQuestion = useCallback((currentSeenIds: Set<string>) => {
-    const unaskedQuestions = filteredQuestions.filter(q => !currentSeenIds.has(q.id));
-
-    if (unaskedQuestions.length > 0) {
-      const randomIndex = Math.floor(Math.random() * unaskedQuestions.length);
-      const newQuestion = unaskedQuestions[randomIndex];
-      const shuffledOptions = [...newQuestion.options].sort(() => Math.random() - 0.5);
-      setCurrentQuestion({ ...newQuestion, options: shuffledOptions });
-      setQuestionNumber(currentSeenIds.size + 1);
-      setShowAllAnsweredScreen(false);
-    } else {
-      setCurrentQuestion(null);
-      if (totalQuestions > 0) {
-        setShowAllAnsweredScreen(true);
-      }
-    }
-    setIsLoading(false);
-  }, [filteredQuestions, totalQuestions]);
-
   useEffect(() => {
     const initializeQuiz = async () => {
       setIsLoading(true);
       hideLoader();
-      
-      let currentSeenIds = new Set<string>();
-
+  
+      let seenIds = new Set<string>();
+  
       if (auth?.currentUser && firestore) {
         try {
           const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
           const userDoc = await getDoc(userDocRef);
-          
           if (userDoc.exists()) {
             const userData = userDoc.data();
             const seenForCategory = userData.seenQuestions?.[category] || [];
-            currentSeenIds = new Set(seenForCategory);
-          } else {
-            await setDoc(doc(firestore, 'users', auth.currentUser.uid), { 
-              email: auth.currentUser.email,
-              createdAt: new Date() 
-            });
+            seenIds = new Set(seenForCategory);
           }
         } catch (error) {
           console.error("Error fetching user progress:", error);
         }
       }
       
-      setSeenQuestionIds(currentSeenIds);
-      selectNewQuestion(currentSeenIds);
+      const availableQuestions = filteredQuestions.filter(q => !seenIds.has(q.id));
+      
+      setTotalQuestions(filteredQuestions.length);
+      setQuestionNumber(seenIds.size + 1);
+
+      if (availableQuestions.length > 0) {
+        const randomIndex = Math.floor(Math.random() * availableQuestions.length);
+        const newQuestion = availableQuestions[randomIndex];
+        const shuffledOptions = [...newQuestion.options].sort(() => Math.random() - 0.5);
+        setCurrentQuestion({ ...newQuestion, options: shuffledOptions });
+        setShowAllAnsweredScreen(false);
+      } else {
+        setCurrentQuestion(null);
+        if (filteredQuestions.length > 0) {
+          setShowAllAnsweredScreen(true);
+        }
+      }
+      
+      setIsLoading(false);
     };
-
-    initializeQuiz();
-  }, [auth?.currentUser, firestore, category, selectNewQuestion, hideLoader]);
-
+  
+    if (filteredQuestions.length > 0) {
+        initializeQuiz();
+    }
+  }, [auth?.currentUser, firestore, category, filteredQuestions, hideLoader]);
 
   const updateSeenQuestionsInDb = async (questionId: string) => {
     if (auth?.currentUser && firestore) {
@@ -128,18 +119,14 @@ export function QuizClient({ category }: { category: string }) {
       }
     }
   };
-
-  const handleAnswerSubmit = () => {
+  
+  const handleAnswerSubmit = async () => {
     if (selectedAnswer && currentQuestion) {
       setIsAnswered(true);
       const audio = new Audio(selectedAnswer === currentQuestion.correctAnswer ? correctSoundBase64 : incorrectSoundBase64);
       audio.play();
 
-      if (!seenQuestionIds.has(currentQuestion.id)) {
-        const newSeenIds = new Set(seenQuestionIds).add(currentQuestion.id);
-        setSeenQuestionIds(newSeenIds);
-        updateSeenQuestionsInDb(currentQuestion.id);
-      }
+      await updateSeenQuestionsInDb(currentQuestion.id);
     }
   };
   
@@ -147,17 +134,35 @@ export function QuizClient({ category }: { category: string }) {
     if (!currentQuestion) return;
     
     setIsLoading(true);
+    await updateSeenQuestionsInDb(currentQuestion.id);
+
+    const seenIds = new Set<string>();
+     if (auth?.currentUser && firestore) {
+        const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
+        const userDoc = await getDoc(userDocRef);
+        if (userDoc.exists()) {
+            const userData = userDoc.data();
+            const seenForCategory = userData.seenQuestions?.[category] || [];
+            seenForCategory.forEach((id: string) => seenIds.add(id));
+        }
+     }
     
-    const newSeenIds = new Set(seenQuestionIds);
-    if (!newSeenIds.has(currentQuestion.id)) {
-        newSeenIds.add(currentQuestion.id);
-        await updateSeenQuestionsInDb(currentQuestion.id);
+    const availableQuestions = filteredQuestions.filter(q => !seenIds.has(q.id));
+    setQuestionNumber(seenIds.size + 1);
+
+    if (availableQuestions.length > 0) {
+      const randomIndex = Math.floor(Math.random() * availableQuestions.length);
+      const newQuestion = availableQuestions[randomIndex];
+      const shuffledOptions = [...newQuestion.options].sort(() => Math.random() - 0.5);
+      
+      setCurrentQuestion({ ...newQuestion, options: shuffledOptions });
+      setSelectedAnswer(null);
+      setIsAnswered(false);
+    } else {
+      setShowAllAnsweredScreen(true);
     }
     
-    setSeenQuestionIds(newSeenIds);
-    setSelectedAnswer(null);
-    setIsAnswered(false);
-    selectNewQuestion(newSeenIds);
+    setIsLoading(false);
   };
   
   const handleGoHome = () => {
@@ -177,10 +182,20 @@ export function QuizClient({ category }: { category: string }) {
         console.error("Error resetting questions:", error);
       }
     }
-    const newSeenIds = new Set<string>();
-    setSeenQuestionIds(newSeenIds);
+    
+    setQuestionNumber(1);
     setShowAllAnsweredScreen(false);
-    selectNewQuestion(newSeenIds);
+
+    if (filteredQuestions.length > 0) {
+        const randomIndex = Math.floor(Math.random() * filteredQuestions.length);
+        const newQuestion = filteredQuestions[randomIndex];
+        const shuffledOptions = [...newQuestion.options].sort(() => Math.random() - 0.5);
+        setCurrentQuestion({ ...newQuestion, options: shuffledOptions });
+    } else {
+        setCurrentQuestion(null);
+    }
+
+    setIsLoading(false);
   };
 
   const handleBuyExpansion = () => {
