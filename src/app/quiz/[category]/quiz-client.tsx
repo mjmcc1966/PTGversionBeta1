@@ -414,7 +414,6 @@ export function QuizClient({ category }: { category: string }) {
               <Button asChild variant="outline">
                 <Link href="/home"><Home className="mr-2 h-5 w-5"/>Home</Link>
               </Button>
-               <Button onClick={selectNewQuestion}>Next Question</Button>
             </div>
           </CardFooter>
         )}
