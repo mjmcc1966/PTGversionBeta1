@@ -213,15 +213,6 @@ export function QuizClient({ category }: { category: string }) {
     }
   };
 
-  const handleNextQuestion = () => {
-    if (askedQuestionIds.size >= allQuestions.length) {
-      setQuizFinished(true);
-    } else {
-      selectNewQuestion();
-    }
-  };
-
-
   const handleSkipQuestion = async () => {
     if (!currentQuestion || !allQuestions) return;
     await markQuestionAsSeen(currentQuestion.id);
@@ -412,9 +403,6 @@ export function QuizClient({ category }: { category: string }) {
               <p className="mt-2 text-foreground/80">{currentQuestion.explanation}</p>
             </div>
             <div className="flex w-full justify-end items-center gap-2">
-               <Button onClick={handleNextQuestion} className="w-full md:w-auto">
-                    Next Question
-                </Button>
               <Link href="/home" passHref>
                   <Button asChild variant="outline" className="w-full md:w-auto">
                       <a>Home</a>
@@ -427,3 +415,5 @@ export function QuizClient({ category }: { category: string }) {
     </>
   );
 }
+
+    
