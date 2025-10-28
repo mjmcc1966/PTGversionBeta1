@@ -24,13 +24,13 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased h-full">
-        <FirebaseClientProvider>
-          <LoadingProvider>
+        <LoadingProvider>
+          <FirebaseClientProvider>
             <AuthGate>
               {children}
             </AuthGate>
-          </LoadingProvider>
-        </FirebaseClientProvider>
+          </FirebaseClientProvider>
+        </LoadingProvider>
         <Toaster />
       </body>
     </html>
