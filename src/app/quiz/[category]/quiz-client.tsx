@@ -76,26 +76,26 @@ export function QuizClient({ category }: { category: string }) {
     return { ...nextQuestion, options: shuffledOptions };
   }, []);
 
-  const updateSeenInStorage = useCallback(async (newSeenIds: Set<string>) => {
+  const updateSeenInStorage = useCallback((newSeenIds: Set<string>) => {
     if (user && firestore) {
-      const userDocRef = doc(firestore, 'users', user.uid);
-      const dataToSet = { seenQuestions: { [category]: Array.from(newSeenIds) } };
-      
-      try {
-        await setDoc(userDocRef, dataToSet, { merge: true });
-      } catch (error) {
-        console.error("Non-blocking update error:", error);
-        const permissionError = new FirestorePermissionError({
-          path: userDocRef.path,
-          operation: 'update',
-          requestResourceData: dataToSet,
-        });
-        errorEmitter.emit('permission-error', permissionError);
-      }
+        const userDocRef = doc(firestore, 'users', user.uid);
+        const dataToSet = { seenQuestions: { [category]: Array.from(newSeenIds) } };
+
+        setDoc(userDocRef, dataToSet, { merge: true })
+            .catch((error) => {
+                console.error("Non-blocking update error:", error);
+                const permissionError = new FirestorePermissionError({
+                    path: userDocRef.path,
+                    operation: 'update',
+                    requestResourceData: dataToSet,
+                });
+                errorEmitter.emit('permission-error', permissionError);
+            });
     } else {
-      sessionStorage.setItem(`seen_${category}`, JSON.stringify(Array.from(newSeenIds)));
+        sessionStorage.setItem(`seen_${category}`, JSON.stringify(Array.from(newSeenIds)));
     }
   }, [user, firestore, category]);
+
 
   useEffect(() => {
     const loadQuizData = async () => {
@@ -379,5 +379,3 @@ export function QuizClient({ category }: { category: string }) {
     </div>
   );
 }
-
-    
