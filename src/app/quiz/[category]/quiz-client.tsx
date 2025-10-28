@@ -75,10 +75,24 @@ export function QuizClient({ category }: { category: string }) {
     return { ...nextQuestion, options: shuffledOptions };
   }, []);
 
+  const updateSeenInStorage = useCallback(async (newSeenIds: Set<string>) => {
+    const seenIdsArray = Array.from(newSeenIds);
+    if (auth?.currentUser && firestore) {
+      const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
+      try {
+        await setDoc(userDocRef, {
+            seenQuestions: { [category]: seenIdsArray }
+        }, { merge: true });
+      } catch (err) {
+        console.error("Error updating seen questions in DB:", err);
+      }
+    } else {
+      sessionStorage.setItem(`seen_${category}`, JSON.stringify(seenIdsArray));
+    }
+  }, [auth, firestore, category]);
+
   useEffect(() => {
     const loadQuiz = async () => {
-      setQuizState(s => ({ ...s, isLoading: true }));
-
       const allCategoryQuestions = (allQuestionsData as Question[]).filter(
         (q) => q.category.toLowerCase().replace(/ /g, '_') === categoryKey
       );
@@ -103,7 +117,7 @@ export function QuizClient({ category }: { category: string }) {
           initialSeenIds = new Set(JSON.parse(sessionSeen));
         }
       }
-      
+
       const nextQuestion = selectNextQuestion(allCategoryQuestions, initialSeenIds);
 
       setQuizState({
@@ -122,22 +136,8 @@ export function QuizClient({ category }: { category: string }) {
     };
 
     loadQuiz();
-  }, [category, categoryKey, auth, firestore, selectNextQuestion, hideLoader]);
-  
-  const updateSeenInStorage = useCallback(async (newSeenIds: Set<string>) => {
-    if (auth?.currentUser && firestore) {
-      const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
-      try {
-        await setDoc(userDocRef, { 
-            seenQuestions: { [category]: Array.from(newSeenIds) } 
-        }, { merge: true });
-      } catch (err) {
-        console.error("Error updating seen questions in DB:", err);
-      }
-    } else {
-      sessionStorage.setItem(`seen_${category}`, JSON.stringify(Array.from(newSeenIds)));
-    }
-  }, [auth, firestore, category]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [category, categoryKey, auth, firestore]);
 
   const advanceToNext = useCallback(async (currentQuestionId: string) => {
     showLoader();
@@ -168,36 +168,18 @@ export function QuizClient({ category }: { category: string }) {
     const newSeenIds = new Set(quizState.seenQuestionIds).add(quizState.currentQuestion.id);
     await updateSeenInStorage(newSeenIds);
 
-    setQuizState(s => ({ 
-      ...s, 
+    setQuizState(s => ({
+      ...s,
       isAnswered: true,
       seenQuestionIds: newSeenIds
     }));
   };
-  
+
   const handleSkipQuestion = async () => {
     if (!quizState.currentQuestion) return;
-    
-    showLoader();
-    const newSeenIds = new Set(quizState.seenQuestionIds).add(quizState.currentQuestion.id);
-    await updateSeenInStorage(newSeenIds);
-
-    const nextQuestion = selectNextQuestion(quizState.questions, newSeenIds);
-
-    if (nextQuestion) {
-        setQuizState(s => ({
-            ...s,
-            seenQuestionIds: newSeenIds,
-            currentQuestion: nextQuestion,
-            questionNumber: newSeenIds.size + 1,
-            selectedAnswer: null,
-            isAnswered: false,
-        }));
-    } else {
-        setQuizState(s => ({ ...s, isFinished: true, currentQuestion: null, seenQuestionIds: newSeenIds }));
-    }
-    hideLoader();
+    await advanceToNext(quizState.currentQuestion.id);
   };
+
 
   const handleGoHome = () => {
     showLoader();
@@ -208,7 +190,7 @@ export function QuizClient({ category }: { category: string }) {
     showLoader();
     const newSeenIds = new Set<string>();
     await updateSeenInStorage(newSeenIds);
-    
+
     const nextQuestion = selectNextQuestion(quizState.questions, newSeenIds);
     setQuizState(s => ({
       ...s,
@@ -230,7 +212,6 @@ export function QuizClient({ category }: { category: string }) {
     return (
       <div className="w-full max-w-2xl mx-auto">
         <p className="text-center text-muted-foreground mb-4">Loading...</p>
-        <Skeleton className="h-10 w-1/4 mb-4" />
         <Card>
           <CardHeader>
             <Skeleton className="h-8 w-3/4" />
@@ -381,6 +362,3 @@ export function QuizClient({ category }: { category: string }) {
     </div>
   );
 }
-
-
-    
