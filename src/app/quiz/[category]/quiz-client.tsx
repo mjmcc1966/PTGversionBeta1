@@ -4,7 +4,6 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
 import Image from 'next/image';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
@@ -18,7 +17,6 @@ import { doc, getDoc, updateDoc, arrayUnion, setDoc } from 'firebase/firestore';
 
 const correctSoundBase64 = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=";
 const incorrectSoundBase64 = "data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAIARKwAAIhYAQACABgAZGF0YQISAACAgICAgICAgICAgICAgICAgIA=";
-
 
 interface Question {
   id: string;
@@ -35,7 +33,7 @@ export function QuizClient({ category }: { category: string }) {
   const router = useRouter();
   const { hideLoader, showLoader } = useLoading();
 
-  const [isLoading, setIsLoading] = useState(true);
+  const [componentIsLoading, setComponentIsLoading] = useState(true);
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
@@ -78,14 +76,13 @@ export function QuizClient({ category }: { category: string }) {
   useEffect(() => {
     const initializeQuiz = async () => {
       hideLoader();
-      if (!auth?.currentUser || !firestore || filteredQuestions.length === 0) {
-          setIsLoading(false);
+      if (!auth?.currentUser || !firestore) {
+          setComponentIsLoading(false);
           return;
       };
 
-      setIsLoading(true);
-      const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
       try {
+        const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
         const userDoc = await getDoc(userDocRef);
         let seenIds = new Set<string>();
 
@@ -94,7 +91,7 @@ export function QuizClient({ category }: { category: string }) {
           const seenForCategory = userData.seenQuestions?.[category] || [];
           seenIds = new Set(seenForCategory);
         } else {
-          await setDoc(doc(firestore, 'users', auth.currentUser.uid), { 
+           await setDoc(doc(firestore, 'users', auth.currentUser.uid), { 
             email: auth.currentUser.email, 
             createdAt: new Date() 
           });
@@ -105,13 +102,14 @@ export function QuizClient({ category }: { category: string }) {
 
       } catch (error) {
         console.error("Error initializing quiz:", error);
+        setCurrentQuestion(null); 
       } finally {
-        setIsLoading(false);
+        setComponentIsLoading(false);
       }
     };
 
     initializeQuiz();
-  }, [auth?.currentUser, firestore, category, filteredQuestions.length, selectNewQuestion, hideLoader]);
+  }, [auth?.currentUser, firestore, category, selectNewQuestion, hideLoader]);
 
 
   const updateSeenQuestionsInDb = async (questionId: string) => {
@@ -123,7 +121,8 @@ export function QuizClient({ category }: { category: string }) {
         });
       } catch (err) {
         // If the document or field doesn't exist, create it.
-        if (err.code === 'not-found') {
+        const error = err as { code: string };
+        if (error.code === 'not-found' || error.code === 'invalid-argument') { // 'invalid-argument' can happen if document doesn't exist
             await setDoc(userDocRef, { seenQuestions: { [category]: [questionId] } }, { merge: true });
         } else {
             console.error("Error updating seen questions in DB:", err);
@@ -145,17 +144,15 @@ export function QuizClient({ category }: { category: string }) {
   };
 
   const handleNextQuestion = () => {
-      setIsLoading(true);
       setSelectedAnswer(null);
       setIsAnswered(false);
       selectNewQuestion(askedQuestionIds);
-      setIsLoading(false);
   }
 
   const handleSkipQuestion = () => {
     if (!currentQuestion) return;
     
-    setIsLoading(true);
+    setComponentIsLoading(true);
     const newAskedIds = new Set(askedQuestionIds).add(currentQuestion.id);
     setAskedQuestionIds(newAskedIds);
     updateSeenQuestionsInDb(currentQuestion.id);
@@ -163,7 +160,7 @@ export function QuizClient({ category }: { category: string }) {
     setSelectedAnswer(null);
     setIsAnswered(false);
     selectNewQuestion(newAskedIds);
-    setIsLoading(false);
+    setComponentIsLoading(false);
   };
   
   const handleGoHome = () => {
@@ -172,7 +169,7 @@ export function QuizClient({ category }: { category: string }) {
   }
 
   const handleReuseQuestions = async () => {
-    setIsLoading(true);
+    setComponentIsLoading(true);
     if (auth?.currentUser && firestore) {
       const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
       try {
@@ -187,14 +184,14 @@ export function QuizClient({ category }: { category: string }) {
     setAskedQuestionIds(newSeenIds);
     setAllQuestionsAnswered(false);
     selectNewQuestion(newSeenIds);
-    setIsLoading(false);
+    setComponentIsLoading(false);
   };
 
   const handleBuyExpansion = () => {
     alert('Expansion packs are not yet available.');
   };
   
-  if (isLoading) {
+  if (componentIsLoading) {
     return (
       <div className="w-full max-w-2xl mx-auto">
         <Skeleton className="h-10 w-1/4 mb-4" />
@@ -250,12 +247,16 @@ export function QuizClient({ category }: { category: string }) {
        <Card className="w-full max-w-md text-center">
         <CardHeader>
           <CardTitle className="text-2xl font-bold">No Questions</CardTitle>
-          <CardDescription>There are no questions available for this category.</CardDescription>
+          <CardDescription>There are no questions available for this category. This could be because you've answered them all, or the data file is empty.</CardDescription>
         </CardHeader>
-        <CardFooter>
+        <CardFooter className="flex-col gap-4">
             <Button onClick={handleGoHome} className="w-full" variant="outline">
                 <Home className="mr-2 h-4 w-4" />
                 Return to Home
+            </Button>
+             <Button onClick={handleReuseQuestions} className="w-full">
+                <RefreshCw className="mr-2 h-4 w-4" />
+                Start Over
             </Button>
         </CardFooter>
       </Card>
@@ -337,8 +338,8 @@ export function QuizClient({ category }: { category: string }) {
                   <p className="text-muted-foreground">{currentQuestion.explanation}</p>
                 </div>
               </div>
-               <Button onClick={handleNextQuestion} className="w-full mt-4">
-                  Next Question
+               <Button onClick={handleGoHome} className="w-full mt-4">
+                  Return Home
                </Button>
             </CardFooter>
           </>
@@ -347,5 +348,3 @@ export function QuizClient({ category }: { category: string }) {
     </div>
   );
 }
-
-    
