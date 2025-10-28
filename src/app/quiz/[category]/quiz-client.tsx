@@ -17,7 +17,7 @@ import { useFirebase } from '@/firebase';
 import { doc, getDoc, setDoc, updateDoc, arrayUnion } from 'firebase/firestore';
 
 const correctSoundBase64 = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=";
-const incorrectSoundBase64 = "data:audio/wav;base64,UklGRiQAA_BXVfl5iZ29vb3V2d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d_VaxBWRhdGEAAAAA";
+const incorrectSoundBase64 = "data:audio/wav;base64,UklGRiQAA_BXVfl5iZ29vb3V2d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d_VaxBWRhdGEAAAAA";
 
 export interface Question {
   id: string;
@@ -38,7 +38,6 @@ export function QuizClient({ category }: { category: string }) {
   const [submitted, setSubmitted] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [quizFinished, setQuizFinished] = useState(false);
-  const [outOfQuestions, setOutOfQuestions] = useState(false);
   const [questionNumber, setQuestionNumber] = useState(0);
   const { hideLoader, showLoader } = useLoading();
   const { user, firestore, isUserLoading } = useFirebase();
@@ -50,13 +49,21 @@ export function QuizClient({ category }: { category: string }) {
 
   const categoryKey = useMemo(() => category.replace(/-/g, '_'), [category]);
 
+  const { correctAnswerSound, incorrectAnswerSound } = useMemo(() => {
+    if (typeof window !== 'undefined') {
+      const correct = new Audio(correctSoundBase64);
+      const incorrect = new Audio(incorrectSoundBase64);
+      return { correctAnswerSound: correct, incorrectAnswerSound: incorrect };
+    }
+    return { correctAnswerSound: null, incorrectAnswerSound: null };
+  }, []);
+
   const selectNewQuestion = useCallback((currentAskedIds: Set<string>) => {
     if (questionsLoading || !allQuestions || allQuestions.length === 0) return;
   
     const availableQuestions = allQuestions.filter(q => !currentAskedIds.has(q.id));
     
-    if (availableQuestions.length === 0 && allQuestions.length > 0) {
-      setOutOfQuestions(true);
+    if (availableQuestions.length === 0) {
       setQuizFinished(true);
       return;
     }
@@ -68,17 +75,8 @@ export function QuizClient({ category }: { category: string }) {
     setSelectedAnswer(null);
     setSubmitted(false);
     setIsCorrect(null);
-  
+    setQuestionNumber(currentAskedIds.size + 1);
   }, [allQuestions, questionsLoading]);
-  
-  // Effect for initializing the counter
-  useEffect(() => {
-    if (!questionsLoading) {
-      setQuestionNumber(askedQuestionIds.size);
-    }
-  }, [askedQuestionIds, questionsLoading]);
-
-
   
   useEffect(() => {
     hideLoader();
@@ -105,15 +103,15 @@ export function QuizClient({ category }: { category: string }) {
     }
     
     setAllQuestions(filteredQuestions);
-    setQuestionsLoading(false);
   }, [category]);
 
-
   useEffect(() => {
-    const fetchProgressAndStart = async () => {
-      if (isUserLoading || questionsLoading || allQuestions.length === 0) return;
+    const loadProgressAndQuestions = async () => {
+      if (isUserLoading || allQuestions.length === 0) return;
 
+      setQuestionsLoading(true);
       let initialSeenIds = new Set<string>();
+      
       if (user && firestore && categoryKey !== 'custom_trivia') {
         const userDocRef = doc(firestore, 'users', user.uid);
         try {
@@ -130,31 +128,83 @@ export function QuizClient({ category }: { category: string }) {
       } else if (categoryKey === 'custom_trivia') {
         // Handle custom trivia progress if stored locally, or start fresh
       }
-
+      
       setAskedQuestionIds(initialSeenIds);
+      setQuestionsLoading(false);
       selectNewQuestion(initialSeenIds);
     };
-  
-    fetchProgressAndStart();
-  }, [isUserLoading, user, firestore, questionsLoading, categoryKey, allQuestions, selectNewQuestion]);
+
+    loadProgressAndQuestions();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isUserLoading, user, firestore, allQuestions]);
 
 
-  const { correctAnswerSound, incorrectAnswerSound } = useMemo(() => {
-    if (typeof window !== 'undefined') {
-      const correct = new Audio(correctSoundBase64);
-      const incorrect = new Audio(incorrectSoundBase64);
-      return { correctAnswerSound: correct, incorrectAnswerSound: incorrect };
-    }
-    return { correctAnswerSound: null, incorrectAnswerSound: null };
-  }, []);
+  const markQuestionAsSeen = async (questionId: string) => {
+    if (!currentQuestion) return;
+    const newAskedIds = new Set(askedQuestionIds).add(questionId);
+    setAskedQuestionIds(newAskedIds);
 
-  useEffect(() => {
-    return () => {
-      if (intervalId) {
-        clearInterval(intervalId);
+    if (categoryKey !== 'custom_trivia' && user && firestore) {
+      const userDocRef = doc(firestore, 'users', user.uid);
+      const categoryKeyToUpdate = `seenQuestions.${categoryKey}`;
+      try {
+        await updateDoc(userDocRef, { [categoryKeyToUpdate]: arrayUnion(questionId) });
+      } catch (error) {
+        console.error("Error updating seen questions:", error);
       }
-    };
-  }, [intervalId]);
+    }
+  };
+
+  const handleSubmitAnswer = async () => {
+    if (!selectedAnswer || !currentQuestion) return;
+
+    if (intervalId) {
+      clearInterval(intervalId);
+      setIntervalId(null);
+      setTimer(null);
+    }
+
+    const correct = selectedAnswer === currentQuestion.correctAnswer;
+    setIsCorrect(correct);
+    
+    if (correct) {
+      correctAnswerSound?.play();
+    } else {
+      incorrectAnswerSound?.play();
+    }
+    
+    setSubmitted(true);
+    await markQuestionAsSeen(currentQuestion.id);
+  };
+  
+  const handleSkipQuestion = async () => {
+    if (!currentQuestion) return;
+    await markQuestionAsSeen(currentQuestion.id);
+    const newAskedIds = new Set(askedQuestionIds).add(currentQuestion.id);
+    selectNewQuestion(newAskedIds);
+  };
+
+  const handleResetQuiz = async () => {
+    showLoader();
+    if (categoryKey === 'custom_trivia') {
+        setAskedQuestionIds(new Set());
+    } else {
+        if (!user || !firestore) {
+          hideLoader();
+          return;
+        };
+        const userDocRef = doc(firestore, 'users', user.uid);
+        const categoryKeyToReset = `seenQuestions.${categoryKey}`;
+        try {
+           await updateDoc(userDocRef, { [categoryKeyToReset]: [] });
+        } catch (e) {
+           console.error("Could not reset quiz progress in Firestore", e);
+        }
+    }
+    setQuizFinished(false);
+    setCurrentQuestion(null);
+    window.location.reload();
+  };
 
   const startTimer = () => {
     if (intervalId) {
@@ -180,108 +230,6 @@ export function QuizClient({ category }: { category: string }) {
     if (!currentQuestion) return [];
     return [...currentQuestion.options].sort(() => Math.random() - 0.5);
   }, [currentQuestion]);
-
-  const handleAnswerSelect = (answer: string) => {
-    if (submitted) return;
-    setSelectedAnswer(answer);
-  };
-
-  const updateSeenQuestionsInFirestore = async (questionId: string) => {
-    if (!user || !firestore) return;
-    const userDocRef = doc(firestore, 'users', user.uid);
-    const categoryKeyToUpdate = `seenQuestions.${categoryKey}`;
-    
-    try {
-      const docSnap = await getDoc(userDocRef);
-      if (!docSnap.exists()) {
-        await setDoc(userDocRef, { seenQuestions: { [categoryKey]: [questionId] } }, { merge: true });
-      } else {
-        await updateDoc(userDocRef, {
-          [categoryKeyToUpdate]: arrayUnion(questionId)
-        });
-      }
-    } catch (error: any) {
-        console.error("Error updating seen questions:", error);
-    }
-};
-
-  const markQuestionAsSeen = async (questionId: string) => {
-    const newAskedQuestionIds = new Set(askedQuestionIds);
-    newAskedQuestionIds.add(questionId);
-    setAskedQuestionIds(newAskedQuestionIds);
-
-    if (categoryKey !== 'custom_trivia') {
-      await updateSeenQuestionsInFirestore(questionId);
-    }
-    
-    return newAskedQuestionIds;
-  };
-
-
-  const handleSubmitAnswer = async () => {
-    if (!selectedAnswer || !currentQuestion || !allQuestions) return;
-
-    if (intervalId) {
-      clearInterval(intervalId);
-      setIntervalId(null);
-      setTimer(null);
-    }
-
-    const correct = selectedAnswer === currentQuestion.correctAnswer;
-    setIsCorrect(correct);
-    
-    if (correct) {
-      correctAnswerSound?.play();
-    } else {
-      incorrectAnswerSound?.play();
-    }
-    
-    setSubmitted(true);
-    const newAskedIds = await markQuestionAsSeen(currentQuestion.id);
-
-    if (newAskedIds.size >= allQuestions.length) {
-      setQuizFinished(true);
-    }
-  };
-  
-  const handleSkipQuestion = async () => {
-    if (!currentQuestion || !allQuestions) return;
-    
-    const newAskedIds = await markQuestionAsSeen(currentQuestion.id);
-    if (newAskedIds.size >= allQuestions.length) {
-        setQuizFinished(true);
-    } else {
-        selectNewQuestion(newAskedIds);
-    }
-  };
-
-  const handleResetQuiz = async () => {
-    showLoader();
-    if (categoryKey === 'custom_trivia') {
-        setAskedQuestionIds(new Set());
-    } else {
-        if (!user || !firestore) {
-          hideLoader();
-          return;
-        };
-        const userDocRef = doc(firestore, 'users', user.uid);
-        const categoryKeyToReset = `seenQuestions.${categoryKey}`;
-        try {
-           await updateDoc(userDocRef, {
-               [categoryKeyToReset]: []
-           });
-        } catch (e) {
-           console.error("Could not reset quiz progress in Firestore", e);
-        }
-        setAskedQuestionIds(new Set());
-    }
-
-    setOutOfQuestions(false);
-    setQuizFinished(false);
-    setCurrentQuestion(null);
-    // Reload the page to re-trigger the initial data fetching and question selection logic
-    window.location.reload();
-  };
   
   if (isUserLoading || questionsLoading || (!currentQuestion && !quizFinished)) {
     return (
@@ -299,47 +247,33 @@ export function QuizClient({ category }: { category: string }) {
     )
   }
   
-  if (outOfQuestions) {
-    return (
-      <Card className="w-full max-w-2xl text-center p-8 shadow-2xl animate-in fade-in zoom-in-95">
-        <CardHeader>
-          <CardTitle className="text-2xl mt-4 text-primary">Out of Questions</CardTitle>
-          <CardDescription className="text-xl mt-2">
-            You have run out of questions in this category. You can either buy an expansion pack of all new questions, or you can reset your question count and re-use the questions you have already seen. Which would you like to do?
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-4">
-          <Button size="lg" onClick={handleResetQuiz}>
-            Re-Use Questions
-          </Button>
-          <Button size="lg" onClick={() => alert("Expansion packs are not available yet!")}>
-            Buy Expansion Pack
-          </Button>
-           <Link href="/home" passHref>
-            <Button variant="outline">Home</Button>
-           </Link>
-        </CardContent>
-      </Card>
-    );
-  }
-
-  if (quizFinished && !outOfQuestions) {
+  if (quizFinished) {
+    const outOfQuestions = askedQuestionIds.size >= allQuestions.length;
     return (
       <Card className="w-full max-w-2xl text-center p-8 shadow-2xl animate-in fade-in zoom-in-95">
         <CardHeader>
           <Trophy className="w-24 h-24 mx-auto text-accent" />
-          <CardTitle className="text-4xl mt-4 text-primary">Quiz Complete!</CardTitle>
+          <CardTitle className="text-4xl mt-4 text-primary">
+            {outOfQuestions ? "Out of Questions" : "Quiz Complete!"}
+          </CardTitle>
           <CardDescription className="text-xl mt-2">
-            You have answered all questions in this category.
+            {outOfQuestions
+              ? "You have run out of questions in this category. You can either buy an expansion pack of all new questions, or you can reset your question count and re-use the questions you have already seen. Which would you like to do?"
+              : "You have answered all questions in this category."}
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
           <Button size="lg" onClick={handleResetQuiz}>
-            Play Again
+            {outOfQuestions ? "Re-Use Questions" : "Play Again"}
           </Button>
-          <Link href="/home" passHref>
-             <Button variant="outline" size="lg">Home</Button>
-          </Link>
+          {outOfQuestions && (
+            <Button size="lg" onClick={() => alert("Expansion packs are not available yet!")}>
+              Buy Expansion Pack
+            </Button>
+          )}
+           <Link href="/home" passHref>
+            <Button variant="outline">Home</Button>
+           </Link>
         </CardContent>
       </Card>
     );
@@ -350,7 +284,7 @@ export function QuizClient({ category }: { category: string }) {
         <Card className="w-full max-w-2xl p-8 text-center shadow-lg">
             <CardTitle>No questions available</CardTitle>
             <CardDescription>Could not load questions for this category. The data file might be empty or missing.</CardDescription>
-            <CardFooter>
+            <CardFooter className="justify-center">
                  <Link href="/home" passHref>
                     <Button variant="outline" className="mt-4">Home</Button>
                  </Link>
@@ -377,8 +311,7 @@ export function QuizClient({ category }: { category: string }) {
     return "bg-card/50 border-primary/10 text-muted-foreground";
   };
   
-  const progress = allQuestions && allQuestions.length > 0 ? ((questionNumber) / allQuestions.length) * 100 : 0;
-
+  const progress = allQuestions && allQuestions.length > 0 ? (questionNumber / allQuestions.length) * 100 : 0;
 
   return (
     <>
@@ -391,7 +324,7 @@ export function QuizClient({ category }: { category: string }) {
         <CardHeader>
           <div className="mb-4">
             <Progress value={progress} className="h-2" />
-            <p className="text-sm text-muted-foreground mt-2 text-center">Question {questionNumber} of {allQuestions?.length}</p>
+            <p className="text-sm text-muted-foreground mt-2 text-center">Question {questionNumber} of {allQuestions.length}</p>
           </div>
           {currentQuestion.imageUrl && (
             <div className="relative w-full h-64 mb-4 rounded-lg overflow-hidden">
@@ -416,7 +349,7 @@ export function QuizClient({ category }: { category: string }) {
               variant="outline"
               size="lg"
               className={cn("h-auto py-4 whitespace-normal justify-start text-left text-base transition-all duration-300 transform hover:scale-105 border-2", getButtonClass(option))}
-              onClick={() => handleAnswerSelect(option)}
+              onClick={() => setSelectedAnswer(option)}
               disabled={submitted}
             >
               <div className="flex-grow">{option}</div>
@@ -450,3 +383,5 @@ export function QuizClient({ category }: { category: string }) {
     </>
   );
 }
+
+    
