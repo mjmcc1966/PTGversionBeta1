@@ -185,7 +185,6 @@ export function QuizClient({ category }: { category: string }) {
     const newAskedQuestionIds = new Set(askedQuestionIds);
     newAskedQuestionIds.add(questionId);
     setAskedQuestionIds(newAskedQuestionIds);
-    setQuestionNumber(prev => prev + 1);
     await updateSeenQuestionsInFirestore(questionId);
   };
 
@@ -211,6 +210,7 @@ export function QuizClient({ category }: { category: string }) {
     }
 
     await markQuestionAsSeen(currentQuestion.id);
+    setQuestionNumber(prev => prev + 1);
 
     if (askedQuestionIds.size + 1 >= allQuestions.length) {
         setTimeout(() => setQuizFinished(true), 3000);
@@ -221,6 +221,7 @@ export function QuizClient({ category }: { category: string }) {
     if (!currentQuestion || !allQuestions) return;
     
     markQuestionAsSeen(currentQuestion.id).then(() => {
+        setQuestionNumber(prev => prev + 1);
         if (askedQuestionIds.size +1 >= allQuestions.length) {
             setQuizFinished(true);
         } else {
@@ -343,7 +344,7 @@ export function QuizClient({ category }: { category: string }) {
     return "bg-card/50 border-primary/10 text-muted-foreground";
   };
   
-  const progress = allQuestions && allQuestions.length > 0 ? (askedQuestionIds.size / allQuestions.length) * 100 : 0;
+  const progress = allQuestions && allQuestions.length > 0 ? ((questionNumber) / allQuestions.length) * 100 : 0;
 
 
   return (
@@ -411,6 +412,7 @@ export function QuizClient({ category }: { category: string }) {
               <Button asChild variant="outline">
                 <Link href="/home"><Home className="mr-2 h-5 w-5"/>Home</Link>
               </Button>
+              <Button onClick={selectNewQuestion}>Next Question</Button>
             </div>
           </CardFooter>
         )}
@@ -419,4 +421,5 @@ export function QuizClient({ category }: { category: string }) {
   );
 }
 
+    
     
