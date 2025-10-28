@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
@@ -8,380 +7,259 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
-import { CheckCircle, XCircle, Trophy, Lightbulb, Hourglass, Home } from 'lucide-react';
+import { CheckCircle, XCircle, Trophy, Lightbulb, Home, SkipForward } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useLoading } from '@/app/context/loading-context';
 import allQuestionsData from '@/app/admin/data/questions.json';
 import { useFirebase } from '@/firebase';
 import { doc, getDoc, setDoc, updateDoc, arrayUnion } from 'firebase/firestore';
 
 const correctSoundBase64 = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=";
-const incorrectSoundBase64 = "data:audio/wav;base64,UklGRiQAA_BXVfl5iZ29vb3V2d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d_VaxBWRhdGEAAAAA";
+const incorrectSoundBase64 = "data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAIARKwAAIhYAQACABgAZGF0YQISAACAgICAgICAgICAgICAgICAgIA=";
 
-export interface Question {
+interface Question {
   id: string;
+  category: string;
   question: string;
-  imageUrl?: string;
   options: string[];
   correctAnswer: string;
   explanation: string;
-  category: string;
+  imageUrl?: string;
 }
 
 export function QuizClient({ category }: { category: string }) {
+  const { auth, firestore } = useFirebase();
+  const router = useRouter();
+  const { hideLoader } = useLoading();
+
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
-  const [questionsLoading, setQuestionsLoading] = useState(true);
-  const [askedQuestionIds, setAskedQuestionIds] = useState<Set<string>>(new Set());
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-  const [submitted, setSubmitted] = useState(false);
-  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
-  const [quizFinished, setQuizFinished] = useState(false);
+  const [isAnswered, setIsAnswered] = useState(false);
+  const [askedQuestionIds, setAskedQuestionIds] = useState<Set<string>>(new Set());
+  const [isLoading, setIsLoading] = useState(true);
   const [questionNumber, setQuestionNumber] = useState(0);
-  const { hideLoader, showLoader } = useLoading();
-  const { user, firestore, isUserLoading } = useFirebase();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
 
-  const [timer, setTimer] = useState<number | null>(null);
-  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
-
-  const categoryKey = useMemo(() => category.replace(/-/g, '_'), [category]);
-
-  const { correctAnswerSound, incorrectAnswerSound } = useMemo(() => {
-    if (typeof window !== 'undefined') {
-      const correct = new Audio(correctSoundBase64);
-      const incorrect = new Audio(incorrectSoundBase64);
-      return { correctAnswerSound: correct, incorrectAnswerSound: incorrect };
-    }
-    return { correctAnswerSound: null, incorrectAnswerSound: null };
-  }, []);
-
-  const selectNewQuestion = useCallback((currentAskedIds: Set<string>) => {
-    if (questionsLoading || !allQuestions || allQuestions.length === 0) return;
-  
-    const availableQuestions = allQuestions.filter(q => !currentAskedIds.has(q.id));
-    
-    if (availableQuestions.length === 0) {
-      setQuizFinished(true);
-      return;
-    }
-    
-    const randomIndex = Math.floor(Math.random() * availableQuestions.length);
-    const newQuestion = availableQuestions[randomIndex];
-    
-    setCurrentQuestion(newQuestion);
-    setSelectedAnswer(null);
-    setSubmitted(false);
-    setIsCorrect(null);
-    setQuestionNumber(currentAskedIds.size + 1);
-  }, [allQuestions, questionsLoading]);
-  
-  useEffect(() => {
-    hideLoader();
-  }, [pathname, searchParams, hideLoader]);
-  
-  useEffect(() => {
-    const categoryToFilter = category.replace(/-/g, '_');
-    let filteredQuestions;
-
-    if (categoryToFilter === 'custom_trivia') {
-      const localCustomQuestions = localStorage.getItem('customQuestions');
-      if (localCustomQuestions) {
-        try {
-          filteredQuestions = JSON.parse(localCustomQuestions);
-        } catch (error) {
-          console.error("Error parsing custom questions from localStorage", error);
-          filteredQuestions = [];
-        }
-      } else {
-        filteredQuestions = [];
-      }
-    } else {
-      filteredQuestions = (allQuestionsData as Question[]).filter(q => q.category === categoryToFilter);
-    }
-    
-    setAllQuestions(filteredQuestions);
+  const filteredQuestions = useMemo(() => {
+    return (allQuestionsData as Question[]).filter(
+      (q) => q.category.toLowerCase().replace(/ /g, '-') === category
+    );
   }, [category]);
 
-  useEffect(() => {
-    const loadProgressAndQuestions = async () => {
-      if (isUserLoading || allQuestions.length === 0) return;
+  const selectNewQuestion = useCallback(() => {
+    const unaskedQuestions = filteredQuestions.filter(q => !askedQuestionIds.has(q.id));
 
-      setQuestionsLoading(true);
-      let initialSeenIds = new Set<string>();
-      
-      if (user && firestore && categoryKey !== 'custom_trivia') {
-        const userDocRef = doc(firestore, 'users', user.uid);
-        try {
-          const docSnap = await getDoc(userDocRef);
-          if (docSnap.exists()) {
-            const userData = docSnap.data();
-            initialSeenIds = new Set(userData.seenQuestions?.[categoryKey] || []);
-          } else {
-            await setDoc(userDocRef, { seenQuestions: {} }, { merge: true });
-          }
-        } catch (error) {
-          console.error("Error fetching seen questions:", error);
+    if (unaskedQuestions.length > 0) {
+      const randomIndex = Math.floor(Math.random() * unaskedQuestions.length);
+      const newQuestion = unaskedQuestions[randomIndex];
+      const shuffledOptions = [...newQuestion.options].sort(() => Math.random() - 0.5);
+      setCurrentQuestion({ ...newQuestion, options: shuffledOptions });
+    } else {
+      setCurrentQuestion(null);
+    }
+  }, [filteredQuestions, askedQuestionIds]);
+
+  useEffect(() => {
+    const loadProgress = async () => {
+      if (auth?.currentUser && firestore) {
+        const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
+        const userDoc = await getDoc(userDocRef);
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
+          const seenIds = userData.seenQuestions?.[category] || [];
+          setAskedQuestionIds(new Set(seenIds));
         }
-      } else if (categoryKey === 'custom_trivia') {
-        // Handle custom trivia progress if stored locally, or start fresh
       }
-      
-      setAskedQuestionIds(initialSeenIds);
-      setQuestionsLoading(false);
-      selectNewQuestion(initialSeenIds);
+      setIsLoading(false);
     };
 
-    loadProgressAndQuestions();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isUserLoading, user, firestore, allQuestions]);
+    loadProgress();
+  }, [auth?.currentUser, firestore, category]);
 
-
-  const markQuestionAsSeen = async (questionId: string) => {
-    if (!currentQuestion) return;
-    const newAskedIds = new Set(askedQuestionIds).add(questionId);
-    setAskedQuestionIds(newAskedIds);
-
-    if (categoryKey !== 'custom_trivia' && user && firestore) {
-      const userDocRef = doc(firestore, 'users', user.uid);
-      const categoryKeyToUpdate = `seenQuestions.${categoryKey}`;
-      try {
-        await updateDoc(userDocRef, { [categoryKeyToUpdate]: arrayUnion(questionId) });
-      } catch (error) {
-        console.error("Error updating seen questions:", error);
-      }
+  useEffect(() => {
+    if (!isLoading) {
+      setAllQuestions(filteredQuestions);
+      selectNewQuestion();
     }
-  };
-
-  const handleSubmitAnswer = async () => {
-    if (!selectedAnswer || !currentQuestion) return;
-
-    if (intervalId) {
-      clearInterval(intervalId);
-      setIntervalId(null);
-      setTimer(null);
-    }
-
-    const correct = selectedAnswer === currentQuestion.correctAnswer;
-    setIsCorrect(correct);
-    
-    if (correct) {
-      correctAnswerSound?.play();
-    } else {
-      incorrectAnswerSound?.play();
-    }
-    
-    setSubmitted(true);
-    await markQuestionAsSeen(currentQuestion.id);
-  };
+  }, [isLoading, filteredQuestions, selectNewQuestion]);
   
-  const handleSkipQuestion = async () => {
-    if (!currentQuestion) return;
-    await markQuestionAsSeen(currentQuestion.id);
-    const newAskedIds = new Set(askedQuestionIds).add(currentQuestion.id);
-    selectNewQuestion(newAskedIds);
-  };
+  useEffect(() => {
+      setQuestionNumber(askedQuestionIds.size);
+  },[askedQuestionIds]);
 
-  const handleResetQuiz = async () => {
-    showLoader();
-    if (categoryKey === 'custom_trivia') {
-        setAskedQuestionIds(new Set());
-    } else {
-        if (!user || !firestore) {
-          hideLoader();
-          return;
-        };
-        const userDocRef = doc(firestore, 'users', user.uid);
-        const categoryKeyToReset = `seenQuestions.${categoryKey}`;
-        try {
-           await updateDoc(userDocRef, { [categoryKeyToReset]: [] });
-        } catch (e) {
-           console.error("Could not reset quiz progress in Firestore", e);
-        }
-    }
-    setQuizFinished(false);
-    setCurrentQuestion(null);
-    window.location.reload();
-  };
 
-  const startTimer = () => {
-    if (intervalId) {
-      clearInterval(intervalId);
-      setIntervalId(null);
-      setTimer(null);
-      return;
-    }
-    setTimer(120);
-    const newIntervalId = setInterval(() => {
-      setTimer(prevTimer => {
-        if (prevTimer === null || prevTimer <= 1) {
-          clearInterval(newIntervalId);
-          return null;
-        }
-        return prevTimer - 1;
+  const updateSeenQuestions = async (questionId: string) => {
+    if (auth?.currentUser && firestore) {
+      const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
+      await updateDoc(userDocRef, {
+        [`seenQuestions.${category}`]: arrayUnion(questionId),
       });
-    }, 1000);
-    setIntervalId(newIntervalId);
+    }
   };
 
-  const shuffledOptions = useMemo(() => {
-    if (!currentQuestion) return [];
-    return [...currentQuestion.options].sort(() => Math.random() - 0.5);
-  }, [currentQuestion]);
-  
-  if (isUserLoading || questionsLoading || (!currentQuestion && !quizFinished)) {
+  const handleAnswerSelect = (option: string) => {
+    if (!isAnswered) {
+      setSelectedAnswer(option);
+    }
+  };
+
+  const handleAnswerSubmit = () => {
+    if (selectedAnswer && currentQuestion) {
+      setIsAnswered(true);
+      const newAskedIds = new Set(askedQuestionIds).add(currentQuestion.id);
+      setAskedQuestionIds(newAskedIds);
+      updateSeenQuestions(currentQuestion.id);
+
+      const audio = new Audio(selectedAnswer === currentQuestion.correctAnswer ? correctSoundBase64 : incorrectSoundBase64);
+      audio.play();
+    }
+  };
+
+  const handleSkipQuestion = () => {
+      if (currentQuestion) {
+          const newAskedIds = new Set(askedQuestionIds).add(currentQuestion.id);
+          setAskedQuestionIds(newAskedIds);
+          updateSeenQuestions(currentQuestion.id);
+          setSelectedAnswer(null);
+          setIsAnswered(false);
+          selectNewQuestion();
+      }
+  };
+
+  useEffect(() => {
+    hideLoader();
+  }, [currentQuestion, hideLoader]);
+
+
+  if (isLoading) {
     return (
-        <Card className="w-full max-w-2xl shadow-lg">
-            <CardHeader>
-                <Skeleton className="h-8 w-3/4" />
-            </CardHeader>
-            <CardContent className="space-y-4">
-                <Skeleton className="h-12 w-full" />
-                <Skeleton className="h-12 w-full" />
-                <Skeleton className="h-12 w-full" />
-                <Skeleton className="h-12 w-full" />
-            </CardContent>
+      <div className="w-full max-w-2xl mx-auto">
+        <Skeleton className="h-10 w-1/4 mb-4" />
+        <Card>
+          <CardHeader>
+            <Skeleton className="h-8 w-3/4" />
+            <Skeleton className="h-6 w-1/2" />
+          </CardHeader>
+          <CardContent className="grid gap-4">
+            <Skeleton className="h-12 w-full" />
+            <Skeleton className="h-12 w-full" />
+            <Skeleton className="h-12 w-full" />
+            <Skeleton className="h-12 w-full" />
+          </CardContent>
+          <CardFooter className="flex justify-end">
+             <Skeleton className="h-10 w-32" />
+          </CardFooter>
         </Card>
-    )
-  }
-  
-  if (quizFinished) {
-    const outOfQuestions = askedQuestionIds.size >= allQuestions.length;
-    return (
-      <Card className="w-full max-w-2xl text-center p-8 shadow-2xl animate-in fade-in zoom-in-95">
-        <CardHeader>
-          <Trophy className="w-24 h-24 mx-auto text-accent" />
-          <CardTitle className="text-4xl mt-4 text-primary">
-            {outOfQuestions ? "Out of Questions" : "Quiz Complete!"}
-          </CardTitle>
-          <CardDescription className="text-xl mt-2">
-            {outOfQuestions
-              ? "You have run out of questions in this category. You can either buy an expansion pack of all new questions, or you can reset your question count and re-use the questions you have already seen. Which would you like to do?"
-              : "You have answered all questions in this category."}
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-4">
-          <Button size="lg" onClick={handleResetQuiz}>
-            {outOfQuestions ? "Re-Use Questions" : "Play Again"}
-          </Button>
-          {outOfQuestions && (
-            <Button size="lg" onClick={() => alert("Expansion packs are not available yet!")}>
-              Buy Expansion Pack
-            </Button>
-          )}
-           <Link href="/home" passHref>
-            <Button variant="outline">Home</Button>
-           </Link>
-        </CardContent>
-      </Card>
+      </div>
     );
   }
 
   if (!currentQuestion) {
     return (
-        <Card className="w-full max-w-2xl p-8 text-center shadow-lg">
-            <CardTitle>No questions available</CardTitle>
-            <CardDescription>Could not load questions for this category. The data file might be empty or missing.</CardDescription>
-            <CardFooter className="justify-center">
-                 <Link href="/home" passHref>
-                    <Button variant="outline" className="mt-4">Home</Button>
-                 </Link>
-            </CardFooter>
-        </Card>
-    )
+      <Card className="w-full max-w-md text-center">
+        <CardHeader>
+          <Trophy className="mx-auto h-16 w-16 text-yellow-500" />
+          <CardTitle className="text-2xl font-bold">Quiz Complete!</CardTitle>
+          <CardDescription>You have answered all questions in this category.</CardDescription>
+        </CardHeader>
+        <CardFooter>
+          <Button asChild className="w-full">
+            <Link href="/home">Return to Home</Link>
+          </Button>
+        </CardFooter>
+      </Card>
+    );
   }
 
-  const getButtonClass = (option: string) => {
-    if (!submitted) {
-        return option === selectedAnswer
-            ? "bg-primary/20 border-primary"
-            : "bg-card hover:bg-primary/10 border-primary/20";
-    }
-    const isCorrectAnswer = option === currentQuestion.correctAnswer;
-    const isSelectedAnswer = option === selectedAnswer;
-
-    if (isCorrectAnswer) {
-      return "bg-green-500/80 hover:bg-green-500/90 text-primary-foreground border-green-600";
-    }
-    if (isSelectedAnswer) {
-      return "bg-red-500/80 hover:bg-red-500/90 text-primary-foreground border-red-600";
-    }
-    return "bg-card/50 border-primary/10 text-muted-foreground";
-  };
-  
-  const progress = allQuestions && allQuestions.length > 0 ? (questionNumber / allQuestions.length) * 100 : 0;
+  const totalQuestions = filteredQuestions.length;
 
   return (
-    <>
-      {timer !== null && (
-        <div className="absolute top-4 right-4 bg-background/80 p-2 rounded-lg shadow-lg">
-          <span className="text-xl font-bold">{Math.floor(timer / 60)}:{(timer % 60).toString().padStart(2, '0')}</span>
-        </div>
-      )}
-      <Card className="w-full max-w-2xl shadow-xl animate-in fade-in-50 duration-500">
-        <CardHeader>
-          <div className="mb-4">
-            <Progress value={progress} className="h-2" />
-            <p className="text-sm text-muted-foreground mt-2 text-center">Question {questionNumber} of {allQuestions.length}</p>
-          </div>
-          {currentQuestion.imageUrl && (
-            <div className="relative w-full h-64 mb-4 rounded-lg overflow-hidden">
-              <Image
-                src={currentQuestion.imageUrl}
-                alt="Question image"
-                width={600}
-                height={400}
-                className="object-cover w-full h-full"
-                data-ai-hint="landmark"
-              />
-            </div>
-          )}
-          <CardTitle className="text-2xl md:text-3xl leading-snug">
-            {currentQuestion.question}
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {shuffledOptions.map((option) => (
-            <Button
-              key={option}
-              variant="outline"
-              size="lg"
-              className={cn("h-auto py-4 whitespace-normal justify-start text-left text-base transition-all duration-300 transform hover:scale-105 border-2", getButtonClass(option))}
-              onClick={() => setSelectedAnswer(option)}
-              disabled={submitted}
-            >
-              <div className="flex-grow">{option}</div>
-              {submitted && option === currentQuestion.correctAnswer && <CheckCircle className="w-6 h-6 ml-2" />}
-              {submitted && option === selectedAnswer && option !== currentQuestion.correctAnswer && <XCircle className="w-6 h-6 ml-2" />}
-            </Button>
-          ))}
-        </CardContent>
-        {!submitted ? (
-          <CardFooter className="flex justify-between gap-2">
-            <div className="flex items-center gap-2">
-              <Button variant="outline" onClick={handleSkipQuestion}>Skip Question</Button>
-              {selectedAnswer && <Button onClick={handleSubmitAnswer}>Submit Answer</Button>}
-            </div>
-            <Button onClick={startTimer} variant="ghost" size="icon" className="bg-green-500 hover:bg-green-600 text-white rounded-full">
-                <Hourglass className="w-6 h-6" />
-            </Button>
-          </CardFooter>
+    <div className="w-full max-w-2xl mx-auto">
+      <div className="mb-4">
+        <p className="text-sm text-muted-foreground">Question {questionNumber + 1} of {totalQuestions}</p>
+        <Progress value={((questionNumber + 1) / totalQuestions) * 100} className="w-full" />
+      </div>
+      <Card>
+        {!isAnswered ? (
+          <>
+            <CardHeader>
+              {currentQuestion.imageUrl && (
+                <div className="relative h-48 w-full mb-4 rounded-t-lg overflow-hidden">
+                  <Image src={currentQuestion.imageUrl} alt="Question image" layout="fill" objectFit="cover" />
+                </div>
+              )}
+              <CardTitle className="text-2xl font-bold">{currentQuestion.question}</CardTitle>
+            </CardHeader>
+            <CardContent className="grid gap-4">
+              {currentQuestion.options.map((option) => (
+                <Button
+                  key={option}
+                  variant="outline"
+                  className={cn(
+                    "w-full justify-start text-left h-auto py-3 px-4 whitespace-normal",
+                    selectedAnswer === option && "bg-accent text-accent-foreground ring-2 ring-primary"
+                  )}
+                  onClick={() => handleAnswerSelect(option)}
+                >
+                  {option}
+                </Button>
+              ))}
+            </CardContent>
+            <CardFooter className="flex justify-between">
+               <Button onClick={handleSkipQuestion} variant="outline">
+                <SkipForward className="mr-2 h-4 w-4" />
+                Skip Question
+              </Button>
+              {selectedAnswer && (
+                 <Button onClick={handleAnswerSubmit}>Submit Answer</Button>
+              )}
+            </CardFooter>
+          </>
         ) : (
-          <CardFooter className="flex-col items-start gap-4 animate-in fade-in duration-500">
-            <div className="w-full p-4 rounded-lg bg-primary/5 border border-primary/20">
-              <h3 className="font-bold text-lg flex items-center gap-2 text-primary"><Lightbulb/> Explanation</h3>
-              <p className="mt-2 text-foreground/80">{currentQuestion.explanation}</p>
-            </div>
-             <Button asChild variant="outline">
-                <Link href="/home"><Home className="mr-2 h-5 w-5"/>Home</Link>
-             </Button>
-          </CardFooter>
+          <>
+            <CardHeader>
+              <CardTitle className="text-2xl font-bold">{currentQuestion.question}</CardTitle>
+            </CardHeader>
+            <CardContent className="grid gap-4">
+              {currentQuestion.options.map((option) => {
+                const isCorrect = option === currentQuestion.correctAnswer;
+                const isSelected = option === selectedAnswer;
+                return (
+                  <div
+                    key={option}
+                    className={cn(
+                      "flex items-center justify-between rounded-lg border p-3",
+                      isCorrect && "bg-green-100 dark:bg-green-900 border-green-500",
+                      isSelected && !isCorrect && "bg-red-100 dark:bg-red-900 border-red-500",
+                      isSelected && "ring-2 ring-offset-2 ring-blue-500"
+                    )}
+                  >
+                    <span>{option}</span>
+                    {isCorrect && <CheckCircle className="h-5 w-5 text-green-600" />}
+                    {isSelected && !isCorrect && <XCircle className="h-5 w-5 text-red-600" />}
+                  </div>
+                );
+              })}
+            </CardContent>
+            <CardFooter className="flex-col items-start gap-4 pt-4 border-t">
+              <div className="flex items-start gap-3">
+                <Lightbulb className="h-6 w-6 text-yellow-400 flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="font-bold text-lg">Explanation</h3>
+                  <p className="text-muted-foreground">{currentQuestion.explanation}</p>
+                </div>
+              </div>
+               <Button asChild className="w-full mt-4">
+                <Link href="/home">
+                  <Home className="mr-2 h-4 w-4" />
+                  Home
+                </Link>
+              </Button>
+            </CardFooter>
+          </>
         )}
       </Card>
-    </>
+    </div>
   );
 }
-
-    
