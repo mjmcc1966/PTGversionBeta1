@@ -4,7 +4,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Brain, Map, Scale, HelpCircle, Shuffle, Home } from 'lucide-react';
+import { Brain, Map, Scale, HelpCircle, Shuffle, Home as HomeIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 export default function Home() {
@@ -52,7 +52,7 @@ export default function Home() {
           </CardContent>
           <CardFooter className="justify-between">
             <Button onClick={handleBackClick} variant="outline">
-              <Home className="mr-2 h-4 w-4" />
+              <HomeIcon className="mr-2 h-4 w-4" />
               Main Menu
             </Button>
             <Button asChild variant="outline">
