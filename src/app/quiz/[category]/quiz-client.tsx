@@ -55,6 +55,8 @@ export function QuizClient({ category }: { category: string }) {
     );
   }, [categoryKey]);
 
+  const totalQuestions = filteredQuestions.length;
+  
   const selectNewQuestion = useCallback((currentSeenIds: Set<string>) => {
     const unaskedQuestions = filteredQuestions.filter(q => !currentSeenIds.has(q.id));
 
@@ -67,12 +69,12 @@ export function QuizClient({ category }: { category: string }) {
       setShowAllAnsweredScreen(false);
     } else {
       setCurrentQuestion(null);
-      if (filteredQuestions.length > 0) {
+      if (totalQuestions > 0) {
         setShowAllAnsweredScreen(true);
       }
     }
     setIsLoading(false);
-  }, [filteredQuestions]);
+  }, [filteredQuestions, totalQuestions]);
 
   useEffect(() => {
     const initializeQuiz = async () => {
@@ -91,7 +93,6 @@ export function QuizClient({ category }: { category: string }) {
             const seenForCategory = userData.seenQuestions?.[category] || [];
             currentSeenIds = new Set(seenForCategory);
           } else {
-            // This case should be handled by AuthGate, but as a fallback:
             await setDoc(doc(firestore, 'users', auth.currentUser.uid), { 
               email: auth.currentUser.email,
               createdAt: new Date() 
@@ -134,9 +135,11 @@ export function QuizClient({ category }: { category: string }) {
       const audio = new Audio(selectedAnswer === currentQuestion.correctAnswer ? correctSoundBase64 : incorrectSoundBase64);
       audio.play();
 
-      const newSeenIds = new Set(seenQuestionIds).add(currentQuestion.id);
-      setSeenQuestionIds(newSeenIds);
-      updateSeenQuestionsInDb(currentQuestion.id);
+      if (!seenQuestionIds.has(currentQuestion.id)) {
+        const newSeenIds = new Set(seenQuestionIds).add(currentQuestion.id);
+        setSeenQuestionIds(newSeenIds);
+        updateSeenQuestionsInDb(currentQuestion.id);
+      }
     }
   };
   
@@ -144,10 +147,14 @@ export function QuizClient({ category }: { category: string }) {
     if (!currentQuestion) return;
     
     setIsLoading(true);
-    const newSeenIds = new Set(seenQuestionIds).add(currentQuestion.id);
-    setSeenQuestionIds(newSeenIds);
-    await updateSeenQuestionsInDb(currentQuestion.id);
     
+    const newSeenIds = new Set(seenQuestionIds);
+    if (!newSeenIds.has(currentQuestion.id)) {
+        newSeenIds.add(currentQuestion.id);
+        await updateSeenQuestionsInDb(currentQuestion.id);
+    }
+    
+    setSeenQuestionIds(newSeenIds);
     setSelectedAnswer(null);
     setIsAnswered(false);
     selectNewQuestion(newSeenIds);
@@ -247,8 +254,6 @@ export function QuizClient({ category }: { category: string }) {
       </Card>
     );
   }
-
-  const totalQuestions = filteredQuestions.length;
 
   return (
     <div className="w-full max-w-2xl mx-auto">
