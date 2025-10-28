@@ -7,11 +7,9 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { Brain, Map, Scale, Hourglass, HelpCircle, Shuffle } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useLoading } from '@/app/context/loading-context';
 
 export default function Home() {
   const router = useRouter();
-  const { showLoader } = useLoading();
 
   const categories = [
     { name: (<div>General Trivia<br/>$10,000,000</div>), href: '/quiz/general-trivia', icon: <Brain className="w-6 h-6" /> },
@@ -54,18 +52,15 @@ export default function Home() {
   };
 
   const handleWildcardClick = () => {
-    showLoader();
     router.push('/wildcard');
   };
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    showLoader();
     router.push(href);
   };
 
   const handleBackClick = () => {
-    showLoader();
     router.push('/');
   }
 

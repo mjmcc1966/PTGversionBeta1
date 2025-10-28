@@ -36,14 +36,13 @@ interface QuizState {
   isAnswered: boolean;
   isFinished: boolean;
   isLoading: boolean;
-  questionNumber: number;
 }
 
 export function QuizClient({ category }: { category: string }) {
   const { user, isUserLoading } = useUser();
   const firestore = useFirestore();
   const router = useRouter();
-  const { showLoader, hideLoader } = useLoading();
+  const { hideLoader } = useLoading();
 
   const [quizState, setQuizState] = useState<QuizState>({
     allCategoryQuestions: [],
@@ -53,7 +52,6 @@ export function QuizClient({ category }: { category: string }) {
     isAnswered: false,
     isFinished: false,
     isLoading: true,
-    questionNumber: 1,
   });
 
   const categoryKey = useMemo(() => {
@@ -62,7 +60,7 @@ export function QuizClient({ category }: { category: string }) {
     if (category === 'government-trivia') return 'government_trivia';
     return category;
   }, [category]);
-  
+
   const selectNextQuestion = useCallback((questions: Question[], seenIds: Set<string>): Question | null => {
     const availableQuestions = questions.filter(q => !seenIds.has(q.id));
     if (availableQuestions.length === 0) {
@@ -89,10 +87,8 @@ export function QuizClient({ category }: { category: string }) {
 
   useEffect(() => {
     const loadQuizData = async () => {
-      if (isUserLoading) {
-        return;
-      }
-      
+      if (isUserLoading) return;
+
       const categoryQuestions = (allQuestionsData as Question[]).filter(
         (q) => q.category.toLowerCase().replace(/ /g, '_') === categoryKey
       );
@@ -128,7 +124,6 @@ export function QuizClient({ category }: { category: string }) {
         isLoading: false,
         isAnswered: false,
         selectedAnswer: null,
-        questionNumber: initialSeenIds.size + 1,
       });
 
       hideLoader();
@@ -137,13 +132,11 @@ export function QuizClient({ category }: { category: string }) {
     loadQuizData();
   }, [category, categoryKey, user, isUserLoading, firestore, selectNextQuestion, hideLoader]);
 
+  const advanceToNext = useCallback(async () => {
+    if (!quizState.currentQuestion) return;
 
-  const advanceToNext = useCallback(async (currentQuestionId: string) => {
-    showLoader();
-    
-    const newSeenIds = new Set(quizState.seenQuestionIds).add(currentQuestionId);
+    const newSeenIds = new Set(quizState.seenQuestionIds).add(quizState.currentQuestion.id);
     await updateSeenInStorage(newSeenIds);
-
     const nextQuestion = selectNextQuestion(quizState.allCategoryQuestions, newSeenIds);
 
     setQuizState(prevState => ({
@@ -153,11 +146,9 @@ export function QuizClient({ category }: { category: string }) {
       selectedAnswer: null,
       isAnswered: false,
       isFinished: prevState.allCategoryQuestions.length > 0 && nextQuestion === null,
-      questionNumber: newSeenIds.size + 1,
     }));
-    
-    hideLoader();
-  }, [quizState.seenQuestionIds, quizState.allCategoryQuestions, updateSeenInStorage, selectNextQuestion, showLoader, hideLoader]);
+  }, [quizState.currentQuestion, quizState.seenQuestionIds, quizState.allCategoryQuestions, updateSeenInStorage, selectNextQuestion]);
+
 
   const handleAnswerSubmit = () => {
     if (!quizState.currentQuestion || quizState.isAnswered) return;
@@ -166,29 +157,26 @@ export function QuizClient({ category }: { category: string }) {
     const audio = new Audio(isCorrect ? correctSoundBase64 : incorrectSoundBase64);
     audio.play();
     
-    const newSeenIds = new Set(quizState.seenQuestionIds).add(quizState.currentQuestion.id);
-    updateSeenInStorage(newSeenIds);
-    
     setQuizState(prevState => ({
         ...prevState,
         isAnswered: true,
-        seenQuestionIds: newSeenIds,
-        questionNumber: newSeenIds.size
     }));
+  };
+
+  const handleNextQuestion = () => {
+    advanceToNext();
   };
 
   const handleSkipQuestion = async () => {
     if (!quizState.currentQuestion) return;
-    await advanceToNext(quizState.currentQuestion.id);
+    await advanceToNext();
   };
 
   const handleGoHome = () => {
-    showLoader();
     router.push('/home');
   };
 
   const handleReuseQuestions = async () => {
-    showLoader();
     const newSeenIds = new Set<string>();
     await updateSeenInStorage(newSeenIds);
     const nextQuestion = selectNextQuestion(quizState.allCategoryQuestions, newSeenIds);
@@ -199,9 +187,7 @@ export function QuizClient({ category }: { category: string }) {
       isFinished: false,
       isAnswered: false,
       selectedAnswer: null,
-      questionNumber: 1,
     }));
-    hideLoader();
   };
   
   const handleBuyExpansion = () => {
@@ -213,10 +199,14 @@ export function QuizClient({ category }: { category: string }) {
     isFinished,
     currentQuestion,
     allCategoryQuestions,
-    questionNumber,
+    seenQuestionIds,
     isAnswered,
     selectedAnswer
   } = quizState;
+  
+  const questionNumber = seenQuestionIds.size + 1;
+  const totalQuestions = allCategoryQuestions.length;
+
 
   if (isLoading) {
     return (
@@ -285,8 +275,6 @@ export function QuizClient({ category }: { category: string }) {
         </Card>
       )
   }
-
-  const totalQuestions = allCategoryQuestions.length;
 
   return (
     <div className="w-full max-w-2xl mx-auto">
@@ -361,10 +349,14 @@ export function QuizClient({ category }: { category: string }) {
                   <p className="text-muted-foreground">{currentQuestion.explanation}</p>
                 </div>
               </div>
-              <div className="w-full mt-4">
-                 <Button onClick={handleGoHome} variant="outline" className="w-full">
+              <div className="w-full mt-4 flex gap-4">
+                 <Button onClick={handleGoHome} variant="outline" className="flex-1">
                     <Home className="mr-2 h-4 w-4" />
                     Return to Home
+                </Button>
+                <Button onClick={handleNextQuestion} className="flex-1">
+                    Next Question
+                    <SkipForward className="ml-2 h-4 w-4" />
                 </Button>
               </div>
             </CardFooter>
