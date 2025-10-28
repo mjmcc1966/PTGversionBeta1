@@ -43,17 +43,19 @@ export function QuizClient({ category }: { category: string }) {
   const [allQuestionsAnswered, setAllQuestionsAnswered] = useState(false);
   const [questionNumber, setQuestionNumber] = useState(0);
 
+  const categoryKey = useMemo(() => {
+    if (category === 'state-trivia') return 'state_trivia';
+    if (category === 'general-trivia') return 'general_trivia';
+    if (category === 'government-trivia') return 'government_trivia';
+    return category;
+  }, [category]);
+
   const filteredQuestions = useMemo(() => {
     if (!allQuestionsData) return [];
-    let categoryToFilter = category;
-    if (category === 'state-trivia') categoryToFilter = 'state_trivia';
-    if (category === 'general-trivia') categoryToFilter = 'general_trivia';
-    if (category === 'government-trivia') categoryToFilter = 'government_trivia';
-
     return (allQuestionsData as Question[]).filter(
-      (q) => q.category.toLowerCase().replace(/ /g, '_') === categoryToFilter
+      (q) => q.category.toLowerCase().replace(/ /g, '_') === categoryKey
     );
-  }, [category]);
+  }, [categoryKey]);
 
   const selectNewQuestion = useCallback((seenIds: Set<string>) => {
     const unaskedQuestions = filteredQuestions.filter(q => !seenIds.has(q.id));
@@ -71,43 +73,45 @@ export function QuizClient({ category }: { category: string }) {
         setAllQuestionsAnswered(true);
       }
     }
-    setIsLoading(false);
-    hideLoader();
-  }, [filteredQuestions, hideLoader]);
+  }, [filteredQuestions]);
 
   useEffect(() => {
-    if (!auth?.currentUser || !firestore || filteredQuestions.length === 0) {
-        if(filteredQuestions.length === 0){
-             setIsLoading(false);
-             hideLoader();
-        }
-        return;
-    };
-
     const initializeQuiz = async () => {
+      hideLoader();
+      if (!auth?.currentUser || !firestore || filteredQuestions.length === 0) {
+          setIsLoading(false);
+          return;
+      };
+
       setIsLoading(true);
       const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
       try {
         const userDoc = await getDoc(userDocRef);
         let seenIds = new Set<string>();
+
         if (userDoc.exists()) {
           const userData = userDoc.data();
           const seenForCategory = userData.seenQuestions?.[category] || [];
           seenIds = new Set(seenForCategory);
         } else {
-          await setDoc(userDocRef, { email: auth.currentUser.email, createdAt: new Date() });
+          await setDoc(doc(firestore, 'users', auth.currentUser.uid), { 
+            email: auth.currentUser.email, 
+            createdAt: new Date() 
+          });
         }
+        
         setAskedQuestionIds(seenIds);
         selectNewQuestion(seenIds);
+
       } catch (error) {
         console.error("Error initializing quiz:", error);
+      } finally {
         setIsLoading(false);
-        hideLoader();
       }
     };
 
     initializeQuiz();
-  }, [auth?.currentUser, firestore, category, selectNewQuestion, filteredQuestions.length]);
+  }, [auth?.currentUser, firestore, category, filteredQuestions.length, selectNewQuestion, hideLoader]);
 
 
   const updateSeenQuestionsInDb = async (questionId: string) => {
@@ -118,7 +122,12 @@ export function QuizClient({ category }: { category: string }) {
           [`seenQuestions.${category}`]: arrayUnion(questionId),
         });
       } catch (err) {
-        console.error("Error updating seen questions in DB:", err)
+        // If the document or field doesn't exist, create it.
+        if (err.code === 'not-found') {
+            await setDoc(userDocRef, { seenQuestions: { [category]: [questionId] } }, { merge: true });
+        } else {
+            console.error("Error updating seen questions in DB:", err);
+        }
       }
     }
   };
@@ -135,9 +144,18 @@ export function QuizClient({ category }: { category: string }) {
     }
   };
 
+  const handleNextQuestion = () => {
+      setIsLoading(true);
+      setSelectedAnswer(null);
+      setIsAnswered(false);
+      selectNewQuestion(askedQuestionIds);
+      setIsLoading(false);
+  }
+
   const handleSkipQuestion = () => {
     if (!currentQuestion) return;
-
+    
+    setIsLoading(true);
     const newAskedIds = new Set(askedQuestionIds).add(currentQuestion.id);
     setAskedQuestionIds(newAskedIds);
     updateSeenQuestionsInDb(currentQuestion.id);
@@ -145,6 +163,7 @@ export function QuizClient({ category }: { category: string }) {
     setSelectedAnswer(null);
     setIsAnswered(false);
     selectNewQuestion(newAskedIds);
+    setIsLoading(false);
   };
   
   const handleGoHome = () => {
@@ -318,9 +337,8 @@ export function QuizClient({ category }: { category: string }) {
                   <p className="text-muted-foreground">{currentQuestion.explanation}</p>
                 </div>
               </div>
-               <Button onClick={handleGoHome} className="w-full mt-4">
-                  <Home className="mr-2 h-4 w-4" />
-                  Return to Home
+               <Button onClick={handleNextQuestion} className="w-full mt-4">
+                  Next Question
                </Button>
             </CardFooter>
           </>
@@ -330,3 +348,4 @@ export function QuizClient({ category }: { category: string }) {
   );
 }
 
+    
