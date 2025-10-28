@@ -140,7 +140,7 @@ export function QuizClient({ category }: { category: string }) {
     setSelectedAnswer(null);
     setSubmitted(false);
     setIsCorrect(null);
-    setQuestionNumber(askedQuestionIds.size + 1);
+    setQuestionNumber(prev => prev + (prev === 0 ? 1 : 0)); // Initialize or keep current
   }, [allQuestions, askedQuestionIds]);
 
 
@@ -216,6 +216,16 @@ export function QuizClient({ category }: { category: string }) {
         setTimeout(() => setQuizFinished(true), 3000);
     }
   };
+  
+  const handleNextQuestion = () => {
+    if (!allQuestions) return;
+    if (askedQuestionIds.size >= allQuestions.length) {
+        setQuizFinished(true);
+    } else {
+        setQuestionNumber(prev => prev + 1);
+        selectNewQuestion();
+    }
+  };
 
   const handleSkipQuestion = () => {
     if (!currentQuestion || !allQuestions) return;
@@ -228,7 +238,7 @@ export function QuizClient({ category }: { category: string }) {
         if (newAskedQuestionIds.size >= allQuestions.length) {
             setQuizFinished(true);
         } else {
-            selectNewQuestion();
+            handleNextQuestion();
         }
     });
   };
@@ -249,6 +259,7 @@ export function QuizClient({ category }: { category: string }) {
     setOutOfQuestions(false);
     setQuizFinished(false);
     setCurrentQuestion(null);
+    setQuestionNumber(0);
     hideLoader();
   };
   
@@ -411,6 +422,7 @@ export function QuizClient({ category }: { category: string }) {
               <p className="mt-2 text-foreground/80">{currentQuestion.explanation}</p>
             </div>
             <div className="flex justify-between w-full">
+               <Button onClick={handleNextQuestion}>Next Question</Button>
               <Button asChild variant="outline">
                 <Link href="/home"><Home className="mr-2 h-5 w-5"/>Home</Link>
               </Button>
