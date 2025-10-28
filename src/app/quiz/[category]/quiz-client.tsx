@@ -210,11 +210,14 @@ export function QuizClient({ category }: { category: string }) {
 
     if (askedQuestionIds.size + 1 >= allQuestions.length) {
         setTimeout(() => setQuizFinished(true), 3000);
+    }
+  };
+
+  const handleNextQuestion = () => {
+    if (askedQuestionIds.size >= allQuestions.length) {
+      setQuizFinished(true);
     } else {
-        // Automatically move to the next question after a delay
-        setTimeout(() => {
-            selectNewQuestion();
-        }, 3000); // 3-second delay
+      selectNewQuestion();
     }
   };
 
@@ -408,12 +411,13 @@ export function QuizClient({ category }: { category: string }) {
               <h3 className="font-bold text-lg flex items-center gap-2 text-primary"><Lightbulb/> Explanation</h3>
               <p className="mt-2 text-foreground/80">{currentQuestion.explanation}</p>
             </div>
-            <div className="flex w-full justify-end items-center gap-2">
-                <Link href="/home" passHref>
-                    <Button asChild variant="outline" className="w-full md:w-auto">
-                        <a>Home</a>
-                    </Button>
-                </Link>
+            <div className="flex w-full justify-between items-center gap-2">
+              <Link href="/home" passHref>
+                  <Button asChild variant="outline" className="w-full md:w-auto">
+                      <a>Home</a>
+                  </Button>
+              </Link>
+              <Button onClick={handleNextQuestion} className="w-full md:w-auto">Next Question</Button>
             </div>
           </CardFooter>
         )}
