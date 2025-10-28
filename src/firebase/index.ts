@@ -4,7 +4,7 @@
 import { firebaseConfig } from '@/firebase/config';
 import { initializeApp, getApps, getApp, FirebaseApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-import { getFirestore, enableMultiTabIndexedDbPersistence } from 'firebase/firestore'
+import { initializeFirestore, CACHE_SIZE_UNLIMITED } from 'firebase/firestore'
 
 // IMPORTANT: DO NOT MODIFY THIS FUNCTION
 export function initializeFirebase() {
@@ -19,15 +19,6 @@ export function initializeFirebase() {
       firebaseApp = initializeApp(firebaseConfig);
     }
     
-    const firestore = getFirestore(firebaseApp);
-    enableMultiTabIndexedDbPersistence(firestore).catch((err) => {
-      if (err.code == 'failed-precondition') {
-        console.warn('Persistence could not be enabled. Another tab is already open with persistence enabled.');
-      } else if (err.code == 'unimplemented') {
-        console.warn('The current browser does not support all of the features required to enable persistence.');
-      }
-    });
-
     return getSdks(firebaseApp);
   }
 
@@ -38,7 +29,9 @@ export function getSdks(firebaseApp: FirebaseApp) {
   return {
     firebaseApp,
     auth: getAuth(firebaseApp),
-    firestore: getFirestore(firebaseApp)
+    firestore: initializeFirestore(firebaseApp, {
+      cacheSizeBytes: CACHE_SIZE_UNLIMITED,
+    })
   };
 }
 
