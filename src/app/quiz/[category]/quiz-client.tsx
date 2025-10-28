@@ -71,6 +71,7 @@ export function QuizClient({ category }: { category: string }) {
         setShowAllAnsweredScreen(true);
       }
     }
+    setIsLoading(false);
   }, [filteredQuestions]);
 
   useEffect(() => {
@@ -103,7 +104,6 @@ export function QuizClient({ category }: { category: string }) {
       
       setSeenQuestionIds(currentSeenIds);
       selectNewQuestion(currentSeenIds);
-      setIsLoading(false);
     };
 
     initializeQuiz();
@@ -151,7 +151,6 @@ export function QuizClient({ category }: { category: string }) {
     setSelectedAnswer(null);
     setIsAnswered(false);
     selectNewQuestion(newSeenIds);
-    setIsLoading(false);
   };
   
   const handleGoHome = () => {
@@ -175,7 +174,6 @@ export function QuizClient({ category }: { category: string }) {
     setSeenQuestionIds(newSeenIds);
     setShowAllAnsweredScreen(false);
     selectNewQuestion(newSeenIds);
-    setIsLoading(false);
   };
 
   const handleBuyExpansion = () => {
@@ -238,7 +236,7 @@ export function QuizClient({ category }: { category: string }) {
        <Card className="w-full max-w-md text-center">
         <CardHeader>
           <CardTitle className="text-2xl font-bold">No Questions</CardTitle>
-          <CardDescription>There are no questions available for this category. This could be because the data file is empty or missing.</CardDescription>
+          <CardDescription>There are no questions available for this category. This could be because the data file is empty or missing, or you have completed them all.</CardDescription>
         </CardHeader>
         <CardFooter className="flex-col gap-4">
             <Button onClick={handleGoHome} className="w-full" variant="outline">
