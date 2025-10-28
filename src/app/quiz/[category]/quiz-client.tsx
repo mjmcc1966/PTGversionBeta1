@@ -240,7 +240,7 @@ export function QuizClient({ category }: { category: string }) {
           </Button>
            <Link href="/home" passHref>
             <Button variant="outline">Home</Button>
-          </Link>
+           </Link>
         </CardContent>
       </Card>
     );
@@ -366,9 +366,9 @@ export function QuizClient({ category }: { category: string }) {
               <p className="mt-2 text-foreground/80">{currentQuestion.explanation}</p>
             </div>
             <div className="flex w-full justify-end gap-2">
-              <Link href="#" passHref>
-                  <Button onClick={() => submitted && selectNewQuestion()} variant="outline" className="w-full md:w-auto self-end">Home</Button>
-              </Link>
+              <Button asChild variant="outline" className="w-full md:w-auto self-end">
+                <Link href="/home">Home</Link>
+              </Button>
             </div>
           </CardFooter>
         )}
