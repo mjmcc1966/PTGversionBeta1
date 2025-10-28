@@ -13,7 +13,8 @@ import { useRouter } from 'next/navigation';
 import { useLoading } from '@/app/context/loading-context';
 import allQuestionsData from '@/app/admin/data/questions.json';
 import { useUser, useFirestore } from '@/firebase';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
+import { setDocumentNonBlocking } from '@/firebase/non-blocking-updates';
 
 const correctSoundBase64 = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=";
 const incorrectSoundBase64 = "data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAIARKwAAIhYAQACABgAZGF0YQISAACAgIA=";
@@ -74,14 +75,12 @@ export function QuizClient({ category }: { category: string }) {
     return { ...nextQuestion, options: shuffledOptions };
   }, []);
 
-  const updateSeenInStorage = useCallback(async (newSeenIds: Set<string>) => {
+  const updateSeenInStorage = useCallback((newSeenIds: Set<string>) => {
     if (user && firestore) {
       const userDocRef = doc(firestore, 'users', user.uid);
-      try {
-        await setDoc(userDocRef, { seenQuestions: { [category]: Array.from(newSeenIds) } }, { merge: true });
-      } catch (err) {
-        console.error("Error updating seen questions in DB:", err);
-      }
+      const dataToSet = { seenQuestions: { [category]: Array.from(newSeenIds) } };
+      // Use the non-blocking update function
+      setDocumentNonBlocking(userDocRef, dataToSet, { merge: true });
     } else {
       sessionStorage.setItem(`seen_${category}`, JSON.stringify(Array.from(newSeenIds)));
     }
@@ -137,11 +136,11 @@ export function QuizClient({ category }: { category: string }) {
     loadQuizData();
   }, [category, categoryKey, user, isUserLoading, firestore, selectNextQuestion, hideLoader]);
 
-  const advanceToNext = useCallback(async () => {
+  const advanceToNext = useCallback(() => {
     if (!quizState.currentQuestion) return;
 
     const newSeenIds = new Set(quizState.seenQuestionIds).add(quizState.currentQuestion.id);
-    await updateSeenInStorage(newSeenIds);
+    updateSeenInStorage(newSeenIds);
     const nextQuestion = selectNextQuestion(quizState.allCategoryQuestions, newSeenIds);
 
     setQuizState(prevState => ({
@@ -173,18 +172,18 @@ export function QuizClient({ category }: { category: string }) {
     advanceToNext();
   };
 
-  const handleSkipQuestion = async () => {
+  const handleSkipQuestion = () => {
     if (!quizState.currentQuestion) return;
-    await advanceToNext();
+    advanceToNext();
   };
 
   const handleGoHome = () => {
     router.push('/home');
   };
 
-  const handleReuseQuestions = async () => {
+  const handleReuseQuestions = () => {
     const newSeenIds = new Set<string>();
-    await updateSeenInStorage(newSeenIds);
+    updateSeenInStorage(newSeenIds);
     const nextQuestion = selectNextQuestion(quizState.allCategoryQuestions, newSeenIds);
     setQuizState(prevState => ({
       ...prevState,
@@ -372,3 +371,5 @@ export function QuizClient({ category }: { category: string }) {
     </div>
   );
 }
+
+    
