@@ -70,13 +70,16 @@ export function QuizClient({ category }: { category: string }) {
           const userData = docSnap.data();
           const seenForCategory = userData.seenQuestions?.[categoryKey] || [];
           setAskedQuestionIds(new Set(seenForCategory));
+          setQuestionNumber(seenForCategory.length);
         } else {
           await setDoc(userDocRef, { seenQuestions: {} }, { merge: true });
           setAskedQuestionIds(new Set());
+          setQuestionNumber(0);
         }
       } catch (error) {
         console.error("Error fetching seen questions:", error);
         setAskedQuestionIds(new Set());
+        setQuestionNumber(0);
       }
     }
   }, [user, firestore, categoryKey]);
@@ -143,7 +146,7 @@ export function QuizClient({ category }: { category: string }) {
     setSelectedAnswer(null);
     setSubmitted(false);
     setIsCorrect(null);
-    setQuestionNumber(askedQuestionIds.size + 1);
+    setQuestionNumber(prev => prev + 1);
 
   }, [allQuestions, askedQuestionIds, questionsLoading, isUserLoading]);
 
@@ -151,7 +154,7 @@ export function QuizClient({ category }: { category: string }) {
     if (!questionsLoading && allQuestions.length > 0 && !currentQuestion && !quizFinished && !isUserLoading) {
       selectNewQuestion();
     }
-  }, [questionsLoading, allQuestions, currentQuestion, selectNewQuestion, quizFinished, askedQuestionIds, isUserLoading]);
+  }, [questionsLoading, allQuestions, currentQuestion, selectNewQuestion, quizFinished, isUserLoading, fetchAskedQuestionIds]);
 
   const shuffledOptions = useMemo(() => {
     if (!currentQuestion) return [];
@@ -214,7 +217,7 @@ export function QuizClient({ category }: { category: string }) {
     await markQuestionAsSeen(currentQuestion.id);
 
     if (askedQuestionIds.size >= allQuestions.length) {
-        setTimeout(() => setQuizFinished(true), 3000);
+        setQuizFinished(true)
     }
   };
   
@@ -350,7 +353,7 @@ export function QuizClient({ category }: { category: string }) {
     return "bg-card/50 border-primary/10 text-muted-foreground";
   };
   
-  const progress = allQuestions && allQuestions.length > 0 ? ((questionNumber - 1) / allQuestions.length) * 100 : 0;
+  const progress = allQuestions && allQuestions.length > 0 ? ((questionNumber) / allQuestions.length) * 100 : 0;
 
 
   return (
@@ -401,7 +404,10 @@ export function QuizClient({ category }: { category: string }) {
         {!submitted ? (
           <CardFooter className="flex justify-between gap-2">
             <div className="flex items-center gap-2">
-              <Button variant="outline" onClick={handleSkipQuestion}>Skip Question</Button>
+              <Button variant="outline" onClick={() => {
+                handleSkipQuestion();
+                selectNewQuestion();
+              }}>Skip Question</Button>
               {selectedAnswer && <Button onClick={handleSubmitAnswer}>Submit Answer</Button>}
             </div>
             <Button onClick={startTimer} variant="ghost" size="icon" className="bg-green-500 hover:bg-green-600 text-white rounded-full">
@@ -417,6 +423,7 @@ export function QuizClient({ category }: { category: string }) {
              <Button asChild variant="outline">
                 <Link href="/home"><Home className="mr-2 h-5 w-5"/>Home</Link>
              </Button>
+             <Button onClick={selectNewQuestion}>Next Question</Button>
           </CardFooter>
         )}
       </Card>
