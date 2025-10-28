@@ -50,29 +50,28 @@ export function QuizClient({ category }: { category: string }) {
 
   const categoryKey = useMemo(() => category.replace(/-/g, '_'), [category]);
 
-  const fetchAskedQuestionIds = useCallback(async () => {
-    if (user && firestore) {
-      const userDocRef = doc(firestore, 'users', user.uid);
-      try {
-        const docSnap = await getDoc(userDocRef);
-        if (docSnap.exists()) {
-          const userData = docSnap.data();
-          const seenForCategory = userData.seenQuestions?.[categoryKey] || [];
-          setAskedQuestionIds(new Set(seenForCategory));
-          // Set the initial question number based on seen questions
-          setQuestionNumber(seenForCategory.length);
-        } else {
-          await setDoc(userDocRef, { seenQuestions: {} }, { merge: true });
-          setAskedQuestionIds(new Set());
-          setQuestionNumber(0);
-        }
-      } catch (error) {
-        console.error("Error fetching seen questions:", error);
-        setAskedQuestionIds(new Set());
-        setQuestionNumber(0);
-      }
+  const selectNewQuestion = useCallback(() => {
+    if (questionsLoading || !allQuestions || allQuestions.length === 0) return;
+  
+    const availableQuestions = allQuestions.filter(q => !askedQuestionIds.has(q.id));
+    
+    if (availableQuestions.length === 0 && allQuestions.length > 0) {
+      setOutOfQuestions(true);
+      setQuizFinished(true);
+      return;
     }
-  }, [user, firestore, categoryKey]);
+    
+    const randomIndex = Math.floor(Math.random() * availableQuestions.length);
+    const newQuestion = availableQuestions[randomIndex];
+    
+    setCurrentQuestion(newQuestion);
+    setSelectedAnswer(null);
+    setSubmitted(false);
+    setIsCorrect(null);
+    setQuestionNumber(prev => prev + 1);
+
+  }, [allQuestions, askedQuestionIds, questionsLoading]);
+
   
   useEffect(() => {
     hideLoader();
@@ -104,10 +103,42 @@ export function QuizClient({ category }: { category: string }) {
 
 
   useEffect(() => {
-    if (!isUserLoading && user) {
-        fetchAskedQuestionIds();
-    }
-  }, [isUserLoading, user, fetchAskedQuestionIds]);
+    const fetchProgressAndStart = async () => {
+      if (!isUserLoading && !questionsLoading) {
+        let initialSeenIds = new Set<string>();
+        if (user && firestore) {
+          const userDocRef = doc(firestore, 'users', user.uid);
+          try {
+            const docSnap = await getDoc(userDocRef);
+            if (docSnap.exists()) {
+              const userData = docSnap.data();
+              initialSeenIds = new Set(userData.seenQuestions?.[categoryKey] || []);
+            } else {
+              await setDoc(userDocRef, { seenQuestions: {} }, { merge: true });
+            }
+          } catch (error) {
+            console.error("Error fetching seen questions:", error);
+          }
+        }
+        setAskedQuestionIds(initialSeenIds);
+        setQuestionNumber(initialSeenIds.size);
+        
+        // Now that progress is loaded, select the first question.
+        const availableQuestions = allQuestions.filter(q => !initialSeenIds.has(q.id));
+        if (availableQuestions.length === 0 && allQuestions.length > 0) {
+          setOutOfQuestions(true);
+          setQuizFinished(true);
+        } else if (availableQuestions.length > 0) {
+          const randomIndex = Math.floor(Math.random() * availableQuestions.length);
+          const newQuestion = availableQuestions[randomIndex];
+          setCurrentQuestion(newQuestion);
+          setQuestionNumber(initialSeenIds.size + 1); // Set counter for the new question
+        }
+      }
+    };
+  
+    fetchProgressAndStart();
+  }, [isUserLoading, user, firestore, questionsLoading, categoryKey, allQuestions]);
 
 
   const { correctAnswerSound, incorrectAnswerSound } = useMemo(() => {
@@ -147,44 +178,6 @@ export function QuizClient({ category }: { category: string }) {
     setIntervalId(newIntervalId);
   };
 
-  const selectNewQuestion = useCallback(() => {
-    if (questionsLoading || !allQuestions || allQuestions.length === 0 || isUserLoading) return;
-  
-    const availableQuestions = allQuestions.filter(q => !askedQuestionIds.has(q.id));
-    
-    if (availableQuestions.length === 0 && allQuestions.length > 0) {
-      setOutOfQuestions(true);
-      setQuizFinished(true);
-      return;
-    }
-    
-    const randomIndex = Math.floor(Math.random() * availableQuestions.length);
-    const newQuestion = availableQuestions[randomIndex];
-    
-    setCurrentQuestion(newQuestion);
-    setSelectedAnswer(null);
-    setSubmitted(false);
-    setIsCorrect(null);
-    // Increment counter as soon as the question is displayed
-    setQuestionNumber(prev => prev + 1);
-
-  }, [allQuestions, askedQuestionIds, questionsLoading, isUserLoading]);
-
-  useEffect(() => {
-    // This effect now only triggers the very first question selection.
-    if (!questionsLoading && allQuestions.length > 0 && !currentQuestion && !quizFinished && !isUserLoading) {
-      if (user) {
-        // Wait for seen questions to load, then select a question
-        fetchAskedQuestionIds().then(() => {
-            selectNewQuestion();
-        });
-      } else if (!isUserLoading) { // If no user, just select a question
-         selectNewQuestion();
-      }
-    }
-  }, [questionsLoading, allQuestions.length, currentQuestion, quizFinished, isUserLoading, user, fetchAskedQuestionIds, selectNewQuestion]);
-
-
   const shuffledOptions = useMemo(() => {
     if (!currentQuestion) return [];
     return [...currentQuestion.options].sort(() => Math.random() - 0.5);
@@ -215,11 +208,10 @@ export function QuizClient({ category }: { category: string }) {
 };
 
   const markQuestionAsSeen = async (questionId: string) => {
-    setAskedQuestionIds(prev => {
-        const newAskedQuestionIds = new Set(prev);
-        newAskedQuestionIds.add(questionId);
-        return newAskedQuestionIds;
-    });
+    const newAskedQuestionIds = new Set(askedQuestionIds);
+    newAskedQuestionIds.add(questionId);
+    setAskedQuestionIds(newAskedQuestionIds);
+
     if (categoryKey !== 'custom_trivia') {
       await updateSeenQuestionsInFirestore(questionId);
     }
@@ -259,7 +251,6 @@ export function QuizClient({ category }: { category: string }) {
     if (askedQuestionIds.size + 1 >= allQuestions.length) {
         setQuizFinished(true);
     } else {
-        // We select a new question, which will increment the counter
         selectNewQuestion();
     }
   };
@@ -288,12 +279,11 @@ export function QuizClient({ category }: { category: string }) {
     setOutOfQuestions(false);
     setQuizFinished(false);
     setCurrentQuestion(null);
-    setQuestionNumber(0); // Reset counter to 0 before selecting the first new question
-    selectNewQuestion();
-    hideLoader();
+    // Reload the page to re-trigger the initial data fetching and question selection logic
+    window.location.reload();
   };
   
-  if (questionsLoading || isUserLoading) {
+  if (questionsLoading || isUserLoading || !currentQuestion && !quizFinished) {
     return (
         <Card className="w-full max-w-2xl shadow-lg">
             <CardHeader>
@@ -460,5 +450,3 @@ export function QuizClient({ category }: { category: string }) {
     </>
   );
 }
-
-    
