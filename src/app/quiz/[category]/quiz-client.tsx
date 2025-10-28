@@ -48,17 +48,6 @@ export function QuizClient({ category }: { category: string }) {
   const [timer, setTimer] = useState<number | null>(null);
   const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
 
-  useEffect(() => {
-    hideLoader();
-  }, [pathname, searchParams, hideLoader]);
-  
-  useEffect(() => {
-    const categoryToFilter = category.replace(/-/g, '_');
-    const filteredQuestions = (allQuestionsData as Question[]).filter(q => q.category === categoryToFilter);
-    setAllQuestions(filteredQuestions);
-    setQuestionsLoading(false);
-  }, [category]);
-
   const categoryKey = useMemo(() => category.replace(/-/g, '_'), [category]);
 
   const fetchAskedQuestionIds = useCallback(async () => {
@@ -83,6 +72,35 @@ export function QuizClient({ category }: { category: string }) {
       }
     }
   }, [user, firestore, categoryKey]);
+  
+  useEffect(() => {
+    hideLoader();
+  }, [pathname, searchParams, hideLoader]);
+  
+  useEffect(() => {
+    const categoryToFilter = category.replace(/-/g, '_');
+    let filteredQuestions;
+
+    if (categoryToFilter === 'custom_trivia') {
+      const localCustomQuestions = localStorage.getItem('customQuestions');
+      if (localCustomQuestions) {
+        try {
+          filteredQuestions = JSON.parse(localCustomQuestions);
+        } catch (error) {
+          console.error("Error parsing custom questions from localStorage", error);
+          filteredQuestions = [];
+        }
+      } else {
+        filteredQuestions = [];
+      }
+    } else {
+      filteredQuestions = (allQuestionsData as Question[]).filter(q => q.category === categoryToFilter);
+    }
+    
+    setAllQuestions(filteredQuestions);
+    setQuestionsLoading(false);
+  }, [category]);
+
 
   useEffect(() => {
     if (!isUserLoading && user) {
@@ -152,9 +170,15 @@ export function QuizClient({ category }: { category: string }) {
 
   useEffect(() => {
     if (!questionsLoading && allQuestions.length > 0 && !currentQuestion && !quizFinished && !isUserLoading) {
-      selectNewQuestion();
+      if (user) {
+        fetchAskedQuestionIds().then(() => {
+            selectNewQuestion();
+        });
+      } else if (!isUserLoading) {
+         selectNewQuestion();
+      }
     }
-  }, [questionsLoading, allQuestions, currentQuestion, selectNewQuestion, quizFinished, isUserLoading, fetchAskedQuestionIds]);
+  }, [questionsLoading, allQuestions, currentQuestion, selectNewQuestion, quizFinished, isUserLoading, user, fetchAskedQuestionIds]);
 
   const shuffledOptions = useMemo(() => {
     if (!currentQuestion) return [];
@@ -191,7 +215,9 @@ export function QuizClient({ category }: { category: string }) {
         newAskedQuestionIds.add(questionId);
         return newAskedQuestionIds;
     });
-    await updateSeenQuestionsInFirestore(questionId);
+    if (categoryKey !== 'custom_trivia') {
+      await updateSeenQuestionsInFirestore(questionId);
+    }
   };
 
 
@@ -216,8 +242,8 @@ export function QuizClient({ category }: { category: string }) {
     setSubmitted(true);
     await markQuestionAsSeen(currentQuestion.id);
 
-    if (askedQuestionIds.size >= allQuestions.length) {
-        setQuizFinished(true)
+    if (askedQuestionIds.size + 1 >= allQuestions.length) {
+      setQuizFinished(true);
     }
   };
   
@@ -225,7 +251,7 @@ export function QuizClient({ category }: { category: string }) {
     if (!currentQuestion || !allQuestions) return;
     
     await markQuestionAsSeen(currentQuestion.id);
-    if (askedQuestionIds.size >= allQuestions.length) {
+    if (askedQuestionIds.size + 1 >= allQuestions.length) {
         setQuizFinished(true);
     } else {
         selectNewQuestion();
@@ -234,23 +260,25 @@ export function QuizClient({ category }: { category: string }) {
 
   const handleResetQuiz = async () => {
     showLoader();
-    if (!user || !firestore) {
-      hideLoader();
-      return;
-    };
-    
-    const userDocRef = doc(firestore, 'users', user.uid);
-    const categoryKeyToReset = `seenQuestions.${categoryKey}`;
-
-    try {
-       await updateDoc(userDocRef, {
-           [categoryKeyToReset]: []
-       });
-    } catch (e) {
-       console.error("Could not reset quiz progress in Firestore", e);
+    if (categoryKey === 'custom_trivia') {
+        setAskedQuestionIds(new Set());
+    } else {
+        if (!user || !firestore) {
+          hideLoader();
+          return;
+        };
+        const userDocRef = doc(firestore, 'users', user.uid);
+        const categoryKeyToReset = `seenQuestions.${categoryKey}`;
+        try {
+           await updateDoc(userDocRef, {
+               [categoryKeyToReset]: []
+           });
+        } catch (e) {
+           console.error("Could not reset quiz progress in Firestore", e);
+        }
+        setAskedQuestionIds(new Set());
     }
 
-    setAskedQuestionIds(new Set());
     setOutOfQuestions(false);
     setQuizFinished(false);
     setCurrentQuestion(null);
@@ -353,7 +381,7 @@ export function QuizClient({ category }: { category: string }) {
     return "bg-card/50 border-primary/10 text-muted-foreground";
   };
   
-  const progress = allQuestions && allQuestions.length > 0 ? ((questionNumber) / allQuestions.length) * 100 : 0;
+  const progress = allQuestions && allQuestions.length > 0 ? ((questionNumber -1) / allQuestions.length) * 100 : 0;
 
 
   return (
@@ -406,7 +434,6 @@ export function QuizClient({ category }: { category: string }) {
             <div className="flex items-center gap-2">
               <Button variant="outline" onClick={() => {
                 handleSkipQuestion();
-                selectNewQuestion();
               }}>Skip Question</Button>
               {selectedAnswer && <Button onClick={handleSubmitAnswer}>Submit Answer</Button>}
             </div>
@@ -423,7 +450,6 @@ export function QuizClient({ category }: { category: string }) {
              <Button asChild variant="outline">
                 <Link href="/home"><Home className="mr-2 h-5 w-5"/>Home</Link>
              </Button>
-             <Button onClick={selectNewQuestion}>Next Question</Button>
           </CardFooter>
         )}
       </Card>
