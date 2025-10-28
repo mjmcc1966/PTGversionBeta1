@@ -10,7 +10,7 @@ export default function HomePage() {
   const router = useRouter();
 
   const categories = [
-    { name: (<div>General Trivia<br />$10,000,000</div>), href: '/quiz/general-trivia', icon: <Brain className="w-6 h-6" /> },
+    { name: (<div>General Trivia<br />$10,000,000</div>), href: '/quiz/general_trivia', icon: <Brain className="w-6 h-6" /> },
     { name: (<div>State Trivia<br />10 Million Popular Votes</div>), href: '/quiz/state-trivia', icon: <Map className="w-6 h-6" /> },
     { name: (<div>Government Trivia<br />Electoral Votes</div>), href: '/quiz/government-trivia', icon: <Scale className="w-6 h-6" /> },
     { name: 'Custom User Questions', href: '/quiz/custom-trivia', icon: <HelpCircle className="w-6 h-6" /> },
@@ -53,12 +53,6 @@ export default function HomePage() {
             <Button onClick={handleBackClick} variant="outline">
               <HomeIcon className="mr-2 h-4 w-4" />
               Main Menu
-            </Button>
-            <Button asChild variant="outline">
-              <Link href="/wildcard">
-                <Shuffle className="mr-2 h-4 w-4" />
-                Wildcard
-              </Link>
             </Button>
           </CardFooter>
         </Card>
