@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
@@ -41,11 +42,12 @@ export function QuizClient({ category }: { category: string }) {
   const [questionNumber, setQuestionNumber] = useState(0);
 
   const filteredQuestions = useMemo(() => {
+    if (!allQuestionsData) return [];
     return (allQuestionsData as Question[]).filter(
       (q) => q.category.toLowerCase().replace(/ /g, '-') === category
     );
   }, [category]);
-
+  
   const selectNewQuestion = useCallback((seenIds: Set<string>) => {
     const unaskedQuestions = filteredQuestions.filter(q => !seenIds.has(q.id));
 
@@ -61,19 +63,21 @@ export function QuizClient({ category }: { category: string }) {
 
   useEffect(() => {
     const initializeQuiz = async () => {
-      setIsLoading(true);
       let seenIds = new Set<string>();
 
       if (auth?.currentUser && firestore) {
         const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
-        const userDoc = await getDoc(userDocRef);
-        if (userDoc.exists()) {
-          const userData = userDoc.data();
-          const seenForCategory = userData.seenQuestions?.[category] || [];
-          seenIds = new Set(seenForCategory);
-        } else {
-          // If user doc doesn't exist, create it.
-          await setDoc(userDocRef, { email: auth.currentUser.email, createdAt: new Date() });
+        try {
+            const userDoc = await getDoc(userDocRef);
+            if (userDoc.exists()) {
+              const userData = userDoc.data();
+              const seenForCategory = userData.seenQuestions?.[category] || [];
+              seenIds = new Set(seenForCategory);
+            } else {
+              await setDoc(userDocRef, { email: auth.currentUser.email, createdAt: new Date() });
+            }
+        } catch (error) {
+            console.error("Error fetching user data:", error);
         }
       }
       
@@ -88,47 +92,40 @@ export function QuizClient({ category }: { category: string }) {
   }, [auth?.currentUser, firestore, category, selectNewQuestion, hideLoader]);
 
 
-  const updateSeenQuestions = async (questionId: string) => {
+  const updateSeenQuestionsInDb = async (questionId: string) => {
     if (auth?.currentUser && firestore) {
       const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
-      await updateDoc(userDocRef, {
-        [`seenQuestions.${category}`]: arrayUnion(questionId),
-      }).catch(err => console.error("Error updating seen questions:", err));
-    }
-  };
-
-  const handleAnswerSelect = (option: string) => {
-    if (!isAnswered) {
-      setSelectedAnswer(option);
+      try {
+        await updateDoc(userDocRef, {
+          [`seenQuestions.${category}`]: arrayUnion(questionId),
+        });
+      } catch (err) {
+        console.error("Error updating seen questions in DB:", err)
+      }
     }
   };
 
   const handleAnswerSubmit = () => {
     if (selectedAnswer && currentQuestion) {
       setIsAnswered(true);
-      const newAskedIds = new Set(askedQuestionIds).add(currentQuestion.id);
-      setAskedQuestionIds(newAskedIds);
-      updateSeenQuestions(currentQuestion.id);
-      setQuestionNumber(newAskedIds.size);
-
       const audio = new Audio(selectedAnswer === currentQuestion.correctAnswer ? correctSoundBase64 : incorrectSoundBase64);
       audio.play();
     }
   };
 
-  const handleSkipQuestion = () => {
-      if (currentQuestion) {
-          const newAskedIds = new Set(askedQuestionIds).add(currentQuestion.id);
-          setAskedQuestionIds(newAskedIds);
-          updateSeenQuestions(currentQuestion.id);
-          setQuestionNumber(newAskedIds.size);
-          
-          setSelectedAnswer(null);
-          setIsAnswered(false);
-          selectNewQuestion(newAskedIds);
-      }
-  };
+  const handleNextQuestion = (skipped = false) => {
+    if (!currentQuestion) return;
 
+    const newAskedIds = new Set(askedQuestionIds).add(currentQuestion.id);
+    setAskedQuestionIds(newAskedIds);
+    updateSeenQuestionsInDb(currentQuestion.id);
+    setQuestionNumber(prev => prev + 1);
+
+    setSelectedAnswer(null);
+    setIsAnswered(false);
+    selectNewQuestion(newAskedIds);
+  };
+  
   if (isLoading) {
     return (
       <div className="w-full max-w-2xl mx-auto">
@@ -173,7 +170,7 @@ export function QuizClient({ category }: { category: string }) {
 
   return (
     <div className="w-full max-w-2xl mx-auto">
-      <div className="mb-4">
+       <div className="mb-4">
         <p className="text-sm text-muted-foreground">Question {questionNumber + 1} of {totalQuestions}</p>
         <Progress value={((questionNumber + 1) / totalQuestions) * 100} className="w-full" />
       </div>
@@ -183,7 +180,7 @@ export function QuizClient({ category }: { category: string }) {
             <CardHeader>
               {currentQuestion.imageUrl && (
                 <div className="relative h-48 w-full mb-4 rounded-t-lg overflow-hidden">
-                  <Image src={currentQuestion.imageUrl} alt="Question image" layout="fill" objectFit="cover" />
+                  <Image src={currentQuestion.imageUrl} alt="Question image" fill objectFit="cover" />
                 </div>
               )}
               <CardTitle className="text-2xl font-bold">{currentQuestion.question}</CardTitle>
@@ -197,14 +194,14 @@ export function QuizClient({ category }: { category: string }) {
                     "w-full justify-start text-left h-auto py-3 px-4 whitespace-normal",
                     selectedAnswer === option && "bg-accent text-accent-foreground ring-2 ring-primary"
                   )}
-                  onClick={() => handleAnswerSelect(option)}
+                  onClick={() => setSelectedAnswer(option)}
                 >
                   {option}
                 </Button>
               ))}
             </CardContent>
             <CardFooter className="flex justify-between">
-               <Button onClick={handleSkipQuestion} variant="outline">
+               <Button onClick={() => handleNextQuestion(true)} variant="outline">
                 <SkipForward className="mr-2 h-4 w-4" />
                 Skip Question
               </Button>
@@ -229,7 +226,6 @@ export function QuizClient({ category }: { category: string }) {
                       "flex items-center justify-between rounded-lg border p-3",
                       isCorrect && "bg-green-100 dark:bg-green-900 border-green-500",
                       isSelected && !isCorrect && "bg-red-100 dark:bg-red-900 border-red-500",
-                      isSelected && "ring-2 ring-offset-2 ring-blue-500"
                     )}
                   >
                     <span>{option}</span>
@@ -260,3 +256,5 @@ export function QuizClient({ category }: { category: string }) {
     </div>
   );
 }
+
+    
