@@ -13,8 +13,9 @@ import { useRouter } from 'next/navigation';
 import { useLoading } from '@/app/context/loading-context';
 import allQuestionsData from '@/app/admin/data/questions.json';
 import { useUser, useFirestore } from '@/firebase';
-import { doc, getDoc } from 'firebase/firestore';
-import { setDocumentNonBlocking } from '@/firebase/non-blocking-updates';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { FirestorePermissionError } from '@/firebase/errors';
+import { errorEmitter } from '@/firebase/error-emitter';
 
 const correctSoundBase64 = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=";
 const incorrectSoundBase64 = "data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAIARKwAAIhYAQACABgAZGF0YQISAACAgIA=";
@@ -75,12 +76,22 @@ export function QuizClient({ category }: { category: string }) {
     return { ...nextQuestion, options: shuffledOptions };
   }, []);
 
-  const updateSeenInStorage = useCallback((newSeenIds: Set<string>) => {
+  const updateSeenInStorage = useCallback(async (newSeenIds: Set<string>) => {
     if (user && firestore) {
       const userDocRef = doc(firestore, 'users', user.uid);
       const dataToSet = { seenQuestions: { [category]: Array.from(newSeenIds) } };
-      // Use the non-blocking update function
-      setDocumentNonBlocking(userDocRef, dataToSet, { merge: true });
+      
+      try {
+        await setDoc(userDocRef, dataToSet, { merge: true });
+      } catch (error) {
+        console.error("Non-blocking update error:", error);
+        const permissionError = new FirestorePermissionError({
+          path: userDocRef.path,
+          operation: 'update',
+          requestResourceData: dataToSet,
+        });
+        errorEmitter.emit('permission-error', permissionError);
+      }
     } else {
       sessionStorage.setItem(`seen_${category}`, JSON.stringify(Array.from(newSeenIds)));
     }
@@ -127,7 +138,7 @@ export function QuizClient({ category }: { category: string }) {
         isLoading: false,
         isAnswered: false,
         selectedAnswer: null,
-        questionNumber: initialSeenIds.size + 1,
+        questionNumber: initialSeenIds.size,
       });
 
       hideLoader();
@@ -150,7 +161,7 @@ export function QuizClient({ category }: { category: string }) {
       selectedAnswer: null,
       isAnswered: false,
       isFinished: prevState.allCategoryQuestions.length > 0 && nextQuestion === null,
-      questionNumber: newSeenIds.size + 1,
+      questionNumber: newSeenIds.size,
     }));
   }, [quizState.currentQuestion, quizState.seenQuestionIds, quizState.allCategoryQuestions, updateSeenInStorage, selectNextQuestion]);
 
@@ -162,14 +173,15 @@ export function QuizClient({ category }: { category: string }) {
     const audio = new Audio(isCorrect ? correctSoundBase64 : incorrectSoundBase64);
     audio.play();
     
+    const newSeenIds = new Set(quizState.seenQuestionIds).add(quizState.currentQuestion.id);
+    updateSeenInStorage(newSeenIds);
+    
     setQuizState(prevState => ({
         ...prevState,
         isAnswered: true,
+        seenQuestionIds: newSeenIds,
+        questionNumber: newSeenIds.size,
     }));
-  };
-
-  const handleNextQuestion = () => {
-    advanceToNext();
   };
 
   const handleSkipQuestion = () => {
@@ -192,7 +204,7 @@ export function QuizClient({ category }: { category: string }) {
       isFinished: false,
       isAnswered: false,
       selectedAnswer: null,
-      questionNumber: 1,
+      questionNumber: 0,
     }));
   };
   
@@ -358,10 +370,6 @@ export function QuizClient({ category }: { category: string }) {
                  <Button onClick={handleGoHome} variant="outline" className="flex-1">
                     <Home className="mr-2 h-4 w-4" />
                     Return to Home
-                </Button>
-                <Button onClick={handleNextQuestion} className="flex-1">
-                    Next Question
-                    <SkipForward className="ml-2 h-4 w-4" />
                 </Button>
               </div>
             </CardFooter>
