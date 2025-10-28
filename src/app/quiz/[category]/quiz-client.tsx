@@ -343,7 +343,7 @@ export function QuizClient({ category }: { category: string }) {
   };
   
   const progress = allQuestions && allQuestions.length > 0 ? (askedQuestionIds.size / allQuestions.length) * 100 : 0;
-  const questionNumber = askedQuestionIds.size + (submitted ? 0 : 1);
+  const questionNumber = askedQuestionIds.size + 1;
 
 
   return (
