@@ -38,16 +38,16 @@ export function QuizClient({ category }: { category: string }) {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
   const [showAllAnsweredScreen, setShowAllAnsweredScreen] = useState(false);
-  const [questionNumber, setQuestionNumber] = useState(0);
+  const [questionNumber, setQuestionNumber] = useState(1);
   const [totalQuestions, setTotalQuestions] = useState(0);
-  
+
   const categoryKey = useMemo(() => {
     if (category === 'state-trivia') return 'state_trivia';
     if (category === 'general-trivia') return 'general_trivia';
     if (category === 'government-trivia') return 'government_trivia';
     return category;
   }, [category]);
-
+  
   const filteredQuestions = useMemo(() => {
     if (!allQuestionsData) return [];
     return (allQuestionsData as Question[]).filter(
@@ -55,14 +55,16 @@ export function QuizClient({ category }: { category: string }) {
     );
   }, [categoryKey]);
 
-  const fetchAndSetQuestion = useCallback(async () => {
+  const loadQuiz = useCallback(async () => {
+    setIsLoading(true);
     if (!auth?.currentUser || !firestore || filteredQuestions.length === 0) {
       setIsLoading(false);
       hideLoader();
+      if (filteredQuestions.length === 0) {
+        setShowAllAnsweredScreen(true);
+      }
       return;
     }
-
-    setIsLoading(true);
 
     let userSeenIds = new Set<string>();
     try {
@@ -76,7 +78,7 @@ export function QuizClient({ category }: { category: string }) {
     } catch (error) {
       console.error("Error fetching user progress:", error);
     }
-    
+
     setQuestionNumber(userSeenIds.size + 1);
     setTotalQuestions(filteredQuestions.length);
 
@@ -86,7 +88,7 @@ export function QuizClient({ category }: { category: string }) {
       const randomIndex = Math.floor(Math.random() * availableQuestions.length);
       const newQuestion = availableQuestions[randomIndex];
       const shuffledOptions = [...newQuestion.options].sort(() => Math.random() - 0.5);
-      
+
       setCurrentQuestion({ ...newQuestion, options: shuffledOptions });
       setSelectedAnswer(null);
       setIsAnswered(false);
@@ -97,17 +99,15 @@ export function QuizClient({ category }: { category: string }) {
         setShowAllAnsweredScreen(true);
       }
     }
-    
+
     setIsLoading(false);
     hideLoader();
   }, [auth?.currentUser, firestore, category, filteredQuestions, hideLoader]);
 
-
   useEffect(() => {
-    fetchAndSetQuestion();
-  }, [fetchAndSetQuestion]);
+    loadQuiz();
+  }, [loadQuiz]);
 
-  
   const updateSeenQuestionsInDb = async (questionId: string) => {
     if (auth?.currentUser && firestore) {
       const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
@@ -118,14 +118,14 @@ export function QuizClient({ category }: { category: string }) {
       } catch (err) {
         const error = err as { code: string };
         if (error.code === 'not-found' || error.code === 'invalid-argument') {
-            await setDoc(userDocRef, { seenQuestions: { [category]: [questionId] } }, { merge: true });
+          await setDoc(userDocRef, { seenQuestions: { [category]: [questionId] } }, { merge: true });
         } else {
-            console.error("Error updating seen questions in DB:", err);
+          console.error("Error updating seen questions in DB:", err);
         }
       }
     }
   };
-  
+
   const handleAnswerSubmit = async () => {
     if (selectedAnswer && currentQuestion) {
       setIsAnswered(true);
@@ -134,20 +134,19 @@ export function QuizClient({ category }: { category: string }) {
       await updateSeenQuestionsInDb(currentQuestion.id);
     }
   };
-  
+
   const handleNextQuestion = () => {
-    fetchAndSetQuestion();
+    loadQuiz();
   };
 
   const handleSkipQuestion = () => handleNextQuestion();
-  
+
   const handleGoHome = () => {
     showLoader();
     router.push('/home');
   }
 
   const handleReuseQuestions = async () => {
-    setIsLoading(true);
     if (auth?.currentUser && firestore) {
       const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
       try {
@@ -158,13 +157,13 @@ export function QuizClient({ category }: { category: string }) {
         console.error("Error resetting questions:", error);
       }
     }
-    await fetchAndSetQuestion();
+    await loadQuiz();
   };
 
   const handleBuyExpansion = () => {
     alert('Expansion packs are not yet available.');
   };
-  
+
   if (isLoading) {
     return (
       <div className="w-full max-w-2xl mx-auto">
@@ -181,7 +180,7 @@ export function QuizClient({ category }: { category: string }) {
             <Skeleton className="h-12 w-full" />
           </CardContent>
           <CardFooter className="flex justify-end">
-             <Skeleton className="h-10 w-32" />
+            <Skeleton className="h-10 w-32" />
           </CardFooter>
         </Card>
       </div>
@@ -197,7 +196,7 @@ export function QuizClient({ category }: { category: string }) {
           <CardDescription>You've answered all available questions in this category. What would you like to do next?</CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4">
-           <Button onClick={handleReuseQuestions} className="w-full">
+          <Button onClick={handleReuseQuestions} className="w-full">
             <RefreshCw className="mr-2 h-4 w-4" />
             Start Over
           </Button>
@@ -207,27 +206,27 @@ export function QuizClient({ category }: { category: string }) {
           </Button>
         </CardContent>
         <CardFooter>
-            <Button onClick={handleGoHome} className="w-full" variant="outline">
-                <Home className="mr-2 h-4 w-4" />
-                Return to Home
-            </Button>
+          <Button onClick={handleGoHome} className="w-full" variant="outline">
+            <Home className="mr-2 h-4 w-4" />
+            Return to Home
+          </Button>
         </CardFooter>
       </Card>
     );
   }
 
   if (!currentQuestion) {
-     return (
-       <Card className="w-full max-w-md text-center">
+    return (
+      <Card className="w-full max-w-md text-center">
         <CardHeader>
           <CardTitle className="text-2xl font-bold">No Questions</CardTitle>
           <CardDescription>There are no questions available for this category. This could be because the data file is empty or missing.</CardDescription>
         </CardHeader>
         <CardFooter className="flex-col gap-4">
-            <Button onClick={handleGoHome} className="w-full" variant="outline">
-                <Home className="mr-2 h-4 w-4" />
-                Return to Home
-            </Button>
+          <Button onClick={handleGoHome} className="w-full" variant="outline">
+            <Home className="mr-2 h-4 w-4" />
+            Return to Home
+          </Button>
         </CardFooter>
       </Card>
     );
@@ -235,7 +234,7 @@ export function QuizClient({ category }: { category: string }) {
 
   return (
     <div className="w-full max-w-2xl mx-auto">
-       <div className="mb-4">
+      <div className="mb-4">
         <p className="text-sm text-muted-foreground">Question {questionNumber} of {totalQuestions}</p>
         <Progress value={totalQuestions > 0 ? (questionNumber / totalQuestions) * 100 : 0} className="w-full" />
       </div>
@@ -266,7 +265,7 @@ export function QuizClient({ category }: { category: string }) {
               ))}
             </CardContent>
             <CardFooter className="flex justify-between">
-               <Button onClick={handleSkipQuestion} variant="outline">
+              <Button onClick={handleSkipQuestion} variant="outline">
                 <SkipForward className="mr-2 h-4 w-4" />
                 Skip Question
               </Button>
@@ -306,9 +305,9 @@ export function QuizClient({ category }: { category: string }) {
                   <p className="text-muted-foreground">{currentQuestion.explanation}</p>
                 </div>
               </div>
-               <Button onClick={handleGoHome} className="w-full mt-4">
-                  Return Home
-               </Button>
+              <Button onClick={handleGoHome} className="w-full mt-4">
+                Return Home
+              </Button>
             </CardFooter>
           </>
         )}
