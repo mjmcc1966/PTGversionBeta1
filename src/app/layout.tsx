@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster"
 import './globals.css';
 import { LoadingProvider } from '@/app/context/loading-context';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
+import AuthGate from '@/components/AuthGate';
 
 export const metadata: Metadata = {
   title: 'PTG - Personal Trivia Game',
@@ -25,7 +26,9 @@ export default function RootLayout({
       <body className="font-body antialiased h-full">
         <FirebaseClientProvider>
           <LoadingProvider>
-            {children}
+            <AuthGate>
+              {children}
+            </AuthGate>
           </LoadingProvider>
         </FirebaseClientProvider>
         <Toaster />

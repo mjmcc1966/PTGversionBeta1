@@ -13,6 +13,8 @@ import { Progress } from '@/components/ui/progress';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useLoading } from '@/app/context/loading-context';
 import allQuestionsData from '@/app/admin/data/questions.json';
+import { useFirebase } from '@/firebase';
+import { doc, getDoc, setDoc, updateDoc, arrayUnion } from 'firebase/firestore';
 
 const correctSoundBase64 = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=";
 const incorrectSoundBase64 = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=";
@@ -39,6 +41,7 @@ export function QuizClient({ category }: { category: string }) {
   const [quizFinished, setQuizFinished] = useState(false);
   const [outOfQuestions, setOutOfQuestions] = useState(false);
   const { hideLoader } = useLoading();
+  const { user, firestore } = useFirebase();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -55,6 +58,19 @@ export function QuizClient({ category }: { category: string }) {
     setAllQuestions(filteredQuestions);
     setQuestionsLoading(false);
   }, [category]);
+
+  useEffect(() => {
+    if (user && firestore) {
+      const userDocRef = doc(firestore, 'users', user.uid);
+      getDoc(userDocRef).then(docSnap => {
+        if (docSnap.exists()) {
+          const userData = docSnap.data();
+          const seenForCategory = userData.seenQuestions?.[category.replace(/-/g, '_')] || [];
+          setAskedQuestionIds(new Set(seenForCategory));
+        }
+      });
+    }
+  }, [user, firestore, category]);
 
 
   const { correctAnswerSound, incorrectAnswerSound } = useMemo(() => {
@@ -95,21 +111,12 @@ export function QuizClient({ category }: { category: string }) {
   };
 
 
-  useEffect(() => {
-    const storedAskedIds = sessionStorage.getItem(`askedQuestionIds_${category}`);
-    if (storedAskedIds) {
-      setAskedQuestionIds(new Set(JSON.parse(storedAskedIds)));
-    }
-  }, [category]);
-
   const selectNewQuestion = useCallback(() => {
-    if (!allQuestions) return;
+    if (!allQuestions || allQuestions.length === 0) return;
     const availableQuestions = allQuestions.filter(q => !askedQuestionIds.has(q.id));
     
-    if (availableQuestions.length === 0 && allQuestions.length > 0) {
-      if(askedQuestionIds.size >= allQuestions.length) {
-         setOutOfQuestions(true);
-      }
+    if (availableQuestions.length === 0) {
+      setOutOfQuestions(true);
       return;
     }
     
@@ -124,10 +131,10 @@ export function QuizClient({ category }: { category: string }) {
 
 
   useEffect(() => {
-    if (allQuestions && allQuestions.length > 0 && !currentQuestion) {
+    if (allQuestions && allQuestions.length > 0 && !currentQuestion && askedQuestionIds.size < allQuestions.length) {
       selectNewQuestion();
     }
-  }, [allQuestions, currentQuestion, selectNewQuestion]);
+  }, [allQuestions, currentQuestion, selectNewQuestion, askedQuestionIds]);
 
   const shuffledOptions = useMemo(() => {
     if (!currentQuestion) return [];
@@ -138,6 +145,31 @@ export function QuizClient({ category }: { category: string }) {
     if (submitted) return;
     setSelectedAnswer(answer);
   };
+
+  const updateSeenQuestionsInFirestore = async (questionId: string) => {
+    if (!user || !firestore) return;
+    const userDocRef = doc(firestore, 'users', user.uid);
+    const categoryKey = `seenQuestions.${category.replace(/-/g, '_')}`;
+    
+    try {
+      // Use updateDoc with arrayUnion to atomically add the new question ID.
+      // This is safer than get/set for concurrent updates.
+      await updateDoc(userDocRef, {
+        [categoryKey]: arrayUnion(questionId)
+      });
+    } catch (error: any) {
+       if (error.code === 'not-found') {
+        // If the document or the seenQuestions map doesn't exist, create it.
+        await setDoc(userDocRef, { 
+            seenQuestions: { 
+                [category.replace(/-/g, '_')]: [questionId] 
+            } 
+        }, { merge: true });
+       } else {
+        console.error("Error updating seen questions:", error);
+       }
+    }
+};
 
   const handleSubmitAnswer = () => {
     if (!selectedAnswer || !currentQuestion || !allQuestions) return;
@@ -159,9 +191,10 @@ export function QuizClient({ category }: { category: string }) {
       incorrectAnswerSound?.play();
     }
 
-    const newAskedQuestionIds = new Set([...Array.from(askedQuestionIds), currentQuestion.id]);
+    const newAskedQuestionIds = new Set(askedQuestionIds).add(currentQuestion.id);
     setAskedQuestionIds(newAskedQuestionIds);
-    sessionStorage.setItem(`askedQuestionIds_${category}`, JSON.stringify(Array.from(newAskedQuestionIds)));
+    updateSeenQuestionsInFirestore(currentQuestion.id);
+
 
     if (newAskedQuestionIds.size >= allQuestions.length && allQuestions.length > 0) {
         setTimeout(() => setQuizFinished(true), 3000);
@@ -172,9 +205,9 @@ export function QuizClient({ category }: { category: string }) {
   const handleSkipQuestion = () => {
     if (!currentQuestion || !allQuestions) return;
 
-    const newAskedQuestionIds = new Set([...Array.from(askedQuestionIds), currentQuestion.id]);
+    const newAskedQuestionIds = new Set(askedQuestionIds).add(currentQuestion.id);
     setAskedQuestionIds(newAskedQuestionIds);
-    sessionStorage.setItem(`askedQuestionIds_${category}`, JSON.stringify(Array.from(newAskedQuestionIds)));
+    updateSeenQuestionsInFirestore(currentQuestion.id);
 
     if (newAskedQuestionIds.size >= allQuestions.length) {
       setQuizFinished(true);
@@ -183,27 +216,21 @@ export function QuizClient({ category }: { category: string }) {
     }
   };
 
+  const handleResetQuiz = async () => {
+    if (!user || !firestore) return;
+    
+    const userDocRef = doc(firestore, 'users', user.uid);
+    const categoryKey = `seenQuestions.${category.replace(/-/g, '_')}`;
 
-  const handleResetQuiz = () => {
+    await updateDoc(userDocRef, {
+        [categoryKey]: []
+    });
+
     setAskedQuestionIds(new Set());
-    sessionStorage.removeItem(`askedQuestionIds_${category}`);
     setScore(0);
     setOutOfQuestions(false);
     setQuizFinished(false);
-    setTimeout(() => {
-       if (allQuestions) {
-          const availableQuestions = allQuestions;
-          if (availableQuestions.length > 0) {
-              const randomIndex = Math.floor(Math.random() * availableQuestions.length);
-              setCurrentQuestion(availableQuestions[randomIndex]);
-              setSelectedAnswer(null);
-              setSubmitted(false);
-              setIsCorrect(null);
-          } else {
-            setCurrentQuestion(null);
-          }
-       }
-    }, 0);
+    // Let useEffect trigger the new question selection
   };
   
   if (questionsLoading) {
@@ -253,7 +280,7 @@ export function QuizClient({ category }: { category: string }) {
           <Trophy className="w-24 h-24 mx-auto text-accent" />
           <CardTitle className="text-4xl mt-4 text-primary">Quiz Complete!</CardTitle>
           <CardDescription className="text-xl mt-2">
-            You scored {score} out of {allQuestions?.length}.
+            You have answered all questions in this category.
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
@@ -301,7 +328,7 @@ export function QuizClient({ category }: { category: string }) {
   };
   
   const progress = allQuestions && allQuestions.length > 0 ? (askedQuestionIds.size / allQuestions.length) * 100 : 0;
-  const questionNumber = Array.from(askedQuestionIds).findIndex(id => id === currentQuestion.id) + 1 || askedQuestionIds.size;
+  const questionNumber = askedQuestionIds.size + (submitted ? 0 : 1);
 
 
   return (
@@ -365,10 +392,13 @@ export function QuizClient({ category }: { category: string }) {
               <h3 className="font-bold text-lg flex items-center gap-2 text-primary"><Lightbulb/> Explanation</h3>
               <p className="mt-2 text-foreground/80">{currentQuestion.explanation}</p>
             </div>
-            <div className="flex w-full justify-end gap-2">
-              <Button asChild variant="outline" className="w-full md:w-auto self-end">
-                <Link href="/home">Home</Link>
-              </Button>
+            <div className="flex w-full justify-between items-center gap-2">
+                <Button onClick={selectNewQuestion}>Next Question</Button>
+                <Link href="/home" passHref>
+                    <Button asChild variant="outline" className="w-full md:w-auto">
+                        <a>Home</a>
+                    </Button>
+                </Link>
             </div>
           </CardFooter>
         )}

@@ -115,11 +115,20 @@
           "type": "string",
           "description": "The user's email address.",
           "format": "email"
+        },
+        "seenQuestions": {
+          "type": "object",
+          "description": "A map of question categories to arrays of seen question IDs.",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
         }
       },
       "required": [
-        "id",
-        "email"
+        "id"
       ]
     }
   },
@@ -130,6 +139,12 @@
     ]
   },
   "firestore": {
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/User"
+      },
+      "description": "Stores user profiles and their seen questions."
+    },
     "/questions/{questionId}": {
       "schema": {
         "$ref": "#/entities/Question"
