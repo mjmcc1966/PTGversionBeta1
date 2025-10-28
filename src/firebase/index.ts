@@ -1,6 +1,3 @@
-
-'use client';
-
 // IMPORTANT: DO NOT MODIFY THIS FILE
 // This file is the entry point for all Firebase-related functionality.
 // It exports providers, hooks, and utility functions that are used throughout the application.

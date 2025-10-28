@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useMemo, type ReactNode } from 'react';
@@ -27,7 +26,7 @@ function getFirebaseServices(): FirebaseServices {
 
 export function FirebaseClientProvider({ children }: { children: ReactNode }) {
   // useMemo ensures that getFirebaseServices is called only once per client session.
-  const firebaseServices = useMemo(() => getFirebaseServices(), []);
+  const firebaseServices = useMemo(getFirebaseServices, []);
 
   return (
     <FirebaseProvider
