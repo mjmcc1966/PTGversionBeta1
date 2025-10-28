@@ -12,7 +12,7 @@ import { Progress } from '@/components/ui/progress';
 import { useRouter } from 'next/navigation';
 import { useLoading } from '@/app/context/loading-context';
 import allQuestionsData from '@/app/admin/data/questions.json';
-import { useFirebase } from '@/firebase';
+import { useUser, useFirestore } from '@/firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 const correctSoundBase64 = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=";
@@ -28,18 +28,31 @@ interface Question {
   imageUrl?: string;
 }
 
+interface QuizState {
+  allCategoryQuestions: Question[];
+  seenQuestionIds: Set<string>;
+  currentQuestion: Question | null;
+  selectedAnswer: string | null;
+  isAnswered: boolean;
+  isFinished: boolean;
+  isLoading: boolean;
+}
+
 export function QuizClient({ category }: { category: string }) {
-  const { auth, firestore } = useFirebase();
+  const { user, isUserLoading } = useUser();
+  const firestore = useFirestore();
   const router = useRouter();
   const { showLoader, hideLoader } = useLoading();
 
-  const [allCategoryQuestions, setAllCategoryQuestions] = useState<Question[]>([]);
-  const [seenQuestionIds, setSeenQuestionIds] = useState<Set<string>>(new Set());
-  const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
-  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-  const [isAnswered, setIsAnswered] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isFinished, setIsFinished] = useState(false);
+  const [quizState, setQuizState] = useState<QuizState>({
+    allCategoryQuestions: [],
+    seenQuestionIds: new Set(),
+    currentQuestion: null,
+    selectedAnswer: null,
+    isAnswered: false,
+    isFinished: false,
+    isLoading: true,
+  });
 
   const categoryKey = useMemo(() => {
     if (category === 'state-trivia') return 'state_trivia';
@@ -60,107 +73,108 @@ export function QuizClient({ category }: { category: string }) {
   }, []);
 
   const updateSeenInStorage = useCallback(async (newSeenIds: Set<string>) => {
-    const seenIdsArray = Array.from(newSeenIds);
-    if (auth?.currentUser && firestore) {
-      const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
+    if (user && firestore) {
+      const userDocRef = doc(firestore, 'users', user.uid);
       try {
-        await setDoc(userDocRef, {
-            seenQuestions: { [category]: seenIdsArray }
-        }, { merge: true });
+        await setDoc(userDocRef, { seenQuestions: { [category]: Array.from(newSeenIds) } }, { merge: true });
       } catch (err) {
         console.error("Error updating seen questions in DB:", err);
       }
     } else {
-      sessionStorage.setItem(`seen_${category}`, JSON.stringify(seenIdsArray));
+      sessionStorage.setItem(`seen_${category}`, JSON.stringify(Array.from(newSeenIds)));
     }
-  }, [auth, firestore, category]);
-
-  const loadQuizData = useCallback(async () => {
-    setIsLoading(true);
-    hideLoader();
-
-    const categoryQuestions = (allQuestionsData as Question[]).filter(
-        (q) => q.category.toLowerCase().replace(/ /g, '_') === categoryKey
-    );
-    setAllCategoryQuestions(categoryQuestions);
-    
-    let initialSeenIds = new Set<string>();
-
-    if (auth?.currentUser && firestore) {
-        const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
-        try {
-            const userDoc = await getDoc(userDocRef);
-            if (userDoc.exists()) {
-                const userData = userDoc.data();
-                const seenForCategory = userData.seenQuestions?.[category] || [];
-                initialSeenIds = new Set(seenForCategory);
-            }
-        } catch (error) {
-            console.error("Error fetching user progress:", error);
-        }
-    } else {
-        const sessionSeen = sessionStorage.getItem(`seen_${category}`);
-        if (sessionSeen) {
-            initialSeenIds = new Set(JSON.parse(sessionSeen));
-        }
-    }
-    
-    setSeenQuestionIds(initialSeenIds);
-    
-    const nextQuestion = selectNextQuestion(categoryQuestions, initialSeenIds);
-    
-    if (nextQuestion) {
-        setCurrentQuestion(nextQuestion);
-        setIsFinished(false);
-    } else if (categoryQuestions.length > 0) {
-        setIsFinished(true);
-    }
-
-    setIsLoading(false);
-  }, [category, categoryKey, auth, firestore, selectNextQuestion, hideLoader]);
+  }, [user, firestore, category]);
 
   useEffect(() => {
+    const loadQuizData = async () => {
+      if (isUserLoading) {
+        return;
+      }
+      
+      const categoryQuestions = (allQuestionsData as Question[]).filter(
+        (q) => q.category.toLowerCase().replace(/ /g, '_') === categoryKey
+      );
+
+      let initialSeenIds = new Set<string>();
+
+      if (user && firestore) {
+        const userDocRef = doc(firestore, 'users', user.uid);
+        try {
+          const userDoc = await getDoc(userDocRef);
+          if (userDoc.exists()) {
+            const userData = userDoc.data();
+            const seenForCategory = userData.seenQuestions?.[category] || [];
+            initialSeenIds = new Set(seenForCategory);
+          }
+        } catch (error) {
+          console.error("Error fetching user progress:", error);
+        }
+      } else {
+        const sessionSeen = sessionStorage.getItem(`seen_${category}`);
+        if (sessionSeen) {
+          initialSeenIds = new Set(JSON.parse(sessionSeen));
+        }
+      }
+      
+      const nextQuestion = selectNextQuestion(categoryQuestions, initialSeenIds);
+
+      setQuizState({
+        allCategoryQuestions: categoryQuestions,
+        seenQuestionIds: initialSeenIds,
+        currentQuestion: nextQuestion,
+        isFinished: categoryQuestions.length > 0 && nextQuestion === null,
+        isLoading: false,
+        isAnswered: false,
+        selectedAnswer: null,
+      });
+
+      hideLoader();
+    };
+
     loadQuizData();
-  }, [loadQuizData]);
+  }, [category, categoryKey, user, isUserLoading, firestore, selectNextQuestion, hideLoader]);
 
 
   const advanceToNext = useCallback(async (currentQuestionId: string) => {
     showLoader();
     
-    const newSeenIds = new Set(seenQuestionIds).add(currentQuestionId);
+    const newSeenIds = new Set(quizState.seenQuestionIds).add(currentQuestionId);
     await updateSeenInStorage(newSeenIds);
-    setSeenQuestionIds(newSeenIds);
 
-    const nextQuestion = selectNextQuestion(allCategoryQuestions, newSeenIds);
+    const nextQuestion = selectNextQuestion(quizState.allCategoryQuestions, newSeenIds);
 
-    setCurrentQuestion(nextQuestion);
-    setSelectedAnswer(null);
-    setIsAnswered(false);
-
-    if (!nextQuestion && allCategoryQuestions.length > 0) {
-      setIsFinished(true);
-    }
+    setQuizState(prevState => ({
+      ...prevState,
+      seenQuestionIds: newSeenIds,
+      currentQuestion: nextQuestion,
+      selectedAnswer: null,
+      isAnswered: false,
+      isFinished: prevState.allCategoryQuestions.length > 0 && nextQuestion === null,
+    }));
     
     hideLoader();
-  }, [seenQuestionIds, allCategoryQuestions, selectNextQuestion, updateSeenInStorage, showLoader, hideLoader]);
+  }, [quizState.seenQuestionIds, quizState.allCategoryQuestions, updateSeenInStorage, selectNextQuestion, showLoader, hideLoader]);
 
   const handleAnswerSubmit = () => {
-    if (!currentQuestion || isAnswered) return;
+    if (!quizState.currentQuestion || quizState.isAnswered) return;
 
-    const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
+    const isCorrect = quizState.selectedAnswer === quizState.currentQuestion.correctAnswer;
     const audio = new Audio(isCorrect ? correctSoundBase64 : incorrectSoundBase64);
     audio.play();
     
-    const newSeenIds = new Set(seenQuestionIds).add(currentQuestion.id);
-    setSeenQuestionIds(newSeenIds);
+    const newSeenIds = new Set(quizState.seenQuestionIds).add(quizState.currentQuestion.id);
     updateSeenInStorage(newSeenIds);
     
-    setIsAnswered(true);
+    setQuizState(prevState => ({
+        ...prevState,
+        isAnswered: true,
+        seenQuestionIds: newSeenIds
+    }));
   };
 
   const handleSkipQuestion = async () => {
-    if (!currentQuestion) return;
-    await advanceToNext(currentQuestion.id);
+    if (!quizState.currentQuestion) return;
+    await advanceToNext(quizState.currentQuestion.id);
   };
 
   const handleGoHome = () => {
@@ -172,20 +186,31 @@ export function QuizClient({ category }: { category: string }) {
     showLoader();
     const newSeenIds = new Set<string>();
     await updateSeenInStorage(newSeenIds);
-    setSeenQuestionIds(newSeenIds);
-
-    const nextQuestion = selectNextQuestion(allCategoryQuestions, newSeenIds);
-    setCurrentQuestion(nextQuestion);
-    setSelectedAnswer(null);
-    setIsAnswered(false);
-    setIsFinished(false);
-    
+    const nextQuestion = selectNextQuestion(quizState.allCategoryQuestions, newSeenIds);
+    setQuizState(prevState => ({
+      ...prevState,
+      seenQuestionIds: newSeenIds,
+      currentQuestion: nextQuestion,
+      isFinished: false,
+      isAnswered: false,
+      selectedAnswer: null,
+    }));
     hideLoader();
   };
-
+  
   const handleBuyExpansion = () => {
     alert('Expansion packs are not yet available.');
   };
+
+  const {
+    isLoading,
+    isFinished,
+    currentQuestion,
+    allCategoryQuestions,
+    seenQuestionIds,
+    isAnswered,
+    selectedAnswer
+  } = quizState;
 
   if (isLoading) {
     return (
@@ -255,7 +280,7 @@ export function QuizClient({ category }: { category: string }) {
       )
   }
 
-  const questionNumber = seenQuestionIds.size + (isAnswered ? 0 : 1);
+  const questionNumber = seenQuestionIds.size + 1;
   const totalQuestions = allCategoryQuestions.length;
 
   return (
@@ -284,7 +309,7 @@ export function QuizClient({ category }: { category: string }) {
                     "w-full justify-start text-left h-auto py-3 px-4 whitespace-normal",
                     selectedAnswer === option && "bg-accent text-accent-foreground ring-2 ring-primary"
                   )}
-                  onClick={() => setSelectedAnswer(option)}
+                  onClick={() => setQuizState(prev => ({...prev, selectedAnswer: option}))}
                 >
                   {option}
                 </Button>
