@@ -70,10 +70,10 @@ export function QuizClient({ category }: { category: string }) {
         const userData = docSnap.data();
         const seenForCategory = userData.seenQuestions?.[categoryKey] || [];
         setAskedQuestionIds(new Set(seenForCategory));
-        setQuestionNumber(seenForCategory.length + 1);
+        setQuestionNumber(seenForCategory.length);
       } else {
         setAskedQuestionIds(new Set());
-        setQuestionNumber(1);
+        setQuestionNumber(0);
       }
     }
   }, [user, firestore, categoryKey]);
@@ -140,7 +140,6 @@ export function QuizClient({ category }: { category: string }) {
     setSelectedAnswer(null);
     setSubmitted(false);
     setIsCorrect(null);
-    setQuestionNumber(prev => prev + (prev === 0 ? 1 : 0)); // Initialize or keep current
   }, [allQuestions, askedQuestionIds]);
 
 
@@ -186,6 +185,7 @@ export function QuizClient({ category }: { category: string }) {
     const newAskedQuestionIds = new Set(askedQuestionIds);
     newAskedQuestionIds.add(questionId);
     setAskedQuestionIds(newAskedQuestionIds);
+    setQuestionNumber(prev => prev + 1);
     await updateSeenQuestionsInFirestore(questionId);
   };
 
@@ -217,28 +217,14 @@ export function QuizClient({ category }: { category: string }) {
     }
   };
   
-  const handleNextQuestion = () => {
-    if (!allQuestions) return;
-    if (askedQuestionIds.size >= allQuestions.length) {
-        setQuizFinished(true);
-    } else {
-        setQuestionNumber(prev => prev + 1);
-        selectNewQuestion();
-    }
-  };
-
   const handleSkipQuestion = () => {
     if (!currentQuestion || !allQuestions) return;
     
-    const newAskedQuestionIds = new Set(askedQuestionIds);
-    newAskedQuestionIds.add(currentQuestion.id);
-    setAskedQuestionIds(newAskedQuestionIds);
-
-    updateSeenQuestionsInFirestore(currentQuestion.id).then(() => {
-        if (newAskedQuestionIds.size >= allQuestions.length) {
+    markQuestionAsSeen(currentQuestion.id).then(() => {
+        if (askedQuestionIds.size +1 >= allQuestions.length) {
             setQuizFinished(true);
         } else {
-            handleNextQuestion();
+            selectNewQuestion();
         }
     });
   };
@@ -371,7 +357,7 @@ export function QuizClient({ category }: { category: string }) {
         <CardHeader>
           <div className="mb-4">
             <Progress value={progress} className="h-2" />
-            <p className="text-sm text-muted-foreground mt-2 text-center">Question {questionNumber} of {allQuestions?.length}</p>
+            <p className="text-sm text-muted-foreground mt-2 text-center">Question {questionNumber + 1} of {allQuestions?.length}</p>
           </div>
           {currentQuestion.imageUrl && (
             <div className="relative w-full h-64 mb-4 rounded-lg overflow-hidden">
@@ -422,7 +408,6 @@ export function QuizClient({ category }: { category: string }) {
               <p className="mt-2 text-foreground/80">{currentQuestion.explanation}</p>
             </div>
             <div className="flex justify-between w-full">
-               <Button onClick={handleNextQuestion}>Next Question</Button>
               <Button asChild variant="outline">
                 <Link href="/home"><Home className="mr-2 h-5 w-5"/>Home</Link>
               </Button>
@@ -433,3 +418,5 @@ export function QuizClient({ category }: { category: string }) {
     </>
   );
 }
+
+    
