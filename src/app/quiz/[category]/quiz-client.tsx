@@ -40,6 +40,7 @@ export function QuizClient({ category }: { category: string }) {
   const [score, setScore] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
   const [outOfQuestions, setOutOfQuestions] = useState(false);
+  const [questionNumber, setQuestionNumber] = useState(0);
   const { hideLoader, showLoader } = useLoading();
   const { user, firestore } = useFirebase();
   const pathname = usePathname();
@@ -69,8 +70,10 @@ export function QuizClient({ category }: { category: string }) {
         const userData = docSnap.data();
         const seenForCategory = userData.seenQuestions?.[categoryKey] || [];
         setAskedQuestionIds(new Set(seenForCategory));
+        setQuestionNumber(seenForCategory.length + 1);
       } else {
         setAskedQuestionIds(new Set());
+        setQuestionNumber(1);
       }
     }
   }, [user, firestore, categoryKey]);
@@ -137,6 +140,7 @@ export function QuizClient({ category }: { category: string }) {
     setSelectedAnswer(null);
     setSubmitted(false);
     setIsCorrect(null);
+    setQuestionNumber(askedQuestionIds.size + 1);
   }, [allQuestions, askedQuestionIds]);
 
 
@@ -343,7 +347,6 @@ export function QuizClient({ category }: { category: string }) {
   };
   
   const progress = allQuestions && allQuestions.length > 0 ? (askedQuestionIds.size / allQuestions.length) * 100 : 0;
-  const questionNumber = askedQuestionIds.size + 1;
 
 
   return (
@@ -407,9 +410,12 @@ export function QuizClient({ category }: { category: string }) {
               <h3 className="font-bold text-lg flex items-center gap-2 text-primary"><Lightbulb/> Explanation</h3>
               <p className="mt-2 text-foreground/80">{currentQuestion.explanation}</p>
             </div>
-            <Button asChild variant="outline">
-              <Link href="/home"><Home className="mr-2 h-5 w-5"/>Home</Link>
-            </Button>
+            <div className="flex justify-between w-full">
+              <Button asChild variant="outline">
+                <Link href="/home"><Home className="mr-2 h-5 w-5"/>Home</Link>
+              </Button>
+               <Button onClick={selectNewQuestion}>Next Question</Button>
+            </div>
           </CardFooter>
         )}
       </Card>
