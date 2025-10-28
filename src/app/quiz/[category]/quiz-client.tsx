@@ -40,6 +40,7 @@ export function QuizClient({ category }: { category: string }) {
   const [showAllAnsweredScreen, setShowAllAnsweredScreen] = useState(false);
   const [questionNumber, setQuestionNumber] = useState(0);
   const [totalQuestions, setTotalQuestions] = useState(0);
+  const [seenQuestionIds, setSeenQuestionIds] = useState<Set<string>>(new Set());
 
   const categoryKey = useMemo(() => {
     if (category === 'state-trivia') return 'state_trivia';
@@ -57,55 +58,60 @@ export function QuizClient({ category }: { category: string }) {
 
   useEffect(() => {
     const initializeQuiz = async () => {
-      setIsLoading(true);
-      hideLoader();
-  
-      let seenIds = new Set<string>();
-  
-      if (auth?.currentUser && firestore) {
-        try {
-          const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
-          const userDoc = await getDoc(userDocRef);
-          if (userDoc.exists()) {
-            const userData = userDoc.data();
-            const seenForCategory = userData.seenQuestions?.[category] || [];
-            seenIds = new Set(seenForCategory);
-          }
-        } catch (error) {
-          console.error("Error fetching user progress:", error);
+        if (!auth?.currentUser || !firestore || filteredQuestions.length === 0) {
+            setIsLoading(false);
+            hideLoader();
+            return;
         }
-      }
-      
-      const availableQuestions = filteredQuestions.filter(q => !seenIds.has(q.id));
-      
-      setTotalQuestions(filteredQuestions.length);
-      setQuestionNumber(seenIds.size + 1);
 
-      if (availableQuestions.length > 0) {
-        const randomIndex = Math.floor(Math.random() * availableQuestions.length);
-        const newQuestion = availableQuestions[randomIndex];
-        const shuffledOptions = [...newQuestion.options].sort(() => Math.random() - 0.5);
-        setCurrentQuestion({ ...newQuestion, options: shuffledOptions });
-        setShowAllAnsweredScreen(false);
-      } else {
-        setCurrentQuestion(null);
-        if (filteredQuestions.length > 0) {
-          setShowAllAnsweredScreen(true);
+        setIsLoading(true);
+        
+        let userSeenIds = new Set<string>();
+        try {
+            const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
+            const userDoc = await getDoc(userDocRef);
+            if (userDoc.exists()) {
+                const userData = userDoc.data();
+                const seenForCategory = userData.seenQuestions?.[category] || [];
+                userSeenIds = new Set(seenForCategory);
+            }
+        } catch (error) {
+            console.error("Error fetching user progress:", error);
         }
-      }
-      
-      setIsLoading(false);
+        
+        setSeenQuestionIds(userSeenIds);
+        setTotalQuestions(filteredQuestions.length);
+        setQuestionNumber(userSeenIds.size + 1);
+
+        const availableQuestions = filteredQuestions.filter(q => !userSeenIds.has(q.id));
+
+        if (availableQuestions.length > 0) {
+            const randomIndex = Math.floor(Math.random() * availableQuestions.length);
+            const newQuestion = availableQuestions[randomIndex];
+            const shuffledOptions = [...newQuestion.options].sort(() => Math.random() - 0.5);
+            setCurrentQuestion({ ...newQuestion, options: shuffledOptions });
+            setShowAllAnsweredScreen(false);
+        } else {
+            setCurrentQuestion(null);
+            if (filteredQuestions.length > 0) {
+                setShowAllAnsweredScreen(true);
+            }
+        }
+        
+        setIsLoading(false);
+        hideLoader();
     };
-  
-    if (filteredQuestions.length > 0) {
-        initializeQuiz();
-    }
+
+    initializeQuiz();
   }, [auth?.currentUser, firestore, category, filteredQuestions, hideLoader]);
 
   const updateSeenQuestionsInDb = async (questionId: string) => {
     if (auth?.currentUser && firestore) {
       const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
       try {
+        // Optimistically update local state
+        setSeenQuestionIds(prev => new Set(prev).add(questionId));
+
         await updateDoc(userDocRef, {
           [`seenQuestions.${category}`]: arrayUnion(questionId),
         });
@@ -125,31 +131,32 @@ export function QuizClient({ category }: { category: string }) {
       setIsAnswered(true);
       const audio = new Audio(selectedAnswer === currentQuestion.correctAnswer ? correctSoundBase64 : incorrectSoundBase64);
       audio.play();
-
       await updateSeenQuestionsInDb(currentQuestion.id);
     }
   };
   
-  const handleSkipQuestion = async () => {
-    if (!currentQuestion) return;
-    
+  const handleNextQuestion = async () => {
     setIsLoading(true);
-    await updateSeenQuestionsInDb(currentQuestion.id);
-
-    const seenIds = new Set<string>();
+    if (currentQuestion) {
+      await updateSeenQuestionsInDb(currentQuestion.id);
+    }
+    
+    // Refetch the latest seen questions to ensure we have the most up-to-date info
+    let updatedSeenIds = new Set(seenQuestionIds);
      if (auth?.currentUser && firestore) {
         const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
         const userDoc = await getDoc(userDocRef);
         if (userDoc.exists()) {
             const userData = userDoc.data();
             const seenForCategory = userData.seenQuestions?.[category] || [];
-            seenForCategory.forEach((id: string) => seenIds.add(id));
+            updatedSeenIds = new Set(seenForCategory);
         }
      }
-    
-    const availableQuestions = filteredQuestions.filter(q => !seenIds.has(q.id));
-    setQuestionNumber(seenIds.size + 1);
+    setSeenQuestionIds(updatedSeenIds);
+    setQuestionNumber(updatedSeenIds.size + 1);
 
+    const availableQuestions = filteredQuestions.filter(q => !updatedSeenIds.has(q.id));
+    
     if (availableQuestions.length > 0) {
       const randomIndex = Math.floor(Math.random() * availableQuestions.length);
       const newQuestion = availableQuestions[randomIndex];
@@ -160,10 +167,13 @@ export function QuizClient({ category }: { category: string }) {
       setIsAnswered(false);
     } else {
       setShowAllAnsweredScreen(true);
+      setCurrentQuestion(null);
     }
     
     setIsLoading(false);
   };
+
+  const handleSkipQuestion = () => handleNextQuestion();
   
   const handleGoHome = () => {
     showLoader();
@@ -183,6 +193,7 @@ export function QuizClient({ category }: { category: string }) {
       }
     }
     
+    setSeenQuestionIds(new Set());
     setQuestionNumber(1);
     setShowAllAnsweredScreen(false);
 
@@ -353,3 +364,5 @@ export function QuizClient({ category }: { category: string }) {
     </div>
   );
 }
+
+    
