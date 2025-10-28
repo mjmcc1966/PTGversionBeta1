@@ -70,6 +70,7 @@ export function QuizClient({ category }: { category: string }) {
   }, [categoryKey]);
 
   const loadAndSelectQuestion = useCallback(async () => {
+    setQuizState(prevState => ({ ...prevState, isLoading: true }));
     let initialSeenIds = new Set<string>();
     if (auth?.currentUser && firestore) {
       try {
@@ -340,8 +341,8 @@ export function QuizClient({ category }: { category: string }) {
                   <p className="text-muted-foreground">{quizState.currentQuestion.explanation}</p>
                 </div>
               </div>
-              <div className="w-full flex justify-end items-center mt-4">
-                <Button onClick={handleGoHome} variant="outline">
+              <div className="w-full mt-4">
+                <Button onClick={handleGoHome} variant="outline" className="w-full">
                     <Home className="mr-2 h-4 w-4" />
                     Return to Home
                 </Button>
@@ -354,3 +355,4 @@ export function QuizClient({ category }: { category: string }) {
   );
 }
 
+    
