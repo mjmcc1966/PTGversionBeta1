@@ -182,9 +182,12 @@ export function QuizClient({ category }: { category: string }) {
 };
 
   const markQuestionAsSeen = async (questionId: string) => {
-    const newAskedQuestionIds = new Set(askedQuestionIds);
-    newAskedQuestionIds.add(questionId);
-    setAskedQuestionIds(newAskedQuestionIds);
+    setAskedQuestionIds(prev => {
+        const newAskedQuestionIds = new Set(prev);
+        newAskedQuestionIds.add(questionId);
+        setQuestionNumber(newAskedQuestionIds.size);
+        return newAskedQuestionIds;
+    });
     await updateSeenQuestionsInFirestore(questionId);
   };
 
@@ -210,7 +213,6 @@ export function QuizClient({ category }: { category: string }) {
     }
 
     await markQuestionAsSeen(currentQuestion.id);
-    setQuestionNumber(prev => prev + 1);
 
     if (askedQuestionIds.size + 1 >= allQuestions.length) {
         setTimeout(() => setQuizFinished(true), 3000);
@@ -221,7 +223,6 @@ export function QuizClient({ category }: { category: string }) {
     if (!currentQuestion || !allQuestions) return;
     
     markQuestionAsSeen(currentQuestion.id).then(() => {
-        setQuestionNumber(prev => prev + 1);
         if (askedQuestionIds.size +1 >= allQuestions.length) {
             setQuizFinished(true);
         } else {
@@ -344,7 +345,7 @@ export function QuizClient({ category }: { category: string }) {
     return "bg-card/50 border-primary/10 text-muted-foreground";
   };
   
-  const progress = allQuestions && allQuestions.length > 0 ? ((questionNumber) / allQuestions.length) * 100 : 0;
+  const progress = allQuestions && allQuestions.length > 0 ? (questionNumber / allQuestions.length) * 100 : 0;
 
 
   return (
@@ -358,7 +359,7 @@ export function QuizClient({ category }: { category: string }) {
         <CardHeader>
           <div className="mb-4">
             <Progress value={progress} className="h-2" />
-            <p className="text-sm text-muted-foreground mt-2 text-center">Question {questionNumber + 1} of {allQuestions?.length}</p>
+            <p className="text-sm text-muted-foreground mt-2 text-center">Question {questionNumber} of {allQuestions?.length}</p>
           </div>
           {currentQuestion.imageUrl && (
             <div className="relative w-full h-64 mb-4 rounded-lg overflow-hidden">
@@ -408,18 +409,12 @@ export function QuizClient({ category }: { category: string }) {
               <h3 className="font-bold text-lg flex items-center gap-2 text-primary"><Lightbulb/> Explanation</h3>
               <p className="mt-2 text-foreground/80">{currentQuestion.explanation}</p>
             </div>
-            <div className="flex justify-between w-full">
-              <Button asChild variant="outline">
+             <Button asChild variant="outline">
                 <Link href="/home"><Home className="mr-2 h-5 w-5"/>Home</Link>
-              </Button>
-              <Button onClick={selectNewQuestion}>Next Question</Button>
-            </div>
+             </Button>
           </CardFooter>
         )}
       </Card>
     </>
   );
 }
-
-    
-    
