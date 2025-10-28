@@ -8,7 +8,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
-import { CheckCircle, XCircle, Trophy, Lightbulb, Home, SkipForward, RefreshCw, ShoppingCart } from 'lucide-react';
+import { CheckCircle, XCircle, Lightbulb, Home, SkipForward, RefreshCw, ShoppingCart } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { useRouter } from 'next/navigation';
 import { useLoading } from '@/app/context/loading-context';
@@ -32,14 +32,13 @@ interface Question {
 export function QuizClient({ category }: { category: string }) {
   const { auth, firestore } = useFirebase();
   const router = useRouter();
-  const { hideLoader } = useLoading();
+  const { hideLoader, showLoader } = useLoading();
 
+  const [isLoading, setIsLoading] = useState(true);
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
   const [askedQuestionIds, setAskedQuestionIds] = useState<Set<string>>(new Set());
-  const [isLoading, setIsLoading] = useState(true);
-  const [questionNumber, setQuestionNumber] = useState(0);
   const [allQuestionsAnswered, setAllQuestionsAnswered] = useState(false);
 
   const filteredQuestions = useMemo(() => {
@@ -48,7 +47,7 @@ export function QuizClient({ category }: { category: string }) {
       (q) => q.category.toLowerCase().replace(/ /g, '-') === category
     );
   }, [category]);
-
+  
   const selectNewQuestion = useCallback((seenIds: Set<string>) => {
     const unaskedQuestions = filteredQuestions.filter(q => !seenIds.has(q.id));
 
@@ -65,12 +64,14 @@ export function QuizClient({ category }: { category: string }) {
       }
     }
   }, [filteredQuestions]);
-  
+
   useEffect(() => {
     const initializeQuiz = async () => {
+      // 1. Start loading
       setIsLoading(true);
       let seenIds = new Set<string>();
 
+      // 2. Fetch data from Firestore
       if (auth?.currentUser && firestore) {
         const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
         try {
@@ -80,16 +81,21 @@ export function QuizClient({ category }: { category: string }) {
               const seenForCategory = userData.seenQuestions?.[category] || [];
               seenIds = new Set(seenForCategory);
             } else {
+              // If user doc doesn't exist, create it.
               await setDoc(userDocRef, { email: auth.currentUser.email, createdAt: new Date() });
             }
         } catch (error) {
-            console.error("Error fetching user data:", error);
+            console.error("Error fetching or creating user data:", error);
         }
       }
       
+      // 3. Set state based on fetched data
       setAskedQuestionIds(seenIds);
-      setQuestionNumber(seenIds.size);
+      
+      // 4. Select a question
       selectNewQuestion(seenIds);
+      
+      // 5. End loading
       setIsLoading(false);
       hideLoader();
     };
@@ -116,21 +122,30 @@ export function QuizClient({ category }: { category: string }) {
       setIsAnswered(true);
       const audio = new Audio(selectedAnswer === currentQuestion.correctAnswer ? correctSoundBase64 : incorrectSoundBase64);
       audio.play();
+
+      // Mark as seen immediately on answer
+      const newAskedIds = new Set(askedQuestionIds).add(currentQuestion.id);
+      setAskedQuestionIds(newAskedIds);
+      updateSeenQuestionsInDb(currentQuestion.id);
     }
   };
 
-  const handleNextQuestion = () => {
+  const handleSkipQuestion = () => {
     if (!currentQuestion) return;
 
     const newAskedIds = new Set(askedQuestionIds).add(currentQuestion.id);
     setAskedQuestionIds(newAskedIds);
     updateSeenQuestionsInDb(currentQuestion.id);
-    setQuestionNumber(prev => prev + 1);
-
+    
     setSelectedAnswer(null);
     setIsAnswered(false);
     selectNewQuestion(newAskedIds);
   };
+  
+  const handleGoHome = () => {
+    showLoader();
+    router.push('/home');
+  }
 
   const handleReuseQuestions = async () => {
     if (auth?.currentUser && firestore) {
@@ -144,7 +159,6 @@ export function QuizClient({ category }: { category: string }) {
       }
     }
     setAskedQuestionIds(new Set());
-    setQuestionNumber(0);
     setAllQuestionsAnswered(false);
     selectNewQuestion(new Set());
   };
@@ -195,7 +209,7 @@ export function QuizClient({ category }: { category: string }) {
           </Button>
         </CardContent>
         <CardFooter>
-          <Button asChild className="w-full" variant="outline">
+          <Button asChild className="w-full" variant="outline" onClick={handleGoHome}>
             <Link href="/home">Return to Home</Link>
           </Button>
         </CardFooter>
@@ -205,28 +219,22 @@ export function QuizClient({ category }: { category: string }) {
 
   if (!currentQuestion) {
      return (
-      <div className="w-full max-w-2xl mx-auto">
-        <Skeleton className="h-10 w-1/4 mb-4" />
-        <Card>
-          <CardHeader>
-            <Skeleton className="h-8 w-3/4" />
-            <Skeleton className="h-6 w-1/2" />
-          </CardHeader>
-          <CardContent className="grid gap-4">
-            <Skeleton className="h-12 w-full" />
-            <Skeleton className="h-12 w-full" />
-            <Skeleton className="h-12 w-full" />
-            <Skeleton className="h-12 w-full" />
-          </CardContent>
-          <CardFooter className="flex justify-end">
-             <Skeleton className="h-10 w-32" />
-          </CardFooter>
-        </Card>
-      </div>
+       <Card className="w-full max-w-md text-center">
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold">No Questions</CardTitle>
+          <CardDescription>There are no questions available for this category.</CardDescription>
+        </CardHeader>
+        <CardFooter>
+          <Button asChild className="w-full" variant="outline" onClick={handleGoHome}>
+            <Link href="/home">Return to Home</Link>
+          </Button>
+        </CardFooter>
+      </Card>
     );
   }
 
   const totalQuestions = filteredQuestions.length;
+  const questionNumber = askedQuestionIds.size;
 
   return (
     <div className="w-full max-w-2xl mx-auto">
@@ -261,13 +269,11 @@ export function QuizClient({ category }: { category: string }) {
               ))}
             </CardContent>
             <CardFooter className="flex justify-between">
-               <Button onClick={() => handleNextQuestion()} variant="outline">
+               <Button onClick={handleSkipQuestion} variant="outline">
                 <SkipForward className="mr-2 h-4 w-4" />
                 Skip Question
               </Button>
-              {selectedAnswer && (
-                 <Button onClick={handleAnswerSubmit}>Submit Answer</Button>
-              )}
+              <Button onClick={handleAnswerSubmit} disabled={!selectedAnswer}>Submit Answer</Button>
             </CardFooter>
           </>
         ) : (
@@ -303,8 +309,9 @@ export function QuizClient({ category }: { category: string }) {
                   <p className="text-muted-foreground">{currentQuestion.explanation}</p>
                 </div>
               </div>
-               <Button onClick={() => handleNextQuestion()} className="w-full mt-4">
-                  Next Question
+               <Button onClick={handleGoHome} className="w-full mt-4">
+                  <Home className="mr-2 h-4 w-4" />
+                  Return to Home
                </Button>
             </CardFooter>
           </>
