@@ -13,7 +13,7 @@ import { useRouter } from 'next/navigation';
 import { useLoading } from '@/app/context/loading-context';
 import allQuestionsData from '@/app/admin/data/questions.json';
 import { useFirebase } from '@/firebase';
-import { doc, getDoc, setDoc, updateDoc, arrayUnion } from 'firebase/firestore';
+import { doc, getDoc, updateDoc, arrayUnion, setDoc } from 'firebase/firestore';
 
 const correctSoundBase64 = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=";
 const incorrectSoundBase64 = "data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAIARKwAAIhYAQACABgAZGF0YQISAACAgICAgICAgICAgICAgICAgIA=";
@@ -33,7 +33,6 @@ export function QuizClient({ category }: { category: string }) {
   const router = useRouter();
   const { hideLoader } = useLoading();
 
-  const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
@@ -47,8 +46,8 @@ export function QuizClient({ category }: { category: string }) {
     );
   }, [category]);
 
-  const selectNewQuestion = useCallback(() => {
-    const unaskedQuestions = filteredQuestions.filter(q => !askedQuestionIds.has(q.id));
+  const selectNewQuestion = useCallback((seenIds: Set<string>) => {
+    const unaskedQuestions = filteredQuestions.filter(q => !seenIds.has(q.id));
 
     if (unaskedQuestions.length > 0) {
       const randomIndex = Math.floor(Math.random() * unaskedQuestions.length);
@@ -58,35 +57,35 @@ export function QuizClient({ category }: { category: string }) {
     } else {
       setCurrentQuestion(null);
     }
-  }, [filteredQuestions, askedQuestionIds]);
+  }, [filteredQuestions]);
 
   useEffect(() => {
-    const loadProgress = async () => {
+    const initializeQuiz = async () => {
+      setIsLoading(true);
+      let seenIds = new Set<string>();
+
       if (auth?.currentUser && firestore) {
         const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
         const userDoc = await getDoc(userDocRef);
         if (userDoc.exists()) {
           const userData = userDoc.data();
-          const seenIds = userData.seenQuestions?.[category] || [];
-          setAskedQuestionIds(new Set(seenIds));
+          const seenForCategory = userData.seenQuestions?.[category] || [];
+          seenIds = new Set(seenForCategory);
+        } else {
+          // If user doc doesn't exist, create it.
+          await setDoc(userDocRef, { email: auth.currentUser.email, createdAt: new Date() });
         }
       }
+      
+      setAskedQuestionIds(seenIds);
+      setQuestionNumber(seenIds.size);
+      selectNewQuestion(seenIds);
       setIsLoading(false);
     };
 
-    loadProgress();
-  }, [auth?.currentUser, firestore, category]);
-
-  useEffect(() => {
-    if (!isLoading) {
-      setAllQuestions(filteredQuestions);
-      selectNewQuestion();
-    }
-  }, [isLoading, filteredQuestions, selectNewQuestion]);
-  
-  useEffect(() => {
-      setQuestionNumber(askedQuestionIds.size);
-  },[askedQuestionIds]);
+    initializeQuiz();
+    hideLoader();
+  }, [auth?.currentUser, firestore, category, selectNewQuestion, hideLoader]);
 
 
   const updateSeenQuestions = async (questionId: string) => {
@@ -94,7 +93,7 @@ export function QuizClient({ category }: { category: string }) {
       const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
       await updateDoc(userDocRef, {
         [`seenQuestions.${category}`]: arrayUnion(questionId),
-      });
+      }).catch(err => console.error("Error updating seen questions:", err));
     }
   };
 
@@ -110,6 +109,7 @@ export function QuizClient({ category }: { category: string }) {
       const newAskedIds = new Set(askedQuestionIds).add(currentQuestion.id);
       setAskedQuestionIds(newAskedIds);
       updateSeenQuestions(currentQuestion.id);
+      setQuestionNumber(newAskedIds.size);
 
       const audio = new Audio(selectedAnswer === currentQuestion.correctAnswer ? correctSoundBase64 : incorrectSoundBase64);
       audio.play();
@@ -121,16 +121,13 @@ export function QuizClient({ category }: { category: string }) {
           const newAskedIds = new Set(askedQuestionIds).add(currentQuestion.id);
           setAskedQuestionIds(newAskedIds);
           updateSeenQuestions(currentQuestion.id);
+          setQuestionNumber(newAskedIds.size);
+          
           setSelectedAnswer(null);
           setIsAnswered(false);
-          selectNewQuestion();
+          selectNewQuestion(newAskedIds);
       }
   };
-
-  useEffect(() => {
-    hideLoader();
-  }, [currentQuestion, hideLoader]);
-
 
   if (isLoading) {
     return (
