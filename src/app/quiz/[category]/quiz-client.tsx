@@ -36,6 +36,7 @@ interface QuizState {
   isAnswered: boolean;
   isFinished: boolean;
   isLoading: boolean;
+  questionNumber: number;
 }
 
 export function QuizClient({ category }: { category: string }) {
@@ -52,6 +53,7 @@ export function QuizClient({ category }: { category: string }) {
     isAnswered: false,
     isFinished: false,
     isLoading: true,
+    questionNumber: 0,
   });
 
   const categoryKey = useMemo(() => {
@@ -89,6 +91,8 @@ export function QuizClient({ category }: { category: string }) {
     const loadQuizData = async () => {
       if (isUserLoading) return;
 
+      setQuizState(prev => ({ ...prev, isLoading: true }));
+
       const categoryQuestions = (allQuestionsData as Question[]).filter(
         (q) => q.category.toLowerCase().replace(/ /g, '_') === categoryKey
       );
@@ -124,6 +128,7 @@ export function QuizClient({ category }: { category: string }) {
         isLoading: false,
         isAnswered: false,
         selectedAnswer: null,
+        questionNumber: initialSeenIds.size + 1,
       });
 
       hideLoader();
@@ -146,6 +151,7 @@ export function QuizClient({ category }: { category: string }) {
       selectedAnswer: null,
       isAnswered: false,
       isFinished: prevState.allCategoryQuestions.length > 0 && nextQuestion === null,
+      questionNumber: newSeenIds.size + 1,
     }));
   }, [quizState.currentQuestion, quizState.seenQuestionIds, quizState.allCategoryQuestions, updateSeenInStorage, selectNextQuestion]);
 
@@ -187,6 +193,7 @@ export function QuizClient({ category }: { category: string }) {
       isFinished: false,
       isAnswered: false,
       selectedAnswer: null,
+      questionNumber: 1,
     }));
   };
   
@@ -199,12 +206,11 @@ export function QuizClient({ category }: { category: string }) {
     isFinished,
     currentQuestion,
     allCategoryQuestions,
-    seenQuestionIds,
+    selectedAnswer,
     isAnswered,
-    selectedAnswer
+    questionNumber,
   } = quizState;
   
-  const questionNumber = seenQuestionIds.size + 1;
   const totalQuestions = allCategoryQuestions.length;
 
 
