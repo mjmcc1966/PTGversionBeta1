@@ -40,7 +40,7 @@ export function QuizClient({ category }: { category: string }) {
   const [score, setScore] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
   const [outOfQuestions, setOutOfQuestions] = useState(false);
-  const { hideLoader } = useLoading();
+  const { hideLoader, showLoader } = useLoading();
   const { user, firestore } = useFirebase();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -210,6 +210,11 @@ export function QuizClient({ category }: { category: string }) {
 
     if (askedQuestionIds.size + 1 >= allQuestions.length) {
         setTimeout(() => setQuizFinished(true), 3000);
+    } else {
+        // Automatically move to the next question after a delay
+        setTimeout(() => {
+            selectNewQuestion();
+        }, 3000); // 3-second delay
     }
   };
 
@@ -226,6 +231,7 @@ export function QuizClient({ category }: { category: string }) {
   };
 
   const handleResetQuiz = async () => {
+    showLoader();
     if (!user || !firestore) return;
     
     const userDocRef = doc(firestore, 'users', user.uid);
@@ -239,8 +245,8 @@ export function QuizClient({ category }: { category: string }) {
     setScore(0);
     setOutOfQuestions(false);
     setQuizFinished(false);
-    setCurrentQuestion(null); 
-    // This will trigger the useEffect to select a new question
+    setCurrentQuestion(null);
+    hideLoader();
   };
   
   if (questionsLoading) {
@@ -402,8 +408,7 @@ export function QuizClient({ category }: { category: string }) {
               <h3 className="font-bold text-lg flex items-center gap-2 text-primary"><Lightbulb/> Explanation</h3>
               <p className="mt-2 text-foreground/80">{currentQuestion.explanation}</p>
             </div>
-            <div className="flex w-full justify-between items-center gap-2">
-                <Button onClick={selectNewQuestion}>Next Question</Button>
+            <div className="flex w-full justify-end items-center gap-2">
                 <Link href="/home" passHref>
                     <Button asChild variant="outline" className="w-full md:w-auto">
                         <a>Home</a>
@@ -416,5 +421,3 @@ export function QuizClient({ category }: { category: string }) {
     </>
   );
 }
-
-    
