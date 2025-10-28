@@ -69,29 +69,33 @@ export function QuizClient({ category }: { category: string }) {
     );
   }, [categoryKey]);
 
-  const loadAndSelectQuestion = useCallback(async () => {
-    setQuizState(prevState => ({ ...prevState, isLoading: true }));
-    let initialSeenIds = new Set<string>();
-    if (auth?.currentUser && firestore) {
-      try {
-        const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
-        const userDoc = await getDoc(userDocRef);
-        if (userDoc.exists()) {
-          const userData = userDoc.data();
-          const seenForCategory = userData.seenQuestions?.[category] || [];
-          initialSeenIds = new Set(seenForCategory);
+  const loadAndSelectQuestion = useCallback(async (currentSeenIds: Set<string>) => {
+    setQuizState(prevState => ({ ...prevState, isLoading: true, isAnswered: false, selectedAnswer: null }));
+    
+    let seenIds = currentSeenIds;
+    // On initial load, fetch from DB/session
+    if (currentSeenIds.size === 0) {
+      if (auth?.currentUser && firestore) {
+        try {
+          const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
+          const userDoc = await getDoc(userDocRef);
+          if (userDoc.exists()) {
+            const userData = userDoc.data();
+            const seenForCategory = userData.seenQuestions?.[category] || [];
+            seenIds = new Set(seenForCategory);
+          }
+        } catch (error) {
+          console.error("Error fetching user progress:", error);
         }
-      } catch (error) {
-        console.error("Error fetching user progress:", error);
-      }
-    } else {
-      const sessionSeen = sessionStorage.getItem(`seen_${category}`);
-      if (sessionSeen) {
-        initialSeenIds = new Set(JSON.parse(sessionSeen));
+      } else {
+        const sessionSeen = sessionStorage.getItem(`seen_${category}`);
+        if (sessionSeen) {
+          seenIds = new Set(JSON.parse(sessionSeen));
+        }
       }
     }
 
-    const availableQuestions = filteredQuestions.filter(q => !initialSeenIds.has(q.id));
+    const availableQuestions = filteredQuestions.filter(q => !seenIds.has(q.id));
 
     if (availableQuestions.length > 0) {
       const randomIndex = Math.floor(Math.random() * availableQuestions.length);
@@ -104,9 +108,9 @@ export function QuizClient({ category }: { category: string }) {
         selectedAnswer: null,
         isAnswered: false,
         showAllAnsweredScreen: false,
-        questionNumber: initialSeenIds.size + 1,
+        questionNumber: seenIds.size + 1,
         totalQuestions: filteredQuestions.length,
-        seenQuestionIds: initialSeenIds,
+        seenQuestionIds: seenIds,
       });
     } else {
       setQuizState(prevState => ({
@@ -114,17 +118,18 @@ export function QuizClient({ category }: { category: string }) {
         isLoading: false,
         currentQuestion: null,
         showAllAnsweredScreen: filteredQuestions.length > 0,
-        questionNumber: initialSeenIds.size,
+        questionNumber: seenIds.size,
         totalQuestions: filteredQuestions.length,
-        seenQuestionIds: initialSeenIds,
+        seenQuestionIds: seenIds,
       }));
     }
     hideLoader();
   }, [auth, firestore, category, filteredQuestions, hideLoader]);
 
   useEffect(() => {
-    loadAndSelectQuestion();
-  }, [loadAndSelectQuestion]);
+    loadAndSelectQuestion(new Set());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const updateSeenQuestionsInDB = async (questionId: string) => {
     if (auth?.currentUser && firestore) {
@@ -154,22 +159,23 @@ export function QuizClient({ category }: { category: string }) {
       
       const newSeenIds = new Set(quizState.seenQuestionIds).add(quizState.currentQuestion.id);
       
+      await updateSeenQuestionsInDB(quizState.currentQuestion.id);
+
       setQuizState(prevState => ({
           ...prevState,
           isAnswered: true,
           seenQuestionIds: newSeenIds
       }));
-
-      await updateSeenQuestionsInDB(quizState.currentQuestion.id);
     }
   };
   
-  const handleSkipQuestion = () => {
+  const handleSkipQuestion = async () => {
     if (quizState.currentQuestion) {
-        updateSeenQuestionsInDB(quizState.currentQuestion.id);
+      const newSeenIds = new Set(quizState.seenQuestionIds).add(quizState.currentQuestion.id);
+      await updateSeenQuestionsInDB(quizState.currentQuestion.id);
+      showLoader();
+      loadAndSelectQuestion(newSeenIds);
     }
-    showLoader();
-    loadAndSelectQuestion();
   };
 
   const handleGoHome = () => {
@@ -190,9 +196,8 @@ export function QuizClient({ category }: { category: string }) {
     } else {
         sessionStorage.removeItem(`seen_${category}`);
     }
-    setQuizState(prevState => ({ ...prevState, seenQuestionIds: new Set() }));
     showLoader();
-    loadAndSelectQuestion();
+    loadAndSelectQuestion(new Set());
   };
 
   const handleBuyExpansion = () => {
@@ -354,5 +359,3 @@ export function QuizClient({ category }: { category: string }) {
     </div>
   );
 }
-
-    
