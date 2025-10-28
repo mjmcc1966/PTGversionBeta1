@@ -185,9 +185,9 @@ export function QuizClient({ category }: { category: string }) {
     setAskedQuestionIds(prev => {
         const newAskedQuestionIds = new Set(prev);
         newAskedQuestionIds.add(questionId);
-        setQuestionNumber(newAskedQuestionIds.size);
         return newAskedQuestionIds;
     });
+    setQuestionNumber(prev => prev + 1);
     await updateSeenQuestionsInFirestore(questionId);
   };
 
@@ -345,7 +345,7 @@ export function QuizClient({ category }: { category: string }) {
     return "bg-card/50 border-primary/10 text-muted-foreground";
   };
   
-  const progress = allQuestions && allQuestions.length > 0 ? (questionNumber / allQuestions.length) * 100 : 0;
+  const progress = allQuestions && allQuestions.length > 0 ? ((askedQuestionIds.size) / allQuestions.length) * 100 : 0;
 
 
   return (
@@ -359,7 +359,7 @@ export function QuizClient({ category }: { category: string }) {
         <CardHeader>
           <div className="mb-4">
             <Progress value={progress} className="h-2" />
-            <p className="text-sm text-muted-foreground mt-2 text-center">Question {questionNumber} of {allQuestions?.length}</p>
+            <p className="text-sm text-muted-foreground mt-2 text-center">Question {questionNumber + 1} of {allQuestions?.length}</p>
           </div>
           {currentQuestion.imageUrl && (
             <div className="relative w-full h-64 mb-4 rounded-lg overflow-hidden">
