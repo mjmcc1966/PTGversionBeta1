@@ -50,10 +50,10 @@ export function QuizClient({ category }: { category: string }) {
 
   const categoryKey = useMemo(() => category.replace(/-/g, '_'), [category]);
 
-  const selectNewQuestion = useCallback(() => {
+  const selectNewQuestion = useCallback((initialAskedIds: Set<string>) => {
     if (questionsLoading || !allQuestions || allQuestions.length === 0) return;
-  
-    const availableQuestions = allQuestions.filter(q => !askedQuestionIds.has(q.id));
+
+    const availableQuestions = allQuestions.filter(q => !initialAskedIds.has(q.id));
     
     if (availableQuestions.length === 0 && allQuestions.length > 0) {
       setOutOfQuestions(true);
@@ -68,9 +68,9 @@ export function QuizClient({ category }: { category: string }) {
     setSelectedAnswer(null);
     setSubmitted(false);
     setIsCorrect(null);
-    setQuestionNumber(prev => prev + 1);
+    setQuestionNumber(initialAskedIds.size + 1);
 
-  }, [allQuestions, askedQuestionIds, questionsLoading]);
+  }, [allQuestions, questionsLoading]);
 
   
   useEffect(() => {
@@ -104,41 +104,33 @@ export function QuizClient({ category }: { category: string }) {
 
   useEffect(() => {
     const fetchProgressAndStart = async () => {
-      if (!isUserLoading && !questionsLoading) {
-        let initialSeenIds = new Set<string>();
-        if (user && firestore) {
-          const userDocRef = doc(firestore, 'users', user.uid);
-          try {
-            const docSnap = await getDoc(userDocRef);
-            if (docSnap.exists()) {
-              const userData = docSnap.data();
-              initialSeenIds = new Set(userData.seenQuestions?.[categoryKey] || []);
-            } else {
-              await setDoc(userDocRef, { seenQuestions: {} }, { merge: true });
-            }
-          } catch (error) {
-            console.error("Error fetching seen questions:", error);
+      if (isUserLoading || questionsLoading) return;
+
+      let initialSeenIds = new Set<string>();
+      if (user && firestore && categoryKey !== 'custom_trivia') {
+        const userDocRef = doc(firestore, 'users', user.uid);
+        try {
+          const docSnap = await getDoc(userDocRef);
+          if (docSnap.exists()) {
+            const userData = docSnap.data();
+            initialSeenIds = new Set(userData.seenQuestions?.[categoryKey] || []);
+          } else {
+            await setDoc(userDocRef, { seenQuestions: {} }, { merge: true });
           }
+        } catch (error) {
+          console.error("Error fetching seen questions:", error);
         }
-        setAskedQuestionIds(initialSeenIds);
-        setQuestionNumber(initialSeenIds.size);
-        
-        // Now that progress is loaded, select the first question.
-        const availableQuestions = allQuestions.filter(q => !initialSeenIds.has(q.id));
-        if (availableQuestions.length === 0 && allQuestions.length > 0) {
-          setOutOfQuestions(true);
-          setQuizFinished(true);
-        } else if (availableQuestions.length > 0) {
-          const randomIndex = Math.floor(Math.random() * availableQuestions.length);
-          const newQuestion = availableQuestions[randomIndex];
-          setCurrentQuestion(newQuestion);
-          setQuestionNumber(initialSeenIds.size + 1); // Set counter for the new question
-        }
+      } else if (categoryKey === 'custom_trivia') {
+        // Handle custom trivia progress if stored locally, or start fresh
       }
+
+      setAskedQuestionIds(initialSeenIds);
+      // Now that progress is loaded, select the first question.
+      selectNewQuestion(initialSeenIds);
     };
   
     fetchProgressAndStart();
-  }, [isUserLoading, user, firestore, questionsLoading, categoryKey, allQuestions]);
+  }, [isUserLoading, user, firestore, questionsLoading, categoryKey, allQuestions, selectNewQuestion]);
 
 
   const { correctAnswerSound, incorrectAnswerSound } = useMemo(() => {
@@ -215,6 +207,8 @@ export function QuizClient({ category }: { category: string }) {
     if (categoryKey !== 'custom_trivia') {
       await updateSeenQuestionsInFirestore(questionId);
     }
+    
+    return newAskedQuestionIds;
   };
 
 
@@ -237,9 +231,9 @@ export function QuizClient({ category }: { category: string }) {
     }
     
     setSubmitted(true);
-    await markQuestionAsSeen(currentQuestion.id);
+    const newAskedIds = await markQuestionAsSeen(currentQuestion.id);
 
-    if (askedQuestionIds.size + 1 >= allQuestions.length) {
+    if (newAskedIds.size >= allQuestions.length) {
       setQuizFinished(true);
     }
   };
@@ -247,11 +241,11 @@ export function QuizClient({ category }: { category: string }) {
   const handleSkipQuestion = async () => {
     if (!currentQuestion || !allQuestions) return;
     
-    await markQuestionAsSeen(currentQuestion.id);
-    if (askedQuestionIds.size + 1 >= allQuestions.length) {
+    const newAskedIds = await markQuestionAsSeen(currentQuestion.id);
+    if (newAskedIds.size >= allQuestions.length) {
         setQuizFinished(true);
     } else {
-        selectNewQuestion();
+        selectNewQuestion(newAskedIds);
     }
   };
 
@@ -283,7 +277,7 @@ export function QuizClient({ category }: { category: string }) {
     window.location.reload();
   };
   
-  if (questionsLoading || isUserLoading || !currentQuestion && !quizFinished) {
+  if (isUserLoading || questionsLoading || (!currentQuestion && !quizFinished)) {
     return (
         <Card className="w-full max-w-2xl shadow-lg">
             <CardHeader>
@@ -377,7 +371,7 @@ export function QuizClient({ category }: { category: string }) {
     return "bg-card/50 border-primary/10 text-muted-foreground";
   };
   
-  const progress = allQuestions && allQuestions.length > 0 ? ((questionNumber -1) / allQuestions.length) * 100 : 0;
+  const progress = allQuestions && allQuestions.length > 0 ? (questionNumber / allQuestions.length) * 100 : 0;
 
 
   return (
