@@ -1,4 +1,3 @@
-
 [
   {
     "id": "1",
@@ -219,9 +218,9 @@
       "If you do not have the required amount of votes or cash, then proceed as follows:",
       "If, as an example, you are to give back 12 Electoral Votes, and you cannot exactly match that number, then you must give back at least that number, even if it means you lose significantly more Electoral Votes than the card instructed. (The EV chip(s) get placed back on their respective state(s) and is/are up for grabs again.)",
       "If you do not have at least the number needed, then you must pay $1 million cash for each Electoral Vote you do not have. If you don’t have enough cash, then back to DC you go to collect your $10 million with each missed turn!",
-      "If you are to give up votes and you actually have at least some votes to give, you CANNOT buy your way out of giving up Electoral Votes. Meaning, if you need to give up 12 votes, and you have at least 12 votes, then you MUST give them up. If you only have 10 votes, then you must give them up AND pay the remaining $2 million cash penalty (for the 2 EVs you did not have).",
+      "If you are to give up votes and you have at least some votes to give, you CANNOT buy your way out of giving up Electoral Votes. Meaning, if you need to give up 12 votes, and you have at least 12 votes, then you MUST give them up. If you only have 10 votes, then you must give them up AND pay the remaining $2 million cash penalty (for the 2 EVs you did not have).",
       "The same rules apply to giving up Popular Votes ($1 million will buy you 1 million PVs)",
       "If you don’t have enough cash for the Wildcard, then you place yourself in D.C. and collect $10 million for each missed turn (up to the maximum of 4 in a row). All debts must be paid before throwing the dice and moving out of D.C."
     ]
   }
-]
+
