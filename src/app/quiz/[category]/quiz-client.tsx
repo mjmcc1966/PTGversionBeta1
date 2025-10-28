@@ -8,7 +8,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
-import { CheckCircle, XCircle, Trophy, Lightbulb, Hourglass, Home, ArrowRight } from 'lucide-react';
+import { CheckCircle, XCircle, Trophy, Lightbulb, Hourglass, Home } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useLoading } from '@/app/context/loading-context';
@@ -41,7 +41,7 @@ export function QuizClient({ category }: { category: string }) {
   const [outOfQuestions, setOutOfQuestions] = useState(false);
   const [questionNumber, setQuestionNumber] = useState(0);
   const { hideLoader, showLoader } = useLoading();
-  const { user, firestore } = useFirebase();
+  const { user, firestore, isUserLoading } = useFirebase();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -64,22 +64,28 @@ export function QuizClient({ category }: { category: string }) {
   const fetchAskedQuestionIds = useCallback(async () => {
     if (user && firestore) {
       const userDocRef = doc(firestore, 'users', user.uid);
-      const docSnap = await getDoc(userDocRef);
-      if (docSnap.exists()) {
-        const userData = docSnap.data();
-        const seenForCategory = userData.seenQuestions?.[categoryKey] || [];
-        setAskedQuestionIds(new Set(seenForCategory));
-      } else {
-        await setDoc(userDocRef, { seenQuestions: {} }, { merge: true });
+      try {
+        const docSnap = await getDoc(userDocRef);
+        if (docSnap.exists()) {
+          const userData = docSnap.data();
+          const seenForCategory = userData.seenQuestions?.[categoryKey] || [];
+          setAskedQuestionIds(new Set(seenForCategory));
+        } else {
+          await setDoc(userDocRef, { seenQuestions: {} }, { merge: true });
+          setAskedQuestionIds(new Set());
+        }
+      } catch (error) {
+        console.error("Error fetching seen questions:", error);
         setAskedQuestionIds(new Set());
       }
     }
   }, [user, firestore, categoryKey]);
 
-
   useEffect(() => {
-    fetchAskedQuestionIds();
-  }, [fetchAskedQuestionIds]);
+    if (!isUserLoading && user) {
+        fetchAskedQuestionIds();
+    }
+  }, [isUserLoading, user, fetchAskedQuestionIds]);
 
 
   const { correctAnswerSound, incorrectAnswerSound } = useMemo(() => {
@@ -119,13 +125,12 @@ export function QuizClient({ category }: { category: string }) {
     setIntervalId(newIntervalId);
   };
 
-
   const selectNewQuestion = useCallback(() => {
-    if (questionsLoading || !allQuestions || allQuestions.length === 0) return;
-
+    if (questionsLoading || !allQuestions || allQuestions.length === 0 || isUserLoading) return;
+  
     const availableQuestions = allQuestions.filter(q => !askedQuestionIds.has(q.id));
     
-    if (availableQuestions.length === 0) {
+    if (availableQuestions.length === 0 && allQuestions.length > 0) {
       setOutOfQuestions(true);
       setQuizFinished(true);
       return;
@@ -140,14 +145,13 @@ export function QuizClient({ category }: { category: string }) {
     setIsCorrect(null);
     setQuestionNumber(askedQuestionIds.size + 1);
 
-  }, [allQuestions, askedQuestionIds, questionsLoading]);
-
+  }, [allQuestions, askedQuestionIds, questionsLoading, isUserLoading]);
 
   useEffect(() => {
-    if (!questionsLoading && !currentQuestion && !quizFinished) {
+    if (!questionsLoading && allQuestions.length > 0 && !currentQuestion && !quizFinished && !isUserLoading) {
       selectNewQuestion();
     }
-  }, [questionsLoading, currentQuestion, selectNewQuestion, quizFinished]);
+  }, [questionsLoading, allQuestions, currentQuestion, selectNewQuestion, quizFinished, askedQuestionIds, isUserLoading]);
 
   const shuffledOptions = useMemo(() => {
     if (!currentQuestion) return [];
@@ -211,6 +215,10 @@ export function QuizClient({ category }: { category: string }) {
 
     if (askedQuestionIds.size + 1 >= allQuestions.length) {
         setTimeout(() => setQuizFinished(true), 3000);
+    } else {
+       setTimeout(() => {
+            selectNewQuestion();
+       }, 3000);
     }
   };
   
@@ -252,7 +260,7 @@ export function QuizClient({ category }: { category: string }) {
     hideLoader();
   };
   
-  if (questionsLoading) {
+  if (questionsLoading || isUserLoading) {
     return (
         <Card className="w-full max-w-2xl shadow-lg">
             <CardHeader>
