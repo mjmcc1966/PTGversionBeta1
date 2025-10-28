@@ -8,7 +8,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
-import { CheckCircle, XCircle, Trophy, Lightbulb, Hourglass } from 'lucide-react';
+import { CheckCircle, XCircle, Trophy, Lightbulb, Hourglass, Home } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useLoading } from '@/app/context/loading-context';
@@ -208,25 +208,25 @@ export function QuizClient({ category }: { category: string }) {
 
     await markQuestionAsSeen(currentQuestion.id);
 
-    if (askedQuestionIds.size >= allQuestions.length) {
+    if (askedQuestionIds.size + 1 >= allQuestions.length) {
         setTimeout(() => setQuizFinished(true), 3000);
     }
   };
 
-  const handleSkipQuestion = async () => {
+  const handleSkipQuestion = () => {
     if (!currentQuestion || !allQuestions) return;
-    await markQuestionAsSeen(currentQuestion.id);
+    
+    const newAskedQuestionIds = new Set(askedQuestionIds);
+    newAskedQuestionIds.add(currentQuestion.id);
+    setAskedQuestionIds(newAskedQuestionIds);
 
-    if (askedQuestionIds.size + 1 >= allQuestions.length) {
-      setQuizFinished(true);
-    } else {
-      selectNewQuestion();
-    }
-  };
-
-  const handleNextQuestion = () => {
-    if (quizFinished) return;
-    selectNewQuestion();
+    updateSeenQuestionsInFirestore(currentQuestion.id).then(() => {
+        if (newAskedQuestionIds.size >= allQuestions.length) {
+            setQuizFinished(true);
+        } else {
+            selectNewQuestion();
+        }
+    });
   };
 
   const handleResetQuiz = async () => {
@@ -343,7 +343,7 @@ export function QuizClient({ category }: { category: string }) {
   };
   
   const progress = allQuestions && allQuestions.length > 0 ? (askedQuestionIds.size / allQuestions.length) * 100 : 0;
-  const questionNumber = askedQuestionIds.size + 1;
+  const questionNumber = askedQuestionIds.size + (submitted ? 0 : 1);
 
 
   return (
@@ -407,16 +407,9 @@ export function QuizClient({ category }: { category: string }) {
               <h3 className="font-bold text-lg flex items-center gap-2 text-primary"><Lightbulb/> Explanation</h3>
               <p className="mt-2 text-foreground/80">{currentQuestion.explanation}</p>
             </div>
-            <div className="flex w-full justify-between items-center gap-2">
-               <Button onClick={handleNextQuestion}>
-                Next Question
-              </Button>
-              <Link href="/home" passHref>
-                  <Button asChild variant="outline">
-                      <a>Home</a>
-                  </Button>
-              </Link>
-            </div>
+            <Button asChild variant="outline">
+              <Link href="/home"><Home className="mr-2 h-5 w-5"/>Home</Link>
+            </Button>
           </CardFooter>
         )}
       </Card>
