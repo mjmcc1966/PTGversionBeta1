@@ -213,12 +213,8 @@ export function QuizClient({ category }: { category: string }) {
     setSubmitted(true);
     await markQuestionAsSeen(currentQuestion.id);
 
-    if (askedQuestionIds.size + 1 >= allQuestions.length) {
+    if (askedQuestionIds.size >= allQuestions.length) {
         setTimeout(() => setQuizFinished(true), 3000);
-    } else {
-       setTimeout(() => {
-            selectNewQuestion();
-       }, 3000);
     }
   };
   
@@ -226,7 +222,7 @@ export function QuizClient({ category }: { category: string }) {
     if (!currentQuestion || !allQuestions) return;
     
     await markQuestionAsSeen(currentQuestion.id);
-    if (askedQuestionIds.size + 1 >= allQuestions.length) {
+    if (askedQuestionIds.size >= allQuestions.length) {
         setQuizFinished(true);
     } else {
         selectNewQuestion();
