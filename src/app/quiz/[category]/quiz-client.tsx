@@ -59,6 +59,7 @@ export function QuizClient({ category }: { category: string }) {
           const userData = docSnap.data();
           const seenForCategory = userData.seenQuestions?.[categoryKey] || [];
           setAskedQuestionIds(new Set(seenForCategory));
+          // Set the initial question number based on seen questions
           setQuestionNumber(seenForCategory.length);
         } else {
           await setDoc(userDocRef, { seenQuestions: {} }, { merge: true });
@@ -164,21 +165,25 @@ export function QuizClient({ category }: { category: string }) {
     setSelectedAnswer(null);
     setSubmitted(false);
     setIsCorrect(null);
+    // Increment counter as soon as the question is displayed
     setQuestionNumber(prev => prev + 1);
 
   }, [allQuestions, askedQuestionIds, questionsLoading, isUserLoading]);
 
   useEffect(() => {
+    // This effect now only triggers the very first question selection.
     if (!questionsLoading && allQuestions.length > 0 && !currentQuestion && !quizFinished && !isUserLoading) {
       if (user) {
+        // Wait for seen questions to load, then select a question
         fetchAskedQuestionIds().then(() => {
             selectNewQuestion();
         });
-      } else if (!isUserLoading) {
+      } else if (!isUserLoading) { // If no user, just select a question
          selectNewQuestion();
       }
     }
-  }, [questionsLoading, allQuestions, currentQuestion, selectNewQuestion, quizFinished, isUserLoading, user, fetchAskedQuestionIds]);
+  }, [questionsLoading, allQuestions.length, currentQuestion, quizFinished, isUserLoading, user, fetchAskedQuestionIds, selectNewQuestion]);
+
 
   const shuffledOptions = useMemo(() => {
     if (!currentQuestion) return [];
@@ -254,6 +259,7 @@ export function QuizClient({ category }: { category: string }) {
     if (askedQuestionIds.size + 1 >= allQuestions.length) {
         setQuizFinished(true);
     } else {
+        // We select a new question, which will increment the counter
         selectNewQuestion();
     }
   };
@@ -282,7 +288,7 @@ export function QuizClient({ category }: { category: string }) {
     setOutOfQuestions(false);
     setQuizFinished(false);
     setCurrentQuestion(null);
-    setQuestionNumber(0);
+    setQuestionNumber(0); // Reset counter to 0 before selecting the first new question
     selectNewQuestion();
     hideLoader();
   };
@@ -432,9 +438,7 @@ export function QuizClient({ category }: { category: string }) {
         {!submitted ? (
           <CardFooter className="flex justify-between gap-2">
             <div className="flex items-center gap-2">
-              <Button variant="outline" onClick={() => {
-                handleSkipQuestion();
-              }}>Skip Question</Button>
+              <Button variant="outline" onClick={handleSkipQuestion}>Skip Question</Button>
               {selectedAnswer && <Button onClick={handleSubmitAnswer}>Submit Answer</Button>}
             </div>
             <Button onClick={startTimer} variant="ghost" size="icon" className="bg-green-500 hover:bg-green-600 text-white rounded-full">
@@ -456,3 +460,5 @@ export function QuizClient({ category }: { category: string }) {
     </>
   );
 }
+
+    
