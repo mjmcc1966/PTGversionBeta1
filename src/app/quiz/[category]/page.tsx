@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { QuizClient } from './quiz-client';
+import { QuizLoader } from './quiz-loader';
 
 export function generateStaticParams() {
   return [
@@ -13,9 +13,14 @@ export function generateStaticParams() {
   ];
 }
 
-// No longer needs to be async
-function QuizPage({ params }: { params: { category: string } }) {
-  // params is a direct object, not a promise. No await needed.
+// Define a more specific type for the component's props
+type QuizPageProps = {
+  params: {
+    category: string;
+  };
+};
+
+async function QuizPage({ params }: QuizPageProps) {
   const categoryName = decodeURIComponent(params.category).replace(/-/g, ' ');
 
   return (
@@ -32,7 +37,7 @@ function QuizPage({ params }: { params: { category: string } }) {
         </h1>
         <p className="text-muted-foreground text-lg">Test Your Knowledge</p>
       </div>
-      <QuizClient category={params.category} />
+      <QuizLoader category={params.category} />
     </main>
   );
 }
