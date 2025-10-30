@@ -2,7 +2,8 @@
 import Link from 'next/link';
 import { Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { QuizLoader } from './quiz-loader';
+import dynamic from 'next/dynamic';
+import React from 'react';
 
 export function generateStaticParams() {
   return [
@@ -12,6 +13,17 @@ export function generateStaticParams() {
     { category: 'custom-trivia' },
   ];
 }
+
+// Dynamically import the QuizClient component directly in the page
+const QuizClient = dynamic(() => import('./quiz-client').then(mod => mod.QuizClient), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full max-w-2xl mx-auto text-center">
+      <p className="text-lg text-muted-foreground">Loading Quiz...</p>
+    </div>
+  ),
+});
+
 
 // Define a more specific type for the component's props
 type QuizPageProps = {
@@ -37,7 +49,8 @@ async function QuizPage({ params }: QuizPageProps) {
         </h1>
         <p className="text-muted-foreground text-lg">Test Your Knowledge</p>
       </div>
-      <QuizLoader category={params.category} />
+      {/* Use the dynamically loaded component directly */}
+      <QuizClient category={params.category} />
     </main>
   );
 }

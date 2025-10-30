@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAuth, useFirestore } from '@/firebase';
+import { useAuth, useFirestore, useFunctions } from '@/firebase';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -10,6 +10,7 @@ import {
   AuthErrorCodes,
 } from 'firebase/auth';
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { httpsCallable } from 'firebase/functions';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -25,11 +26,13 @@ import { Label } from '@/components/ui/label';
 export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [activationCode, setActivationCode] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const router = useRouter();
   const auth = useAuth();
   const db = useFirestore();
+  const functions = useFunctions();
 
   const handleLogout = async () => {
     if (!auth) return;
@@ -46,31 +49,38 @@ export default function Register() {
   const handleRegister = async () => {
     setError(null);
     setMessage(null);
-    if (!auth || !db) {
+    if (!auth || !db || !functions) {
       setError('Firebase services are not available.');
       return;
     }
-    if (!email || !password) {
-      setError('Email and password are required.');
+    if (!email || !password || !activationCode) {
+      setError('Email, password, and activation code are required.');
       return;
     }
 
     try {
+      const verifyActivationCode = httpsCallable(functions, 'verifyActivationCode');
+      await verifyActivationCode({ code: activationCode });
+
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
+
+      const updateActivationCodeOnRegister = httpsCallable(functions, 'updateActivationCodeOnRegister');
+      await updateActivationCodeOnRegister({ code: activationCode, userId: user.uid });
 
       await setDoc(
         doc(db, 'users', user.uid),
         {
           email,
           createdAt: serverTimestamp(),
+          activationCode,
         },
         { merge: true }
       );
 
       router.push('/'); 
-    } catch (registerError: any) {
-       if (registerError.code === AuthErrorCodes.EMAIL_EXISTS) {
+    } catch (error: any) {
+       if (error.code === 'auth/email-already-in-use') {
          try {
            await signInWithEmailAndPassword(auth, email, password);
            router.push('/');
@@ -78,7 +88,7 @@ export default function Register() {
            setError(loginError.message);
          }
        } else {
-         setError(registerError.message);
+         setError(error.message);
        }
     }
   };
@@ -130,6 +140,16 @@ export default function Register() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="activation-code">Activation Code</Label>
+            <Input
+              id="activation-code"
+              type="text"
+              value={activationCode}
+              onChange={(e) => setActivationCode(e.target.value)}
+              placeholder="Enter your 16-digit code"
             />
           </div>
           {error && <p className="text-red-500 text-sm">{error}</p>}

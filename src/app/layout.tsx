@@ -2,9 +2,7 @@
 import type {Metadata} from 'next';
 import { Toaster } from "@/components/ui/toaster"
 import './globals.css';
-import { LoadingProvider } from '@/app/context/loading-context';
-import { FirebaseClientProvider } from '@/firebase/client-provider';
-import AuthGate from '@/components/AuthGate';
+import { Providers } from './providers'; // Import the new Providers component
 
 export const metadata: Metadata = {
   title: 'PTG - Personal Trivia Game',
@@ -24,13 +22,8 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased h-full">
-        <LoadingProvider>
-          <FirebaseClientProvider>
-            <AuthGate>
-              {children}
-            </AuthGate>
-          </FirebaseClientProvider>
-        </LoadingProvider>
+        {/* Use the new Providers component to wrap the children */}
+        <Providers>{children}</Providers>
         <Toaster />
       </body>
     </html>

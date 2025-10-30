@@ -1,0 +1,11 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/favicon.ico/route": "/favicon.ico",
+  "/admin/page": "/admin",
+  "/home/page": "/home",
+  "/page": "/",
+  "/register/page": "/register",
+  "/rules/page": "/rules",
+  "/wildcard/page": "/wildcard",
+  "/quiz/[category]/page": "/quiz/[category]"
+}

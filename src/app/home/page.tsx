@@ -1,13 +1,21 @@
+
 'use client';
 
 import Link from 'next/link';
+import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Brain, Map, Scale, HelpCircle, Shuffle, Home as HomeIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { useLoading } from '@/app/context/loading-context';
 
 export default function HomePage() {
   const router = useRouter();
+  const { hideLoader } = useLoading();
+
+  useEffect(() => {
+    hideLoader();
+  }, [hideLoader]);
 
   const categories = [
     { name: (<div>General Trivia<br />$10,000,000</div>), href: '/quiz/general_trivia', icon: <Brain className="w-6 h-6" /> },

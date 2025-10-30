@@ -1,0 +1,260 @@
+
+const admin = require('firebase-admin');
+
+// --- IMPORTANT ---
+// This script is configured to use the service account key located at:
+// ../serviceAccountKey.json
+// Ensure this file exists in your project's root directory before running.
+
+const serviceAccount = require('../serviceAccountKey.json');
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
+const db = admin.firestore();
+
+const rulesData = [
+  {
+    "id": "1",
+    "title": "Politics: The Game - The Rules",
+    "content": [
+      "Congratulations, you’ve decided to run for President! Just like in real life, it will take lots of votes. But in our game, we’ve improved upon democracy as currently practiced - you will need at least 270 Electoral Votes AS WELL AS the most Popular Votes to win. And you will also need money. Lots of money. Because what good is democracy if you can’t buy it? There will be scandals and setbacks, alliances made, alliances broken. Being the smartest candidate and having strong ethics may not be as important as being tactically shrewd and just a wee bit morally bereft. So tuck your scruples away, put on your best fake smile and see if you have what it takes to win the race to the White House!"
+    ]
+  },
+  {
+    "id": "2",
+    "title": "PARTS OF THE GAME",
+    "content": [
+      "Game board (1)          Dice (2)                Game pieces (8)",
+      "Gerrymander cards (35)        Scoring sheets (100)        Cash (420 total)"
+    ]
+  },
+  {
+    "id": "3",
+    "title": "BIG PICTURE",
+    "content": [
+      "1. Spin the dice and move your game piece",
+      "2. Choose a question type and answer it correctly to win either cash, Popular Votes or Electoral Votes",
+      "3. The first candidate/team to get at least 270 Electoral Votes AND the most Popular Votes wins!",
+      "Now for the details..."
+    ]
+  },
+  {
+    "id": "4",
+    "title": "GAME SET UP",
+    "content": [
+      "• If you have not already done so, download the free app (from the AppStore or Google Play). To register, you will need to enter your first name, a valid email address, and your unique 16 digit code (found inside the box lid) to activate the app. The app will provide you with over 1,000 questions in the three categories (State, General and Political Trivia questions).",
+      "• Please enter your email carefully, as this is how you will be notified of any updates to the game, and it will also be how you receive expansion packs (should you choose to buy any).",
+      "• You will never see a given question twice, and the order of questions (and answers) will be randomized.",
+      "• Your 16-digit code can be used 5 times. Once a given device (phone, iPad, tablet, etc) is activated, it will remain activated and will not need to have the code entered again.",
+      "• You can share the code with whomever you like, but remember the limit of 5 activations!",
+      "• Keep in mind that each time your code is used, regardless on which device, it will pick up where you left off. As an example, if you have used 50 of the General Trivia questions, then the next time the app is opened with your code, those 50 questions will already be used and will not be seen again. This means that if someone else is using your code, they could use up all of your questions. (But you have options when you reach that point - see below)",
+      "• Place the 50 Electoral Vote chips, each labeled with the state abbreviation and number of Electoral Votes, in their appropriate state on the game board.",
+      "• Each candidate/team chooses a game piece and gets $10 million (ten $1 million bills) to start their candidacy.",
+      "• Choose one candidate to be the Speaker of the House, who will be in charge of general game flow, controlling the bank, and generally making sure the rules are followed."
+    ]
+  },
+  {
+    "id": "5",
+    "title": "GENERAL GAME PLAY",
+    "content": [
+      "1. Gerrymander cards should be shuffled, and each candidate/team should be dealt 3 cards. Choose 2 cards and return the 3rd one to the deck. The deck then gets placed face-down on the Gerrymander card space on the board. Read the <a href=\"#10\">details on Gerrymander cards</a> below.",
+      "2. Next, each candidate/team rolls the 2 dice.",
+      "3. The candidate/team with the highest roll gets to choose their starting state. Place your game piece in that state. The next highest roll then chooses their home state, and so on. There can only be one candidate/team per state to start the game. No candidate/team may choose D.C. as their home state.",
+      "4. The candidate/team with the lowest roll from above goes first. Play then proceeds counterclockwise (to your right)."
+    ]
+  },
+  {
+    "id": "6",
+    "title": "When it’s your turn to roll, you have two options:",
+    "content": [
+      "• <b>Option 1:</b> Before rolling the dice, you can fly to any other state, at a cost of $2 million (payable to the bank). If you use this option, your turn is over once you land in that new state.",
+      "• <b>Option 2:</b> Roll the dice and move the indicated number of places. If you roll doubles (two 1s, two 2s, etc), then BEFORE you move your piece, you must choose the top Wildcard from the stack and do whatever is indicated on that card. (See the section on Wildcards for more details)",
+      "• You may move in any direction, into any state adjoining the state you are in, but you may NOT end up in the same state in which you started your turn. (You may, however, pass through your starting state on the way to another state.)",
+      "• Once you finish moving, you may then choose either a General or State trivia question for free. For Government trivia, you must pay $2 million to the bank before being asked the question. Whichever question type you choose, one of the other candidates will ask you the question from the app and read you the multiple choice answers. You have the OPTION of clicking the hourglass icon to activate a 2:00 minute countdown timer.",
+      "• If you know the correct answer, then go for it! If correct, you get the specified reward",
+      "• If you are not sure of the answer, you can get help from one of the other candidates. Any candidate can offer you help. They can do this out of the goodness of their hearts (bless their naive souls!), or they can demand a payment (votes and/or cash, or feel free to get creative…). It’s up to you to decide if you can afford their price; if you trust them; and if you really need the help. Payment is up front.",
+      "• If the state you land in has already had its Electoral Votes chip claimed by another candidate/team, you can attempt to buy that chip from whoever holds them. You can offer cash, Popular Votes, Electoral Votes or any combination of these, but you must have all the items you offer in hand - no IOUs!",
+      "• If your offer is accepted, and you answer the trivia question correctly, then make your payment, claim your chip, and your turn is over. (If you answer incorrectly, then you do NOT need to make the payment and your turn is over, like it would be on any other turn.)",
+      "• If your offer is rejected, then you can still opt to choose either a General or State trivia question.",
+      "D.C. is where politicians go to recharge. When you are in D.C., you get $10 million from the bank for each missed turn. For example, if you forfeit 3 turns, you get $30 million. You can choose to land there as part of your regular turn, or you may get forced to go there (like if you run out of cash, or if a Wildcard sends you there). For example, you are currently in North Carolina and you roll a 3, so you move yourself to D.C. Your turn is over (you do not get to answer any questions), but you collect $10 million. If you forfeit your next roll of the dice on your next turn, you get another $10 million. You can stay in D.C. for a maximum of 4 turns in a row.",
+      "<b>**Note that D.C. has 3 Electoral Votes.**</b> They can be claimed by the first candidate/team that correctly answers a Government Trivia question for any of the states. That candidate <b>MUST</b> make a verbal claim on those Electoral Votes AFTER they correctly answer a Government trivia question and BEFORE the next candidate throws the dice. If they miss their opportunity, then the next candidate who correctly answers a Government Trivia question can claim the DC Electoral Votes in the same manner."
+    ]
+  },
+  {
+    "id": "7",
+    "title": "WINNING",
+    "content": [
+      "Game play continues until the first candidate/team collects at least 270 Electoral Votes. If the same candidate/team that has 270 or more Electoral Votes also has the most Popular Votes, then that candidate/team can declare themselves the next President of the United States. Game over. Back to Congress for the rest of you. Try again in 4 years!",
+      "But if any other candidate/team has more Popular Votes than the candidate/team with 270+ Electoral Votes, then those 2 candidates/teams (the one with 270 or more Electoral Votes plus the one with the most Popular Votes) must enter a RUNOFF. (See below for Runoff rules)"
+    ]
+  },
+  {
+    "id": "8",
+    "title": "RUNOFF RULES",
+    "content": [
+      "• If one candidate/team has at least 270 Electoral Votes, but another candidate/team has more Popular Votes, then those 2 candidates/teams go “head to head” to determine the final winner. (If there are multiple candidates/teams with more Popular Votes than the candidate/team with 270+ Electoral Votes, then only the candidate/team with the highest Popular Vote total gets to be in the Runoff.)",
+      "• Each Runoff candidate/team should be.given a piece of paper and something to write with.",
+      "• Both Runoff candidates/teams will be asked 5 General Trivia questions AND 5 State Trivia questions, read by another candidate.",
+      "• <b>Multiple choice options will not be given, nor is outside help allowed.</b>",
+      "• Once the candidate reading the question moves on to the next question, there is no way to go back and repeat the question.",
+      "• Both Runoff candidates/teams are answering the same 10 questions.",
+      "• Candidates/teams should write down their answers, and the person asking the questions should secretly write down the correct answer for each question. (Choose an answer from the options and Submit to find out the correct answer.)",
+      "• At the end of this round of 10 questions, the candidate/team with the most correct answers will get to take the other candidate’s/team’s votes and money, and thereby become President. Woo hoo! If the Runoff candidates are tied after the round of 10 questions, then steps i. - iv. are repeated."
+    ]
+  },
+  {
+    "id": "9",
+    "title": "SPEED PLAY",
+    "content": [
+      "• If you want a faster version of the game by setting a time limit, or if your group is just ready to call it a night, then the following modifications apply.",
+      "• All rules of play outlined above are still in effect until you reach the designated time limit, or the point when you just want to wrap it up",
+      "• All votes (Electoral and Popular) possessed by each candidate/team are up for grabs in Speed Play",
+      "• Each candidate/team needs a piece of paper and something to write with.",
+      "• Add up all the Electoral Votes that each candidate/team already has.",
+      "• The two candidates/teams with the lowest Electoral Vote total will go head-to-head in round 1.",
+      "• The two candidates/teams get asked 5 General trivia questions, read by another candidate. <b>Multiple choice options will not be given, nor is outside help allowed.</b> The candidates/teams should write down their answers. The person asking the questions should also secretly write down the correct answers.",
+      "• The candidate/team that answers more questions correctly will get to take all of the votes (Popular and Electoral) from the other candidate/team, who is now eliminated from the Race. (If there is a tie, then repeat step d.)",
+      "• The candidate/team that won Round 1 now goes head-to-head against the candidate/team that had the 3rd lowest Electoral Vote total. Repeat steps d) and e) above until each candidate/team has had a head-to-head round.",
+      "Last one standing is now the leader of the (sorta) free world!"
+    ]
+  },
+  {
+    "id": "10",
+    "title": "GERRYMANDER CARDS",
+    "content": [
+      "These are a way to obtain specific rewards in an alternative manner. You can play a Gerrymander card at any time during your turn. Once you play a card, then that card gets placed in front of you, face up, to indicate that it has been played. You must then choose the next Gerrymander card from the deck so that you always have 2 ‘active’ Gerrymander cards in your possession. <b>NO GERRYMANDER CARDS MAY BE PLAYED DURING RUNOFFS OR DURING SPEED PLAY.</b>",
+      "• If you play a Gerrymander card, the <b>Things Needed</b> side of the card lists the items you need to have in your possession to claim the Reward. Any EV chips that you are required to have will be placed back into their respective state(s) when you play your Gerrymander card; any money you are required to have will go back to the bank; and any Popular Votes you are required to have will simply get deducted from your PV total.",
+      "• On the <b>Reward</b> side of the Gerrymander card, if money is part of the Reward, then that money comes from the bank unless stated otherwise. Any Popular Votes just get added to your total. The EV chips you get as a Reward either get taken from their respective state(s), or if they have already been claimed, then the current owner must forfeit them to you.",
+      "Example: your Gerrymander card states that if you have the Alabama, Arkansas and Mississippi EV chips, as well as $5 million cash, you can turn those things in for the Florida EV chip plus 20 million Popular Votes. Once you have those things under the Things Needed column, turn them in (EV chips back to the state, cash to the bank). You can now take the Florida EV chip (wherever it may be located) and add 20 million Popular Votes to your total."
+    ]
+  },
+  {
+    "id": "11",
+    "title": "WILDCARDS",
+    "content": [
+      "Wildcards are chosen whenever a candidate throws doubles. (Two 1s, two 2s, etc)",
+      "Unless the Wildcard states otherwise, if you are told that you lose some amount of cash or votes, those items just go back to the bank (cash), or get erased from your tally (votes).",
+      "Once a Wildcard is played, place it face up on the bottom of the Wildcard deck. After all cards have been played, the Speaker should shuffle the deck and return it to service.",
+      "See the <a href=\"#14\">Wildcard reference sheet</a> for details on each type of Wildcard"
+    ]
+  },
+  {
+    "id": "12",
+    "title": "ADDING MORE QUESTIONS",
+    "content": [
+      "When you run out of questions in a given category, you have 2 options:",
+      "• The app will allow you to reuse the entire batch of original questions. Obviously, this means you have chosen to see all the same questions again.",
+      "• You also can choose to buy an expansion pack of new questions for that category. Click the “Buy expansion pack” button and follow the directions. Politics: The Game will not see, collect or store any of your payment information. The expansion pack will be delivered to the email address you provided when you first registered the app."
+    ]
+  },
+  {
+    "id": "13",
+    "title": "CUSTOM QUESTIONS",
+    "content": [
+      "A very unique feature of our game is that you have the ability to add your own custom trivia questions!",
+      "• On the Main Menu page of the app, you will see a button labeled “Upload Custom Questions”. When you have prepared your questions, you can choose which category you would like the questions uploaded to. You can place questions in any of the 3 game categories (General, State or Government trivia), or you can keep them in a separate Custom User Questions category.",
+      "• Please note the following things if you want to use this feature:",
+      "You need to create a spreadsheet of your questions",
+      "There needs to be 7 columns in your spreadsheet, labeled exactly like this (ignore the semicolons, they are just here so you see the division of words):",
+      "          question; option1; option2; option3; option4; correctAnswer; explanation",
+      "So column 1 has your question, column 2 has the correct answer to the question, columns 3-5 have incorrect answers, column 6 has the correct answer (and it must exactly match the information in column 2), and column 7 has whatever explanation or other info you want to provide. The app will randomize the presentation of the answers.",
+      "• When you create this spreadsheet and are ready to export it, you will need to download it as a CSV file. All major spreadsheet apps have this feature built in.",
+      "• The CSV file is what will actually get uploaded to the app for game play. Click the Upload button, choose which category you want to upload questions to, then hit Choose File to select your newly created CSV file.",
+      "• The questions you upload will only be stored on your local device. Meaning, they will not in any way alter or damage the ‘permanent’ questions that are in the app database. Similarly, your questions will not be distributed to any other players. They are unique to you."
+    ]
+  },
+  {
+    "id": "14",
+    "title": "WILDCARD DETAILS",
+    "content": [
+      "Wildcards are chosen whenever a player throws doubles (1+1, 2+2, 3+3, etc). Unless the Wildcard states otherwise, if you are told that you lose some amount of cash or votes, those items just go back to the bank (cash), get erased from your tally (Popular Votes), or go back on the board (Electoral Votes).",
+      "If a Wildcard has a 2 minute time limit associated with it, you may press the hourglass icon on your home screen to access a 2:00 countdown timer.",
+      "There are 6 different categories of Wildcards. Once any Wildcard is played, place it face up on the bottom of the Wildcard deck. After all Wildcards have been played, the Speaker should shuffle the deck and place them face down again."
+    ]
+  },
+  {
+    "id": "15",
+    "title": "“Feel your pain” time",
+    "content": [
+      "You have 2 minutes to act out the word or phrase indicated.",
+      "The candidate/team acting out the word or phrase cannot talk / hum / sing / vocalize / write / draw, point at objects in the room, or move their lips.",
+      "Tugging the ear means “sounds like”.",
+      "Hold up the number of fingers to indicate the number of words.",
+      "Place the number of fingers on your forearm to indicate the number of syllables in the word.",
+      "Touch your nose if someone guesses a correct word.",
+      "Any other rules you want to add or modify must be agreed upon before you start play.",
+      "If any other candidate/team correctly guesses what you are acting out within 2 minutes, then that candidate/team AND the actor each get 10 million Popular Votes.",
+      "If no one guesses what you are acting out, then you alone lose 5 million Popular Votes."
+    ]
+  },
+  {
+    "id": "16",
+    "title": "“Party platform” time",
+    "content": [
+      "You have 2 minutes to draw the word or phrase indicated. You may not draw letters or numbers.",
+      "If any other candidate/team correctly guesses what you are drawing, then that candidate/team AND the artist each get $5 million from the bank.",
+      "If no one guesses what you are drawing within 1 minute, then the artist must pay each candidate/team $1 million from their own funds."
+    ]
+  },
+  {
+    "id": "17",
+    "title": "“Glad-handing” time",
+    "content": [
+      "You have 2 minutes (unless the card says otherwise) to complete the physical challenge described. The other candidates are the judges in determining whether you were successful in the challenge (simple majority rules).",
+      "If you successfully complete the challenge, you get 10 million Popular Votes.",
+      "If you are not able to complete the challenge, you lose 5 million Popular Votes.",
+      "If someone has a physical limitation/disability that would prevent them from doing the challenge as described, then the group can decide on an appropriate modification of the challenge."
+    ]
+  },
+  {
+    "id": "18",
+    "title": "“Chicken dinner” time",
+    "content": [
+      "You must sing or recite the indicated speech, poem, song, in the manner indicated. The other candidates are the judges in determining whether you were successful in the challenge. Simple majority rules.",
+      "If you successfully complete the challenge, you get $5 million from the bank.",
+      "If you are not able to complete the challenge, you must give $1 million to each of the other candidates/teams from your own funds."
+    ]
+  },
+  {
+    "id": "19",
+    "title": "“Puppet Master” time",
+    "content": [
+      "If you get one of these cards, your challenge is to have one other candidate/team act out the action or activity described WITHOUT telling them what they are trying to do or using any words that would give away the action. You also cannot use any gestures or movements to ‘guide’ the other candidate. For example, if the card says “Hitting a home run”, then you must describe in words only how you would like the other candidate to attempt to act that out. You could start them off by saying “make a fist with each hand and place one fist on top of the other”. You cannot say something like, “pretend you are gripping a bat”. Nor can you make a gesture as if you are swinging a bat. And so on. You have 2 minutes.",
+      "If any of the other candidates/teams can guess what is being acted out, then each of you (you, the candidate acting out the word or phrase, and the candidate who guessed correctly) will get $5 million from the bank. If the candidate acting it out is also the one who guesses correctly, then they get $10 million (and you still get $5 million).",
+      "If you are unsuccessful, then you and the candidate/team acting out your instructions must each give $2 million to the bank."
+    ]
+  },
+  {
+    "id": "20",
+    "title": "Random Wildcards",
+    "content": [
+      "These are random things that happen during any campaign. They may help or hurt you and/or other candidates/teams. You may be directed to give back a certain number of Electoral Votes, Popular Votes or cash.",
+      "If you do not have the required amount of votes or cash, then proceed as follows:",
+      "If, as an example, you are to give back 12 Electoral Votes, and you cannot exactly match that number, then you must give back at least that number, even if it means you lose significantly more Electoral Votes than the card instructed. (The EV chip(s) get placed back on their respective state(s) and is/are up for grabs again.)",
+      "If you do not have at least the number needed, then you must pay $1 million cash for each Electoral Vote you do not have. If you don’t have enough cash, then back to DC you go to collect your $10 million with each missed turn!",
+      "If you are to give up votes and you have at least some votes to give, you CANNOT buy your way out of giving up Electoral Votes. Meaning, if you need to give up 12 votes, and you have at least 12 votes, then you MUST give them up. If you only have 10 votes, then you must give them up AND pay the remaining $2 million cash penalty (for the 2 EVs you did not have).",
+      "The same rules apply to giving up Popular Votes ($1 million will buy you 1 million PVs)",
+      "If you don’t have enough cash for the Wildcard, then you place yourself in D.C. and collect $10 million for each missed turn (up to the maximum of 4 in a row). All debts must be paid before throwing the dice and moving out of D.C."
+    ]
+  }
+];
+
+async function seedRules() {
+  const rulesCollection = db.collection('rules');
+  console.log('Starting to seed rules into Firestore...');
+
+  for (const rule of rulesData) {
+    try {
+      await rulesCollection.doc(rule.id).set(rule);
+      console.log(`Successfully seeded rule ID: ${rule.id}`);
+    } catch (error) {
+      console.error(`Error seeding rule ID: ${rule.id}`, error);
+    }
+  }
+
+  console.log('Finished seeding all rules.');
+}
+
+seedRules().catch(console.error);

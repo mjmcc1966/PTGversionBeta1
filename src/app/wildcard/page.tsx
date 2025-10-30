@@ -16,7 +16,8 @@ import {
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
 import { useLoading } from '@/app/context/loading-context';
-import allWildcardsData from '@/app/admin/data/wildcards.json';
+import { db } from '@/lib/firebase';
+import { collection, getDocs } from "firebase/firestore";
 
 export interface Wildcard {
   id: string;
@@ -35,8 +36,21 @@ export default function WildcardPage() {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    setAllWildcards(allWildcardsData as Wildcard[]);
-    setWildcardsLoading(false);
+    const fetchWildcards = async () => {
+      try {
+        const wildcardsCollection = collection(db, 'wildcards');
+        const wildcardsSnapshot = await getDocs(wildcardsCollection);
+        const wildcardsList = wildcardsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })) as Wildcard[];
+        setAllWildcards(wildcardsList);
+      } catch (error) {
+        console.error("Error fetching wildcards:", error);
+        // Handle the error appropriately in the UI if necessary
+      } finally {
+        setWildcardsLoading(false);
+      }
+    };
+
+    fetchWildcards();
   }, []);
 
   useEffect(() => {
@@ -74,20 +88,25 @@ export default function WildcardPage() {
     setIntervalId(newIntervalId);
   };
 
-
   const getNextCard = useCallback(() => {
     if (intervalId) {
       clearInterval(intervalId);
+      setIntervalId(null);
+      setTimer(null);
     }
-    setIntervalId(null);
-    setTimer(null);
 
-    if (!allWildcards) return;
+    if (!allWildcards) {
+      return;
+    }
 
     const availableCards = allWildcards.filter((card) => !usedCardIds.has(card.id));
 
-    if (availableCards.length === 0 && allWildcards.length > 0) {
-      setShowReshuffleDialog(true);
+    if (availableCards.length === 0) {
+      if (allWildcards.length > 0) {
+        setShowReshuffleDialog(true);
+      } else {
+        setCurrentCard(null);
+      }
       return;
     }
 
@@ -106,17 +125,21 @@ export default function WildcardPage() {
   useEffect(() => {
     const storedUsedIds = sessionStorage.getItem('usedWildcardIds');
     if (storedUsedIds) {
-      setUsedCardIds(new Set(JSON.parse(storedUsedIds)));
+      try {
+        const parsedIds = JSON.parse(storedUsedIds);
+        setUsedCardIds(new Set(parsedIds));
+      } catch (e) {
+        console.error("Failed to parse used wildcard IDs from session storage", e);
+        setUsedCardIds(new Set());
+      }
     }
   }, []);
 
   useEffect(() => {
-    if (allWildcards && allWildcards.length > 0 && !currentCard) {
+    if (!wildcardsLoading && !currentCard) {
        getNextCard();
-    } else if (allWildcards && allWildcards.length > 0 && usedCardIds.size >= allWildcards.length && !currentCard) {
-      setShowReshuffleDialog(true);
     }
-  }, [currentCard, getNextCard, usedCardIds, allWildcards]);
+  }, [wildcardsLoading, currentCard, getNextCard]);
 
   const handleReshuffle = () => {
     sessionStorage.removeItem('usedWildcardIds');
@@ -127,10 +150,12 @@ export default function WildcardPage() {
       if (allWildcards && allWildcards.length > 0) {
         const randomIndex = Math.floor(Math.random() * allWildcards.length);
         const firstCard = allWildcards[randomIndex];
-        const newUsedIds = new Set([firstCard.id]);
-        setUsedCardIds(newUsedIds);
-        setCurrentCard(firstCard);
-        sessionStorage.setItem('usedWildcardIds', JSON.stringify([firstCard.id]));
+        if (firstCard) {
+            const newUsedIds = new Set([firstCard.id]);
+            setUsedCardIds(newUsedIds);
+            setCurrentCard(firstCard);
+            sessionStorage.setItem('usedWildcardIds', JSON.stringify([firstCard.id]));
+        }
       }
     }, 100);
   };

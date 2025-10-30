@@ -7,18 +7,13 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
-import { CheckCircle, XCircle, Lightbulb, Home, SkipForward, RefreshCw, ShoppingCart, Trophy, ArrowRight } from 'lucide-react';
+import { CheckCircle, XCircle, Lightbulb, Home, SkipForward, RefreshCw, ShoppingCart, Trophy } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { useRouter } from 'next/navigation';
 import { useLoading } from '@/app/context/loading-context';
-import allQuestionsData from '@/app/admin/data/questions.json';
-import { useUser, useFirestore } from '@/firebase';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
-import { FirestorePermissionError } from '@/firebase/errors';
-import { errorEmitter } from '@/firebase/error-emitter';
-
-const correctSoundBase64 = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=";
-const incorrectSoundBase64 = "data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAIARKwAAIhYAQACABgAZGF0YQISAACAgIA=";
+import { db } from '@/lib/firebase';
+import { getAuth, onAuthStateChanged, User } from "firebase/auth";
+import { doc, getDoc, setDoc, collection, query, where, orderBy, limit, getDocs, DocumentData } from 'firebase/firestore';
 
 interface Question {
   id: string;
@@ -31,32 +26,22 @@ interface Question {
 }
 
 interface QuizState {
-  allCategoryQuestions: Question[];
+  totalQuestions: number;
   seenQuestionIds: Set<string>;
   currentQuestion: Question | null;
   selectedAnswer: string | null;
   isAnswered: boolean;
   isFinished: boolean;
   isLoading: boolean;
-  questionNumber: number;
+  error: string | null;
 }
 
 export function QuizClient({ category }: { category: string }) {
-  const { user, isUserLoading } = useUser();
-  const firestore = useFirestore();
+  const [user, setUser] = useState<User | null>(null);
+  const [isUserLoading, setIsUserLoading] = useState(true);
+  const firestore = db;
   const router = useRouter();
   const { hideLoader } = useLoading();
-
-  const [quizState, setQuizState] = useState<QuizState>({
-    allCategoryQuestions: [],
-    seenQuestionIds: new Set(),
-    currentQuestion: null,
-    selectedAnswer: null,
-    isAnswered: false,
-    isFinished: false,
-    isLoading: true,
-    questionNumber: 0,
-  });
 
   const categoryKey = useMemo(() => {
     if (category === 'state-trivia') return 'state_trivia';
@@ -65,107 +50,183 @@ export function QuizClient({ category }: { category: string }) {
     return category;
   }, [category]);
 
-  const selectNextQuestion = useCallback((questions: Question[], seenIds: Set<string>): Question | null => {
-    const availableQuestions = questions.filter(q => !seenIds.has(q.id));
-    if (availableQuestions.length === 0) {
-      return null;
+  const [quizState, setQuizState] = useState<QuizState>(() => {
+    const initialState = {
+      totalQuestions: 0,
+      seenQuestionIds: new Set(),
+      currentQuestion: null,
+      selectedAnswer: null,
+      isAnswered: false,
+      isFinished: false,
+      isLoading: true,
+      error: null,
+    };
+    
+    if (typeof window === 'undefined') {
+      return initialState;
     }
-    const randomIndex = Math.floor(Math.random() * availableQuestions.length);
-    const nextQuestion = availableQuestions[randomIndex];
-    const shuffledOptions = [...nextQuestion.options].sort(() => Math.random() - 0.5);
-    return { ...nextQuestion, options: shuffledOptions };
+    
+    try {
+      const savedState = sessionStorage.getItem(`quizState_${categoryKey}`);
+      if (savedState) {
+        const parsedState = JSON.parse(savedState);
+        return {
+          ...initialState,
+          totalQuestions: parsedState.totalQuestions || 0,
+          seenQuestionIds: new Set(parsedState.seenQuestionIds || []),
+        };
+      }
+    } catch (e) {
+        console.error("Could not parse quiz state from session storage", e);
+    }
+
+    return initialState;
+  });
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+        setUser(user);
+        setIsUserLoading(false);
+    });
+    return () => unsubscribe();
   }, []);
+
+  const fetchTotalQuestions = useCallback(async () => {
+    if (!firestore) return 0;
+    const countDocRef = doc(firestore, 'counts', categoryKey);
+    const countDoc = await getDoc(countDocRef);
+    return countDoc.exists() ? countDoc.data().total : 0;
+  }, [firestore, categoryKey]);
+
+  const selectNextQuestion = useCallback(async (seenIds: Set<string>): Promise<Question | null> => {
+    if (!firestore) return null;
+
+    const qCollection = collection(firestore, 'questions');
+    const maxAttempts = 10; 
+
+    const randomId = () => {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let autoId = '';
+        for (let i = 0; i < 20; i++) {
+            autoId += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return autoId;
+    }
+
+    for (let attempt = 0; attempt < maxAttempts; attempt++) {
+        const docId = randomId();
+        const qQuery = query(
+            qCollection,
+            where("category", "==", categoryKey),
+            where("__name__", ">=", docId),
+            orderBy("__name__"),
+            limit(30)
+        );
+
+        let querySnapshot = await getDocs(qQuery);
+        let potentialQuestions = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as DocumentData));
+
+        if (potentialQuestions.length === 0) {
+            const wrapAroundQuery = query(
+                qCollection,
+                where("category", "==", categoryKey),
+                orderBy("__name__"),
+                limit(30)
+            );
+            const wrapSnapshot = await getDocs(wrapAroundQuery);
+            potentialQuestions = wrapSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as DocumentData));
+        }
+
+        const newQuestions = potentialQuestions.filter(q => !seenIds.has(q.id));
+
+        if (newQuestions.length > 0) {
+            const randomIndex = Math.floor(Math.random() * newQuestions.length);
+            const question = newQuestions[randomIndex] as Omit<Question, 'options'> & { options: string[] };
+            
+            const shuffledOptions = [...question.options].sort(() => Math.random() - 0.5);
+            return { ...question, options: shuffledOptions };
+        }
+    }
+
+    console.warn("Could not find a new question after several attempts.");
+    return null;
+  }, [firestore, categoryKey]);
 
   const updateSeenInStorage = useCallback((newSeenIds: Set<string>) => {
     if (user && firestore) {
         const userDocRef = doc(firestore, 'users', user.uid);
-        const dataToSet = { seenQuestions: { [category]: Array.from(newSeenIds) } };
-
+        const dataToSet = { seenQuestions: { [categoryKey]: Array.from(newSeenIds) } };
         setDoc(userDocRef, dataToSet, { merge: true })
-            .catch((error) => {
-                const permissionError = new FirestorePermissionError({
-                    path: userDocRef.path,
-                    operation: 'update',
-                    requestResourceData: dataToSet,
-                });
-                errorEmitter.emit('permission-error', permissionError);
-            });
+            .catch((error) => console.error("Error updating user progress:", error));
     } else {
-        sessionStorage.setItem(`seen_${category}`, JSON.stringify(Array.from(newSeenIds)));
+        sessionStorage.setItem(`seen_${categoryKey}`, JSON.stringify(Array.from(newSeenIds)));
     }
-  }, [user, firestore, category]);
-
+  }, [user, firestore, categoryKey]);
 
   useEffect(() => {
     const loadQuizData = async () => {
-      if (isUserLoading) return;
+        if (isUserLoading || !firestore) return;
+        
+        setQuizState(prev => ({ ...prev, isLoading: true, error: null }));
 
-      setQuizState(prev => ({ ...prev, isLoading: true }));
-
-      const categoryQuestions = (allQuestionsData as Question[]).filter(
-        (q) => q.category.toLowerCase().replace(/ /g, '_') === categoryKey
-      );
-
-      let initialSeenIds = new Set<string>();
-
-      if (user && firestore) {
-        const userDocRef = doc(firestore, 'users', user.uid);
         try {
-          const userDoc = await getDoc(userDocRef);
-          if (userDoc.exists()) {
-            const userData = userDoc.data();
-            const seenForCategory = userData.seenQuestions?.[category] || [];
-            initialSeenIds = new Set(seenForCategory);
-          }
+            const total = await fetchTotalQuestions();
+            let initialSeenIds = quizState.seenQuestionIds;
+
+            if (initialSeenIds.size === 0) {
+              if (user) {
+                const userDocRef = doc(firestore, 'users', user.uid);
+                const userDoc = await getDoc(userDocRef);
+                if (userDoc.exists()) {
+                  const userData = userDoc.data();
+                  initialSeenIds = new Set(userData.seenQuestions?.[categoryKey] || []);
+                }
+              } else {
+                const sessionSeen = sessionStorage.getItem(`seen_${categoryKey}`);
+                if (sessionSeen) initialSeenIds = new Set(JSON.parse(sessionSeen));
+              }
+            }
+            
+            const nextQuestion = await selectNextQuestion(initialSeenIds);
+
+            setQuizState(prev => ({
+              ...prev,
+              totalQuestions: total,
+              seenQuestionIds: initialSeenIds,
+              currentQuestion: nextQuestion,
+              isFinished: total > 0 && initialSeenIds.size >= total,
+              isLoading: false,
+            }));
         } catch (error) {
-          console.error("Error fetching user progress:", error);
+            console.error("Error loading quiz data:", error);
+            setQuizState(prev => ({
+                ...prev,
+                isLoading: false,
+                error: "A problem occurred while loading the quiz. Please try again later.",
+            }));
+        } finally {
+            hideLoader();
         }
-      } else {
-        const sessionSeen = sessionStorage.getItem(`seen_${category}`);
-        if (sessionSeen) {
-          initialSeenIds = new Set(JSON.parse(sessionSeen));
-        }
-      }
-      
-      const nextQuestion = selectNextQuestion(categoryQuestions, initialSeenIds);
-
-      setQuizState({
-        allCategoryQuestions: categoryQuestions,
-        seenQuestionIds: initialSeenIds,
-        currentQuestion: nextQuestion,
-        isFinished: categoryQuestions.length > 0 && nextQuestion === null,
-        isLoading: false,
-        isAnswered: false,
-        selectedAnswer: null,
-        questionNumber: initialSeenIds.size,
-      });
-
-      hideLoader();
     };
 
     loadQuizData();
-  }, [category, categoryKey, user, isUserLoading, firestore, selectNextQuestion, hideLoader]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [categoryKey, user, isUserLoading, firestore]);
 
-  const advanceToNext = useCallback(() => {
-    const nextQuestion = selectNextQuestion(quizState.allCategoryQuestions, quizState.seenQuestionIds);
 
-    setQuizState(prevState => ({
-      ...prevState,
-      currentQuestion: nextQuestion,
-      selectedAnswer: null,
-      isAnswered: false,
-      isFinished: prevState.allCategoryQuestions.length > 0 && nextQuestion === null,
-    }));
-  }, [quizState.allCategoryQuestions, quizState.seenQuestionIds, selectNextQuestion]);
+  useEffect(() => {
+    const stateToSave = {
+      totalQuestions: quizState.totalQuestions,
+      seenQuestionIds: Array.from(quizState.seenQuestionIds),
+    };
+    sessionStorage.setItem(`quizState_${categoryKey}`, JSON.stringify(stateToSave));
+  }, [quizState.seenQuestionIds, quizState.totalQuestions, categoryKey]);
 
 
   const handleAnswerSubmit = () => {
     if (!quizState.currentQuestion || quizState.isAnswered) return;
 
-    const isCorrect = quizState.selectedAnswer === quizState.currentQuestion.correctAnswer;
-    const audio = new Audio(isCorrect ? correctSoundBase64 : incorrectSoundBase64);
-    audio.play();
-    
     const newSeenIds = new Set(quizState.seenQuestionIds).add(quizState.currentQuestion.id);
     updateSeenInStorage(newSeenIds);
     
@@ -173,55 +234,96 @@ export function QuizClient({ category }: { category: string }) {
         ...prevState,
         isAnswered: true,
         seenQuestionIds: newSeenIds,
-        questionNumber: newSeenIds.size,
     }));
   };
 
-  const handleSkipQuestion = () => {
-    if (!quizState.currentQuestion) return;
-    advanceToNext();
-  };
+  const handleNextQuestion = useCallback(async () => {
+    setQuizState(prev => ({...prev, isLoading: true, error: null}));
+    try {
+        const nextQuestion = await selectNextQuestion(quizState.seenQuestionIds);
+        setQuizState(prevState => ({
+          ...prevState,
+          currentQuestion: nextQuestion,
+          selectedAnswer: null,
+          isAnswered: false,
+          isLoading: false,
+          isFinished: prevState.totalQuestions > 0 && prevState.seenQuestionIds.size >= prevState.totalQuestions,
+        }));
+    } catch(error) {
+        console.error("Error fetching next question:", error);
+        setQuizState(prev => ({
+            ...prev,
+            isLoading: false,
+            error: "Failed to load the next question. Please refresh the page.",
+        }));
+    }
+  }, [quizState.seenQuestionIds, selectNextQuestion]);
 
-  const handleGoHome = () => {
-    router.push('/home');
-  };
+  const handleGoHome = () => router.push('/home');
 
-  const handleReuseQuestions = () => {
+  const handleReuseQuestions = async () => {
     const newSeenIds = new Set<string>();
     updateSeenInStorage(newSeenIds);
-    const nextQuestion = selectNextQuestion(quizState.allCategoryQuestions, newSeenIds);
-    setQuizState(prevState => ({
-      ...prevState,
-      seenQuestionIds: newSeenIds,
-      currentQuestion: nextQuestion,
-      isFinished: false,
-      isAnswered: false,
-      selectedAnswer: null,
-      questionNumber: 0,
-    }));
+
+    setQuizState(prev => ({...prev, isLoading: true, error: null}));
+    try {
+        const nextQuestion = await selectNextQuestion(newSeenIds);
+        setQuizState(prevState => ({
+          ...prevState,
+          seenQuestionIds: newSeenIds,
+          currentQuestion: nextQuestion,
+          isFinished: false,
+		  isAnswered: false,
+          selectedAnswer: null,
+          isLoading: false,
+        }));
+    } catch (error) {
+        console.error("Error restarting quiz:", error);
+        setQuizState(prev => ({
+            ...prev,
+            isLoading: false,
+            error: "Failed to restart the quiz. Please try again.",
+        }));
+    }
   };
   
-  const handleBuyExpansion = () => {
-    alert('Expansion packs are not yet available.');
-  };
+  const handleBuyExpansion = () => alert('Expansion packs are not yet available.');
 
   const {
     isLoading,
     isFinished,
     currentQuestion,
-    allCategoryQuestions,
+    totalQuestions,
     selectedAnswer,
     isAnswered,
-    questionNumber,
+    seenQuestionIds,
+    error,
   } = quizState;
   
-  const totalQuestions = allCategoryQuestions.length;
+  const questionNumber = seenQuestionIds.size;
 
+  if (error) {
+      return (
+        <Card className="w-full max-w-md text-center">
+            <CardHeader>
+                <XCircle className="mx-auto h-16 w-16 text-red-500" />
+                <CardTitle className="text-2xl font-bold">An Error Occurred</CardTitle>
+                <CardDescription>{error}</CardDescription>
+            </CardHeader>
+            <CardFooter>
+                <Button onClick={handleGoHome} className="w-full" variant="outline">
+                    <Home className="mr-2 h-4 w-4" />
+                    Return to Home
+                </Button>
+            </CardFooter>
+        </Card>
+      )
+  }
 
   if (isLoading) {
     return (
       <div className="w-full max-w-2xl mx-auto">
-        <p className="text-center text-muted-foreground mb-4">Loading...</p>
+        <p className="text-center text-muted-foreground mb-4">Loading quiz...</p>
         <Card>
           <CardHeader>
             <Skeleton className="h-8 w-3/4" />
@@ -254,7 +356,7 @@ export function QuizClient({ category }: { category: string }) {
             <RefreshCw className="mr-2 h-4 w-4" />
             Start Over
           </Button>
-          <Button onClick={handleBuyExpansion} className="w-full">
+          <Button onClick={handleBuyExpansion} className="w-full" variant="secondary">
             <ShoppingCart className="mr-2 h-4 w-4" />
             Buy Expansion Pack
           </Button>
@@ -319,11 +421,11 @@ export function QuizClient({ category }: { category: string }) {
               ))}
             </CardContent>
             <CardFooter className="flex justify-between">
-              <Button onClick={handleSkipQuestion} variant="outline">
-                <SkipForward className="mr-2 h-4 w-4" />
-                Skip Question
-              </Button>
-              <Button onClick={handleAnswerSubmit} disabled={!selectedAnswer}>Submit Answer</Button>
+                <Button onClick={handleNextQuestion} variant="outline">
+                    <SkipForward className="mr-2 h-4 w-4" />
+                    Skip Question
+                </Button>
+                <Button onClick={handleAnswerSubmit} disabled={!selectedAnswer}>Submit Answer</Button>
             </CardFooter>
           </>
         ) : (
@@ -364,10 +466,6 @@ export function QuizClient({ category }: { category: string }) {
                     <Home className="mr-2 h-4 w-4" />
                     Return to Home
                 </Button>
-                <Button onClick={advanceToNext} className="flex-1">
-                    Next Question
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
               </div>
             </CardFooter>
           </>
@@ -376,5 +474,3 @@ export function QuizClient({ category }: { category: string }) {
     </div>
   );
 }
-
-    

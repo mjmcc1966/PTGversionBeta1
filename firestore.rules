@@ -1,68 +1,41 @@
-/**
- * @fileOverview Firestore Security Rules for PTG Application
- *
- * Core Philosophy:
- * This ruleset provides public read access to questions, wildcards, and rules,
- * while restricting write access to prevent unauthorized data modification.
- *
- * Data Structure:
- * - /questions/{questionId}: Stores trivia questions.
- * - /wildcards/{wildcardId}: Stores wildcard cards.
- * - /rules/{ruleId}: Stores the game rules.
- *
- * Key Security Decisions:
- * - Public read access is granted to all collections.
- * - All write operations (create, update, delete) are denied to prevent unauthorized modifications of game data.
- * - There is no user-specific data or ownership model in this initial ruleset.
- * - The application does not currently support user-generated content or data personalization.
- */
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    // Helper function to check for admin privileges
+    function isAdmin() {
+      return request.auth.token.isAdmin == true;
+    }
 
-    /**
-     * @description Allows anyone to read questions but no one to write.
-     * @path /questions/{questionId}
-     * @allow (get, list) Anyone can read.
-     * @deny (create, update, delete) No one can write.
-     * @principle Allows public read access while preventing unauthorized data modification.
-     */
+    // Questions can be read by anyone.
     match /questions/{questionId} {
       allow get: if true;
       allow list: if true;
-      allow create: if false;
-      allow update: if false;
-      allow delete: if false;
+      allow write: if isAdmin();
     }
 
-    /**
-     * @description Allows anyone to read wildcards but no one to write.
-     * @path /wildcards/{wildcardId}
-     * @allow (get, list) Anyone can read.
-     * @deny (create, update, delete) No one can write.
-     * @principle Allows public read access while preventing unauthorized data modification.
-     */
+    // Wildcards can be read and written by anyone for now.
     match /wildcards/{wildcardId} {
       allow get: if true;
       allow list: if true;
-      allow create: if false;
-      allow update: if false;
-      allow delete: if false;
+      allow write: if true;
     }
 
-    /**
-     * @description Allows anyone to read game rules but no one to write.
-     * @path /rules/{ruleId}
-     * @allow (get, list) Anyone can read.
-     * @deny (create, update, delete) No one can write.
-     * @principle Allows public read access while preventing unauthorized data modification.
-     */
+    // Rules can be read by anyone.
     match /rules/{ruleId} {
-      allow get: if true;
-      allow list: if true;
-      allow create: if false;
-      allow update: if false;
-      allow delete: if false;
+      allow list, get: if true;
+      allow write: if isAdmin();
+    }
+
+    // A publicly readable collection to store non-sensitive counts.
+    match /counts/{countId} {
+        allow get: if true;
+        allow write: if isAdmin(); // Only admins can update counts
+    }
+
+    // Users can read and write to their own user document.
+    match /users/{userId} {
+      allow read: if request.auth.uid == userId || isAdmin();
+      allow write: if request.auth.uid == userId;
     }
   }
 }

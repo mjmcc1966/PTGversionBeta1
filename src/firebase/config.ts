@@ -1,8 +1,9 @@
 export const firebaseConfig = {
-  "projectId": "studio-4440582707-11931",
-  "appId": "1:265557677161:web:2edf88351e0987d7e77ef8",
+  "projectId": "politics-the-game",
+  "appId": "1:51907672837:web:a6c6d5a390007d68c5d56c",
+  "storageBucket": "politics-the-game.firebasestorage.app",
   "apiKey": process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  "authDomain": "studio-4440582707-11931.firebaseapp.com",
-  "measurementId": "",
-  "messagingSenderId": "265557677161"
+  "authDomain": "politics-the-game.firebaseapp.com",
+  "messagingSenderId": "51907672837",
+  "measurementId": "G-WQXL398S2H"
 };
