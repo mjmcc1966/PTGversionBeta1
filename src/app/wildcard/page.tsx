@@ -44,7 +44,6 @@ export default function WildcardPage() {
         setAllWildcards(wildcardsList);
       } catch (error) {
         console.error("Error fetching wildcards:", error);
-        // Handle the error appropriately in the UI if necessary
       } finally {
         setWildcardsLoading(false);
       }
@@ -95,69 +94,78 @@ export default function WildcardPage() {
       setTimer(null);
     }
 
-    if (!allWildcards) {
+    if (!allWildcards || allWildcards.length === 0) {
       return;
     }
 
-    const availableCards = allWildcards.filter((card) => !usedCardIds.has(card.id));
+    let availableCards = allWildcards.filter((card) => !usedCardIds.has(card.id));
 
     if (availableCards.length === 0) {
-      if (allWildcards.length > 0) {
         setShowReshuffleDialog(true);
-      } else {
-        setCurrentCard(null);
-      }
-      return;
+        return;
     }
 
     const randomIndex = Math.floor(Math.random() * availableCards.length);
     const nextCard = availableCards[randomIndex];
     
-    const newUsedIds = new Set(usedCardIds);
-    newUsedIds.add(nextCard.id);
+    const newUsedIds = new Set(usedCardIds).add(nextCard.id);
     
     setUsedCardIds(newUsedIds);
     setCurrentCard(nextCard);
     
-    sessionStorage.setItem('usedWildcardIds', JSON.stringify(Array.from(newUsedIds)));
   }, [usedCardIds, intervalId, allWildcards]);
 
   useEffect(() => {
     const storedUsedIds = sessionStorage.getItem('usedWildcardIds');
+    const storedCard = sessionStorage.getItem('currentWildcard');
+    
+    let loadedUsedIds = new Set<string>();
     if (storedUsedIds) {
       try {
-        const parsedIds = JSON.parse(storedUsedIds);
-        setUsedCardIds(new Set(parsedIds));
-      } catch (e) {
-        console.error("Failed to parse used wildcard IDs from session storage", e);
-        setUsedCardIds(new Set());
-      }
+        loadedUsedIds = new Set(JSON.parse(storedUsedIds));
+        setUsedCardIds(loadedUsedIds);
+      } catch (e) { console.error("Failed to parse used wildcard IDs", e); }
+    }
+
+    if (storedCard) {
+      try {
+        const card = JSON.parse(storedCard);
+        // Ensure the restored card's ID is in the used set
+        if (loadedUsedIds.has(card.id)) {
+            setCurrentCard(card);
+        } 
+      } catch (e) { console.error("Failed to parse current wildcard", e); }
     }
   }, []);
 
   useEffect(() => {
-    if (!wildcardsLoading && !currentCard) {
+    if (!wildcardsLoading && !currentCard && allWildcards.length > 0) {
        getNextCard();
     }
-  }, [wildcardsLoading, currentCard, getNextCard]);
+  }, [wildcardsLoading, currentCard, getNextCard, allWildcards]);
+
+  useEffect(() => {
+      sessionStorage.setItem('usedWildcardIds', JSON.stringify(Array.from(usedCardIds)));
+      if(currentCard) {
+        sessionStorage.setItem('currentWildcard', JSON.stringify(currentCard));
+      }
+  }, [usedCardIds, currentCard]);
 
   const handleReshuffle = () => {
-    sessionStorage.removeItem('usedWildcardIds');
-    setUsedCardIds(new Set());
-    setShowReshuffleDialog(false);
+    const newUsedIds = new Set<string>();
+    setUsedCardIds(newUsedIds);
     
-    setTimeout(() => {
-      if (allWildcards && allWildcards.length > 0) {
-        const randomIndex = Math.floor(Math.random() * allWildcards.length);
-        const firstCard = allWildcards[randomIndex];
-        if (firstCard) {
-            const newUsedIds = new Set([firstCard.id]);
-            setUsedCardIds(newUsedIds);
-            setCurrentCard(firstCard);
-            sessionStorage.setItem('usedWildcardIds', JSON.stringify([firstCard.id]));
-        }
-      }
-    }, 100);
+    const availableCards = allWildcards.filter(card => !newUsedIds.has(card.id));
+    const randomIndex = Math.floor(Math.random() * availableCards.length);
+    const firstCard = availableCards[randomIndex];
+
+    if (firstCard) {
+        const nextUsedIds = new Set(newUsedIds).add(firstCard.id);
+        setCurrentCard(firstCard);
+        setUsedCardIds(nextUsedIds);
+    }
+
+    setShowReshuffleDialog(false);
   };
 
   return (

@@ -103,53 +103,60 @@ export function QuizClient({ category }: { category: string }) {
     if (!firestore) return null;
 
     const qCollection = collection(firestore, 'questions');
-    const maxAttempts = 10; 
+    const maxAttempts = 10;
 
-    const randomId = () => {
-        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        let autoId = '';
-        for (let i = 0; i < 20; i++) {
-            autoId += chars.charAt(Math.floor(Math.random() * chars.length));
-        }
-        return autoId;
-    }
-
+    // 1. Try to fetch a random question first
     for (let attempt = 0; attempt < maxAttempts; attempt++) {
-        const docId = randomId();
-        const qQuery = query(
-            qCollection,
-            where("category", "==", categoryKey),
-            where("__name__", ">=", docId),
-            orderBy("__name__"),
-            limit(30)
+      const randomId = doc(collection(firestore, 'questions')).id;
+      const qQuery = query(
+        qCollection,
+        where("category", "==", categoryKey),
+        where("__name__", ">=", randomId),
+        orderBy("__name__"),
+        limit(30)
+      );
+
+      let querySnapshot = await getDocs(qQuery);
+      let potentialQuestions = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as DocumentData));
+
+      // If we didn't find any questions, wrap around
+      if (potentialQuestions.length === 0) {
+        const wrapAroundQuery = query(
+          qCollection,
+          where("category", "==", categoryKey),
+          orderBy("__name__"),
+          limit(30)
         );
+        querySnapshot = await getDocs(wrapAroundQuery);
+        potentialQuestions = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as DocumentData));
+      }
 
-        let querySnapshot = await getDocs(qQuery);
-        let potentialQuestions = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as DocumentData));
+      const newQuestions = potentialQuestions.filter(q => !seenIds.has(q.id));
 
-        if (potentialQuestions.length === 0) {
-            const wrapAroundQuery = query(
-                qCollection,
-                where("category", "==", categoryKey),
-                orderBy("__name__"),
-                limit(30)
-            );
-            const wrapSnapshot = await getDocs(wrapAroundQuery);
-            potentialQuestions = wrapSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as DocumentData));
-        }
-
-        const newQuestions = potentialQuestions.filter(q => !seenIds.has(q.id));
-
-        if (newQuestions.length > 0) {
-            const randomIndex = Math.floor(Math.random() * newQuestions.length);
-            const question = newQuestions[randomIndex] as Omit<Question, 'options'> & { options: string[] };
-            
-            const shuffledOptions = [...question.options].sort(() => Math.random() - 0.5);
-            return { ...question, options: shuffledOptions };
-        }
+      if (newQuestions.length > 0) {
+        const randomIndex = Math.floor(Math.random() * newQuestions.length);
+        const question = newQuestions[randomIndex] as Omit<Question, 'options'> & { options: string[] };
+        const shuffledOptions = [...question.options].sort(() => Math.random() - 0.5);
+        return { ...question, options: shuffledOptions };
+      }
     }
 
-    console.warn("Could not find a new question after several attempts.");
+    // 2. If random fetching fails, get all questions and filter
+    console.warn("Random question fetch failed, falling back to full query.");
+    const allQuestionsQuery = query(qCollection, where("category", "==", categoryKey));
+    const allQuestionsSnapshot = await getDocs(allQuestionsQuery);
+    const allQuestions = allQuestionsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as DocumentData));
+    const unseenQuestions = allQuestions.filter(q => !seenIds.has(q.id));
+
+    if (unseenQuestions.length > 0) {
+        const randomIndex = Math.floor(Math.random() * unseenQuestions.length);
+        const question = unseenQuestions[randomIndex] as Omit<Question, 'options'> & { options: string[] };
+        const shuffledOptions = [...question.options].sort(() => Math.random() - 0.5);
+        return { ...question, options: shuffledOptions };
+    }
+
+    // 3. If all questions have been seen, return null
+    console.warn("All questions in this category have been seen.");
     return null;
   }, [firestore, categoryKey]);
 
